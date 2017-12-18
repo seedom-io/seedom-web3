@@ -6,6 +6,9 @@ import notifs from './modules/notifs';
 import counter from './modules/counter';
 import info from './modules/info';
 
+import blockchain from './modules/blockchain';
+import seedom from './modules/seedom';
+
 export default function createReducers(asyncReducers) {
   return {
     router: routerReducer,
@@ -19,6 +22,8 @@ export default function createReducers(asyncReducers) {
       counter3: counter
     }),
     info,
+    blockchain,
+    seedom,
     ...asyncReducers
   };
 }

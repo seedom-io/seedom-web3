@@ -9,6 +9,7 @@ import LoginSuccess from 'containers/LoginSuccess/Loadable';
 import Register from 'containers/Register/Loadable';
 import Survey from 'containers/Survey/Loadable';
 import Widgets from 'containers/Widgets/Loadable';
+import Seedom from 'containers/Seedom/Loadable';
 
 const isAuthenticated = connectedReduxRedirect({
   redirectPath: '/login',
@@ -29,6 +30,7 @@ const routes = [
   {
     component: App,
     routes: [
+      { path: '/seedom', component: Seedom },
       { path: '/', exact: true, component: Home },
       { path: '/about', component: About },
       { path: '/chat', component: Chat },
