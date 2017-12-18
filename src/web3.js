@@ -1,6 +1,6 @@
 /* eslint import/no-mutable-exports: 0 */
 
-import Web3 from '../node_modules/web3'; // Must specfiy node_modules to avoid importing itself // --> OFF
+import Web3 from '../node_modules/web3';
 
 let rpcWeb3;
 if (typeof window !== 'undefined') {
@@ -11,7 +11,7 @@ if (typeof window !== 'undefined') {
 }
 
 const wsWeb3 = url => {
-  // set to Seedom's nodes by default
+  // set to Seedom nodes by default
   if (typeof url === 'undefined') {
     url = 'ws://seedom.io:8546';
   }
