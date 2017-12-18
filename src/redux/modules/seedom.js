@@ -9,7 +9,7 @@ export default function reducer(state = initialState, action = {}) {
     case SET_TOTAL_PARTICIPANTS:
       return {
         ...state,
-        totalParticipants: action.totalParticipants
+        totalParticipants: Number(action.totalParticipants)
       };
     default:
       return state;

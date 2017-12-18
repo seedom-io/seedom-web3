@@ -20,10 +20,8 @@ let SeedomContract;
 
 @connect(
   state => ({
-    coinbase: state.blockchain.coinbase,
-    amountToSend: state.seedom.amountToSend,
-    addressToSend: state.seedom.addressToSend,
-    pastTransactions: state.seedom.pastTransactions
+    account: state.blockchain.account,
+    totalParticipants: state.seedom.totalParticipants
   }),
   {
     ...blockchainActions,
@@ -32,31 +30,34 @@ let SeedomContract;
 )
 export default class Seedom extends Component {
   static propTypes = {
-    coinbase: PropTypes.string.isRequired,
-    setCoinbase: PropTypes.func.isRequired,
+    account: PropTypes.string.isRequired,
+    totalParticipants: PropTypes.number.isRequired,
+
+    setAccount: PropTypes.func.isRequired,
     setTotalParticipants: PropTypes.func.isRequired,
     loadContractABI: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
-    // Get and set coinbase if it hasn't been set yet
-    if (this.props.coinbase.length === 0) {
-      web3.eth.getCoinbase().then(coinbase => {
-        this.props.setCoinbase(coinbase);
+    // Get and set account if it hasn't been set yet
+    if (this.props.account.length === 0) {
+      web3.eth.getAccounts().then(accounts => {
+        const account = accounts[0];
+        this.props.setAccount(account);
         // Set default address
-        web3.eth.defaultAccount = coinbase;
+        web3.eth.defaultAccount = account;
         this.initWeb3Subscriptions();
       });
     } else {
       this.initWeb3Subscriptions();
     }
   }
-
+jjjjjjj
   updateWeb3Info = () => {
-    const { coinbase, setTotalParticipants } = this.props;
+    const { account, setTotalParticipants } = this.props;
 
     SeedomContract.methods.totalParticipants().call({
-      from: coinbase
+      from: account
     }).then(result => {
       setTotalParticipants(result);
     }, err => {
@@ -68,7 +69,7 @@ export default class Seedom extends Component {
   }
 
   initWeb3Subscriptions = () => {
-    const { coinbase, loadContractABI } = this.props;
+    const { account, loadContractABI } = this.props;
     const contractAddress = testJSON.charity[0].address;
 
     loadContractABI('seedom').then(abi => {
@@ -77,7 +78,7 @@ export default class Seedom extends Component {
         abi,
         contractAddress,
         {
-          from: coinbase,
+          from: account,
           gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
         }
       );
@@ -93,10 +94,15 @@ export default class Seedom extends Component {
 
 
   render() {
+    const { account, totalParticipants } = this.props;
     return (
       <div className="container">
-        <h1>About Us</h1>
         <Helmet title="About Us" />
+        <h1>Account</h1>
+        <h2>{account}</h2>
+
+        <h1>Total Participants</h1>
+        <h2>{totalParticipants}</h2>
       </div>
     );
   }
