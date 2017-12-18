@@ -1,6 +1,8 @@
+/* eslint import/no-mutable-exports: 0 */
+
 import Web3 from '../node_modules/web3'; // Must specfiy node_modules to avoid importing itself // --> OFF
 
-/* eslint import/no-mutable-exports: 0 */ let rpcWeb3;
+let rpcWeb3;
 if (typeof window !== 'undefined') {
   // set MetaMask web3 at v1.0
   if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
