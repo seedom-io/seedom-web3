@@ -1,6 +1,9 @@
 import Web3 from '../node_modules/web3'; // Must specfiy node_modules to avoid importing itself
 
+export { Web3 as Web3v1 };
+
 let web3;
+
 // Instantiate new web3 global instance
 if (typeof window !== 'undefined' && // Check we're on the client-side
            (typeof window.web3 === 'undefined' ||
@@ -18,6 +21,10 @@ if (typeof window !== 'undefined' && // Check we're on the client-side
 // Get current provider
 export function getCurrentProvider() {
   return web3.currentProvider;
+}
+
+export function isMetaMask() {
+  return getCurrentProvider().__proto__.isMetaMask;
 }
 
 // Export web3 object instance

@@ -1,7 +1,9 @@
 const SET_TOTAL_PARTICIPANTS = 'seedom/SET_TOTAL_PARTICIPANTS';
+const SET_VALUE_PER_ENTRY = 'seedom/SET_VALUE_PER_ENTRY';
 
 const initialState = {
-  totalParticipants: 0
+  totalParticipants: 0,
+  valuePerEntry: 0
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -10,6 +12,12 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         totalParticipants: Number(action.totalParticipants)
+      };
+
+    case SET_VALUE_PER_ENTRY:
+      return {
+        ...state,
+        valuePerEntry: Number(action.valuePerEntry)
       };
     default:
       return state;
@@ -22,3 +30,11 @@ export function setTotalParticipants(totalParticipants) {
     totalParticipants
   };
 }
+
+export function setValuePerEntry(valuePerEntry) {
+  return {
+    type: SET_VALUE_PER_ENTRY,
+    valuePerEntry
+  };
+}
+

@@ -4,7 +4,10 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { provideHooks } from 'redial';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
-import web3 from '../../web3';
+
+import ParticipateForm from 'components/ParticipateForm';
+import hashedRandom from 'utils/hashedRandom';
+import web3, { isMetaMask, Web3v1 } from '../../web3';
 
 import testJSON from '../../../../seedom-solidity/deployment/test.json';
 
@@ -21,7 +24,8 @@ let SeedomContract;
 @connect(
   state => ({
     account: state.blockchain.account,
-    totalParticipants: state.seedom.totalParticipants
+    totalParticipants: state.seedom.totalParticipants,
+    valuePerEntry: state.seedom.valuePerEntry
   }),
   {
     ...blockchainActions,
@@ -32,9 +36,11 @@ export default class Seedom extends Component {
   static propTypes = {
     account: PropTypes.string.isRequired,
     totalParticipants: PropTypes.number.isRequired,
+    valuePerEntry: PropTypes.number.isRequired,
 
     setAccount: PropTypes.func.isRequired,
     setTotalParticipants: PropTypes.func.isRequired,
+    setValuePerEntry: PropTypes.func.isRequired,
     loadContractABI: PropTypes.func.isRequired,
   }
 
@@ -52,14 +58,26 @@ export default class Seedom extends Component {
       this.initWeb3Subscriptions();
     }
   }
-jjjjjjj
+
   updateWeb3Info = () => {
-    const { account, setTotalParticipants } = this.props;
+    const {
+      account,
+      setTotalParticipants,
+      setValuePerEntry
+    } = this.props;
 
     SeedomContract.methods.totalParticipants().call({
       from: account
-    }).then(result => {
-      setTotalParticipants(result);
+    }).then(totalParticipants => {
+      setTotalParticipants(totalParticipants);
+    }, err => {
+      console.error(err);
+    });
+
+    SeedomContract.methods.currentRaiser().call({
+      from: account
+    }).then(raiser => {
+      setValuePerEntry(raiser._valuePerEntry);
     }, err => {
       console.error(err);
     });
@@ -70,7 +88,7 @@ jjjjjjj
 
   initWeb3Subscriptions = () => {
     const { account, loadContractABI } = this.props;
-    const contractAddress = testJSON.charity[0].address;
+    const contractAddress = testJSON.seedom[0].address;
 
     loadContractABI('seedom').then(abi => {
       // Create an instance of the contract
@@ -92,17 +110,58 @@ jjjjjjj
     });
   }
 
+  handleParticipate = ({ seed, numOfEntries }) => {
+    const {
+      account,
+      valuePerEntry
+    } = this.props;
+
+    const hashedSeed = hashedRandom(seed, account);
+    const value = numOfEntries * valuePerEntry;
+
+    SeedomContract.methods.participate(hashedSeed.valueOf()).send({
+      from: account,
+      gas: 1000000,
+      gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+      value
+    }).then(result => {
+      // if result.status === 0, this failed
+      console.log('Participate succeeded');
+      console.log(result);
+    }).catch(err => {
+      console.log('Participate failed');
+      console.log(err);
+    });
+  }
+
 
   render() {
-    const { account, totalParticipants } = this.props;
+    const {
+      account,
+      totalParticipants,
+      valuePerEntry
+    } = this.props;
+
+    const connectedWithMetaMask = isMetaMask();
     return (
       <div className="container">
-        <Helmet title="About Us" />
+        <Helmet title="Seedom" />
         <h1>Account</h1>
         <h2>{account}</h2>
 
         <h1>Total Participants</h1>
         <h2>{totalParticipants}</h2>
+
+        <h1>Value Per Entry</h1>
+        <h2>{valuePerEntry}</h2>
+
+        <h1>Connected with metamask?</h1>
+        <h2>{connectedWithMetaMask.toString()}</h2>
+
+        <ParticipateForm
+          valuePerEntry={valuePerEntry}
+          onParticipate={this.handleParticipate}
+        />
       </div>
     );
   }
