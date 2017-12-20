@@ -16,6 +16,8 @@ import * as seedomActions from '../../redux/modules/seedom';
 
 let SeedomContract;
 
+const getHasParticipated = _hashedRandom => !!_hashedRandom && _hashedRandom !== '0x0000000000000000000000000000000000000000000000000000000000000000';
+
 @provideHooks({
   fetch: ({ store: { dispatch, getState } }) =>
     !isInfoLoaded(getState()) ? dispatch(loadInfo()).catch(() => null) : Promise.resolve()
@@ -24,11 +26,8 @@ let SeedomContract;
 @connect(
   state => ({
     account: state.blockchain.account,
-    participant: PropTypes.shape({
-      _entries: PropTypes.number.isRequired,
-      _hashedRandom: PropTypes.string.isRequired,
-      _random: PropTypes.string.isRequired
-    }).isRequired,
+    hasParticipated: getHasParticipated(state.seedom.participant._hashedRandom),
+    participant: state.seedom.participant,
     totalParticipants: state.seedom.totalParticipants,
     valuePerEntry: state.seedom.valuePerEntry
   }),
@@ -40,6 +39,12 @@ let SeedomContract;
 export default class Seedom extends Component {
   static propTypes = {
     account: PropTypes.string.isRequired,
+    hasParticipated: PropTypes.bool.isRequired,
+    participant: PropTypes.shape({
+      _entries: PropTypes.number.isRequired,
+      _hashedRandom: PropTypes.string.isRequired,
+      _random: PropTypes.string.isRequired
+    }).isRequired,
     totalParticipants: PropTypes.number.isRequired,
     valuePerEntry: PropTypes.number.isRequired,
 
@@ -149,9 +154,15 @@ export default class Seedom extends Component {
     });
   }
 
+  handleAddEntries = ({ numOfEntries }) => {
+    // TODO make the web3.eth.sendTransaction call
+    console.log(numOfEntries);
+  }
+
   render() {
     const {
       account,
+      hasParticipated,
       totalParticipants,
       valuePerEntry
     } = this.props;
@@ -172,8 +183,13 @@ export default class Seedom extends Component {
         <h1>Connected with metamask?</h1>
         <h2>{connectedWithMetaMask.toString()}</h2>
 
+        <h1>Participated?</h1>
+        <h2>{hasParticipated.toString()}</h2>
+
         <ParticipateForm
+          hasParticipated={hasParticipated}
           valuePerEntry={valuePerEntry}
+          onAddEntries={this.handleAddEntries}
           onParticipate={this.handleParticipate}
         />
       </div>
