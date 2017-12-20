@@ -154,6 +154,11 @@ export default class Seedom extends Component {
     });
   }
 
+  handleAddEntries = ({ numOfEntries }) => {
+    // TODO make the web3.eth.sendTransaction call
+    console.log(numOfEntries);
+  }
+
   render() {
     const {
       account,
@@ -184,6 +189,7 @@ export default class Seedom extends Component {
         <ParticipateForm
           hasParticipated={hasParticipated}
           valuePerEntry={valuePerEntry}
+          onAddEntries={this.handleAddEntries}
           onParticipate={this.handleParticipate}
         />
       </div>

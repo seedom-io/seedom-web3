@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 export default class Participate extends React.PureComponent {
   static propTypes = {
+    onAddEntries: PropTypes.func.isRequired,
     onParticipate: PropTypes.func.isRequired,
+    hasParticipated: PropTypes.func.isRequired,
     valuePerEntry: PropTypes.number.isRequired,
   }
 
@@ -16,11 +18,21 @@ export default class Participate extends React.PureComponent {
   }
 
   handleSubmit = event => {
-    const { onParticipate } = this.props;
+    const {
+      hasParticipated,
+      onAddEntries,
+      onParticipate
+    } = this.props;
+
     if (event !== undefined && event.preventDefault) {
       event.preventDefault();
     }
-    onParticipate({ seed: this.state.seed, numOfEntries: this.state.numOfEntries });
+
+    if (!hasParticipated) {
+      onParticipate({ seed: this.state.seed, numOfEntries: this.state.numOfEntries });
+    } else {
+      onAddEntries({ numOfEntries: this.state.numOfEntries });
+    }
   }
 
   handleSeedChange = event => {
@@ -36,9 +48,11 @@ export default class Participate extends React.PureComponent {
   }
 
   render() {
+    const { hasParticipated } = this.props;
+
     return (
       <form onSubmit={this.handleSubmit}>
-        <input placeholder="Seed" onChange={this.handleSeedChange} />
+        {!hasParticipated && <input placeholder="Seed" onChange={this.handleSeedChange} />}
         <input placeholder="Number of Entries" onChange={this.handleNumOfEntriesChange} />
         <button onClick={this.handleSubmit}>
           Submit
