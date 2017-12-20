@@ -24,6 +24,11 @@ let SeedomContract;
 @connect(
   state => ({
     account: state.blockchain.account,
+    participant: PropTypes.shape({
+      _entries: PropTypes.number.isRequired,
+      _hashedRandom: PropTypes.string.isRequired,
+      _random: PropTypes.string.isRequired
+    }).isRequired,
     totalParticipants: state.seedom.totalParticipants,
     valuePerEntry: state.seedom.valuePerEntry
   }),
@@ -39,6 +44,7 @@ export default class Seedom extends Component {
     valuePerEntry: PropTypes.number.isRequired,
 
     setAccount: PropTypes.func.isRequired,
+    setParticipant: PropTypes.func.isRequired,
     setTotalParticipants: PropTypes.func.isRequired,
     setValuePerEntry: PropTypes.func.isRequired,
     loadContractABI: PropTypes.func.isRequired,
@@ -62,6 +68,7 @@ export default class Seedom extends Component {
   updateWeb3Info = () => {
     const {
       account,
+      setParticipant,
       setTotalParticipants,
       setValuePerEntry
     } = this.props;
@@ -78,6 +85,14 @@ export default class Seedom extends Component {
       from: account
     }).then(raiser => {
       setValuePerEntry(raiser._valuePerEntry);
+    }, err => {
+      console.error(err);
+    });
+
+    SeedomContract.methods.participant(account).call({
+      from: account
+    }).then(participant => {
+      setParticipant(participant);
     }, err => {
       console.error(err);
     });
@@ -133,7 +148,6 @@ export default class Seedom extends Component {
       console.log(err);
     });
   }
-
 
   render() {
     const {
