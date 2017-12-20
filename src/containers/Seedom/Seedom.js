@@ -4,7 +4,10 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { provideHooks } from 'redial';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
-import web3 from '../../web3';
+
+import ParticipateForm from 'components/ParticipateForm';
+import hashedRandom from 'utils/hashedRandom';
+import web3, { isMetaMask, Web3v1 } from '../../web3';
 
 import testJSON from '../../../../seedom-solidity/deployment/test.json';
 
@@ -13,15 +16,20 @@ import * as seedomActions from '../../redux/modules/seedom';
 
 let SeedomContract;
 
+const getHasParticipated = _hashedRandom =>
+  !!_hashedRandom && _hashedRandom !== '0x0000000000000000000000000000000000000000000000000000000000000000';
+
 @provideHooks({
   fetch: ({ store: { dispatch, getState } }) =>
     !isInfoLoaded(getState()) ? dispatch(loadInfo()).catch(() => null) : Promise.resolve()
 })
-
 @connect(
   state => ({
     account: state.blockchain.account,
-    totalParticipants: state.seedom.totalParticipants
+    hasParticipated: getHasParticipated(state.seedom.participant._hashedRandom),
+    participant: state.seedom.participant,
+    totalParticipants: state.seedom.totalParticipants,
+    valuePerEntry: state.seedom.valuePerEntry
   }),
   {
     ...blockchainActions,
@@ -31,12 +39,21 @@ let SeedomContract;
 export default class Seedom extends Component {
   static propTypes = {
     account: PropTypes.string.isRequired,
+    hasParticipated: PropTypes.bool.isRequired,
+    participant: PropTypes.shape({
+      _entries: PropTypes.number.isRequired,
+      _hashedRandom: PropTypes.string.isRequired,
+      _random: PropTypes.string.isRequired
+    }).isRequired,
     totalParticipants: PropTypes.number.isRequired,
+    valuePerEntry: PropTypes.number.isRequired,
 
     setAccount: PropTypes.func.isRequired,
+    setParticipant: PropTypes.func.isRequired,
     setTotalParticipants: PropTypes.func.isRequired,
-    loadContractABI: PropTypes.func.isRequired,
-  }
+    setValuePerEntry: PropTypes.func.isRequired,
+    loadContractABI: PropTypes.func.isRequired
+  };
 
   componentDidMount() {
     // Get and set account if it hasn't been set yet
@@ -52,36 +69,68 @@ export default class Seedom extends Component {
       this.initWeb3Subscriptions();
     }
   }
-jjjjjjj
-  updateWeb3Info = () => {
-    const { account, setTotalParticipants } = this.props;
 
-    SeedomContract.methods.totalParticipants().call({
-      from: account
-    }).then(result => {
-      setTotalParticipants(result);
-    }, err => {
-      console.error(err);
-    });
+  updateWeb3Info = () => {
+    const {
+      account, setParticipant, setTotalParticipants, setValuePerEntry
+    } = this.props;
+
+    SeedomContract.methods
+      .totalParticipants()
+      .call({
+        from: account
+      })
+      .then(
+        totalParticipants => {
+          setTotalParticipants(totalParticipants);
+        },
+        err => {
+          console.error(err);
+        }
+      );
+
+    SeedomContract.methods
+      .currentRaiser()
+      .call({
+        from: account
+      })
+      .then(
+        raiser => {
+          setValuePerEntry(raiser._valuePerEntry);
+        },
+        err => {
+          console.error(err);
+        }
+      );
+
+    SeedomContract.methods
+      .participant(account)
+      .call({
+        from: account
+      })
+      .then(
+        participant => {
+          setParticipant(participant);
+        },
+        err => {
+          console.error(err);
+        }
+      );
 
     // Also load past transactions array
     // this.loadPastTransactions();
-  }
+  };
 
   initWeb3Subscriptions = () => {
     const { account, loadContractABI } = this.props;
-    const contractAddress = testJSON.charity[0].address;
+    const contractAddress = testJSON.seedom[0].address;
 
     loadContractABI('seedom').then(abi => {
       // Create an instance of the contract
-      SeedomContract = new web3.eth.Contract(
-        abi,
-        contractAddress,
-        {
-          from: account,
-          gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
-        }
-      );
+      SeedomContract = new web3.eth.Contract(abi, contractAddress, {
+        from: account,
+        gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
+      });
 
       web3.eth.subscribe('newBlockHeaders', (/* err, results */) => {
         this.updateWeb3Info();
@@ -90,19 +139,68 @@ jjjjjjj
       // Initial call
       this.updateWeb3Info();
     });
-  }
+  };
 
+  handleParticipate = ({ seed, numOfEntries }) => {
+    const { account, valuePerEntry } = this.props;
+
+    const hashedSeed = hashedRandom(seed, account);
+    const value = numOfEntries * valuePerEntry;
+
+    SeedomContract.methods
+      .participate(hashedSeed.valueOf())
+      .send({
+        from: account,
+        gas: 1000000,
+        gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+        value
+      })
+      .then(result => {
+        // if result.status === 0, this failed
+        console.log('Participate succeeded');
+        console.log(result);
+      })
+      .catch(err => {
+        console.log('Participate failed');
+        console.log(err);
+      });
+  };
+
+  handleAddEntries = ({ numOfEntries }) => {
+    // TODO make the web3.eth.sendTransaction call
+    console.log(numOfEntries);
+  };
 
   render() {
-    const { account, totalParticipants } = this.props;
+    const {
+      account, hasParticipated, totalParticipants, valuePerEntry
+    } = this.props;
+
+    const connectedWithMetaMask = isMetaMask();
     return (
       <div className="container">
-        <Helmet title="About Us" />
+        <Helmet title="Seedom" />
         <h1>Account</h1>
         <h2>{account}</h2>
 
         <h1>Total Participants</h1>
         <h2>{totalParticipants}</h2>
+
+        <h1>Value Per Entry</h1>
+        <h2>{valuePerEntry}</h2>
+
+        <h1>Connected with metamask?</h1>
+        <h2>{connectedWithMetaMask.toString()}</h2>
+
+        <h1>Participated?</h1>
+        <h2>{hasParticipated.toString()}</h2>
+
+        <ParticipateForm
+          hasParticipated={hasParticipated}
+          valuePerEntry={valuePerEntry}
+          onAddEntries={this.handleAddEntries}
+          onParticipate={this.handleParticipate}
+        />
       </div>
     );
   }
