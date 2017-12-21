@@ -7,6 +7,7 @@ import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 
 
 import Participate from 'containers/Participate';
+import Reveal from 'containers/Reveal';
 
 import hashedRandom from 'utils/hashedRandom';
 import web3, { isMetaMask } from '../../web3';
@@ -234,6 +235,16 @@ export default class Seedom extends Component {
             />
           );
           break;
+
+        case PHASES.REVEAL:
+          phaseComponent = (
+            <Reveal
+              account={account}
+              contract={contract}
+            />
+          );
+          break;
+
         default:
           phaseComponent = null;
           break;
