@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class Participate extends React.PureComponent {
+export default class ParticipateForm extends React.PureComponent {
   static propTypes = {
     onAddEntries: PropTypes.func.isRequired,
     onParticipate: PropTypes.func.isRequired,
-    hasParticipated: PropTypes.bool.isRequired,
-    valuePerEntry: PropTypes.number.isRequired,
+    hasParticipated: PropTypes.bool.isRequired
   }
 
   constructor(props) {

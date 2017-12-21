@@ -24,6 +24,7 @@ export function getCurrentProvider() {
 }
 
 export function isMetaMask() {
+  /* eslint no-proto: "off" */
   return getCurrentProvider().__proto__.isMetaMask;
 }
 
