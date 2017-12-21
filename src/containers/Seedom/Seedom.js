@@ -74,6 +74,7 @@ export default class Seedom extends Component {
   static propTypes = {
     account: PropTypes.string.isRequired,
     participant: PropTypes.shape({
+      entries: PropTypes.number.isRequired,
       hashedRandom: PropTypes.string.isRequired
     }).isRequired,
     phase: PropTypes.string.isRequired,
@@ -268,8 +269,16 @@ export default class Seedom extends Component {
 
         {phaseComponent}
 
+        {participant &&
+          <div>
+            <h3>Participant attrs</h3>
+            <p><strong>Entries:</strong> {participant.entries}</p>
+          </div>
+        }
+
         {raiser &&
           <div>
+            <h3>Raiser attrs</h3>
             <p><strong>Kickoff time:</strong> {raiser.kickoffTime.toString()}</p>
             <p><strong>Reveal time:</strong> {raiser.revealTime.toString()}</p>
             <p><strong>End time:</strong> {raiser.endTime.toString()}</p>
