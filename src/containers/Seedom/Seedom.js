@@ -9,7 +9,7 @@ import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import Participate from 'containers/Participate';
 
 import hashedRandom from 'utils/hashedRandom';
-import web3, { isMetaMask, Web3v1 } from '../../web3';
+import web3, { isMetaMask } from '../../web3';
 
 import testJSON from '../../../../seedom-solidity/deployment/test.json';
 
@@ -145,7 +145,7 @@ export default class Seedom extends Component {
   }
 
   initWeb3Subscriptions = () => {
-    const { account, loadContractABI  } = this.props;
+    const { account, loadContractABI } = this.props;
     const contractAddress = testJSON.seedom[0].address;
 
     loadContractABI('seedom').then(abi => {

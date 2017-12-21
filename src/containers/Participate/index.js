@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import hashedRandom from 'utils/hashedRandom';
 import ParticipateForm from './components/ParticipateForm';
 
-const getHasParticipated = _hashedRandom => {
-  return !!_hashedRandom && _hashedRandom !== '0x0000000000000000000000000000000000000000000000000000000000000000';
-};
+const getHasParticipated = _hashedRandom => (
+  !!_hashedRandom && _hashedRandom !== '0x0000000000000000000000000000000000000000000000000000000000000000'
+);
 
 export default class Participate extends React.PureComponent {
   static propTypes = {
@@ -52,13 +52,12 @@ export default class Participate extends React.PureComponent {
   }
 
   render() {
-    const { participant, valuePerEntry } = this.props;
+    const { participant } = this.props;
     const hasParticipated = getHasParticipated(participant.hashedRandom);
 
     return (
       <ParticipateForm
         hasParticipated={hasParticipated}
-        valuePerEntry={valuePerEntry}
         onAddEntries={this.handleAddEntries}
         onParticipate={this.handleParticipate}
       />
