@@ -61,6 +61,7 @@ const phaseFor = phase => {
     account: state.blockchain.account,
     participant: state.seedom.participant,
     phase: getPhase(state.seedom.raiser),
+    raiser: state.seedom.raiser,
     totalParticipants: state.seedom.totalParticipants,
     valuePerEntry: state.seedom.raiser.valuePerEntry
   }),
@@ -76,6 +77,13 @@ export default class Seedom extends Component {
       hashedRandom: PropTypes.string.isRequired
     }).isRequired,
     phase: PropTypes.string.isRequired,
+    raiser: PropTypes.shape({
+      endTime: PropTypes.instanceOf(Date),
+      expireTime: PropTypes.instanceOf(Date),
+      kickoffTime: PropTypes.instanceOf(Date),
+      revealTime: PropTypes.instanceOf(Date),
+      valuePerEntry: 0
+    }).isRequired,
     totalParticipants: PropTypes.number.isRequired,
     valuePerEntry: PropTypes.number.isRequired,
 
@@ -201,6 +209,7 @@ export default class Seedom extends Component {
       account,
       phase,
       participant,
+      raiser,
       totalParticipants,
       valuePerEntry
     } = this.props;
@@ -258,6 +267,14 @@ export default class Seedom extends Component {
         </p>
 
         {phaseComponent}
+
+        {raiser &&
+          <div>
+            <p><strong>Kickoff time:</strong> {raiser.kickoffTime.toString()}</p>
+            <p><strong>Reveal time:</strong> {raiser.revealTime.toString()}</p>
+            <p><strong>End time:</strong> {raiser.endTime.toString()}</p>
+          </div>
+        }
       </div>
     );
   }

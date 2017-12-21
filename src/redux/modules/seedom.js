@@ -10,6 +10,10 @@ const initialState = {
   },
   totalParticipants: 0,
   raiser: {
+    endTime: new Date(),
+    expireTime: new Date(),
+    kickoffTime: new Date(),
+    revealTime: new Date(),
     valuePerEntry: 0
   }
 };
