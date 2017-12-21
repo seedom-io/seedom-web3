@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { provideHooks } from 'redial';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 
-import ParticipateForm from 'components/ParticipateForm';
+
+import Participate from 'containers/Participate';
+
 import hashedRandom from 'utils/hashedRandom';
 import web3, { isMetaMask, Web3v1 } from '../../web3';
 
@@ -14,9 +16,40 @@ import testJSON from '../../../../seedom-solidity/deployment/test.json';
 import * as blockchainActions from '../../redux/modules/blockchain';
 import * as seedomActions from '../../redux/modules/seedom';
 
+
 let SeedomContract;
 
-const getHasParticipated = _hashedRandom => !!_hashedRandom && _hashedRandom !== '0x0000000000000000000000000000000000000000000000000000000000000000';
+const PHASES = {
+  PARTICIPATION: 'PARTICIPATION',
+  REVEAL: 'REVEAL',
+  END: 'END'
+};
+
+
+const getPhase = raiser => {
+  const now = Date.now();
+
+  if (now > raiser.kickoffTime && now < raiser.revealTime) {
+    return PHASES.PARTICIPATION;
+  } else if (now > raiser.revealTime && now < raiser.endTime) {
+    return PHASES.REVEAL;
+  }
+
+  return PHASES.END;
+};
+
+const phaseFor = phase => {
+  switch (phase) {
+    case PHASES.PARTICIPATION:
+      return 'Participation';
+    case PHASES.REVEAL:
+      return 'Reveal';
+    case PHASES.END:
+      return 'End';
+    default:
+      return 'Unknown';
+  }
+};
 
 @provideHooks({
   fetch: ({ store: { dispatch, getState } }) =>
@@ -26,10 +59,10 @@ const getHasParticipated = _hashedRandom => !!_hashedRandom && _hashedRandom !==
 @connect(
   state => ({
     account: state.blockchain.account,
-    hasParticipated: getHasParticipated(state.seedom.participant._hashedRandom),
     participant: state.seedom.participant,
+    phase: getPhase(state.seedom.raiser),
     totalParticipants: state.seedom.totalParticipants,
-    valuePerEntry: state.seedom.valuePerEntry
+    valuePerEntry: state.seedom.raiser.valuePerEntry
   }),
   {
     ...blockchainActions,
@@ -39,23 +72,28 @@ const getHasParticipated = _hashedRandom => !!_hashedRandom && _hashedRandom !==
 export default class Seedom extends Component {
   static propTypes = {
     account: PropTypes.string.isRequired,
-    hasParticipated: PropTypes.bool.isRequired,
     participant: PropTypes.shape({
-      _entries: PropTypes.number.isRequired,
-      _hashedRandom: PropTypes.string.isRequired,
-      _random: PropTypes.string.isRequired
+      hashedRandom: PropTypes.string.isRequired
     }).isRequired,
+    phase: PropTypes.string.isRequired,
     totalParticipants: PropTypes.number.isRequired,
     valuePerEntry: PropTypes.number.isRequired,
 
     setAccount: PropTypes.func.isRequired,
     setParticipant: PropTypes.func.isRequired,
     setTotalParticipants: PropTypes.func.isRequired,
-    setValuePerEntry: PropTypes.func.isRequired,
+    setRaiser: PropTypes.func.isRequired,
     loadContractABI: PropTypes.func.isRequired,
   }
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contract: null
+    };
+  }
+
+  componentWillMount() {
     // Get and set account if it hasn't been set yet
     if (this.props.account.length === 0) {
       web3.eth.getAccounts().then(accounts => {
@@ -75,10 +113,10 @@ export default class Seedom extends Component {
       account,
       setParticipant,
       setTotalParticipants,
-      setValuePerEntry
+      setRaiser
     } = this.props;
 
-    SeedomContract.methods.totalParticipants().call({
+    this.state.contract.methods.totalParticipants().call({
       from: account
     }).then(totalParticipants => {
       setTotalParticipants(totalParticipants);
@@ -86,15 +124,15 @@ export default class Seedom extends Component {
       console.error(err);
     });
 
-    SeedomContract.methods.currentRaiser().call({
+    this.state.contract.methods.currentRaiser().call({
       from: account
     }).then(raiser => {
-      setValuePerEntry(raiser._valuePerEntry);
+      setRaiser(raiser);
     }, err => {
       console.error(err);
     });
 
-    SeedomContract.methods.participant(account).call({
+    this.state.contract.methods.participant(account).call({
       from: account
     }).then(participant => {
       setParticipant(participant);
@@ -107,12 +145,12 @@ export default class Seedom extends Component {
   }
 
   initWeb3Subscriptions = () => {
-    const { account, loadContractABI } = this.props;
+    const { account, loadContractABI  } = this.props;
     const contractAddress = testJSON.seedom[0].address;
 
     loadContractABI('seedom').then(abi => {
       // Create an instance of the contract
-      SeedomContract = new web3.eth.Contract(
+      const contract = new web3.eth.Contract(
         abi,
         contractAddress,
         {
@@ -120,6 +158,10 @@ export default class Seedom extends Component {
           gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
         }
       );
+
+      this.setState({
+        contract
+      });
 
       web3.eth.subscribe('newBlockHeaders', (/* err, results */) => {
         this.updateWeb3Info();
@@ -154,44 +196,68 @@ export default class Seedom extends Component {
     });
   }
 
-  handleAddEntries = ({ numOfEntries }) => {
-    // TODO make the web3.eth.sendTransaction call
-    console.log(numOfEntries);
-  }
-
   render() {
     const {
       account,
-      hasParticipated,
+      phase,
+      participant,
       totalParticipants,
       valuePerEntry
     } = this.props;
 
+    const { contract } = this.state;
+
     const connectedWithMetaMask = isMetaMask();
+
+    let phaseComponent = null;
+
+    // TODO - this is gross
+    if (contract) {
+      switch (phase) {
+        case PHASES.PARTICIPATION:
+          phaseComponent = (
+            <Participate
+              account={account}
+              contract={contract}
+              participant={participant}
+              valuePerEntry={valuePerEntry}
+            />
+          );
+          break;
+        default:
+          phaseComponent = null;
+          break;
+      }
+    }
+
     return (
       <div className="container">
         <Helmet title="Seedom" />
-        <h1>Account</h1>
-        <h2>{account}</h2>
 
-        <h1>Total Participants</h1>
-        <h2>{totalParticipants}</h2>
+        <br />
+        <br />
 
-        <h1>Value Per Entry</h1>
-        <h2>{valuePerEntry}</h2>
+        <p>
+          <strong>Account:</strong> {account}
+        </p>
 
-        <h1>Connected with metamask?</h1>
-        <h2>{connectedWithMetaMask.toString()}</h2>
+        <p>
+          <strong>Total Participants:</strong> {totalParticipants}
+        </p>
 
-        <h1>Participated?</h1>
-        <h2>{hasParticipated.toString()}</h2>
+        <p>
+          <strong>Value Per Entry:</strong> {valuePerEntry}
+        </p>
 
-        <ParticipateForm
-          hasParticipated={hasParticipated}
-          valuePerEntry={valuePerEntry}
-          onAddEntries={this.handleAddEntries}
-          onParticipate={this.handleParticipate}
-        />
+        <p>
+          <strong>Connected with metamask?</strong> {connectedWithMetaMask.toString()}
+        </p>
+
+        <p>
+          <strong>Phase:</strong> {phaseFor(phase)}
+        </p>
+
+        {phaseComponent}
       </div>
     );
   }
