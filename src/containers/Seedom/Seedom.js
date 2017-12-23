@@ -24,7 +24,6 @@ const getHasParticipated = _hashedRandom =>
   fetch: ({ store: { dispatch, getState } }) =>
     !isInfoLoaded(getState()) ? dispatch(loadInfo()).catch(() => null) : Promise.resolve()
 })
-
 @connect(
   state => ({
     account: state.blockchain.account,
@@ -38,9 +37,7 @@ const getHasParticipated = _hashedRandom =>
     ...seedomActions
   }
 )
-
 export default class Seedom extends Component {
-    
   static propTypes = {
     account: PropTypes.string.isRequired,
     hasParticipated: PropTypes.bool.isRequired,
@@ -75,7 +72,6 @@ export default class Seedom extends Component {
   }
 
   updateInitially = () => {
-
     const {
       account, setParticipant, setTotalParticipants, setValuePerEntry
     } = this.props;
@@ -127,11 +123,7 @@ export default class Seedom extends Component {
   };
 
   setupSubscriptions = () => {
-    
-    wsSeedom.events.allEvents({}, (event) => {
-
-    });
-
+    wsSeedom.events.allEvents({}, event => {});
   };
 
   initWeb3 = () => {
@@ -139,10 +131,9 @@ export default class Seedom extends Component {
     const contractAddress = testJSON.seedom[0].address;
 
     loadContractABI('seedom').then(abi => {
-
       rpcSeedom = new rpcWeb3.eth.Contract(abi, contractAddress, {
         from: account,
-    
+
         gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
       });
 
@@ -153,7 +144,6 @@ export default class Seedom extends Component {
 
       this.updateInitially();
       this.setupSubscriptions();
-
     });
   };
 
