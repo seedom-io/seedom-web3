@@ -144,6 +144,7 @@ export default class Seedom extends Component {
 
       this.updateInitially();
       this.setupSubscriptions();
+      
     });
   };
 
