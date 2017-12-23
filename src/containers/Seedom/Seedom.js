@@ -7,14 +7,15 @@ import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 
 import ParticipateForm from 'components/ParticipateForm';
 import hashedRandom from 'utils/hashedRandom';
-import web3, { isMetaMask, Web3v1 } from '../../web3';
+import { rpcWeb3, wsWeb3 } from '../../web3';
 
 import testJSON from '../../../../seedom-solidity/deployment/test.json';
 
 import * as blockchainActions from '../../redux/modules/blockchain';
 import * as seedomActions from '../../redux/modules/seedom';
 
-let SeedomContract;
+let rpcSeedom;
+let wsSeedom;
 
 const getHasParticipated = _hashedRandom =>
   !!_hashedRandom && _hashedRandom !== '0x0000000000000000000000000000000000000000000000000000000000000000';
@@ -23,6 +24,7 @@ const getHasParticipated = _hashedRandom =>
   fetch: ({ store: { dispatch, getState } }) =>
     !isInfoLoaded(getState()) ? dispatch(loadInfo()).catch(() => null) : Promise.resolve()
 })
+
 @connect(
   state => ({
     account: state.blockchain.account,
@@ -36,7 +38,9 @@ const getHasParticipated = _hashedRandom =>
     ...seedomActions
   }
 )
+
 export default class Seedom extends Component {
+    
   static propTypes = {
     account: PropTypes.string.isRequired,
     hasParticipated: PropTypes.bool.isRequired,
@@ -70,12 +74,13 @@ export default class Seedom extends Component {
     }
   }
 
-  updateWeb3Info = () => {
+  updateInitially = () => {
+
     const {
       account, setParticipant, setTotalParticipants, setValuePerEntry
     } = this.props;
 
-    SeedomContract.methods
+    wsSeedom.methods
       .totalParticipants()
       .call({
         from: account
@@ -89,7 +94,7 @@ export default class Seedom extends Component {
         }
       );
 
-    SeedomContract.methods
+    wsSeedom.methods
       .currentRaiser()
       .call({
         from: account
@@ -103,7 +108,7 @@ export default class Seedom extends Component {
         }
       );
 
-    SeedomContract.methods
+    wsSeedom.methods
       .participant(account)
       .call({
         from: account
@@ -121,23 +126,34 @@ export default class Seedom extends Component {
     // this.loadPastTransactions();
   };
 
-  initWeb3Subscriptions = () => {
+  setupSubscriptions = () => {
+    
+    wsSeedom.events.allEvents({}, (event) => {
+
+    });
+
+  };
+
+  initWeb3 = () => {
     const { account, loadContractABI } = this.props;
     const contractAddress = testJSON.seedom[0].address;
 
     loadContractABI('seedom').then(abi => {
-      // Create an instance of the contract
-      SeedomContract = new web3.eth.Contract(abi, contractAddress, {
+
+      rpcSeedom = new rpcWeb3.eth.Contract(abi, contractAddress, {
+        from: account,
+    
+        gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
+      });
+
+      wsSeedom = new wsWeb3.eth.Contract(abi, contractAddress, {
         from: account,
         gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
       });
 
-      web3.eth.subscribe('newBlockHeaders', (/* err, results */) => {
-        this.updateWeb3Info();
-      });
+      this.updateInitially();
+      this.setupSubscriptions();
 
-      // Initial call
-      this.updateWeb3Info();
     });
   };
 
@@ -147,7 +163,7 @@ export default class Seedom extends Component {
     const hashedSeed = hashedRandom(seed, account);
     const value = numOfEntries * valuePerEntry;
 
-    SeedomContract.methods
+    rpcSeedom.methods
       .participate(hashedSeed.valueOf())
       .send({
         from: account,
