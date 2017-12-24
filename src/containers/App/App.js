@@ -99,6 +99,9 @@ export default class App extends Component {
 
           <Navbar.Collapse>
             <Nav navbar>
+              <LinkContainer to="/seedom">
+                <NavItem>Seedom</NavItem>
+              </LinkContainer>
               {user && (
                 <LinkContainer to="/chat-feathers">
                   <NavItem>Chat with Feathers</NavItem>

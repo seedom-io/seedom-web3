@@ -1,16 +1,26 @@
 const SET_PARTICIPANT = 'seedom/SET_PARTICIPANT';
 const SET_TOTAL_PARTICIPANTS = 'seedom/SET_TOTAL_PARTICIPANTS';
-const SET_VALUE_PER_ENTRY = 'seedom/SET_VALUE_PER_ENTRY';
+const SET_RAISER = 'seedom/SET_RAISER';
 
 const initialState = {
   participant: {
-    _entries: 0,
-    _hashedRandom: '',
-    _random: ''
+    entries: 0,
+    hashedRandom: '',
+    random: ''
   },
   totalParticipants: 0,
-  valuePerEntry: 0
+  raiser: {
+    endTime: new Date(),
+    expireTime: new Date(),
+    kickoffTime: new Date(),
+    revealTime: new Date(),
+    valuePerEntry: 0
+  }
 };
+
+function epochToDate(seconds) {
+  return new Date(seconds * 1000);
+}
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
@@ -24,16 +34,22 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         participant: {
-          _entries: Number(action.participant._entries),
-          _hashedRandom: action.participant._hashedRandom,
-          _random: action.participant._random
+          entries: Number(action.participant._entries),
+          hashedRandom: action.participant._hashedRandom,
+          random: action.participant._random
         }
       };
 
-    case SET_VALUE_PER_ENTRY:
+    case SET_RAISER:
       return {
         ...state,
-        valuePerEntry: Number(action.valuePerEntry)
+        raiser: {
+          endTime: epochToDate(action.raiser._endTime),
+          expireTime: epochToDate(action.raiser._expireTime),
+          kickoffTime: epochToDate(action.raiser._kickoffTime),
+          revealTime: epochToDate(action.raiser._revealTime),
+          valuePerEntry: Number(action.raiser._valuePerEntry)
+        }
       };
     default:
       return state;
@@ -47,10 +63,10 @@ export function setTotalParticipants(totalParticipants) {
   };
 }
 
-export function setValuePerEntry(valuePerEntry) {
+export function setRaiser(raiser) {
   return {
-    type: SET_VALUE_PER_ENTRY,
-    valuePerEntry
+    type: SET_RAISER,
+    raiser
   };
 }
 

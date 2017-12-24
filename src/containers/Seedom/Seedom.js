@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { provideHooks } from 'redial';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 
-import ParticipateForm from 'components/ParticipateForm';
+import Participate from 'containers/Participate';
+import Reveal from 'containers/Reveal';
+
 import hashedRandom from 'utils/hashedRandom';
 import { rpcWeb3, wsWeb3 } from '../../web3';
 
@@ -14,11 +16,36 @@ import testJSON from '../../../../seedom-solidity/deployment/test.json';
 import * as blockchainActions from '../../redux/modules/blockchain';
 import * as seedomActions from '../../redux/modules/seedom';
 
-let rpcSeedom;
-let wsSeedom;
+const PHASES = {
+  PARTICIPATION: 'PARTICIPATION',
+  REVEAL: 'REVEAL',
+  END: 'END'
+};
 
-const getHasParticipated = _hashedRandom =>
-  !!_hashedRandom && _hashedRandom !== '0x0000000000000000000000000000000000000000000000000000000000000000';
+const getPhase = raiser => {
+  const now = Date.now();
+
+  if (now > raiser.kickoffTime && now < raiser.revealTime) {
+    return PHASES.PARTICIPATION;
+  } else if (now > raiser.revealTime && now < raiser.endTime) {
+    return PHASES.REVEAL;
+  }
+
+  return PHASES.END;
+};
+
+const phaseFor = phase => {
+  switch (phase) {
+    case PHASES.PARTICIPATION:
+      return 'Participation';
+    case PHASES.REVEAL:
+      return 'Reveal';
+    case PHASES.END:
+      return 'End';
+    default:
+      return 'Unknown';
+  }
+};
 
 @provideHooks({
   fetch: ({ store: { dispatch, getState } }) =>
@@ -27,10 +54,11 @@ const getHasParticipated = _hashedRandom =>
 @connect(
   state => ({
     account: state.blockchain.account,
-    hasParticipated: getHasParticipated(state.seedom.participant._hashedRandom),
     participant: state.seedom.participant,
+    phase: getPhase(state.seedom.raiser),
+    raiser: state.seedom.raiser,
     totalParticipants: state.seedom.totalParticipants,
-    valuePerEntry: state.seedom.valuePerEntry
+    valuePerEntry: state.seedom.raiser.valuePerEntry
   }),
   {
     ...blockchainActions,
@@ -40,43 +68,69 @@ const getHasParticipated = _hashedRandom =>
 export default class Seedom extends Component {
   static propTypes = {
     account: PropTypes.string.isRequired,
-    hasParticipated: PropTypes.bool.isRequired,
     participant: PropTypes.shape({
-      _entries: PropTypes.number.isRequired,
-      _hashedRandom: PropTypes.string.isRequired,
-      _random: PropTypes.string.isRequired
+      entries: PropTypes.number.isRequired,
+      hashedRandom: PropTypes.string.isRequired
+    }).isRequired,
+    phase: PropTypes.string.isRequired,
+    raiser: PropTypes.shape({
+      endTime: PropTypes.instanceOf(Date),
+      expireTime: PropTypes.instanceOf(Date),
+      kickoffTime: PropTypes.instanceOf(Date),
+      revealTime: PropTypes.instanceOf(Date),
+      valuePerEntry: 0
     }).isRequired,
     totalParticipants: PropTypes.number.isRequired,
     valuePerEntry: PropTypes.number.isRequired,
-
     setAccount: PropTypes.func.isRequired,
     setParticipant: PropTypes.func.isRequired,
     setTotalParticipants: PropTypes.func.isRequired,
-    setValuePerEntry: PropTypes.func.isRequired,
+    setRaiser: PropTypes.func.isRequired,
     loadContractABI: PropTypes.func.isRequired
   };
 
-  componentDidMount() {
-    // Get and set account if it hasn't been set yet
-    if (this.props.account.length === 0) {
-      web3.eth.getAccounts().then(accounts => {
-        const account = accounts[0];
-        this.props.setAccount(account);
-        // Set default address
-        web3.eth.defaultAccount = account;
-        this.initWeb3Subscriptions();
-      });
-    } else {
-      this.initWeb3Subscriptions();
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      rpcContract: null,
+      wsContract: null
+    };
   }
+
+  componentWillMount() {
+    this.initWeb3();
+  }
+
+  setupEventsHandlers = () => {
+    const { setRaiser } = this.props;
+
+    this.state.wsContract.events.allEvents({}, event => {
+      switch (event.event) {
+        case 'Kickoff':
+          setRaiser(event.returnValues);
+          break;
+        case 'Participation':
+          this.handleParticipation(event.returnValues);
+          break;
+        case 'Raise':
+        case 'Revelation':
+        case 'WinInput':
+        case 'WinSearch':
+        case 'Win':
+        case 'Cancellation':
+        case 'Withdrawal':
+        default:
+          break;
+      }
+    });
+  };
 
   updateInitially = () => {
     const {
-      account, setParticipant, setTotalParticipants, setValuePerEntry
+      account, setParticipant, setTotalParticipants, setRaiser
     } = this.props;
 
-    wsSeedom.methods
+    this.state.wsContract.methods
       .totalParticipants()
       .call({
         from: account
@@ -90,21 +144,21 @@ export default class Seedom extends Component {
         }
       );
 
-    wsSeedom.methods
+    this.state.wsContract.methods
       .currentRaiser()
       .call({
         from: account
       })
       .then(
         raiser => {
-          setValuePerEntry(raiser._valuePerEntry);
+          setRaiser(raiser);
         },
         err => {
           console.error(err);
         }
       );
 
-    wsSeedom.methods
+    this.state.wsContract.methods
       .participant(account)
       .call({
         from: account
@@ -117,34 +171,50 @@ export default class Seedom extends Component {
           console.error(err);
         }
       );
-
-    // Also load past transactions array
-    // this.loadPastTransactions();
   };
 
-  setupSubscriptions = () => {
-    wsSeedom.events.allEvents({}, event => {});
+  handleParticipation = participation => {
+    const { account } = this.props;
+    if (participation._participant === account) {
+      // handle our participation success
+    } else {
+      // update leaderboard
+    }
   };
 
   initWeb3 = () => {
-    const { account, loadContractABI } = this.props;
+    const { loadContractABI } = this.props;
+
+    let account;
+    // Get and set account if it hasn't been set yet
+    if (this.props.account.length === 0) {
+      rpcWeb3.eth.getAccounts().then(accounts => {
+        [account] = accounts;
+        rpcWeb3.eth.defaultAccount = account;
+        this.props.setAccount(account);
+      });
+    }
+
     const contractAddress = testJSON.seedom[0].address;
 
     loadContractABI('seedom').then(abi => {
-      rpcSeedom = new rpcWeb3.eth.Contract(abi, contractAddress, {
+      const rpcContract = new rpcWeb3.eth.Contract(abi, contractAddress, {
         from: account,
-
         gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
       });
 
-      wsSeedom = new wsWeb3.eth.Contract(abi, contractAddress, {
+      const wsContract = new wsWeb3.eth.Contract(abi, contractAddress, {
         from: account,
         gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
+      });
+
+      this.setState({
+        rpcContract,
+        wsContract
       });
 
       this.updateInitially();
-      this.setupSubscriptions();
-      
+      this.setupEventsHandlers();
     });
   };
 
@@ -154,7 +224,7 @@ export default class Seedom extends Component {
     const hashedSeed = hashedRandom(seed, account);
     const value = numOfEntries * valuePerEntry;
 
-    rpcSeedom.methods
+    this.state.rpcContract.methods
       .participate(hashedSeed.valueOf())
       .send({
         from: account,
@@ -173,41 +243,87 @@ export default class Seedom extends Component {
       });
   };
 
-  handleAddEntries = ({ numOfEntries }) => {
-    // TODO make the web3.eth.sendTransaction call
-    console.log(numOfEntries);
-  };
-
   render() {
     const {
-      account, hasParticipated, totalParticipants, valuePerEntry
+      account, phase, participant, raiser, totalParticipants, valuePerEntry
     } = this.props;
 
-    const connectedWithMetaMask = isMetaMask();
+    const { contract } = this.state;
+
+    let phaseComponent = null;
+
+    // TODO - this is gross
+    if (contract) {
+      switch (phase) {
+        case PHASES.PARTICIPATION:
+          phaseComponent = (
+            <Participate
+              account={account}
+              contract={contract}
+              participant={participant}
+              valuePerEntry={valuePerEntry}
+            />
+          );
+          break;
+
+        case PHASES.REVEAL:
+          phaseComponent = <Reveal account={account} contract={contract} />;
+          break;
+
+        default:
+          phaseComponent = null;
+          break;
+      }
+    }
+
     return (
       <div className="container">
         <Helmet title="Seedom" />
-        <h1>Account</h1>
-        <h2>{account}</h2>
 
-        <h1>Total Participants</h1>
-        <h2>{totalParticipants}</h2>
+        <br />
+        <br />
 
-        <h1>Value Per Entry</h1>
-        <h2>{valuePerEntry}</h2>
+        <p>
+          <strong>Account:</strong> {account}
+        </p>
 
-        <h1>Connected with metamask?</h1>
-        <h2>{connectedWithMetaMask.toString()}</h2>
+        <p>
+          <strong>Total Participants:</strong> {totalParticipants}
+        </p>
 
-        <h1>Participated?</h1>
-        <h2>{hasParticipated.toString()}</h2>
+        <p>
+          <strong>Value Per Entry:</strong> {valuePerEntry}
+        </p>
 
-        <ParticipateForm
-          hasParticipated={hasParticipated}
-          valuePerEntry={valuePerEntry}
-          onAddEntries={this.handleAddEntries}
-          onParticipate={this.handleParticipate}
-        />
+        <p>
+          <strong>Phase:</strong> {phaseFor(phase)}
+        </p>
+
+        {phaseComponent}
+
+        {participant && (
+          <div>
+            <h3>Participant attrs</h3>
+            <p>
+              <strong>Entries:</strong> {participant.entries}
+            </p>
+          </div>
+        )}
+
+        {raiser && (
+          <div>
+            <h3>Raiser attrs</h3>
+            <p>
+              <strong>Kickoff time:</strong> {raiser.kickoffTime.toString()}
+            </p>
+            <p>
+              <strong>Reveal time:</strong> {raiser.revealTime.toString()}
+            </p>
+            <p>
+              <strong>End time:</strong> {raiser.endTime.toString()}
+            </p>
+          </div>
+        )}
       </div>
     );
   }

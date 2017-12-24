@@ -1,15 +1,15 @@
 import { keccak256 } from 'js-sha3';
 
 function hashedRandom(myRandom, participant) {
-  const hasher = new keccak256.create(256);
+  const hasher = new keccak256.create(256); // eslint-disable-line new-cap
 
   const randomHex = myRandom.substr(2);
-  const randomBuffer = new Buffer(randomHex, 'hex');
-  hasher.update(randomBuffer);
+  const randomBuffer = Buffer.from([randomHex]);
+  hasher.update(randomBuffer.toString('hex'));
 
   const participantHex = participant.substr(2);
-  const participantBuffer = new Buffer(participantHex, 'hex');
-  hasher.update(participantBuffer);
+  const participantBuffer = Buffer.from([participantHex]);
+  hasher.update(participantBuffer.toString('hex'));
 
   return `0x${hasher.hex()}`;
 }
