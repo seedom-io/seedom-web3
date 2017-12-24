@@ -5,15 +5,13 @@ import { withRouter } from 'react-router';
 import { push } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
 import { provideHooks } from 'redial';
-import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
+import { IndexLinkContainer } from 'react-router-bootstrap';
 import Navbar from 'react-bootstrap/lib/Navbar';
-import Nav from 'react-bootstrap/lib/Nav';
-import NavItem from 'react-bootstrap/lib/NavItem';
 import Alert from 'react-bootstrap/lib/Alert';
 import Helmet from 'react-helmet';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
-import { Notifs, InfoBar } from 'components';
+import { Notifs } from 'components';
 import config from 'config';
 
 @provideHooks({
@@ -79,7 +77,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { user, notifs, route } = this.props;
+    const { notifs, route } = this.props;
     const styles = require('./App.scss');
 
     return (
@@ -96,64 +94,6 @@ export default class App extends Component {
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
-
-          <Navbar.Collapse>
-            <Nav navbar>
-              <LinkContainer to="/seedom">
-                <NavItem>Seedom</NavItem>
-              </LinkContainer>
-              {user && (
-                <LinkContainer to="/chat-feathers">
-                  <NavItem>Chat with Feathers</NavItem>
-                </LinkContainer>
-              )}
-
-              <LinkContainer to="/chat">
-                <NavItem>Chat</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/widgets">
-                <NavItem>Widgets</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/survey">
-                <NavItem>Survey</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/about">
-                <NavItem>About Us</NavItem>
-              </LinkContainer>
-
-              {!user && (
-                <LinkContainer to="/login">
-                  <NavItem>Login</NavItem>
-                </LinkContainer>
-              )}
-              {!user && (
-                <LinkContainer to="/register">
-                  <NavItem>Register</NavItem>
-                </LinkContainer>
-              )}
-              {user && (
-                <LinkContainer to="/logout">
-                  <NavItem className="logout-link" onClick={this.handleLogout}>
-                    Logout
-                  </NavItem>
-                </LinkContainer>
-              )}
-            </Nav>
-            {user && (
-              <p className="navbar-text">
-                Logged in as <strong>{user.email}</strong>.
-              </p>
-            )}
-            <Nav navbar pullRight>
-              <NavItem
-                target="_blank"
-                title="View on Github"
-                href="https://github.com/bertho-zero/react-redux-universal-hot-example"
-              >
-                <i className="fa fa-github" />
-              </NavItem>
-            </Nav>
-          </Navbar.Collapse>
         </Navbar>
 
         <div className={styles.appContent}>
@@ -168,18 +108,6 @@ export default class App extends Component {
           )}
 
           {renderRoutes(route.routes)}
-        </div>
-        <InfoBar />
-
-        <div className="well text-center">
-          Have questions? Ask for help{' '}
-          <a
-            href="https://github.com/bertho-zero/react-redux-universal-hot-example/issues"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            on Github
-          </a>.
         </div>
       </div>
     );
