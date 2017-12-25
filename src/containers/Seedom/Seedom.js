@@ -104,7 +104,7 @@ export default class Seedom extends Component {
   setupEventsHandlers = () => {
     const { setRaiser } = this.props;
 
-    this.state.wsContract.events.allEvents({}, event => {
+    this.state.wsContract.events.allEvents({}, (error, event) => {
       switch (event.event) {
         case 'Kickoff':
           setRaiser(event.returnValues);
