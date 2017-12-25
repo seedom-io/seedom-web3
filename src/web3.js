@@ -13,13 +13,13 @@ if (typeof window !== 'undefined') {
 const wsWeb3 = url => {
   // set to Seedom nodes by default
   if (typeof url === 'undefined') {
-    url = 'ws://seedom.io:8546';
+    url = 'ws://localhost:8546';
   }
   return new Web3(url);
 };
 
 let account;
-if (rpcWeb3) {
+/* if (rpcWeb3) {
   [account] = rpcWeb3.eth.accounts;
   setInterval(() => {
     // check for account changes
@@ -28,6 +28,6 @@ if (rpcWeb3) {
       account = currentAccount;
     }
   }, 1000);
-}
+} */
 
 export { rpcWeb3, wsWeb3, account };

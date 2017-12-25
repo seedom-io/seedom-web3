@@ -203,7 +203,8 @@ export default class Seedom extends Component {
         gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
       });
 
-      const wsContract = new wsWeb3.eth.Contract(abi, contractAddress, {
+      const wsWeb3Instance = wsWeb3();
+      const wsContract = new wsWeb3Instance.eth.Contract(abi, contractAddress, {
         from: account,
         gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
       });
