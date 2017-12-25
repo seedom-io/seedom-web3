@@ -15,6 +15,7 @@ import testJSON from '../../../../seedom-solidity/deployment/test.json';
 
 import * as blockchainActions from '../../redux/modules/blockchain';
 import * as seedomActions from '../../redux/modules/seedom';
+import * as notifActions from '../../redux/modules/notifs';
 
 const PHASES = {
   PARTICIPATION: 'PARTICIPATION',
@@ -62,6 +63,7 @@ const phaseFor = phase => {
   }),
   {
     ...blockchainActions,
+    ...notifActions,
     ...seedomActions
   }
 )
@@ -82,6 +84,9 @@ export default class Seedom extends Component {
     }).isRequired,
     totalParticipants: PropTypes.number.isRequired,
     valuePerEntry: PropTypes.number.isRequired,
+
+
+    notifSend: PropTypes.func.isRequired,
     setAccount: PropTypes.func.isRequired,
     setParticipant: PropTypes.func.isRequired,
     setTotalParticipants: PropTypes.func.isRequired,
@@ -174,9 +179,16 @@ export default class Seedom extends Component {
   };
 
   handleParticipation = participation => {
-    const { account } = this.props;
+    const {
+      account,
+      notifSend,
+    } = this.props;
     if (participation._participant === account) {
-      // handle our participation success
+      notifSend({
+        message: 'Participation succeded',
+        kind: 'success',
+        dismissAfter: 2000
+      });
     } else {
       // update leaderboard
     }
