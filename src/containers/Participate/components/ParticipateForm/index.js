@@ -6,22 +6,18 @@ export default class ParticipateForm extends React.PureComponent {
     onAddEntries: PropTypes.func.isRequired,
     onParticipate: PropTypes.func.isRequired,
     hasParticipated: PropTypes.bool.isRequired
-  }
+  };
 
   constructor(props) {
     super(props);
     this.state = {
       seed: '',
-      numOfEntries: 0,
+      numOfEntries: 0
     };
   }
 
   handleSubmit = event => {
-    const {
-      hasParticipated,
-      onAddEntries,
-      onParticipate
-    } = this.props;
+    const { hasParticipated, onAddEntries, onParticipate } = this.props;
 
     if (event !== undefined && event.preventDefault) {
       event.preventDefault();
@@ -32,19 +28,19 @@ export default class ParticipateForm extends React.PureComponent {
     } else {
       onAddEntries({ numOfEntries: this.state.numOfEntries });
     }
-  }
+  };
 
   handleSeedChange = event => {
     this.setState({
-      seed: event.target.value,
+      seed: event.target.value
     });
-  }
+  };
 
   handleNumOfEntriesChange = event => {
     this.setState({
-      numOfEntries: event.target.value,
+      numOfEntries: event.target.value
     });
-  }
+  };
 
   render() {
     const { hasParticipated } = this.props;
@@ -53,9 +49,7 @@ export default class ParticipateForm extends React.PureComponent {
       <form onSubmit={this.handleSubmit}>
         {!hasParticipated && <input placeholder="Seed" onChange={this.handleSeedChange} />}
         <input placeholder="Number of Entries" onChange={this.handleNumOfEntriesChange} />
-        <button onClick={this.handleSubmit}>
-          Submit
-        </button>
+        <button onClick={this.handleSubmit}>Submit</button>
       </form>
     );
   }

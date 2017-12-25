@@ -1,33 +1,33 @@
-import Web3 from '../node_modules/web3'; // Must specfiy node_modules to avoid importing itself
+/* eslint import/no-mutable-exports: 0 */
 
-export { Web3 as Web3v1 };
+import Web3 from '../node_modules/web3';
 
-let web3;
-
-// Instantiate new web3 global instance
-if (typeof window !== 'undefined' && // Check we're on the client-side
-           (typeof window.web3 === 'undefined' ||
-           typeof window.web3.currentProvider === 'undefined')) {
-  window.web3 = new Web3('ws://127.0.0.1:8546');
+let rpcWeb3;
+if (typeof window !== 'undefined') {
+  // set MetaMask web3 at v1.0
+  if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
+    rpcWeb3 = new Web3(window.web3.currentProvider);
+  }
 }
 
-// Instantiate new web3 local instance
-if (typeof window !== 'undefined' && // Check we're on the client-side
-    typeof window.web3 !== 'undefined' &&
-    typeof window.web3.currentProvider !== 'undefined') {
-  web3 = new Web3(window.web3.currentProvider);
-}
+const wsWeb3 = url => {
+  // set to Seedom nodes by default
+  if (typeof url === 'undefined') {
+    url = 'ws://localhost:8546';
+  }
+  return new Web3(url);
+};
 
-// Get current provider
-export function getCurrentProvider() {
-  return web3.currentProvider;
-}
+let account;
+/* if (rpcWeb3) {
+  [account] = rpcWeb3.eth.accounts;
+  setInterval(() => {
+    // check for account changes
+    const [currentAccount] = rpcWeb3.eth.accounts;
+    if (currentAccount !== account) {
+      account = currentAccount;
+    }
+  }, 1000);
+} */
 
-export function isMetaMask() {
-  /* eslint no-proto: "off" */
-  return getCurrentProvider().__proto__.isMetaMask;
-}
-
-// Export web3 object instance
-const web3ForExport = web3; // To avoid error from exporting non-read-only variable
-export default web3ForExport;
+export { rpcWeb3, wsWeb3, account };

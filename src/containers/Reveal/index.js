@@ -10,33 +10,30 @@ export default class Reveal extends React.PureComponent {
         reveal: PropTypes.func.isRequired
       }).isRequired
     }).isRequired
-  }
+  };
 
   handleReveal = ({ random }) => {
-    const {
-      account,
-      contract
-    } = this.props;
+    const { account, contract } = this.props;
 
-    contract.methods.reveal(random).call({
-      from: account
-    }).then(result => {
-      // if result.status === 0, this failed
-      console.log('Reveal succeeded');
-      console.log(result);
-    }).catch(err => {
-      console.log('Reveal failed');
-      console.log(err);
-    });
+    contract.methods
+      .reveal(random)
+      .call({
+        from: account
+      })
+      .then(result => {
+        // if result.status === 0, this failed
+        console.log('Reveal succeeded');
+        console.log(result);
+      })
+      .catch(err => {
+        console.log('Reveal failed');
+        console.log(err);
+      });
 
     console.log(random);
   };
 
   render() {
-    return (
-      <RevealForm
-        onReveal={this.handleReveal}
-      />
-    );
+    return <RevealForm onReveal={this.handleReveal} />;
   }
 }

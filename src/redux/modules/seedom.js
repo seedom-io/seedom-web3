@@ -36,7 +36,7 @@ export default function reducer(state = initialState, action = {}) {
         participant: {
           entries: Number(action.participant._entries),
           hashedRandom: action.participant._hashedRandom,
-          random: action.participant._random,
+          random: action.participant._random
         }
       };
 
