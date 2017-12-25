@@ -249,18 +249,18 @@ export default class Seedom extends Component {
       account, phase, participant, raiser, totalParticipants, valuePerEntry
     } = this.props;
 
-    const { contract } = this.state;
+    const { rpcContract } = this.state;
 
     let phaseComponent = null;
 
     // TODO - this is gross
-    if (contract) {
+    if (rpcContract) {
       switch (phase) {
         case PHASES.PARTICIPATION:
           phaseComponent = (
             <Participate
               account={account}
-              contract={contract}
+              contract={rpcContract}
               participant={participant}
               valuePerEntry={valuePerEntry}
             />
@@ -268,7 +268,7 @@ export default class Seedom extends Component {
           break;
 
         case PHASES.REVEAL:
-          phaseComponent = <Reveal account={account} contract={contract} />;
+          phaseComponent = <Reveal account={account} contract={rpcContract} />;
           break;
 
         default:
