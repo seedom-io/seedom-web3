@@ -8,14 +8,22 @@
   "dependencies": {
     "bulma": "^0.6.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "parcel-bundler": "^1.4.1"
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.0.4",
+    "parcel-bundler": "^1.4.1",
+    "redux-devtools": "^3.4.1"
   },
   "scripts": {
-    "start": "parcel app/index.html"
+    "start": "parcel app/index.html",
+    "test": "jest"
   }
 }
