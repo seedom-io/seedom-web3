@@ -6,20 +6,6 @@ import {
   Link
 } from 'react-router-dom'
 
-import Home from './containers/Home';
-
-const App = () => {
-  return (
-    <Router>
-      <div>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-        </ul>
-        <hr />
-        <Route exact path="/" component={Home}/>
-      </div>
-    </Router>
-  );
-}
+import App from './containers/App';
 
 ReactDOM.render(<App />, document.getElementById('root'))
