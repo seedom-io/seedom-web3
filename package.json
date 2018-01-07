@@ -7,6 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "bulma": "^0.6.1",
+    "node-sass": "^4.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
@@ -15,15 +16,19 @@
     "redux": "^3.7.2"
   },
   "devDependencies": {
+    "babel-eslint": "^8.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.14.0",
+    "eslint-plugin-import": "^2.8.0",
     "jest": "^22.0.4",
     "parcel-bundler": "^1.4.1",
     "redux-devtools": "^3.4.1"
   },
   "scripts": {
+    "lint": "eslint app",
     "start": "parcel app/index.html",
     "test": "jest"
   }
