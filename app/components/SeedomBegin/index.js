@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './index.scss';
 import eff from './eff.png';
 
-class Begin extends Component {
+class SeedomBegin extends Component {
   render() {
     return (
       <div class="content">
@@ -17,4 +17,4 @@ class Begin extends Component {
   }
 }
 
-export default Begin;
+export default SeedomBegin;

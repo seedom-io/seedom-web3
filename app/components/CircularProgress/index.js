@@ -9,26 +9,26 @@ const MAX_Y = 100;
 const FULL_RADIUS = 50;
 const CENTER_X = 50;
 const CENTER_Y = 50;
+const STROKE_WIDTH = 3;
+const BACKGROUND_PADDING = 3;
 
-class Progress extends React.Component {
+class CircularProgress extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      percentage: props.initialAnimation ? 0 : props.percentage,
+      percentage: 0
     };
   }
 
   componentDidMount() {
-    if (this.props.initialAnimation) {
-      this.initialTimeout = setTimeout(() => {
-        this.requestAnimationFrame = window.requestAnimationFrame(() => {
-          this.setState({
-            percentage: this.props.percentage,
-          });
+    this.initialTimeout = setTimeout(() => {
+      this.requestAnimationFrame = window.requestAnimationFrame(() => {
+        this.setState({
+          percentage: this.props.percentage,
         });
-      }, 0);
-    }
+      });
+    }, 0);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -44,7 +44,6 @@ class Progress extends React.Component {
 
   getPathDescription() {
     const radius = this.getPathRadius();
-    const rotation = this.props.counterClockwise ? 1 : 0;
 
     // Move to center of canvas
     // Relative move to top canvas
@@ -53,8 +52,8 @@ class Progress extends React.Component {
     return `
       M ${CENTER_X},${CENTER_Y}
       m 0,-${radius}
-      a ${radius},${radius} ${rotation} 1 1 0,${2 * radius}
-      a ${radius},${radius} ${rotation} 1 1 0,-${2 * radius}
+      a ${radius},${radius} 0 1 1 0,${2 * radius}
+      a ${radius},${radius} 0 1 1 0,-${2 * radius}
     `;
   }
 
@@ -72,37 +71,37 @@ class Progress extends React.Component {
   getPathRadius() {
     // the radius of the path is defined to be in the middle, so in order for the path to
     // fit perfectly inside the 100x100 viewBox, need to subtract half the strokeWidth
-    return FULL_RADIUS - (this.props.strokeWidth / 2) - this.props.backgroundPadding;
+    return FULL_RADIUS - (STROKE_WIDTH / 2) - BACKGROUND_PADDING;
   }
 
   render() {
-    const { percentage, className, classes, strokeWidth } = this.props;
-    const classForPercentage = this.props.classForPercentage ? this.props.classForPercentage(percentage) : '';
+    const { percentage } = this.props;
     const pathDescription = this.getPathDescription();
 
     return (
       <svg
-        className={`${classes.root} ${className} ${classForPercentage}`}
+        className='circular-progress'
         viewBox={`0 0 ${MAX_X} ${MAX_Y}`}
       >
+
         <circle
-          className={classes.background}
+          className='background'
           cx={CENTER_X}
           cy={CENTER_Y}
           r={FULL_RADIUS}
         />
 
         <path
-          className={classes.trail}
+          className='trail'
           d={pathDescription}
-          strokeWidth={strokeWidth}
+          strokeWidth={STROKE_WIDTH}
           fillOpacity={0}
         />
 
         <path
-          className={classes.path}
+          className='path'
           d={pathDescription}
-          strokeWidth={strokeWidth}
+          strokeWidth={STROKE_WIDTH}
           fillOpacity={0}
           style={this.getProgressStyle()}
         />
@@ -112,32 +111,8 @@ class Progress extends React.Component {
   }
 }
 
-Progress.propTypes = {
-  percentage: PropTypes.number.isRequired,
-  className: PropTypes.string,
-  classes: PropTypes.objectOf(PropTypes.string),
-  strokeWidth: PropTypes.number,
-  background: PropTypes.bool,
-  backgroundPadding: PropTypes.number,
-  initialAnimation: PropTypes.bool,
-  counterClockwise: PropTypes.bool,
-  classForPercentage: PropTypes.func,
+CircularProgress.propTypes = {
+  percentage: PropTypes.number.isRequired
 };
 
-Progress.defaultProps = {
-  strokeWidth: 8,
-  className: '',
-  classes: {
-    root: 'CircularProgressbar',
-    trail: 'CircularProgressbar-trail',
-    path: 'CircularProgressbar-path',
-    background: 'CircularProgressbar-background',
-  },
-  background: false,
-  backgroundPadding: null,
-  initialAnimation: false,
-  counterClockwise: false,
-  classForPercentage: null
-};
-
-export default Progress;
+export default CircularProgress;

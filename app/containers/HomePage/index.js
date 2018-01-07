@@ -1,12 +1,12 @@
 import React from 'react';
 import Button from '../../components/Button';
-import Puck from '../../components/Puck';
+import SeedomPuck from '../../components/SeedomPuck';
 
 const HomePage = () => (
   <div>
     <h2>Welcome to Seedom</h2>
     <Button />
-    <Puck />
+    <SeedomPuck />
   </div>
 )
 
