@@ -22,12 +22,10 @@ class CircularProgress extends React.Component {
   }
 
   componentDidMount() {
-    this.initialTimeout = setTimeout(() => {
-      this.requestAnimationFrame = window.requestAnimationFrame(() => {
+    setTimeout(() => {
         this.setState({
           percentage: this.props.percentage,
         });
-      });
     }, 0);
   }
 
@@ -38,8 +36,6 @@ class CircularProgress extends React.Component {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.initialTimeout);
-    window.cancelAnimationFrame(this.requestAnimationFrame);
   }
 
   getPathDescription() {
@@ -75,7 +71,6 @@ class CircularProgress extends React.Component {
   }
 
   render() {
-    const { percentage } = this.props;
     const pathDescription = this.getPathDescription();
 
     return (

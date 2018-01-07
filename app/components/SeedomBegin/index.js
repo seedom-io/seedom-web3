@@ -3,15 +3,16 @@ import './index.scss';
 import eff from './eff.png';
 
 class SeedomBegin extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <div class="content">
-        <div class="overlay">
-          <img src={eff} />
-        </div>
-        <div class="overlay">
-          <a class="button is-primary">PARTICIPATE</a>
-        </div>
+      <div className="seedom-overlay">
+        <img src={eff} />
+        <a className="button is-primary" onClick={this.props.onBegin}>BEGIN</a>
       </div>
     );
   }

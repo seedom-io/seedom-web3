@@ -1,34 +1,8 @@
-.puck {
+.seedom-puck {
   position: relative;
   width: 500px;
   height: 500px;
   animation: 0.5s ease-out 0s 1 zoomIn;
-
-  .content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-    .overlay {
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      left: 0; top: 0; right: 0; bottom: 0;
-
-      img {
-        margin-top: 24%;
-        height: 40%;
-      }
-
-      .button {
-        margin-bottom: 24%;
-        align-self: flex-end;
-      }
-
-    }
-
-  }
-
 }
 
 @keyframes zoomIn {
