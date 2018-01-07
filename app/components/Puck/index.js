@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import Progress from '../Progress';
+import Begin from '../Begin';
+import './index.scss';
 
-class Progress extends Component {
+class Puck extends Component {
   render() {
     return (
-      <div>HELLO</div>
+      <div class="puck">
+        <Progress percentage="50" />
+        <Begin />
+      </div>
     );
   }
 }
 
-export default Progress;
+export default Puck;
