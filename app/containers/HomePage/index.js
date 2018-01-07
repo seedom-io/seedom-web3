@@ -8,6 +8,6 @@ const HomePage = () => (
     <Button />
     <SeedomPuck />
   </div>
-)
+);
 
 export default HomePage;
