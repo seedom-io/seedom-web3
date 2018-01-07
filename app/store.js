@@ -1,14 +1,14 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from 'redux';
 
-import { reducers } from "./reducers/index";
+import { reducers } from './reducers/index';
 
 // add the middlewares
-let middlewares = [];
+const middlewares = [];
 
 // apply the middleware
-let middleware = applyMiddleware(...middlewares);
+const middleware = applyMiddleware(...middlewares);
 
 // create the store
 const store = createStore(reducers, middleware);
 
-export { store, history };
+export { store };
