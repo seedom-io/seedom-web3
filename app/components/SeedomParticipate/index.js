@@ -20,7 +20,7 @@ class SeedomParticipate extends SeedomContent {
         <img src={eff} />
         <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" ref={(input) => { this.entriesInput = input; }} />
         <textarea className="textarea is-primary" type="text" placeholder="RANDOM CONTRIBUTION"></textarea>
-        <a className="button is-primary" onClick={this.props.onBegin}>PARTICIPATE</a>
+        <a className="button is-primary" onClick={this.props.onParticipate}>PARTICIPATE</a>
       </div>
     );
   }

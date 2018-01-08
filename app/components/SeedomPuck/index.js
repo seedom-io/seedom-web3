@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CircularProgress from '../CircularProgress';
 import SeedomBegin from '../SeedomBegin';
 import SeedomParticipate from '../SeedomParticipate';
+import SeedomParticipated from '../SeedomParticipated';
 import './index.scss';
 
 const PHASES = {
@@ -28,6 +29,7 @@ class SeedomPuck extends Component {
 
     this.state = {
       begun: false,
+      participated: false,
       phase: null,
       raiser: {
         kickoffTime: kickoffTime,
@@ -46,8 +48,10 @@ class SeedomPuck extends Component {
     if (now > raiser.kickoffTime && now < raiser.revealTime) {
       if (!this.state.begun) {
         return 'BEGIN';
-      } else {
+      } else if (!this.state.participated) {
         return 'PARTICIPATION';
+      } else {
+        return 'PARTICIPATED';
       }
     } else if (now > raiser.revealTime && now < raiser.endTime) {
       return 'REVELATION';
@@ -60,6 +64,10 @@ class SeedomPuck extends Component {
     this.setState({ begun: true });
   }
 
+  handleParticipate = () => {
+    this.setState({ participated: true });
+  }
+
   render() {
     const phase = this.getPhase();
 
@@ -67,7 +75,8 @@ class SeedomPuck extends Component {
       <div className="seedom-puck">
         <CircularProgress percentage={50} />
         <SeedomBegin isShown={phase === 'BEGIN'} onBegin={this.handleBegin} />
-        <SeedomParticipate isShown={phase === 'PARTICIPATION'} />
+        <SeedomParticipate isShown={phase === 'PARTICIPATION'} onParticipate={this.handleParticipate} />
+        <SeedomParticipated isShown={phase === 'PARTICIPATED'} />
       </div>
     );
   }
