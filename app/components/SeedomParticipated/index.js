@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SeedomContent from '../SeedomContent';
 import eff from './eff.png';
-import check from './check.png';
 import './index.scss';
 
 class SeedomParticipate extends SeedomContent {
