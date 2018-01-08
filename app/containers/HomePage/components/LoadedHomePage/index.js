@@ -1,15 +1,18 @@
 import React from 'react';
 import SeedomPuck from '../../../../components/SeedomPuck';
 import { rpcWeb3, wsWeb3 } from '../../../../utils/web3';
+import hashedRandom from '../../../../utils/hashedRandom';
 import testJSON from '../../../../../../seedom-solidity/deployment/test.json';
 
 class LoadedHomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      rpcContract: null,
       raiser: null
     };
   }
+
 
   componentWillMount() {
     const contractAddress = testJSON.seedom[0].address;
@@ -27,6 +30,10 @@ class LoadedHomePage extends React.Component {
       gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
     });
 
+    this.setState({
+      rpcContract
+    });
+
     wsContract.methods
       .currentRaiser()
       .call({
@@ -34,12 +41,34 @@ class LoadedHomePage extends React.Component {
       })
       .then(
         raiser => {
-          this.setState({ raiser })
+          this.setState({ raiser });
         },
         err => {
-          console.error(err)
+          console.error(err);
         }
       );
+  }
+
+  handleParticipate = ({ seed, numOfEntries }) => {
+    const { account } = this.props;
+    const { raiser, rpcContract } = this.state;
+
+    const hashedSeed = hashedRandom(seed, account);
+    const value = numOfEntries * (raiser._valuePerEntry);
+
+    rpcContract.methods
+      .participate(hashedSeed.valueOf())
+      .send({
+        from: account,
+        gas: 1000000,
+        gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+        value
+      })
+      .then(result => {
+        // if result.status === 0, this failed
+        console.log('Participate succeeded');
+        console.log(result);
+      });
   }
 
   render() {
@@ -52,7 +81,7 @@ class LoadedHomePage extends React.Component {
         <p>
           <strong>Account:</strong> {account}
         </p>
-        {raiser && <SeedomPuck raiser={raiser} />}
+        {raiser && <SeedomPuck raiser={raiser} onParticipate={this.handleParticipate} />}
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CircularProgress from '../CircularProgress';
 import SeedomBegin from '../SeedomBegin';
 import SeedomParticipate from '../SeedomParticipate';
@@ -13,6 +14,9 @@ const PHASES = {
 };
 
 class SeedomPuck extends Component {
+  static propTypes = {
+    onParticipate: PropTypes.func.isRequired
+  }
 
   constructor(props) {
     super(props);
@@ -32,10 +36,10 @@ class SeedomPuck extends Component {
       participated: false,
       phase: null,
       raiser: {
-        kickoffTime: kickoffTime,
-        revealTime: revealTime,
-        endTime: endTime,
-        expireTime: expireTime,
+        kickoffTime,
+        revealTime,
+        endTime,
+        expireTime,
         valuePerEntry: 0
       }
     };
@@ -58,14 +62,15 @@ class SeedomPuck extends Component {
     }
 
     return 'END';
-  };
+  }
 
   handleBegin = () => {
     this.setState({ begun: true });
   }
 
-  handleParticipate = () => {
+  handleParticipate = ({ seed, numOfEntries }) => {
     this.setState({ participated: true });
+    this.props.onParticipate({ seed, numOfEntries });
   }
 
   render() {
@@ -80,7 +85,6 @@ class SeedomPuck extends Component {
       </div>
     );
   }
-
 }
 
 export default SeedomPuck;
