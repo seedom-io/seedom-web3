@@ -41,7 +41,7 @@ class SeedomParticipate extends SeedomContent {
 
   render() {
     return (
-      <div className={`seedom-overlay participate animated ${this.state.className}`}>
+      <div className={`seedom-content participate ${this.state.className}`}>
         <img src={eff} />
         <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" onChange={this.handleNumOfEntriesChange} ref={(input) => { this.entriesInput = input; }} />
         <textarea className="textarea is-primary" type="text" placeholder="RANDOM CONTRIBUTION" onChange={this.handleSeedChange} />

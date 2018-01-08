@@ -19,7 +19,7 @@ class SeedomParticipate extends SeedomContent {
 
   render() {
     return (
-      <div className={`seedom-overlay participated animated ${this.state.className}`}>
+      <div className={`seedom-content participated ${this.state.className}`}>
         <div className="seedom-overlay">
           <svg className={`checkmark ${this.state.checkedClassName}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
             <circle className="circle" cx="26" cy="26" r="25"/>
@@ -27,7 +27,7 @@ class SeedomParticipate extends SeedomContent {
           </svg>
         </div>
         <div className="seedom-overlay">
-          <img className="logo" src={eff} />
+          <img src={eff} />
         </div>
         <div className="seedom-overlay">
           <div className="thank-you">THANK YOU!</div>

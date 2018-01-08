@@ -1,0 +1,43 @@
+
+ .circular-progress {
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+
+  .loading {
+    stroke: red;
+    stroke-linecap: round;
+    animation: spin 15s linear 0s infinite;
+    transform-origin: 50% 50%;
+  }
+
+  .loading-text {
+    animation: spin 8s linear 0s infinite;
+    transform-origin: 50% 50%;
+  }
+
+  .progress {
+    stroke: #3e98c7;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease 0s;
+  }
+
+  .trail {
+    stroke: #d6d6d6;
+  }
+
+  .text {
+    fill: white;
+    font-size: 30px;
+    font-weight: bold;
+    dominant-baseline: central;
+    text-anchor: middle;
+    width: 300px;
+  }
+
+  .background {
+    fill: #bebebe;
+  }
+
+}
+
+@keyframes spin { 100% { transform:rotate(360deg); } }

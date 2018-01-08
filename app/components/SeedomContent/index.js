@@ -6,7 +6,7 @@ class SeedomContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      className: "hide"
+      className: null
     };
   }
 
@@ -16,7 +16,7 @@ class SeedomContent extends Component {
     }
   }
 
-  componentWillReceiveProps(newProps) { //check for the mounted props
+  componentWillReceiveProps(newProps) {
     if (!newProps.isShown) {
       this.hide();
     } else {
@@ -35,7 +35,7 @@ class SeedomContent extends Component {
   hide() {
     setTimeout(() => {
       this.setState({
-        className: "hide"
+        className: null
       })
     }, 0);
   }
