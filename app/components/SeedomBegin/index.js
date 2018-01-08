@@ -10,7 +10,7 @@ class SeedomBegin extends Component {
 
   render() {
     return (
-      <div className="seedom-overlay">
+      <div className="seedom-overlay begin">
         <img src={eff} />
         <a className="button is-primary" onClick={this.props.onBegin}>BEGIN</a>
       </div>

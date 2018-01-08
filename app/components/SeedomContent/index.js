@@ -28,7 +28,8 @@ class SeedomContent extends Component {
     setTimeout(() => {
       this.setState({
         className: "show"
-      })
+      });
+      this.props.children.focus();
     }, 0);
   }
 

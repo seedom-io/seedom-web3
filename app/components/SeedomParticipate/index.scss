@@ -1,0 +1,28 @@
+.seedom-overlay.participate {
+
+  img {
+    height: 20%;
+  }
+
+  input {
+    margin-top: 20px;
+    width: 50%;
+    background-color: transparent;
+    text-align: center;
+  }
+
+  textarea {
+    margin-top: 20px;
+    width: 50%;
+    height: 20%;
+    min-width: 0;
+    resize: none;
+    background-color: transparent;
+    word-break: break-all;
+  }
+
+  .button {
+    margin-top: 20px;
+  }
+
+}
