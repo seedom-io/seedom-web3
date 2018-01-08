@@ -87,6 +87,7 @@ class CircularProgress extends React.Component {
         />
 
         <path
+          id="curve"
           className='trail'
           d={pathDescription}
           strokeWidth={STROKE_WIDTH}
@@ -100,6 +101,18 @@ class CircularProgress extends React.Component {
           fillOpacity={0}
           style={this.getProgressStyle()}
         />
+
+        <text className="text">
+          <textPath xlinkHref='#curve' startOffset="30%">
+            PARTICIPATION
+          </textPath>
+          <textPath xlinkHref='#curve' startOffset="80%">
+            REVELATION
+          </textPath>
+          <textPath xlinkHref='#curve' startOffset="90%">
+            END
+          </textPath>
+        </text>
 
       </svg>
     );

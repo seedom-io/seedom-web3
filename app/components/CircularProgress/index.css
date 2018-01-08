@@ -21,10 +21,12 @@
 }
 
 .circular-progress .text {
-  fill: #3e98c7;
-  font-size: 20px;
-  dominant-baseline: middle;
+  fill: white;
+  font-size: 3px;
+  font-weight: bold;
+  dominant-baseline: central;
   text-anchor: middle;
+  width: 300px;
 }
 
 .circular-progress .background {
