@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import eff from './eff.png';
 
 class SeedomParticipate extends Component {
 
@@ -10,7 +11,7 @@ class SeedomParticipate extends Component {
     return (
       <div className="seedom-container">
         <div className="seedom-overlay">
-          YO!
+
         </div>
       </div>
     );
