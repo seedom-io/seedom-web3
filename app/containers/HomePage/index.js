@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Button from '../../components/Button';
 import SeedomPuck from '../../components/SeedomPuck';
 
+import { rpcWeb3, wsWeb3 } from '../../utils/web3';
+
 import * as blockchainActions from '../../redux/modules/blockchain';
 
 @connect(
@@ -16,11 +18,23 @@ import * as blockchainActions from '../../redux/modules/blockchain';
 )
 class HomePage extends React.Component {
   static propTypes = {
-    account: PropTypes.string
+    account: PropTypes.string.isRequired,
+    setAccount: PropTypes.func.isRequired
   }
 
-  static defaultProps ={
-    account: 'Unknown'
+  componentWillMount() {
+    this.initWeb3();
+  }
+
+  initWeb3 = () => {
+    const { setAccount } = this.props;
+
+    let account;
+    rpcWeb3.eth.getAccounts().then(accounts => {
+      [account] = accounts;
+      rpcWeb3.eth.defaultAccount = account;
+      setAccount(account);
+    });
   }
 
   render() {
