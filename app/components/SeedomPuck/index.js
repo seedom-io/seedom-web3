@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CircularProgress from '../CircularProgress';
-import SeedomContent from '../SeedomContent';
 import SeedomBegin from '../SeedomBegin';
 import SeedomParticipate from '../SeedomParticipate';
 import './index.scss';
@@ -67,12 +66,8 @@ class SeedomPuck extends Component {
     return (
       <div className="seedom-puck">
         <CircularProgress percentage={50} />
-        <SeedomContent show={phase === 'BEGIN'}>
-          <SeedomBegin onBegin={this.handleBegin} />
-        </SeedomContent>
-        <SeedomContent show={phase === 'PARTICIPATION'}>
-          <SeedomParticipate />
-        </SeedomContent>
+        <SeedomBegin isShown={phase === 'BEGIN'} onBegin={this.handleBegin} />
+        <SeedomParticipate isShown={phase === 'PARTICIPATION'} />
       </div>
     );
   }

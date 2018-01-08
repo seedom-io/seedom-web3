@@ -11,13 +11,13 @@ class SeedomContent extends Component {
   }
 
   componentDidMount() {
-    if (this.props.show) {
+    if (this.props.isShown) {
       this.show();
     }
   }
 
   componentWillReceiveProps(newProps) { //check for the mounted props
-    if (!newProps.show) {
+    if (!newProps.isShown) {
       this.hide();
     } else {
       this.show();
@@ -29,7 +29,6 @@ class SeedomContent extends Component {
       this.setState({
         className: "show"
       });
-      this.props.children.focus();
     }, 0);
   }
 
@@ -41,13 +40,6 @@ class SeedomContent extends Component {
     }, 0);
   }
 
-  render() {
-    return (
-      <div className={`seedom-overlay animated ${this.state.className}`}>
-        {this.props.children}
-      </div>
-    );
-  }
 }
 
 export default SeedomContent;

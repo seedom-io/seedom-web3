@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import SeedomContent from '../SeedomContent';
 import './index.scss';
 import eff from './eff.png';
 
-class SeedomBegin extends Component {
+class SeedomBegin extends SeedomContent {
 
   constructor(props) {
     super(props);
@@ -10,7 +11,7 @@ class SeedomBegin extends Component {
 
   render() {
     return (
-      <div className="seedom-overlay begin">
+      <div className={`seedom-overlay begin animated ${this.state.className}`}>
         <img src={eff} />
         <a className="button is-primary" onClick={this.props.onBegin}>BEGIN</a>
       </div>
