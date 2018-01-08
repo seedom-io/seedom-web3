@@ -6,6 +6,7 @@
   "author": "Seedom Team",
   "license": "MIT",
   "dependencies": {
+    "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
     "bulma": "^0.6.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -13,15 +14,18 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "web3": "^1.0.0-beta.27"
   },
   "devDependencies": {
     "babel-eslint": "^8.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-es3-property-literals": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
