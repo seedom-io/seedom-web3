@@ -1,25 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Button from '../../components/Button';
-import SeedomPuck from '../../components/SeedomPuck';
 
-import { rpcWeb3, wsWeb3 } from '../../utils/web3';
+import { rpcWeb3 } from '../../utils/web3';
 
 import * as blockchainActions from '../../redux/modules/blockchain';
+import * as seedomActions from '../../redux/modules/seedom';
+
+import LoadedHomePage from './components/LoadedHomePage';
 
 @connect(
   state => ({
     account: state.blockchain.account,
+    contract: state.seedom.contract,
+    contractLoaded: state.seedom.contractLoaded,
   }),
   {
     ...blockchainActions,
+    ...seedomActions
   }
 )
 class HomePage extends React.Component {
   static propTypes = {
     account: PropTypes.string.isRequired,
-    setAccount: PropTypes.func.isRequired
+    contractLoaded: PropTypes.bool.isRequired,
+    setAccount: PropTypes.func.isRequired,
+    loadContract: PropTypes.func.isRequired
   }
 
   componentWillMount() {
@@ -28,6 +34,7 @@ class HomePage extends React.Component {
 
   initWeb3 = () => {
     const { setAccount } = this.props;
+    const { loadContract } = this.props;
 
     let account;
     rpcWeb3.eth.getAccounts().then(accounts => {
@@ -35,19 +42,18 @@ class HomePage extends React.Component {
       rpcWeb3.eth.defaultAccount = account;
       setAccount(account);
     });
+
+    loadContract();
   }
 
   render() {
-    const { account } = this.props;
+    const { account, contract, contractLoaded } = this.props;
 
     return (
       <div>
-        <h2>Welcome to Seedom</h2>
-        <p>
-          <strong>Account:</strong> {account}
-        </p>
-        <Button />
-        <SeedomPuck />
+        {contractLoaded &&
+          <LoadedHomePage contract={contract} account={account} />
+        }
       </div>
     );
   }
