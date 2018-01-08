@@ -10,7 +10,7 @@ const FULL_RADIUS = 50;
 const CENTER_X = 50;
 const CENTER_Y = 50;
 const STROKE_WIDTH = 3;
-const BACKGROUND_PADDING = 3;
+const BACKGROUND_PADDING = 4;
 
 class CircularProgress extends React.Component {
 
@@ -53,9 +53,35 @@ class CircularProgress extends React.Component {
     `;
   }
 
+  getLoaderPathDescription() {
+    const radius = this.getLoaderPathRadius();
+
+    // Move to center of canvas
+    // Relative move to top canvas
+    // Relative arc to bottom of canvas
+    // Relative arc to top of canvas
+    return `
+      M ${CENTER_X},${CENTER_Y}
+      m 0,-${radius}
+      a ${radius},${radius} 0 1 1 0,${2 * radius}
+      a ${radius},${radius} 0 1 1 0,-${2 * radius}
+    `;
+  }
+
   getProgressStyle() {
     const diameter = Math.PI * 2 * this.getPathRadius();
     const truncatedPercentage = Math.min(Math.max(this.state.percentage, MIN_PERCENTAGE), MAX_PERCENTAGE);
+    const dashoffset = ((100 - truncatedPercentage) / 100) * diameter;
+
+    return {
+      strokeDasharray: `${diameter}px ${diameter}px`,
+      strokeDashoffset: `${this.props.counterClockwise ? -dashoffset : dashoffset}px`,
+    };
+  }
+
+  getLoaderStyle() {
+    const diameter = Math.PI * 2 * this.getLoaderPathRadius();
+    const truncatedPercentage = 10;
     const dashoffset = ((100 - truncatedPercentage) / 100) * diameter;
 
     return {
@@ -70,8 +96,13 @@ class CircularProgress extends React.Component {
     return FULL_RADIUS - (STROKE_WIDTH / 2) - BACKGROUND_PADDING;
   }
 
+  getLoaderPathRadius() {
+    return FULL_RADIUS - (STROKE_WIDTH / 2);
+  }
+
   render() {
     const pathDescription = this.getPathDescription();
+    const loaderPathDescription = this.getLoaderPathDescription();
 
     return (
       <svg
@@ -100,6 +131,14 @@ class CircularProgress extends React.Component {
           strokeWidth={STROKE_WIDTH}
           fillOpacity={0}
           style={this.getProgressStyle()}
+        />
+
+        <path
+          className='path rotate'
+          d={loaderPathDescription}
+          strokeWidth={STROKE_WIDTH}
+          fillOpacity={0}
+          style={this.getLoaderStyle()}
         />
 
         <text className="text">

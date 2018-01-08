@@ -16,6 +16,14 @@
   transition: stroke-dashoffset 1s ease 0s;
 }
 
+.circular-progress .path.rotate {
+  animation: spin 1s linear 0s infinite;
+  transform-origin: 50% 50%;
+  stroke: red;
+}
+
+@keyframes spin { 100% { transform:rotate(360deg); } }
+
 .circular-progress .trail {
   stroke: #d6d6d6;
 }
