@@ -5,6 +5,7 @@ import SeedomBegin from '../SeedomBegin';
 import SeedomParticipate from '../SeedomParticipate';
 import SeedomParticipated from '../SeedomParticipated';
 import './index.scss';
+import { loadavg } from 'os';
 
 const PHASES = {
   BEGIN: 'BEGIN',
@@ -32,6 +33,7 @@ class SeedomPuck extends Component {
     expireTime.setMinutes(endTime.getMinutes() + 2);
 
     this.state = {
+      isLoading: false,
       begun: false,
       participated: false,
       phase: null,
@@ -64,6 +66,10 @@ class SeedomPuck extends Component {
     return 'END';
   }
 
+  changeLoading = (loading) => {
+    this.setState({ isLoading: loading });
+  }
+
   handleBegin = () => {
     this.setState({ begun: true });
   }
@@ -78,10 +84,10 @@ class SeedomPuck extends Component {
 
     return (
       <div className="seedom-puck">
-        <CircularProgress percentage={50} />
-        <SeedomBegin isShown={phase === 'BEGIN'} onBegin={this.handleBegin} />
-        <SeedomParticipate isShown={phase === 'PARTICIPATION'} onParticipate={this.handleParticipate} />
-        <SeedomParticipated isShown={phase === 'PARTICIPATED'} />
+        <CircularProgress percentage={50} isLoading={this.state.isLoading} />
+        <SeedomBegin isShown={phase === 'BEGIN'} changeLoading={this.changeLoading} onBegin={this.handleBegin} />
+        <SeedomParticipate isShown={phase === 'PARTICIPATION'} changeLoading={this.changeLoading} onParticipate={this.handleParticipate} />
+        <SeedomParticipated isShown={phase === 'PARTICIPATED'} changeLoading={this.changeLoading} />
       </div>
     );
   }

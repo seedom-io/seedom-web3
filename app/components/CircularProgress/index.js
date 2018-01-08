@@ -18,14 +18,15 @@ class CircularProgress extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      percentage: 0
+      percentage: 0,
+      isLoading: false
     };
   }
 
   componentDidMount() {
     setTimeout(() => {
         this.setState({
-          percentage: this.props.percentage,
+          percentage: this.props.percentage
         });
     }, 0);
   }
@@ -33,6 +34,7 @@ class CircularProgress extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       percentage: nextProps.percentage,
+      isLoading: nextProps.isLoading
     });
   }
 
@@ -47,7 +49,7 @@ class CircularProgress extends React.Component {
     return FULL_RADIUS - (STROKE_WIDTH / 2);
   }
 
-  getPathDescription(radius) {
+  getTopPathDescription(radius) {
     // Move to center of canvas
     // Relative move to top canvas
     // Relative arc to bottom of canvas
@@ -60,13 +62,26 @@ class CircularProgress extends React.Component {
     `;
   }
 
+  getBottomPathDescription(radius) {
+    // Move to center of canvas
+    // Relative move to top canvas
+    // Relative arc to bottom of canvas
+    // Relative arc to top of canvas
+    return `
+      M ${CENTER_X},${CENTER_Y}
+      m 0,${radius}
+      a ${radius},${radius} 0 1 1 0,-${2 * radius}
+      a ${radius},${radius} 0 1 1 0,${2 * radius}
+    `;
+  }
+
   getPathStyle(radius, percentage) {
     const diameter = Math.PI * 2 * radius;
     const truncatedPercentage = Math.min(Math.max(percentage, MIN_PERCENTAGE), MAX_PERCENTAGE);
     const dashoffset = ((100 - truncatedPercentage) / 100) * diameter;
     return {
       strokeDasharray: `${diameter}px ${diameter}px`,
-      strokeDashoffset: `${dashoffset}px`,
+      strokeDashoffset: `${dashoffset}px`
     };
   }
 
@@ -77,8 +92,9 @@ class CircularProgress extends React.Component {
   render() {
     const progressRadius = this.getProgressRadius();
     const loadingRadius = this.getLoadingRadius();
-    const progressDescription = this.getPathDescription(progressRadius);
-    const loadingDescription = this.getPathDescription(loadingRadius);
+    const progressDescription = this.getTopPathDescription(progressRadius);
+    const topLoadingDescription = this.getTopPathDescription(loadingRadius);
+    const bottomLoadingDescription = this.getBottomPathDescription(loadingRadius);
     const progressStyle = this.getPathStyle(progressRadius, this.state.percentage);
     const loadingStyle = this.getPathStyle(loadingRadius, LOADING_PERCENTAGE);
 
@@ -112,25 +128,37 @@ class CircularProgress extends React.Component {
         />
 
         <path
-          id="circular-progress-loading"
-          className='loading'
-          d={loadingDescription}
+          id="circular-progress-loading-top"
+          className={`loading ${this.state.isLoading ? 'show' : 'hide'}`}
+          d={topLoadingDescription}
           strokeWidth={STROKE_WIDTH}
           fillOpacity={0}
           style={loadingStyle}
         />
 
-        <text className="text">
-          <textPath xlinkHref='#circular-progress-trail' startOffset="30%">
+        <path
+          id="circular-progress-loading-bottom"
+          className={`loading ${this.state.isLoading ? 'show' : 'hide'}`}
+          d={bottomLoadingDescription}
+          strokeWidth={STROKE_WIDTH}
+          fillOpacity={0}
+          style={loadingStyle}
+        />
+
+        <text>
+          <textPath className="trail-text" xlinkHref='#circular-progress-trail' startOffset="30%">
             PARTICIPATION
           </textPath>
-          <textPath xlinkHref='#circular-progress-trail' startOffset="80%">
+          <textPath className="trail-text" xlinkHref='#circular-progress-trail' startOffset="80%">
             REVELATION
           </textPath>
-          <textPath xlinkHref='#circular-progress-trail' startOffset="90%">
+          <textPath className="trail-text" xlinkHref='#circular-progress-trail' startOffset="90%">
             END
           </textPath>
-          <textPath className="loading-text" xlinkHref='#circular-progress-loading' startOffset="5%">
+          <textPath className={`loading-text ${this.state.isLoading ? 'show' : 'hide'}`} xlinkHref='#circular-progress-loading-top' startOffset="5%">
+            BLOCKCHAINING
+          </textPath>
+          <textPath className={`loading-text ${this.state.isLoading ? 'show' : 'hide'}`} xlinkHref='#circular-progress-loading-bottom' startOffset="5%">
             BLOCKCHAINING
           </textPath>
         </text>
