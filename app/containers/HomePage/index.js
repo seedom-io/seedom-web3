@@ -50,11 +50,15 @@ class HomePage extends React.Component {
     const { account, contract, contractLoaded } = this.props;
 
     return (
-      <div>
-        {contractLoaded &&
-          <LoadedHomePage contract={contract} account={account} />
-        }
-      </div>
+      <section className="hero is-fullheight">
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            {contractLoaded &&
+              <LoadedHomePage contract={contract} account={account} />
+            }
+          </div>
+        </div>
+      </section>
     );
   }
 }
