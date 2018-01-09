@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CircularProgress from '../CircularProgress';
+import SeedomCircles from '../SeedomCircles';
 import SeedomBegin from '../SeedomBegin';
 import SeedomParticipate from '../SeedomParticipate';
 import SeedomParticipated from '../SeedomParticipated';
@@ -84,7 +84,7 @@ class SeedomPuck extends Component {
 
     return (
       <div className="seedom-puck">
-        <CircularProgress percentage={50} isLoading={this.state.isLoading} />
+        <SeedomCircles percentage={50} isLoading={this.state.isLoading} />
         <SeedomBegin isShown={phase === 'BEGIN'} changeLoading={this.changeLoading} onBegin={this.handleBegin} />
         <SeedomParticipate isShown={phase === 'PARTICIPATION'} changeLoading={this.changeLoading} onParticipate={this.handleParticipate} />
         <SeedomParticipated isShown={phase === 'PARTICIPATED'} changeLoading={this.changeLoading} />

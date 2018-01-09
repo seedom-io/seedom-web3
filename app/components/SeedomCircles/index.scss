@@ -1,0 +1,140 @@
+
+$loading-spin-duration: 5s;
+$loading-fade-duration: 0.5s;
+
+.seedom-circles {
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  transform: rotate(-90deg);
+
+  .background {
+    fill: #bebebe;
+  }
+
+  .loaders-path {
+    transform-origin: 50% 50%;
+    transform: rotate(90deg);
+  }
+
+  .loaders-text {
+    fill: white;
+    font-size: 30px;
+    font-weight: bold;
+    dominant-baseline: central;
+    text-anchor: middle;
+  }
+
+  .loaders-container {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    animation: spin $loading-spin-duration linear 0s infinite;
+
+    &.show {
+      animation: spin $loading-spin-duration linear 0s infinite, fadeIn $loading-fade-duration ease-out 0s 1;
+      animation-fill-mode: forwards;
+    }
+
+    &.hide {
+      animation: spin $loading-spin-duration linear 0s infinite, fadeOut $loading-fade-duration ease-out 0s 1;
+      animation-fill-mode: forwards;
+    }
+
+    .loaders-arc {
+      stroke: red;
+      stroke-linecap: round;
+      transform-origin: 50% 50%;
+
+      &.bottom {
+        transform: rotate(180deg);
+      }
+
+    }
+
+  }
+
+  .phase-container {
+
+    .phase-path {
+      transform-origin: 50% 50%;
+      transform: rotate(90deg);
+    }
+
+    .phase-text {
+      fill: white;
+      font-size: 30px;
+      font-weight: bold;
+      dominant-baseline: central;
+      text-anchor: end;
+
+      &.flipped {
+        text-anchor: start;
+      }
+
+    }
+
+    .phase {
+      transform: scale(0);
+      transform-origin: 50% 50%;
+
+      &.participation {
+        animation: ringIn 0.5s ease-out 0.25s;
+        animation-fill-mode: forwards;
+
+        circle {
+          stroke: blue;
+          transform-origin: 50% 50%;
+        }
+      }
+
+      &.revelation {
+        animation: ringIn 0.5s ease-out 0.5s;
+        animation-fill-mode: forwards;
+
+        circle {
+          stroke: lightblue;
+          transform-origin: 50% 50%;
+        }
+      }
+
+      &.progress {
+        transform: scale(1);
+
+        circle {
+          stroke: orange;
+          transition: stroke-dashoffset 0.5s ease 2s;
+          transform-origin: 50% 50%;
+        }
+
+        .phase-text {
+          opacity: 0;
+          animation: fadeIn 0.5s ease-out 2.5s;
+          animation-fill-mode: forwards;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+@keyframes ringIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
