@@ -29,8 +29,8 @@ class SeedomParticipate extends SeedomContent {
           <img src={eff} />
         </div>
         <div className="seedom-overlay">
-          <div className="thank-you">THANK YOU!</div>
-          <div className="reveal-soon">REVEAL SOON</div>
+          <div className="top-message">THANK YOU!</div>
+          <div className="bottom-message">REVEAL SOON</div>
         </div>
       </div>
     );

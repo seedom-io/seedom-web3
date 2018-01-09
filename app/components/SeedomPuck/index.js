@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SeedomCircles from '../SeedomCircles';
+import SeedomSeed from '../SeedomSeed';
 import SeedomBegin from '../SeedomBegin';
 import SeedomParticipate from '../SeedomParticipate';
 import SeedomParticipated from '../SeedomParticipated';
@@ -34,6 +35,7 @@ class SeedomPuck extends Component {
 
     this.state = {
       isLoading: false,
+      seeded: false,
       begun: false,
       participated: false,
       phase: null,
@@ -52,7 +54,9 @@ class SeedomPuck extends Component {
     const raiser = this.state.raiser;
 
     if (now > raiser.kickoffTime && now < raiser.revealTime) {
-      if (!this.state.begun) {
+      if (!this.state.seeded) {
+        return 'SEED';
+      } else if (!this.state.begun) {
         return 'BEGIN';
       } else if (!this.state.participated) {
         return 'PARTICIPATION';
@@ -85,6 +89,7 @@ class SeedomPuck extends Component {
     return (
       <div className="seedom-puck">
         <SeedomCircles percentage={50} isLoading={this.state.isLoading} />
+        <SeedomSeed isShown={phase === 'SEED'} changeLoading={this.changeLoading} />
         <SeedomBegin isShown={phase === 'BEGIN'} changeLoading={this.changeLoading} onBegin={this.handleBegin} />
         <SeedomParticipate isShown={phase === 'PARTICIPATION'} changeLoading={this.changeLoading} onParticipate={this.handleParticipate} />
         <SeedomParticipated isShown={phase === 'PARTICIPATED'} changeLoading={this.changeLoading} />
