@@ -5,6 +5,7 @@ import SeedomSeed from '../SeedomSeed';
 import SeedomBegin from '../SeedomBegin';
 import SeedomParticipate from '../SeedomParticipate';
 import SeedomParticipated from '../SeedomParticipated';
+import SeedomRaise from '../SeedomRaise';
 import SeedomReveal from '../SeedomReveal';
 import SeedomEnd from '../SeedomEnd';
 import SeedomWin from '../SeedomWin';
@@ -58,7 +59,7 @@ class SeedomPuck extends Component {
 
     if (now > raiser.kickoffTime && now < raiser.revealTime) {
       if (!this.state.seeded) {
-        return 'WIN';
+        return 'PARTICIPATED';
       } else if (!this.state.begun) {
         return 'BEGIN';
       } else if (!this.state.participated) {
@@ -96,6 +97,7 @@ class SeedomPuck extends Component {
         <SeedomBegin isShown={phase === 'BEGIN'} changeLoading={this.changeLoading} onBegin={this.handleBegin} />
         <SeedomParticipate isShown={phase === 'PARTICIPATION'} changeLoading={this.changeLoading} onParticipate={this.handleParticipate} />
         <SeedomParticipated isShown={phase === 'PARTICIPATED'} changeLoading={this.changeLoading} />
+        <SeedomRaise isShown={phase === 'RAISE'} changeLoading={this.changeLoading} onRaise={this.handleRaise} />
         <SeedomReveal isShown={phase === 'REVEAL'} changeLoading={this.changeLoading} />
         <SeedomEnd isShown={phase === 'END'} changeLoading={this.changeLoading} />
         <SeedomWin isShown={phase === 'WIN'} changeLoading={this.changeLoading} />

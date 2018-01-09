@@ -4,6 +4,21 @@
     height: 20%;
   }
 
+  .entries-confirmed {
+    margin-bottom: 50%;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+
+    .total {
+      font-size: 40px;
+    }
+  }
+
+  a {
+    margin-top: 45%;
+  }
+
   .checkmark {
     width: 90%;
     height: 90%;

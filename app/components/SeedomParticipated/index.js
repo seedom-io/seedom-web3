@@ -29,8 +29,13 @@ class SeedomParticipate extends SeedomContent {
           <img src={eff} />
         </div>
         <div className="seedom-overlay">
-          <div className="top-message">THANK YOU!</div>
-          <div className="bottom-message">REVEAL SOON</div>
+          <div className="entries-confirmed">
+            <div className="total">20</div>
+            CONFIRMED ENTRIES
+          </div>
+        </div>
+        <div className="seedom-overlay">
+          <a className="button is-primary" onClick={this.handleGetMoreEntries}>GET MORE ENTRIES</a>
         </div>
       </div>
     );
