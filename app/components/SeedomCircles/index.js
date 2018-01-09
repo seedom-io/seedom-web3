@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './index.scss';
+import { setInterval, clearInterval } from 'timers';
 
 const MAX_X = 1000;
 const MAX_Y = 1000;
@@ -18,27 +19,76 @@ class SeedomCircles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      percentage: 0,
-      isLoading: false
+      isLoading: false,
+      now: new Date()
     };
   }
 
   componentDidMount() {
-    setTimeout(() => {
-        this.setState({
-          percentage: this.props.percentage
-        });
-    }, 0);
+    this.interval = setInterval(() => {
+      this.setState({
+        now: new Date()
+      })
+    }, 1000);
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      percentage: nextProps.percentage,
       isLoading: nextProps.isLoading
     });
   }
 
   componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  getPhasePercentages() {
+    const kickoffTime = this.props.raiser.kickoffTime;
+    const revealTime = this.props.raiser.revealTime;
+    const endTime = this.props.raiser.endTime;
+    const raiserTime = endTime - kickoffTime;
+    const participationTime = revealTime - kickoffTime;
+    const revelationTime = endTime - revealTime;
+    const progressTime = this.state.now - kickoffTime;
+
+    return {
+      participation: 100 * participationTime / raiserTime,
+      revelation: 100 * revelationTime / raiserTime,
+      progress: 100 * progressTime / raiserTime
+    }
+  }
+
+  getProgressText() {
+    const revealTime = this.props.raiser.revealTime;
+    const endTime = this.props.raiser.endTime;
+    const timeUntilReveal = revealTime - this.state.now;
+    const timeUntilEnd = endTime - this.state.now;
+
+    let timeUntilNextPhase;
+    let phaseName;
+    if (timeUntilReveal >= 0) {
+      timeUntilNextPhase = timeUntilReveal;
+      phaseName = "REVEAL";
+    } else if (timeUntilEnd >= 0) {
+      timeUntilNextPhase = timeUntilEnd;
+      phaseName = "END";
+    }
+
+    timeUntilNextPhase /= 1000;
+    // calculate (and subtract) whole days
+    const days = Math.floor(timeUntilNextPhase / 86400);
+    timeUntilNextPhase -= days * 86400;
+    // calculate (and subtract) whole hours
+    const hours = Math.floor(timeUntilNextPhase / 3600) % 24;
+    timeUntilNextPhase -= hours * 3600;
+    // calculate (and subtract) whole minutes
+    const minutes = Math.floor(timeUntilNextPhase / 60) % 60;
+    timeUntilNextPhase -= minutes * 60;
+    // what's left is seconds
+    const seconds = Math.floor(timeUntilNextPhase % 60);  // in theory the modulus is not required
+
+    return `${phaseName} IN ${days} D : ${hours} H : ${minutes} M : ${seconds} S`;
+
   }
 
   getProgressRadius() {
@@ -87,20 +137,21 @@ class SeedomCircles extends React.Component {
     const progressRadius = this.getProgressRadius();
     const loadersRadius = this.getLoadersRadius();
 
-    const participationPercentage = 70;
-    const revelationPercentage = 30;
+    const phasePercentages = this.getPhasePercentages();
 
-    const progressPathStyle = this.getPathStyle(progressRadius, this.state.percentage);
-    const participationPathStyle = this.getPathStyle(progressRadius, participationPercentage);
-    const revelationPathStyle = this.getPathStyle(progressRadius, revelationPercentage, participationPercentage);
+    const progressPathStyle = this.getPathStyle(progressRadius, phasePercentages.progress);
+    const participationPathStyle = this.getPathStyle(progressRadius, phasePercentages.participation);
+    const revelationPathStyle = this.getPathStyle(progressRadius, phasePercentages.revelation, phasePercentages.participation);
     const loadersPathStyle = this.getPathStyle(loadersRadius, LOADERS_PERCENTAGE);
 
-    const progressPathFlipped = this.getPathFlipped(this.state.percentage);
-    const participationPathFlipped = this.getPathFlipped(participationPercentage);
+    const progressPathFlipped = this.getPathFlipped(phasePercentages.progress);
+    const participationPathFlipped = this.getPathFlipped(phasePercentages.participation);
 
     const progressPathDescription = this.getPathDescription(progressRadius);
     const flippedProgressPathDescription = this.getPathDescription(progressRadius, participationPathFlipped);
     const loadersPathDescription = this.getPathDescription(loadersRadius);
+
+    const progressText = this.getProgressText();
 
     return (
       <svg
@@ -186,7 +237,7 @@ class SeedomCircles extends React.Component {
             />
 
             <text>
-              <textPath className={`phase-text ${participationPathFlipped ? "flipped" : null}`} xlinkHref={`${participationPathFlipped ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${participationPathFlipped ? revelationPercentage + 1 : participationPercentage - 1}%`}>
+              <textPath className={`phase-text ${participationPathFlipped ? "flipped" : null}`} xlinkHref={`${participationPathFlipped ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${participationPathFlipped ? phasePercentages.revelation + 1 : phasePercentages.participation - 1}%`}>
                 PARTICIPATION PHASE
               </textPath>
             </text>
@@ -223,8 +274,8 @@ class SeedomCircles extends React.Component {
             />
 
             <text>
-              <textPath className={`phase-text ${participationPathFlipped ? "flipped" : null}`} xlinkHref={`${this.state.percentage > 30 ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${this.state.percentage > 30 ? 101 - this.state.percentage : 1}%`}>
-                REVEAL IN 2D 4H 10M
+              <textPath className={`phase-text ${participationPathFlipped ? "flipped" : null}`} xlinkHref={`${phasePercentages.progress > 30 ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${phasePercentages.progress > 30 ? 101 - phasePercentages.progress : 1}%`}>
+                {progressText}
               </textPath>
             </text>
 

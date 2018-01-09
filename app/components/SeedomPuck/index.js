@@ -92,15 +92,15 @@ class SeedomPuck extends Component {
 
     return (
       <div className="seedom-puck">
-        <SeedomCircles percentage={50} isLoading={this.state.isLoading} />
-        <SeedomSeed isShown={phase === 'SEED'} changeLoading={this.changeLoading} />
-        <SeedomBegin isShown={phase === 'BEGIN'} changeLoading={this.changeLoading} onBegin={this.handleBegin} />
+        <SeedomCircles percentage={50} isLoading={this.state.isLoading} raiser={this.state.raiser} />
+        <SeedomSeed isShown={phase === 'SEED'} />
+        <SeedomBegin isShown={phase === 'BEGIN'} onBegin={this.handleBegin} />
         <SeedomParticipate isShown={phase === 'PARTICIPATION'} changeLoading={this.changeLoading} onParticipate={this.handleParticipate} />
-        <SeedomParticipated isShown={phase === 'PARTICIPATED'} changeLoading={this.changeLoading} />
+        <SeedomParticipated isShown={phase === 'PARTICIPATED'} />
         <SeedomRaise isShown={phase === 'RAISE'} changeLoading={this.changeLoading} onRaise={this.handleRaise} />
         <SeedomReveal isShown={phase === 'REVEAL'} changeLoading={this.changeLoading} />
-        <SeedomEnd isShown={phase === 'END'} changeLoading={this.changeLoading} />
-        <SeedomWin isShown={phase === 'WIN'} changeLoading={this.changeLoading} />
+        <SeedomEnd isShown={phase === 'END'} />
+        <SeedomWin isShown={phase === 'WIN'} />
       </div>
     );
   }

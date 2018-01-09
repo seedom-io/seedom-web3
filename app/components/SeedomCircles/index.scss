@@ -97,11 +97,11 @@ $loading-fade-duration: 0.5s;
       }
 
       &.progress {
-        transform: scale(1);
+        animation: ringIn 0.5s ease-out 1s;
+        animation-fill-mode: forwards;
 
         circle {
           stroke: orange;
-          transition: stroke-dashoffset 0.5s ease 2s;
           transform-origin: 50% 50%;
         }
 
