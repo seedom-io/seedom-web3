@@ -3,7 +3,7 @@ import SeedomContent from '../SeedomContent';
 import './index.scss';
 import eff from './eff.png';
 
-class SeedomBegin extends SeedomContent {
+class SeedomSeed extends SeedomContent {
 
   constructor(props) {
     super(props);
@@ -24,4 +24,4 @@ class SeedomBegin extends SeedomContent {
   }
 }
 
-export default SeedomBegin;
+export default SeedomSeed;

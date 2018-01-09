@@ -5,6 +5,7 @@ import SeedomSeed from '../SeedomSeed';
 import SeedomBegin from '../SeedomBegin';
 import SeedomParticipate from '../SeedomParticipate';
 import SeedomParticipated from '../SeedomParticipated';
+import SeedomReveal from '../SeedomReveal';
 import './index.scss';
 import { loadavg } from 'os';
 
@@ -64,7 +65,7 @@ class SeedomPuck extends Component {
         return 'PARTICIPATED';
       }
     } else if (now > raiser.revealTime && now < raiser.endTime) {
-      return 'REVELATION';
+      return 'REVEAL';
     }
 
     return 'END';
@@ -93,6 +94,7 @@ class SeedomPuck extends Component {
         <SeedomBegin isShown={phase === 'BEGIN'} changeLoading={this.changeLoading} onBegin={this.handleBegin} />
         <SeedomParticipate isShown={phase === 'PARTICIPATION'} changeLoading={this.changeLoading} onParticipate={this.handleParticipate} />
         <SeedomParticipated isShown={phase === 'PARTICIPATED'} changeLoading={this.changeLoading} />
+        <SeedomReveal isShown={phase === 'REVEAL'} changeLoading={this.changeLoading} />
       </div>
     );
   }
