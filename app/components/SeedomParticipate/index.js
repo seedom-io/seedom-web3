@@ -14,7 +14,7 @@ class SeedomParticipate extends SeedomContent {
 
   show() {
     super.show();
-    this.entriesInput.focus();
+    this.emailInput.focus();
   }
 
   handleSubmit = event => {
@@ -43,8 +43,9 @@ class SeedomParticipate extends SeedomContent {
     return (
       <div className={`seedom-content participate ${this.state.className}`}>
         <img src={eff} />
-        <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" onChange={this.handleNumOfEntriesChange} ref={(input) => { this.entriesInput = input; }} />
-        <textarea className="textarea is-primary" type="text" placeholder="TYPE YOUR RANDOM HERE" onChange={this.handleSeedChange} />
+        <input className="input is-primary" type="text" placeholder="EMAIL ADDRESS" onChange={this.handleNumOfEntriesChange} ref={(input) => { this.emailInput = input; }} />
+        <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" onChange={this.handleNumOfEntriesChange} />
+        <textarea rows="3" className="textarea is-primary" type="text" placeholder="TYPE A MESSAGE HERE" onChange={this.handleSeedChange} />
         <a className="button is-primary" onClick={this.handleSubmit}>PARTICIPATE</a>
       </div>
     );

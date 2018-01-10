@@ -59,7 +59,7 @@ class SeedomPuck extends Component {
 
     if (now > raiser.kickoffTime && now < raiser.revealTime) {
       if (!this.state.seeded) {
-        return 'PARTICIPATED';
+        return 'PARTICIPATION';
       } else if (!this.state.begun) {
         return 'BEGIN';
       } else if (!this.state.participated) {

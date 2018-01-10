@@ -5,20 +5,20 @@
   }
 
   input {
-    margin-top: 20px;
     width: 50%;
     background-color: transparent;
     text-align: center;
+    margin-top: 10px;
   }
 
   textarea {
-    margin-top: 20px;
     width: 50%;
-    height: 20%;
     min-width: 0;
     resize: none;
     background-color: transparent;
     word-break: break-all;
+    text-align: center;
+    margin-top: 10px;
   }
 
   .button {
