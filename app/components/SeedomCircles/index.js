@@ -12,14 +12,13 @@ const LOADERS_STROKE_WIDTH = 30;
 const PROGRESS_STROKE_WIDTH = 30;
 const PHASE_STROKE_WIDTH = 50;
 const BACKGROUND_PADDING = 50;
-const LOADERS_PERCENTAGE = 10;
+const LOADERS_PERCENTAGE = 20;
 
 class SeedomCircles extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
       now: new Date()
     };
   }
@@ -30,12 +29,6 @@ class SeedomCircles extends React.Component {
         now: new Date()
       })
     }, 1000);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      isLoading: nextProps.isLoading
-    });
   }
 
   componentWillUnmount() {
@@ -173,7 +166,7 @@ class SeedomCircles extends React.Component {
           r={FULL_RADIUS}
         />
 
-        <g className={`loaders-container ${this.state.isLoading ? 'show' : 'hide'}`}>
+        <g className={`loaders-container ${this.props.isLoading ? 'show' : 'hide'}`}>
 
           <circle
             className={`loaders-arc`}

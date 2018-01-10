@@ -5,11 +5,6 @@ import charityLogo from '../../img/logos/charity.png';
 import './index.scss';
 
 class SeedomParticipate extends SeedomContent {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className={`seedom-content participated ${this.state.className}`}>
@@ -24,7 +19,7 @@ class SeedomParticipate extends SeedomContent {
           </div>
         </div>
         <div className="seedom-overlay">
-          <a className="button is-primary is-outlined" onClick={this.handleGetMoreEntries}>GET MORE ENTRIES</a>
+          <a className="button is-primary is-outlined" onClick={this.props.onGetMoreEntries}>GET MORE ENTRIES</a>
         </div>
       </div>
     );

@@ -38,9 +38,8 @@ class SeedomPuck extends Component {
 
     this.state = {
       isLoading: false,
-      begun: false,
-      participated: false,
-      phase: null,
+      hasBegun: false,
+      isRaising: false,
       charityHashedRandom: null,
       raiser: {
         kickoffTime,
@@ -59,19 +58,25 @@ class SeedomPuck extends Component {
 
     if (now > raiser.kickoffTime && now < raiser.revealTime) {
       if (!this.state.charityHashedRandom) {
-        return 'SEED';
-      } else if (!this.state.begun) {
-        return 'BEGIN';
-      } else if (!this.state.participated) {
-        return 'PARTICIPATION';
+        return "SEED";
+      } else if (!this.state.participant) {
+        if (!this.state.hasBegun) {
+          return "BEGIN";
+        } else {
+          return "PARTICIPATE";
+        }
       } else {
-        return 'PARTICIPATED';
+        if (!this.state.isRaising) {
+          return "PARTICIPATED";
+        } else {
+          return "RAISE";
+        }
       }
     } else if (now > raiser.revealTime && now < raiser.endTime) {
-      return 'REVEAL';
+      return "REVEAL";
     }
 
-    return 'END';
+    return "END";
   }
 
   changeLoading = (loading) => {
@@ -79,13 +84,18 @@ class SeedomPuck extends Component {
   }
 
   handleBegin = () => {
-    this.setState({ begun: true });
+    this.setState({ hasBegun: true });
+  }
+
+  handleGetMoreEntries = () => {
+    this.setState({ isRaising: true });
   }
 
   handleParticipate = ({ seed, numOfEntries }) => {
-    this.setState({ participated: true });
     this.props.onParticipate({ seed, numOfEntries });
   }
+
+  handleRaise
 
   render() {
     const phase = this.getPhase();
@@ -95,8 +105,8 @@ class SeedomPuck extends Component {
         <SeedomCircles percentage={50} isLoading={this.state.isLoading} raiser={this.state.raiser} />
         <SeedomSeed isShown={phase === 'SEED'} />
         <SeedomBegin isShown={phase === 'BEGIN'} onBegin={this.handleBegin} />
-        <SeedomParticipate isShown={phase === 'PARTICIPATION'} changeLoading={this.changeLoading} onParticipate={this.handleParticipate} />
-        <SeedomParticipated isShown={phase === 'PARTICIPATED'} participant={this.state.participant} />
+        <SeedomParticipate isShown={phase === 'PARTICIPATE'} changeLoading={this.changeLoading} onParticipate={this.handleParticipate} />
+        <SeedomParticipated isShown={phase === 'PARTICIPATED'} participant={this.state.participant} onGetMoreEntries={this.handleGetMoreEntries} />
         <SeedomRaise isShown={phase === 'RAISE'} changeLoading={this.changeLoading} onRaise={this.handleRaise} />
         <SeedomReveal isShown={phase === 'REVEAL'} changeLoading={this.changeLoading} />
         <SeedomEnd isShown={phase === 'END'} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import SeedomContent from '../SeedomContent';
-import eff from './eff.png';
+import charityLogo from '../../img/logos/charity.png';
 import './index.scss';
 
 class SeedomRaise extends SeedomContent {
@@ -18,20 +18,14 @@ class SeedomRaise extends SeedomContent {
   }
 
   handleSubmit = event => {
-    const { onParticipate } = this.props;
+    const { onRaise } = this.props;
 
     if (event !== undefined && event.preventDefault) {
       event.preventDefault();
     }
 
-    onParticipate({ seed: this.state.seed, numOfEntries: this.state.numOfEntries });
+    onRaise({ seed: this.state.seed, numOfEntries: this.state.numOfEntries });
   }
-
-  handleSeedChange = event => {
-    this.setState({
-      seed: event.target.value
-    });
-  };
 
   handleNumOfEntriesChange = event => {
     this.setState({
@@ -41,10 +35,10 @@ class SeedomRaise extends SeedomContent {
 
   render() {
     return (
-      <div className={`seedom-content participate ${this.state.className}`}>
-        <img src={eff} />
+      <div className={`seedom-content raise ${this.state.className}`}>
+        <img src={charityLogo} />
         <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" onChange={this.handleNumOfEntriesChange} ref={(input) => { this.entriesInput = input; }} />
-        <a className="button is-primary" onClick={this.handleRaise}>GET MORE ENTRIES</a>
+        <a className="button is-primary" onClick={this.handleSubmit}>GET MORE ENTRIES</a>
       </div>
     );
   }

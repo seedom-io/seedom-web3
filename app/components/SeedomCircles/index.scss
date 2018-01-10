@@ -1,6 +1,6 @@
 @import '../../sass/theme.scss';
 
-$loading-spin-duration: 5s;
+$loading-spin-duration: 10s;
 $loading-fade-duration: 0.5s;
 
 .seedom-circles {
@@ -41,7 +41,7 @@ $loading-fade-duration: 0.5s;
     }
 
     .loaders-arc {
-      stroke: red;
+      stroke: $loading;
       stroke-linecap: round;
       transform-origin: 50% 50%;
 

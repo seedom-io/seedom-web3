@@ -1,3 +1,5 @@
+@import '../../sass/theme.scss';
+
 .seedom-content.raise {
 
   img {
@@ -7,18 +9,8 @@
   input {
     margin-top: 20px;
     width: 50%;
-    background-color: transparent;
     text-align: center;
-  }
-
-  textarea {
-    margin-top: 20px;
-    width: 50%;
-    height: 20%;
-    min-width: 0;
-    resize: none;
-    background-color: transparent;
-    word-break: break-all;
+    background-color: $puck-input-background;
   }
 
   .button {
