@@ -87,7 +87,7 @@ class SeedomCircles extends React.Component {
     // what's left is seconds
     const seconds = Math.floor(timeUntilNextPhase % 60);  // in theory the modulus is not required
 
-    return `${phaseName} IN ${days} D : ${hours} H : ${minutes} M : ${seconds} S`;
+    return `${phaseName} IN (${days}D : ${hours}H : ${minutes}M : ${seconds}S)`;
 
   }
 

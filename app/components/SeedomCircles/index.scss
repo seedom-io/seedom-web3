@@ -1,4 +1,6 @@
 
+@import '../../sass/theme.scss';
+
 $loading-spin-duration: 5s;
 $loading-fade-duration: 0.5s;
 
@@ -8,7 +10,7 @@ $loading-fade-duration: 0.5s;
   transform: rotate(-90deg);
 
   .background {
-    fill: #bebebe;
+    fill: $puck-background;
   }
 
   .loaders-path {
@@ -81,7 +83,7 @@ $loading-fade-duration: 0.5s;
         animation-fill-mode: forwards;
 
         circle {
-          stroke: blue;
+          stroke: $participation-phase;
           transform-origin: 50% 50%;
         }
       }
@@ -91,7 +93,7 @@ $loading-fade-duration: 0.5s;
         animation-fill-mode: forwards;
 
         circle {
-          stroke: lightblue;
+          stroke: $revelation-phase;
           transform-origin: 50% 50%;
         }
       }
@@ -101,12 +103,13 @@ $loading-fade-duration: 0.5s;
         animation-fill-mode: forwards;
 
         circle {
-          stroke: orange;
+          stroke: #31CF65;
           transform-origin: 50% 50%;
         }
 
         .phase-text {
           opacity: 0;
+          fill: #4a4a4a;
           animation: fadeIn 0.5s ease-out 2.5s;
           animation-fill-mode: forwards;
         }
