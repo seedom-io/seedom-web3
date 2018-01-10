@@ -1,22 +1,33 @@
-.seedom-content.participated {
+.seedom-content.win {
 
   img {
     height: 20%;
+    margin-bottom: 40%;
   }
 
-  .entries-confirmed {
-    margin-bottom: 50%;
+  .congrats {
+    margin-bottom: 11%;
     color: white;
+    font-weight: bold;
+  }
+
+  .address {
+    color: lightblue;
+    font-size: 12px;
+  }
+
+  .alias {
+    color: lightblue;
     font-size: 20px;
     font-weight: bold;
-
-    .total {
-      font-size: 40px;
-    }
+    margin-top: 10%;
   }
 
-  a {
-    margin-top: 45%;
+  .random {
+    margin-top: 40%;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
   }
 
   .checkmark {
@@ -37,7 +48,7 @@
 
     .circle {
       stroke: transparent;
-      fill: green;
+      fill: purple;
     }
 
     .check {
@@ -45,6 +56,5 @@
     }
 
   }
-
 
 }

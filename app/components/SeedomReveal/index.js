@@ -3,7 +3,7 @@ import SeedomContent from '../SeedomContent';
 import eff from './eff.png';
 import './index.scss';
 
-class SeedomParticipate extends SeedomContent {
+class SeedomReveal extends SeedomContent {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +14,7 @@ class SeedomParticipate extends SeedomContent {
 
   show() {
     super.show();
-    this.entriesInput.focus();
+    this.randomTextarea.focus();
   }
 
   handleSubmit = event => {
@@ -43,12 +43,11 @@ class SeedomParticipate extends SeedomContent {
     return (
       <div className={`seedom-content participate ${this.state.className}`}>
         <img src={eff} />
-        <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" onChange={this.handleNumOfEntriesChange} ref={(input) => { this.entriesInput = input; }} />
-        <textarea className="textarea is-primary" type="text" placeholder="TYPE YOUR RANDOM HERE" onChange={this.handleSeedChange} />
-        <a className="button is-primary" onClick={this.handleSubmit}>PARTICIPATE</a>
+        <textarea className="textarea is-primary" type="text" placeholder="TYPE YOUR RANDOM HERE" onChange={this.handleSeedChange} ref={(textarea) => { this.randomTextarea = textarea; }} />
+        <a className="button is-primary" onClick={this.handleSubmit}>REVEAL</a>
       </div>
     );
   }
 }
 
-export default SeedomParticipate;
+export default SeedomReveal;
