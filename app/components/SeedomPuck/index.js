@@ -26,7 +26,6 @@ class SeedomPuck extends Component {
 
   constructor(props) {
     super(props);
-
     const kickoffTime = new Date();
     const revealTime = new Date();
     const endTime = new Date();
@@ -59,7 +58,7 @@ class SeedomPuck extends Component {
 
     if (now > raiser.kickoffTime && now < raiser.revealTime) {
       if (!this.state.seeded) {
-        return 'PARTICIPATION';
+        return 'PARTICIPATE';
       } else if (!this.state.begun) {
         return 'BEGIN';
       } else if (!this.state.participated) {
