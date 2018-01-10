@@ -1,0 +1,55 @@
+@import '../../sass/theme.scss';
+
+.seedom-overlay > .indicator {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: white;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  transform: scale(0);
+
+  &.show {
+    animation: 0.5s ease-out 1s 1 zoomIn;
+    animation-fill-mode: forwards;
+  }
+
+  .circle {
+    stroke: transparent;
+    transform-origin: 50% 50%;
+
+    &.checkmark {
+      fill: $primary;
+    }
+
+    &.waiting {
+      fill: $waiting;
+      animation: 2s ease-in-out 1s infinite pulse;
+    }
+
+  }
+
+  .element {
+    display: none;
+
+    &.checkmark {
+      fill: transparent;
+      display: block;
+    }
+
+  }
+
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}

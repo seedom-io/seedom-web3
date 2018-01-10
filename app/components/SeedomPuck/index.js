@@ -38,10 +38,10 @@ class SeedomPuck extends Component {
 
     this.state = {
       isLoading: false,
-      seeded: false,
       begun: false,
       participated: false,
       phase: null,
+      charityHashedRandom: null,
       raiser: {
         kickoffTime,
         revealTime,
@@ -57,8 +57,8 @@ class SeedomPuck extends Component {
     const raiser = this.state.raiser;
 
     if (now > raiser.kickoffTime && now < raiser.revealTime) {
-      if (!this.state.seeded) {
-        return 'BEGIN';
+      if (!this.state.charityHashedRandom) {
+        return 'SEED';
       } else if (!this.state.begun) {
         return 'BEGIN';
       } else if (!this.state.participated) {

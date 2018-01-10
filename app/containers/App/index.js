@@ -75,11 +75,11 @@ const App = () => (
         <Route exact path="/" component={HomePage} />
       </div>
     </Router>
-    <footer classNameName="footer">
-      <div classNameName="container">
-        <div classNameName="content has-text-centered">
+    <footer className="footer">
+      <div className="container">
+        <div className="content has-text-centered">
           <p>
-            <strong>Seedom</strong> by the <a classNameName="is-green" href="mailto:team@seedom.io">Seedom Team</a>.
+            <strong>Seedom</strong> by the <a className="is-green" href="mailto:team@seedom.io">Seedom Team</a>.
           </p>
         </div>
       </div>

@@ -87,7 +87,7 @@ class SeedomCircles extends React.Component {
     // what's left is seconds
     const seconds = Math.floor(timeUntilNextPhase % 60);  // in theory the modulus is not required
 
-    return `${phaseName} IN (${days}D : ${hours}H : ${minutes}M : ${seconds}S)`;
+    return `${phaseName} IN - ${days}D|${hours}H|${minutes}M|${seconds}S`;
 
   }
 
@@ -104,7 +104,7 @@ class SeedomCircles extends React.Component {
   }
 
   getPathFlipped(percentage) {
-    return (percentage > 25 && percentage < 75) ? true : false;
+    return (percentage > 30 && percentage < 70) ? true : false;
   }
 
   getPathStyle(radius, percentage, offset) {
@@ -117,6 +117,10 @@ class SeedomCircles extends React.Component {
       strokeDashoffset: `${dashoffset}px`,
       transform: `rotate(${rotation}deg)`
     };
+  }
+
+  getTextOffset(flipped, percentage) {
+    return flipped ? 101 - percentage : percentage - 1;
   }
 
   getPathDescription(radius, flipped) {
@@ -152,6 +156,9 @@ class SeedomCircles extends React.Component {
     const loadersPathDescription = this.getPathDescription(loadersRadius);
 
     const progressText = this.getProgressText();
+
+    const participationTextOffset = this.getTextOffset(participationPathFlipped, phasePercentages.participation);
+    const progressTextOffset = this.getTextOffset(progressPathFlipped, phasePercentages.progress);
 
     return (
       <svg
@@ -237,7 +244,7 @@ class SeedomCircles extends React.Component {
             />
 
             <text>
-              <textPath className={`phase-text ${participationPathFlipped ? "flipped" : null}`} xlinkHref={`${participationPathFlipped ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${participationPathFlipped ? phasePercentages.revelation + 1 : phasePercentages.participation - 1}%`}>
+              <textPath className={`phase-text ${participationPathFlipped ? "flipped" : null}`} xlinkHref={`${participationPathFlipped ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${participationTextOffset}%`}>
                 PARTICIPATION PHASE
               </textPath>
             </text>
@@ -274,7 +281,7 @@ class SeedomCircles extends React.Component {
             />
 
             <text>
-              <textPath className={`phase-text ${participationPathFlipped ? "flipped" : null}`} xlinkHref={`${phasePercentages.progress > 30 ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${phasePercentages.progress > 30 ? 101 - phasePercentages.progress : 1}%`}>
+              <textPath className={`phase-text ${progressPathFlipped ? "flipped" : null}`} xlinkHref={`${progressPathFlipped ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${progressTextOffset}%`}>
                 {progressText}
               </textPath>
             </text>

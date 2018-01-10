@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import SeedomContent from '../SeedomContent';
 import './index.scss';
-import eff from './eff.png';
+import charityLogo from '../../img/logos/charity.png';
 
 class SeedomBegin extends SeedomContent {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className={`seedom-content begin ${this.state.className}`}>
-        <img src={eff} />
+        <img src={charityLogo} />
         <a className="button is-primary is-outlined" onClick={this.props.onBegin}>BEGIN</a>
       </div>
     );
