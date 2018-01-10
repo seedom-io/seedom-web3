@@ -79,7 +79,7 @@ class SeedomPuck extends Component {
     return "END";
   }
 
-  changeLoading = (loading) => {
+  setLoading = (loading) => {
     this.setState({ isLoading: loading });
   }
 
@@ -105,7 +105,7 @@ class SeedomPuck extends Component {
         <SeedomCircles percentage={50} isLoading={this.state.isLoading} raiser={this.state.raiser} />
         <SeedomSeed isShown={phase === 'SEED'} />
         <SeedomBegin isShown={phase === 'BEGIN'} onBegin={this.handleBegin} />
-        <SeedomParticipate isShown={phase === 'PARTICIPATE'} changeLoading={this.changeLoading} onParticipate={this.handleParticipate} />
+        <SeedomParticipate isShown={phase === 'PARTICIPATE'} setLoading={this.setLoading} onParticipate={this.handleParticipate} />
         <SeedomParticipated isShown={phase === 'PARTICIPATED'} participant={this.state.participant} onGetMoreEntries={this.handleGetMoreEntries} />
         <SeedomRaise isShown={phase === 'RAISE'} changeLoading={this.changeLoading} onRaise={this.handleRaise} />
         <SeedomReveal isShown={phase === 'REVEAL'} changeLoading={this.changeLoading} />
