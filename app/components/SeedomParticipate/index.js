@@ -1,6 +1,6 @@
 import React from 'react';
 import SeedomContent from '../SeedomContent';
-import eff from './eff.png';
+import charityLogo from '../../img/logos/charity.png';
 import './index.scss';
 
 class SeedomParticipate extends SeedomContent {
@@ -42,11 +42,11 @@ class SeedomParticipate extends SeedomContent {
   render() {
     return (
       <div className={`seedom-content participate ${this.state.className}`}>
-        <img src={eff} />
+        <img src={charityLogo} />
         <input className="input is-primary" type="text" placeholder="EMAIL ADDRESS" onChange={this.handleNumOfEntriesChange} ref={(input) => { this.emailInput = input; }} />
         <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" onChange={this.handleNumOfEntriesChange} />
         <textarea rows="3" className="textarea is-primary" type="text" placeholder="TYPE A MESSAGE HERE" onChange={this.handleSeedChange} />
-        <a className="button is-primary" onClick={this.handleSubmit}>PARTICIPATE</a>
+        <a className="button is-primary is-outlined" onClick={this.handleSubmit}>PARTICIPATE</a>
       </div>
     );
   }

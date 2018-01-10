@@ -48,7 +48,8 @@ class SeedomPuck extends Component {
         endTime,
         expireTime,
         valuePerEntry: 0
-      }
+      },
+      participant: null
     };
   }
 
@@ -95,7 +96,7 @@ class SeedomPuck extends Component {
         <SeedomSeed isShown={phase === 'SEED'} />
         <SeedomBegin isShown={phase === 'BEGIN'} onBegin={this.handleBegin} />
         <SeedomParticipate isShown={phase === 'PARTICIPATION'} changeLoading={this.changeLoading} onParticipate={this.handleParticipate} />
-        <SeedomParticipated isShown={phase === 'PARTICIPATED'} />
+        <SeedomParticipated isShown={phase === 'PARTICIPATED'} participant={this.state.participant} />
         <SeedomRaise isShown={phase === 'RAISE'} changeLoading={this.changeLoading} onRaise={this.handleRaise} />
         <SeedomReveal isShown={phase === 'REVEAL'} changeLoading={this.changeLoading} />
         <SeedomEnd isShown={phase === 'END'} />

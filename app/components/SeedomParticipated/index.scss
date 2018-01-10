@@ -19,32 +19,4 @@
     margin-top: 45%;
   }
 
-  .checkmark {
-    width: 90%;
-    height: 90%;
-    border-radius: 50%;
-    display: block;
-    stroke-width: 2;
-    stroke: white;
-    stroke-miterlimit: 10;
-    margin: 10% auto;
-    transform: scale(0);
-    transition: all 1s ease 0.5s;
-
-    &.checked {
-      transform: scale(1);
-    }
-
-    .circle {
-      stroke: transparent;
-      fill: green;
-    }
-
-    .check {
-      fill: transparent;
-    }
-
-  }
-
-
 }
