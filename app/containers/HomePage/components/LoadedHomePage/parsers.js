@@ -12,6 +12,12 @@ const parseRaiser = raiser => {
   };
 };
 
+const parseSeed = seed => {
+  return {
+    hashedRandom: String(seed._hashedRandom),
+  };
+};
+
 const parseParticipant = participant => {
   return {
     entries: Number(participant._entries),

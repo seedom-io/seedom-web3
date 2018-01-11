@@ -59,6 +59,7 @@ class LoadedHomePage extends React.Component {
 
   retrieveInitialData() {
     this.retrieveCurrentRaiser();
+    this.retrieveCharityHashedRandom();
     this.retrieveParticipant();
   }
 
@@ -73,6 +74,24 @@ class LoadedHomePage extends React.Component {
       .then(
         data => {
           this.setState({ raiser: parsers.parseRaiser(data) });
+        },
+        err => {
+          console.error(err);
+        }
+      );
+  }
+
+  retrieveCharityHashedRandom() {
+    const { account } = this.props;
+
+    this.state.wsContract.methods
+      .charityHashedRandom()
+      .call({
+        from: account
+      })
+      .then(
+        data => {
+          this.setState({ charityHashedRandom: data });
         },
         err => {
           console.error(err);
@@ -113,6 +132,9 @@ class LoadedHomePage extends React.Component {
         case 'Kickoff':
           this.handleKickoffEvent(values);
           break;
+        case 'Seed':
+          this.handleSeedEvent(values);
+          break;
         case 'Participation':
           this.handleParticipationEvent(account, values);
           break;
@@ -135,6 +157,11 @@ class LoadedHomePage extends React.Component {
 
   handleKickoffEvent(values) {
     this.setState({ raiser: parsers.parseRaiser(values) });
+  }
+
+  handleSeedEvent(values) {
+    const seed = parsers.parseSeed(values);
+    this.setState({ charityHashedRandom: seed.hashedRandom });
   }
 
   handleParticipationEvent(account, values) {
@@ -257,7 +284,15 @@ class LoadedHomePage extends React.Component {
 
   render() {
     const { account } = this.props;
-    const { raiser, entries, hashedRandom, random, winner, winnerRandom } = this.state;
+    const {
+      raiser,
+      charityHashedRandom,
+      hashedRandom,
+      entries,
+      random,
+      winner,
+      winnerRandom
+    } = this.state;
 
     return (
       <div>
@@ -268,9 +303,9 @@ class LoadedHomePage extends React.Component {
         {raiser &&
           <SeedomPuck
             raiser={raiser}
-            entries={entries}
+            charityHashedRandom={charityHashedRandom}
             hashedRandom={hashedRandom}
-            random={random}
+            entries={entries}
             winner={winner}
             winnerRandom={winnerRandom}
             onParticipate={this.handleParticipate}

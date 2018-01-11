@@ -17,7 +17,7 @@ class SeedomWin extends SeedomContent {
         </div>
         <div className="seedom-overlay">
           <div className="random-title">THEIR MESSAGE TO THE WORLD</div>
-          <div className="random">{this.props.winningParticipant ? this.props.winningParticipant.random : null}</div>
+          <div className="random">{this.props.winnerRandom}</div>
         </div>
         <div className="seedom-overlay">
           <a className="address" href={`https://etherscan.io/address/${this.props.winner}`} target="_blank">{this.props.winner}</a>

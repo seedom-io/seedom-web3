@@ -14,12 +14,14 @@ import SeedomError from '../SeedomError';
 import seedomLogo from '../../img/logos/seedom.svg';
 import './index.scss';
 
+const zero = '0x0000000000000000000000000000000000000000000000000000000000000000';
+
 const getPhase = ({
-  charityHashedRandom,
   raiser,
+  charityHashedRandom,
+  hashedRandom,
   hasBegun,
   isRaising,
-  participant,
   winner
 }) => {
   const now = Date.now();
@@ -27,7 +29,7 @@ const getPhase = ({
   if (now > raiser.kickoffTime && now < raiser.revealTime) {
     if (!charityHashedRandom) {
       return 'seed';
-    } else if (!participant) {
+    } else if (hashedRandom === zero) {
       if (!hasBegun) {
         return 'begin';
       }
@@ -38,7 +40,7 @@ const getPhase = ({
     }
     return 'raise';
   } else if (now > raiser.revealTime && now < raiser.endTime) {
-    if (!participant) {
+    if (!hashedRandom) {
       return 'error';
     }
     return 'reveal';
@@ -51,12 +53,6 @@ const getPhase = ({
 
 class SeedomPuck extends Component {
   static propTypes = {
-    onParticipate: PropTypes.func.isRequired,
-    participant: PropTypes.shape({
-      entries: PropTypes.number.isRequired,
-      hashedRandom: PropTypes.string.isRequired,
-      random: PropTypes.string
-    }),
     raiser: PropTypes.shape({
       endTime: PropTypes.instanceOf(Date).isRequired,
       expireTime: PropTypes.instanceOf(Date).isRequired,
@@ -64,16 +60,23 @@ class SeedomPuck extends Component {
       revealTime: PropTypes.instanceOf(Date).isRequired,
       valuePerEntry: PropTypes.number.isRequired
     }).isRequired,
+    charityHashedRandom: PropTypes.string,
+    entries: PropTypes.number,
+    hashedRandom: PropTypes.string,
     winner: PropTypes.string,
-    winningParticipant: PropTypes.shape({
-      random: PropTypes.string.isRequired
-    })
+    winnerRandom: PropTypes.string,
+    onParticipate: PropTypes.func.isRequired,
+    onRaise: PropTypes.func.isRequired,
+    onReveal: PropTypes.func.isRequired,
+    onWithdraw: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
-    participant: null,
+    charityHashedRandom: null,
+    entries: 0,
+    hashedRandom: null,
     winner: null,
-    winningParticipant: null
+    winnerRandom: null
   }
 
   constructor(props) {
@@ -82,8 +85,7 @@ class SeedomPuck extends Component {
     this.state = {
       isLoading: false,
       hasBegun: false,
-      isRaising: false,
-      charityHashedRandom: null,
+      isRaising: false
     };
   }
 
@@ -95,32 +97,40 @@ class SeedomPuck extends Component {
     this.setState({ hasBegun: true });
   }
 
+  handleParticipate = ({ random, numOfEntries }) => {
+    this.props.onParticipate({ random, numOfEntries });
+  }
+
   handleGetMoreEntries = () => {
     this.setState({ isRaising: true });
   }
 
-  handleParticipate = ({ seed, numOfEntries }) => {
-    this.props.onParticipate({ seed, numOfEntries });
-  }
-
-  handleRaise = () => {
+  handleRaise = ({ numOfEntries }) => {
+    this.props.onRaise({ numOfEntries });
     this.setState({ isRaising: false });
   }
 
-  handleReveal = () => {
-    this.setState({ isRaising: false });
+  handleReveal = ({ random }) => {
+    this.props.onReveal({ random });
   }
 
   render() {
-    const { charityHashedRandom, hasBegun, isRaising, isLoading } = this.state;
-    const { participant, raiser, winner, winningParticipant } = this.props;
+    const { hasBegun, isRaising, isLoading } = this.state;
+    const {
+      raiser,
+      charityHashedRandom,
+      hashedRandom,
+      entries,
+      winner,
+      winnerRandom
+    } = this.props;
 
     const phase = getPhase({
-      charityHashedRandom,
       raiser,
+      charityHashedRandom,
+      hashedRandom,
       hasBegun,
       isRaising,
-      participant,
       winner
     });
 
@@ -134,13 +144,13 @@ class SeedomPuck extends Component {
           <SeedomSeed isShown={phase === 'seed'} />
           <SeedomBegin isShown={phase === 'begin'} onBegin={this.handleBegin} />
           <SeedomParticipate isShown={phase === 'participate'} setLoading={this.setLoading} onParticipate={this.handleParticipate} />
-          <SeedomParticipated isShown={phase === 'participated'} participant={participant} onGetMoreEntries={this.handleGetMoreEntries} />
+          <SeedomParticipated isShown={phase === 'participated'} entries={entries} onGetMoreEntries={this.handleGetMoreEntries} />
           <SeedomRaise isShown={phase === 'raise'} setLoading={this.setLoading} onRaise={this.handleRaise} />
           <SeedomReveal isShown={phase === 'reveal'} setLoading={this.setLoading} onReveal={this.handleReveal} />
           <SeedomRevealed isShown={phase === 'revealed'} />
           <SeedomEnd isShown={phase === 'end'} />
-          <SeedomWin isShown={phase === 'win'} winner={winner} winningParticipant={winningParticipant} />
-          <SeedomError isShown={phase === 'error'} error={!participant ? 'participation' : null} />
+          <SeedomWin isShown={phase === 'win'} winner={winner} winnerRandom={winnerRandom} />
+          <SeedomError isShown={phase === 'error'} error={!hashedRandom ? 'participation' : null} />
         </div>
       </div>
     );

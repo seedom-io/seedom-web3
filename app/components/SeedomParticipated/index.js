@@ -14,7 +14,7 @@ class SeedomParticipate extends SeedomContent {
         </div>
         <div className="seedom-overlay">
           <div className="entries">
-            <div className="total">{this.props.participant ? this.props.participant.entries : 0}</div>
+            <div className="total">{this.props.entries}</div>
             ENTRIES OBTAINED
           </div>
         </div>
