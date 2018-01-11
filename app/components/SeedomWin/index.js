@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import SeedomContent from '../SeedomContent';
 import SeedomIndicator from '../SeedomIndicator';
 import './index.scss';
-import eff from './eff.png';
 import charityLogo from '../../img/logos/charity.png';
 
 class SeedomWin extends SeedomContent {

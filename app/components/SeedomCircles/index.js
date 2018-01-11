@@ -47,7 +47,7 @@ class SeedomCircles extends React.Component {
     return {
       participation: 100 * participationTime / raiserTime,
       revelation: 100 * revelationTime / raiserTime,
-      progress: 100 * progressTime / raiserTime
+      progress: progressTime > raiserTime ? 100 : 100 * progressTime / raiserTime
     }
   }
 
@@ -56,6 +56,10 @@ class SeedomCircles extends React.Component {
     const endTime = this.props.raiser.endTime;
     const timeUntilReveal = revealTime - this.state.now;
     const timeUntilEnd = endTime - this.state.now;
+
+    if (timeUntilEnd <= 0) {
+      return "FINISHED";
+    }
 
     let timeUntilNextPhase;
     let phaseName;
@@ -129,6 +133,10 @@ class SeedomCircles extends React.Component {
     `;
   }
 
+  getProgressTextShown(percentage) {
+    return percentage < 15 ? false : true;
+  }
+
   render() {
 
     const progressRadius = this.getProgressRadius();
@@ -149,6 +157,8 @@ class SeedomCircles extends React.Component {
     const loadersPathDescription = this.getPathDescription(loadersRadius);
 
     const progressText = this.getProgressText();
+
+    const progressTextShown = this.getProgressTextShown(phasePercentages.progress);
 
     const participationTextOffset = this.getTextOffset(participationPathFlipped, phasePercentages.participation);
     const progressTextOffset = this.getTextOffset(progressPathFlipped, phasePercentages.progress);
@@ -273,11 +283,13 @@ class SeedomCircles extends React.Component {
               style={progressPathStyle}
             />
 
-            <text>
-              <textPath className={`phase-text ${progressPathFlipped ? "flipped" : null}`} xlinkHref={`${progressPathFlipped ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${progressTextOffset}%`}>
-                {progressText}
-              </textPath>
-            </text>
+            {progressTextShown &&
+              <text>
+                <textPath className={`phase-text ${progressPathFlipped ? "flipped" : null}`} xlinkHref={`${progressPathFlipped ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${progressTextOffset}%`}>
+                  {progressText}
+                </textPath>
+              </text>
+            }
 
           </g>
 
@@ -287,9 +299,5 @@ class SeedomCircles extends React.Component {
     );
   }
 }
-
-SeedomCircles.propTypes = {
-  percentage: PropTypes.number.isRequired
-};
 
 export default SeedomCircles;

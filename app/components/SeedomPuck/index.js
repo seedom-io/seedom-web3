@@ -60,15 +60,15 @@ class SeedomPuck extends Component {
     participant: PropTypes.shape({
       entries: PropTypes.number.isRequired,
       hashedRandom: PropTypes.string.isRequired
-    }).isRequired,
+    }),
     raiser: PropTypes.shape({
       endTime: PropTypes.instanceOf(Date).isRequired,
       expireTime: PropTypes.instanceOf(Date).isRequired,
       kickoffTime: PropTypes.instanceOf(Date).isRequired,
       revealTime: PropTypes.instanceOf(Date).isRequired,
       valuePerEntry: PropTypes.number.isRequired
-    }).isRequired,
-    winner: PropTypes.string.isRequired,
+    }),
+    winner: PropTypes.string,
     winningParticipant: PropTypes.shape({
       random: PropTypes.string.isRequired
     })
@@ -110,7 +110,7 @@ class SeedomPuck extends Component {
   }
 
   render() {
-    const { charityHashedRandom, hasBegun, isRaising } = this.state;
+    const { charityHashedRandom, hasBegun, isRaising, isLoading } = this.state;
     const { participant, raiser, winner, winningParticipant } = this.props;
 
     const phase = getPhase({
@@ -124,17 +124,17 @@ class SeedomPuck extends Component {
 
     return (
       <div className='seedom-puck'>
-        <SeedomCircles percentage={50} isLoading={this.state.isLoading} raiser={raiser} />
+        <SeedomCircles percentage={50} isLoading={isLoading} raiser={raiser} />
         <SeedomSeed isShown={phase === 'SEED'} />
         <SeedomBegin isShown={phase === 'BEGIN'} onBegin={this.handleBegin} />
         <SeedomParticipate isShown={phase === 'PARTICIPATE'} setLoading={this.setLoading} onParticipate={this.handleParticipate} />
-        <SeedomParticipated isShown={phase === 'PARTICIPATED'} participant={this.state.participant} onGetMoreEntries={this.handleGetMoreEntries} />
+        <SeedomParticipated isShown={phase === 'PARTICIPATED'} participant={participant} onGetMoreEntries={this.handleGetMoreEntries} />
         <SeedomRaise isShown={phase === 'RAISE'} setLoading={this.setLoading} onRaise={this.handleRaise} />
         <SeedomReveal isShown={phase === 'REVEAL'} setLoading={this.setLoading} onReveal={this.handleReveal} />
         <SeedomRevealed isShown={phase === 'REVEALED'} />
         <SeedomEnd isShown={phase === 'END'} />
-        <SeedomWin isShown={phase === 'WIN'} winner={this.state.winner} winningParticipant={this.state.winningParticipant} />
-        <SeedomError isShown={phase === 'ERROR'} error={!this.state.participant ? "participation" : null} />
+        <SeedomWin isShown={phase === 'WIN'} winner={winner} winningParticipant={winningParticipant} />
+        <SeedomError isShown={phase === 'ERROR'} error={!participant ? "participation" : null} />
       </div>
     );
   }
