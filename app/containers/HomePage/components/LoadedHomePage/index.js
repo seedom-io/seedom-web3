@@ -14,7 +14,7 @@ const parseRaiser = raiser => {
     expireTime: epochToDate(raiser._expireTime),
     kickoffTime: epochToDate(raiser._kickoffTime),
     revealTime: epochToDate(raiser._revealTime),
-    valuePerEntry: raiser._valuePerEntry
+    valuePerEntry: Number(raiser._valuePerEntry)
   };
 };
 

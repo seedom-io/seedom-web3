@@ -24,11 +24,11 @@ class SeedomPuck extends Component {
   static propTypes = {
     onParticipate: PropTypes.func.isRequired,
     raiser: PropTypes.shape({
-      endTime: PropTypes.instanceOf(Date),
-      expireTime: PropTypes.instanceOf(Date),
-      kickoffTime: PropTypes.instanceOf(Date),
-      revealTime: PropTypes.instanceOf(Date),
-      valuePerEntry: 0
+      endTime: PropTypes.instanceOf(Date).isRequired,
+      expireTime: PropTypes.instanceOf(Date).isRequired,
+      kickoffTime: PropTypes.instanceOf(Date).isRequired,
+      revealTime: PropTypes.instanceOf(Date).isRequired,
+      valuePerEntry: PropTypes.number.isRequired
     }).isRequired
   }
 
