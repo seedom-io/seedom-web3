@@ -11,13 +11,42 @@ import SeedomEnd from '../SeedomEnd';
 import SeedomWin from '../SeedomWin';
 import SeedomError from '../SeedomError';
 import './index.scss';
-import { loadavg } from 'os';
 
 const PHASES = {
   BEGIN: 'BEGIN',
   PARTICIPATION: 'PARTICIPATION',
   REVEAL: 'REVEAL',
   END: 'END'
+};
+
+const getPhase = ({ charityHashedRandom, raiser, hasBegun, isRaising, participant }) => {
+  const now = Date.now();
+
+  if (now > raiser.kickoffTime && now < raiser.revealTime) {
+    if (!charityHashedRandom) {
+      return 'SEED';
+    } else if (!participant) {
+      if (!hasBegun) {
+        return 'BEGIN';
+      } else {
+        return 'PARTICIPATE';
+      }
+    } else {
+      if (!isRaising) {
+        return 'PARTICIPATED';
+      } else {
+        return 'RAISE';
+      }
+    }
+  } else if (now > raiser.revealTime && now < raiser.endTime) {
+    if (!participant) {
+      return 'ERROR';
+    } else {
+      return 'REVEAL';
+    }
+  }
+
+  return 'END';
 };
 
 class SeedomPuck extends Component {
@@ -40,43 +69,11 @@ class SeedomPuck extends Component {
       hasBegun: false,
       isRaising: false,
       charityHashedRandom: null,
-      raiser: this.props.raiser,
       participant: null
     };
   }
 
-  getPhase() {
-    const now = Date.now();
-    const raiser = this.state.raiser;
-
-    if (now > raiser.kickoffTime && now < raiser.revealTime) {
-      if (!this.state.charityHashedRandom) {
-        return "SEED";
-      } else if (!this.state.participant) {
-        if (!this.state.hasBegun) {
-          return "BEGIN";
-        } else {
-          return "PARTICIPATE";
-        }
-      } else {
-        if (!this.state.isRaising) {
-          return "PARTICIPATED";
-        } else {
-          return "RAISE";
-        }
-      }
-    } else if (now > raiser.revealTime && now < raiser.endTime) {
-      if (!this.state.participant) {
-        return "ERROR";
-      } else {
-        return "REVEAL";
-      }
-    }
-
-    return "END";
-  }
-
-  setLoading = (loading) => {
+  setLoading = loading => {
     this.setState({ isLoading: loading });
   }
 
@@ -97,11 +94,20 @@ class SeedomPuck extends Component {
   }
 
   render() {
-    const phase = this.getPhase();
+    const { charityHashedRandom, hasBegun, isRaising, participant } = this.state;
+    const { raiser } = this.props;
+
+    const phase = getPhase({
+      charityHashedRandom,
+      hasBegun,
+      isRaising,
+      participant,
+      raiser
+    });
 
     return (
-      <div className="seedom-puck">
-        <SeedomCircles percentage={50} isLoading={this.state.isLoading} raiser={this.state.raiser} />
+      <div className='seedom-puck'>
+        <SeedomCircles percentage={50} isLoading={this.state.isLoading} raiser={raiser} />
         <SeedomSeed isShown={phase === 'SEED'} />
         <SeedomBegin isShown={phase === 'BEGIN'} onBegin={this.handleBegin} />
         <SeedomParticipate isShown={phase === 'PARTICIPATE'} setLoading={this.setLoading} onParticipate={this.handleParticipate} />
@@ -110,7 +116,7 @@ class SeedomPuck extends Component {
         <SeedomReveal isShown={phase === 'REVEAL'} setLoading={this.setLoading} />
         <SeedomEnd isShown={phase === 'END'} />
         <SeedomWin isShown={phase === 'WIN'} />
-        <SeedomError isShown={phase === 'ERROR'} error={!this.state.participant ? "participation" : null} />
+        <SeedomError isShown={phase === 'ERROR'} error={!this.state.participant ? 'participation' : null} />
       </div>
     );
   }
