@@ -6,6 +6,7 @@ import { rpcWeb3, wsWeb3 } from '../../../../utils/web3';
 import hashRandom from '../../../../utils/hashRandom';
 import testJSON from '../../../../../../seedom-solidity/deployment/test.json';
 import * as parsers from './parsers';
+import * as bytes from '../../../../utils/bytes';
 
 import * as seedomActions from '../../../../redux/modules/seedom';
 import { setParticipant } from '../../../../redux/modules/seedom';
@@ -64,6 +65,7 @@ class LoadedHomePage extends React.Component {
     this.retrieveCurrentRaiser();
     this.retrieveCharityHashedRandom();
     this.retrieveParticipant();
+    this.retrieveWinner();
   }
 
   retrieveCurrentRaiser() {
@@ -118,6 +120,47 @@ class LoadedHomePage extends React.Component {
             hashedRandom: participant.hashedRandom,
             random: participant.random
           });
+        },
+        err => {
+          console.error(err);
+        }
+      );
+  }
+
+  retrieveWinner() {
+    const { account } = this.props;
+
+    this.state.wsContract.methods
+      .winner()
+      .call({
+        from: account
+      })
+      .then(
+        data => {
+          this.setState({ winner: data });
+        },
+        err => {
+          console.error(err);
+        }
+      );
+  }
+
+  retrieveWinnerRandom() {
+    const { account } = this.props;
+    const { winner } = this.state;
+
+    if (bytes.isZero20(winner)) {
+      return;
+    }
+
+    this.state.wsContract.methods
+      .participant()
+      .call({
+        from: account
+      })
+      .then(
+        data => {
+          this.setState({ winner: data });
         },
         err => {
           console.error(err);
@@ -292,7 +335,6 @@ class LoadedHomePage extends React.Component {
       charityHashedRandom,
       hashedRandom,
       entries,
-      random,
       winner,
       winnerRandom
     } = this.state;
@@ -305,6 +347,7 @@ class LoadedHomePage extends React.Component {
         </p>
         {raiser &&
           <SeedomPuck
+            hasMetamask={true}
             raiser={raiser}
             charityHashedRandom={charityHashedRandom}
             hashedRandom={hashedRandom}

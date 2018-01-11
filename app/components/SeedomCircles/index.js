@@ -15,26 +15,6 @@ const BACKGROUND_PADDING = 50;
 const LOADERS_PERCENTAGE = 20;
 
 class SeedomCircles extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      now: new Date()
-    };
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      this.setState({
-        now: new Date()
-      })
-    }, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
   getPhasePercentages() {
     const kickoffTime = this.props.raiser.kickoffTime;
     const revealTime = this.props.raiser.revealTime;
@@ -42,7 +22,7 @@ class SeedomCircles extends React.Component {
     const raiserTime = endTime - kickoffTime;
     const participationTime = revealTime - kickoffTime;
     const revelationTime = endTime - revealTime;
-    const progressTime = this.state.now - kickoffTime;
+    const progressTime = this.props.now - kickoffTime;
 
     return {
       participation: 100 * participationTime / raiserTime,
@@ -54,8 +34,8 @@ class SeedomCircles extends React.Component {
   getProgressText() {
     const revealTime = this.props.raiser.revealTime;
     const endTime = this.props.raiser.endTime;
-    const timeUntilReveal = revealTime - this.state.now;
-    const timeUntilEnd = endTime - this.state.now;
+    const timeUntilReveal = revealTime - this.props.now;
+    const timeUntilEnd = endTime - this.props.now;
 
     if (timeUntilEnd <= 0) {
       return "FINISHED";

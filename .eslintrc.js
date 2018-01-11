@@ -15,6 +15,7 @@ module.exports = {
     "import/prefer-default-export": "off",
     "object-curly-newline": "off",
     "arrow-body-style": "off",
-    "react/sort-comp": "off"
+    "react/sort-comp": "off",
+    "react/prefer-stateless-function": "off"
   }
 }

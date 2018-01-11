@@ -8,7 +8,7 @@ $primary: #31CF65;
 $waiting: #ff6a00;
 $success: darken($primary, 15%);
 $loading: black;
-$error: red;
+$error: darken(red, 10%);
 $win: purple;
 
 $puck-background: lighten($background, 10%);

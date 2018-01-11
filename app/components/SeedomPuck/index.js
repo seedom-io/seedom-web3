@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as bytes from '../../utils/bytes';
 import SeedomCircles from '../SeedomCircles';
 import SeedomSeed from '../SeedomSeed';
 import SeedomBegin from '../SeedomBegin';
@@ -14,9 +15,8 @@ import SeedomError from '../SeedomError';
 import seedomLogo from '../../img/logos/seedom.svg';
 import './index.scss';
 
-const zero = '0x0000000000000000000000000000000000000000000000000000000000000000';
-
 const getPhase = ({
+  hasMetamask,
   raiser,
   charityHashedRandom,
   hashedRandom,
@@ -26,10 +26,13 @@ const getPhase = ({
 }) => {
   const now = Date.now();
 
+  if (!hasMetamask) {
+    return 'error-metamask';
+  }
   if (now > raiser.kickoffTime && now < raiser.revealTime) {
-    if (charityHashedRandom === zero) {
+    if (bytes.isZero32(charityHashedRandom)) {
       return 'seed';
-    } else if (hashedRandom === zero) {
+    } else if (bytes.isZero32(hashedRandom)) {
       if (!hasBegun) {
         return 'begin';
       }
@@ -40,12 +43,17 @@ const getPhase = ({
     }
     return 'raise';
   } else if (now > raiser.revealTime && now < raiser.endTime) {
-    if (hashedRandom === zero) {
-      return 'error';
+    if (bytes.isZero32(charityHashedRandom)) {
+      return 'error-charityHashedRandom';
+    } else if (bytes.isZero32(hashedRandom)) {
+      return 'error-hashedRandom';
     }
     return 'reveal';
   }
-  if (!winner) {
+  if (bytes.isZero20(winner)) {
+    if (bytes.isZero32(charityHashedRandom)) {
+      return 'error-charityHashedRandom';
+    }
     return 'end';
   }
   return 'win';
@@ -53,6 +61,7 @@ const getPhase = ({
 
 class SeedomPuck extends Component {
   static propTypes = {
+    hasMetamask: PropTypes.bool.isRequired,
     raiser: PropTypes.shape({
       endTime: PropTypes.instanceOf(Date).isRequired,
       expireTime: PropTypes.instanceOf(Date).isRequired,
@@ -68,7 +77,7 @@ class SeedomPuck extends Component {
     onParticipate: PropTypes.func.isRequired,
     onRaise: PropTypes.func.isRequired,
     onReveal: PropTypes.func.isRequired,
-    onWithdraw: PropTypes.func.isRequired,
+    onWithdraw: PropTypes.func.isRequired
   }
 
   static defaultProps = {
@@ -85,8 +94,21 @@ class SeedomPuck extends Component {
     this.state = {
       isLoading: false,
       hasBegun: false,
-      isRaising: false
+      isRaising: false,
+      now: new Date()
     };
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      this.setState({
+        now: new Date()
+      });
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   setLoading = loading => {
@@ -117,6 +139,7 @@ class SeedomPuck extends Component {
   render() {
     const { hasBegun, isRaising, isLoading } = this.state;
     const {
+      hasMetamask,
       raiser,
       charityHashedRandom,
       hashedRandom,
@@ -126,6 +149,7 @@ class SeedomPuck extends Component {
     } = this.props;
 
     const phase = getPhase({
+      hasMetamask,
       raiser,
       charityHashedRandom,
       hashedRandom,
@@ -140,7 +164,7 @@ class SeedomPuck extends Component {
           <img alt="seedom" src={seedomLogo} />
         </div>
         <div className="interface">
-          <SeedomCircles percentage={50} isLoading={isLoading} raiser={raiser} />
+          <SeedomCircles percentage={50} isLoading={isLoading} raiser={raiser} now={this.state.now} />
           <SeedomSeed isShown={phase === 'seed'} />
           <SeedomBegin isShown={phase === 'begin'} onBegin={this.handleBegin} />
           <SeedomParticipate isShown={phase === 'participate'} setLoading={this.setLoading} onParticipate={this.handleParticipate} />
@@ -150,7 +174,7 @@ class SeedomPuck extends Component {
           <SeedomRevealed isShown={phase === 'revealed'} />
           <SeedomEnd isShown={phase === 'end'} />
           <SeedomWin isShown={phase === 'win'} winner={winner} winnerRandom={winnerRandom} />
-          <SeedomError isShown={phase === 'error'} error={!hashedRandom ? 'participation' : null} />
+          <SeedomError isShown={phase.startsWith('error')} error={phase} />
         </div>
       </div>
     );
