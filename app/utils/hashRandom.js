@@ -1,9 +1,9 @@
 import { keccak256 } from 'js-sha3';
 
-function hashedRandom(myRandom, participant) {
+function hashRandom(random, participant) {
   const hasher = new keccak256.create(256); // eslint-disable-line new-cap
 
-  const randomHex = myRandom.substr(2);
+  const randomHex = random.substr(2);
   const randomBuffer = Buffer.from([randomHex]);
   hasher.update(randomBuffer.toString('hex'));
 
@@ -14,4 +14,4 @@ function hashedRandom(myRandom, participant) {
   return `0x${hasher.hex()}`;
 }
 
-export default hashedRandom;
+export default hashRandom;

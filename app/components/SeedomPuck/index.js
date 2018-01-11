@@ -54,7 +54,8 @@ class SeedomPuck extends Component {
     onParticipate: PropTypes.func.isRequired,
     participant: PropTypes.shape({
       entries: PropTypes.number.isRequired,
-      hashedRandom: PropTypes.string.isRequired
+      hashedRandom: PropTypes.string.isRequired,
+      random: PropTypes.string
     }),
     raiser: PropTypes.shape({
       endTime: PropTypes.instanceOf(Date).isRequired,

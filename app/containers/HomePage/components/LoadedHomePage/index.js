@@ -3,23 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SeedomPuck from '../../../../components/SeedomPuck';
 import { rpcWeb3, wsWeb3 } from '../../../../utils/web3';
-import hashedRandom from '../../../../utils/hashedRandom';
+import hashRandom from '../../../../utils/hashRandom';
 import testJSON from '../../../../../../seedom-solidity/deployment/test.json';
+import * as parsers from './parsers';
 
 import * as seedomActions from '../../../../redux/modules/seedom';
+import { setParticipant } from '../../../../redux/modules/seedom';
 
-function epochToDate(seconds) {
-  return new Date(seconds * 1000);
-}
-
-const parseRaiser = raiser => {
-  return {
-    endTime: epochToDate(raiser._endTime),
-    expireTime: epochToDate(raiser._expireTime),
-    kickoffTime: epochToDate(raiser._kickoffTime),
-    revealTime: epochToDate(raiser._revealTime),
-    valuePerEntry: Number(raiser._valuePerEntry)
-  };
+const getContractAddress = () => {
+  return testJSON.seedom[0].address;
 };
 
 @connect(
@@ -31,27 +23,22 @@ const parseRaiser = raiser => {
   }
 )
 class LoadedHomePage extends React.Component {
-  static propTypes = {
-    participant: PropTypes.shape({
-      entries: PropTypes.number.isRequired,
-      hashedRandom: PropTypes.string.isRequired
-    }).isRequired,
-    setParticipant: PropTypes.func.isRequired,
-  }
-
   constructor(props) {
     super(props);
     this.state = {
       rpcContract: null,
+      wsContract: null,
       raiser: null
     };
   }
 
-
   componentWillMount() {
-    const contractAddress = testJSON.seedom[0].address;
+    this.setupContracts(this.retrieveInitialData);
+  }
 
-    const { account, contract, setParticipant } = this.props;
+  setupContracts(done) {
+    const contractAddress = getContractAddress();
+    const { account, contract } = this.props;
 
     const rpcContract = new rpcWeb3.eth.Contract(contract, contractAddress, {
       from: account,
@@ -65,32 +52,27 @@ class LoadedHomePage extends React.Component {
     });
 
     this.setState({
-      rpcContract
-    });
+      rpcContract,
+      wsContract
+    }, done);
+  }
 
-    wsContract.methods
+  retrieveInitialData() {
+    this.retrieveCurrentRaiser();
+    this.retrieveParticipant();
+  }
+
+  retrieveCurrentRaiser() {
+    const { account } = this.props;
+
+    this.state.wsContract.methods
       .currentRaiser()
       .call({
         from: account
       })
       .then(
-        raiser => {
-          this.setState({ raiser: parseRaiser(raiser) });
-        },
-        err => {
-          console.error(err);
-        }
-      );
-
-
-    wsContract.methods
-      .participant(account)
-      .call({
-        from: account
-      })
-      .then(
-        participant => {
-          setParticipant({ participant });
+        data => {
+          this.setState({ raiser: parsers.parseRaiser(data) });
         },
         err => {
           console.error(err);
@@ -98,15 +80,110 @@ class LoadedHomePage extends React.Component {
       );
   }
 
-  handleParticipate = ({ seed, numOfEntries }) => {
+  retrieveParticipant() {
+    const { account } = this.props;
+
+    this.state.wsContract.methods
+      .participant(account)
+      .call({
+        from: account
+      })
+      .then(
+        data => {
+          const participant = parsers.parseParticipant(data);
+          this.setState({
+            entries: participant.entries,
+            hashedRandom: participant.hashedRandom,
+            random: participant.random
+          });
+        },
+        err => {
+          console.error(err);
+        }
+      );
+  }
+
+  setupEventsHandlers() {
+    const { account } = this.props;
+
+    this.state.wsContract.events.allEvents({}, (error, event) => {
+      const type = event.event;
+      const values = event.returnValues;
+      switch (type) {
+        case 'Kickoff':
+          this.handleKickoffEvent(values);
+          break;
+        case 'Participation':
+          this.handleParticipationEvent(account, values);
+          break;
+        case 'Raise':
+          this.handleRaiseEvent(account, values);
+          break;
+        case 'Revelation':
+          this.handleRevelationEvent(account, values);
+          break;
+        case 'Win':
+          this.handleWinEvent(account, values);
+          break;
+        case 'Cancellation':
+        case 'Withdrawal':
+        default:
+          break;
+      }
+    });
+  }
+
+  handleKickoffEvent(values) {
+    this.setState({ raiser: parsers.parseRaiser(values) });
+  }
+
+  handleParticipationEvent(account, values) {
+    const participation = parsers.parseParticipation(values);
+    if (participation.participant === account) {
+      this.setState({
+        entries: participation.entries,
+        hashedRandom: participation.hashedRandom
+      });
+    }
+  }
+
+  handleRaiseEvent(account, values) {
+    const raise = parsers.parseRaise(values);
+    if (raise.participant === account) {
+      this.setState({
+        entries: this.state.entries + raise.entries
+      });
+    }
+  }
+
+  handleRevelationEvent(account, values) {
+    const revelation = parsers.parseRevelation(values);
+    if (revelation.participant === account) {
+      this.setState({
+        random: revelation.random
+      });
+    }
+  }
+
+  handleWinEvent(account, values) {
+    const win = parsers.parseWin(values);
+    if (win.participant === account) {
+      this.setState({
+        winner: win.participant,
+        winnerRandom: win.random
+      });
+    }
+  }
+
+  handleParticipate = ({ random, numOfEntries }) => {
     const { account } = this.props;
     const { raiser, rpcContract } = this.state;
 
-    const hashedSeed = hashedRandom(seed, account);
+    const hashedRandom = hashRandom(random, account);
     const value = numOfEntries * (raiser.valuePerEntry);
 
     rpcContract.methods
-      .participate(hashedSeed.valueOf())
+      .participate(hashedRandom.valueOf())
       .send({
         from: account,
         gas: 1000000,
@@ -120,9 +197,67 @@ class LoadedHomePage extends React.Component {
       });
   }
 
-  render() {
-    const { account, participant } = this.props;
+  handleRaise = ({ numOfEntries }) => {
+    const { account } = this.props;
     const { raiser } = this.state;
+
+    const contractAddress = getContractAddress();
+    const value = numOfEntries * (raiser.valuePerEntry);
+
+    rpcWeb3.eth
+      .sendTransaction({
+        from: account,
+        to: contractAddress,
+        gas: 1000000,
+        gasPrice: '20000000000',
+        value
+      })
+      .then(result => {
+        // if result.status === 0, this failed
+        console.log('Raise succeeded');
+        console.log(result);
+      });
+  }
+
+  handleReveal = ({ random }) => {
+    const { account } = this.props;
+    const { rpcContract } = this.state;
+
+    rpcContract.methods
+      .reveal(random.valueOf())
+      .send({
+        from: account,
+        gas: 1000000,
+        gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+      })
+      .then(result => {
+        // if result.status === 0, this failed
+        console.log('Reveal succeeded');
+        console.log(result);
+      });
+  }
+
+  handleWithdraw = () => {
+    const { account } = this.props;
+    const { rpcContract } = this.state;
+
+    rpcContract.methods
+      .withdraw()
+      .send({
+        from: account,
+        gas: 1000000,
+        gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+      })
+      .then(result => {
+        // if result.status === 0, this failed
+        console.log('Withdraw succeeded');
+        console.log(result);
+      });
+  }
+
+  render() {
+    const { account } = this.props;
+    const { raiser, entries, hashedRandom, random, winner, winnerRandom } = this.state;
 
     return (
       <div>
@@ -133,8 +268,15 @@ class LoadedHomePage extends React.Component {
         {raiser &&
           <SeedomPuck
             raiser={raiser}
-            participant={participant}
+            entries={entries}
+            hashedRandom={hashedRandom}
+            random={random}
+            winner={winner}
+            winnerRandom={winnerRandom}
             onParticipate={this.handleParticipate}
+            onRaise={this.handleRaise}
+            onReveal={this.handleReveal}
+            onWithdraw={this.handleWithdraw}
           />
         }
       </div>
