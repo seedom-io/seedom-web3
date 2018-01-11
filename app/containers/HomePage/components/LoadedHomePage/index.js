@@ -33,7 +33,10 @@ class LoadedHomePage extends React.Component {
   }
 
   componentWillMount() {
-    this.setupContracts(this.retrieveInitialData);
+    this.setupContracts(() => {
+      this.retrieveInitialData();
+      this.setupEventsHandlers();
+    });
   }
 
   setupContracts(done) {

@@ -27,7 +27,7 @@ const getPhase = ({
   const now = Date.now();
 
   if (now > raiser.kickoffTime && now < raiser.revealTime) {
-    if (!charityHashedRandom) {
+    if (charityHashedRandom === zero) {
       return 'seed';
     } else if (hashedRandom === zero) {
       if (!hasBegun) {
@@ -40,7 +40,7 @@ const getPhase = ({
     }
     return 'raise';
   } else if (now > raiser.revealTime && now < raiser.endTime) {
-    if (!hashedRandom) {
+    if (hashedRandom === zero) {
       return 'error';
     }
     return 'reveal';

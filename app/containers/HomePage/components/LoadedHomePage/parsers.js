@@ -60,6 +60,7 @@ const parseWin = win => {
 
 export {
   parseRaiser,
+  parseSeed,
   parseParticipant,
   parseParticipation,
   parseRaise,
