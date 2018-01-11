@@ -29,16 +29,14 @@
       animation: 2s ease-in-out 1s infinite pulse;
     }
 
+    &.error {
+      fill: $error;
+    }
+
   }
 
   .element {
-    display: none;
-
-    &.checkmark {
-      fill: transparent;
-      display: block;
-    }
-
+    fill: transparent;
   }
 
 }

@@ -9,6 +9,7 @@ import SeedomRaise from '../SeedomRaise';
 import SeedomReveal from '../SeedomReveal';
 import SeedomEnd from '../SeedomEnd';
 import SeedomWin from '../SeedomWin';
+import SeedomError from '../SeedomError';
 import './index.scss';
 import { loadavg } from 'os';
 
@@ -32,9 +33,9 @@ class SeedomPuck extends Component {
     const expireTime = new Date();
 
     kickoffTime.setMinutes(kickoffTime.getMinutes() - 1);
-    revealTime.setMinutes(endTime.getMinutes() + 2);
-    endTime.setMinutes(revealTime.getMinutes() + 2);
-    expireTime.setMinutes(endTime.getMinutes() + 2);
+    revealTime.setMinutes(endTime.getMinutes() + 1);
+    endTime.setMinutes(revealTime.getMinutes() + 1);
+    expireTime.setMinutes(endTime.getMinutes() + 1);
 
     this.state = {
       isLoading: false,
@@ -73,7 +74,11 @@ class SeedomPuck extends Component {
         }
       }
     } else if (now > raiser.revealTime && now < raiser.endTime) {
-      return "REVEAL";
+      if (!this.state.participant) {
+        return "ERROR";
+      } else {
+        return "REVEAL";
+      }
     }
 
     return "END";
@@ -113,6 +118,7 @@ class SeedomPuck extends Component {
         <SeedomReveal isShown={phase === 'REVEAL'} setLoading={this.setLoading} />
         <SeedomEnd isShown={phase === 'END'} />
         <SeedomWin isShown={phase === 'WIN'} />
+        <SeedomError isShown={phase === 'ERROR'} error={!this.state.participant ? "participation" : null} />
       </div>
     );
   }
