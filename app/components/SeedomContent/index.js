@@ -17,11 +17,17 @@ class SeedomContent extends Component {
   }
 
   componentWillReceiveProps(newProps) {
+
+    if (this.props.isShown == newProps.isShown) {
+      return;
+    }
+
     if (!newProps.isShown) {
       this.hide();
     } else {
       this.show();
     }
+
   }
 
   show() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import SeedomContent from '../SeedomContent';
+import SeedomIndicator from '../SeedomIndicator';
 import charityLogo from '../../img/logos/charity.png';
 import './index.scss';
 
@@ -7,6 +8,7 @@ class SeedomRaise extends SeedomContent {
   constructor(props) {
     super(props);
     this.state = {
+      isSubmitting: false,
       seed: '',
       numOfEntries: 0
     };
@@ -14,16 +16,24 @@ class SeedomRaise extends SeedomContent {
 
   show() {
     super.show();
+    this.setState({
+      isSubmitting: false
+    });
     this.entriesInput.focus();
   }
 
   handleSubmit = event => {
-    const { onRaise } = this.props;
+    const { setLoading, onRaise } = this.props;
 
     if (event !== undefined && event.preventDefault) {
       event.preventDefault();
     }
 
+    this.setState({
+      isSubmitting: true
+    });
+
+    setLoading(true);
     onRaise({ seed: this.state.seed, numOfEntries: this.state.numOfEntries });
   }
 
@@ -36,9 +46,12 @@ class SeedomRaise extends SeedomContent {
   render() {
     return (
       <div className={`seedom-content raise ${this.state.className}`}>
-        <img src={charityLogo} />
-        <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" onChange={this.handleNumOfEntriesChange} ref={(input) => { this.entriesInput = input; }} />
-        <a className="button is-primary" onClick={this.handleSubmit}>GET MORE ENTRIES</a>
+        <SeedomIndicator type={this.state.isSubmitting ? "waiting" : null} />
+        <div className="seedom-overlay">
+          <img src={charityLogo} />
+          <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" disabled={this.state.isSubmitting} onChange={this.handleNumOfEntriesChange} ref={(input) => { this.entriesInput = input; }} />
+          <a className="button is-primary" disabled={this.state.isSubmitting} onClick={this.handleSubmit}>GET MORE ENTRIES</a>
+        </div>
       </div>
     );
   }

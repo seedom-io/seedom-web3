@@ -16,15 +16,10 @@ class SeedomParticipate extends SeedomContent {
 
   show() {
     super.show();
-    this.setSubmitting(false);
-    this.emailInput.focus();
-  }
-
-  setSubmitting(submitting) {
-    debugger;
     this.setState({
-      isSubmitting: submitting
+      isSubmitting: false
     });
+    this.emailInput.focus();
   }
 
   handleSubmit = event => {
@@ -34,10 +29,12 @@ class SeedomParticipate extends SeedomContent {
       event.preventDefault();
     }
 
-    this.setSubmitting(true);
+    this.setState({
+      isSubmitting: true
+    });
 
     setLoading(true);
-    //onParticipate({ seed: this.state.seed, numOfEntries: this.state.numOfEntries });
+    onParticipate({ seed: this.state.seed, numOfEntries: this.state.numOfEntries });
   }
 
   handleSeedChange = event => {
@@ -61,7 +58,7 @@ class SeedomParticipate extends SeedomContent {
           <input className="input is-primary" type="text" placeholder="EMAIL ADDRESS" disabled={this.state.isSubmitting} onChange={this.handleNumOfEntriesChange} ref={(input) => { this.emailInput = input; }} />
           <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" disabled={this.state.isSubmitting} onChange={this.handleNumOfEntriesChange} />
           <textarea rows="3" className="textarea is-primary" type="text" placeholder="TYPE A MESSAGE HERE" disabled={this.state.isSubmitting} onChange={this.handleSeedChange} />
-          <a className="button is-primary is-outlined" onClick={this.handleSubmit}>PARTICIPATE</a>
+          <a className="button is-primary is-outlined" disabled={this.state.isSubmitting} onClick={this.handleSubmit}>PARTICIPATE</a>
         </div>
       </div>
     );

@@ -95,7 +95,9 @@ class SeedomPuck extends Component {
     this.props.onParticipate({ seed, numOfEntries });
   }
 
-  handleRaise
+  handleRaise = () => {
+    this.setState({ isRaising: false });
+  }
 
   render() {
     const phase = this.getPhase();
@@ -107,8 +109,8 @@ class SeedomPuck extends Component {
         <SeedomBegin isShown={phase === 'BEGIN'} onBegin={this.handleBegin} />
         <SeedomParticipate isShown={phase === 'PARTICIPATE'} setLoading={this.setLoading} onParticipate={this.handleParticipate} />
         <SeedomParticipated isShown={phase === 'PARTICIPATED'} participant={this.state.participant} onGetMoreEntries={this.handleGetMoreEntries} />
-        <SeedomRaise isShown={phase === 'RAISE'} changeLoading={this.changeLoading} onRaise={this.handleRaise} />
-        <SeedomReveal isShown={phase === 'REVEAL'} changeLoading={this.changeLoading} />
+        <SeedomRaise isShown={phase === 'RAISE'} setLoading={this.setLoading} onRaise={this.handleRaise} />
+        <SeedomReveal isShown={phase === 'REVEAL'} setLoading={this.setLoading} />
         <SeedomEnd isShown={phase === 'END'} />
         <SeedomWin isShown={phase === 'WIN'} />
       </div>
