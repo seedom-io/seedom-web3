@@ -4,6 +4,21 @@ import { rpcWeb3, wsWeb3 } from '../../../../utils/web3';
 import hashedRandom from '../../../../utils/hashedRandom';
 import testJSON from '../../../../../../seedom-solidity/deployment/test.json';
 
+function epochToDate(seconds) {
+  return new Date(seconds * 1000);
+}
+
+const parseRaiser = raiser => {
+  return {
+    endTime: epochToDate(raiser._endTime),
+    expireTime: epochToDate(raiser._expireTime),
+    kickoffTime: epochToDate(raiser._kickoffTime),
+    revealTime: epochToDate(raiser._revealTime),
+    valuePerEntry: raiser._valuePerEntry
+  };
+};
+
+
 class LoadedHomePage extends React.Component {
   constructor(props) {
     super(props);
@@ -41,7 +56,7 @@ class LoadedHomePage extends React.Component {
       })
       .then(
         raiser => {
-          this.setState({ raiser });
+          this.setState({ raiser: parseRaiser(raiser) });
         },
         err => {
           console.error(err);
@@ -54,7 +69,7 @@ class LoadedHomePage extends React.Component {
     const { raiser, rpcContract } = this.state;
 
     const hashedSeed = hashedRandom(seed, account);
-    const value = numOfEntries * (raiser._valuePerEntry);
+    const value = numOfEntries * (raiser.valuePerEntry);
 
     rpcContract.methods
       .participate(hashedSeed.valueOf())
