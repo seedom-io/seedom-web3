@@ -12,6 +12,7 @@ module.exports = {
     "comma-dangle": "off",
     "no-underscore-dangle": "off",
     "react/jsx-filename-extension": ["error", { "extensions": ['.jsx', '.js'] }],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "object-curly-newline": "off"
   }
 }
