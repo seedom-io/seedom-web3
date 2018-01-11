@@ -50,7 +50,7 @@ class SeedomRaise extends SeedomContent {
         <div className="seedom-overlay">
           <img src={charityLogo} />
           <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" disabled={this.state.isSubmitting} onChange={this.handleNumOfEntriesChange} ref={(input) => { this.entriesInput = input; }} />
-          <a className="button is-primary" disabled={this.state.isSubmitting} onClick={this.handleSubmit}>GET MORE ENTRIES</a>
+          <a className="button is-primary is-outlined" disabled={this.state.isSubmitting} onClick={this.handleSubmit}>GET MORE ENTRIES</a>
         </div>
       </div>
     );

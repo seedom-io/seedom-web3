@@ -7,6 +7,7 @@ import SeedomParticipate from '../SeedomParticipate';
 import SeedomParticipated from '../SeedomParticipated';
 import SeedomRaise from '../SeedomRaise';
 import SeedomReveal from '../SeedomReveal';
+import SeedomRevealed from '../SeedomRevealed';
 import SeedomEnd from '../SeedomEnd';
 import SeedomWin from '../SeedomWin';
 import SeedomError from '../SeedomError';
@@ -33,9 +34,9 @@ class SeedomPuck extends Component {
     const expireTime = new Date();
 
     kickoffTime.setMinutes(kickoffTime.getMinutes() - 1);
-    revealTime.setMinutes(endTime.getMinutes() + 1);
-    endTime.setMinutes(revealTime.getMinutes() + 1);
-    expireTime.setMinutes(endTime.getMinutes() + 1);
+    revealTime.setMinutes(endTime.getMinutes() + 5);
+    endTime.setMinutes(revealTime.getMinutes() + 5);
+    expireTime.setMinutes(endTime.getMinutes() + 5);
 
     this.state = {
       isLoading: false,
@@ -49,7 +50,9 @@ class SeedomPuck extends Component {
         expireTime,
         valuePerEntry: 0
       },
-      participant: null
+      participant: null,
+      winner: null,
+      winningParticipant: null
     };
   }
 
@@ -59,7 +62,7 @@ class SeedomPuck extends Component {
 
     if (now > raiser.kickoffTime && now < raiser.revealTime) {
       if (!this.state.charityHashedRandom) {
-        return "SEED";
+        return "WIN";
       } else if (!this.state.participant) {
         if (!this.state.hasBegun) {
           return "BEGIN";
@@ -76,12 +79,18 @@ class SeedomPuck extends Component {
     } else if (now > raiser.revealTime && now < raiser.endTime) {
       if (!this.state.participant) {
         return "ERROR";
-      } else {
+      } if (!this.state.participant.random) {
         return "REVEAL";
+      } else {
+        return "REVEALED";
+      }
+    } else {
+      if (!this.winner) {
+        return "END";
+      } else {
+        return "WIN";
       }
     }
-
-    return "END";
   }
 
   setLoading = (loading) => {
@@ -104,6 +113,10 @@ class SeedomPuck extends Component {
     this.setState({ isRaising: false });
   }
 
+  handleReveal = () => {
+    this.setState({ isRaising: false });
+  }
+
   render() {
     const phase = this.getPhase();
 
@@ -115,9 +128,10 @@ class SeedomPuck extends Component {
         <SeedomParticipate isShown={phase === 'PARTICIPATE'} setLoading={this.setLoading} onParticipate={this.handleParticipate} />
         <SeedomParticipated isShown={phase === 'PARTICIPATED'} participant={this.state.participant} onGetMoreEntries={this.handleGetMoreEntries} />
         <SeedomRaise isShown={phase === 'RAISE'} setLoading={this.setLoading} onRaise={this.handleRaise} />
-        <SeedomReveal isShown={phase === 'REVEAL'} setLoading={this.setLoading} />
+        <SeedomReveal isShown={phase === 'REVEAL'} setLoading={this.setLoading} onReveal={this.handleReveal} />
+        <SeedomRevealed isShown={phase === 'REVEALED'} />
         <SeedomEnd isShown={phase === 'END'} />
-        <SeedomWin isShown={phase === 'WIN'} />
+        <SeedomWin isShown={phase === 'WIN'} winner={this.state.winner} winningParticipant={this.state.winningParticipant} />
         <SeedomError isShown={phase === 'ERROR'} error={!this.state.participant ? "participation" : null} />
       </div>
     );

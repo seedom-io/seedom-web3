@@ -13,6 +13,9 @@ class SeedomIndicator extends Component {
             ),
             "error": (
               <path className="element" d="M13,13 L39,39 M39,13 L13,39" />
+            ),
+            "win": (
+              <circle className="element pulse" cx="26" cy="26" r="25" />
             )
           }[this.props.type]}
         </svg>

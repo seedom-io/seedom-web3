@@ -4,26 +4,28 @@ import SeedomIndicator from '../SeedomIndicator';
 import charityLogo from '../../img/logos/charity.png';
 import './index.scss';
 
-class SeedomParticipate extends SeedomContent {
+class SeedomRevealed extends SeedomContent {
   render() {
     return (
-      <div className={`seedom-content participated ${this.state.className}`}>
+      <div className={`seedom-content revealed ${this.state.className}`}>
         <SeedomIndicator type={this.props.isShown ? "checkmark" : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />
         </div>
         <div className="seedom-overlay">
-          <div className="entries">
+          <div className="puck-message entries">
             <div className="total">{this.props.participant ? this.props.participant.entries : 0}</div>
-            ENTRIES OBTAINED
+            ENTRIES CONFIRMED
           </div>
         </div>
         <div className="seedom-overlay">
-          <a className="button is-primary is-outlined" onClick={this.props.onGetMoreEntries}>GET MORE ENTRIES</a>
+          <div className="puck-message thank-you">
+            THANKS YOU!
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default SeedomParticipate;
+export default SeedomRevealed;

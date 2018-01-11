@@ -1,12 +1,14 @@
 import React from 'react';
 import SeedomContent from '../SeedomContent';
-import eff from './eff.png';
+import SeedomIndicator from '../SeedomIndicator';
+import charityLogo from '../../img/logos/charity.png';
 import './index.scss';
 
 class SeedomReveal extends SeedomContent {
   constructor(props) {
     super(props);
     this.state = {
+      isSubmitting: false,
       seed: '',
       numOfEntries: 0
     };
@@ -14,17 +16,25 @@ class SeedomReveal extends SeedomContent {
 
   show() {
     super.show();
+    this.setState({
+      isSubmitting: false
+    });
     this.randomTextarea.focus();
   }
 
   handleSubmit = event => {
-    const { onParticipate } = this.props;
+    const { setLoading, onReveal } = this.props;
 
     if (event !== undefined && event.preventDefault) {
       event.preventDefault();
     }
 
-    onParticipate({ seed: this.state.seed, numOfEntries: this.state.numOfEntries });
+    this.setState({
+      isSubmitting: true
+    });
+
+    setLoading(true);
+    onReveal({ seed: this.state.seed, numOfEntries: this.state.numOfEntries });
   }
 
   handleSeedChange = event => {
@@ -33,18 +43,15 @@ class SeedomReveal extends SeedomContent {
     });
   };
 
-  handleNumOfEntriesChange = event => {
-    this.setState({
-      numOfEntries: event.target.value
-    });
-  };
-
   render() {
     return (
       <div className={`seedom-content participate ${this.state.className}`}>
-        <img src={eff} />
-        <textarea className="textarea is-primary" type="text" placeholder="TYPE YOUR RANDOM HERE" onChange={this.handleSeedChange} ref={(textarea) => { this.randomTextarea = textarea; }} />
-        <a className="button is-primary" onClick={this.handleSubmit}>REVEAL</a>
+        <SeedomIndicator type={this.state.isSubmitting ? "waiting" : null} />
+        <div className="seedom-overlay">
+          <img src={charityLogo} />
+          <textarea className="textarea is-primary" type="text" placeholder="TYPE YOUR RANDOM HERE" disabled={this.state.isSubmitting} onChange={this.handleSeedChange} ref={(textarea) => { this.randomTextarea = textarea; }} />
+          <a className="button is-primary is-outlined" disabled={this.state.isSubmitting} onClick={this.handleSubmit}>REVEAL</a>
+        </div>
       </div>
     );
   }

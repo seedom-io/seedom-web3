@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import SeedomContent from '../SeedomContent';
+import SeedomIndicator from '../SeedomIndicator';
 import './index.scss';
-import eff from './eff.png';
+import charityLogo from '../../img/logos/charity.png';
 
 class SeedomEnd extends SeedomContent {
 
@@ -11,13 +12,14 @@ class SeedomEnd extends SeedomContent {
 
   render() {
     return (
-      <div className={`seedom-content seed ${this.state.className}`}>
+      <div className={`seedom-content end ${this.state.className}`}>
+        <SeedomIndicator type={this.props.isShown ? "waiting" : null} />
         <div className="seedom-overlay">
-          <img src={eff} />
+          <img src={charityLogo} />
         </div>
         <div className="seedom-overlay">
-          <div className="top-message">WAITING FOR</div>
-          <div className="bottom-message">CHARITY TO REVEAL</div>
+          <div className="puck-message top">WAITING FOR</div>
+          <div className="puck-message">CHARITY TO REVEAL</div>
         </div>
       </div>
     );
