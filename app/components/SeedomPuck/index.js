@@ -12,7 +12,6 @@ import SeedomEnd from '../SeedomEnd';
 import SeedomWin from '../SeedomWin';
 import SeedomError from '../SeedomError';
 import './index.scss';
-import { loadavg } from 'os';
 
 const PHASES = {
   BEGIN: 'BEGIN',
@@ -21,79 +20,72 @@ const PHASES = {
   END: 'END'
 };
 
+const getPhase = ({ charityHashedRandom, raiser, hasBegun, isRaising, participant, winner }) => {
+  const now = Date.now();
+
+  if (now > raiser.kickoffTime && now < raiser.revealTime) {
+    if (!charityHashedRandom) {
+      return 'SEED';
+    } else if (!participant) {
+      if (!hasBegun) {
+        return 'BEGIN';
+      } else {
+        return 'PARTICIPATE';
+      }
+    } else {
+      if (!isRaising) {
+        return 'PARTICIPATED';
+      } else {
+        return 'RAISE';
+      }
+    }
+  } else if (now > raiser.revealTime && now < raiser.endTime) {
+    if (!participant) {
+      return 'ERROR';
+    } else {
+      return 'REVEAL';
+    }
+  } else {
+    if (!winner) {
+      return "END";
+    } else {
+      return "WIN";
+    }
+  }
+};
+
 class SeedomPuck extends Component {
   static propTypes = {
-    onParticipate: PropTypes.func.isRequired
+    onParticipate: PropTypes.func.isRequired,
+    participant: PropTypes.shape({
+      entries: PropTypes.number.isRequired,
+      hashedRandom: PropTypes.string.isRequired
+    }).isRequired,
+    raiser: PropTypes.shape({
+      endTime: PropTypes.instanceOf(Date).isRequired,
+      expireTime: PropTypes.instanceOf(Date).isRequired,
+      kickoffTime: PropTypes.instanceOf(Date).isRequired,
+      revealTime: PropTypes.instanceOf(Date).isRequired,
+      valuePerEntry: PropTypes.number.isRequired
+    }).isRequired,
+    winner: PropTypes.string.isRequired,
+    winningParticipant: PropTypes.shape({
+      random: PropTypes.string.isRequired
+    })
   }
 
   constructor(props) {
     super(props);
-    const kickoffTime = new Date();
-    const revealTime = new Date();
-    const endTime = new Date();
-    const expireTime = new Date();
-
-    kickoffTime.setMinutes(kickoffTime.getMinutes() - 1);
-    revealTime.setMinutes(endTime.getMinutes() + 5);
-    endTime.setMinutes(revealTime.getMinutes() + 5);
-    expireTime.setMinutes(endTime.getMinutes() + 5);
 
     this.state = {
       isLoading: false,
       hasBegun: false,
       isRaising: false,
       charityHashedRandom: null,
-      raiser: {
-        kickoffTime,
-        revealTime,
-        endTime,
-        expireTime,
-        valuePerEntry: 0
-      },
-      participant: null,
-      winner: null,
-      winningParticipant: null
     };
   }
 
-  getPhase() {
-    const now = Date.now();
-    const raiser = this.state.raiser;
-
-    if (now > raiser.kickoffTime && now < raiser.revealTime) {
-      if (!this.state.charityHashedRandom) {
-        return "WIN";
-      } else if (!this.state.participant) {
-        if (!this.state.hasBegun) {
-          return "BEGIN";
-        } else {
-          return "PARTICIPATE";
-        }
-      } else {
-        if (!this.state.isRaising) {
-          return "PARTICIPATED";
-        } else {
-          return "RAISE";
-        }
-      }
-    } else if (now > raiser.revealTime && now < raiser.endTime) {
-      if (!this.state.participant) {
-        return "ERROR";
-      } if (!this.state.participant.random) {
-        return "REVEAL";
-      } else {
-        return "REVEALED";
-      }
-    } else {
-      if (!this.winner) {
-        return "END";
-      } else {
-        return "WIN";
-      }
-    }
-  }
-
-  setLoading = (loading) => {
+  setLoading = loading => {
     this.setState({ isLoading: loading });
   }
 
@@ -118,11 +110,21 @@ class SeedomPuck extends Component {
   }
 
   render() {
-    const phase = this.getPhase();
+    const { charityHashedRandom, hasBegun, isRaising } = this.state;
+    const { participant, raiser, winner, winningParticipant } = this.props;
+
+    const phase = getPhase({
+      charityHashedRandom,
+      raiser,
+      hasBegun,
+      isRaising,
+      participant,
+      winner
+    });
 
     return (
-      <div className="seedom-puck">
-        <SeedomCircles percentage={50} isLoading={this.state.isLoading} raiser={this.state.raiser} />
+      <div className='seedom-puck'>
+        <SeedomCircles percentage={50} isLoading={this.state.isLoading} raiser={raiser} />
         <SeedomSeed isShown={phase === 'SEED'} />
         <SeedomBegin isShown={phase === 'BEGIN'} onBegin={this.handleBegin} />
         <SeedomParticipate isShown={phase === 'PARTICIPATE'} setLoading={this.setLoading} onParticipate={this.handleParticipate} />
