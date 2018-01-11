@@ -15,3 +15,16 @@ $puck-background: lighten($background, 10%);
 $participation-phase: lighten($puck-background, 10%);
 $revelation-phase: lighten($participation-phase, 10%);
 $puck-input-background: lighten($revelation-phase, 10%);
+
+$stagger-duration: 0.7s;
+$intro-duration: 1s;
+$puck-duration: 1s;
+$participation-phase-delay: $intro-duration + $puck-duration - $stagger-duration;
+$participation-phase-duration: 1s;
+$revelation-phase-delay: $participation-phase-delay + $participation-phase-duration - $stagger-duration;
+$revelation-phase-duration: 1s;
+$progress-phase-delay: $revelation-phase-delay + $revelation-phase-duration - $stagger-duration;
+$progress-phase-duration: 1s;
+
+$loading-spin-duration: 10s;
+$loading-fade-duration: 0.5s;

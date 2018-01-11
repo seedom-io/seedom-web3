@@ -1,9 +1,28 @@
+@import '../../sass/theme.scss';
+
 .seedom-puck {
   position: relative;
   margin: auto;
   width: 500px;
   height: 500px;
-  animation: 0.5s ease-out 0s 1 zoomIn;
+
+  .intro {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    animation: $intro-duration ease-in-out 0s 1 zoomIn, $intro-duration ease-in-out 0s 1 wowIn;
+    animation-fill-mode: forwards;
+  }
+
+  .utility {
+    position: relative;
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    transform: scale(0);
+    animation: $puck-duration ease-out $intro-duration 1 zoomIn;
+    animation-fill-mode: forwards;
+  }
 }
 
 @keyframes zoomIn {
@@ -13,4 +32,10 @@
   100% {
     transform: scale(1);
   }
+}
+
+@keyframes wowIn {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
 }

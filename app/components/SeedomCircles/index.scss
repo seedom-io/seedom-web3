@@ -1,8 +1,5 @@
 @import '../../sass/theme.scss';
 
-$loading-spin-duration: 10s;
-$loading-fade-duration: 0.5s;
-
 .seedom-circles {
   position: absolute;
   left: 0; top: 0; right: 0; bottom: 0;
@@ -78,7 +75,7 @@ $loading-fade-duration: 0.5s;
       transform-origin: 50% 50%;
 
       &.participation {
-        animation: ringIn 0.5s ease-out 0.25s;
+        animation: ringIn $participation-phase-duration ease-out $participation-phase-delay;
         animation-fill-mode: forwards;
 
         circle {
@@ -88,7 +85,7 @@ $loading-fade-duration: 0.5s;
       }
 
       &.revelation {
-        animation: ringIn 0.5s ease-out 0.5s;
+        animation: ringIn $revelation-phase-duration ease-out $revelation-phase-delay;
         animation-fill-mode: forwards;
 
         circle {
@@ -98,7 +95,7 @@ $loading-fade-duration: 0.5s;
       }
 
       &.progress {
-        animation: ringIn 0.5s ease-out 1s;
+        animation: ringIn $progress-phase-duration ease-out $progress-phase-delay;
         animation-fill-mode: forwards;
 
         circle {
