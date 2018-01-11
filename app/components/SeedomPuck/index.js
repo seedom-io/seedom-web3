@@ -52,6 +52,10 @@ const getPhase = ({ charityHashedRandom, raiser, hasBegun, isRaising, participan
 class SeedomPuck extends Component {
   static propTypes = {
     onParticipate: PropTypes.func.isRequired,
+    participant: PropTypes.shape({
+      entries: PropTypes.number.isRequired,
+      hashedRandom: PropTypes.string.isRequired
+    }).isRequired,
     raiser: PropTypes.shape({
       endTime: PropTypes.instanceOf(Date).isRequired,
       expireTime: PropTypes.instanceOf(Date).isRequired,
@@ -69,7 +73,6 @@ class SeedomPuck extends Component {
       hasBegun: false,
       isRaising: false,
       charityHashedRandom: null,
-      participant: null
     };
   }
 
@@ -94,8 +97,8 @@ class SeedomPuck extends Component {
   }
 
   render() {
-    const { charityHashedRandom, hasBegun, isRaising, participant } = this.state;
-    const { raiser } = this.props;
+    const { charityHashedRandom, hasBegun, isRaising } = this.state;
+    const { participant, raiser } = this.props;
 
     const phase = getPhase({
       charityHashedRandom,
