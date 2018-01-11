@@ -22,33 +22,25 @@ const PHASES = {
 
 class SeedomPuck extends Component {
   static propTypes = {
-    onParticipate: PropTypes.func.isRequired
+    onParticipate: PropTypes.func.isRequired,
+    raiser: PropTypes.shape({
+      endTime: PropTypes.instanceOf(Date).isRequired,
+      expireTime: PropTypes.instanceOf(Date).isRequired,
+      kickoffTime: PropTypes.instanceOf(Date).isRequired,
+      revealTime: PropTypes.instanceOf(Date).isRequired,
+      valuePerEntry: PropTypes.number.isRequired
+    }).isRequired
   }
 
   constructor(props) {
     super(props);
-    const kickoffTime = new Date();
-    const revealTime = new Date();
-    const endTime = new Date();
-    const expireTime = new Date();
-
-    kickoffTime.setMinutes(kickoffTime.getMinutes() - 1);
-    revealTime.setMinutes(endTime.getMinutes() + 1);
-    endTime.setMinutes(revealTime.getMinutes() + 1);
-    expireTime.setMinutes(endTime.getMinutes() + 1);
 
     this.state = {
       isLoading: false,
       hasBegun: false,
       isRaising: false,
       charityHashedRandom: null,
-      raiser: {
-        kickoffTime,
-        revealTime,
-        endTime,
-        expireTime,
-        valuePerEntry: 0
-      },
+      raiser: this.props.raiser,
       participant: null
     };
   }
