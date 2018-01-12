@@ -54,7 +54,7 @@ class SeedomParticipate extends SeedomContent {
         <div className="seedom-overlay">
           <img src={charityLogo} />
           <input className="input is-primary" type="text" placeholder="EMAIL ADDRESS" disabled={isParticipating} onChange={this.handleNumOfEntriesChange} ref={(input) => { this.emailInput = input; }} />
-          <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" disabled={isParticipating} onChange={this.handleNumOfEntriesChange} />
+          <input className="input is-primary" type="number" placeholder="NUMBER OF ENTRIES" disabled={isParticipating} onChange={this.handleNumOfEntriesChange} />
           <textarea rows="3" className="textarea is-primary" type="text" placeholder="TYPE A MESSAGE HERE" disabled={isParticipating} onChange={this.handleRandomChange} />
           <a className="button is-primary is-outlined" disabled={isParticipating} onClick={this.handleSubmit}>PARTICIPATE</a>
         </div>
