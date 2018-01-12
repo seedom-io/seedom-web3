@@ -11,6 +11,7 @@ import SeedomReveal from '../SeedomReveal';
 import SeedomRevealed from '../SeedomRevealed';
 import SeedomEnd from '../SeedomEnd';
 import SeedomWin from '../SeedomWin';
+import SeedomWithdraw from '../SeedomWithdraw';
 import SeedomError from '../SeedomError';
 import seedomLogo from '../../img/logos/seedom.svg';
 import './index.scss';
@@ -22,40 +23,65 @@ const getPhase = ({
   hashedRandom,
   hasBegun,
   isRaising,
-  winner
+  random,
+  winner,
+  balance,
+  isWithdrawSkipped
 }) => {
   const now = Date.now();
 
   if (!hasMetamask) {
     return 'error-metamask';
   }
+
+  if (balance > 0) {
+    if (!isWithdrawSkipped) {
+      return 'withdraw';
+    }
+  }
+
   if (now > raiser.kickoffTime && now < raiser.revealTime) {
     if (bytes.isZero32(charityHashedRandom)) {
       return 'seed';
-    } else if (bytes.isZero32(hashedRandom)) {
+    }
+
+    if (bytes.isZero32(hashedRandom)) {
       if (!hasBegun) {
         return 'begin';
       }
       return 'participate';
     }
+
     if (!isRaising) {
       return 'participated';
     }
     return 'raise';
-  } else if (now > raiser.revealTime && now < raiser.endTime) {
+  }
+
+  if (now > raiser.revealTime && now < raiser.endTime) {
     if (bytes.isZero32(charityHashedRandom)) {
       return 'error-charityHashedRandom';
-    } else if (bytes.isZero32(hashedRandom)) {
+    }
+
+    if (bytes.isZero32(hashedRandom)) {
       return 'error-hashedRandom';
     }
-    return 'reveal';
+
+    if (bytes.isZero32(random)) {
+      return 'reveal';
+    }
+
+    return 'revealed';
   }
+
   if (bytes.isZero20(winner)) {
     if (bytes.isZero32(charityHashedRandom)) {
       return 'error-charityHashedRandom';
     }
+
     return 'end';
   }
+
   return 'win';
 };
 
@@ -72,8 +98,10 @@ class SeedomPuck extends Component {
     charityHashedRandom: PropTypes.string,
     entries: PropTypes.number,
     hashedRandom: PropTypes.string,
+    random: PropTypes.string,
     winner: PropTypes.string,
     winnerRandom: PropTypes.string,
+    balance: PropTypes.number,
     onParticipate: PropTypes.func.isRequired,
     onRaise: PropTypes.func.isRequired,
     onReveal: PropTypes.func.isRequired,
@@ -84,8 +112,10 @@ class SeedomPuck extends Component {
     charityHashedRandom: null,
     entries: 0,
     hashedRandom: null,
+    random: null,
     winner: null,
-    winnerRandom: null
+    winnerRandom: null,
+    balance: 0
   }
 
   constructor(props) {
@@ -95,6 +125,7 @@ class SeedomPuck extends Component {
       isLoading: false,
       hasBegun: false,
       isRaising: false,
+      isWithdrawSkipped: false,
       now: new Date()
     };
   }
@@ -136,16 +167,26 @@ class SeedomPuck extends Component {
     this.props.onReveal({ random });
   }
 
+  handleWithdraw = () => {
+    this.props.onWithdraw();
+  }
+
+  handleWithdrawSkipped = () => {
+    this.setState({ isWithdrawSkipped: true });
+  }
+
   render() {
-    const { hasBegun, isRaising, isLoading } = this.state;
+    const { hasBegun, isRaising, isLoading, isWithdrawSkipped } = this.state;
     const {
       hasMetamask,
       raiser,
       charityHashedRandom,
       hashedRandom,
       entries,
+      random,
       winner,
-      winnerRandom
+      winnerRandom,
+      balance
     } = this.props;
 
     const phase = getPhase({
@@ -153,9 +194,12 @@ class SeedomPuck extends Component {
       raiser,
       charityHashedRandom,
       hashedRandom,
+      random,
       hasBegun,
       isRaising,
-      winner
+      winner,
+      balance,
+      isWithdrawSkipped
     });
 
     return (
@@ -174,6 +218,7 @@ class SeedomPuck extends Component {
           <SeedomRevealed isShown={phase === 'revealed'} />
           <SeedomEnd isShown={phase === 'end'} />
           <SeedomWin isShown={phase === 'win'} winner={winner} winnerRandom={winnerRandom} />
+          <SeedomWithdraw isShown={phase === 'withdraw'} balance={balance} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
           <SeedomError isShown={phase.startsWith('error')} error={phase} />
         </div>
       </div>

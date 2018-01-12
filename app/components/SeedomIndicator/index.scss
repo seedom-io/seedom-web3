@@ -38,6 +38,11 @@
       animation: 5s ease-in-out 0s infinite win;
     }
 
+    &.withdraw {
+      fill: $primary;
+      animation: 2s ease-in-out 1s infinite pulse;
+    }
+
   }
 
   .element {

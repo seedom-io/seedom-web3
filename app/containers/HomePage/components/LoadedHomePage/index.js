@@ -168,6 +168,24 @@ class LoadedHomePage extends React.Component {
       );
   }
 
+  retrieveBalance() {
+    const { account } = this.props;
+
+    this.state.wsContract.methods
+      .balance(account)
+      .call({
+        from: account
+      })
+      .then(
+        data => {
+          this.setState({ balance: data });
+        },
+        err => {
+          console.error(err);
+        }
+      );
+  }
+
   setupEventsHandlers() {
     const { account } = this.props;
 
@@ -240,12 +258,18 @@ class LoadedHomePage extends React.Component {
 
   handleWinEvent(account, values) {
     const win = parsers.parseWin(values);
+
+    const newState = {
+      winner: win.participant,
+      winnerRandom: win.random
+    };
+
+    // update our balance if
     if (win.participant === account) {
-      this.setState({
-        winner: win.participant,
-        winnerRandom: win.random
-      });
+      newState.balance = this.state.balance + win.winnerReward;
     }
+
+    this.setState(newState);
   }
 
   handleParticipate = ({ random, numOfEntries }) => {
@@ -336,7 +360,8 @@ class LoadedHomePage extends React.Component {
       hashedRandom,
       entries,
       winner,
-      winnerRandom
+      winnerRandom,
+      balance
     } = this.state;
 
     return (
@@ -347,13 +372,14 @@ class LoadedHomePage extends React.Component {
         </p>
         {raiser &&
           <SeedomPuck
-            hasMetamask={true}
+            hasMetamask={1}
             raiser={raiser}
             charityHashedRandom={charityHashedRandom}
             hashedRandom={hashedRandom}
             entries={entries}
             winner={winner}
             winnerRandom={winnerRandom}
+            balance={balance}
             onParticipate={this.handleParticipate}
             onRaise={this.handleRaise}
             onReveal={this.handleReveal}
