@@ -102,6 +102,7 @@ class SeedomPuck extends Component {
     winner: PropTypes.string,
     winnerRandom: PropTypes.string,
     balance: PropTypes.number,
+    isParticipating: PropTypes.bool.isRequired,
     onParticipate: PropTypes.func.isRequired,
     onRaise: PropTypes.func.isRequired,
     onReveal: PropTypes.func.isRequired,
@@ -150,10 +151,6 @@ class SeedomPuck extends Component {
     this.setState({ hasBegun: true });
   }
 
-  handleParticipate = ({ random, numOfEntries }) => {
-    this.props.onParticipate({ random, numOfEntries });
-  }
-
   handleGetMoreEntries = () => {
     this.setState({ isRaising: true });
   }
@@ -186,7 +183,9 @@ class SeedomPuck extends Component {
       random,
       winner,
       winnerRandom,
-      balance
+      balance,
+      isParticipating,
+      onParticipate
     } = this.props;
 
     const phase = getPhase({
@@ -208,10 +207,10 @@ class SeedomPuck extends Component {
           <img alt="seedom" src={seedomLogo} />
         </div>
         <div className="interface">
-          <SeedomCircles percentage={50} isLoading={isLoading} raiser={raiser} now={this.state.now} />
+          <SeedomCircles percentage={50} isLoading={isLoading || isParticipating} raiser={raiser} now={this.state.now} />
           <SeedomSeed isShown={phase === 'seed'} />
           <SeedomBegin isShown={phase === 'begin'} onBegin={this.handleBegin} />
-          <SeedomParticipate isShown={phase === 'participate'} setLoading={this.setLoading} onParticipate={this.handleParticipate} />
+          <SeedomParticipate isShown={phase === 'participate'} isParticipating={isParticipating} onParticipate={onParticipate} />
           <SeedomParticipated isShown={phase === 'participated'} entries={entries} onGetMoreEntries={this.handleGetMoreEntries} />
           <SeedomRaise isShown={phase === 'raise'} setLoading={this.setLoading} onRaise={this.handleRaise} />
           <SeedomReveal isShown={phase === 'reveal'} setLoading={this.setLoading} onReveal={this.handleReveal} />

@@ -29,7 +29,9 @@ class LoadedHomePage extends React.Component {
     this.state = {
       rpcContract: null,
       wsContract: null,
-      raiser: null
+      raiser: null,
+
+      isParticipating: false
     };
   }
 
@@ -232,6 +234,7 @@ class LoadedHomePage extends React.Component {
     const participation = parsers.parseParticipation(values);
     if (participation.participant === account) {
       this.setState({
+        isParticipating: false,
         entries: participation.entries,
         hashedRandom: participation.hashedRandom
       });
@@ -278,6 +281,10 @@ class LoadedHomePage extends React.Component {
 
     const hashedRandom = hashRandom(random, account);
     const value = numOfEntries * (raiser.valuePerEntry);
+
+    this.setState({
+      isParticipating: true
+    });
 
     rpcContract.methods
       .participate(hashedRandom.valueOf())
@@ -361,7 +368,8 @@ class LoadedHomePage extends React.Component {
       entries,
       winner,
       winnerRandom,
-      balance
+      balance,
+      isParticipating
     } = this.state;
 
     return (
@@ -380,6 +388,7 @@ class LoadedHomePage extends React.Component {
             winner={winner}
             winnerRandom={winnerRandom}
             balance={balance}
+            isParticipating={isParticipating}
             onParticipate={this.handleParticipate}
             onRaise={this.handleRaise}
             onReveal={this.handleReveal}
