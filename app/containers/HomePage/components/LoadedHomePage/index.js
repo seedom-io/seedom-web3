@@ -9,7 +9,6 @@ import * as parsers from './parsers';
 import * as bytes from '../../../../utils/bytes';
 
 import * as seedomActions from '../../../../redux/modules/seedom';
-import { setParticipant } from '../../../../redux/modules/seedom';
 
 const getContractAddress = () => {
   return testJSON.seedom[0].address;
@@ -24,6 +23,10 @@ const getContractAddress = () => {
   }
 )
 class LoadedHomePage extends React.Component {
+  static propTypes = {
+    hasMetamask: PropTypes.bool.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -42,12 +45,17 @@ class LoadedHomePage extends React.Component {
 
   setupContracts(done) {
     const contractAddress = getContractAddress();
-    const { account, contract } = this.props;
+    const { account, contract, hasMetamask } = this.props;
 
-    const rpcContract = new rpcWeb3.eth.Contract(contract, contractAddress, {
-      from: account,
-      gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
-    });
+    let rpcContract;
+    if (hasMetamask) {
+      rpcContract = new rpcWeb3.eth.Contract(contract, contractAddress, {
+        from: account,
+        gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
+      });
+    } else {
+      rpcContract = null;
+    }
 
     const wsWeb3Instance = wsWeb3();
     const wsContract = new wsWeb3Instance.eth.Contract(contract, contractAddress, {
@@ -353,7 +361,7 @@ class LoadedHomePage extends React.Component {
   }
 
   render() {
-    const { account } = this.props;
+    const { account, hasMetamask } = this.props;
     const {
       raiser,
       charityHashedRandom,
@@ -372,7 +380,7 @@ class LoadedHomePage extends React.Component {
         </p>
         {raiser &&
           <SeedomPuck
-            hasMetamask={1}
+            hasMetamask={hasMetamask}
             raiser={raiser}
             charityHashedRandom={charityHashedRandom}
             hashedRandom={hashedRandom}
