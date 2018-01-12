@@ -1,4 +1,7 @@
 {
+  "ignore": [
+    "node_modules"
+  ],
   "presets": ["es2015", "env", "react"],
   "plugins": [
     "transform-es3-member-expression-literals",
