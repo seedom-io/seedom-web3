@@ -30,13 +30,28 @@ class HomePage extends React.Component {
     loadContract: PropTypes.func.isRequired
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasMetamask: false
+    };
+  }
+
   componentWillMount() {
-    this.initWeb3();
+    const { loadContract } = this.props;
+
+    loadContract();
+
+    if (rpcWeb3) {
+      this.setState({
+        hasMetamask: true
+      });
+      this.initWeb3();
+    }
   }
 
   initWeb3 = () => {
     const { setAccount } = this.props;
-    const { loadContract } = this.props;
 
     let account;
     rpcWeb3.eth.getAccounts().then(accounts => {
@@ -44,12 +59,11 @@ class HomePage extends React.Component {
       rpcWeb3.eth.defaultAccount = account;
       setAccount(account);
     });
-
-    loadContract();
   }
 
   render() {
     const { account, contract, contractLoaded } = this.props;
+    const { hasMetamask } = this.state;
 
     return (
       <div>
@@ -57,7 +71,11 @@ class HomePage extends React.Component {
           <div className="hero-body">
             <div className="container has-text-centered">
               {contractLoaded &&
-                <LoadedHomePage contract={contract} account={account} />
+                <LoadedHomePage
+                  account={account}
+                  contract={contract}
+                  hasMetamask={hasMetamask}
+                />
               }
             </div>
           </div>
