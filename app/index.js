@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { store } from './store';
+import configureStore from './configureStore';
 import './sass/bulma.scss';
 
 import App from './containers/App';
@@ -9,6 +9,8 @@ import './index.scss';
 
 /* global document */
 const MOUNT_NODE = document.getElementById('root');
+
+const store = configureStore({});
 
 ReactDOM.render(
   <Provider store={store}>
