@@ -12,10 +12,6 @@ import './index.scss';
 
 import * as seedomActions from '../../../../redux/modules/seedom';
 
-const getContractAddress = () => {
-  return testJSON.seedom[0].address;
-};
-
 @connect(
   state => ({
     participant: state.seedom.participant
@@ -32,6 +28,7 @@ class LoadedHomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      contractAddress: null,
       rpcContract: null,
       wsContract: null,
       raiser: null,
@@ -48,7 +45,7 @@ class LoadedHomePage extends React.Component {
   }
 
   setupContracts(done) {
-    const contractAddress = getContractAddress();
+    const contractAddress = testJSON.seedom[0].address;
     const { account, contract, hasMetamask } = this.props;
 
     let rpcContract;
@@ -68,6 +65,7 @@ class LoadedHomePage extends React.Component {
     });
 
     this.setState({
+      contractAddress,
       rpcContract,
       wsContract
     }, done);
@@ -313,9 +311,8 @@ class LoadedHomePage extends React.Component {
 
   handleRaise = ({ numOfEntries }) => {
     const { account } = this.props;
-    const { raiser } = this.state;
+    const { raiser, contractAddress } = this.state;
 
-    const contractAddress = getContractAddress();
     const value = numOfEntries * (raiser.valuePerEntry);
 
     rpcWeb3.eth
@@ -383,7 +380,7 @@ class LoadedHomePage extends React.Component {
     } = this.state;
 
     return (
-      <div>
+      <div className="seedom-container">
         {raiser &&
           <div className="seedom-home">
             <SeedomHud side="left" received={0} charity={0} winner={0} />
@@ -405,6 +402,13 @@ class LoadedHomePage extends React.Component {
             <SeedomHud side="right" participants={0} entries={0} revealed={0} />
           </div>
         }
+        <div className="container">
+          <div className="content has-text-centered">
+            <p>
+              View <strong>Seedom</strong> transactions on <a className="is-green" href={`https://etherscan.io/address/${this.state.contractAddress}`}>Etherscan</a>.
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
