@@ -145,12 +145,12 @@ class SeedomCircles extends React.Component {
 
     return (
       <svg
-        className='seedom-circles'
+        className="seedom-circles"
         viewBox={`0 0 ${MAX_X} ${MAX_Y}`}
       >
 
         <circle
-          className='background'
+          className="background"
           cx={CENTER_X}
           cy={CENTER_Y}
           r={FULL_RADIUS}
@@ -159,7 +159,7 @@ class SeedomCircles extends React.Component {
         <g className={`loaders-container ${this.props.isLoading ? 'show' : 'hide'}`}>
 
           <circle
-            className={`loaders-arc`}
+            className="loaders-arc"
             cx={CENTER_X}
             cy={CENTER_Y}
             r={loadersRadius}
@@ -169,7 +169,7 @@ class SeedomCircles extends React.Component {
           />
 
           <circle
-            className={`loaders-arc bottom`}
+            className="loaders-arc bottom"
             cx={CENTER_X}
             cy={CENTER_Y}
             r={loadersRadius}
@@ -187,10 +187,10 @@ class SeedomCircles extends React.Component {
           />
 
           <text>
-            <textPath className="loaders-text" xlinkHref='#seedom-circles-loaders-path' startOffset="5%">
+            <textPath className="loaders-text" xlinkHref="#seedom-circles-loaders-path" startOffset="5%">
               BLOCKCHAINING
             </textPath>
-            <textPath className="loaders-text" xlinkHref='#seedom-circles-loaders-path' startOffset="55%">
+            <textPath className="loaders-text" xlinkHref="#seedom-circles-loaders-path" startOffset="55%">
               BLOCKCHAINING
             </textPath>
           </text>
