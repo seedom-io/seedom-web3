@@ -386,7 +386,7 @@ class LoadedHomePage extends React.Component {
       <div>
         {raiser &&
           <div className="seedom-home">
-            <SeedomHud side="left" participants={0} entries={0} revealed={0}/>
+            <SeedomHud side="left" received={0} charity={0} winner={0} />
             <SeedomPuck
               hasMetamask={hasMetamask}
               raiser={raiser}
@@ -402,7 +402,7 @@ class LoadedHomePage extends React.Component {
               onReveal={this.handleReveal}
               onWithdraw={this.handleWithdraw}
             />
-            <SeedomHud side="right" received={0} charity={0} winner={0} />
+            <SeedomHud side="right" participants={0} entries={0} revealed={0} />
           </div>
         }
       </div>

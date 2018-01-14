@@ -1,4 +1,15 @@
+@import '../../../../sass/theme.scss';
+
 .seedom-home {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: column;
+  }
+
+  @include desktop {
+    flex-direction: row;
+  }
+
 }
