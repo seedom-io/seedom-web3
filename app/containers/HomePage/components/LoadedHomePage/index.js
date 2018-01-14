@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SeedomPuck from '../../../../components/SeedomPuck';
 import SeedomHud from '../../../../components/SeedomHud';
+import SeedomFeed from '../../../../components/SeedomFeed';
 import { rpcWeb3, wsWeb3 } from '../../../../utils/web3';
 import hashRandom from '../../../../utils/hashRandom';
 import testJSON from '../../../../../../seedom-solidity/deployment/test.json';
@@ -404,8 +405,13 @@ class LoadedHomePage extends React.Component {
         }
         <div className="container">
           <div className="content has-text-centered">
+            <SeedomFeed />
+          </div>
+        </div>
+        <div className="container">
+          <div className="content has-text-centered">
             <p>
-              View <strong>Seedom</strong> transactions on <a className="is-green" href={`https://etherscan.io/address/${this.state.contractAddress}`}>Etherscan</a>.
+              View more live <strong>Seedom</strong> data on <a className="is-green" href={`https://etherscan.io/address/${this.state.contractAddress}`}>Etherscan</a>.
             </p>
           </div>
         </div>
