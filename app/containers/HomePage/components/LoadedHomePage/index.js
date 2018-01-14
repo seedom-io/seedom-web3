@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SeedomPuck from '../../../../components/SeedomPuck';
+import SeedomHud from '../../../../components/SeedomHud';
 import { rpcWeb3, wsWeb3 } from '../../../../utils/web3';
 import hashRandom from '../../../../utils/hashRandom';
 import testJSON from '../../../../../../seedom-solidity/deployment/test.json';
 import * as parsers from './parsers';
 import * as bytes from '../../../../utils/bytes';
+import './index.scss';
 
 import * as seedomActions from '../../../../redux/modules/seedom';
 
@@ -382,26 +384,26 @@ class LoadedHomePage extends React.Component {
 
     return (
       <div>
-        <h2>Welcome to Seedom</h2>
-        <p>
-          <strong>Account:</strong> {account}
-        </p>
         {raiser &&
-          <SeedomPuck
-            hasMetamask={hasMetamask}
-            raiser={raiser}
-            charityHashedRandom={charityHashedRandom}
-            hashedRandom={hashedRandom}
-            entries={entries}
-            winner={winner}
-            winnerRandom={winnerRandom}
-            balance={balance}
-            isParticipating={isParticipating}
-            onParticipate={this.handleParticipate}
-            onRaise={this.handleRaise}
-            onReveal={this.handleReveal}
-            onWithdraw={this.handleWithdraw}
-          />
+          <div className="seedom-home">
+            <SeedomHud side="left" participants={0} entries={0} revealed={0}/>
+            <SeedomPuck
+              hasMetamask={hasMetamask}
+              raiser={raiser}
+              charityHashedRandom={charityHashedRandom}
+              hashedRandom={hashedRandom}
+              entries={entries}
+              winner={winner}
+              winnerRandom={winnerRandom}
+              balance={balance}
+              isParticipating={isParticipating}
+              onParticipate={this.handleParticipate}
+              onRaise={this.handleRaise}
+              onReveal={this.handleReveal}
+              onWithdraw={this.handleWithdraw}
+            />
+            <SeedomHud side="right" received={0} charity={0} winner={0} />
+          </div>
         }
       </div>
     );

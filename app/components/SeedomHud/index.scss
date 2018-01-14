@@ -1,0 +1,55 @@
+.seedom-hub {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0);
+  animation: fadeIn 1s ease-out 0s 1, zoomIn 1s ease-out 0s 1;
+  animation-fill-mode: forwards;
+
+  .panel {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+
+    &.left {
+      margin-right: 40px;
+    }
+
+    &.right {
+      margin-left: 40px;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .stat-title {
+        color: gray;
+        font-size: 15px;
+        text-transform: uppercase;
+      }
+
+      .stat-value {
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+    }
+
+  }
+
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
