@@ -53,7 +53,7 @@
 
     }
 
-    @include widescreen {
+    @include fullhd {
       flex-direction: row;
     }
 
@@ -71,10 +71,8 @@
         flex: none;
       }
 
-      @include widescreen {
+      @include fullhd {
         flex: 1;
-        padding-left: 5px;
-        padding-right: 5px;
       }
 
       .stat-title {
