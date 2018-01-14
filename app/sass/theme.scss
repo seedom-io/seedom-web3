@@ -8,7 +8,6 @@ $primary: #31CF65;
 
 $waiting: #ff6a00;
 $success: darken($primary, 15%);
-$loading: black;
 $error: darken(red, 10%);
 $win: purple;
 
@@ -27,5 +26,5 @@ $revelation-phase-duration: 1s;
 $progress-phase-delay: $revelation-phase-delay + $revelation-phase-duration - $stagger-duration;
 $progress-phase-duration: 1s;
 
-$loading-spin-duration: 10s;
+$loading-spin-duration: 4s;
 $loading-fade-duration: 0.5s;

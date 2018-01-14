@@ -13,6 +13,7 @@ const PROGRESS_STROKE_WIDTH = 30;
 const PHASE_STROKE_WIDTH = 50;
 const BACKGROUND_PADDING = 50;
 const LOADERS_PERCENTAGE = 20;
+const LOADERS_TEXT = "COMMUNICATING WITH ETHEREUM";
 
 class SeedomCircles extends React.Component {
   getPhasePercentages() {
@@ -187,11 +188,11 @@ class SeedomCircles extends React.Component {
           />
 
           <text>
-            <textPath className="loaders-text" xlinkHref="#seedom-circles-loaders-path" startOffset="5%">
-              BLOCKCHAINING
+            <textPath className="loaders-text" xlinkHref="#seedom-circles-loaders-path" startOffset={`${LOADERS_PERCENTAGE / 2}%`}>
+              {LOADERS_TEXT}
             </textPath>
-            <textPath className="loaders-text" xlinkHref="#seedom-circles-loaders-path" startOffset="55%">
-              BLOCKCHAINING
+            <textPath className="loaders-text" xlinkHref="#seedom-circles-loaders-path" startOffset={`${(LOADERS_PERCENTAGE / 2) + 50}%`}>
+              {LOADERS_TEXT}
             </textPath>
           </text>
 

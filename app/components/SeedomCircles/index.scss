@@ -15,7 +15,7 @@
   }
 
   .loaders-text {
-    fill: white;
+    fill: $background;
     font-size: 30px;
     font-weight: bold;
     dominant-baseline: central;
@@ -25,21 +25,19 @@
   .loaders-container {
     opacity: 0;
     transform-origin: 50% 50%;
-    animation: spin $loading-spin-duration linear 0s infinite;
 
     &.show {
-      animation: spin $loading-spin-duration linear 0s infinite, fadeIn $loading-fade-duration ease-out 0s 1;
+      animation: spin $loading-spin-duration ease-in-out 0s infinite, fadeIn $loading-fade-duration ease-in-out 0s 1;
       animation-fill-mode: forwards;
     }
 
     &.hide {
-      animation: spin $loading-spin-duration linear 0s infinite, fadeOut $loading-fade-duration ease-out 0s 1;
+      animation: spin $loading-spin-duration ease-in-out 0s infinite, fadeOut $loading-fade-duration ease-in-out 0s 1;
       animation-fill-mode: forwards;
     }
 
     .loaders-arc {
-      stroke: $loading;
-      stroke-linecap: round;
+      stroke: $primary;
       transform-origin: 50% 50%;
 
       &.bottom {
@@ -99,13 +97,13 @@
         animation-fill-mode: forwards;
 
         circle {
-          stroke: #31CF65;
+          stroke: $primary;
           transform-origin: 50% 50%;
         }
 
         .phase-text {
           opacity: 0;
-          fill: #4a4a4a;
+          fill: $background;
           animation: fadeIn 0.5s ease-out 2.5s;
           animation-fill-mode: forwards;
         }
