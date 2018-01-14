@@ -18,7 +18,7 @@ $revelation-phase: lighten($participation-phase, 10%);
 $puck-input-background: lighten($revelation-phase, 10%);
 
 $stagger-duration: 0.7s;
-$intro-duration: 1s;
+$intro-duration: 1.5s;
 $puck-duration: 1s;
 $participation-phase-delay: $intro-duration + $puck-duration - $stagger-duration;
 $participation-phase-duration: 1s;
