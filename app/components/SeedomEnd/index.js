@@ -18,8 +18,8 @@ class SeedomEnd extends SeedomContent {
           <img src={charityLogo} />
         </div>
         <div className="seedom-overlay">
-          <div className="puck-message top">WAITING FOR</div>
-          <div className="puck-message">CHARITY TO REVEAL</div>
+          <div className="puck-message top">PLEASE WAIT<br />FOR</div>
+          <div className="puck-message">TO REVEAL<br />THEIR RANDOM</div>
         </div>
       </div>
     );

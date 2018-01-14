@@ -8,7 +8,7 @@ class SeedomBegin extends SeedomContent {
     return (
       <div className={`seedom-content begin ${this.state.className}`}>
         <img src={charityLogo} />
-        <a className="button is-primary is-outlined" onClick={this.props.onBegin}>BEGIN</a>
+        <a className="button is-primary is-outlined" onClick={this.props.onBegin}>OBTAIN ENTRIES</a>
       </div>
     );
   }
