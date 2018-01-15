@@ -8,7 +8,7 @@ module.exports = {
     path: path.resolve(process.cwd(), 'dist')
   },
   plugins: [
-    new FaviconsWebpackPlugin(path.join(process.cwd(), 'app/img/logos/seedom-dark.png')),
+    new FaviconsWebpackPlugin(path.join(process.cwd(), 'app/img/logos/seedom-dark.svg')),
     new HtmlWebpackPlugin({
       template: 'app/index.html'
     })
