@@ -5,7 +5,6 @@ import { store } from './store';
 import './sass/bulma.scss';
 
 import App from './containers/App';
-import './index.scss';
 
 /* global document */
 const MOUNT_NODE = document.getElementById('root');
