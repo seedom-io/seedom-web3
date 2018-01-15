@@ -381,9 +381,9 @@ class LoadedHomePage extends React.Component {
     } = this.state;
 
     return (
-      <div className="seedom-container">
+      <div className="seedom-app">
         {raiser &&
-          <div className="seedom-home">
+          <div className="seedom-container">
             <SeedomHud side="left" received={5000} charity={3000} winner={2000} />
             <SeedomPuck
               hasMetamask={hasMetamask}
