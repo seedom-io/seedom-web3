@@ -1,0 +1,37 @@
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+
+module.exports = {
+  entry: path.resolve(process.cwd(), 'app/index.js'),
+  output: {
+    path: path.resolve(process.cwd(), 'dist')
+  },
+  plugins: [
+    new FaviconsWebpackPlugin(path.join(process.cwd(), 'app/img/logos/seedom-dark.png')),
+    new HtmlWebpackPlugin({
+      template: 'app/index.html'
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: ['file-loader']
+      }
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+};
