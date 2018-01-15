@@ -5,7 +5,6 @@ import {
   Route,
 } from 'react-router-dom';
 
-import './App.scss';
 import Nav from '../../components/Nav';
 import HomePage from '../HomePage';
 
