@@ -5,7 +5,7 @@ const Nav = () => (
   <nav className="navbar">
     <div className="container">
       <div className="navbar-brand">
-        <a className="navbar-item" href="https://bulma.io">
+        <a className="navbar-item" href="/">
           <img src={logo} alt="Seedom - Seeding the future of philanthropy" />
         </a>
         <span className="navbar-burger burger" data-target="navbarMenu">
