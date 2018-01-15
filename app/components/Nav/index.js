@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Nav = () => (
-  <nav className="navbar is-black">
+  <nav className="navbar">
     <div className="container">
       <div className="navbar-brand">
         <a className="navbar-item" href="https://bulma.io">

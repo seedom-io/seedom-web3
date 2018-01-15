@@ -6,6 +6,7 @@ $background: #4a4a4a;
 $body-background-color: #1C1D21;
 
 $primary: #31CF65;
+$link: $primary;
 
 $waiting: #ff6a00;
 $success: darken($primary, 15%);
@@ -29,5 +30,7 @@ $progress-phase-duration: 1s;
 
 $loading-spin-duration: 4s;
 $loading-fade-duration: 0.5s;
+
+@import './components/navbar';
 
 @import './layout/footer';
