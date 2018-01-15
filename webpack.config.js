@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'app/index.js'),
@@ -11,9 +12,12 @@ module.exports = {
     port: 1234
   },
   plugins: [
+    new FaviconsWebpackPlugin(
+      path.resolve(__dirname, 'app/img/logos/seedom-dark.png')
+    ),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'app/index.html'),
-    }),
+    })
   ],
   module: {
     rules: [
