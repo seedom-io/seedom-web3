@@ -8,7 +8,7 @@ module.exports = {
     "import"
   ],
   rules: {
-    "arrow-parens": ["error", "as-needed"],
+    "arrow-parens": "off",
     "comma-dangle": "off",
     "no-underscore-dangle": "off",
     "react/jsx-filename-extension": ["error", { "extensions": ['.jsx', '.js'] }],
