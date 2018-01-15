@@ -4,30 +4,25 @@ import { connect } from 'react-redux';
 
 import { rpcWeb3 } from '../../utils/web3';
 
-import * as blockchainActions from '../../redux/modules/blockchain';
-import * as seedomActions from '../../redux/modules/seedom';
+import {
+  setAccount
+} from '../../redux/modules/blockchain';
+
+import {
+  loadContract
+} from '../../redux/modules/seedom';
+
 
 import LoadedHomePage from './components/LoadedHomePage';
 
 import './HomePage.scss';
 
-@connect(
-  state => ({
-    account: state.blockchain.account,
-    contract: state.seedom.contract,
-    contractLoaded: state.seedom.contractLoaded,
-  }),
-  {
-    ...blockchainActions,
-    ...seedomActions
-  }
-)
 class HomePage extends React.Component {
   static propTypes = {
     account: PropTypes.string.isRequired,
     contractLoaded: PropTypes.bool.isRequired,
-    setAccount: PropTypes.func.isRequired,
-    loadContract: PropTypes.func.isRequired
+    handleSetAccount: PropTypes.func.isRequired,
+    onLoad: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -38,9 +33,9 @@ class HomePage extends React.Component {
   }
 
   componentWillMount() {
-    const { loadContract } = this.props;
+    const { onLoad } = this.props;
 
-    loadContract();
+    onLoad();
 
     if (rpcWeb3) {
       this.setState({
@@ -51,13 +46,13 @@ class HomePage extends React.Component {
   }
 
   initWeb3 = () => {
-    const { setAccount } = this.props;
+    const { handleSetAccount } = this.props;
 
     let account;
     rpcWeb3.eth.getAccounts().then(accounts => {
       [account] = accounts;
       rpcWeb3.eth.defaultAccount = account;
-      setAccount(account);
+      handleSetAccount(account);
     });
   }
 
@@ -163,5 +158,27 @@ class HomePage extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    account: state.blockchain.account,
+    contract: state.seedom.contract,
+    contractLoaded: state.seedom.contractLoaded,
+  };
+};
 
-export default HomePage;
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoad: () => {
+      dispatch(loadContract());
+    },
+    handleSetAccount: account => {
+      dispatch(setAccount(account));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePage);
+
