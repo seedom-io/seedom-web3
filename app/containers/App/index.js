@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import {
   BrowserRouter as Router,
   Route,
@@ -9,6 +10,12 @@ import HomePage from '../HomePage';
 
 const App = () => (
   <div>
+    <Helmet
+      titleTemplate="%s - Seedom"
+      defaultTitle="Seedom"
+    >
+      <meta name="description" content="Seedom - Seeding the future of philanthropy" />
+    </Helmet>
     <div className="hero-head">
       <nav className="navbar">
         <div className="container">
