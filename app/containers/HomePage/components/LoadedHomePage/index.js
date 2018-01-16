@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import SeedomPuck from '../../../../components/SeedomPuck';
-import SeedomHud from '../../../../components/SeedomHud';
-import SeedomFeed from '../../../../components/SeedomFeed';
+import Puck from '../../../../components/Puck';
+import Hud from '../../../../components/Hud';
+import Feed from '../../../../components/Feed';
 import { rpcWeb3, wsWeb3 } from '../../../../utils/web3';
 import hashRandom from '../../../../utils/hashRandom';
 import testJSON from '../../../../../../seedom-solidity/deployment/test.json';
@@ -446,8 +446,8 @@ class LoadedHomePage extends React.Component {
       <div className="seedom-app">
         {raiser &&
           <div className="seedom-container">
-            <SeedomHud side="left" received={5000} charity={3000} winner={2000} />
-            <SeedomPuck
+            <Hud side="left" received={5000} charity={3000} winner={2000} />
+            <Puck
               hasMetamask={hasMetamask}
               raiser={raiser}
               charityHashedRandom={charityHashedRandom}
@@ -464,12 +464,12 @@ class LoadedHomePage extends React.Component {
               onWithdraw={this.handleWithdraw}
               onCancel={this.handleCancel}
             />
-            <SeedomHud side="right" participants={576} entries={15834} revealed={14000} />
+            <Hud side="right" participants={576} entries={15834} revealed={14000} />
           </div>
         }
         <div className="container">
           <div className="content has-text-centered">
-            <SeedomFeed />
+            <Feed />
           </div>
         </div>
         <div className="container">
