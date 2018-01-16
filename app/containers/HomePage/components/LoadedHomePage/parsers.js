@@ -58,6 +58,12 @@ const parseWin = win => {
   };
 };
 
+const parseWithdrawal = withdrawal => {
+  return {
+    participant: String(withdrawal._participant)
+  };
+};
+
 export {
   parseRaiser,
   parseSeed,
@@ -65,5 +71,6 @@ export {
   parseParticipation,
   parseRaise,
   parseRevelation,
-  parseWin
+  parseWin,
+  parseWithdrawal
 };

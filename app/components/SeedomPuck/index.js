@@ -12,6 +12,8 @@ import SeedomRevealed from '../SeedomRevealed';
 import SeedomEnd from '../SeedomEnd';
 import SeedomWin from '../SeedomWin';
 import SeedomWithdraw from '../SeedomWithdraw';
+import SeedomCancel from '../SeedomCancel';
+import SeedomCancelled from '../SeedomCancelled';
 import SeedomError from '../SeedomError';
 import seedomLogo from '../../img/logos/seedom.svg';
 import './index.scss';
@@ -26,6 +28,7 @@ const getPhase = ({
   random,
   winner,
   balance,
+  cancelled,
   isWithdrawSkipped
 }) => {
   const now = Date.now();
@@ -40,6 +43,11 @@ const getPhase = ({
     }
   }
 
+  if (cancelled) {
+    return 'cancelled';
+  }
+
+  // participation phase
   if (now > raiser.kickoffTime && now < raiser.revealTime) {
     if (bytes.isZero32(charityHashedRandom)) {
       return 'seed';
@@ -58,6 +66,7 @@ const getPhase = ({
     return 'raise';
   }
 
+  // revelation phase
   if (now > raiser.revealTime && now < raiser.endTime) {
     if (bytes.isZero32(charityHashedRandom)) {
       return 'error-charityHashedRandom';
@@ -74,15 +83,27 @@ const getPhase = ({
     return 'revealed';
   }
 
-  if (bytes.isZero20(winner)) {
+  // end phase
+  if (now > raiser.endTime && now < raiser.expireTime) {
     if (bytes.isZero32(charityHashedRandom)) {
       return 'error-charityHashedRandom';
     }
 
-    return 'end';
+    if (bytes.isZero20(winner)) {
+      return 'end';
+    }
+
+    return 'win';
   }
 
-  return 'win';
+  // expiration phase
+  if (now > raiser.expireTime) {
+    if (bytes.isZero20(winner)) {
+      return 'cancel';
+    }
+
+    return 'win';
+  }
 };
 
 class SeedomPuck extends Component {
@@ -102,6 +123,7 @@ class SeedomPuck extends Component {
     winner: PropTypes.string,
     winnerRandom: PropTypes.string,
     balance: PropTypes.number,
+    cancelled: PropTypes.bool,
     isParticipating: PropTypes.bool.isRequired,
     onParticipate: PropTypes.func.isRequired,
     onRaise: PropTypes.func.isRequired,
@@ -116,7 +138,8 @@ class SeedomPuck extends Component {
     random: null,
     winner: null,
     winnerRandom: null,
-    balance: 0
+    balance: 0,
+    cancelled: false
   }
 
   constructor(props) {
@@ -172,6 +195,10 @@ class SeedomPuck extends Component {
     this.setState({ isWithdrawSkipped: true });
   }
 
+  handleCancel = () => {
+    this.props.onCancel();
+  }
+
   render() {
     const { hasBegun, isRaising, isLoading, isWithdrawSkipped } = this.state;
     const {
@@ -184,6 +211,7 @@ class SeedomPuck extends Component {
       winner,
       winnerRandom,
       balance,
+      cancelled,
       isParticipating,
       onParticipate
     } = this.props;
@@ -198,6 +226,7 @@ class SeedomPuck extends Component {
       isRaising,
       winner,
       balance,
+      cancelled,
       isWithdrawSkipped
     });
 
@@ -218,6 +247,8 @@ class SeedomPuck extends Component {
           <SeedomEnd isShown={phase === 'end'} />
           <SeedomWin isShown={phase === 'win'} winner={winner} winnerRandom={winnerRandom} />
           <SeedomWithdraw isShown={phase === 'withdraw'} balance={balance} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
+          <SeedomCancel isShown={phase === 'cancel'} onCancel={this.handleCancel} />
+          <SeedomCancelled isShown={phase === 'cancelled'} />
           <SeedomError isShown={phase.startsWith('error')} error={phase} />
         </div>
       </div>

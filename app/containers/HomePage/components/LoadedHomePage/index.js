@@ -33,7 +33,6 @@ class LoadedHomePage extends React.Component {
       rpcContract: null,
       wsContract: null,
       raiser: null,
-
       isParticipating: false
     };
   }
@@ -73,13 +72,19 @@ class LoadedHomePage extends React.Component {
   }
 
   retrieveInitialData() {
-    this.retrieveCurrentRaiser();
-    this.retrieveCharityHashedRandom();
-    this.retrieveParticipant();
-    this.retrieveWinner();
+    this.retrieveCurrentRaiser(() => {
+      this.retrieveBalance();
+      this.retrieveCancelled(() => {
+        this.retrieveCharityHashedRandom();
+        this.retrieveParticipant();
+        this.retrieveWinner(() => {
+          this.retrieveWinnerRandom();
+        });
+      });
+    });
   }
 
-  retrieveCurrentRaiser() {
+  retrieveCurrentRaiser(next) {
     const { account } = this.props;
 
     this.state.wsContract.methods
@@ -90,6 +95,46 @@ class LoadedHomePage extends React.Component {
       .then(
         data => {
           this.setState({ raiser: parsers.parseRaiser(data) });
+          next();
+        },
+        err => {
+          console.error(err);
+        }
+      );
+  }
+
+  retrieveBalance() {
+    const { account } = this.props;
+
+    this.state.wsContract.methods
+      .balance(account)
+      .call({
+        from: account
+      })
+      .then(
+        data => {
+          this.setState({ balance: data });
+        },
+        err => {
+          console.error(err);
+        }
+      );
+  }
+
+  retrieveCancelled(next) {
+    const { account } = this.props;
+
+    this.state.wsContract.methods
+      .cancelled()
+      .call({
+        from: account
+      })
+      .then(
+        data => {
+          this.setState({ cancelled: data });
+          if (!data) {
+            next();
+          }
         },
         err => {
           console.error(err);
@@ -138,7 +183,7 @@ class LoadedHomePage extends React.Component {
       );
   }
 
-  retrieveWinner() {
+  retrieveWinner(next) {
     const { account } = this.props;
 
     this.state.wsContract.methods
@@ -149,6 +194,9 @@ class LoadedHomePage extends React.Component {
       .then(
         data => {
           this.setState({ winner: data });
+          if (!bytes.isZero20(data)) {
+            next();
+          }
         },
         err => {
           console.error(err);
@@ -160,36 +208,15 @@ class LoadedHomePage extends React.Component {
     const { account } = this.props;
     const { winner } = this.state;
 
-    if (bytes.isZero20(winner)) {
-      return;
-    }
-
     this.state.wsContract.methods
-      .participant()
+      .participant(winner)
       .call({
         from: account
       })
       .then(
         data => {
-          this.setState({ winner: data });
-        },
-        err => {
-          console.error(err);
-        }
-      );
-  }
-
-  retrieveBalance() {
-    const { account } = this.props;
-
-    this.state.wsContract.methods
-      .balance(account)
-      .call({
-        from: account
-      })
-      .then(
-        data => {
-          this.setState({ balance: data });
+          const participant = parsers.parseParticipant(data);
+          this.setState({ winnerRandom: participant.winnerRandom });
         },
         err => {
           console.error(err);
@@ -223,7 +250,11 @@ class LoadedHomePage extends React.Component {
           this.handleWinEvent(account, values);
           break;
         case 'Cancellation':
+          this.handleCancellationEvent();
+          break;
         case 'Withdrawal':
+          this.handleWithdrawalEvent();
+          break;
         default:
           break;
       }
@@ -282,6 +313,18 @@ class LoadedHomePage extends React.Component {
     }
 
     this.setState(newState);
+  }
+
+  handleCancellationEvent() {
+    this.setState({ cancelled: true });
+  }
+
+  handleWithdrawalEvent(account, values) {
+    const withdrawal = parsers.parseWithdrawal(values);
+    // set our balance to zero if we withdrew
+    if (withdrawal.participant === account) {
+      this.setState({ balance: 0 });
+    }
   }
 
   handleParticipate = ({ random, numOfEntries }) => {
@@ -367,6 +410,24 @@ class LoadedHomePage extends React.Component {
       });
   }
 
+  handleCancel = () => {
+    const { account } = this.props;
+    const { rpcContract } = this.state;
+
+    rpcContract.methods
+      .cancel()
+      .send({
+        from: account,
+        gas: 1000000,
+        gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+      })
+      .then(result => {
+        // if result.status === 0, this failed
+        console.log('Cancel succeeded');
+        console.log(result);
+      });
+  }
+
   render() {
     const { account, hasMetamask } = this.props;
     const {
@@ -377,6 +438,7 @@ class LoadedHomePage extends React.Component {
       winner,
       winnerRandom,
       balance,
+      cancelled,
       isParticipating
     } = this.state;
 
@@ -394,11 +456,13 @@ class LoadedHomePage extends React.Component {
               winner={winner}
               winnerRandom={winnerRandom}
               balance={balance}
+              cancelled={cancelled}
               isParticipating={isParticipating}
               onParticipate={this.handleParticipate}
               onRaise={this.handleRaise}
               onReveal={this.handleReveal}
               onWithdraw={this.handleWithdraw}
+              onCancel={this.handleCancel}
             />
             <SeedomHud side="right" participants={576} entries={15834} revealed={14000} />
           </div>
