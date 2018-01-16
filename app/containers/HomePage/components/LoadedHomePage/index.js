@@ -13,6 +13,8 @@ import './index.scss';
 
 import * as seedomActions from '../../../../redux/modules/seedom';
 
+const MAX_FEED_ITEMS = 10;
+
 @connect(
   state => ({
     participant: state.seedom.participant
@@ -33,6 +35,7 @@ class LoadedHomePage extends React.Component {
       rpcContract: null,
       wsContract: null,
       raiser: null,
+      feed: [],
       isParticipating: false
     };
   }
@@ -261,6 +264,13 @@ class LoadedHomePage extends React.Component {
     });
   }
 
+  addFeedItem(obj, type) {
+    const feedItem = Object.assign({ type }, obj);
+    const feed = this.state.feed.slice(0, MAX_FEED_ITEMS);
+    feed.unshift(feedItem);
+    this.setState({ feed });
+  }
+
   handleKickoffEvent(values) {
     this.setState({ raiser: parsers.parseRaiser(values) });
   }
@@ -268,6 +278,7 @@ class LoadedHomePage extends React.Component {
   handleSeedEvent(values) {
     const seed = parsers.parseSeed(values);
     this.setState({ charityHashedRandom: seed.hashedRandom });
+    this.addFeedItem(seed, 'seed');
   }
 
   handleParticipationEvent(account, values) {
@@ -279,6 +290,8 @@ class LoadedHomePage extends React.Component {
         hashedRandom: participation.hashedRandom
       });
     }
+
+    this.addFeedItem(participation, 'participation');
   }
 
   handleRaiseEvent(account, values) {
@@ -288,6 +301,8 @@ class LoadedHomePage extends React.Component {
         entries: this.state.entries + raise.entries
       });
     }
+
+    this.addFeedItem(raise, 'raise');
   }
 
   handleRevelationEvent(account, values) {
@@ -297,6 +312,8 @@ class LoadedHomePage extends React.Component {
         random: revelation.random
       });
     }
+
+    this.addFeedItem(revelation, 'revelation');
   }
 
   handleWinEvent(account, values) {
@@ -313,6 +330,7 @@ class LoadedHomePage extends React.Component {
     }
 
     this.setState(newState);
+    this.addFeedItem(win, 'win');
   }
 
   handleCancellationEvent() {
@@ -469,7 +487,7 @@ class LoadedHomePage extends React.Component {
         }
         <div className="container">
           <div className="content has-text-centered">
-            <Feed />
+            <Feed feed={this.state.feed} />
           </div>
         </div>
         <div className="container">

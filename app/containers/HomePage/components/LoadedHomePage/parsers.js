@@ -29,6 +29,7 @@ const parseParticipant = participant => {
 const parseParticipation = participation => {
   return {
     participant: String(participation._participant),
+    entries: Number(participation._entries),
     hashedRandom: String(participation._hashedRandom)
   };
 };
