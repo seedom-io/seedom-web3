@@ -15,144 +15,142 @@ const BACKGROUND_PADDING = 50;
 const LOADERS_PERCENTAGE = 20;
 const LOADERS_TEXT = "COMMUNICATING WITH ETHEREUM";
 
+const getPhasePercentages = (raiser, now) => {
+  if (!raiser) {
+    return {
+      participation: 0,
+      revelation: 0,
+      progress: 0
+    };
+  }
+
+  const { kickoffTime, revealTime, endTime } = raiser;
+  const raiserTime = endTime - kickoffTime;
+  const participationTime = revealTime - kickoffTime;
+  const revelationTime = endTime - revealTime;
+  const progressTime = now - kickoffTime;
+
+  return {
+    participation: 100 * (participationTime / raiserTime),
+    revelation: 100 * (revelationTime / raiserTime),
+    progress: progressTime > raiserTime ? 100 : 100 * (progressTime / raiserTime)
+  };
+};
+
+const getProgressText = (raiser, now) => {
+  if (!raiser) {
+    return null;
+  }
+
+  const { revealTime, endTime } = raiser;
+  const timeUntilReveal = revealTime - now;
+  const timeUntilEnd = endTime - now;
+
+  if (timeUntilEnd <= 0) {
+    return 'FINISHED';
+  }
+
+  let timeUntilNextPhase;
+  let phaseName;
+  if (timeUntilReveal >= 0) {
+    timeUntilNextPhase = timeUntilReveal;
+    phaseName = 'REVEAL';
+  } else if (timeUntilEnd >= 0) {
+    timeUntilNextPhase = timeUntilEnd;
+    phaseName = 'END';
+  }
+
+  timeUntilNextPhase /= 1000;
+  // calculate (and subtract) whole days
+  const days = Math.floor(timeUntilNextPhase / 86400);
+  timeUntilNextPhase -= days * 86400;
+  // calculate (and subtract) whole hours
+  const hours = Math.floor(timeUntilNextPhase / 3600) % 24;
+  timeUntilNextPhase -= hours * 3600;
+  // calculate (and subtract) whole minutes
+  const minutes = Math.floor(timeUntilNextPhase / 60) % 60;
+  timeUntilNextPhase -= minutes * 60;
+  // what's left is seconds
+  const seconds = Math.floor(timeUntilNextPhase % 60);
+
+  return `${phaseName} IN - ${days}D|${hours}H|${minutes}M|${seconds}S`;
+};
+
+const getProgressRadius = () => {
+  return FULL_RADIUS - (PROGRESS_STROKE_WIDTH / 2) - BACKGROUND_PADDING;
+};
+
+const getLoadersRadius = () => {
+  return FULL_RADIUS - (LOADERS_STROKE_WIDTH / 2);
+};
+
+const getPhasesRadius = () => {
+  return FULL_RADIUS - (PHASE_STROKE_WIDTH / 2);
+};
+
+const getPathFlipped = (percentage) => {
+  return percentage > 30 && percentage < 70;
+};
+
+const getPathStyle = (radius, percentage, offset) => {
+  const diameter = Math.PI * 2 * radius;
+  const dashoffset = ((100 - percentage) / 100) * diameter;
+  const rotation = 360 * (offset / 100);
+
+  return {
+    strokeDasharray: `${diameter}px ${diameter}px`,
+    strokeDashoffset: `${dashoffset}px`,
+    transform: `rotate(${rotation}deg)`
+  };
+};
+
+const getTextOffset = (flipped, percentage) => {
+  return flipped ? 101 - percentage : percentage - 1;
+};
+
+const getPathDescription = (radius, flipped) => {
+  // Move to center of canvas
+  // Relative move to top canvas
+  // Relative arc to bottom of canvas
+  // Relative arc to top of canvas
+  return `
+      M ${CENTER_X},${CENTER_Y}
+      m 0,-${radius}
+      a ${radius},${radius} 0 1 ${flipped ? 0 : 1} 0,${2 * radius}
+      a ${radius},${radius} 0 1 ${flipped ? 0 : 1} 0,-${2 * radius}
+  `;
+};
+
+const getProgressTextShown = (percentage) => {
+  return percentage >= 15;
+};
+
 class Circles extends React.Component {
-  getPhasePercentages() {
-    if (!this.props.raiser) {
-      return {
-        participation: 0,
-        revelation: 0,
-        progress: 0
-      };
-    }
-
-    const { kickoffTime, revealTime, endTime } = this.props.raiser;
-    const raiserTime = endTime - kickoffTime;
-    const participationTime = revealTime - kickoffTime;
-    const revelationTime = endTime - revealTime;
-    const progressTime = this.props.now - kickoffTime;
-
-    return {
-      participation: 100 * (participationTime / raiserTime),
-      revelation: 100 * (revelationTime / raiserTime),
-      progress: progressTime > raiserTime ? 100 : 100 * (progressTime / raiserTime)
-    };
-  }
-
-  getProgressText() {
-    if (!this.props.raiser) {
-      return null;
-    }
-
-    const { now } = this.props;
-    const { revealTime, endTime } = this.props.raiser;
-    const timeUntilReveal = revealTime - now;
-    const timeUntilEnd = endTime - now;
-
-    if (timeUntilEnd <= 0) {
-      return 'FINISHED';
-    }
-
-    let timeUntilNextPhase;
-    let phaseName;
-    if (timeUntilReveal >= 0) {
-      timeUntilNextPhase = timeUntilReveal;
-      phaseName = 'REVEAL';
-    } else if (timeUntilEnd >= 0) {
-      timeUntilNextPhase = timeUntilEnd;
-      phaseName = 'END';
-    }
-
-    timeUntilNextPhase /= 1000;
-    // calculate (and subtract) whole days
-    const days = Math.floor(timeUntilNextPhase / 86400);
-    timeUntilNextPhase -= days * 86400;
-    // calculate (and subtract) whole hours
-    const hours = Math.floor(timeUntilNextPhase / 3600) % 24;
-    timeUntilNextPhase -= hours * 3600;
-    // calculate (and subtract) whole minutes
-    const minutes = Math.floor(timeUntilNextPhase / 60) % 60;
-    timeUntilNextPhase -= minutes * 60;
-    // what's left is seconds
-    const seconds = Math.floor(timeUntilNextPhase % 60);  // in theory the modulus is not required
-
-    return `${phaseName} IN - ${days}D|${hours}H|${minutes}M|${seconds}S`;
-
-  }
-
-  getProgressRadius() {
-    return FULL_RADIUS - (PROGRESS_STROKE_WIDTH / 2) - BACKGROUND_PADDING;
-  }
-
-  getLoadersRadius() {
-    return FULL_RADIUS - (LOADERS_STROKE_WIDTH / 2);
-  }
-
-  getPhasesRadius() {
-    return FULL_RADIUS - (PHASE_STROKE_WIDTH / 2);
-  }
-
-  getPathFlipped(percentage) {
-    return (percentage > 30 && percentage < 70) ? true : false;
-  }
-
-  getPathStyle(radius, percentage, offset) {
-    const diameter = Math.PI * 2 * radius;
-    const dashoffset = ((100 - percentage) / 100) * diameter;
-    const rotation = 360 * offset / 100;
-
-    return {
-      strokeDasharray: `${diameter}px ${diameter}px`,
-      strokeDashoffset: `${dashoffset}px`,
-      transform: `rotate(${rotation}deg)`
-    };
-  }
-
-  getTextOffset(flipped, percentage) {
-    return flipped ? 101 - percentage : percentage - 1;
-  }
-
-  getPathDescription(radius, flipped) {
-    // Move to center of canvas
-    // Relative move to top canvas
-    // Relative arc to bottom of canvas
-    // Relative arc to top of canvas
-    return `
-        M ${CENTER_X},${CENTER_Y}
-        m 0,-${radius}
-        a ${radius},${radius} 0 1 ${flipped ? 0 : 1} 0,${2 * radius}
-        a ${radius},${radius} 0 1 ${flipped ? 0 : 1} 0,-${2 * radius}
-    `;
-  }
-
-  getProgressTextShown(percentage) {
-    return percentage < 15 ? false : true;
-  }
-
   render() {
+    const { raiser, now } = this.props;
 
-    const progressRadius = this.getProgressRadius();
-    const loadersRadius = this.getLoadersRadius();
+    const phasePercentages = getPhasePercentages(raiser, now);
+    const progressText = getProgressText(raiser, now);
 
-    const phasePercentages = this.getPhasePercentages();
+    const progressRadius = getProgressRadius();
+    const loadersRadius = getLoadersRadius();
 
-    const progressPathStyle = this.getPathStyle(progressRadius, phasePercentages.progress);
-    const participationPathStyle = this.getPathStyle(progressRadius, phasePercentages.participation);
-    const revelationPathStyle = this.getPathStyle(progressRadius, phasePercentages.revelation, phasePercentages.participation);
-    const loadersPathStyle = this.getPathStyle(loadersRadius, LOADERS_PERCENTAGE);
+    const progressPathStyle = getPathStyle(progressRadius, phasePercentages.progress);
+    const participationPathStyle = getPathStyle(progressRadius, phasePercentages.participation);
+    const revelationPathStyle = getPathStyle(progressRadius, phasePercentages.revelation, phasePercentages.participation);
+    const loadersPathStyle = getPathStyle(loadersRadius, LOADERS_PERCENTAGE);
 
-    const progressPathFlipped = this.getPathFlipped(phasePercentages.progress);
-    const participationPathFlipped = this.getPathFlipped(phasePercentages.participation);
+    const progressPathFlipped = getPathFlipped(phasePercentages.progress);
+    const participationPathFlipped = getPathFlipped(phasePercentages.participation);
 
-    const progressPathDescription = this.getPathDescription(progressRadius);
-    const flippedProgressPathDescription = this.getPathDescription(progressRadius, participationPathFlipped);
-    const loadersPathDescription = this.getPathDescription(loadersRadius);
+    const progressPathDescription = getPathDescription(progressRadius);
+    const flippedProgressPathDescription = getPathDescription(progressRadius, participationPathFlipped);
+    const loadersPathDescription = getPathDescription(loadersRadius);
 
-    const progressText = this.getProgressText();
+    const progressTextShown = getProgressTextShown(phasePercentages.progress);
 
-    const progressTextShown = this.getProgressTextShown(phasePercentages.progress);
-
-    const participationTextOffset = this.getTextOffset(participationPathFlipped, phasePercentages.participation);
-    const progressTextOffset = this.getTextOffset(progressPathFlipped, phasePercentages.progress);
+    const participationTextOffset = getTextOffset(participationPathFlipped, phasePercentages.participation);
+    const progressTextOffset = getTextOffset(progressPathFlipped, phasePercentages.progress);
 
     return (
       <svg
