@@ -126,8 +126,18 @@ const getProgressTextShown = (percentage) => {
 };
 
 class Circles extends React.Component {
+  static propTypes = {
+    raiser: PropTypes.shape(),
+    isLoading: PropTypes.bool.isRequired,
+    now: PropTypes.instanceOf(Date).isRequired
+  };
+
+  static defaultProps = {
+    raiser: null
+  }
+
   render() {
-    const { raiser, now } = this.props;
+    const { raiser, now, isLoading } = this.props;
 
     const phasePercentages = getPhasePercentages(raiser, now);
     const progressText = getProgressText(raiser, now);
@@ -165,7 +175,7 @@ class Circles extends React.Component {
           r={FULL_RADIUS}
         />
 
-        <g className={`loaders-container ${this.props.isLoading ? 'show' : 'hide'}`}>
+        <g className={`loaders-container ${isLoading ? 'show' : 'hide'}`}>
 
           <circle
             className="loaders-arc"

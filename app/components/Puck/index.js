@@ -23,12 +23,12 @@ const getPhase = ({
   raiser,
   charityHashedRandom,
   hashedRandom,
-  hasBegun,
-  isRaising,
   random,
   winner,
   balance,
   cancelled,
+  hasBegun,
+  isObtainingMoreEntries,
   isWithdrawSkipped
 }) => {
   const now = Date.now();
@@ -64,7 +64,7 @@ const getPhase = ({
       return 'participate';
     }
 
-    if (!isRaising) {
+    if (!isObtainingMoreEntries) {
       return 'participated';
     }
     return 'raise';
@@ -112,7 +112,7 @@ const getPhase = ({
 
 class Puck extends Component {
   static propTypes = {
-    hasMetamask: PropTypes.bool.isRequired,
+    hasMetamask: PropTypes.bool,
     raiser: PropTypes.shape(),
     charityHashedRandom: PropTypes.string,
     entries: PropTypes.number,
@@ -131,6 +131,7 @@ class Puck extends Component {
   }
 
   static defaultProps = {
+    hasMetamask: false,
     raiser: null,
     charityHashedRandom: null,
     entries: 0,
@@ -146,9 +147,8 @@ class Puck extends Component {
     super(props);
 
     this.state = {
-      isLoading: false,
       hasBegun: false,
-      isRaising: false,
+      isObtainingMoreEntries: false,
       isWithdrawSkipped: false,
       now: new Date()
     };
@@ -166,21 +166,17 @@ class Puck extends Component {
     clearInterval(this.interval);
   }
 
-  setLoading = loading => {
-    this.setState({ isLoading: loading });
-  }
-
   handleBegin = () => {
     this.setState({ hasBegun: true });
   }
 
   handleGetMoreEntries = () => {
-    this.setState({ isRaising: true });
+    this.setState({ isObtainingMoreEntries: true });
   }
 
   handleRaise = ({ numOfEntries }) => {
+    this.setState({ isObtainingMoreEntries: false });
     this.props.onRaise({ numOfEntries });
-    this.setState({ isRaising: false });
   }
 
   handleReveal = ({ random }) => {
@@ -200,7 +196,12 @@ class Puck extends Component {
   }
 
   render() {
-    const { hasBegun, isRaising, isLoading, isWithdrawSkipped } = this.state;
+    const {
+      hasBegun,
+      isObtainingMoreEntries,
+      isWithdrawSkipped
+    } = this.state;
+
     const {
       hasMetamask,
       raiser,
@@ -213,6 +214,10 @@ class Puck extends Component {
       balance,
       cancelled,
       isParticipating,
+      isRaising,
+      isRevealing,
+      isWithdrawing,
+      isCancelling,
       onParticipate
     } = this.props;
 
@@ -222,13 +227,20 @@ class Puck extends Component {
       charityHashedRandom,
       hashedRandom,
       random,
-      hasBegun,
-      isRaising,
       winner,
       balance,
       cancelled,
-      isWithdrawSkipped
+      hasBegun,
+      isObtainingMoreEntries,
+      isWithdrawSkipped,
     });
+
+    const isLoading =
+      isParticipating ||
+      isRaising ||
+      isRevealing ||
+      isWithdrawing ||
+      isCancelling;
 
     return (
       <div className="seedom-puck">
@@ -236,18 +248,18 @@ class Puck extends Component {
           <img alt="seedom" src={seedomLogo} />
         </div>
         <div className="interface">
-          <Circles percentage={50} isLoading={isLoading || isParticipating} raiser={raiser} now={this.state.now} />
+          <Circles percentage={50} isLoading={isLoading} raiser={raiser} now={this.state.now} />
           <Seed isShown={phase === 'seed'} />
           <Begin isShown={phase === 'begin'} onBegin={this.handleBegin} />
           <Participate isShown={phase === 'participate'} isParticipating={isParticipating} onParticipate={onParticipate} />
           <Participated isShown={phase === 'participated'} entries={entries} onGetMoreEntries={this.handleGetMoreEntries} />
-          <Raise isShown={phase === 'raise'} setLoading={this.setLoading} onRaise={this.handleRaise} />
-          <Reveal isShown={phase === 'reveal'} setLoading={this.setLoading} onReveal={this.handleReveal} />
+          <Raise isShown={phase === 'raise'} isRaising={isRaising} onRaise={this.handleRaise} />
+          <Reveal isShown={phase === 'reveal'} isRevealing={isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />
           <Revealed isShown={phase === 'revealed'} />
           <End isShown={phase === 'end'} />
           <Win isShown={phase === 'win'} winner={winner} winnerRandom={winnerRandom} />
-          <Withdraw isShown={phase === 'withdraw'} balance={balance} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
-          <Cancel isShown={phase === 'cancel'} onCancel={this.handleCancel} />
+          <Withdraw isShown={phase === 'withdraw'} balance={balance} isWithdrawing={isWithdrawing} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
+          <Cancel isShown={phase === 'cancel'} isCancelling={isCancelling} onCancel={this.handleCancel} />
           <Cancelled isShown={phase === 'cancelled'} />
           <Error isShown={phase.startsWith('error')} error={phase} />
         </div>

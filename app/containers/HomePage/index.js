@@ -1,77 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-
-import { rpcWeb3 } from '../../utils/web3';
-
-import {
-  setAccount
-} from '../../redux/modules/blockchain';
-
-import {
-  loadContract
-} from '../../redux/modules/seedom';
-
-
-import LoadedHomePage from './components/LoadedHomePage';
-
+import React, { Component } from 'react';
+import Dapp from '../../components/Dapp';
 import './HomePage.scss';
 
-class HomePage extends React.Component {
-  static propTypes = {
-    account: PropTypes.string.isRequired,
-    contractLoaded: PropTypes.bool.isRequired,
-    handleSetAccount: PropTypes.func.isRequired,
-    onLoad: PropTypes.func.isRequired
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      hasMetamask: false
-    };
-  }
-
-  componentWillMount() {
-    const { onLoad } = this.props;
-
-    onLoad();
-
-    if (rpcWeb3) {
-      this.setState({
-        hasMetamask: true
-      });
-      this.initWeb3();
-    }
-  }
-
-  initWeb3 = () => {
-    const { handleSetAccount } = this.props;
-
-    let account;
-    rpcWeb3.eth.getAccounts().then(accounts => {
-      [account] = accounts;
-      rpcWeb3.eth.defaultAccount = account;
-      handleSetAccount(account);
-    });
-  }
-
+class HomePage extends Component {
   render() {
-    const { account, contract, contractLoaded } = this.props;
-    const { hasMetamask } = this.state;
-
     return (
       <div>
         <section className="hero">
           <div className="hero-body">
             <div className="container has-text-centered">
-              {contractLoaded &&
-                <LoadedHomePage
-                  account={account}
-                  contract={contract}
-                  hasMetamask={hasMetamask}
-                />
-              }
+              <Dapp />
             </div>
           </div>
         </section>
@@ -158,27 +96,5 @@ class HomePage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    account: state.blockchain.account,
-    contract: state.seedom.contract,
-    contractLoaded: state.seedom.contractLoaded,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onLoad: () => {
-      dispatch(loadContract());
-    },
-    handleSetAccount: account => {
-      dispatch(setAccount(account));
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HomePage);
+export default HomePage;
 

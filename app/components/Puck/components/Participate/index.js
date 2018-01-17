@@ -25,12 +25,13 @@ class Participate extends Content {
 
   handleSubmit = event => {
     const { onParticipate } = this.props;
+    const { random, numOfEntries } = this.state;
 
     if (event !== undefined && event.preventDefault) {
       event.preventDefault();
     }
 
-    onParticipate({ random: this.state.random, numOfEntries: this.state.numOfEntries });
+    onParticipate({ random, numOfEntries });
   }
 
   handleRandomChange = event => {
@@ -50,7 +51,7 @@ class Participate extends Content {
 
     return (
       <div className={`seedom-content participate ${this.state.className}`}>
-        <Indicator type={isParticipating ? "waiting" : null} />
+        <Indicator type={isParticipating ? 'waiting' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />
           <input className="input is-primary" type="text" placeholder="EMAIL ADDRESS" disabled={isParticipating} onChange={this.handleNumOfEntriesChange} ref={(input) => { this.emailInput = input; }} />

@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Puck from '../../../../components/Puck';
-import Hud from '../../../../components/Hud';
-import Feed from '../../../../components/Feed';
-import { rpcWeb3, wsWeb3 } from '../../../../utils/web3';
-import hashRandom from '../../../../utils/hashRandom';
-import testJSON from '../../../../../../seedom-solidity/deployment/test.json';
+import Puck from '../Puck';
+import Hud from '../Hud';
+import Feed from '../Feed';
+import HybridWeb3 from '../../utils/hybridWeb3';
+import hashRandom from '../../utils/hashRandom';
+import contractAbi from '../../../../seedom-solidity/build/abi/seedom.json';
+import contractDeployments from '../../../../seedom-solidity/deployment/test.json';
 import * as parsers from './parsers';
-import * as bytes from '../../../../utils/bytes';
+import * as bytes from '../../utils/bytes';
 import './index.scss';
-
-import * as seedomActions from '../../../../redux/modules/seedom';
 
 const MAX_FEED_ITEMS = 10;
 
@@ -39,61 +37,63 @@ const getClearedState = () => {
   };
 };
 
-@connect(
-  state => ({
-    participant: state.seedom.participant
-  }),
-  {
-    ...seedomActions
-  }
-)
-class LoadedHomePage extends React.Component {
-  static propTypes = {
-    hasMetamask: PropTypes.bool.isRequired
-  };
-
+class Dapp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       contractAddress: null,
-      rpcContract: null,
-      wsContract: null,
-      isParticipating : false,
+      isParticipating: false,
+      isRaising: false,
+      isRevealing: false,
+      isWithdrawing: false,
+      isCancelling: false,
       ...getClearedState()
     };
   }
 
   componentWillMount() {
-    this.setupContracts(() => {
-      this.retrieveInitialData();
-      this.setupEventsHandlers();
-    });
+    this.hybridWeb3 = new HybridWeb3(null, this.handleHybridWeb3Event);
+  }
+
+  handleHybridWeb3Event = (event, value) => {
+    const newState = {};
+    if (event === 'networkId') {
+      newState.networkId = value;
+    } else if (event === 'account') {
+      newState.account = value;
+    } else if (event === 'hasMetamask') {
+      newState.hasMetamask = value;
+    }
+
+    this.setState(newState, this.continueLoading);
+  }
+
+  continueLoading() {
+    const { hasMetamask, networkId, account } = this.state;
+
+    if (hasMetamask && networkId && account) {
+      this.setupContracts(() => {
+        this.retrieveInitialData();
+        this.setupEventsHandlers();
+      });
+    }
   }
 
   setupContracts(done) {
-    const contractAddress = testJSON.seedom[0].address;
-    const { account, contract, hasMetamask } = this.props;
+    const contractAddress = contractDeployments.seedom[0].address;
 
-    let rpcContract;
-    if (hasMetamask) {
-      rpcContract = new rpcWeb3.eth.Contract(contract, contractAddress, {
-        from: account,
-        gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
-      });
-    } else {
-      rpcContract = null;
-    }
+    this.rpcContract = new this.hybridWeb3.rpcWeb3.eth.Contract(contractAbi, contractAddress, {
+      from: this.state.account,
+      gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
+    });
 
-    const wsWeb3Instance = wsWeb3();
-    const wsContract = new wsWeb3Instance.eth.Contract(contract, contractAddress, {
-      from: account,
+    this.wsContract = new this.hybridWeb3.wsWeb3.eth.Contract(contractAbi, contractAddress, {
+      from: this.state.account,
       gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
     });
 
     this.setState({
       contractAddress,
-      rpcContract,
-      wsContract
     }, done);
   }
 
@@ -105,9 +105,9 @@ class LoadedHomePage extends React.Component {
   }
 
   retrieveRaiser() {
-    const { account } = this.props;
+    const { account } = this.state;
 
-    this.state.wsContract.methods
+    this.wsContract.methods
       .raiser()
       .call({
         from: account
@@ -123,9 +123,9 @@ class LoadedHomePage extends React.Component {
   }
 
   retrieveState() {
-    const { account } = this.props;
+    const { account } = this.state;
 
-    this.state.wsContract.methods
+    this.wsContract.methods
       .state()
       .call({
         from: account
@@ -141,9 +141,9 @@ class LoadedHomePage extends React.Component {
   }
 
   retrieveBalance() {
-    const { account } = this.props;
+    const { account } = this.state;
 
-    this.state.wsContract.methods
+    this.wsContract.methods
       .balancesMapping(account)
       .call({
         from: account
@@ -159,9 +159,9 @@ class LoadedHomePage extends React.Component {
   }
 
   retrieveParticipant() {
-    const { account } = this.props;
+    const { account } = this.state;
 
-    this.state.wsContract.methods
+    this.wsContract.methods
       .participantsMapping(account)
       .call({
         from: account
@@ -177,16 +177,17 @@ class LoadedHomePage extends React.Component {
   }
 
   setupEventsHandlers() {
-    const wsWeb3Instance = wsWeb3();
-    wsWeb3Instance.eth.getBlockNumber((blockNumberError, blockNumber) => {
-      this.state.wsContract.getPastEvents({
+    this.hybridWeb3.wsWeb3.eth.getBlockNumber((blockNumberError, blockNumber) => {
+      // past events
+      this.wsContract.getPastEvents({
         fromBlock: blockNumber - 500
       }, (pastEventsError, pastEvents) => {
         pastEvents.forEach(pastEvent => {
           this.triageEvent(pastEvent);
         });
       });
-      this.state.wsContract.events.allEvents({
+      // new events
+      this.wsContract.events.allEvents({
       }, (allEventsError, allEvent) => {
         this.triageEvent(allEvent);
       });
@@ -194,7 +195,7 @@ class LoadedHomePage extends React.Component {
   }
 
   triageEvent(event) {
-    const { account } = this.props;
+    const { account } = this.state;
 
     const type = event.event;
     const values = event.returnValues;
@@ -268,6 +269,7 @@ class LoadedHomePage extends React.Component {
       };
 
       if (raise.participant === account) {
+        newState.isRaising = false;
         newState.entries = prevState.entries + raise.entries;
       }
 
@@ -284,6 +286,7 @@ class LoadedHomePage extends React.Component {
       };
 
       if (revelation.participant === account) {
+        newState.isRevealing = false;
         newState.random = revelation.random;
       }
 
@@ -308,122 +311,128 @@ class LoadedHomePage extends React.Component {
   }
 
   handleCancellationEvent() {
-    this.setState({ cancelled: true });
+    this.setState({
+      isCancelling: false,
+      cancelled: true
+    });
   }
 
   handleWithdrawalEvent(account, values) {
     const withdrawal = parsers.parseWithdrawal(values);
     // set our balance to zero if we withdrew
     if (withdrawal.participant === account) {
-      this.setState({ balance: 0 });
+      this.setState({
+        isWithdrawing: false,
+        balance: 0
+      });
     }
   }
 
   handleParticipate = ({ random, numOfEntries }) => {
-    const { account } = this.props;
-    const { raiser, rpcContract } = this.state;
+    const { account, raiser } = this.state;
 
     const hashedRandom = hashRandom(random, account);
     const value = numOfEntries * (raiser.valuePerEntry);
 
-    this.setState({
-      isParticipating: true
+    this.setState({ isParticipating: true }, () => {
+      this.rpcContract.methods
+        .participate(hashedRandom)
+        .send({
+          from: account,
+          gas: 1000000,
+          gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+          value
+        })
+        .then(result => {
+          // if result.status === 0, this failed
+          console.log('Participate succeeded');
+          console.log(result);
+        });
     });
-
-    rpcContract.methods
-      .participate(hashedRandom.valueOf())
-      .send({
-        from: account,
-        gas: 1000000,
-        gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
-        value
-      })
-      .then(result => {
-        // if result.status === 0, this failed
-        console.log('Participate succeeded');
-        console.log(result);
-      });
   }
 
   handleRaise = ({ numOfEntries }) => {
-    const { account } = this.props;
-    const { raiser, contractAddress } = this.state;
+    const { account, raiser, contractAddress } = this.state;
 
     const value = numOfEntries * (raiser.valuePerEntry);
 
-    rpcWeb3.eth
-      .sendTransaction({
-        from: account,
-        to: contractAddress,
-        gas: 1000000,
-        gasPrice: '20000000000',
-        value
-      })
-      .then(result => {
-        // if result.status === 0, this failed
-        console.log('Raise succeeded');
-        console.log(result);
-      });
+    this.setState({ isRaising: true }, () => {
+      this.hybridWeb3.rpcWeb3.eth
+        .sendTransaction({
+          from: account,
+          to: contractAddress,
+          gas: 1000000,
+          gasPrice: '20000000000',
+          value
+        })
+        .then(result => {
+          // if result.status === 0, this failed
+          console.log('Raise succeeded');
+          console.log(result);
+        });
+    });
   }
 
   handleReveal = ({ random }) => {
-    const { account } = this.props;
-    const { rpcContract } = this.state;
+    const { account } = this.state;
 
-    rpcContract.methods
-      .reveal(random.valueOf())
-      .send({
-        from: account,
-        gas: 1000000,
-        gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
-      })
-      .then(result => {
-        // if result.status === 0, this failed
-        console.log('Reveal succeeded');
-        console.log(result);
-      });
+    this.setState({ isRevealing: true }, () => {
+      this.rpcContract.methods
+        .reveal(random)
+        .send({
+          from: account,
+          gas: 1000000,
+          gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+        })
+        .then(result => {
+          // if result.status === 0, this failed
+          console.log('Reveal succeeded');
+          console.log(result);
+        });
+    });
   }
 
   handleWithdraw = () => {
-    const { account } = this.props;
-    const { rpcContract } = this.state;
+    const { account } = this.state;
 
-    rpcContract.methods
-      .withdraw()
-      .send({
-        from: account,
-        gas: 1000000,
-        gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
-      })
-      .then(result => {
-        // if result.status === 0, this failed
-        console.log('Withdraw succeeded');
-        console.log(result);
-      });
+    this.setState({ isWithdrawing: true }, () => {
+      this.rpcContract.methods
+        .withdraw()
+        .send({
+          from: account,
+          gas: 1000000,
+          gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+        })
+        .then(result => {
+          // if result.status === 0, this failed
+          console.log('Withdraw succeeded');
+          console.log(result);
+        });
+    });
   }
 
   handleCancel = () => {
-    const { account } = this.props;
-    const { rpcContract } = this.state;
+    const { account } = this.state;
 
-    rpcContract.methods
-      .cancel()
-      .send({
-        from: account,
-        gas: 1000000,
-        gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
-      })
-      .then(result => {
-        // if result.status === 0, this failed
-        console.log('Cancel succeeded');
-        console.log(result);
-      });
+    this.setState({ isCancelling: true }, () => {
+      this.rpcContract.methods
+        .cancel()
+        .send({
+          from: account,
+          gas: 1000000,
+          gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+        })
+        .then(result => {
+          // if result.status === 0, this failed
+          console.log('Cancel succeeded');
+          console.log(result);
+        });
+    });
   }
 
   render() {
-    const { account, hasMetamask } = this.props;
-
     const {
+      hasMetamask,
       contractAddress,
       raiser,
       charityHashedRandom,
@@ -437,7 +446,11 @@ class LoadedHomePage extends React.Component {
       totalEntries,
       totalRevealed,
       feed,
-      isParticipating
+      isParticipating,
+      isRaising,
+      isRevealing,
+      isWithdrawing,
+      isCancelling
     } = this.state;
 
     let received = 0;
@@ -450,8 +463,8 @@ class LoadedHomePage extends React.Component {
     }
 
     return (
-      <div className="seedom-app">
-        <div className="seedom-container">
+      <div className="seedom-dapp">
+        <div className="dapp-container">
           <Hud
             side="left"
             received={received}
@@ -469,6 +482,10 @@ class LoadedHomePage extends React.Component {
             balance={balance}
             cancelled={cancelled}
             isParticipating={isParticipating}
+            isRaising={isRaising}
+            isRevealing={isRevealing}
+            isWithdrawing={isWithdrawing}
+            isCancelling={isCancelling}
             onParticipate={this.handleParticipate}
             onRaise={this.handleRaise}
             onReveal={this.handleReveal}
@@ -499,4 +516,4 @@ class LoadedHomePage extends React.Component {
   }
 }
 
-export default LoadedHomePage;
+export default Dapp;
