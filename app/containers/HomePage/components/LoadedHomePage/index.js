@@ -16,7 +16,7 @@ import * as seedomActions from '../../../../redux/modules/seedom';
 const MAX_FEED_ITEMS = 10;
 
 const addFeedItem = (feed, obj, type) => {
-  const feedItem = Object.assign({ type }, obj);
+  const feedItem = { type, ...obj };
   const newFeed = feed.slice(0, MAX_FEED_ITEMS);
   newFeed.unshift(feedItem);
   return newFeed;
@@ -177,40 +177,55 @@ class LoadedHomePage extends React.Component {
   }
 
   setupEventsHandlers() {
+    const wsWeb3Instance = wsWeb3();
+    wsWeb3Instance.eth.getBlockNumber((blockNumberError, blockNumber) => {
+      this.state.wsContract.getPastEvents({
+        fromBlock: blockNumber - 500
+      }, (pastEventsError, pastEvents) => {
+        pastEvents.forEach(pastEvent => {
+          this.triageEvent(pastEvent);
+        });
+      });
+      this.state.wsContract.events.allEvents({
+      }, (allEventsError, allEvent) => {
+        this.triageEvent(allEvent);
+      });
+    });
+  }
+
+  triageEvent(event) {
     const { account } = this.props;
 
-    this.state.wsContract.events.allEvents({}, (error, event) => {
-      const type = event.event;
-      const values = event.returnValues;
-      switch (type) {
-        case 'Kickoff':
-          this.handleKickoffEvent(values);
-          break;
-        case 'Seed':
-          this.handleSeedEvent(values);
-          break;
-        case 'Participation':
-          this.handleParticipationEvent(account, values);
-          break;
-        case 'Raise':
-          this.handleRaiseEvent(account, values);
-          break;
-        case 'Revelation':
-          this.handleRevelationEvent(account, values);
-          break;
-        case 'Win':
-          this.handleWinEvent(account, values);
-          break;
-        case 'Cancellation':
-          this.handleCancellationEvent();
-          break;
-        case 'Withdrawal':
-          this.handleWithdrawalEvent();
-          break;
-        default:
-          break;
-      }
-    });
+    const type = event.event;
+    const values = event.returnValues;
+    switch (type) {
+      case 'Kickoff':
+        this.handleKickoffEvent(values);
+        break;
+      case 'Seed':
+        this.handleSeedEvent(values);
+        break;
+      case 'Participation':
+        this.handleParticipationEvent(account, values);
+        break;
+      case 'Raise':
+        this.handleRaiseEvent(account, values);
+        break;
+      case 'Revelation':
+        this.handleRevelationEvent(account, values);
+        break;
+      case 'Win':
+        this.handleWinEvent(account, values);
+        break;
+      case 'Cancellation':
+        this.handleCancellationEvent();
+        break;
+      case 'Withdrawal':
+        this.handleWithdrawalEvent();
+        break;
+      default:
+        break;
+    }
   }
 
   handleKickoffEvent(values) {
@@ -222,10 +237,7 @@ class LoadedHomePage extends React.Component {
 
   handleSeedEvent(values) {
     const seed = parsers.parseSeed(values);
-    this.setState((prevState) => ({
-      charityHashedRandom: seed.hashedRandom,
-      feed: addFeedItem(prevState.feed, seed, 'seed')
-    }));
+    this.setState({ charityHashedRandom: seed.hashedRandom });
   }
 
   handleParticipationEvent(account, values) {
@@ -284,8 +296,7 @@ class LoadedHomePage extends React.Component {
     this.setState((prevState) => {
       const newState = {
         winner: win.participant,
-        winnerRandom: win.random,
-        feed: addFeedItem(prevState.feed, win, 'win')
+        winnerRandom: win.random
       };
       // update our balance
       if (win.participant === account) {
@@ -411,7 +422,9 @@ class LoadedHomePage extends React.Component {
 
   render() {
     const { account, hasMetamask } = this.props;
+
     const {
+      contractAddress,
       raiser,
       charityHashedRandom,
       hashedRandom,
@@ -423,6 +436,7 @@ class LoadedHomePage extends React.Component {
       totalParticipants,
       totalEntries,
       totalRevealed,
+      feed,
       isParticipating
     } = this.state;
 
@@ -470,13 +484,13 @@ class LoadedHomePage extends React.Component {
         </div>
         <div className="container">
           <div className="content has-text-centered">
-            <Feed feed={this.state.feed} />
+            <Feed feed={feed} />
           </div>
         </div>
         <div className="container">
           <div className="content has-text-centered">
             <p>
-              View more live <strong>Seedom</strong> data on <a className="is-green" href={`https://etherscan.io/address/${this.state.contractAddress}`}>Etherscan</a>.
+              View more live <strong>Seedom</strong> data on <a className="is-green" href={`https://etherscan.io/address/${contractAddress}`}>Etherscan</a>.
             </p>
           </div>
         </div>
