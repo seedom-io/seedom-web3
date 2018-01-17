@@ -12,6 +12,8 @@ import * as bytes from '../../utils/bytes';
 import './index.scss';
 
 const MAX_FEED_ITEMS = 10;
+const GAS = 2000000;
+const GAS_PRICE = 20000000000;
 
 const addFeedItem = (feed, obj, type) => {
   const feedItem = { type, ...obj };
@@ -84,12 +86,14 @@ class Dapp extends Component {
 
     this.rpcContract = new this.hybridWeb3.rpcWeb3.eth.Contract(contractAbi, contractAddress, {
       from: this.state.account,
-      gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
+      gas: GAS,
+      gasPrice: GAS_PRICE
     });
 
     this.wsContract = new this.hybridWeb3.wsWeb3.eth.Contract(contractAbi, contractAddress, {
       from: this.state.account,
-      gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
+      gas: GAS,
+      gasPrice: GAS_PRICE
     });
 
     this.setState({
@@ -336,17 +340,16 @@ class Dapp extends Component {
 
     this.setState({ isParticipating: true }, () => {
       this.rpcContract.methods
-        .participate(hashedRandom)
+        .participate(hashedRandom.valueOf())
         .send({
           from: account,
-          gas: 1000000,
-          gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
           value
         })
-        .then(result => {
-          // if result.status === 0, this failed
-          console.log('Participate succeeded');
-          console.log(result);
+        .on('error', (error) => {
+          console.log(error);
+        })
+        .on('confirmation', (error) => {
+          console.log(error);
         });
     });
   }
@@ -361,8 +364,6 @@ class Dapp extends Component {
         .sendTransaction({
           from: account,
           to: contractAddress,
-          gas: 1000000,
-          gasPrice: '20000000000',
           value
         })
         .then(result => {
@@ -380,9 +381,7 @@ class Dapp extends Component {
       this.rpcContract.methods
         .reveal(random)
         .send({
-          from: account,
-          gas: 1000000,
-          gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+          from: account
         })
         .then(result => {
           // if result.status === 0, this failed
@@ -399,9 +398,7 @@ class Dapp extends Component {
       this.rpcContract.methods
         .withdraw()
         .send({
-          from: account,
-          gas: 1000000,
-          gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+          from: account
         })
         .then(result => {
           // if result.status === 0, this failed
@@ -418,9 +415,7 @@ class Dapp extends Component {
       this.rpcContract.methods
         .cancel()
         .send({
-          from: account,
-          gas: 1000000,
-          gasPrice: '20000000000', // default gas price in wei, 20 gwei in this case
+          from: account
         })
         .then(result => {
           // if result.status === 0, this failed
