@@ -43,6 +43,10 @@ const getPhase = ({
     }
   }
 
+  if (!raiser) {
+    return 'error-metamask';
+  }
+
   if (cancelled) {
     return 'cancelled';
   }
@@ -109,13 +113,7 @@ const getPhase = ({
 class Puck extends Component {
   static propTypes = {
     hasMetamask: PropTypes.bool.isRequired,
-    raiser: PropTypes.shape({
-      endTime: PropTypes.instanceOf(Date).isRequired,
-      expireTime: PropTypes.instanceOf(Date).isRequired,
-      kickoffTime: PropTypes.instanceOf(Date).isRequired,
-      revealTime: PropTypes.instanceOf(Date).isRequired,
-      valuePerEntry: PropTypes.number.isRequired
-    }).isRequired,
+    raiser: PropTypes.shape(),
     charityHashedRandom: PropTypes.string,
     entries: PropTypes.number,
     hashedRandom: PropTypes.string,
@@ -133,6 +131,7 @@ class Puck extends Component {
   }
 
   static defaultProps = {
+    raiser: null,
     charityHashedRandom: null,
     entries: 0,
     hashedRandom: null,

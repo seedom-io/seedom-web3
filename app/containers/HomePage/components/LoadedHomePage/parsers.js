@@ -4,11 +4,29 @@ const epochToDate = seconds => {
 
 const parseRaiser = raiser => {
   return {
-    endTime: epochToDate(raiser._endTime),
-    expireTime: epochToDate(raiser._expireTime),
+    charity: String(raiser._charity),
+    charitySplit: Number(raiser._charitySplit),
+    winnerSplit: Number(raiser._winnerSplit),
+    ownerSplit: Number(raiser._ownerSplit),
+    valuePerEntry: Number(raiser._valuePerEntry),
     kickoffTime: epochToDate(raiser._kickoffTime),
     revealTime: epochToDate(raiser._revealTime),
-    valuePerEntry: Number(raiser._valuePerEntry)
+    endTime: epochToDate(raiser._endTime),
+    expireTime: epochToDate(raiser._expireTime),
+    maxParticipants: Number(raiser._maxParticipants)
+  };
+};
+
+const parseState = state => {
+  return {
+    charityHashedRandom: String(state._charity),
+    winner: String(state._winner),
+    winnerRandom: String(state._winnerRandom),
+    cancelled: Boolean(state._cancelled),
+    totalParticipants: Number(state._totalParticipants),
+    totalEntries: Number(state._totalEntries),
+    totalRevealers: Number(state._totalRevealers),
+    totalRevealed: Number(state._totalRevealed),
   };
 };
 
@@ -45,7 +63,8 @@ const parseRaise = raise => {
 const parseRevelation = revelation => {
   return {
     participant: String(revelation._participant),
-    random: String(revelation._random)
+    random: String(revelation._random),
+    entries: Number(revelation._entries),
   };
 };
 
@@ -67,6 +86,7 @@ const parseWithdrawal = withdrawal => {
 
 export {
   parseRaiser,
+  parseState,
   parseSeed,
   parseParticipant,
   parseParticipation,

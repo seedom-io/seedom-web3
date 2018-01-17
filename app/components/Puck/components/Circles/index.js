@@ -17,39 +17,49 @@ const LOADERS_TEXT = "COMMUNICATING WITH ETHEREUM";
 
 class Circles extends React.Component {
   getPhasePercentages() {
-    const kickoffTime = this.props.raiser.kickoffTime;
-    const revealTime = this.props.raiser.revealTime;
-    const endTime = this.props.raiser.endTime;
+    if (!this.props.raiser) {
+      return {
+        participation: 0,
+        revelation: 0,
+        progress: 0
+      };
+    }
+
+    const { kickoffTime, revealTime, endTime } = this.props.raiser;
     const raiserTime = endTime - kickoffTime;
     const participationTime = revealTime - kickoffTime;
     const revelationTime = endTime - revealTime;
     const progressTime = this.props.now - kickoffTime;
 
     return {
-      participation: 100 * participationTime / raiserTime,
-      revelation: 100 * revelationTime / raiserTime,
-      progress: progressTime > raiserTime ? 100 : 100 * progressTime / raiserTime
-    }
+      participation: 100 * (participationTime / raiserTime),
+      revelation: 100 * (revelationTime / raiserTime),
+      progress: progressTime > raiserTime ? 100 : 100 * (progressTime / raiserTime)
+    };
   }
 
   getProgressText() {
-    const revealTime = this.props.raiser.revealTime;
-    const endTime = this.props.raiser.endTime;
-    const timeUntilReveal = revealTime - this.props.now;
-    const timeUntilEnd = endTime - this.props.now;
+    if (!this.props.raiser) {
+      return null;
+    }
+
+    const { now } = this.props;
+    const { revealTime, endTime } = this.props.raiser;
+    const timeUntilReveal = revealTime - now;
+    const timeUntilEnd = endTime - now;
 
     if (timeUntilEnd <= 0) {
-      return "FINISHED";
+      return 'FINISHED';
     }
 
     let timeUntilNextPhase;
     let phaseName;
     if (timeUntilReveal >= 0) {
       timeUntilNextPhase = timeUntilReveal;
-      phaseName = "REVEAL";
+      phaseName = 'REVEAL';
     } else if (timeUntilEnd >= 0) {
       timeUntilNextPhase = timeUntilEnd;
-      phaseName = "END";
+      phaseName = 'END';
     }
 
     timeUntilNextPhase /= 1000;

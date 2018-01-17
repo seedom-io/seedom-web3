@@ -15,6 +15,30 @@ import * as seedomActions from '../../../../redux/modules/seedom';
 
 const MAX_FEED_ITEMS = 10;
 
+const addFeedItem = (feed, obj, type) => {
+  const feedItem = Object.assign({ type }, obj);
+  const newFeed = feed.slice(0, MAX_FEED_ITEMS);
+  newFeed.unshift(feedItem);
+  return newFeed;
+};
+
+const getClearedState = () => {
+  return {
+    entries: 0,
+    hashedRandom: bytes.zero32,
+    random: bytes.zero32,
+    charityHashedRandom: bytes.zero32,
+    winner: bytes.zero20,
+    winnerRandom: bytes.zero32,
+    cancelled: false,
+    totalParticipants: 0,
+    totalEntries: 0,
+    totalRevealers: 0,
+    totalRevealed: 0,
+    feed: []
+  };
+};
+
 @connect(
   state => ({
     participant: state.seedom.participant
@@ -34,9 +58,8 @@ class LoadedHomePage extends React.Component {
       contractAddress: null,
       rpcContract: null,
       wsContract: null,
-      raiser: null,
-      feed: [],
-      isParticipating: false
+      isParticipating : false,
+      ...getClearedState()
     };
   }
 
@@ -75,30 +98,41 @@ class LoadedHomePage extends React.Component {
   }
 
   retrieveInitialData() {
-    this.retrieveCurrentRaiser(() => {
-      this.retrieveBalance();
-      this.retrieveCancelled(() => {
-        this.retrieveCharityHashedRandom();
-        this.retrieveParticipant();
-        this.retrieveWinner(() => {
-          this.retrieveWinnerRandom();
-        });
-      });
-    });
+    this.retrieveRaiser();
+    this.retrieveState();
+    this.retrieveBalance();
+    this.retrieveParticipant();
   }
 
-  retrieveCurrentRaiser(next) {
+  retrieveRaiser() {
     const { account } = this.props;
 
     this.state.wsContract.methods
-      .currentRaiser()
+      .raiser()
       .call({
         from: account
       })
       .then(
         data => {
           this.setState({ raiser: parsers.parseRaiser(data) });
-          next();
+        },
+        err => {
+          console.error(err);
+        }
+      );
+  }
+
+  retrieveState() {
+    const { account } = this.props;
+
+    this.state.wsContract.methods
+      .state()
+      .call({
+        from: account
+      })
+      .then(
+        data => {
+          this.setState(parsers.parseState(data));
         },
         err => {
           console.error(err);
@@ -110,52 +144,13 @@ class LoadedHomePage extends React.Component {
     const { account } = this.props;
 
     this.state.wsContract.methods
-      .balance(account)
+      .balancesMapping(account)
       .call({
         from: account
       })
       .then(
         data => {
-          this.setState({ balance: data });
-        },
-        err => {
-          console.error(err);
-        }
-      );
-  }
-
-  retrieveCancelled(next) {
-    const { account } = this.props;
-
-    this.state.wsContract.methods
-      .cancelled()
-      .call({
-        from: account
-      })
-      .then(
-        data => {
-          this.setState({ cancelled: data });
-          if (!data) {
-            next();
-          }
-        },
-        err => {
-          console.error(err);
-        }
-      );
-  }
-
-  retrieveCharityHashedRandom() {
-    const { account } = this.props;
-
-    this.state.wsContract.methods
-      .charityHashedRandom()
-      .call({
-        from: account
-      })
-      .then(
-        data => {
-          this.setState({ charityHashedRandom: data });
+          this.setState({ balance: parseInt(data, 10) });
         },
         err => {
           console.error(err);
@@ -167,59 +162,13 @@ class LoadedHomePage extends React.Component {
     const { account } = this.props;
 
     this.state.wsContract.methods
-      .participant(account)
+      .participantsMapping(account)
       .call({
         from: account
       })
       .then(
         data => {
-          const participant = parsers.parseParticipant(data);
-          this.setState({
-            entries: participant.entries,
-            hashedRandom: participant.hashedRandom,
-            random: participant.random
-          });
-        },
-        err => {
-          console.error(err);
-        }
-      );
-  }
-
-  retrieveWinner(next) {
-    const { account } = this.props;
-
-    this.state.wsContract.methods
-      .winner()
-      .call({
-        from: account
-      })
-      .then(
-        data => {
-          this.setState({ winner: data });
-          if (!bytes.isZero20(data)) {
-            next();
-          }
-        },
-        err => {
-          console.error(err);
-        }
-      );
-  }
-
-  retrieveWinnerRandom() {
-    const { account } = this.props;
-    const { winner } = this.state;
-
-    this.state.wsContract.methods
-      .participant(winner)
-      .call({
-        from: account
-      })
-      .then(
-        data => {
-          const participant = parsers.parseParticipant(data);
-          this.setState({ winnerRandom: participant.winnerRandom });
+          this.setState(parsers.parseParticipant(data));
         },
         err => {
           console.error(err);
@@ -264,73 +213,87 @@ class LoadedHomePage extends React.Component {
     });
   }
 
-  addFeedItem(obj, type) {
-    const feedItem = Object.assign({ type }, obj);
-    const feed = this.state.feed.slice(0, MAX_FEED_ITEMS);
-    feed.unshift(feedItem);
-    this.setState({ feed });
-  }
-
   handleKickoffEvent(values) {
-    this.setState({ raiser: parsers.parseRaiser(values) });
+    this.setState({
+      raiser: parsers.parseRaiser(values),
+      ...getClearedState()
+    });
   }
 
   handleSeedEvent(values) {
     const seed = parsers.parseSeed(values);
-    this.setState({ charityHashedRandom: seed.hashedRandom });
-    this.addFeedItem(seed, 'seed');
+    this.setState((prevState) => ({
+      charityHashedRandom: seed.hashedRandom,
+      feed: addFeedItem(prevState.feed, seed, 'seed')
+    }));
   }
 
   handleParticipationEvent(account, values) {
     const participation = parsers.parseParticipation(values);
-    if (participation.participant === account) {
-      this.setState({
-        isParticipating: false,
-        entries: participation.entries,
-        hashedRandom: participation.hashedRandom
-      });
-    }
+    this.setState((prevState) => {
+      const newState = {
+        totalParticipants: prevState.totalParticipants + 1,
+        totalEntries: prevState.totalEntries + participation.entries,
+        feed: addFeedItem(prevState.feed, participation, 'participation')
+      };
 
-    this.addFeedItem(participation, 'participation');
+      if (participation.participant === account) {
+        newState.isParticipating = false;
+        newState.entries = participation.entries;
+        newState.hashedRandom = participation.hashedRandom;
+      }
+
+      return newState;
+    });
   }
 
   handleRaiseEvent(account, values) {
     const raise = parsers.parseRaise(values);
-    if (raise.participant === account) {
-      this.setState({
-        entries: this.state.entries + raise.entries
-      });
-    }
+    this.setState((prevState) => {
+      const newState = {
+        totalEntries: prevState.totalEntries + raise.entries,
+        feed: addFeedItem(prevState.feed, raise, 'raise')
+      };
 
-    this.addFeedItem(raise, 'raise');
+      if (raise.participant === account) {
+        newState.entries = prevState.entries + raise.entries;
+      }
+
+      return newState;
+    });
   }
 
   handleRevelationEvent(account, values) {
     const revelation = parsers.parseRevelation(values);
-    if (revelation.participant === account) {
-      this.setState({
-        random: revelation.random
-      });
-    }
+    this.setState((prevState) => {
+      const newState = {
+        totalRevealed: prevState.totalRevealed + revelation.entries,
+        feed: addFeedItem(prevState.feed, revelation, 'revelation')
+      };
 
-    this.addFeedItem(revelation, 'revelation');
+      if (revelation.participant === account) {
+        newState.random = revelation.random;
+      }
+
+      return newState;
+    });
   }
 
   handleWinEvent(account, values) {
     const win = parsers.parseWin(values);
+    this.setState((prevState) => {
+      const newState = {
+        winner: win.participant,
+        winnerRandom: win.random,
+        feed: addFeedItem(prevState.feed, win, 'win')
+      };
+      // update our balance
+      if (win.participant === account) {
+        newState.balance = prevState.balance + win.winnerReward;
+      }
 
-    const newState = {
-      winner: win.participant,
-      winnerRandom: win.random
-    };
-
-    // update our balance if
-    if (win.participant === account) {
-      newState.balance = this.state.balance + win.winnerReward;
-    }
-
-    this.setState(newState);
-    this.addFeedItem(win, 'win');
+      return newState;
+    });
   }
 
   handleCancellationEvent() {
@@ -457,34 +420,54 @@ class LoadedHomePage extends React.Component {
       winnerRandom,
       balance,
       cancelled,
+      totalParticipants,
+      totalEntries,
+      totalRevealed,
       isParticipating
     } = this.state;
 
+    let received = 0;
+    let charityReward = 0;
+    let winnerReward = 0;
+    if (raiser) {
+      received = this.state.totalEntries * raiser.valuePerEntry;
+      charityReward = received * (raiser.charitySplit / 1000);
+      winnerReward = received * (raiser.winnerSplit / 1000);
+    }
+
     return (
       <div className="seedom-app">
-        {raiser &&
-          <div className="seedom-container">
-            <Hud side="left" received={5000} charity={3000} winner={2000} />
-            <Puck
-              hasMetamask={hasMetamask}
-              raiser={raiser}
-              charityHashedRandom={charityHashedRandom}
-              hashedRandom={hashedRandom}
-              entries={entries}
-              winner={winner}
-              winnerRandom={winnerRandom}
-              balance={balance}
-              cancelled={cancelled}
-              isParticipating={isParticipating}
-              onParticipate={this.handleParticipate}
-              onRaise={this.handleRaise}
-              onReveal={this.handleReveal}
-              onWithdraw={this.handleWithdraw}
-              onCancel={this.handleCancel}
-            />
-            <Hud side="right" participants={576} entries={15834} revealed={14000} />
-          </div>
-        }
+        <div className="seedom-container">
+          <Hud
+            side="left"
+            received={received}
+            charity={charityReward}
+            winner={winnerReward}
+          />
+          <Puck
+            hasMetamask={hasMetamask}
+            raiser={raiser}
+            charityHashedRandom={charityHashedRandom}
+            hashedRandom={hashedRandom}
+            entries={entries}
+            winner={winner}
+            winnerRandom={winnerRandom}
+            balance={balance}
+            cancelled={cancelled}
+            isParticipating={isParticipating}
+            onParticipate={this.handleParticipate}
+            onRaise={this.handleRaise}
+            onReveal={this.handleReveal}
+            onWithdraw={this.handleWithdraw}
+            onCancel={this.handleCancel}
+          />
+          <Hud
+            side="right"
+            participants={totalParticipants}
+            entries={totalEntries}
+            revealed={totalRevealed}
+          />
+        </div>
         <div className="container">
           <div className="content has-text-centered">
             <Feed feed={this.state.feed} />
