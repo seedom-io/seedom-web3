@@ -181,20 +181,10 @@ class Dapp extends Component {
   }
 
   setupEventsHandlers() {
-    this.hybridWeb3.wsWeb3.eth.getBlockNumber((blockNumberError, blockNumber) => {
-      // past events
-      this.wsContract.getPastEvents({
-        fromBlock: 0
-      }, (pastEventsError, pastEvents) => {
-        pastEvents.forEach(pastEvent => {
-          this.triageEvent(pastEvent);
-        });
-      });
-      // new events
-      this.wsContract.events.allEvents({
-      }, (allEventsError, allEvent) => {
-        this.triageEvent(allEvent);
-      });
+    // new events
+    this.wsContract.events.allEvents({
+    }, (error, event) => {
+      this.triageEvent(event);
     });
   }
 
