@@ -257,7 +257,7 @@ class Dapp extends Component {
         this.handleCancellationEvent();
         break;
       case 'withdrawal':
-        this.handleWithdrawalEvent();
+        this.handleWithdrawalEvent(account, values);
         break;
       default:
         break;
