@@ -363,65 +363,54 @@ class Dapp extends Component {
     }
   }
 
+  handleSend = (transaction, cancelled) => {
+    transaction
+      .on('error', (error) => {
+        const { message } = error;
+        if (message.includes('User denied')) {
+          cancelled();
+        }
+      });
+  }
+
   handleParticipate = ({ random, numOfEntries }, done) => {
     const { account, raiser } = this.state;
-
     const randomHex = randoms.hexRandom(random);
     const hashedRandom = randoms.hashRandom(randomHex, account);
     const value = numOfEntries * (raiser.valuePerEntry);
 
     this.setState({ isParticipating: true }, () => {
-      this.rpcContract.methods
-        .participate(hashedRandom)
-        .send({
-          from: account,
-          value
-        })
-        .on('error', (error) => {
-          console.log(error);
-        })
-        .on('confirmation', (error) => {
-          console.log(error);
-        });
+      this.handleSend(this.rpcContract.methods.participate(hashedRandom).send({
+        from: account, value
+      }), () => {
+        this.setState({ isParticipating: false });
+      });
     }, done);
   }
 
   handleRaise = ({ numOfEntries }, done) => {
     const { account, raiser, contractAddress } = this.state;
-
     const value = numOfEntries * (raiser.valuePerEntry);
 
     this.setState({ isRaising: true }, () => {
-      this.hybridWeb3.rpcWeb3.eth
-        .sendTransaction({
-          from: account,
-          to: contractAddress,
-          value
-        })
-        .then(result => {
-          // if result.status === 0, this failed
-          console.log('Raise succeeded');
-          console.log(result);
-        });
+      this.handleSend(this.hybridWeb3.rpcWeb3.eth.sendTransaction({
+        from: account, to: contractAddress, value
+      }), () => {
+        this.setState({ isRaising: false });
+      });
     }, done);
   }
 
   handleReveal = ({ random }, done) => {
     const { account } = this.state;
-
     const randomHex = randoms.hexRandom(random);
 
     this.setState({ isRevealing: true }, () => {
-      this.rpcContract.methods
-        .reveal(randomHex)
-        .send({
-          from: account
-        })
-        .then(result => {
-          // if result.status === 0, this failed
-          console.log('Reveal succeeded');
-          console.log(result);
-        });
+      this.handleSend(this.rpcContract.methods.reveal(randomHex).send({
+        from: account
+      }), () => {
+        this.setState({ isRevealing: false });
+      });
     }, done);
   }
 
@@ -429,16 +418,11 @@ class Dapp extends Component {
     const { account } = this.state;
 
     this.setState({ isWithdrawing: true }, () => {
-      this.rpcContract.methods
-        .withdraw()
-        .send({
-          from: account
-        })
-        .then(result => {
-          // if result.status === 0, this failed
-          console.log('Withdraw succeeded');
-          console.log(result);
-        });
+      this.handleSend(this.rpcContract.methods.withdraw().send({
+        from: account
+      }), () => {
+        this.setState({ isWithdrawing: false });
+      });
     }, done);
   }
 
@@ -446,16 +430,11 @@ class Dapp extends Component {
     const { account } = this.state;
 
     this.setState({ isCancelling: true }, () => {
-      this.rpcContract.methods
-        .cancel()
-        .send({
-          from: account
-        })
-        .then(result => {
-          // if result.status === 0, this failed
-          console.log('Cancel succeeded');
-          console.log(result);
-        });
+      this.handleSend(this.rpcContract.methods.cancel().send({
+        from: account
+      }), () => {
+        this.setState({ isWithdrawing: false });
+      });
     }, done);
   }
 
