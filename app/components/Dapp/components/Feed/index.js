@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import * as bytes from '../../utils/bytes';
+import * as randoms from '../../utils/randoms';
 import './index.scss';
 
 const getData = (feedItem) => {
   if (feedItem.hashedRandom) {
     return bytes.shorten(feedItem.hashedRandom);
   } else if (feedItem.random) {
-    return bytes.shorten(feedItem.random);
+    return randoms.dehexRandom(feedItem.random);
   }
   return null;
 };

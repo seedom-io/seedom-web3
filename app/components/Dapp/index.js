@@ -14,6 +14,7 @@ import './index.scss';
 const MAX_FEED_ITEMS = 10;
 const GAS = 2000000;
 const GAS_PRICE = 20000000000;
+const FEED_BLOCKS_BACK = 1000;
 
 const addFeedItem = (feed, obj, type) => {
   const feedItem = { type, ...obj };
@@ -181,41 +182,81 @@ class Dapp extends Component {
   }
 
   setupEventsHandlers() {
-    // new events
-    this.wsContract.events.allEvents({
-    }, (error, event) => {
-      this.triageEvent(event);
+    this.hybridWeb3.wsWeb3.eth.getBlockNumber((blockNumberError, blockNumber) => {
+      const feedBlocksBack = (blockNumber < FEED_BLOCKS_BACK) ? 0 : FEED_BLOCKS_BACK;
+      // get past events
+      this.wsContract.getPastEvents({
+        fromBlock: feedBlocksBack
+      }, (pastEventsError, pastEvents) => {
+        // first render old events
+        if (pastEvents) {
+          pastEvents.forEach(pastEvent => {
+            this.triagePastEvent(pastEvent);
+          });
+        }
+        // now listen for new events
+        this.wsContract.events.allEvents({
+        }, (allEventsError, allEvent) => {
+          this.triageNewEvent(allEvent);
+        });
+      });
     });
   }
 
-  triageEvent(event) {
-    const { account } = this.state;
-
-    const type = event.event;
+  triagePastEvent(event) {
+    const type = event.event.toLowerCase();
     const values = event.returnValues;
+
+    let obj;
     switch (type) {
-      case 'Kickoff':
+      case 'participation':
+        obj = parsers.parseParticipation(values);
+        break;
+      case 'raise':
+        obj = parsers.parseRaise(values);
+        break;
+      case 'revelation':
+        obj = parsers.parseRevelation(values);
+        break;
+      default:
+        break;
+    }
+
+    if (obj) {
+      this.setState((prevState) => {
+        return { feed: addFeedItem(prevState.feed, obj, type) };
+      });
+    }
+  }
+
+  triageNewEvent(event) {
+    const { account } = this.state;
+    const type = event.event.toLowerCase();
+    const values = event.returnValues;
+
+    switch (type) {
+      case 'kickoff':
         this.handleKickoffEvent(values);
         break;
-      case 'Seed':
+      case 'seed':
         this.handleSeedEvent(values);
         break;
-      case 'Participation':
-        this.handleParticipationEvent(account, values);
+      case 'participation':
+        this.handleParticipationEvent(type, account, values);
         break;
-      case 'Raise':
-        this.handleRaiseEvent(account, values);
+      case 'raise':
+        this.handleRaiseEvent(type, account, values);
         break;
-      case 'Revelation':
-        this.handleRevelationEvent(account, values);
+      case 'revelation':
+        this.handleRevelationEvent(type, account, values);
         break;
-      case 'Win':
+      case 'win':
         this.handleWinEvent(account, values);
         break;
-      case 'Cancellation':
+      case 'cancellation':
         this.handleCancellationEvent();
         break;
-      case 'Withdrawal':
+      case 'withdrawal':
         this.handleWithdrawalEvent();
         break;
       default:
@@ -235,13 +276,13 @@ class Dapp extends Component {
     this.setState({ charityHashedRandom: seed.hashedRandom });
   }
 
-  handleParticipationEvent(account, values) {
+  handleParticipationEvent(type, account, values) {
     const participation = parsers.parseParticipation(values);
     this.setState((prevState) => {
       const newState = {
         totalParticipants: prevState.totalParticipants + 1,
         totalEntries: prevState.totalEntries + participation.entries,
-        feed: addFeedItem(prevState.feed, participation, 'participation')
+        feed: addFeedItem(prevState.feed, participation, type)
       };
 
       if (participation.participant === account) {
@@ -254,12 +295,12 @@ class Dapp extends Component {
     });
   }
 
-  handleRaiseEvent(account, values) {
+  handleRaiseEvent(type, account, values) {
     const raise = parsers.parseRaise(values);
     this.setState((prevState) => {
       const newState = {
         totalEntries: prevState.totalEntries + raise.entries,
-        feed: addFeedItem(prevState.feed, raise, 'raise')
+        feed: addFeedItem(prevState.feed, raise, type)
       };
 
       if (raise.participant === account) {
@@ -271,12 +312,12 @@ class Dapp extends Component {
     });
   }
 
-  handleRevelationEvent(account, values) {
+  handleRevelationEvent(type, account, values) {
     const revelation = parsers.parseRevelation(values);
     this.setState((prevState) => {
       const newState = {
         totalRevealed: prevState.totalRevealed + revelation.entries,
-        feed: addFeedItem(prevState.feed, revelation, 'revelation')
+        feed: addFeedItem(prevState.feed, revelation, type)
       };
 
       if (revelation.participant === account) {

@@ -6,6 +6,12 @@ const hexRandom = (random) => {
   return `0x${buffer.toString('hex')}`;
 };
 
+const dehexRandom = (randomHex) => {
+  const randomHexMeat = randomHex.substr(2);
+  const randomBuffer = Buffer.from(randomHexMeat, 'hex');
+  return randomBuffer.toString();
+};
+
 const hashRandom = (randomHex, participant) => {
   const hasher = new keccak256.create(256); // eslint-disable-line new-cap
 
@@ -20,4 +26,4 @@ const hashRandom = (randomHex, participant) => {
   return `0x${hasher.hex()}`;
 };
 
-export { hexRandom, hashRandom };
+export { hexRandom, dehexRandom, hashRandom };

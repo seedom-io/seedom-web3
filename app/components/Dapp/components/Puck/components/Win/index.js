@@ -1,6 +1,7 @@
 import React from 'react';
 import Content from '../Content';
 import Indicator from '../Indicator';
+import * as randoms from '../../../../utils/randoms';
 import './index.scss';
 import charityLogo from '../../../../../../img/logos/charity.png';
 
@@ -11,7 +12,7 @@ class Win extends Content {
 
     return (
       <div className={`seedom-content win ${className}`}>
-        <Indicator type={isShown ? "win" : null} />
+        <Indicator type={isShown ? 'win' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />
         </div>
@@ -20,7 +21,7 @@ class Win extends Content {
         </div>
         <div className="seedom-overlay">
           <div className="random-title">THEIR MESSAGE TO THE WORLD</div>
-          <div className="random">{winnerRandom}</div>
+          <div className="random">{randoms.dehexRandom(winnerRandom)}</div>
         </div>
         <div className="seedom-overlay">
           <a className="address" href={`https://etherscan.io/address/${winner}`} target="_blank">{winner}</a>

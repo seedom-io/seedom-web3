@@ -3,15 +3,17 @@ import './index.scss';
 
 class HudStat extends Component {
   render() {
+    const { title, value, symbol } = this.props;
+
     return (
       <div className="stat">
         <div className="stat-title">
-          {this.props.title}
+          {title}
         </div>
         <div className="stat-value">
-          {this.props.value}
+          {value}
           <span className="stat-symbol">
-            {this.props.symbol}
+            {symbol}
           </span>
         </div>
       </div>
@@ -19,22 +21,37 @@ class HudStat extends Component {
   }
 }
 
+const getEtherFromWei = (wei) => {
+  const ether = wei / 1000000000000000000;
+  return ether.toFixed(2);
+};
+
 class Hud extends Component {
   render() {
+    const {
+      side,
+      received,
+      charity,
+      winner,
+      participants,
+      entries,
+      revealed
+    } = this.props;
+
     return (
-      <div className={`seedom-hub ${this.props.side}`}>
-        {((this.props.side === 'top') || (this.props.side === 'left')) &&
+      <div className={`seedom-hub ${side}`}>
+        {((side === 'top') || (side === 'left')) &&
           <div className="panel left">
-            <HudStat title="received" value={this.props.received} symbol="Ξ" />
-            <HudStat title="charity" value={this.props.charity} symbol="Ξ" />
-            <HudStat title="winner" value={this.props.winner} symbol="Ξ" />
+            <HudStat title="received" value={getEtherFromWei(received)} symbol="Ξ" />
+            <HudStat title="charity" value={getEtherFromWei(charity)} symbol="Ξ" />
+            <HudStat title="winner" value={getEtherFromWei(winner)} symbol="Ξ" />
           </div>
         }
-        {((this.props.side === 'top') || (this.props.side === 'right')) &&
+        {((side === 'top') || (side === 'right')) &&
           <div className="panel right">
-            <HudStat title="participants" value={this.props.participants} />
-            <HudStat title="entries" value={this.props.entries} />
-            <HudStat title="revealed" value={this.props.revealed} />
+            <HudStat title="participants" value={participants} />
+            <HudStat title="entries" value={entries} />
+            <HudStat title="revealed" value={revealed} />
           </div>
         }
       </div>
