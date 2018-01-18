@@ -1,6 +1,7 @@
 import React from 'react';
 import Content from '../Content';
 import Indicator from '../Indicator';
+import { localeNumber } from '../../../../utils/numbers';
 import charityLogo from '../../../../../../img/logos/charity.png';
 import './index.scss';
 
@@ -17,7 +18,7 @@ class Participate extends Content {
         </div>
         <div className="seedom-overlay">
           <div className="entries">
-            <div className="total">{entries}</div>
+            <div className="total">{localeNumber(entries)}</div>
             ENTRIES OBTAINED
           </div>
         </div>

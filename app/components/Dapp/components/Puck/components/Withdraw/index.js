@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Content from '../Content';
 import Indicator from '../Indicator';
+import { localeNumber, getEtherFromWei } from '../../../../utils/numbers';
 import './index.scss';
 
 class Withdraw extends Content {
@@ -19,7 +20,7 @@ class Withdraw extends Content {
         <div className="seedom-overlay">
           <div className="puck-message">
             YOU HAVE
-            <div className="balance">{balance}</div>
+            <div className="balance">{localeNumber(getEtherFromWei(balance))}</div>
             ETHER TO WITHDRAW!
           </div>
         </div>

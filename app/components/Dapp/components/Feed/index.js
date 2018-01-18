@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as bytes from '../../utils/bytes';
 import * as randoms from '../../utils/randoms';
+import { localeNumber } from '../../utils/numbers';
 import './index.scss';
 
 const getData = (feedItem) => {
@@ -32,7 +33,7 @@ class Feed extends Component {
               <tr>
                 <td>{feedItem.type}</td>
                 <td>{bytes.shorten(feedItem.participant)}</td>
-                <td>{feedItem.entries}</td>
+                <td>{localeNumber(feedItem.entries)}</td>
                 <td>{getData(feedItem)}</td>
               </tr>
             ))}
