@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Puck from '../Puck';
-import Hud from '../Hud';
-import Feed from '../Feed';
-import HybridWeb3 from '../../utils/hybridWeb3';
-import * as randoms from '../../utils/randoms';
+import Puck from './components/Puck';
+import Hud from './components/Hud';
+import Feed from './components/Feed';
+import HybridWeb3 from './utils/hybridWeb3';
+import * as randoms from './utils/randoms';
 import contractAbi from '../../../../seedom-solidity/build/abi/seedom.json';
 import contractDeployments from '../../../../seedom-solidity/deployment/test.json';
-import * as parsers from './parsers';
-import * as bytes from '../../utils/bytes';
+import * as parsers from './utils/parsers';
+import * as bytes from './utils/bytes';
 import './index.scss';
 
 const MAX_FEED_ITEMS = 10;
