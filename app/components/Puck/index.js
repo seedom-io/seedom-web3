@@ -27,6 +27,11 @@ const getPhase = ({
   winner,
   balance,
   cancelled,
+  isParticipating,
+  isRaising,
+  isRevealing,
+  isWithdrawing,
+  isCancelling,
   hasBegun,
   isObtainingMoreEntries,
   isWithdrawSkipped
@@ -64,9 +69,10 @@ const getPhase = ({
       return 'participate';
     }
 
-    if (!isObtainingMoreEntries) {
+    if (!isObtainingMoreEntries && !isRaising) {
       return 'participated';
     }
+
     return 'raise';
   }
 
@@ -123,6 +129,10 @@ class Puck extends Component {
     balance: PropTypes.number,
     cancelled: PropTypes.bool,
     isParticipating: PropTypes.bool.isRequired,
+    isRaising: PropTypes.bool.isRequired,
+    isRevealing: PropTypes.bool.isRequired,
+    isWithdrawing: PropTypes.bool.isRequired,
+    isCancelling: PropTypes.bool.isRequired,
     onParticipate: PropTypes.func.isRequired,
     onRaise: PropTypes.func.isRequired,
     onReveal: PropTypes.func.isRequired,
@@ -170,13 +180,20 @@ class Puck extends Component {
     this.setState({ hasBegun: true });
   }
 
+  handleParticipate = ({ random, numOfEntries }) => {
+    this.props.onParticipate({ random, numOfEntries }, () => {
+      this.setState({ hasBegun: false });
+    });
+  }
+
   handleGetMoreEntries = () => {
     this.setState({ isObtainingMoreEntries: true });
   }
 
   handleRaise = ({ numOfEntries }) => {
-    this.setState({ isObtainingMoreEntries: false });
-    this.props.onRaise({ numOfEntries });
+    this.setState({ isObtainingMoreEntries: false }, () => {
+      this.props.onRaise({ numOfEntries });
+    });
   }
 
   handleReveal = ({ random }) => {
@@ -217,8 +234,7 @@ class Puck extends Component {
       isRaising,
       isRevealing,
       isWithdrawing,
-      isCancelling,
-      onParticipate
+      isCancelling
     } = this.props;
 
     const phase = getPhase({
@@ -230,9 +246,14 @@ class Puck extends Component {
       winner,
       balance,
       cancelled,
+      isParticipating,
+      isRaising,
+      isRevealing,
+      isWithdrawing,
+      isCancelling,
       hasBegun,
       isObtainingMoreEntries,
-      isWithdrawSkipped,
+      isWithdrawSkipped
     });
 
     const isLoading =
@@ -251,11 +272,11 @@ class Puck extends Component {
           <Circles percentage={50} isLoading={isLoading} raiser={raiser} now={this.state.now} />
           <Seed isShown={phase === 'seed'} />
           <Begin isShown={phase === 'begin'} onBegin={this.handleBegin} />
-          <Participate isShown={phase === 'participate'} isParticipating={isParticipating} onParticipate={onParticipate} />
+          <Participate isShown={phase === 'participate'} isParticipating={isParticipating} onParticipate={this.handleParticipate} />
           <Participated isShown={phase === 'participated'} entries={entries} onGetMoreEntries={this.handleGetMoreEntries} />
           <Raise isShown={phase === 'raise'} isRaising={isRaising} onRaise={this.handleRaise} />
           <Reveal isShown={phase === 'reveal'} isRevealing={isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />
-          <Revealed isShown={phase === 'revealed'} />
+          <Revealed isShown={phase === 'revealed'} entries={entries} />
           <End isShown={phase === 'end'} />
           <Win isShown={phase === 'win'} winner={winner} winnerRandom={winnerRandom} />
           <Withdraw isShown={phase === 'withdraw'} balance={balance} isWithdrawing={isWithdrawing} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />

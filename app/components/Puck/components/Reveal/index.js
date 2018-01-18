@@ -41,10 +41,11 @@ class Reveal extends Content {
   };
 
   render() {
+    const { className } = this.state;
     const { isRevealing } = this.props;
 
     return (
-      <div className={`seedom-content participate ${this.state.className}`}>
+      <div className={`seedom-content participate ${className}`}>
         <Indicator type={isRevealing ? 'waiting' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />

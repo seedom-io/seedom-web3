@@ -47,10 +47,11 @@ class Participate extends Content {
   };
 
   render() {
+    const { className } = this.state;
     const { isParticipating } = this.props;
 
     return (
-      <div className={`seedom-content participate ${this.state.className}`}>
+      <div className={`seedom-content participate ${className}`}>
         <Indicator type={isParticipating ? 'waiting' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />

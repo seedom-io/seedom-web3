@@ -17,8 +17,7 @@ class Content extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-
-    if (this.props.isShown == newProps.isShown) {
+    if (this.props.isShown === newProps.isShown) {
       return;
     }
 
@@ -27,13 +26,12 @@ class Content extends Component {
     } else {
       this.show();
     }
-
   }
 
   show() {
     setTimeout(() => {
       this.setState({
-        className: "show"
+        className: 'show'
       });
     }, 0);
   }

@@ -4,7 +4,7 @@ import Puck from '../Puck';
 import Hud from '../Hud';
 import Feed from '../Feed';
 import HybridWeb3 from '../../utils/hybridWeb3';
-import hashRandom from '../../utils/hashRandom';
+import * as randoms from '../../utils/randoms';
 import contractAbi from '../../../../seedom-solidity/build/abi/seedom.json';
 import contractDeployments from '../../../../seedom-solidity/deployment/test.json';
 import * as parsers from './parsers';
@@ -184,7 +184,7 @@ class Dapp extends Component {
     this.hybridWeb3.wsWeb3.eth.getBlockNumber((blockNumberError, blockNumber) => {
       // past events
       this.wsContract.getPastEvents({
-        fromBlock: blockNumber - 500
+        fromBlock: 0
       }, (pastEventsError, pastEvents) => {
         pastEvents.forEach(pastEvent => {
           this.triageEvent(pastEvent);
@@ -332,15 +332,16 @@ class Dapp extends Component {
     }
   }
 
-  handleParticipate = ({ random, numOfEntries }) => {
+  handleParticipate = ({ random, numOfEntries }, done) => {
     const { account, raiser } = this.state;
 
-    const hashedRandom = hashRandom(random, account);
+    const randomHex = randoms.hexRandom(random);
+    const hashedRandom = randoms.hashRandom(randomHex, account);
     const value = numOfEntries * (raiser.valuePerEntry);
 
     this.setState({ isParticipating: true }, () => {
       this.rpcContract.methods
-        .participate(hashedRandom.valueOf())
+        .participate(hashedRandom)
         .send({
           from: account,
           value
@@ -351,10 +352,10 @@ class Dapp extends Component {
         .on('confirmation', (error) => {
           console.log(error);
         });
-    });
+    }, done);
   }
 
-  handleRaise = ({ numOfEntries }) => {
+  handleRaise = ({ numOfEntries }, done) => {
     const { account, raiser, contractAddress } = this.state;
 
     const value = numOfEntries * (raiser.valuePerEntry);
@@ -371,15 +372,17 @@ class Dapp extends Component {
           console.log('Raise succeeded');
           console.log(result);
         });
-    });
+    }, done);
   }
 
-  handleReveal = ({ random }) => {
+  handleReveal = ({ random }, done) => {
     const { account } = this.state;
+
+    const randomHex = randoms.hexRandom(random);
 
     this.setState({ isRevealing: true }, () => {
       this.rpcContract.methods
-        .reveal(random)
+        .reveal(randomHex)
         .send({
           from: account
         })
@@ -388,10 +391,10 @@ class Dapp extends Component {
           console.log('Reveal succeeded');
           console.log(result);
         });
-    });
+    }, done);
   }
 
-  handleWithdraw = () => {
+  handleWithdraw = (done) => {
     const { account } = this.state;
 
     this.setState({ isWithdrawing: true }, () => {
@@ -405,10 +408,10 @@ class Dapp extends Component {
           console.log('Withdraw succeeded');
           console.log(result);
         });
-    });
+    }, done);
   }
 
-  handleCancel = () => {
+  handleCancel = (done) => {
     const { account } = this.state;
 
     this.setState({ isCancelling: true }, () => {
@@ -422,7 +425,7 @@ class Dapp extends Component {
           console.log('Cancel succeeded');
           console.log(result);
         });
-    });
+    }, done);
   }
 
   render() {
@@ -433,6 +436,7 @@ class Dapp extends Component {
       charityHashedRandom,
       hashedRandom,
       entries,
+      random,
       winner,
       winnerRandom,
       balance,
@@ -472,6 +476,7 @@ class Dapp extends Component {
             charityHashedRandom={charityHashedRandom}
             hashedRandom={hashedRandom}
             entries={entries}
+            random={random}
             winner={winner}
             winnerRandom={winnerRandom}
             balance={balance}

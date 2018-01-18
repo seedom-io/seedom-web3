@@ -10,21 +10,22 @@ class Withdraw extends Content {
   }
 
   render() {
-    const { onWithdrawSkipped, isWithdrawing } = this.props;
+    const { className } = this.state;
+    const { balance, onWithdraw, onWithdrawSkipped, isWithdrawing } = this.props;
 
     return (
-      <div className={`seedom-content withdraw ${this.state.className}`}>
+      <div className={`seedom-content withdraw ${className}`}>
         <Indicator type="withdraw" />
         <div className="seedom-overlay">
           <div className="puck-message">
             YOU HAVE
-            <div className="balance">{this.props.balance}</div>
+            <div className="balance">{balance}</div>
             ETHER TO WITHDRAW!
           </div>
         </div>
         <div className="seedom-overlay">
           <a className="button is-dark is-outlined top" disabled={isWithdrawing} onClick={onWithdrawSkipped}>SKIP UNTIL REFRESH</a>
-          <a className="button is-black is-outlined" disabled={isWithdrawing} onClick={this.props.onWithdraw}>WITHDRAW</a>
+          <a className="button is-black is-outlined" disabled={isWithdrawing} onClick={onWithdraw}>WITHDRAW</a>
         </div>
       </div>
     );

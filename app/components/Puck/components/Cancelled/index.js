@@ -6,8 +6,10 @@ import './index.scss';
 
 class Cancelled extends Content {
   render() {
+    const { className } = this.state;
+
     return (
-      <div className={`seedom-content cancelled ${this.state.className}`}>
+      <div className={`seedom-content cancelled ${className}`}>
         <Indicator type="error" />
         <div className="seedom-overlay">
           <img src={charityLogo} />

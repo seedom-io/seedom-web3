@@ -6,15 +6,18 @@ import './index.scss';
 
 class Revealed extends Content {
   render() {
+    const { className } = this.state;
+    const { isShown, entries } = this.props;
+
     return (
-      <div className={`seedom-content revealed ${this.state.className}`}>
-        <Indicator type={this.props.isShown ? "checkmark" : null} />
+      <div className={`seedom-content revealed ${className}`}>
+        <Indicator type={isShown ? 'checkmark' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />
         </div>
         <div className="seedom-overlay">
           <div className="puck-message entries">
-            <div className="total">{this.props.participant ? this.props.participant.entries : 0}</div>
+            <div className="total">{entries}</div>
             ENTRIES CONFIRMED
           </div>
         </div>

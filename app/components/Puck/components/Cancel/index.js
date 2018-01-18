@@ -21,10 +21,11 @@ class Cancel extends Content {
   }
 
   render() {
+    const { className } = this.state;
     const { isCancelling } = this.props;
 
     return (
-      <div className={`seedom-content cancel ${this.state.className}`}>
+      <div className={`seedom-content cancel ${className}`}>
         <Indicator type="cancel" />
         <div className="seedom-overlay">
           <div className="puck-message">END EXPIRED<br />PLEASE CANCEL<br />FOR THE COMMUNITY</div>

@@ -6,9 +6,12 @@ import charityLogo from '../../../../img/logos/charity.png';
 
 class Seed extends Content {
   render() {
+    const { className } = this.state;
+    const { isShown } = this.props;
+
     return (
-      <div className={`seedom-content seed ${this.state.className}`}>
-        <Indicator type={this.props.isShown ? "waiting" : null} />
+      <div className={`seedom-content seed ${className}`}>
+        <Indicator type={isShown ? 'waiting' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />
         </div>

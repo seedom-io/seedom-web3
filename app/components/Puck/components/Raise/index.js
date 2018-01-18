@@ -40,10 +40,11 @@ class Raise extends Content {
   };
 
   render() {
+    const { className } = this.state;
     const { isRaising } = this.props;
 
     return (
-      <div className={`seedom-content raise ${this.state.className}`}>
+      <div className={`seedom-content raise ${className}`}>
         <Indicator type={isRaising ? 'waiting' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />

@@ -6,20 +6,23 @@ import './index.scss';
 
 class Participate extends Content {
   render() {
+    const { className } = this.state;
+    const { isShown, entries, onGetMoreEntries } = this.props;
+
     return (
-      <div className={`seedom-content participated ${this.state.className}`}>
-        <Indicator type={this.props.isShown ? "checkmark" : null} />
+      <div className={`seedom-content participated ${className}`}>
+        <Indicator type={isShown ? 'checkmark' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />
         </div>
         <div className="seedom-overlay">
           <div className="entries">
-            <div className="total">{this.props.entries}</div>
+            <div className="total">{entries}</div>
             ENTRIES OBTAINED
           </div>
         </div>
         <div className="seedom-overlay">
-          <a className="button is-primary is-outlined" onClick={this.props.onGetMoreEntries}>GET MORE ENTRIES</a>
+          <a className="button is-black is-outlined" onClick={onGetMoreEntries}>GET MORE ENTRIES</a>
         </div>
       </div>
     );

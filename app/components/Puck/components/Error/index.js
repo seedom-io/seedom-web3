@@ -7,9 +7,12 @@ import charityLogo from '../../../../img/logos/charity.png';
 
 class Error extends Content {
   render() {
+    const { className } = this.state;
+    const { isShown, error } = this.props;
+
     return (
-      <div className={`seedom-content error ${this.state.className}`}>
-        <Indicator type={this.props.isShown ? 'error' : null} />
+      <div className={`seedom-content error ${className}`}>
+        <Indicator type={isShown ? 'error' : null} />
         <div className="seedom-overlay">
           {{
             'error-charityHashedRandom': (
@@ -21,7 +24,7 @@ class Error extends Content {
             "error-metamask": (
               <img src={metamaskLogo} />
             )
-          }[this.props.error]}
+          }[error]}
         </div>
         <div className="seedom-overlay">
           {{
@@ -43,7 +46,7 @@ class Error extends Content {
                 <div className="puck-message">NOT DETECTED</div>
               </div>
             )
-          }[this.props.error]}
+          }[error]}
         </div>
       </div>
     );

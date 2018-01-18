@@ -5,10 +5,13 @@ import charityLogo from '../../../../img/logos/charity.png';
 
 class Begin extends Content {
   render() {
+    const { className } = this.state;
+    const { onBegin } = this.props;
+
     return (
-      <div className={`seedom-content begin ${this.state.className}`}>
+      <div className={`seedom-content begin ${className}`}>
         <img src={charityLogo} />
-        <a className="button is-primary is-outlined" onClick={this.props.onBegin}>OBTAIN ENTRIES</a>
+        <a className="button is-primary is-outlined" onClick={onBegin}>OBTAIN ENTRIES</a>
       </div>
     );
   }

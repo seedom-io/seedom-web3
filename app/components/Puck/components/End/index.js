@@ -11,9 +11,12 @@ class End extends Content {
   }
 
   render() {
+    const { className } = this.state;
+    const { isShown } = this.props;
+
     return (
-      <div className={`seedom-content end ${this.state.className}`}>
-        <Indicator type={this.props.isShown ? "waiting" : null} />
+      <div className={`seedom-content end ${className}`}>
+        <Indicator type={isShown ? 'waiting' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />
         </div>

@@ -6,7 +6,7 @@ const getData = (feedItem) => {
   if (feedItem.hashedRandom) {
     return bytes.shorten(feedItem.hashedRandom);
   } else if (feedItem.random) {
-    return feedItem.random;
+    return bytes.shorten(feedItem.random);
   }
   return null;
 };
