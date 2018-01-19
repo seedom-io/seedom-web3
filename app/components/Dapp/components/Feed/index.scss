@@ -11,6 +11,18 @@
     thead > tr > th {
         color: white;
     }
+
+    thead {
+      tr:hover {
+        background: inherit;
+      }
+    }
+
+    tbody {
+      tr:hover {
+        background-image: linear-gradient(to right, #408613, #1A4160)
+      }
+    }
   }
 }
 
