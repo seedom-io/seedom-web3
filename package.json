@@ -48,6 +48,7 @@
     "webpack-merge": "^4.1.1"
   },
   "scripts": {
+    "build": "NODE_ENV=production webpack --config private/webpack/prod.js",
     "lint": "eslint app",
     "start": "npm run dev",
     "dev": "NODE_ENV=development webpack-dev-server --config private/webpack/dev.js",
