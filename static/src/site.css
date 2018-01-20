@@ -1,0 +1,94 @@
+html,body {
+  font-family: 'Raleway', sans-serif;
+}
+.hero.is-info {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url('./images/hero.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.hero .subtitle {
+  padding-top: 3rem;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.box {
+  background-color: transparent;
+}
+
+blockquote.is-large {
+  font-size: 2.5rem;
+}
+
+@media screen and (max-width: 1023px) {
+  .hero.is-info .navbar-menu {
+    background: transparent;
+  }
+}
+
+section.advantages {
+  padding: 70px 0;
+  background-color: rgb(17, 17, 20);
+  color: white;
+  border-top: 1px solid rgba(255,255,255,0.14);
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+
+.feature .icon {
+  margin-bottom: 20px;
+}
+
+.feature p {
+  margin-top: 10px;
+}
+
+.fa-inverse {
+  color: rgba(255, 255, 255, 0.767);
+}
+
+.title {
+  color: white !important;
+  font-weight: 500;
+  margin-bottom: 3.5rem !important;
+}
+
+.subtitle {
+  color: #c0c0c0;
+  text-transform: uppercase;
+}
+
+section.process {
+  padding: 70px 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7)
+  ), url('./images/space-forest.jpeg') no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+
+.footer {
+  background-color: #1C1D21;
+  padding: 3rem;
+}
+
+.hero.is-info a.navbar-item:hover {
+  background-color: #31CF65;
+}
+
+a {
+  color: #31CF65;
+}
+
+a:hover {
+  color: #fff;
+}
