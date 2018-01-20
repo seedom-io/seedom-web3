@@ -2,7 +2,7 @@ server {
   listen 80 default_server;
   listen [::]:80 default_server ipv6only=on;
 
-  root /var/www/ropsten.seedom.io;
+  root /var/www/ropsten.seedom.io/html;
   index index.html;
 
   server_name ropsten.seedom.io;
