@@ -6,9 +6,6 @@ ENV NPM_CONFIG_LOGLEVEL warn
 RUN mkdir -p /var/www/seedom.io/html
 RUN mkdir -p /var/www/ropsten.seedom.io/html
 
-RUN mkdir -p /etc/nginx/sites-available/seedom.io
-RUN mkdir -p /etc/nginx/sites-available/ropsten.seedom.io
-
 COPY nginx/seedom.io /etc/nginx/sites-available
 COPY nginx/ropsten.seedom.io /etc/nginx/sites-available
 
