@@ -55,7 +55,7 @@ class Dapp extends Component {
   }
 
   componentWillMount() {
-    this.hybridWeb3 = new HybridWeb3(null, this.handleHybridWeb3Event);
+    this.hybridWeb3 = new HybridWeb3(this.handleHybridWeb3Event);
   }
 
   handleHybridWeb3Event = (event, value) => {

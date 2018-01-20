@@ -3,17 +3,17 @@
 import Web3 from 'web3';
 
 class HybridWeb3 {
-  constructor(wsUrl, onChange) {
+  constructor(onChange) {
     this.onChange = onChange;
-    this.setupWeb3s(wsUrl);
+    this.setupWeb3s();
     if (this.checkMetamask()) {
       this.setupInterval();
     }
   }
 
-  setupWeb3s(wsUrl) {
+  setupWeb3s() {
     this.setupRpcWeb3();
-    this.setupWsWeb3(wsUrl);
+    this.setupWsWeb3();
   }
 
   setupRpcWeb3() {
@@ -25,13 +25,14 @@ class HybridWeb3 {
     }
   }
 
-  setupWsWeb3(wsUrl) {
-    let actualWsUrl;
-    // set to Seedom nodes by default
-    if (!wsUrl) {
-      actualWsUrl = 'ws://localhost:8546';
+  setupWsWeb3() {
+    let ethNode;
+    if (process.env.ETH_NODE) {
+      ethNode = `${process.env.ETH_NODE}`;
+    } else {
+      ethNode = 'localhost';
     }
-    this.wsWeb3 = new Web3(actualWsUrl);
+    this.wsWeb3 = new Web3(`ws://${ethNode}:8546`);
   }
 
   checkMetamask() {

@@ -48,10 +48,11 @@
     "webpack-merge": "^4.1.1"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack --config private/webpack/prod.js",
     "lint": "eslint app",
-    "start": "npm run dev",
-    "dev": "NODE_ENV=development webpack-dev-server --config private/webpack/dev.js",
-    "test": "jest"
+    "test": "jest",
+    "start": "npm run localhost",
+    "localhost": "webpack-dev-server --config private/webpack/localhost.js",
+    "ropsten": "webpack --config private/webpack/ropsten.js",
+    "mainnet": "webpack --config private/webpack/mainnet.js"
   }
 }
