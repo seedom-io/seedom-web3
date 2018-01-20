@@ -1,4 +1,6 @@
+FROM nginx;
 FROM node:8.6.0-alpine
+
 ENV NPM_CONFIG_LOGLEVEL warn
 
 RUN mkdir -p /var/www/seedom.io/html
