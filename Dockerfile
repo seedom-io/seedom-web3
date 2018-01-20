@@ -1,3 +1,4 @@
+FROM node:8.6.0-alpine
 FROM nginx
 
 ENV NPM_CONFIG_LOGLEVEL warn
