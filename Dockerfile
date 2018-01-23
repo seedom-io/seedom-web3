@@ -1,7 +1,6 @@
-FROM node:8.6.0-alpine
 FROM nginx
 
-ENV NPM_CONFIG_LOGLEVEL warn
+RUN apt-get update && apt-get install -y nodejs npm
 
 RUN mkdir -p /var/www/seedom.io/html
 RUN mkdir -p /var/www/ropsten.seedom.io/html

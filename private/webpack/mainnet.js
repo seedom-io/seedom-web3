@@ -8,8 +8,9 @@ module.exports = merge(base, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': 'production',
-      'process.env.ETH_NODE': '165.227.126.255'
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.ETH_NODE': JSON.stringify('wss://manager2.seedom.io:8550'),
+      'process.env.ETH_DEPLOYMENTS': require(path.join(__dirname, '../../../seedom-solidity/deployment/mainnet.json'))
     })
   ]
 });

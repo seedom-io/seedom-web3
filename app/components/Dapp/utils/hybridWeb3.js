@@ -26,13 +26,7 @@ class HybridWeb3 {
   }
 
   setupWsWeb3() {
-    let ethNode;
-    if (process.env.ETH_NODE) {
-      ethNode = `${process.env.ETH_NODE}`;
-    } else {
-      ethNode = 'localhost';
-    }
-    this.wsWeb3 = new Web3(`ws://${ethNode}:8546`);
+    this.wsWeb3 = new Web3(process.env.ETH_NODE);
   }
 
   checkMetamask() {
