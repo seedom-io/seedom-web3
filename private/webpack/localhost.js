@@ -13,7 +13,7 @@ module.exports = merge(base, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
       'process.env.ETH_NODE': JSON.stringify('ws://localhost:8546'),
-      'process.env.ETH_DEPLOYMENTS': require(path.join(__dirname, '../../../seedom-solidity/deployment/local.json'))
+      'process.env.ETH_DEPLOYMENTS': require(path.join(__dirname, '../../../seedom-solidity/deployment/localhost.json'))
     })
   ]
 });
