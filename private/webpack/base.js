@@ -5,15 +5,11 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(process.cwd(), 'app/index.js'),
-  output: {
-    path: path.resolve(process.cwd(), 'dist')
-  },
   plugins: [
     new FaviconsWebpackPlugin(path.join(process.cwd(), 'app/img/logos/seedom-dark.svg')),
     new HtmlWebpackPlugin({
       template: 'app/index.html'
     }),
-    new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
   ],
   module: {
     rules: [

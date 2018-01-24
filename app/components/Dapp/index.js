@@ -5,7 +5,6 @@ import Hud from './components/Hud';
 import Feed from './components/Feed';
 import HybridWeb3 from './utils/hybridWeb3';
 import * as randoms from './utils/randoms';
-import contractAbi from '../../../../seedom-solidity/build/abi/seedom.json';
 import * as parsers from './utils/parsers';
 import * as bytes from './utils/bytes';
 import './index.scss';
@@ -84,13 +83,13 @@ class Dapp extends Component {
   setupContracts(done) {
     const contractAddress = process.env.ETH_DEPLOYMENTS.seedom[0].address;
 
-    this.rpcContract = new this.hybridWeb3.rpcWeb3.eth.Contract(contractAbi, contractAddress, {
+    this.rpcContract = new this.hybridWeb3.rpcWeb3.eth.Contract(process.env.ETH_CONTRACT, contractAddress, {
       from: this.state.account,
       gas: GAS,
       gasPrice: GAS_PRICE
     });
 
-    this.wsContract = new this.hybridWeb3.wsWeb3.eth.Contract(contractAbi, contractAddress, {
+    this.wsContract = new this.hybridWeb3.wsWeb3.eth.Contract(process.env.ETH_CONTRACT, contractAddress, {
       from: this.state.account,
       gas: GAS,
       gasPrice: GAS_PRICE
