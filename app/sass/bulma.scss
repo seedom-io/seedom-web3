@@ -1,0 +1,9 @@
+@import "./theme.scss";
+@import './components/navbar';
+@import './layout/footer';
+@import '../../node_modules/bulma/bulma.sass';
+
+.footer {
+  padding: 3rem 1.5rem 3rem;
+  text-shadow: black 0px 0 20px;
+}

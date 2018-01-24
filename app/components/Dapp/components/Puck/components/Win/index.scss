@@ -1,0 +1,61 @@
+.seedom-content.win {
+
+  img {
+    height: 20%;
+    margin-bottom: 45%;
+  }
+
+  .congrats {
+    margin-bottom: 13%;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .address {
+    color: white;
+    font-size: 14px;
+    display: block;
+    text-decoration: underline;
+  }
+
+  .random-title {
+    margin-top: 30%;
+    color: white;
+    font-size: 15px;
+  }
+
+  .random {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .checkmark {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: white;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    transform: scale(0);
+    transition: all 1s ease 0.5s;
+
+    &.checked {
+      transform: scale(1);
+    }
+
+    .circle {
+      stroke: transparent;
+      fill: purple;
+    }
+
+    .check {
+      fill: transparent;
+    }
+
+  }
+
+}

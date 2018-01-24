@@ -1,0 +1,29 @@
+.seedom-content.revealed {
+
+  img {
+    height: 20%;
+  }
+
+  .puck-message {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+
+    &.entries {
+      margin-bottom: 50%;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+
+      .total {
+        font-size: 40px;
+      }
+    }
+
+    &.thank-you {
+      margin-top: 45%;
+    }
+
+  }
+
+}
