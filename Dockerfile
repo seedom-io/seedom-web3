@@ -22,8 +22,8 @@ RUN source ~/.nvm/nvm.sh; \
 RUN git clone https://github.com/seedom-io/seedom-solidity.git /solidity
 
 # Prepare for web3 build
-COPY . /web3
-WORKDIR /web3
+COPY . /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
 
 # Build web3
 RUN rm -rf node_modules; \
