@@ -15,8 +15,8 @@ module.exports = merge(base, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('dev'),
       'process.env.ETH_NODE': JSON.stringify('wss://manager2.seedom.io:8548'),
-      'process.env.ETH_CONTRACT': JSON.stringify(require('/solidity/build/abi/seedom.json')),
-      'process.env.ETH_DEPLOYMENTS': JSON.stringify(require('/solidity/deployment/ropsten.json'))
+      'process.env.ETH_CONTRACT': JSON.stringify(require(path.join(cwd, '../seedom-solidity/build/abi/seedom.json'))),
+      'process.env.ETH_DEPLOYMENTS': JSON.stringify(require(path.join(cwd, '../seedom-solidity/deployment/ropsten.json')))
     })
   ]
 });

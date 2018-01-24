@@ -19,11 +19,7 @@ const App = () => (
     <div className="hero-head">
       <Nav />
     </div>
-    <Router>
-      <div>
-        <Route exact path="/" component={HomePage} />
-      </div>
-    </Router>
+    <HomePage />
     <footer className="footer">
       <div className="container">
         <div className="content has-text-centered">

@@ -53,6 +53,7 @@
     "start": "npm run localhost",
     "localhost": "webpack-dev-server --config private/webpack/localhost.js",
     "ropsten": "webpack --config private/webpack/ropsten.js",
+    "ropsten-local": "webpack --config private/webpack/ropsten-local.js",
     "mainnet": "webpack --config private/webpack/mainnet.js"
   }
 }
