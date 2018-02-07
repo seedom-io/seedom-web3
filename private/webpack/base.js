@@ -2,6 +2,16 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const fs = require('fs');
+
+const cwd = process.cwd();
+
+const getOutput = () => {
+  const hashFile = path.resolve(cwd, '../seedom-solidity/hash/seedom.hash');
+  const hash = fs.readFileSync(hashFile);
+  const outputFile = path.resolve(cwd, `../seedom-solidity/output/${hash}.json`);
+  return fs.readFileSync(outputFile);
+};
 
 module.exports = {
   entry: path.resolve(process.cwd(), 'app/index.js'),
@@ -10,6 +20,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'app/index.html'
     }),
+    new webpack.DefinePlugin({
+      'process.env.ETH_OUTPUT': JSON.stringify(getOutput())
+    })
   ],
   module: {
     rules: [

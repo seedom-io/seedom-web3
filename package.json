@@ -51,9 +51,12 @@
     "lint": "eslint app",
     "test": "jest",
     "start": "npm run localhost",
-    "localhost": "webpack-dev-server --config private/webpack/localhost.js",
+    "dev": "webpack-dev-server --config private/webpack/dev.js",
+    "localhost": "webpack --config private/webpack/localhost.js",
     "ropsten": "webpack --config private/webpack/ropsten.js",
-    "ropsten-local": "webpack --config private/webpack/ropsten-local.js",
-    "mainnet": "webpack --config private/webpack/mainnet.js"
+    "mainnet": "webpack --config private/webpack/mainnet.js",
+    "docker-localhost": "webpack --config private/webpack/localhost.js",
+    "docker-ropsten": "webpack --config private/webpack/ropsten.js",
+    "docker-mainnet": "webpack --config private/webpack/mainnet.js"
   }
 }

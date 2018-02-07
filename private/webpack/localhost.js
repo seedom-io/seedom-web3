@@ -11,12 +11,14 @@ module.exports = merge(base, {
     contentBase: path.resolve(__dirname, 'app'),
     port: 1234
   },
+  output: {
+    filename: 'index.js',
+    path: path.resolve(cwd, 'dist/localhost')
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('dev'),
-      'process.env.ETH_NODE': JSON.stringify('ws://localhost:8546'),
-      'process.env.ETH_CONTRACT': JSON.stringify(require(path.join(cwd, '../seedom-solidity/build/abi/seedom.json'))),
-      'process.env.ETH_DEPLOYMENTS': JSON.stringify(require(path.join(cwd, '../seedom-solidity/deployment/localhost.json')))
+      'process.env.ETH_URL': JSON.stringify('ws://localhost:8546')
     })
   ]
 });
