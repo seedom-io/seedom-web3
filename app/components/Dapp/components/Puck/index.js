@@ -21,55 +21,50 @@ import './index.scss';
 const getPhase = ({
   hasMetamask,
   raiser,
-  charityHashedRandom,
-  hashedRandom,
-  random,
-  winner,
-  balance,
-  cancelled,
-  isParticipating,
-  isRaising,
-  isRevealing,
-  isWithdrawing,
-  isCancelling,
+  state,
+  participant,
+  balances,
+  isLoading,
   hasBegun,
   isObtainingMoreEntries,
   isWithdrawSkipped
 }) => {
   const now = Date.now();
 
+  // metamask check
   if (!hasMetamask) {
     return 'error-metamask';
   }
 
-  if (balance > 0) {
-    if (!isWithdrawSkipped) {
-      return 'withdraw';
-    }
+  // balances?
+  if ((Object.keys(balances) > 0) && !isWithdrawSkipped) {
+    return 'withdraw';
   }
 
-  if (!raiser) {
-    return 'error-metamask';
+  // winner?
+  if (state.winner) {
+    return 'win';
   }
 
-  if (cancelled) {
-    return 'cancelled';
+  // cancelled?
+  if (state.cancelled) {
+    return 'cancel';
   }
 
   // participation phase
-  if (now > raiser.kickoffTime && now < raiser.revealTime) {
-    if (bytes.isZero32(charityHashedRandom)) {
+  if (now < raiser.revealTime) {
+    if (bytes.isZero32(state.charityHashedRandom)) {
       return 'seed';
     }
 
-    if (bytes.isZero32(hashedRandom)) {
+    if (bytes.isZero32(participant.hashedRandom)) {
       if (!hasBegun) {
         return 'begin';
       }
       return 'participate';
     }
 
-    if (!isObtainingMoreEntries && !isRaising) {
+    if (!isObtainingMoreEntries && !isLoading.isRaising) {
       return 'participated';
     }
 
@@ -78,15 +73,15 @@ const getPhase = ({
 
   // revelation phase
   if (now > raiser.revealTime && now < raiser.endTime) {
-    if (bytes.isZero32(charityHashedRandom)) {
+    if (bytes.isZero32(state.charityHashedRandom)) {
       return 'error-charityHashedRandom';
     }
 
-    if (bytes.isZero32(hashedRandom)) {
+    if (bytes.isZero32(participant.hashedRandom)) {
       return 'error-hashedRandom';
     }
 
-    if (bytes.isZero32(random)) {
+    if (bytes.isZero32(participant.random)) {
       return 'reveal';
     }
 
@@ -95,44 +90,24 @@ const getPhase = ({
 
   // end phase
   if (now > raiser.endTime && now < raiser.expireTime) {
-    if (bytes.isZero32(charityHashedRandom)) {
+    if (bytes.isZero32(participant.charityHashedRandom)) {
       return 'error-charityHashedRandom';
     }
 
-    if (bytes.isZero20(winner)) {
-      return 'end';
-    }
-
-    return 'win';
+    return 'end';
   }
 
-  // expiration phase
-  if (now > raiser.expireTime) {
-    if (bytes.isZero20(winner)) {
-      return 'cancel';
-    }
-
-    return 'win';
-  }
+  return 'cancel';
 };
 
 class Puck extends Component {
   static propTypes = {
     hasMetamask: PropTypes.bool,
     raiser: PropTypes.shape(),
-    charityHashedRandom: PropTypes.string,
-    entries: PropTypes.number,
-    hashedRandom: PropTypes.string,
-    random: PropTypes.string,
-    winner: PropTypes.string,
-    winnerRandom: PropTypes.string,
-    balance: PropTypes.number,
-    cancelled: PropTypes.bool,
-    isParticipating: PropTypes.bool.isRequired,
-    isRaising: PropTypes.bool.isRequired,
-    isRevealing: PropTypes.bool.isRequired,
-    isWithdrawing: PropTypes.bool.isRequired,
-    isCancelling: PropTypes.bool.isRequired,
+    state: PropTypes.shape(),
+    participant: PropTypes.shape(),
+    balances: PropTypes.shape(),
+    isLoading: PropTypes.shape(),
     onParticipate: PropTypes.func.isRequired,
     onRaise: PropTypes.func.isRequired,
     onReveal: PropTypes.func.isRequired,
@@ -143,14 +118,10 @@ class Puck extends Component {
   static defaultProps = {
     hasMetamask: false,
     raiser: null,
-    charityHashedRandom: null,
-    entries: 0,
-    hashedRandom: null,
-    random: null,
-    winner: null,
-    winnerRandom: null,
-    balance: 0,
-    cancelled: false
+    state: null,
+    participant: null,
+    balances: [],
+    isLoading: null
   }
 
   constructor(props) {
@@ -222,46 +193,29 @@ class Puck extends Component {
     const {
       hasMetamask,
       raiser,
-      charityHashedRandom,
-      hashedRandom,
-      entries,
-      random,
-      winner,
-      winnerRandom,
-      balance,
-      cancelled,
-      isParticipating,
-      isRaising,
-      isRevealing,
-      isWithdrawing,
-      isCancelling
+      state,
+      participant,
+      balances,
+      isLoading
     } = this.props;
 
     const phase = getPhase({
       hasMetamask,
       raiser,
-      charityHashedRandom,
-      hashedRandom,
-      random,
-      winner,
-      balance,
-      cancelled,
-      isParticipating,
-      isRaising,
-      isRevealing,
-      isWithdrawing,
-      isCancelling,
+      state,
+      participant,
+      isLoading,
       hasBegun,
       isObtainingMoreEntries,
       isWithdrawSkipped
     });
 
-    const isLoading =
-      isParticipating ||
-      isRaising ||
-      isRevealing ||
-      isWithdrawing ||
-      isCancelling;
+    const isAnyLoading =
+      isLoading.isParticipating ||
+      isLoading.isRaising ||
+      isLoading.isRevealing ||
+      isLoading.isWithdrawing ||
+      isLoading.isCancelling;
 
     return (
       <div className="seedom-puck">
@@ -269,18 +223,18 @@ class Puck extends Component {
           <img alt="seedom" src={seedomLogo} />
         </div>
         <div className="interface">
-          <Circles percentage={50} isLoading={isLoading} raiser={raiser} now={this.state.now} />
+          <Circles percentage={50} isLoading={isAnyLoading} raiser={raiser} now={this.state.now} />
           <Seed isShown={phase === 'seed'} />
           <Begin isShown={phase === 'begin'} onBegin={this.handleBegin} />
-          <Participate isShown={phase === 'participate'} isParticipating={isParticipating} onParticipate={this.handleParticipate} />
-          <Participated isShown={phase === 'participated'} entries={entries} onGetMoreEntries={this.handleGetMoreEntries} />
-          <Raise isShown={phase === 'raise'} isRaising={isRaising} onRaise={this.handleRaise} />
-          <Reveal isShown={phase === 'reveal'} isRevealing={isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />
-          <Revealed isShown={phase === 'revealed'} entries={entries} />
+          <Participate isShown={phase === 'participate'} isParticipating={isLoading.isParticipating} onParticipate={this.handleParticipate} />
+          <Participated isShown={phase === 'participated'} entries={participant.entries} onGetMoreEntries={this.handleGetMoreEntries} />
+          <Raise isShown={phase === 'raise'} isRaising={isLoading.isRaising} onRaise={this.handleRaise} />
+          <Reveal isShown={phase === 'reveal'} isRevealing={isLoading.isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />
+          <Revealed isShown={phase === 'revealed'} entries={participant.entries} />
           <End isShown={phase === 'end'} />
-          <Win isShown={phase === 'win'} winner={winner} winnerRandom={winnerRandom} />
-          <Withdraw isShown={phase === 'withdraw'} balance={balance} isWithdrawing={isWithdrawing} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
-          <Cancel isShown={phase === 'cancel'} isCancelling={isCancelling} onCancel={this.handleCancel} />
+          <Win isShown={phase === 'win'} winner={state.winner} winnerRandom={state.winnerRandom} />
+          <Withdraw isShown={phase === 'withdraw'} balances={balances} isWithdrawing={isLoading.isWithdrawing} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
+          <Cancel isShown={phase === 'cancel'} isCancelling={isLoading.isCancelling} onCancel={this.handleCancel} />
           <Cancelled isShown={phase === 'cancelled'} />
           <Error isShown={phase.startsWith('error')} error={phase} />
         </div>

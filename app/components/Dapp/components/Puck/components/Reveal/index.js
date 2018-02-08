@@ -31,7 +31,7 @@ class Reveal extends Content {
       event.preventDefault();
     }
 
-    onReveal({ random });
+    onReveal(random);
   }
 
   handleRandomChange = event => {

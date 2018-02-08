@@ -14,6 +14,14 @@ const GAS = 2000000;
 const GAS_PRICE = 20000000000;
 const FEED_BLOCKS_BACK = 1000;
 
+const getWeb3Instance = (web3, contract) => {
+  return new web3.eth.Contract(contract.abi, contract.address, {
+    from: this.state.account,
+    gas: GAS,
+    gasPrice: GAS_PRICE
+  });
+};
+
 const addFeedItem = (feed, obj, type) => {
   const feedItem = { type, ...obj };
   const newFeed = feed.slice(0, MAX_FEED_ITEMS);
@@ -21,38 +29,27 @@ const addFeedItem = (feed, obj, type) => {
   return newFeed;
 };
 
-const getClearedState = () => {
-  return {
-    entries: 0,
-    hashedRandom: bytes.zero32,
-    random: bytes.zero32,
-    charityHashedRandom: bytes.zero32,
-    winner: bytes.zero20,
-    winnerRandom: bytes.zero32,
-    cancelled: false,
-    totalParticipants: 0,
-    totalEntries: 0,
-    totalRevealers: 0,
-    totalRevealed: 0,
-    feed: []
-  };
-};
-
 class Dapp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       contractAddress: null,
-      isParticipating: false,
-      isRaising: false,
-      isRevealing: false,
-      isWithdrawing: false,
-      isCancelling: false,
-      ...getClearedState()
+      raiser: null,
+      state: null,
+      participant: null,
+      balances: {},
+      feed: [],
+      isLoading: {
+        isParticipating: false,
+        isRaising: false,
+        isRevealing: false,
+        isWithdrawing: false,
+        isCancelling: false,
+      }
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.hybridWeb3 = new HybridWeb3(this.handleHybridWeb3Event);
   }
 
@@ -81,36 +78,41 @@ class Dapp extends Component {
   }
 
   setupContracts(done) {
-    const contractAddress = process.env.ETH_DEPLOYMENTS.seedom[0].address;
-
-    this.rpcContract = new this.hybridWeb3.rpcWeb3.eth.Contract(process.env.ETH_CONTRACT, contractAddress, {
-      from: this.state.account,
-      gas: GAS,
-      gasPrice: GAS_PRICE
-    });
-
-    this.wsContract = new this.hybridWeb3.wsWeb3.eth.Contract(process.env.ETH_CONTRACT, contractAddress, {
-      from: this.state.account,
-      gas: GAS,
-      gasPrice: GAS_PRICE
-    });
+    // set all contracts (last six)
+    this.contracts = {};
+    let contractAddress;
+    for (const contract of ETH_CONTRACTS) {
+      // save first address (primary contract)
+      if (!contractAddress) {
+        contractAddress = contract.address;
+      }
+      // add to map of contracts
+      this.contracts[contract.address] = {
+        ws: getWeb3Instance(this.hybridWeb3.wsWeb3, contract),
+        rpc: getWeb3Instance(this.hybridWeb3.rpcWeb3, contract),
+      };
+    }
 
     this.setState({
-      contractAddress,
+      contractAddress
     }, done);
+  }
+
+  getContract() {
+    return this.contracts[this.state.contractAddress];
   }
 
   retrieveInitialData() {
     this.retrieveRaiser();
     this.retrieveState();
-    this.retrieveBalance();
     this.retrieveParticipant();
+    this.retrieveBalances();
   }
 
   retrieveRaiser() {
     const { account } = this.state;
 
-    this.wsContract.methods
+    this.getContract().ws.methods
       .raiser()
       .call({
         from: account
@@ -128,32 +130,14 @@ class Dapp extends Component {
   retrieveState() {
     const { account } = this.state;
 
-    this.wsContract.methods
+    this.getContract().ws.methods
       .state()
       .call({
         from: account
       })
       .then(
         data => {
-          this.setState(parsers.parseState(data));
-        },
-        err => {
-          console.error(err);
-        }
-      );
-  }
-
-  retrieveBalance() {
-    const { account } = this.state;
-
-    this.wsContract.methods
-      .balancesMapping(account)
-      .call({
-        from: account
-      })
-      .then(
-        data => {
-          this.setState({ balance: parseInt(data, 10) });
+          this.setState({ state: parsers.parseState(data) });
         },
         err => {
           console.error(err);
@@ -164,14 +148,14 @@ class Dapp extends Component {
   retrieveParticipant() {
     const { account } = this.state;
 
-    this.wsContract.methods
+    this.getContract().ws.methods
       .participantsMapping(account)
       .call({
         from: account
       })
       .then(
         data => {
-          this.setState(parsers.parseParticipant(data));
+          this.setState({ participant: parsers.parseParticipant(data) });
         },
         err => {
           console.error(err);
@@ -179,24 +163,51 @@ class Dapp extends Component {
       );
   }
 
+  retrieveBalances() {
+    const { account } = this.state;
+
+    // get contract addresses (an order)
+    const contractAddresses = Object.keys(this.contracts);
+
+    const promises = [];
+    for (const contractAddress of contractAddresses) {
+      const contract = this.contracts[contractAddress];
+      // get balance for this contract
+      promises.push(contract.ws.methods
+        .balance(account)
+        .call({
+          from: account
+        }));
+    }
+
+    Promise.all(promises).then((values) => {
+      const balances = {};
+      for (let i = 0; i < values.length; i += 1) {
+        const value = values[i];
+        // add balance entries of non-zero
+        if (value !== '0') {
+          balances[contractAddresses[i]] = value;
+        }
+      }
+      this.setState({
+        balances
+      });
+    });
+  }
+
   setupEventsHandlers() {
     this.hybridWeb3.wsWeb3.eth.getBlockNumber((blockNumberError, blockNumber) => {
       const feedBlocksBack = (blockNumber < FEED_BLOCKS_BACK) ? 0 : FEED_BLOCKS_BACK;
-      // get past events
-      this.wsContract.getPastEvents({
-        fromBlock: feedBlocksBack
-      }, (pastEventsError, pastEvents) => {
+      this.hybridWeb3.wsWeb3.eth.subscribe('logs', {
+        address: [],
+        from: blockNumber - feedBlocksBack
+      }, (error, event) => {
         // first render old events
-        if (pastEvents) {
-          pastEvents.forEach(pastEvent => {
-            this.triagePastEvent(pastEvent);
-          });
+        if (event.blockNumber <= blockNumber) {
+          this.triagePastEvent(event);
+        } else {
+          this.triageNewEvent(event);
         }
-        // now listen for new events
-        this.wsContract.events.allEvents({
-        }, (allEventsError, allEvent) => {
-          this.triageNewEvent(allEvent);
-        });
       });
     });
   }
@@ -228,14 +239,11 @@ class Dapp extends Component {
   }
 
   triageNewEvent(event) {
-    const { account } = this.state;
+    const { account, address } = this.state;
     const type = event.event.toLowerCase();
     const values = event.returnValues;
 
     switch (type) {
-      case 'kickoff':
-        this.handleKickoffEvent(values);
-        break;
       case 'seed':
         this.handleSeedEvent(values);
         break;
@@ -255,38 +263,39 @@ class Dapp extends Component {
         this.handleCancellationEvent();
         break;
       case 'withdrawal':
-        this.handleWithdrawalEvent(account, values);
+        this.handleWithdrawalEvent(account, values, address);
         break;
       default:
         break;
     }
   }
 
-  handleKickoffEvent(values) {
-    this.setState({
-      raiser: parsers.parseRaiser(values),
-      ...getClearedState()
-    });
-  }
-
   handleSeedEvent(values) {
     const seed = parsers.parseSeed(values);
-    this.setState({ charityHashedRandom: seed.hashedRandom });
+    this.setState((prevState) => ({
+      state: { ...prevState.state, charityHashedRandom: seed.hashedRandom }
+    }));
   }
 
   handleParticipationEvent(type, account, values) {
     const participation = parsers.parseParticipation(values);
     this.setState((prevState) => {
       const newState = {
-        totalParticipants: prevState.totalParticipants + 1,
-        totalEntries: prevState.totalEntries + participation.entries,
+        state: {
+          ...prevState.state,
+          totalParticipants: prevState.state.totalParticipants + 1,
+          totalEntries: prevState.state.totalEntries + participation.entries,
+        },
         feed: addFeedItem(prevState.feed, participation, type)
       };
 
       if (participation.participant === account) {
-        newState.isParticipating = false;
-        newState.entries = participation.entries;
-        newState.hashedRandom = participation.hashedRandom;
+        newState.isLoading = { ...prevState.isLoading, isParticipating: false };
+        newState.participant = {
+          ...prevState.participant,
+          entries: participation.entries,
+          hashedRandom: participation.hashedRandom
+        };
       }
 
       return newState;
@@ -297,13 +306,16 @@ class Dapp extends Component {
     const raise = parsers.parseRaise(values);
     this.setState((prevState) => {
       const newState = {
-        totalEntries: prevState.totalEntries + raise.entries,
+        state: { ...prevState.state, totalEntries: prevState.state.totalEntries + raise.entries },
         feed: addFeedItem(prevState.feed, raise, type)
       };
 
       if (raise.participant === account) {
-        newState.isRaising = false;
-        newState.entries = prevState.entries + raise.entries;
+        newState.isLoading = { ...prevState.isLoading, isRaising: false };
+        newState.participant = {
+          ...prevState.participant,
+          entries: prevState.participant.entries + raise.entries
+        };
       }
 
       return newState;
@@ -314,13 +326,13 @@ class Dapp extends Component {
     const revelation = parsers.parseRevelation(values);
     this.setState((prevState) => {
       const newState = {
-        totalRevealed: prevState.totalRevealed + revelation.entries,
+        state: { ...prevState.state, totalRevealed: prevState.state.totalRevealed + revelation.entries },
         feed: addFeedItem(prevState.feed, revelation, type)
       };
 
       if (revelation.participant === account) {
-        newState.isRevealing = false;
-        newState.random = revelation.random;
+        newState.isLoading = { ...prevState.isLoading, isRevealing: false };
+        newState.participant = { ...prevState.participant, random: revelation.random };
       }
 
       return newState;
@@ -331,12 +343,20 @@ class Dapp extends Component {
     const win = parsers.parseWin(values);
     this.setState((prevState) => {
       const newState = {
-        winner: win.participant,
-        winnerRandom: win.random
+        state: {
+          ...prevState.state,
+          winner: win.participant,
+          winnerRandom: win.random
+        }
       };
-      // update our balance
+
+      // update our winning balance
       if (win.participant === account) {
-        newState.balance = prevState.balance + win.winnerReward;
+        const { raiser, state, contractAddress } = this.state;
+        // preserve existing balances
+        newState.balances = { ...prevState.balances };
+        // add new balance entry
+        newState.balances[contractAddress] = state.totalEntries * (raiser.winnerSplit / 1000);
       }
 
       return newState;
@@ -344,96 +364,99 @@ class Dapp extends Component {
   }
 
   handleCancellationEvent() {
-    this.setState({
-      isCancelling: false,
-      cancelled: true
+    this.setState((prevState) => {
+      const newState = {
+        isLoading: { ...prevState.isLoading, isCancelling: false },
+        state: { ...prevState.state, cancelled: true },
+        balances: { ...prevState.balances }
+      };
+
+      // update our cancellation balance
+      const { raiser, participant, contractAddress } = this.state;
+      // add new balance entry
+      newState.balances[contractAddress] = participant.entries * raiser.valuePerEntry;
+      return newState;
     });
   }
 
-  handleWithdrawalEvent(account, values) {
+  handleWithdrawalEvent(account, values, address) {
     const withdrawal = parsers.parseWithdrawal(values);
     // set our balance to zero if we withdrew
     if (withdrawal.participant === account) {
-      this.setState({
-        isWithdrawing: false,
-        balance: 0
+      this.setState((prevState) => {
+        const newState = {
+          isLoading: { ...prevState.isLoading, isWithdrawing: false },
+          balances: { ...prevState.balances }
+        };
+        // delete balance entry for this contract addy
+        delete newState.balances[address];
+        return newState;
       });
     }
   }
 
-  handleSend = (transaction, cancelled) => {
-    transaction
-      .on('error', (error) => {
-        const { message } = error;
-        if (message.includes('User denied')) {
-          cancelled();
-        }
-      });
+  handleSend = (transaction, isLoadingName) => {
+    this.setState((prevState) => {
+      const newState = { isLoading: { ...prevState.isLoading } };
+      newState.isLoading[isLoadingName] = true;
+    }, () => {
+      transaction
+        .on('error', (error) => {
+          const { message } = error;
+          if (message.includes('User denied')) {
+            this.setState((prevState) => {
+              const newState = { isLoading: { ...prevState.isLoading } };
+              newState.isLoading[isLoadingName] = false;
+            });
+          }
+        });
+    });
   }
 
-  handleParticipate = ({ random, numOfEntries }, done) => {
+  handleParticipate = ({ random, numOfEntries }) => {
     const { account, raiser } = this.state;
     const randomHex = randoms.hexRandom(random);
     const hashedRandom = randoms.hashRandom(randomHex, account);
     const value = numOfEntries * (raiser.valuePerEntry);
 
-    this.setState({ isParticipating: true }, () => {
-      this.handleSend(this.rpcContract.methods.participate(hashedRandom).send({
-        from: account, value
-      }), () => {
-        this.setState({ isParticipating: false });
-      });
-    }, done);
+    this.handleSend(this.getContract().rpc.methods.participate(hashedRandom).send({
+      from: account, value
+    }), 'isParticipating');
   }
 
-  handleRaise = ({ numOfEntries }, done) => {
+  handleRaise = (numOfEntries) => {
     const { account, raiser, contractAddress } = this.state;
     const value = numOfEntries * (raiser.valuePerEntry);
 
-    this.setState({ isRaising: true }, () => {
-      this.handleSend(this.hybridWeb3.rpcWeb3.eth.sendTransaction({
-        from: account, to: contractAddress, value
-      }), () => {
-        this.setState({ isRaising: false });
-      });
-    }, done);
+    this.handleSend(this.hybridWeb3.rpcWeb3.eth.sendTransaction({
+      from: account, to: contractAddress, value
+    }), 'isRaising');
   }
 
-  handleReveal = ({ random }, done) => {
+  handleReveal = (random) => {
     const { account } = this.state;
     const randomHex = randoms.hexRandom(random);
 
-    this.setState({ isRevealing: true }, () => {
-      this.handleSend(this.rpcContract.methods.reveal(randomHex).send({
-        from: account
-      }), () => {
-        this.setState({ isRevealing: false });
-      });
-    }, done);
+    this.handleSend(this.getContract().rpc.methods.reveal(randomHex).send({
+      from: account
+    }), 'isRevealing');
   }
 
-  handleWithdraw = (done) => {
+  handleWithdraw = (contractAddress) => {
     const { account } = this.state;
+    const contract = this.contracts[contractAddress];
 
-    this.setState({ isWithdrawing: true }, () => {
-      this.handleSend(this.rpcContract.methods.withdraw().send({
-        from: account
-      }), () => {
-        this.setState({ isWithdrawing: false });
-      });
-    }, done);
+    this.handleSend(contract.rpc.methods.withdraw().send({
+      from: account
+    }), 'isWithdrawing');
   }
 
-  handleCancel = (done) => {
+  handleCancel = () => {
     const { account } = this.state;
 
-    this.setState({ isCancelling: true }, () => {
-      this.handleSend(this.rpcContract.methods.cancel().send({
-        from: account
-      }), () => {
-        this.setState({ isWithdrawing: false });
-      });
-    }, done);
+    this.handleSend(this.getContract().rpc.methods.cancel().send({
+      from: account
+    }), 'isCancelling');
   }
 
   render() {
@@ -441,33 +464,16 @@ class Dapp extends Component {
       hasMetamask,
       contractAddress,
       raiser,
-      charityHashedRandom,
-      hashedRandom,
-      entries,
-      random,
-      winner,
-      winnerRandom,
-      balance,
-      cancelled,
-      totalParticipants,
-      totalEntries,
-      totalRevealed,
+      state,
+      participant,
+      balances,
       feed,
-      isParticipating,
-      isRaising,
-      isRevealing,
-      isWithdrawing,
-      isCancelling
+      isLoading
     } = this.state;
 
-    let received = 0;
-    let charityReward = 0;
-    let winnerReward = 0;
-    if (raiser) {
-      received = this.state.totalEntries * raiser.valuePerEntry;
-      charityReward = received * (raiser.charitySplit / 1000);
-      winnerReward = received * (raiser.winnerSplit / 1000);
-    }
+    const received = state.totalEntries * raiser.valuePerEntry;
+    const charityReward = received * (raiser.charitySplit / 1000);
+    const winnerReward = received * (raiser.winnerSplit / 1000);
 
     return (
       <div className="seedom-dapp">
@@ -481,19 +487,10 @@ class Dapp extends Component {
           <Puck
             hasMetamask={hasMetamask}
             raiser={raiser}
-            charityHashedRandom={charityHashedRandom}
-            hashedRandom={hashedRandom}
-            entries={entries}
-            random={random}
-            winner={winner}
-            winnerRandom={winnerRandom}
-            balance={balance}
-            cancelled={cancelled}
-            isParticipating={isParticipating}
-            isRaising={isRaising}
-            isRevealing={isRevealing}
-            isWithdrawing={isWithdrawing}
-            isCancelling={isCancelling}
+            state={state}
+            participant={participant}
+            balances={balances}
+            isLoading={isLoading}
             onParticipate={this.handleParticipate}
             onRaise={this.handleRaise}
             onReveal={this.handleReveal}
@@ -502,9 +499,9 @@ class Dapp extends Component {
           />
           <Hud
             side="right"
-            participants={totalParticipants}
-            entries={totalEntries}
-            revealed={totalRevealed}
+            participants={state.totalParticipants}
+            entries={state.totalEntries}
+            revealed={state.totalRevealed}
           />
         </div>
         <div className="container">

@@ -30,7 +30,7 @@ class Raise extends Content {
       event.preventDefault();
     }
 
-    onRaise({ numOfEntries });
+    onRaise(numOfEntries);
   }
 
   handleNumOfEntriesChange = event => {

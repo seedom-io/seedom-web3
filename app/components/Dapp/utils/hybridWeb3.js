@@ -26,7 +26,7 @@ class HybridWeb3 {
   }
 
   setupWsWeb3() {
-    this.wsWeb3 = new Web3(process.env.ETH_NODE);
+    this.wsWeb3 = new Web3(ETH_URL);
   }
 
   checkMetamask() {

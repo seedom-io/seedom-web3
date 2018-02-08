@@ -4,6 +4,7 @@ const epochToDate = seconds => {
 
 const parseRaiser = raiser => {
   return {
+    owner: String(raiser._owner),
     charity: String(raiser._charity),
     charitySplit: Number(raiser._charitySplit),
     winnerSplit: Number(raiser._winnerSplit),
@@ -71,10 +72,7 @@ const parseRevelation = revelation => {
 const parseWin = win => {
   return {
     participant: String(win._participant),
-    random: String(win._random),
-    charityReward: Number(win._charityReward),
-    winnerReward: Number(win._winnerReward),
-    ownerReward: Number(win._ownerReward),
+    random: String(win._random)
   };
 };
 
