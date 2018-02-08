@@ -33,7 +33,7 @@ const parseState = state => {
 
 const parseSeed = seed => {
   return {
-    hashedRandom: String(seed._hashedRandom),
+    charityHashedRandom: String(seed._charityHashedRandom),
   };
 };
 

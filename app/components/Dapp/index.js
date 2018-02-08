@@ -273,7 +273,7 @@ class Dapp extends Component {
   handleSeedEvent(values) {
     const seed = parsers.parseSeed(values);
     this.setState((prevState) => ({
-      state: { ...prevState.state, charityHashedRandom: seed.hashedRandom }
+      state: { ...prevState.state, charityHashedRandom: seed.charityHashedRandom }
     }));
   }
 
