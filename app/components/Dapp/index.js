@@ -194,23 +194,33 @@ class Dapp extends Component {
   setupEventsHandlers() {
     this.hybridWeb3.wsWeb3.eth.getBlockNumber((blockNumberError, blockNumber) => {
       const feedBlocksBack = (blockNumber < FEED_BLOCKS_BACK) ? 0 : FEED_BLOCKS_BACK;
-      this.hybridWeb3.wsWeb3.eth.subscribe('logs', {
-        address: [],
-        from: blockNumber - feedBlocksBack
-      }, (error, event) => {
-        // first render old events
-        if (event.blockNumber <= blockNumber) {
-          this.triagePastEvent(event);
-        } else {
-          this.triageNewEvent(event);
-        }
-      });
+      const fromBlock = blockNumber - feedBlocksBack;
+      for (const contractAddress in this.contracts) {
+        const contract = this.contracts[contractAddress];
+        this.setupEventsHandler(contract, fromBlock, blockNumber);
+      }
     });
   }
 
-  triagePastEvent(event) {
-    const type = event.event.toLowerCase();
-    const values = event.returnValues;
+  setupEventsHandler(contract, fromBlock, blockNumber) {
+    contract.ws.events.allEvents({
+      fromBlock
+    }, (error, result) => {
+      this.triageEvent(result, blockNumber);
+    });
+  }
+
+  triageEvent(result, blockNumber) {
+    if (result.blockNumber <= blockNumber) {
+      this.triagePastEvent(result);
+    } else {
+      this.triageNewEvent(result);
+    }
+  }
+
+  triagePastEvent(result) {
+    const type = result.event.toLowerCase();
+    const values = result.returnValues;
 
     let obj;
     switch (type) {
@@ -234,10 +244,10 @@ class Dapp extends Component {
     }
   }
 
-  triageNewEvent(event) {
+  triageNewEvent(result) {
     const { account, address } = this.state;
-    const type = event.event.toLowerCase();
-    const values = event.returnValues;
+    const type = result.event.toLowerCase();
+    const values = result.returnValues;
 
     switch (type) {
       case 'seed':
@@ -395,6 +405,7 @@ class Dapp extends Component {
     this.setState((prevState) => {
       const newState = { isLoading: { ...prevState.isLoading } };
       newState.isLoading[isLoadingName] = true;
+      return newState;
     }, () => {
       transaction
         .on('error', (error) => {

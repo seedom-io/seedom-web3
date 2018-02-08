@@ -161,18 +161,18 @@ class Puck extends Component {
     this.setState({ isObtainingMoreEntries: true });
   }
 
-  handleRaise = ({ numOfEntries }) => {
+  handleRaise = (numOfEntries) => {
     this.setState({ isObtainingMoreEntries: false }, () => {
-      this.props.onRaise({ numOfEntries });
+      this.props.onRaise(numOfEntries);
     });
   }
 
-  handleReveal = ({ random }) => {
-    this.props.onReveal({ random });
+  handleReveal = (random) => {
+    this.props.onReveal(random);
   }
 
-  handleWithdraw = () => {
-    this.props.onWithdraw();
+  handleWithdraw = (contractAddress) => {
+    this.props.onWithdraw(contractAddress);
   }
 
   handleWithdrawSkipped = () => {
