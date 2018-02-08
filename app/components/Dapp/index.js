@@ -16,7 +16,6 @@ const FEED_BLOCKS_BACK = 1000;
 
 const getWeb3Instance = (web3, contract) => {
   return new web3.eth.Contract(contract.abi, contract.address, {
-    from: this.state.account,
     gas: GAS,
     gasPrice: GAS_PRICE
   });
@@ -170,14 +169,11 @@ class Dapp extends Component {
     const contractAddresses = Object.keys(this.contracts);
 
     const promises = [];
+    // loop over last 6 contracts to get old balance data
     for (const contractAddress of contractAddresses) {
       const contract = this.contracts[contractAddress];
       // get balance for this contract
-      promises.push(contract.ws.methods
-        .balance(account)
-        .call({
-          from: account
-        }));
+      promises.push(contract.ws.methods.balance().call({ from: account }));
     }
 
     Promise.all(promises).then((values) => {
@@ -471,44 +467,55 @@ class Dapp extends Component {
       isLoading
     } = this.state;
 
-    const received = state.totalEntries * raiser.valuePerEntry;
-    const charityReward = received * (raiser.charitySplit / 1000);
-    const winnerReward = received * (raiser.winnerSplit / 1000);
+    const isReady = contractAddress && raiser && state && participant;
+
+    let received;
+    let charityReward;
+    let winnerReward;
+    if (isReady) {
+      received = state.totalEntries * raiser.valuePerEntry;
+      charityReward = received * (raiser.charitySplit / 1000);
+      winnerReward = received * (raiser.winnerSplit / 1000);
+    }
 
     return (
       <div className="seedom-dapp">
-        <div className="dapp-container">
-          <Hud
-            side="left"
-            received={received}
-            charity={charityReward}
-            winner={winnerReward}
-          />
-          <Puck
-            hasMetamask={hasMetamask}
-            raiser={raiser}
-            state={state}
-            participant={participant}
-            balances={balances}
-            isLoading={isLoading}
-            onParticipate={this.handleParticipate}
-            onRaise={this.handleRaise}
-            onReveal={this.handleReveal}
-            onWithdraw={this.handleWithdraw}
-            onCancel={this.handleCancel}
-          />
-          <Hud
-            side="right"
-            participants={state.totalParticipants}
-            entries={state.totalEntries}
-            revealed={state.totalRevealed}
-          />
-        </div>
-        <div className="container">
-          <div className="content has-text-centered">
-            <Feed feed={feed} />
+        {isReady &&
+          <div className="dapp-container">
+            <Hud
+              side="left"
+              received={received}
+              charity={charityReward}
+              winner={winnerReward}
+            />
+            <Puck
+              hasMetamask={hasMetamask}
+              raiser={raiser}
+              state={state}
+              participant={participant}
+              balances={balances}
+              isLoading={isLoading}
+              onParticipate={this.handleParticipate}
+              onRaise={this.handleRaise}
+              onReveal={this.handleReveal}
+              onWithdraw={this.handleWithdraw}
+              onCancel={this.handleCancel}
+            />
+            <Hud
+              side="right"
+              participants={state.totalParticipants}
+              entries={state.totalEntries}
+              revealed={state.totalRevealed}
+            />
           </div>
-        </div>
+        }
+        {isReady &&
+          <div className="container">
+            <div className="content has-text-centered">
+              <Feed feed={feed} />
+            </div>
+          </div>
+        }
         <div className="container">
           <div className="content has-text-centered">
             <p>

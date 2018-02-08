@@ -15,7 +15,7 @@ class Withdraw extends Content {
 
     let maxBalance;
     let maxContractAddress;
-    for (const contractAddress of balances) {
+    for (const contractAddress in balances) {
       const balance = balances[contractAddress];
       if (balance > maxBalance) {
         maxBalance = balance;

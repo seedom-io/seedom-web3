@@ -10,17 +10,18 @@ const parseRaiser = raiser => {
     winnerSplit: Number(raiser._winnerSplit),
     ownerSplit: Number(raiser._ownerSplit),
     valuePerEntry: Number(raiser._valuePerEntry),
-    kickoffTime: epochToDate(raiser._kickoffTime),
+    deployTime: epochToDate(raiser._deployTime),
     revealTime: epochToDate(raiser._revealTime),
     endTime: epochToDate(raiser._endTime),
     expireTime: epochToDate(raiser._expireTime),
+    destructTime: epochToDate(raiser._destructTime),
     maxParticipants: Number(raiser._maxParticipants)
   };
 };
 
 const parseState = state => {
   return {
-    charityHashedRandom: String(state._charity),
+    charityHashedRandom: String(state._charityHashedRandom),
     winner: String(state._winner),
     winnerRandom: String(state._winnerRandom),
     cancelled: Boolean(state._cancelled),

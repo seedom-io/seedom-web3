@@ -42,7 +42,7 @@ const getPhase = ({
   }
 
   // winner?
-  if (state.winner) {
+  if (!bytes.isZero20(state.winner)) {
     return 'win';
   }
 
@@ -204,6 +204,7 @@ class Puck extends Component {
       raiser,
       state,
       participant,
+      balances,
       isLoading,
       hasBegun,
       isObtainingMoreEntries,

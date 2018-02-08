@@ -24,11 +24,11 @@ const getPhasePercentages = (raiser, now) => {
     };
   }
 
-  const { kickoffTime, revealTime, endTime } = raiser;
-  const raiserTime = endTime - kickoffTime;
-  const participationTime = revealTime - kickoffTime;
+  const { deployTime, revealTime, endTime } = raiser;
+  const raiserTime = endTime - deployTime;
+  const participationTime = revealTime - deployTime;
   const revelationTime = endTime - revealTime;
-  const progressTime = now - kickoffTime;
+  const progressTime = now - deployTime;
 
   return {
     participation: 100 * (participationTime / raiserTime),

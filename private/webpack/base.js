@@ -2,19 +2,15 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const h = require('./helper');
 
 const cwd = process.cwd();
 
 module.exports = {
-  entry: path.resolve(process.cwd(), 'app/index.js'),
+  entry: path.resolve(cwd, 'app/index.js'),
   plugins: [
-    new FaviconsWebpackPlugin(path.join(process.cwd(), 'app/img/logos/seedom-dark.svg')),
+    new FaviconsWebpackPlugin(path.join(cwd, 'app/img/logos/seedom-dark.svg')),
     new HtmlWebpackPlugin({
       template: 'app/index.html'
-    }),
-    new webpack.DefinePlugin({
-      ETH_CONTRACT_ABI: JSON.stringify(h.getContractAbi(cwd))
     })
   ],
   module: {
