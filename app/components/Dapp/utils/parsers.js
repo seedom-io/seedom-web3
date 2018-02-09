@@ -1,3 +1,5 @@
+import { BigNumber } from 'bignumber.js';
+
 const epochToDate = seconds => {
   return new Date(seconds * 1000);
 };
@@ -6,16 +8,16 @@ const parseRaiser = raiser => {
   return {
     owner: String(raiser._owner),
     charity: String(raiser._charity),
-    charitySplit: Number(raiser._charitySplit),
-    winnerSplit: Number(raiser._winnerSplit),
-    ownerSplit: Number(raiser._ownerSplit),
-    valuePerEntry: Number(raiser._valuePerEntry),
+    charitySplit: new BigNumber(raiser._charitySplit),
+    winnerSplit: new BigNumber(raiser._winnerSplit),
+    ownerSplit: new BigNumber(raiser._ownerSplit),
+    valuePerEntry: new BigNumber(raiser._valuePerEntry),
     deployTime: epochToDate(raiser._deployTime),
     revealTime: epochToDate(raiser._revealTime),
     endTime: epochToDate(raiser._endTime),
     expireTime: epochToDate(raiser._expireTime),
     destructTime: epochToDate(raiser._destructTime),
-    maxParticipants: Number(raiser._maxParticipants)
+    maxParticipants: new BigNumber(raiser._maxParticipants)
   };
 };
 
@@ -25,10 +27,10 @@ const parseState = state => {
     winner: String(state._winner),
     winnerRandom: String(state._winnerRandom),
     cancelled: Boolean(state._cancelled),
-    totalParticipants: Number(state._totalParticipants),
-    totalEntries: Number(state._totalEntries),
-    totalRevealers: Number(state._totalRevealers),
-    totalRevealed: Number(state._totalRevealed),
+    totalParticipants: new BigNumber(state._totalParticipants),
+    totalEntries: new BigNumber(state._totalEntries),
+    totalRevealers: new BigNumber(state._totalRevealers),
+    totalRevealed: new BigNumber(state._totalRevealed),
   };
 };
 
@@ -40,7 +42,7 @@ const parseSeed = seed => {
 
 const parseParticipant = participant => {
   return {
-    entries: Number(participant._entries),
+    entries: new BigNumber(participant._entries),
     hashedRandom: String(participant._hashedRandom),
     random: String(participant._random)
   };
@@ -49,7 +51,7 @@ const parseParticipant = participant => {
 const parseParticipation = participation => {
   return {
     participant: String(participation._participant),
-    entries: Number(participation._entries),
+    entries: new BigNumber(participation._entries),
     hashedRandom: String(participation._hashedRandom)
   };
 };
@@ -57,8 +59,8 @@ const parseParticipation = participation => {
 const parseRaise = raise => {
   return {
     participant: String(raise._participant),
-    entries: Number(raise._entries),
-    refund: Number(raise._refund),
+    entries: new BigNumber(raise._entries),
+    refund: new BigNumber(raise._refund),
   };
 };
 
@@ -66,7 +68,7 @@ const parseRevelation = revelation => {
   return {
     participant: String(revelation._participant),
     random: String(revelation._random),
-    entries: Number(revelation._entries),
+    entries: new BigNumber(revelation._entries),
   };
 };
 
@@ -79,7 +81,7 @@ const parseWin = win => {
 
 const parseWithdrawal = withdrawal => {
   return {
-    participant: String(withdrawal._participant)
+    address: String(withdrawal._address)
   };
 };
 

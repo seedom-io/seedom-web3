@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { localeNumber, getEtherFromWei } from '../../utils/numbers';
+import { localeNumber, localeDecimal, getEtherFromWei } from '../../utils/numbers';
 import './index.scss';
 
 class HudStat extends Component {
@@ -38,16 +38,16 @@ class Hud extends Component {
       <div className={`seedom-hub ${side}`}>
         {((side === 'top') || (side === 'left')) &&
           <div className="panel left">
-            <HudStat title="received" value={localeNumber(getEtherFromWei(received))} symbol="Ξ" />
-            <HudStat title="charity" value={localeNumber(getEtherFromWei(charity).toLocaleString())} symbol="Ξ" />
-            <HudStat title="winner" value={localeNumber(getEtherFromWei(winner).toLocaleString())} symbol="Ξ" />
+            <HudStat title="received" value={localeDecimal(getEtherFromWei(received))} symbol="Ξ" />
+            <HudStat title="charity" value={localeDecimal(getEtherFromWei(charity))} symbol="Ξ" />
+            <HudStat title="winner" value={localeDecimal(getEtherFromWei(winner))} symbol="Ξ" />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&
           <div className="panel right">
-            <HudStat title="participants" value={localeNumber(participants.toLocaleString())} />
-            <HudStat title="entries" value={localeNumber(entries.toLocaleString())} />
-            <HudStat title="revealed" value={localeNumber(revealed.toLocaleString())} />
+            <HudStat title="participants" value={localeNumber(participants)} />
+            <HudStat title="entries" value={localeNumber(entries)} />
+            <HudStat title="revealed" value={localeNumber(revealed)} />
           </div>
         }
       </div>

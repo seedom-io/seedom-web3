@@ -39,7 +39,7 @@
     }
 
     &.win {
-      fill: red;
+      fill: $primary;
       animation: 5s ease-in-out 0s infinite win;
     }
 
@@ -55,7 +55,7 @@
     transform-origin: 50% 50%;
 
     &.pulse {
-      fill: blue;
+      fill: $primary;
       stroke: transparent;
       animation: 3s ease-in-out 0s infinite win;
     }

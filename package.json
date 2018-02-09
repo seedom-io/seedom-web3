@@ -6,6 +6,7 @@
   "author": "Seedom Team",
   "license": "MIT",
   "dependencies": {
+    "bignumber.js": "^6.0.0",
     "bulma": "^0.6.1",
     "js-sha3": "^0.7.0",
     "prop-types": "^15.6.0",

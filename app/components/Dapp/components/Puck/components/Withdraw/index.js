@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Content from '../Content';
 import Indicator from '../Indicator';
-import { localeNumber, getEtherFromWei } from '../../../../utils/numbers';
+import { localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
+import { BigNumber } from 'bignumber.js';
 import './index.scss';
 
 class Withdraw extends Content {
@@ -13,11 +14,11 @@ class Withdraw extends Content {
   getMaxBalance() {
     const { balances } = this.props;
 
-    let maxBalance;
-    let maxContractAddress;
+    let maxBalance = new BigNumber(0);
+    let maxContractAddress = null;
     for (const contractAddress in balances) {
       const balance = balances[contractAddress];
-      if (balance > maxBalance) {
+      if (balance.isGreaterThan(maxBalance)) {
         maxBalance = balance;
         maxContractAddress = contractAddress;
       }
@@ -46,7 +47,7 @@ class Withdraw extends Content {
         <div className="seedom-overlay">
           <div className="puck-message">
             YOU HAVE
-            <div className="balance">{localeNumber(getEtherFromWei(maxBalance.balance))}</div>
+            <div className="balance">{localeDecimal(getEtherFromWei(maxBalance.balance))}</div>
             ETHER TO WITHDRAW!
           </div>
         </div>

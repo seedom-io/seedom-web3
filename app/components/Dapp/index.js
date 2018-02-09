@@ -7,6 +7,7 @@ import HybridWeb3 from './utils/hybridWeb3';
 import * as randoms from './utils/randoms';
 import * as parsers from './utils/parsers';
 import * as bytes from './utils/bytes';
+import { BigNumber } from 'bignumber.js';
 import './index.scss';
 
 const MAX_FEED_ITEMS = 10;
@@ -182,7 +183,7 @@ class Dapp extends Component {
         const value = values[i];
         // add balance entries of non-zero
         if (value !== '0') {
-          balances[contractAddresses[i]] = value;
+          balances[contractAddresses[i]] = new BigNumber(value);
         }
       }
       this.setState({
@@ -245,7 +246,7 @@ class Dapp extends Component {
   }
 
   triageNewEvent(result) {
-    const { account, address } = this.state;
+    const { account, contractAddress } = this.state;
     const type = result.event.toLowerCase();
     const values = result.returnValues;
 
@@ -269,7 +270,7 @@ class Dapp extends Component {
         this.handleCancellationEvent();
         break;
       case 'withdrawal':
-        this.handleWithdrawalEvent(account, values, address);
+        this.handleWithdrawalEvent(account, values, contractAddress);
         break;
       default:
         break;
@@ -289,8 +290,8 @@ class Dapp extends Component {
       const newState = {
         state: {
           ...prevState.state,
-          totalParticipants: prevState.state.totalParticipants + 1,
-          totalEntries: prevState.state.totalEntries + participation.entries,
+          totalParticipants: prevState.state.totalParticipants.plus(1),
+          totalEntries: prevState.state.totalEntries.plus(participation.entries),
         },
         feed: addFeedItem(prevState.feed, participation, type)
       };
@@ -312,7 +313,7 @@ class Dapp extends Component {
     const raise = parsers.parseRaise(values);
     this.setState((prevState) => {
       const newState = {
-        state: { ...prevState.state, totalEntries: prevState.state.totalEntries + raise.entries },
+        state: { ...prevState.state, totalEntries: prevState.state.totalEntries.plus(raise.entries) },
         feed: addFeedItem(prevState.feed, raise, type)
       };
 
@@ -320,7 +321,7 @@ class Dapp extends Component {
         newState.isLoading = { ...prevState.isLoading, isRaising: false };
         newState.participant = {
           ...prevState.participant,
-          entries: prevState.participant.entries + raise.entries
+          entries: prevState.participant.entries.plus(raise.entries)
         };
       }
 
@@ -332,7 +333,7 @@ class Dapp extends Component {
     const revelation = parsers.parseRevelation(values);
     this.setState((prevState) => {
       const newState = {
-        state: { ...prevState.state, totalRevealed: prevState.state.totalRevealed + revelation.entries },
+        state: { ...prevState.state, totalRevealed: prevState.state.totalRevealed.plus(revelation.entries) },
         feed: addFeedItem(prevState.feed, revelation, type)
       };
 
@@ -362,7 +363,7 @@ class Dapp extends Component {
         // preserve existing balances
         newState.balances = { ...prevState.balances };
         // add new balance entry
-        newState.balances[contractAddress] = state.totalEntries * (raiser.winnerSplit / 1000);
+        newState.balances[contractAddress] = state.totalEntries.times(raiser.winnerSplit).dividedBy(1000);
       }
 
       return newState;
@@ -380,22 +381,22 @@ class Dapp extends Component {
       // update our cancellation balance
       const { raiser, participant, contractAddress } = this.state;
       // add new balance entry
-      newState.balances[contractAddress] = participant.entries * raiser.valuePerEntry;
+      newState.balances[contractAddress] = participant.entries.times(raiser.valuePerEntry);
       return newState;
     });
   }
 
-  handleWithdrawalEvent(account, values, address) {
+  handleWithdrawalEvent(account, values, contractAddress) {
     const withdrawal = parsers.parseWithdrawal(values);
     // set our balance to zero if we withdrew
-    if (withdrawal.participant === account) {
+    if (withdrawal.address === account) {
       this.setState((prevState) => {
         const newState = {
           isLoading: { ...prevState.isLoading, isWithdrawing: false },
           balances: { ...prevState.balances }
         };
         // delete balance entry for this contract addy
-        delete newState.balances[address];
+        delete newState.balances[contractAddress];
         return newState;
       });
     }
@@ -424,7 +425,7 @@ class Dapp extends Component {
     const { account, raiser } = this.state;
     const randomHex = randoms.hexRandom(random);
     const hashedRandom = randoms.hashRandom(randomHex, account);
-    const value = numOfEntries * (raiser.valuePerEntry);
+    const value = (new BigNumber(numOfEntries)).times(raiser.valuePerEntry);
 
     this.handleSend(this.getContract().rpc.methods.participate(hashedRandom).send({
       from: account, value
@@ -433,7 +434,7 @@ class Dapp extends Component {
 
   handleRaise = (numOfEntries) => {
     const { account, raiser, contractAddress } = this.state;
-    const value = numOfEntries * (raiser.valuePerEntry);
+    const value = (new BigNumber(numOfEntries)).times(raiser.valuePerEntry);
 
     this.handleSend(this.hybridWeb3.rpcWeb3.eth.sendTransaction({
       from: account, to: contractAddress, value
@@ -484,9 +485,9 @@ class Dapp extends Component {
     let charityReward;
     let winnerReward;
     if (isReady) {
-      received = state.totalEntries * raiser.valuePerEntry;
-      charityReward = received * (raiser.charitySplit / 1000);
-      winnerReward = received * (raiser.winnerSplit / 1000);
+      received = state.totalEntries.times(raiser.valuePerEntry);
+      charityReward = received.times(raiser.charitySplit).dividedBy(1000);
+      winnerReward = received.times(raiser.winnerSplit).dividedBy(1000);
     }
 
     return (

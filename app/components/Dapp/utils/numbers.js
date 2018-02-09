@@ -1,12 +1,21 @@
-const getEtherFromWei = (wei) => {
-  return wei / 1000000000000000000;
+import { BigNumber } from 'bignumber.js';
+
+const weiInEther = new BigNumber(1000000000000000000);
+
+const getEtherFromWei = (bigNumber) => {
+  return bigNumber.dividedBy(weiInEther);
 };
 
-const localeNumber = (number) => {
-  return number.toLocaleString(undefined, { maximumFractionDigits: 2 });
+const localeDecimal = (bigNumber) => {
+  return bigNumber.toFormat(2);
+};
+
+const localeNumber = (bigNumber) => {
+  return bigNumber.toFormat(0);
 };
 
 export {
   getEtherFromWei,
-  localeNumber
+  localeNumber,
+  localeDecimal
 };

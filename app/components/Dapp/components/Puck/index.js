@@ -37,7 +37,7 @@ const getPhase = ({
   }
 
   // balances?
-  if ((Object.keys(balances) > 0) && !isWithdrawSkipped) {
+  if ((Object.keys(balances).length > 0) && !isWithdrawSkipped) {
     return 'withdraw';
   }
 

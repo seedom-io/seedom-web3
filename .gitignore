@@ -1,5 +1,5 @@
 .DS_Store
-dist
+dist/localhost
 node_modules
 .cache
 .yarn-error.log
