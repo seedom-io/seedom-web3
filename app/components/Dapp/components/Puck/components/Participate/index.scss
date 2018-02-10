@@ -9,7 +9,6 @@
   input {
     background-color: $puck-input-background;
     text-align: center;
-    margin-top: 10px;
   }
 
   textarea {
@@ -17,12 +16,6 @@
     resize: none;
     word-break: break-all;
     text-align: center;
-    margin-top: 10px;
     background-color: $puck-input-background;
   }
-
-  .button {
-    margin-top: 20px;
-  }
-
 }

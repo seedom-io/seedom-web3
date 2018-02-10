@@ -127,7 +127,7 @@ class Participate extends Content {
                 ref={(input) => { this.emailInput = input; }}
               />
             </div>
-            {!isEmailValid && <p className="help is-danger">This email is invalid</p>}
+            {isEmailValid ? <p>&nbsp;</p> : <p className="help is-danger">This email is invalid</p>}
           </div>
 
           <div className="field">
@@ -140,7 +140,7 @@ class Participate extends Content {
                 onChange={this.handleNumOfEntriesChange}
               />
             </div>
-            {!isNumOfEntriesValid && <p className="help is-danger">Number of entries is invalid</p>}
+            {isNumOfEntriesValid ? <p>&nbsp;</p> : <p className="help is-danger">Number of entries is invalid</p>}
           </div>
 
           <div className="field">
@@ -154,10 +154,14 @@ class Participate extends Content {
                 onChange={this.handleRandomChange}
               />
             </div>
-            {!isRandomValid && <p className="help is-danger">Random is invalid</p>}
+            {isRandomValid ? <p>&nbsp;</p> : <p className="help is-danger">Random is invalid</p>}
           </div>
 
-          <a className="button is-primary is-outlined" disabled={isButtonDisabled} onClick={this.handleSubmit}>PARTICIPATE</a>
+          <div className="field">
+            <div className="control">
+              <a className="button is-primary is-outlined" disabled={isButtonDisabled} onClick={this.handleSubmit}>PARTICIPATE</a>
+            </div>
+          </div>
         </div>
       </div>
     );
