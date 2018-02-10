@@ -1,7 +1,15 @@
+@import '../../../../../../sass/theme.scss';
+
 .seedom-content.begin {
 
   img {
-    height: 40%;
+    height: 35%;
+  }
+
+  .etherPerEntry {
+    color: $link;
+    font-weight: bold;
+    margin-top: 20px;
   }
 
   .button {

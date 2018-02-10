@@ -226,10 +226,10 @@ class Puck extends Component {
         <div className="interface">
           <Circles percentage={50} isLoading={isAnyLoading} raiser={raiser} now={this.state.now} />
           <Seed isShown={phase === 'seed'} />
-          <Begin isShown={phase === 'begin'} onBegin={this.handleBegin} />
-          <Participate isShown={phase === 'participate'} isParticipating={isLoading.isParticipating} onParticipate={this.handleParticipate} />
+          <Begin isShown={phase === 'begin'} raiser={raiser} onBegin={this.handleBegin} />
+          <Participate isShown={phase === 'participate'} raiser={raiser} isParticipating={isLoading.isParticipating} onParticipate={this.handleParticipate} />
           <Participated isShown={phase === 'participated'} entries={participant.entries} onGetMoreEntries={this.handleGetMoreEntries} />
-          <Raise isShown={phase === 'raise'} isRaising={isLoading.isRaising} onRaise={this.handleRaise} />
+          <Raise isShown={phase === 'raise'} raiser={raiser} isRaising={isLoading.isRaising} onRaise={this.handleRaise} />
           <Reveal isShown={phase === 'reveal'} isRevealing={isLoading.isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />
           <Revealed isShown={phase === 'revealed'} entries={participant.entries} />
           <End isShown={phase === 'end'} />

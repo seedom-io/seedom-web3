@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Content from '../Content';
 import Indicator from '../Indicator';
+import Entries from '../Entries';
 import charityLogo from '../../../../../../img/logos/charity.png';
+import { BigNumber } from 'bignumber.js';
 import './index.scss';
 
 class Raise extends Content {
@@ -13,42 +15,42 @@ class Raise extends Content {
   constructor(props) {
     super(props);
     this.state = {
-      numOfEntries: 0
+      entries: new BigNumber(0)
     };
   }
 
   show() {
     super.show();
-    this.entriesInput.focus();
+    //this.entriesInput.focus();
   }
 
   handleSubmit = event => {
     const { onRaise } = this.props;
-    const { numOfEntries } = this.state;
+    const { entries } = this.state;
 
     if (event !== undefined && event.preventDefault) {
       event.preventDefault();
     }
 
-    onRaise(numOfEntries);
+    onRaise(entries);
   }
 
-  handleNumOfEntriesChange = event => {
+  handleEntriesChange = entries => {
     this.setState({
-      numOfEntries: event.target.value
+      entries
     });
   };
 
   render() {
-    const { className } = this.state;
-    const { isRaising } = this.props;
+    const { className, entries } = this.state;
+    const { raiser, isRaising } = this.props;
 
     return (
       <div className={`seedom-content raise ${className}`}>
         <Indicator type={isRaising ? 'waiting' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />
-          <input className="input is-primary" type="text" placeholder="NUMBER OF ENTRIES" disabled={isRaising} onChange={this.handleNumOfEntriesChange} ref={(input) => { this.entriesInput = input; }} />
+          <Entries entries={entries} raiser={raiser} onEntriesChange={this.handleEntriesChange} />
           <a className="button is-primary is-outlined" disabled={isRaising} onClick={this.handleSubmit}>GET MORE ENTRIES</a>
         </div>
       </div>

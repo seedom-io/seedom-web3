@@ -6,7 +6,7 @@
     height: 20%;
   }
 
-  input {
+  .seedom-overlay > input {
     width: 50%;
     background-color: $puck-input-background;
     text-align: center;
@@ -25,6 +25,11 @@
 
   .button {
     margin-top: 20px;
+  }
+
+  .seedom-entry {
+    width: 50%;
+    margin-top: 10px;
   }
 
 }

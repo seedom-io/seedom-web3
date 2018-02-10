@@ -1,0 +1,26 @@
+@import '../../../../../../sass/theme.scss';
+
+.seedom-entry {
+  display: flex;
+  flex-direction: row;
+
+  input {
+    border-radius: $radius 0 0 $radius;
+    background-color: $puck-input-background;
+    border-right: 0;
+    text-align: left;
+    flex: 1;
+  }
+
+  .ether {
+    border-radius: 0 $radius $radius 0;
+    border: 1px solid $link;
+    background-color: $link;
+    display: flex;
+    align-items: center;
+    flex: none;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+}

@@ -56,8 +56,6 @@
     "localhost": "webpack --config private/webpack/localhost.js",
     "ropsten": "webpack --config private/webpack/ropsten.js",
     "mainnet": "webpack --config private/webpack/mainnet.js",
-    "docker-localhost": "webpack --config private/webpack/localhost.js",
-    "docker-ropsten": "webpack --config private/webpack/ropsten.js",
-    "docker-mainnet": "webpack --config private/webpack/mainnet.js"
+    "dist": "npm run localhost & npm run ropsten"
   }
 }

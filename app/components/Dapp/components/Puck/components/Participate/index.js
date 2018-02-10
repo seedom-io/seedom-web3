@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Content from '../Content';
+import Entries from '../Entries';
 import Indicator from '../Indicator';
 import charityLogo from '../../../../../../img/logos/charity.png';
+import { BigNumber } from 'bignumber.js';
 import './index.scss';
 
 class Participate extends Content {
@@ -14,7 +16,7 @@ class Participate extends Content {
     super(props);
     this.state = {
       random: '',
-      numOfEntries: 0
+      entries: new BigNumber(0)
     };
   }
 
@@ -25,13 +27,13 @@ class Participate extends Content {
 
   handleSubmit = event => {
     const { onParticipate } = this.props;
-    const { random, numOfEntries } = this.state;
+    const { random, entries } = this.state;
 
     if (event !== undefined && event.preventDefault) {
       event.preventDefault();
     }
 
-    onParticipate({ random, numOfEntries });
+    onParticipate({ random, entries });
   }
 
   handleRandomChange = event => {
@@ -40,23 +42,23 @@ class Participate extends Content {
     });
   };
 
-  handleNumOfEntriesChange = event => {
+  handleEntriesChange = entries => {
     this.setState({
-      numOfEntries: event.target.value
+      entries
     });
   };
 
   render() {
-    const { className } = this.state;
-    const { isParticipating } = this.props;
+    const { className, entries } = this.state;
+    const { raiser, isParticipating } = this.props;
 
     return (
       <div className={`seedom-content participate ${className}`}>
         <Indicator type={isParticipating ? 'waiting' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />
-          <input className="input is-primary" type="text" placeholder="EMAIL ADDRESS" disabled={isParticipating} onChange={this.handleNumOfEntriesChange} ref={(input) => { this.emailInput = input; }} />
-          <input className="input is-primary" type="number" placeholder="NUMBER OF ENTRIES" disabled={isParticipating} onChange={this.handleNumOfEntriesChange} />
+          <input className="input is-primary" type="text" placeholder="EMAIL ADDRESS" disabled={isParticipating} ref={(input) => { this.emailInput = input; }} />
+          <Entries entries={entries} raiser={raiser} onEntriesChange={this.handleEntriesChange} />
           <textarea rows="3" className="textarea is-primary" type="text" placeholder="TYPE A MESSAGE HERE" disabled={isParticipating} onChange={this.handleRandomChange} />
           <a className="button is-primary is-outlined" disabled={isParticipating} onClick={this.handleSubmit}>PARTICIPATE</a>
         </div>
