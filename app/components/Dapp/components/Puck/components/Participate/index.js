@@ -13,6 +13,7 @@ class Participate extends Content {
   constructor(props) {
     super(props);
     this.state = {
+      email: '',
       random: '',
       numOfEntries: 0
     };
@@ -34,6 +35,12 @@ class Participate extends Content {
     onParticipate({ random, numOfEntries });
   }
 
+  handleEmailChange = event => {
+    this.setState({
+      email: event.target.value
+    });
+  };
+
   handleRandomChange = event => {
     this.setState({
       random: event.target.value
@@ -50,15 +57,21 @@ class Participate extends Content {
     const { className } = this.state;
     const { isParticipating } = this.props;
 
+    const isButtonDisabled =
+      isParticipating ||
+      !this.state.email ||
+      !this.state.numOfEntries ||
+      !this.state.random;
+
     return (
       <div className={`seedom-content participate ${className}`}>
         <Indicator type={isParticipating ? 'waiting' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />
-          <input className="input is-primary" type="text" placeholder="EMAIL ADDRESS" disabled={isParticipating} onChange={this.handleNumOfEntriesChange} ref={(input) => { this.emailInput = input; }} />
+          <input className="input is-primary" type="text" placeholder="EMAIL ADDRESS" disabled={isParticipating} onChange={this.handleEmailChange} ref={(input) => { this.emailInput = input; }} />
           <input className="input is-primary" type="number" placeholder="NUMBER OF ENTRIES" disabled={isParticipating} onChange={this.handleNumOfEntriesChange} />
           <textarea rows="3" className="textarea is-primary" type="text" placeholder="TYPE A MESSAGE HERE" disabled={isParticipating} onChange={this.handleRandomChange} />
-          <a className="button is-primary is-outlined" disabled={isParticipating} onClick={this.handleSubmit}>PARTICIPATE</a>
+          <a className="button is-primary is-outlined" disabled={isButtonDisabled} onClick={this.handleSubmit}>PARTICIPATE</a>
         </div>
       </div>
     );
