@@ -109,17 +109,13 @@ class Dapp extends Component {
     this.retrieveBalances();
   }
 
-  retrieveRaiser() {
+  handleRetrieve(method, done) {
     const { account } = this.state;
 
-    this.getContract().ws.methods
-      .raiser()
-      .call({
-        from: account
-      })
+    method.call({ from: account })
       .then(
         data => {
-          this.setState({ raiser: parsers.parseRaiser(data) });
+          done(data);
         },
         err => {
           console.error(err);
@@ -127,40 +123,23 @@ class Dapp extends Component {
       );
   }
 
-  retrieveState() {
-    const { account } = this.state;
+  retrieveRaiser() {
+    this.handleRetrieve(this.getContract().ws.methods.raiser(), (data) => {
+      this.setState({ raiser: parsers.parseRaiser(data) });
+    });
+  }
 
-    this.getContract().ws.methods
-      .state()
-      .call({
-        from: account
-      })
-      .then(
-        data => {
-          this.setState({ state: parsers.parseState(data) });
-        },
-        err => {
-          console.error(err);
-        }
-      );
+  retrieveState() {
+    this.handleRetrieve(this.getContract().ws.methods.state(), (data) => {
+      this.setState({ state: parsers.parseState(data) });
+    });
   }
 
   retrieveParticipant() {
     const { account } = this.state;
-
-    this.getContract().ws.methods
-      .participantsMapping(account)
-      .call({
-        from: account
-      })
-      .then(
-        data => {
-          this.setState({ participant: parsers.parseParticipant(data) });
-        },
-        err => {
-          console.error(err);
-        }
-      );
+    this.handleRetrieve(this.getContract().ws.methods.participantsMapping(account), (data) => {
+      this.setState({ participant: parsers.parseParticipant(data) });
+    });
   }
 
   retrieveBalances() {
@@ -402,22 +381,51 @@ class Dapp extends Component {
     }
   }
 
-  handleSend = (transaction, isLoadingName) => {
+  handleSend = (method, options, isLoadingName) => {
     this.setState((prevState) => {
       const newState = { isLoading: { ...prevState.isLoading } };
       newState.isLoading[isLoadingName] = true;
       return newState;
     }, () => {
+      const resultHandler = this.handleSendCall(method, options, isLoadingName);
+      if (method === null) {
+        this.hybridWeb3.rpcWeb3.eth.call(options, resultHandler);
+      } else {
+        method.call(options, resultHandler);
+      }
+    });
+  }
+
+  handleSendCall = (method, options, isLoadingName) => {
+    return (callError) => {
+      if (callError) {
+        this.handleSendError(callError, isLoadingName);
+        return;
+      }
+
+      let transaction;
+      if (method === null) {
+        transaction = this.hybridWeb3.rpcWeb3.eth.sendTransaction(options);
+      } else {
+        transaction = method.send(options);
+      }
+
       transaction
-        .on('error', (error) => {
-          const { message } = error;
+        .on('error', (sendError) => {
+          const { message } = sendError;
           if (message.includes('User denied')) {
-            this.setState((prevState) => {
-              const newState = { isLoading: { ...prevState.isLoading } };
-              newState.isLoading[isLoadingName] = false;
-            });
+            this.handleSendError(sendError, isLoadingName);
           }
         });
+    };
+  }
+
+  handleSendError = (error, isLoadingName) => {
+    console.log(`ERROR: ${error.message}`);
+    this.setState((prevState) => {
+      const newState = { isLoading: { ...prevState.isLoading } };
+      newState.isLoading[isLoadingName] = false;
+      return newState;
     });
   }
 
@@ -427,44 +435,44 @@ class Dapp extends Component {
     const hashedRandom = randoms.hashRandom(randomHex, account);
     const value = (new BigNumber(numOfEntries)).times(raiser.valuePerEntry);
 
-    this.handleSend(this.getContract().rpc.methods.participate(hashedRandom).send({
+    this.handleSend(this.getContract().rpc.methods.participate(hashedRandom), {
       from: account, value
-    }), 'isParticipating');
+    }, 'isParticipating');
   }
 
   handleRaise = (numOfEntries) => {
     const { account, raiser, contractAddress } = this.state;
     const value = (new BigNumber(numOfEntries)).times(raiser.valuePerEntry);
 
-    this.handleSend(this.hybridWeb3.rpcWeb3.eth.sendTransaction({
-      from: account, to: contractAddress, value
-    }), 'isRaising');
+    this.handleSend(null, {
+      to: contractAddress, value, from: account
+    }, 'isRaising');
   }
 
   handleReveal = (random) => {
     const { account } = this.state;
     const randomHex = randoms.hexRandom(random);
 
-    this.handleSend(this.getContract().rpc.methods.reveal(randomHex).send({
+    this.handleSend(this.getContract().rpc.methods.reveal(randomHex), {
       from: account
-    }), 'isRevealing');
+    }, 'isRevealing');
   }
 
   handleWithdraw = (contractAddress) => {
     const { account } = this.state;
     const contract = this.contracts[contractAddress];
 
-    this.handleSend(contract.rpc.methods.withdraw().send({
+    this.handleSend(contract.rpc.methods.withdraw(), {
       from: account
-    }), 'isWithdrawing');
+    }, 'isWithdrawing');
   }
 
   handleCancel = () => {
     const { account } = this.state;
 
-    this.handleSend(this.getContract().rpc.methods.cancel().send({
+    this.handleSend(this.getContract().rpc.methods.cancel(), {
       from: account
-    }), 'isCancelling');
+    }, 'isCancelling');
   }
 
   render() {
