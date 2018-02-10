@@ -7,14 +7,12 @@
   }
 
   input {
-    width: 50%;
     background-color: $puck-input-background;
     text-align: center;
     margin-top: 10px;
   }
 
   textarea {
-    width: 50%;
     min-width: 0;
     resize: none;
     word-break: break-all;

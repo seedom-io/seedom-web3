@@ -1,9 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Content from '../Content';
 import Indicator from '../Indicator';
 import charityLogo from '../../../../../../img/logos/charity.png';
 import './index.scss';
+
+function inputClass(isValid) {
+  return classNames({
+    input: true,
+    'is-primary': isValid,
+    'is-danger': !isValid
+  });
+}
+
+function textareaClass(isValid) {
+  return classNames({
+    textarea: true,
+    'is-primary': isValid,
+    'is-danger': !isValid
+  });
+}
 
 class Participate extends Content {
   static propTypes = {
@@ -14,8 +31,11 @@ class Participate extends Content {
     super(props);
     this.state = {
       email: '',
+      isEmailValid: true,
       random: '',
-      numOfEntries: 0
+      isRandomValid: true,
+      numOfEntries: 0,
+      isNumOfEntriesValid: true
     };
   }
 
@@ -24,7 +44,25 @@ class Participate extends Content {
     this.emailInput.focus();
   }
 
+  validateForm = () => {
+    const isEmailValid = this.state.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+    const isNumOfEntriesValid = !Number.isNaN(Number(this.state.numOfEntries));
+    const isRandomValid = this.state.random !== 'fuck you';
+
+    this.setState({
+      isEmailValid,
+      isNumOfEntriesValid,
+      isRandomValid
+    });
+  }
+
+  isFormValid = () => {
+    return this.state.isEmailValid && this.state.isNumOfEntriesValid && this.isRandomValid;
+  }
+
   handleSubmit = event => {
+    this.validateForm();
+
     const { onParticipate } = this.props;
     const { random, numOfEntries } = this.state;
 
@@ -32,7 +70,11 @@ class Participate extends Content {
       event.preventDefault();
     }
 
-    onParticipate({ random, numOfEntries });
+    if (this.isFormValid()) {
+      onParticipate({ random, numOfEntries });
+    } else {
+      console.log('nope');
+    }
   }
 
   handleEmailChange = event => {
@@ -54,7 +96,12 @@ class Participate extends Content {
   };
 
   render() {
-    const { className } = this.state;
+    const {
+      className,
+      isEmailValid,
+      isNumOfEntriesValid,
+      isRandomValid
+    } = this.state;
     const { isParticipating } = this.props;
 
     const isButtonDisabled =
@@ -68,9 +115,48 @@ class Participate extends Content {
         <Indicator type={isParticipating ? 'waiting' : null} />
         <div className="seedom-overlay">
           <img src={charityLogo} />
-          <input className="input is-primary" type="text" placeholder="EMAIL ADDRESS" disabled={isParticipating} onChange={this.handleEmailChange} ref={(input) => { this.emailInput = input; }} />
-          <input className="input is-primary" type="number" placeholder="NUMBER OF ENTRIES" disabled={isParticipating} onChange={this.handleNumOfEntriesChange} />
-          <textarea rows="3" className="textarea is-primary" type="text" placeholder="TYPE A MESSAGE HERE" disabled={isParticipating} onChange={this.handleRandomChange} />
+
+          <div className="field">
+            <div className="control">
+              <input
+                className={inputClass(isEmailValid)}
+                type="text"
+                placeholder="EMAIL ADDRESS"
+                disabled={isParticipating}
+                onChange={this.handleEmailChange}
+                ref={(input) => { this.emailInput = input; }}
+              />
+            </div>
+            {!isEmailValid && <p className="help is-danger">This email is invalid</p>}
+          </div>
+
+          <div className="field">
+            <div className="control">
+              <input
+                className={inputClass(isNumOfEntriesValid)}
+                type="number"
+                placeholder="NUMBER OF ENTRIES"
+                disabled={isParticipating}
+                onChange={this.handleNumOfEntriesChange}
+              />
+            </div>
+            {!isNumOfEntriesValid && <p className="help is-danger">Number of entries is invalid</p>}
+          </div>
+
+          <div className="field">
+            <div className="control">
+              <textarea
+                rows="3"
+                className={textareaClass(isRandomValid)}
+                type="text"
+                placeholder="TYPE A MESSAGE HERE"
+                disabled={isParticipating}
+                onChange={this.handleRandomChange}
+              />
+            </div>
+            {!isRandomValid && <p className="help is-danger">Random is invalid</p>}
+          </div>
+
           <a className="button is-primary is-outlined" disabled={isButtonDisabled} onClick={this.handleSubmit}>PARTICIPATE</a>
         </div>
       </div>
