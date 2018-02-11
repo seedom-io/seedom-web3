@@ -13,6 +13,12 @@ $success: $primary;
 $error: darken(#ff3860, 10%);
 $win: purple;
 
+$navbar-item-img-max-height: auto;
+.navbar-item,
+.navbar-link {
+  padding: 0rem 1rem
+}
+
 $puck-background: lighten($background, 10%);
 $participation-phase: lighten($puck-background, 10%);
 $revelation-phase: lighten($participation-phase, 10%);
