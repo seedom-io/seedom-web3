@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Content from '../Content';
 import Entries from '../Entries';
+import Random from '../Random';
 import Field from '../Field';
 import Indicator from '../Indicator';
 import charityLogo from '../../../../../../img/logos/charity.png';
@@ -28,11 +29,11 @@ class Participate extends Content {
   }
 
   validateForm = (done) => {
-    const { email, random } = this.state;
+    const { email } = this.state;
 
     const isEmailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) !== null;
     const isEntriesValid = this.entries.validate();
-    const isRandomValid = random.length > 0;
+    const isRandomValid = this.random.validate();
 
     this.setState({
       isEmailValid,
@@ -49,14 +50,9 @@ class Participate extends Content {
   handleSubmit = event => {
     this.validateForm(() => {
       const { onParticipate } = this.props;
-      const { random } = this.state;
-
-      if (event !== undefined && event.preventDefault) {
-        event.preventDefault();
-      }
-
       if (this.isFormValid()) {
         const entries = this.entries.value();
+        const random = this.random.value();
         onParticipate({ random, entries });
       } else {
         console.log('nope');
@@ -78,9 +74,7 @@ class Participate extends Content {
     const {
       className,
       email,
-      random,
-      isEmailValid,
-      isRandomValid
+      isEmailValid
     } = this.state;
 
     return (
@@ -107,14 +101,9 @@ class Participate extends Content {
             ref={(component) => { this.entries = component; }}
           />
 
-          <Field
-            format="textblock"
-            type="text"
-            value={random}
-            placeholder="your message&#10;to the world"
+          <Random
             disabled={isParticipating}
-            isValid={isRandomValid}
-            onChange={this.handleRandomChange}
+            ref={(component) => { this.random = component; }}
           />
 
           <div className="field">

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Content from '../Content';
 import Indicator from '../Indicator';
+import Random from '../Random';
 import charityLogo from '../../../../../../img/logos/charity.png';
-import Field from '../Field';
 import './index.scss';
 
 class Reveal extends Content {
@@ -25,9 +25,7 @@ class Reveal extends Content {
   }
 
   validateForm = (done) => {
-    const { random } = this.state;
-
-    const isRandomValid = random.length > 0;
+    const isRandomValid = this.random.validate();
     this.setState({ isRandomValid }, done);
   }
 
@@ -38,13 +36,8 @@ class Reveal extends Content {
   handleSubmit = event => {
     this.validateForm(() => {
       const { onReveal } = this.props;
-      const { random } = this.state;
-
-      if (event !== undefined && event.preventDefault) {
-        event.preventDefault();
-      }
-
       if (this.isFormValid()) {
+        const random = this.random.value();
         onReveal(random);
       } else {
         console.log('nope');
@@ -57,7 +50,7 @@ class Reveal extends Content {
   };
 
   render() {
-    const { className, random, isRandomValid } = this.state;
+    const { className } = this.state;
     const { isRevealing } = this.props;
 
     return (
@@ -67,14 +60,8 @@ class Reveal extends Content {
 
           <img src={charityLogo} />
 
-          <Field
-            format="textblock"
-            type="text"
-            value={random}
-            placeholder="reveal your message&#10;to the world"
+          <Random
             disabled={isRevealing}
-            isValid={isRandomValid}
-            onChange={this.handleRandomChange}
             ref={(component) => { this.random = component; }}
           />
 

@@ -24,6 +24,7 @@ class Field extends Component {
     format: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     value: PropTypes.string,
+    maxLength: PropTypes.number,
     addon: PropTypes.string,
     placeholder: PropTypes.string.isRequired,
     disabled: PropTypes.bool.isRequired,
@@ -34,6 +35,7 @@ class Field extends Component {
   static defaultProps = {
     value: '',
     addon: '',
+    maxLength: 0,
     isValid: true
   }
 
@@ -52,6 +54,7 @@ class Field extends Component {
       placeholder,
       disabled,
       value,
+      maxLength,
       addon,
       isValid
     } = this.props;
@@ -73,18 +76,19 @@ class Field extends Component {
             ),
             textblock: (
               <textarea
-                rows="3"
+                rows="2"
                 className={textareaClass(isValid)}
                 type={type}
                 placeholder={placeholder.toUpperCase()}
                 disabled={disabled}
                 value={value}
+                maxLength={maxLength}
                 onChange={this.handleChange}
                 ref={(input) => { this.input = input; }}
               />
             ),
             addonbox: (
-              <g>
+              <div>
                 <input
                   className={inputClass(isValid)}
                   type={type}
@@ -94,7 +98,7 @@ class Field extends Component {
                   ref={(input) => { this.input = input; }}
                 />
                 <div className="addon">{addon}</div>
-              </g>
+              </div>
             ),
           }[format]}
         </div>

@@ -29,11 +29,6 @@ class Raise extends Content {
   handleSubmit = event => {
     this.validateForm(() => {
       const { onRaise } = this.props;
-
-      if (event !== undefined && event.preventDefault) {
-        event.preventDefault();
-      }
-
       if (this.isFormValid()) {
         const entries = this.entries.value();
         onRaise(entries);

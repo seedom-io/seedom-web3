@@ -5,29 +5,30 @@
 
   .control {
 
-    input {
-      background-color: $puck-input-background;
-    }
-
     &.textbox {
       input {
         text-align: center;
+        background-color: $puck-input-background;
       }
     }
 
     &.textblock {
-      input {
+      textarea {
+        min-width: 0;
+        resize: none;
         text-align: center;
+        background-color: $puck-input-background;
       }
     }
 
     &.addonbox {
 
-      > g {
+      > div {
         display: flex;
         flex-direction: row;
 
         input {
+          background-color: $puck-input-background;
           border-radius: $radius 0 0 $radius;
           border-right: 0;
           text-align: left;

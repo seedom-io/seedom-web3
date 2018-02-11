@@ -56,6 +56,7 @@ class Entries extends Component {
         format="addonbox"
         type="number"
         placeholder="entries"
+        value={value.toString()}
         addon={`${localeDecimal(getEtherFromWei(wei))}Ξ`}
         disabled={disabled}
         isValid={isValid}

@@ -7,20 +7,7 @@
     margin-bottom: 0.75rem;
   }
 
-  .seedom-overlay > input {
-    background-color: $puck-input-background;
-    text-align: center;
-  }
-
-  textarea {
-    min-width: 0;
-    resize: none;
-    word-break: break-all;
-    text-align: center;
-    background-color: $puck-input-background;
-  }
-
-  .seedom-entry {
+  .seedom-field {
     width: 50%;
   }
 
