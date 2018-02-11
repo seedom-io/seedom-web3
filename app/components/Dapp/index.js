@@ -173,11 +173,10 @@ class Dapp extends Component {
 
   setupEventsHandlers() {
     this.hybridWeb3.wsWeb3.eth.getBlockNumber((blockNumberError, blockNumber) => {
-      const feedBlocksBack = (blockNumber < FEED_BLOCKS_BACK) ? 0 : FEED_BLOCKS_BACK;
-      const fromBlock = blockNumber - feedBlocksBack;
+      const fromBlock = blockNumber - FEED_BLOCKS_BACK;
       for (const contractAddress in this.contracts) {
         const contract = this.contracts[contractAddress];
-        this.setupEventsHandler(contract, fromBlock, blockNumber);
+        this.setupEventsHandler(contract, fromBlock < 0 ? 0 : fromBlock, blockNumber);
       }
     });
   }
