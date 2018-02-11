@@ -10,13 +10,13 @@ class Entries extends Component {
   };
 
   render() {
-    const { entries, raiser, isDisabled } = this.props;
+    const { entries, raiser, disabled } = this.props;
 
     const wei = entries.times(raiser.valuePerEntry);
 
     return (
-      <div className="seedom-entry">
-        <input className="input is-primary" type="number" placeholder="ENTRIES" disabled={isDisabled} onChange={this.handleEntriesChange} />
+      <div className="control seedom-entry">
+        <input className="input is-primary" type="number" placeholder="ENTRIES" disabled={disabled} onChange={this.handleEntriesChange} />
         <div className="ether">{localeDecimal(getEtherFromWei(wei))}Ξ</div>
       </div>
     );
