@@ -4,8 +4,6 @@ import Content from '../Content';
 import Indicator from '../Indicator';
 import Entries from '../Entries';
 import charityLogo from '../../../../../../img/logos/charity.png';
-import { inputClass } from '../../../../utils/validation';
-import { BigNumber } from 'bignumber.js';
 import './index.scss';
 
 class Raise extends Content {
@@ -13,25 +11,14 @@ class Raise extends Content {
     isRaising: PropTypes.bool.isRequired
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      entries: new BigNumber(0),
-      isEntriesValid: true
-    };
-  }
-
   show() {
     super.show();
-    //this.entriesInput.focus();
+    this.entries.focus();
   }
 
-  validateForm = () => {
-    const { entries } = this.state;
-    const isEntriesValid = !Number.isNaN(Number(entries));
-    this.setState({
-      isEntriesValid
-    });
+  validateForm = (done) => {
+    const isEntriesValid = this.entries.validate();
+    this.setState({ isEntriesValid }, done);
   }
 
   isFormValid = () => {
@@ -39,21 +26,21 @@ class Raise extends Content {
   }
 
   handleSubmit = event => {
-    this.validateForm();
+    this.validateForm(() => {
+      const { onRaise } = this.props;
 
-    const { onRaise } = this.props;
-    const { entries } = this.state;
+      if (event !== undefined && event.preventDefault) {
+        event.preventDefault();
+      }
 
-    if (event !== undefined && event.preventDefault) {
-      event.preventDefault();
-    }
-
-    if (this.isFormValid()) {
-      onRaise(entries);
-    } else {
-      console.log('nope');
-    }
-  }
+      if (this.isFormValid()) {
+        const entries = this.entries.value();
+        onRaise(entries);
+      } else {
+        console.log('nope');
+      }
+    });
+  };
 
   handleEntriesChange = entries => {
     this.setState({
@@ -62,10 +49,8 @@ class Raise extends Content {
   };
 
   render() {
-    const { className, entries, isEntriesValid } = this.state;
+    const { className } = this.state;
     const { raiser, isRaising } = this.props;
-
-    const isSubmitDisabled = isRaising || !entries;
 
     return (
       <div className={`seedom-content raise ${className}`}>
@@ -74,20 +59,15 @@ class Raise extends Content {
 
           <img src={charityLogo} />
 
-          <div className="field">
-            <Entries
-              className={inputClass(isEntriesValid)}
-              entries={entries}
-              raiser={raiser}
-              disabled={isRaising}
-              onEntriesChange={this.handleEntriesChange}
-            />
-            {isEntriesValid ? <p>&nbsp;</p> : <p className="help is-danger">Number of entries is invalid</p>}
-          </div>
+          <Entries
+            raiser={raiser}
+            disabled={isRaising}
+            ref={(component) => { this.entries = component; }}
+          />
 
           <div className="field">
             <div className="control">
-              <a className="button is-primary is-outlined" disabled={isSubmitDisabled} onClick={this.handleSubmit}>GET MORE ENTRIES</a>
+              <a className="button is-primary is-outlined" disabled={isRaising} onClick={this.handleSubmit}>GET MORE ENTRIES</a>
             </div>
           </div>
 

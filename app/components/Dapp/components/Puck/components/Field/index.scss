@@ -1,0 +1,51 @@
+@import '../../../../../../sass/theme.scss';
+
+.seedom-field {
+  width: 50%;
+
+  .control {
+
+    input {
+      background-color: $puck-input-background;
+    }
+
+    &.textbox {
+      input {
+        text-align: center;
+      }
+    }
+
+    &.textblock {
+      input {
+        text-align: center;
+      }
+    }
+
+    &.addonbox {
+
+      > g {
+        display: flex;
+        flex-direction: row;
+
+        input {
+          border-radius: $radius 0 0 $radius;
+          border-right: 0;
+          text-align: left;
+          flex: 1;
+        }
+
+        .addon {
+          border-radius: 0 $radius $radius 0;
+          border: 1px solid $link;
+          background-color: $link;
+          display: flex;
+          align-items: center;
+          flex: none;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+      }
+
+    }
+  }
+}

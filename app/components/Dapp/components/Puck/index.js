@@ -122,7 +122,7 @@ class Puck extends Component {
     participant: null,
     balances: [],
     isLoading: null
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -151,8 +151,8 @@ class Puck extends Component {
     this.setState({ hasBegun: true });
   }
 
-  handleParticipate = ({ random, numOfEntries }) => {
-    this.props.onParticipate({ random, numOfEntries }, () => {
+  handleParticipate = ({ random, entries }) => {
+    this.props.onParticipate({ random, entries }, () => {
       this.setState({ hasBegun: false });
     });
   }
@@ -161,9 +161,9 @@ class Puck extends Component {
     this.setState({ isObtainingMoreEntries: true });
   }
 
-  handleRaise = (numOfEntries) => {
+  handleRaise = (entries) => {
     this.setState({ isObtainingMoreEntries: false }, () => {
-      this.props.onRaise(numOfEntries);
+      this.props.onRaise(entries);
     });
   }
 

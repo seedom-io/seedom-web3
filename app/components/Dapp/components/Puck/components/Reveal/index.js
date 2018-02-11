@@ -14,7 +14,7 @@ class Reveal extends Content {
     super(props);
     this.state = {
       random: '',
-      numOfEntries: 0
+      entries: 0
     };
   }
 

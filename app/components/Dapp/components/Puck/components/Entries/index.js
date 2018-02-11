@@ -1,24 +1,54 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Field from '../Field';
 import { localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
 import { BigNumber } from 'bignumber.js';
-import './index.scss';
 
 class Entries extends Component {
-  handleEntriesChange = event => {
-    const value = (event.target.value === '') ? 0 : event.target.value;
-    this.props.onEntriesChange(new BigNumber(value));
+  static propTypes = {
+    raiser: PropTypes.shape().isRequired,
+    disabled: PropTypes.bool.isRequired
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: new BigNumber(0),
+      isValid: true
+    };
+  }
+
+  validate = () => {
+    const isValid = this.state.value.isGreaterThanOrEqualTo(1);
+    this.setState({ isValid });
+    return isValid;
+  };
+
+  value = () => {
+    return this.state.value;
+  };
+
+  handleChange = value => {
+    const entriesValue = (value === '') ? 0 : value;
+    this.setState({ value: new BigNumber(entriesValue) });
   };
 
   render() {
-    const { entries, raiser, disabled } = this.props;
+    const { raiser, disabled } = this.props;
+    const { value, isValid } = this.state;
 
-    const wei = entries.times(raiser.valuePerEntry);
+    const wei = value.times(raiser.valuePerEntry);
 
     return (
-      <div className="control seedom-entry">
-        <input className="input is-primary" type="number" placeholder="ENTRIES" disabled={disabled} onChange={this.handleEntriesChange} />
-        <div className="ether">{localeDecimal(getEtherFromWei(wei))}Ξ</div>
-      </div>
+      <Field
+        format="addonbox"
+        type="number"
+        placeholder="entries"
+        addon={`${localeDecimal(getEtherFromWei(wei))}Ξ`}
+        disabled={disabled}
+        isValid={isValid}
+        onChange={this.handleChange}
+      />
     );
   }
 }

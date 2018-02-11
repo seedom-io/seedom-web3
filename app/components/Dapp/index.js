@@ -429,20 +429,20 @@ class Dapp extends Component {
     });
   }
 
-  handleParticipate = ({ random, numOfEntries }) => {
+  handleParticipate = ({ random, entries }) => {
     const { account, raiser } = this.state;
     const randomHex = randoms.hexRandom(random);
     const hashedRandom = randoms.hashRandom(randomHex, account);
-    const value = (new BigNumber(numOfEntries)).times(raiser.valuePerEntry);
+    const value = entries.times(raiser.valuePerEntry);
 
     this.handleSend(this.getContract().rpc.methods.participate(hashedRandom), {
       from: account, value
     }, 'isParticipating');
   }
 
-  handleRaise = (numOfEntries) => {
+  handleRaise = (entries) => {
     const { account, raiser, contractAddress } = this.state;
-    const value = (new BigNumber(numOfEntries)).times(raiser.valuePerEntry);
+    const value = entries.times(raiser.valuePerEntry);
 
     this.handleSend(null, {
       to: contractAddress, value, from: account
