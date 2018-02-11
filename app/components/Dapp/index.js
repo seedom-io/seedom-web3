@@ -342,7 +342,8 @@ class Dapp extends Component {
         // preserve existing balances
         newState.balances = { ...prevState.balances };
         // add new balance entry
-        newState.balances[contractAddress] = state.totalEntries.times(raiser.winnerSplit).dividedBy(1000);
+        newState.balances[contractAddress] =
+          state.totalEntries.times(raiser.winnerSplit).dividedBy(1000).times(raiser.valuePerEntry);
       }
 
       return newState;
