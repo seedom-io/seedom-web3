@@ -4,17 +4,17 @@
 
   img {
     height: 20%;
+    margin-bottom: 0.75rem;
   }
 
-  input {
-    margin-top: 20px;
+  .etherPerEntry {
+    color: $link;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+  }
+
+  .seedom-entry {
     width: 50%;
-    text-align: center;
-    background-color: $puck-input-background;
-  }
-
-  .button {
-    margin-top: 20px;
   }
 
 }

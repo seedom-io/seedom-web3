@@ -4,6 +4,7 @@ import Content from '../Content';
 import Indicator from '../Indicator';
 import Entries from '../Entries';
 import charityLogo from '../../../../../../img/logos/charity.png';
+import { localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
 import './index.scss';
 
 class Raise extends Content {
@@ -42,12 +43,6 @@ class Raise extends Content {
     });
   };
 
-  handleEntriesChange = entries => {
-    this.setState({
-      entries
-    });
-  };
-
   render() {
     const { className } = this.state;
     const { raiser, isRaising } = this.props;
@@ -58,6 +53,8 @@ class Raise extends Content {
         <div className="seedom-overlay">
 
           <img src={charityLogo} />
+
+          <div className="etherPerEntry">1 ENTRY = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
 
           <Entries
             raiser={raiser}

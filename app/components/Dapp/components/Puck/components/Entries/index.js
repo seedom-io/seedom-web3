@@ -18,6 +18,10 @@ class Entries extends Component {
     };
   }
 
+  focus = () => {
+    this.field.focus();
+  }
+
   validate = () => {
     const isValid = this.state.value.isGreaterThanOrEqualTo(1);
     this.setState({ isValid });
@@ -48,6 +52,7 @@ class Entries extends Component {
         disabled={disabled}
         isValid={isValid}
         onChange={this.handleChange}
+        ref={(component) => { this.field = component; }}
       />
     );
   }

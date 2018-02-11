@@ -32,7 +32,7 @@ class Participate extends Content {
 
     const isEmailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) !== null;
     const isEntriesValid = this.entries.validate();
-    const isRandomValid = random !== 'fuck you';
+    const isRandomValid = random.length > 0;
 
     this.setState({
       isEmailValid,
