@@ -30,8 +30,8 @@ class Error extends Content {
           {{
             'error-charityHashedRandom': (
               <div className="seedom-overlay">
-                <div className="puck-message top">CHARITY FAILED<br />TO</div>
-                <div className="puck-message">SEED A<br />RANDOM</div>
+                <div className="puck-message top">CHARITY FAILED<br />TO SEED</div>
+                <div className="puck-message">THEIR RANDOM<br />MESSAGE</div>
               </div>
             ),
             'error-hashedRandom': (

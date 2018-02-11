@@ -17,7 +17,7 @@ class Seed extends Content {
         </div>
         <div className="seedom-overlay">
           <div className="puck-message top">PLEASE WAIT<br />FOR</div>
-          <div className="puck-message">TO SEED<br />THEIR RANDOM</div>
+          <div className="puck-message">TO SEED THEIR<br />RANDOM MESSAGE</div>
         </div>
       </div>
     );

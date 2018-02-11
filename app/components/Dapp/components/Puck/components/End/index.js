@@ -17,7 +17,7 @@ class End extends Content {
         </div>
         <div className="seedom-overlay">
           <div className="puck-message top">PLEASE WAIT<br />FOR</div>
-          <div className="puck-message">TO REVEAL<br />THEIR RANDOM</div>
+          <div className="puck-message">TO REVEAL THEIR<br /> RANDOM MESSAGE</div>
         </div>
       </div>
     );
