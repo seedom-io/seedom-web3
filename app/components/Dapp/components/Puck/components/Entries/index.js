@@ -23,7 +23,8 @@ class Entries extends Component {
   }
 
   validate = () => {
-    const isValid = this.state.value.isGreaterThanOrEqualTo(1);
+    const { value } = this.state;
+    const isValid = value.isGreaterThanOrEqualTo(1) && (value.decimalPlaces() === 0);
     this.setState({ isValid });
     return isValid;
   };
@@ -33,8 +34,15 @@ class Entries extends Component {
   };
 
   handleChange = value => {
-    const entriesValue = (value === '') ? 0 : value;
-    this.setState({ value: new BigNumber(entriesValue) });
+    let parsedValue;
+
+    try {
+      parsedValue = new BigNumber(value);
+    } catch (error) {
+      parsedValue = new BigNumber(0);
+    }
+
+    this.setState({ value: parsedValue });
   };
 
   render() {
