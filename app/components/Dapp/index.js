@@ -13,7 +13,7 @@ import './index.scss';
 const MAX_FEED_ITEMS = 10;
 const GAS = 2000000;
 const GAS_PRICE = 20000000000;
-const FEED_BLOCKS_BACK = 1000;
+const FEED_BLOCKS_BACK = 10000;
 
 const getWeb3Instance = (web3, contract) => {
   return new web3.eth.Contract(contract.abi, contract.address, {
