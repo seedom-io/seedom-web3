@@ -25,6 +25,7 @@ class Field extends Component {
     type: PropTypes.string.isRequired,
     value: PropTypes.string,
     maxLength: PropTypes.number,
+    min: PropTypes.number,
     addon: PropTypes.string,
     placeholder: PropTypes.string.isRequired,
     disabled: PropTypes.bool.isRequired,
@@ -36,6 +37,7 @@ class Field extends Component {
     value: '',
     addon: '',
     maxLength: 0,
+    min: null,
     isValid: true
   }
 
@@ -56,7 +58,8 @@ class Field extends Component {
       value,
       maxLength,
       addon,
-      isValid
+      isValid,
+      min
     } = this.props;
 
     return (
@@ -92,6 +95,7 @@ class Field extends Component {
                 <input
                   className={inputClass(isValid)}
                   type={type}
+                  min={min}
                   placeholder={placeholder.toUpperCase()}
                   disabled={disabled}
                   onChange={this.handleChange}

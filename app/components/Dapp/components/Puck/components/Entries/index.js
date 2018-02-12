@@ -55,6 +55,7 @@ class Entries extends Component {
       <Field
         format="addonbox"
         type="number"
+        min={1}
         placeholder="entries"
         value={value.toString()}
         addon={`${localeDecimal(getEtherFromWei(wei))}Ξ`}
