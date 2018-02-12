@@ -128,16 +128,31 @@ const getProgressTextShown = (percentage) => {
 class Circles extends React.Component {
   static propTypes = {
     raiser: PropTypes.shape(),
-    isLoading: PropTypes.bool.isRequired,
-    now: PropTypes.instanceOf(Date).isRequired
+    isLoading: PropTypes.bool.isRequired
   };
 
   static defaultProps = {
     raiser: null
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      now: new Date()
+    };
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      this.setState({
+        now: new Date()
+      });
+    }, 1000);
+  }
+
   render() {
-    const { raiser, now, isLoading } = this.props;
+    const { raiser, isLoading } = this.props;
+    const { now } = this.state;
 
     const phasePercentages = getPhasePercentages(raiser, now);
     const progressText = getProgressText(raiser, now);

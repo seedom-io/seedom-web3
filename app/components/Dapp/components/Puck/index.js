@@ -18,9 +18,36 @@ import Error from './components/Error';
 import seedomLogo from '../../../../img/logos/seedom.svg';
 import './index.scss';
 
-const getPhase = ({
+const getPhase = (raiser) => {
+  const now = Date.now();
+
+  // participation phase
+  if (now < raiser.revealTime) {
+    return 'participation';
+  }
+
+  // revelation phase
+  if (now >= raiser.revealTime && now < raiser.endTime) {
+    return 'revelation';
+  }
+
+  // end phase
+  if (now >= raiser.endTime && now < raiser.expireTime) {
+    return 'end';
+  }
+
+  // expiration phase
+  if (now >= raiser.expireTime && now < raiser.destructTime) {
+    return 'expiration';
+  }
+
+  // destruction phase
+  return 'destruction';
+};
+
+const getComponent = ({
   hasMetamask,
-  raiser,
+  phase,
   state,
   participant,
   balances,
@@ -29,8 +56,6 @@ const getPhase = ({
   isObtainingMoreEntries,
   isWithdrawSkipped
 }) => {
-  const now = Date.now();
-
   // metamask check
   if (!hasMetamask) {
     return 'error-metamask';
@@ -51,53 +76,54 @@ const getPhase = ({
     return 'cancel';
   }
 
-  // participation phase
-  if (now < raiser.revealTime) {
-    if (bytes.isZero32(state.charityHashedRandom)) {
-      return 'seed';
-    }
-
-    if (bytes.isZero32(participant.hashedRandom)) {
-      if (!hasBegun) {
-        return 'begin';
+  // switch on phase
+  switch (phase) {
+    case 'participation':
+      if (bytes.isZero32(state.charityHashedRandom)) {
+        return 'seed';
       }
-      return 'participate';
-    }
 
-    if (!isObtainingMoreEntries && !isLoading.isRaising) {
-      return 'participated';
-    }
+      if (bytes.isZero32(participant.hashedRandom)) {
+        if (!hasBegun) {
+          return 'begin';
+        }
+        return 'participate';
+      }
 
-    return 'raise';
+      if (!isObtainingMoreEntries && !isLoading.isRaising) {
+        return 'participated';
+      }
+
+      return 'raise';
+
+    case 'revelation':
+      if (bytes.isZero32(state.charityHashedRandom)) {
+        return 'error-charityHashedRandom';
+      }
+
+      if (bytes.isZero32(participant.hashedRandom)) {
+        return 'error-hashedRandom';
+      }
+
+      if (bytes.isZero32(participant.random)) {
+        return 'reveal';
+      }
+
+      return 'revealed';
+
+    case 'end':
+      if (bytes.isZero32(participant.charityHashedRandom)) {
+        return 'error-charityHashedRandom';
+      }
+
+      return 'end';
+
+    case 'expiration':
+      return 'cancel';
+
+    default:
+      return null;
   }
-
-  // revelation phase
-  if (now > raiser.revealTime && now < raiser.endTime) {
-    if (bytes.isZero32(state.charityHashedRandom)) {
-      return 'error-charityHashedRandom';
-    }
-
-    if (bytes.isZero32(participant.hashedRandom)) {
-      return 'error-hashedRandom';
-    }
-
-    if (bytes.isZero32(participant.random)) {
-      return 'reveal';
-    }
-
-    return 'revealed';
-  }
-
-  // end phase
-  if (now > raiser.endTime && now < raiser.expireTime) {
-    if (bytes.isZero32(participant.charityHashedRandom)) {
-      return 'error-charityHashedRandom';
-    }
-
-    return 'end';
-  }
-
-  return 'cancel';
 };
 
 class Puck extends Component {
@@ -128,18 +154,20 @@ class Puck extends Component {
     super(props);
 
     this.state = {
+      phase: null,
       hasBegun: false,
       isObtainingMoreEntries: false,
-      isWithdrawSkipped: false,
-      now: new Date()
+      isWithdrawSkipped: false
     };
   }
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      this.setState({
-        now: new Date()
-      });
+      const newPhase = getPhase(this.props.raiser);
+      // if the phase changed, update state
+      if (newPhase !== this.state.phase) {
+        this.setState({ phase: newPhase });
+      }
     }, 1000);
   }
 
@@ -185,6 +213,7 @@ class Puck extends Component {
 
   render() {
     const {
+      phase,
       hasBegun,
       isObtainingMoreEntries,
       isWithdrawSkipped
@@ -199,8 +228,9 @@ class Puck extends Component {
       isLoading
     } = this.props;
 
-    const phase = getPhase({
+    const component = getComponent({
       hasMetamask,
+      phase,
       raiser,
       state,
       participant,
@@ -224,20 +254,20 @@ class Puck extends Component {
           <img alt="seedom" src={seedomLogo} />
         </div>
         <div className="interface">
-          <Circles percentage={50} isLoading={isAnyLoading} raiser={raiser} now={this.state.now} />
-          <Seed isShown={phase === 'seed'} />
-          <Begin isShown={phase === 'begin'} raiser={raiser} onBegin={this.handleBegin} />
-          <Participate isShown={phase === 'participate'} raiser={raiser} isParticipating={isLoading.isParticipating} onParticipate={this.handleParticipate} />
-          <Participated isShown={phase === 'participated'} entries={participant.entries} onGetMoreEntries={this.handleGetMoreEntries} />
-          <Raise isShown={phase === 'raise'} raiser={raiser} isRaising={isLoading.isRaising} onRaise={this.handleRaise} />
-          <Reveal isShown={phase === 'reveal'} isRevealing={isLoading.isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />
-          <Revealed isShown={phase === 'revealed'} entries={participant.entries} />
-          <End isShown={phase === 'end'} />
-          <Win isShown={phase === 'win'} winner={state.winner} winnerRandom={state.winnerRandom} />
-          <Withdraw isShown={phase === 'withdraw'} balances={balances} isWithdrawing={isLoading.isWithdrawing} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
-          <Cancel isShown={phase === 'cancel'} isCancelling={isLoading.isCancelling} onCancel={this.handleCancel} />
-          <Cancelled isShown={phase === 'cancelled'} />
-          <Error isShown={phase.startsWith('error')} error={phase} />
+          <Circles percentage={50} isLoading={isAnyLoading} raiser={raiser} />
+          <Seed isShown={component === 'seed'} />
+          <Begin isShown={component === 'begin'} raiser={raiser} onBegin={this.handleBegin} />
+          <Participate isShown={component === 'participate'} raiser={raiser} isParticipating={isLoading.isParticipating} onParticipate={this.handleParticipate} />
+          <Participated isShown={component === 'participated'} entries={participant.entries} onGetMoreEntries={this.handleGetMoreEntries} />
+          <Raise isShown={component === 'raise'} raiser={raiser} isRaising={isLoading.isRaising} onRaise={this.handleRaise} />
+          <Reveal isShown={component === 'reveal'} isRevealing={isLoading.isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />
+          <Revealed isShown={component === 'revealed'} entries={participant.entries} />
+          <End isShown={component === 'end'} />
+          <Win isShown={component === 'win'} winner={state.winner} winnerRandom={state.winnerRandom} />
+          <Withdraw isShown={component === 'withdraw'} balances={balances} isWithdrawing={isLoading.isWithdrawing} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
+          <Cancel isShown={component === 'cancel'} isCancelling={isLoading.isCancelling} onCancel={this.handleCancel} />
+          <Cancelled isShown={component === 'cancelled'} />
+          <Error isShown={component && component.startsWith('error')} error={component} />
         </div>
       </div>
     );
