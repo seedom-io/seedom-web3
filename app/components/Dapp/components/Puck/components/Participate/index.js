@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
 import Content from '../Content';
 import Entries from '../Entries';
 import Random from '../Random';
@@ -19,7 +20,8 @@ class Participate extends Content {
       email: '',
       isEmailValid: true,
       random: '',
-      isRandomValid: true
+      isRandomValid: true,
+      isFormValid: true
     };
   }
 
@@ -33,29 +35,29 @@ class Participate extends Content {
 
     const isEmailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) !== null;
     const isEntriesValid = this.entries.validate();
+
     const isRandomValid = this.random.validate();
 
     this.setState({
       isEmailValid,
       isEntriesValid,
-      isRandomValid
+      isRandomValid,
+      isFormValid: isEmailValid && isEntriesValid && isRandomValid
     }, done);
-  }
-
-  isFormValid = () => {
-    const { isEmailValid, isEntriesValid, isRandomValid } = this.state;
-    return isEmailValid && isEntriesValid && isRandomValid;
   }
 
   handleSubmit = event => {
     this.validateForm(() => {
-      const { onParticipate } = this.props;
-      if (this.isFormValid()) {
+      const { isFormValid } = this.state;
+      if (isFormValid) {
+        const { onParticipate } = this.props;
         const entries = this.entries.value();
         const random = this.random.value();
         onParticipate({ random, entries });
       } else {
-        console.log('nope');
+        toast.error('There was a problem submitting.', {
+          position: toast.POSITION.TOP_CENTER
+        });
       }
     });
   }
@@ -79,6 +81,7 @@ class Participate extends Content {
 
     return (
       <div className={`seedom-content participate ${className}`}>
+        <ToastContainer />
         <Indicator type={isParticipating ? 'waiting' : null} />
         <div className="seedom-overlay">
 
