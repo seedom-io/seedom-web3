@@ -29,9 +29,8 @@ class Feed extends Component {
             </tr>
           </thead>
           <tbody>
-            {feed.map((feedItem, idx) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <tr key={idx}>
+            {feed.map((feedItem) => (
+              <tr key={`${feedItem.hash}-${feedItem.index}`}>
                 <td>{feedItem.type}</td>
                 <td>{bytes.shorten(feedItem.participant)}</td>
                 <td>{localeNumber(feedItem.entries)}</td>
