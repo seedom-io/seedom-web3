@@ -22,8 +22,8 @@ const getWeb3Instance = (web3, contract) => {
   });
 };
 
-const addFeedItem = (feed, obj, type) => {
-  const feedItem = { type, ...obj };
+const addFeedItem = (feed, obj, type, hash, index) => {
+  const feedItem = { type, hash, index, ...obj };
   const newFeed = feed.slice(0, MAX_FEED_ITEMS);
   newFeed.unshift(feedItem);
   return newFeed;
@@ -194,17 +194,19 @@ class Dapp extends Component {
   }
 
   triageEvent(result, blockNumber) {
+    const type = result.event.toLowerCase();
+    const values = result.returnValues;
+    const hash = result.transactionHash;
+    const index = result.transactionIndex;
+
     if (result.blockNumber <= blockNumber) {
-      this.triagePastEvent(result);
+      this.triagePastEvent(type, values, hash, index);
     } else {
-      this.triageNewEvent(result);
+      this.triageNewEvent(type, values, hash, index);
     }
   }
 
-  triagePastEvent(result) {
-    const type = result.event.toLowerCase();
-    const values = result.returnValues;
-
+  triagePastEvent(type, values, hash, index) {
     let obj;
     switch (type) {
       case 'participation':
@@ -222,28 +224,26 @@ class Dapp extends Component {
 
     if (obj) {
       this.setState((prevState) => {
-        return { feed: addFeedItem(prevState.feed, obj, type) };
+        return { feed: addFeedItem(prevState.feed, obj, type, hash, index) };
       });
     }
   }
 
-  triageNewEvent(result) {
+  triageNewEvent(type, values, hash, index) {
     const { account, contractAddress } = this.state;
-    const type = result.event.toLowerCase();
-    const values = result.returnValues;
 
     switch (type) {
       case 'seed':
         this.handleSeedEvent(values);
         break;
       case 'participation':
-        this.handleParticipationEvent(type, account, values);
+        this.handleParticipationEvent(type, account, values, hash, index);
         break;
       case 'raise':
-        this.handleRaiseEvent(type, account, values);
+        this.handleRaiseEvent(type, account, values, hash, index);
         break;
       case 'revelation':
-        this.handleRevelationEvent(type, account, values);
+        this.handleRevelationEvent(type, account, values, hash, index);
         break;
       case 'win':
         this.handleWinEvent(account, values);
@@ -266,7 +266,7 @@ class Dapp extends Component {
     }));
   }
 
-  handleParticipationEvent(type, account, values) {
+  handleParticipationEvent(type, account, values, hash, index) {
     const participation = parsers.parseParticipation(values);
     this.setState((prevState) => {
       const newState = {
@@ -275,7 +275,7 @@ class Dapp extends Component {
           totalParticipants: prevState.state.totalParticipants.plus(1),
           totalEntries: prevState.state.totalEntries.plus(participation.entries),
         },
-        feed: addFeedItem(prevState.feed, participation, type)
+        feed: addFeedItem(prevState.feed, participation, type, hash, index)
       };
 
       if (participation.participant === account) {
@@ -291,12 +291,12 @@ class Dapp extends Component {
     });
   }
 
-  handleRaiseEvent(type, account, values) {
+  handleRaiseEvent(type, account, values, hash, index) {
     const raise = parsers.parseRaise(values);
     this.setState((prevState) => {
       const newState = {
         state: { ...prevState.state, totalEntries: prevState.state.totalEntries.plus(raise.entries) },
-        feed: addFeedItem(prevState.feed, raise, type)
+        feed: addFeedItem(prevState.feed, raise, type, hash, index)
       };
 
       if (raise.participant === account) {
@@ -311,12 +311,12 @@ class Dapp extends Component {
     });
   }
 
-  handleRevelationEvent(type, account, values) {
+  handleRevelationEvent(type, account, values, hash, index) {
     const revelation = parsers.parseRevelation(values);
     this.setState((prevState) => {
       const newState = {
         state: { ...prevState.state, totalRevealed: prevState.state.totalRevealed.plus(revelation.entries) },
-        feed: addFeedItem(prevState.feed, revelation, type)
+        feed: addFeedItem(prevState.feed, revelation, type, hash, index)
       };
 
       if (revelation.participant === account) {
