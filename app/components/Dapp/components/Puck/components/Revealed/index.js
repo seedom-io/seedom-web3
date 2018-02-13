@@ -17,15 +17,13 @@ class Revealed extends Content {
         <div className="seedom-overlay">
           <img src={charityLogo} />
         </div>
-        <div className="seedom-overlay">
-          <div className="puck-message entries">
-            <div className="total">{localeNumber(entries)}</div>
-            ENTRIES CONFIRMED
+        <div className="seedom-overlay layout">
+          <div className="division text">
+            <div className="entries">{localeNumber(entries)}</div>
+            <div>entries confirmed</div>
           </div>
-        </div>
-        <div className="seedom-overlay">
-          <div className="puck-message thank-you">
-            THANKS YOU!
+          <div className="division text">
+            thanks you!
           </div>
         </div>
       </div>

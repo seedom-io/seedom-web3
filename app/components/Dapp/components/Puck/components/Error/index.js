@@ -1,7 +1,6 @@
 import React from 'react';
 import Content from '../Content';
 import Indicator from '../Indicator';
-import './index.scss';
 import metamaskLogo from '../../../../../../img/logos/metamask.png';
 import charityLogo from '../../../../../../img/logos/charity.png';
 
@@ -9,44 +8,45 @@ class Error extends Content {
   render() {
     const { className } = this.state;
     const { isShown, error } = this.props;
+    const type = error.split('-')[1];
 
     return (
       <div className={`seedom-content error ${className}`}>
         <Indicator type={isShown ? 'error' : null} />
         <div className="seedom-overlay">
           {{
-            'error-charityHashedRandom': (
+            charityHashedRandom: (
               <img src={charityLogo} />
             ),
-            'error-hashedRandom': (
+            hashedRandom: (
               <img src={charityLogo} />
             ),
-            "error-metamask": (
+            metamask: (
               <img src={metamaskLogo} />
             )
-          }[error]}
+          }[type]}
         </div>
         <div className="seedom-overlay">
           {{
-            'error-charityHashedRandom': (
-              <div className="seedom-overlay">
-                <div className="puck-message top">CHARITY FAILED<br />TO SEED</div>
-                <div className="puck-message">THEIR RANDOM<br />MESSAGE</div>
+            charityHashedRandom: (
+              <div className="seedom-overlay layout">
+                <div className="division text">CHARITY FAILED<br />TO SEED</div>
+                <div className="division text">THEIR RANDOM<br />MESSAGE</div>
               </div>
             ),
-            'error-hashedRandom': (
-              <div className="seedom-overlay">
-                <div className="puck-message top">PARTICIPATION NOT<br />DETECTED</div>
-                <div className="puck-message">DURING<br />PARTICIPATION PHASE</div>
+            hashedRandom: (
+              <div className="seedom-overlay layout">
+                <div className="division text">PARTICIPATION NOT<br />DETECTED</div>
+                <div className="division text">DURING<br />PARTICIPATION PHASE</div>
               </div>
             ),
-            'error-metamask': (
-              <div className="seedom-overlay">
-                <div className="puck-message top">METAMASK PLUGIN</div>
-                <div className="puck-message">NOT DETECTED</div>
+            metamask: (
+              <div className="seedom-overlay layout">
+                <div className="division text">METAMASK PLUGIN</div>
+                <div className="division text">NOT DETECTED</div>
               </div>
             )
-          }[error]}
+          }[type]}
         </div>
       </div>
     );

@@ -5,6 +5,33 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  > img {
+    height: 28%;
+  }
+
+  .button {
+    text-transform: uppercase;
+  }
+
+  .text {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &.layout {
+
+    .division {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+  }
+
 }
 
 .seedom-content {

@@ -1,7 +1,6 @@
 import React from 'react';
 import Content from '../Content';
 import Indicator from '../Indicator';
-import './index.scss';
 import charityLogo from '../../../../../../img/logos/charity.png';
 
 class End extends Content {
@@ -15,9 +14,9 @@ class End extends Content {
         <div className="seedom-overlay">
           <img src={charityLogo} />
         </div>
-        <div className="seedom-overlay">
-          <div className="puck-message top">PLEASE WAIT<br />FOR</div>
-          <div className="puck-message">TO REVEAL THEIR<br /> RANDOM MESSAGE</div>
+        <div className="seedom-overlay layout">
+          <div className="division text">please wait<br />for</div>
+          <div className="division text">to reveal their<br />random message</div>
         </div>
       </div>
     );
