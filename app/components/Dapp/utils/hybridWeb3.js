@@ -42,6 +42,10 @@ class HybridWeb3 {
       if (this.networkId !== networkId) {
         this.networkId = networkId;
         this.onChange('networkId', networkId);
+
+        this.wsWeb3.eth.net.getId((wsError, wsNetworkId) => {
+          this.onChange('isCorrectNetwork', wsNetworkId === networkId);
+        });
       }
     });
   }

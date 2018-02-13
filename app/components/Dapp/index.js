@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
 import Puck from './components/Puck';
 import Hud from './components/Hud';
 import Feed from './components/Feed';
@@ -89,6 +90,12 @@ class Dapp extends Component {
       newState.networkId = value;
     } else if (event === 'account') {
       newState.account = value;
+    } else if (event === 'isCorrectNetwork') {
+      if (!value) {
+        toast.error('You are on the wrong network.', {
+          position: toast.POSITION.TOP_CENTER
+        });
+      }
     }
 
     this.setState(newState, this.retrieveUserData);
@@ -570,6 +577,7 @@ class Dapp extends Component {
 
     return (
       <div className="seedom-dapp">
+        <ToastContainer />
         <div className="dapp-container">
           <Hud
             side="left"
