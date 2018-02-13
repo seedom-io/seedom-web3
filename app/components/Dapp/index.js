@@ -33,6 +33,10 @@ const setupEventsHandler = (contract, fromBlock, triage) => {
 };
 
 const getWeb3Instance = (web3, contract) => {
+  if (!web3) {
+    return null;
+  }
+
   return new web3.eth.Contract(contract.abi, contract.address, {
     gas: GAS,
     gasPrice: GAS_PRICE
@@ -67,7 +71,16 @@ class Dapp extends Component {
   }
 
   componentDidMount() {
+    // create metamask rpc/seedom ws web3 object
     this.hybridWeb3 = new HybridWeb3(this.handleHybridWeb3Event);
+    // initial setup
+    this.setupContracts(() => {
+      this.retrieveUserlessData();
+      this.setupEventHandlers();
+      this.setupDataRefresher();
+    });
+    // hybrid web3 polls for metamask changes
+    this.hybridWeb3.init();
   }
 
   handleHybridWeb3Event = (event, value) => {
@@ -76,36 +89,9 @@ class Dapp extends Component {
       newState.networkId = value;
     } else if (event === 'account') {
       newState.account = value;
-    } else if (event === 'hasMetamask') {
-      newState.hasMetamask = value;
     }
 
-    this.setState(newState, this.continueLoading);
-  }
-
-  continueLoading() {
-    const { hasMetamask, networkId, account } = this.state;
-    if (hasMetamask && networkId && account) {
-      this.setupContracts(() => {
-        this.retrieveInitialData();
-        this.setupEventsHandlers();
-        this.setupDataRefresher();
-      });
-    }
-  }
-
-  setupDataRefresher() {
-    // last block time to now
-    this.lastBlockTime = new Date();
-    this.interval = setInterval(() => {
-      const lastBlockAge = (new Date()).getTime() - this.lastBlockTime.getTime();
-      if (lastBlockAge > MAX_LAST_BLOCK_AGE) {
-        console.log('Seedom: last block received too old, refreshing data');
-        this.retrieveInitialData();
-        // last block time to now
-        this.lastBlockTime = new Date();
-      }
-    }, 1000);
+    this.setState(newState, this.retrieveUserData);
   }
 
   setupContracts(done) {
@@ -134,11 +120,36 @@ class Dapp extends Component {
     return this.contracts[this.state.contractAddress];
   }
 
-  retrieveInitialData() {
+  retrieveData() {
+    this.retrieveUserlessData();
+    this.retrieveUserData();
+  }
+
+  retrieveUserlessData() {
     this.retrieveRaiser();
     this.retrieveState();
-    this.retrieveParticipant();
-    this.retrieveBalances();
+  }
+
+  retrieveUserData() {
+    const { networkId, account } = this.state;
+    if (networkId && account) {
+      this.retrieveParticipant();
+      this.retrieveBalances();
+    }
+  }
+
+  setupDataRefresher() {
+    // last block time to now
+    this.lastBlockTime = new Date();
+    this.interval = setInterval(() => {
+      const lastBlockAge = (new Date()).getTime() - this.lastBlockTime.getTime();
+      if (lastBlockAge > MAX_LAST_BLOCK_AGE) {
+        console.log('Seedom: last block received too old, refreshing data');
+        this.retrieveData();
+        // last block time to now
+        this.lastBlockTime = new Date();
+      }
+    }, 1000);
   }
 
   handleRetrieve(method, done) {
@@ -201,7 +212,7 @@ class Dapp extends Component {
     });
   }
 
-  setupEventsHandlers() {
+  setupEventHandlers() {
     this.hybridWeb3.wsWeb3.eth.getBlockNumber((error, block) => {
       // get the past block number
       let pastBlock = block - PAST_BLOCKS_BACK;
@@ -525,7 +536,8 @@ class Dapp extends Component {
 
   render() {
     const {
-      hasMetamask,
+      networkId,
+      account,
       contractAddress,
       raiser,
       state,
@@ -535,55 +547,62 @@ class Dapp extends Component {
       isLoading
     } = this.state;
 
-    const isReady = contractAddress && raiser && state && participant;
-
     let received;
     let charityReward;
     let winnerReward;
-    if (isReady) {
+    let totalParticipants;
+    let totalEntries;
+    let totalRevealed;
+    // once we have the raiser and state, calculate HUD data
+    if (raiser && state) {
       received = state.totalEntries.times(raiser.valuePerEntry);
       charityReward = received.times(raiser.charitySplit).dividedBy(1000);
       winnerReward = received.times(raiser.winnerSplit).dividedBy(1000);
+      totalParticipants = state.totalParticipants;
+      totalEntries = state.totalEntries;
+      totalRevealed = state.totalRevealed;
+    }
+
+    // render only if we have a contract address, raiser, and state
+    if (!contractAddress || !raiser || !state) {
+      return null;
     }
 
     return (
       <div className="seedom-dapp">
-        {isReady &&
-          <div className="dapp-container">
-            <Hud
-              side="left"
-              received={received}
-              charity={charityReward}
-              winner={winnerReward}
-            />
-            <Puck
-              hasMetamask={hasMetamask}
-              raiser={raiser}
-              state={state}
-              participant={participant}
-              balances={balances}
-              isLoading={isLoading}
-              onParticipate={this.handleParticipate}
-              onRaise={this.handleRaise}
-              onReveal={this.handleReveal}
-              onWithdraw={this.handleWithdraw}
-              onCancel={this.handleCancel}
-            />
-            <Hud
-              side="right"
-              participants={state.totalParticipants}
-              entries={state.totalEntries}
-              revealed={state.totalRevealed}
-            />
+        <div className="dapp-container">
+          <Hud
+            side="left"
+            received={received}
+            charity={charityReward}
+            winner={winnerReward}
+          />
+          <Puck
+            networkId={networkId}
+            account={account}
+            raiser={raiser}
+            state={state}
+            participant={participant}
+            balances={balances}
+            isLoading={isLoading}
+            onParticipate={this.handleParticipate}
+            onRaise={this.handleRaise}
+            onReveal={this.handleReveal}
+            onWithdraw={this.handleWithdraw}
+            onCancel={this.handleCancel}
+          />
+          <Hud
+            side="right"
+            participants={totalParticipants}
+            entries={totalEntries}
+            revealed={totalRevealed}
+          />
+        </div>
+        <div className="container">
+          <div className="content has-text-centered">
+            <Feed feed={feed} />
           </div>
-        }
-        {isReady &&
-          <div className="container">
-            <div className="content has-text-centered">
-              <Feed feed={feed} />
-            </div>
-          </div>
-        }
+        </div>
         <div className="container">
           <div className="content has-text-centered">
             <p>

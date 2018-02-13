@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Field from '../Field';
-import { localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
+import { zero, localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
 import { BigNumber } from 'bignumber.js';
 
 class Entries extends Component {
@@ -13,7 +13,7 @@ class Entries extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: new BigNumber(0),
+      value: zero(),
       isValid: true
     };
   }
@@ -39,7 +39,7 @@ class Entries extends Component {
     try {
       parsedValue = new BigNumber(value);
     } catch (error) {
-      parsedValue = new BigNumber(0);
+      parsedValue = zero();
     }
 
     this.setState({ value: parsedValue });

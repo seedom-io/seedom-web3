@@ -1,14 +1,15 @@
 import React from 'react';
 import Content from '../Content';
 import Indicator from '../Indicator';
-import { localeNumber } from '../../../../utils/numbers';
+import { zero, localeNumber } from '../../../../utils/numbers';
 import charityLogo from '../../../../../../img/logos/charity.png';
 import './index.scss';
 
 class Participate extends Content {
   render() {
     const { className } = this.state;
-    const { isShown, entries, onGetMoreEntries } = this.props;
+    const { isShown, participant, onGetMoreEntries } = this.props;
+    const entries = participant ? participant.entries : zero();
 
     return (
       <div className={`seedom-content participated ${className}`}>

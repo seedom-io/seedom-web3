@@ -6,9 +6,6 @@ class HybridWeb3 {
   constructor(onChange) {
     this.onChange = onChange;
     this.setupWeb3s();
-    if (this.checkMetamask()) {
-      this.setupInterval();
-    }
   }
 
   setupWeb3s() {
@@ -29,13 +26,11 @@ class HybridWeb3 {
     this.wsWeb3 = new Web3(ETH_URL);
   }
 
-  checkMetamask() {
-    const hasMetamask = (typeof this.rpcWeb3 !== 'undefined');
-    this.onChange('hasMetamask', hasMetamask);
-    return hasMetamask;
-  }
+  init() {
+    if (!this.rpcWeb3) {
+      return;
+    }
 
-  setupInterval() {
     setInterval(() => {
       this.checkNetwork();
       this.checkAccount();

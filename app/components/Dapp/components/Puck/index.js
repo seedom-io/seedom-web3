@@ -48,7 +48,8 @@ const getPhase = (raiser) => {
 };
 
 const getComponent = ({
-  hasMetamask,
+  networkId,
+  account,
   phase,
   state,
   participant,
@@ -59,7 +60,7 @@ const getComponent = ({
   isWithdrawSkipped
 }) => {
   // metamask check
-  if (!hasMetamask) {
+  if (!networkId || !account) {
     return 'error-metamask';
   }
 
@@ -130,7 +131,8 @@ const getComponent = ({
 
 class Puck extends Component {
   static propTypes = {
-    hasMetamask: PropTypes.bool,
+    networkId: PropTypes.number,
+    account: PropTypes.string,
     raiser: PropTypes.shape(),
     state: PropTypes.shape(),
     participant: PropTypes.shape(),
@@ -144,7 +146,8 @@ class Puck extends Component {
   }
 
   static defaultProps = {
-    hasMetamask: false,
+    networkId: null,
+    account: null,
     raiser: null,
     state: null,
     participant: null,
@@ -222,7 +225,8 @@ class Puck extends Component {
     } = this.state;
 
     const {
-      hasMetamask,
+      networkId,
+      account,
       raiser,
       state,
       participant,
@@ -231,7 +235,8 @@ class Puck extends Component {
     } = this.props;
 
     const component = getComponent({
-      hasMetamask,
+      networkId,
+      account,
       phase,
       raiser,
       state,
@@ -260,10 +265,10 @@ class Puck extends Component {
           <Seed isShown={component === 'seed'} />
           <Begin isShown={component === 'begin'} raiser={raiser} onBegin={this.handleBegin} />
           <Participate isShown={component === 'participate'} raiser={raiser} isParticipating={isLoading.isParticipating} onParticipate={this.handleParticipate} />
-          <Participated isShown={component === 'participated'} entries={participant.entries} onGetMoreEntries={this.handleGetMoreEntries} />
+          <Participated isShown={component === 'participated'} participant={participant} onGetMoreEntries={this.handleGetMoreEntries} />
           <Raise isShown={component === 'raise'} raiser={raiser} isRaising={isLoading.isRaising} onRaise={this.handleRaise} />
           <Reveal isShown={component === 'reveal'} isRevealing={isLoading.isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />
-          <Revealed isShown={component === 'revealed'} entries={participant.entries} />
+          <Revealed isShown={component === 'revealed'} participant={participant} />
           <End isShown={component === 'end'} />
           <Win isShown={component === 'win'} winner={state.winner} winnerRandom={state.winnerRandom} />
           <Withdraw isShown={component === 'withdraw'} balances={balances} isWithdrawing={isLoading.isWithdrawing} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />

@@ -14,8 +14,13 @@ const localeNumber = (bigNumber) => {
   return bigNumber.toFormat(0);
 };
 
+const zero = () => {
+  return new BigNumber(0);
+};
+
 export {
   getEtherFromWei,
   localeNumber,
-  localeDecimal
+  localeDecimal,
+  zero
 };

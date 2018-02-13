@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Content from '../Content';
 import Indicator from '../Indicator';
-import { localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
-import { BigNumber } from 'bignumber.js';
+import { zero, localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
 import './index.scss';
 
 class Withdraw extends Content {
@@ -14,7 +13,7 @@ class Withdraw extends Content {
   getMaxBalance() {
     const { balances } = this.props;
 
-    let maxBalance = new BigNumber(0);
+    let maxBalance = zero();
     let maxContractAddress = null;
     for (const contractAddress in balances) {
       const balance = balances[contractAddress];
