@@ -59,11 +59,6 @@ const getComponent = ({
   isObtainingMoreEntries,
   isWithdrawSkipped
 }) => {
-  // metamask check
-  if (!networkId || !account) {
-    return 'error-metamask';
-  }
-
   // balances?
   if ((Object.keys(balances).length > 0) && !isWithdrawSkipped) {
     return 'withdraw';
@@ -77,6 +72,11 @@ const getComponent = ({
   // cancelled?
   if (state.cancelled) {
     return 'cancel';
+  }
+
+  // metamask check
+  if (!networkId || !account) {
+    return 'error-metamask';
   }
 
   // switch on phase
