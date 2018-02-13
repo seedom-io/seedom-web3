@@ -5,6 +5,11 @@
   left: 0; top: 0; right: 0; bottom: 0;
   transform: rotate(-90deg);
 
+  text {
+    -moz-transform: rotate(90deg);
+    -moz-transform-origin: 50% 50%;
+  }
+
   .background {
     fill: $puck-background;
   }

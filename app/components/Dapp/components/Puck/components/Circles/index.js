@@ -224,6 +224,9 @@ class Circles extends React.Component {
             <textPath className="loaders-text" xlinkHref="#seedom-circles-loaders-path" startOffset={`${LOADERS_PERCENTAGE / 2}%`}>
               {LOADERS_TEXT}
             </textPath>
+          </text>
+
+          <text>
             <textPath className="loaders-text" xlinkHref="#seedom-circles-loaders-path" startOffset={`${(LOADERS_PERCENTAGE / 2) + 50}%`}>
               {LOADERS_TEXT}
             </textPath>
