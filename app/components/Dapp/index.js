@@ -102,6 +102,8 @@ class Dapp extends Component {
       if (lastBlockAge > MAX_LAST_BLOCK_AGE) {
         console.log('Seedom: last block received too old, refreshing data');
         this.retrieveInitialData();
+        // last block time to now
+        this.lastBlockTime = new Date();
       }
     }, 1000);
   }

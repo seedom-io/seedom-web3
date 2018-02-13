@@ -30,8 +30,8 @@ class Feed extends Component {
           </thead>
           <tbody>
             {feed.map((feedItem) => (
-              <tr key={`${feedItem.hash}-${feedItem.index}`}>
-                <td>{feedItem.type}</td>
+              <tr key={`${feedItem.event.transactionHash}-${feedItem.event.transactionIndex}`}>
+                <td>{feedItem.event.type}</td>
                 <td>{bytes.shorten(feedItem.participant)}</td>
                 <td>{localeNumber(feedItem.entries)}</td>
                 <td>{getData(feedItem)}</td>
