@@ -18,6 +18,8 @@ import Error from './components/Error';
 import seedomLogo from '../../../../img/logos/seedom.svg';
 import './index.scss';
 
+const PHASE_REFRESH = 1000;
+
 const getPhase = (raiser) => {
   const now = Date.now();
 
@@ -168,7 +170,7 @@ class Puck extends Component {
       if (newPhase !== this.state.phase) {
         this.setState({ phase: newPhase });
       }
-    }, 1000);
+    }, PHASE_REFRESH);
   }
 
   componentWillUnmount() {

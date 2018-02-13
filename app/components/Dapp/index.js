@@ -13,7 +13,24 @@ import './index.scss';
 const MAX_FEED_ITEMS = 10;
 const GAS = 2000000;
 const GAS_PRICE = 20000000000;
-const FEED_BLOCKS_BACK = 10000;
+const PAST_BLOCKS_BACK = 10000;
+const MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
+
+const setupEventsHandler = (contract, fromBlock, triage) => {
+  contract.ws.events.allEvents({
+    fromBlock
+  }, (error, result) => {
+    triage({
+      type: result.event.toLowerCase(),
+      values: result.returnValues,
+      contractAddress: result.contractAddress,
+      blockNumber: result.blockNumber,
+      transactionHash: result.transactionHash,
+      transactionIndex: result.transactionIndex,
+      fromBlock
+    });
+  });
+};
 
 const getWeb3Instance = (web3, contract) => {
   return new web3.eth.Contract(contract.abi, contract.address, {
@@ -22,8 +39,8 @@ const getWeb3Instance = (web3, contract) => {
   });
 };
 
-const addFeedItem = (feed, obj, type, hash, index) => {
-  const feedItem = { type, hash, index, ...obj };
+const addFeedItem = (feed, obj, event) => {
+  const feedItem = { event, ...obj };
   const newFeed = feed.slice(0, MAX_FEED_ITEMS);
   newFeed.unshift(feedItem);
   return newFeed;
@@ -68,13 +85,25 @@ class Dapp extends Component {
 
   continueLoading() {
     const { hasMetamask, networkId, account } = this.state;
-
     if (hasMetamask && networkId && account) {
       this.setupContracts(() => {
         this.retrieveInitialData();
         this.setupEventsHandlers();
+        this.setupDataRefresher();
       });
     }
+  }
+
+  setupDataRefresher() {
+    // last block time to now
+    this.lastBlockTime = new Date();
+    this.interval = setInterval(() => {
+      const lastBlockAge = (new Date()).getTime() - this.lastBlockTime.getTime();
+      if (lastBlockAge > MAX_LAST_BLOCK_AGE) {
+        console.log('Seedom: last block received too old, refreshing data');
+        this.retrieveInitialData();
+      }
+    }, 1000);
   }
 
   setupContracts(done) {
@@ -88,6 +117,7 @@ class Dapp extends Component {
       }
       // add to map of contracts
       this.contracts[contract.address] = {
+        address: contract.address,
         ws: getWeb3Instance(this.hybridWeb3.wsWeb3, contract),
         rpc: getWeb3Instance(this.hybridWeb3.rpcWeb3, contract),
       };
@@ -111,7 +141,6 @@ class Dapp extends Component {
 
   handleRetrieve(method, done) {
     const { account } = this.state;
-
     method.call({ from: account })
       .then(
         data => {
@@ -144,7 +173,6 @@ class Dapp extends Component {
 
   retrieveBalances() {
     const { account } = this.state;
-
     // get contract addresses (an order)
     const contractAddresses = Object.keys(this.contracts);
 
@@ -172,41 +200,46 @@ class Dapp extends Component {
   }
 
   setupEventsHandlers() {
-    this.hybridWeb3.wsWeb3.eth.getBlockNumber((blockNumberError, blockNumber) => {
-      const pastBlockNumber = blockNumber - FEED_BLOCKS_BACK;
-      const normalizedPastBlockNumber = pastBlockNumber < 0 ? 0 : pastBlockNumber;
+    this.hybridWeb3.wsWeb3.eth.getBlockNumber((error, block) => {
+      // get the past block number
+      let pastBlock = block - PAST_BLOCKS_BACK;
+      if (pastBlock < 0) {
+        pastBlock = 0;
+      }
+
+      // set up event handlers for each contract
       for (const contractAddress in this.contracts) {
         const contract = this.contracts[contractAddress];
-        // for the current contract, go back into the past; else, stay in the present
-        const fromBlock = (contractAddress === this.state.contractAddress) ?
-          normalizedPastBlockNumber : blockNumber;
-        this.setupEventsHandler(contract, fromBlock, blockNumber);
+
+        let fromBlock;
+        let triager;
+        if (contractAddress === this.state.contractAddress) {
+          // for current contract, pull old events and listen for new
+          fromBlock = pastBlock;
+          triager = (params) => this.triageEvent(params);
+        } else {
+          // for legacy contracts, only listen for legacy events (withdraw)
+          fromBlock = block;
+          triager = (params) => this.triageLegacyEvent(params);
+        }
+
+        setupEventsHandler(contract, fromBlock, triager);
       }
     });
   }
 
-  setupEventsHandler(contract, fromBlock, blockNumber) {
-    contract.ws.events.allEvents({
-      fromBlock
-    }, (error, result) => {
-      this.triageEvent(result, blockNumber);
-    });
-  }
-
-  triageEvent(result, blockNumber) {
-    const type = result.event.toLowerCase();
-    const values = result.returnValues;
-    const hash = result.transactionHash;
-    const index = result.transactionIndex;
-
-    if (result.blockNumber <= blockNumber) {
-      this.triagePastEvent(type, values, hash, index);
+  triageEvent(event) {
+    const { blockNumber, fromBlock } = event;
+    if (blockNumber > fromBlock) {
+      this.triageNewEvent(event);
     } else {
-      this.triageNewEvent(type, values, hash, index);
+      this.triageFeedEvent(event);
     }
   }
 
-  triagePastEvent(type, values, hash, index) {
+  triageFeedEvent(event) {
+    const { type, values } = event;
+
     let obj;
     switch (type) {
       case 'participation':
@@ -224,50 +257,59 @@ class Dapp extends Component {
 
     if (obj) {
       this.setState((prevState) => {
-        return { feed: addFeedItem(prevState.feed, obj, type, hash, index) };
+        return {
+          feed: addFeedItem(prevState.feed, obj, event)
+        };
       });
     }
   }
 
-  triageNewEvent(type, values, hash, index) {
-    const { account, contractAddress } = this.state;
+  triageNewEvent(event) {
+    // update block time
+    this.lastBlockTime = new Date();
 
-    switch (type) {
+    switch (event.type) {
       case 'seed':
-        this.handleSeedEvent(values);
+        this.handleSeedEvent(event);
         break;
       case 'participation':
-        this.handleParticipationEvent(type, account, values, hash, index);
+        this.handleParticipationEvent(event);
         break;
       case 'raise':
-        this.handleRaiseEvent(type, account, values, hash, index);
+        this.handleRaiseEvent(event);
         break;
       case 'revelation':
-        this.handleRevelationEvent(type, account, values, hash, index);
+        this.handleRevelationEvent(event);
         break;
       case 'win':
-        this.handleWinEvent(account, values);
+        this.handleWinEvent(event);
         break;
       case 'cancellation':
         this.handleCancellationEvent();
         break;
       case 'withdrawal':
-        this.handleWithdrawalEvent(account, values, contractAddress);
+        this.handleWithdrawalEvent(event);
         break;
       default:
         break;
     }
   }
 
-  handleSeedEvent(values) {
-    const seed = parsers.parseSeed(values);
+  triageLegacyEvent(event) {
+    if (event.type === 'withdraw') {
+      this.handleWithdrawalEvent(event);
+    }
+  }
+
+  handleSeedEvent(event) {
+    const seed = parsers.parseSeed(event.values);
     this.setState((prevState) => ({
       state: { ...prevState.state, charityHashedRandom: seed.charityHashedRandom }
     }));
   }
 
-  handleParticipationEvent(type, account, values, hash, index) {
-    const participation = parsers.parseParticipation(values);
+  handleParticipationEvent(event) {
+    const participation = parsers.parseParticipation(event.values);
     this.setState((prevState) => {
       const newState = {
         state: {
@@ -275,10 +317,10 @@ class Dapp extends Component {
           totalParticipants: prevState.state.totalParticipants.plus(1),
           totalEntries: prevState.state.totalEntries.plus(participation.entries),
         },
-        feed: addFeedItem(prevState.feed, participation, type, hash, index)
+        feed: addFeedItem(prevState.feed, participation, event)
       };
 
-      if (participation.participant === account) {
+      if (participation.participant === prevState.account) {
         newState.isLoading = { ...prevState.isLoading, isParticipating: false };
         newState.participant = {
           ...prevState.participant,
@@ -291,15 +333,15 @@ class Dapp extends Component {
     });
   }
 
-  handleRaiseEvent(type, account, values, hash, index) {
-    const raise = parsers.parseRaise(values);
+  handleRaiseEvent(event) {
+    const raise = parsers.parseRaise(event.values);
     this.setState((prevState) => {
       const newState = {
         state: { ...prevState.state, totalEntries: prevState.state.totalEntries.plus(raise.entries) },
-        feed: addFeedItem(prevState.feed, raise, type, hash, index)
+        feed: addFeedItem(prevState.feed, raise, event)
       };
 
-      if (raise.participant === account) {
+      if (raise.participant === prevState.account) {
         newState.isLoading = { ...prevState.isLoading, isRaising: false };
         newState.participant = {
           ...prevState.participant,
@@ -311,15 +353,15 @@ class Dapp extends Component {
     });
   }
 
-  handleRevelationEvent(type, account, values, hash, index) {
-    const revelation = parsers.parseRevelation(values);
+  handleRevelationEvent(event) {
+    const revelation = parsers.parseRevelation(event.values);
     this.setState((prevState) => {
       const newState = {
         state: { ...prevState.state, totalRevealed: prevState.state.totalRevealed.plus(revelation.entries) },
-        feed: addFeedItem(prevState.feed, revelation, type, hash, index)
+        feed: addFeedItem(prevState.feed, revelation, event)
       };
 
-      if (revelation.participant === account) {
+      if (revelation.participant === prevState.account) {
         newState.isLoading = { ...prevState.isLoading, isRevealing: false };
         newState.participant = { ...prevState.participant, random: revelation.random };
       }
@@ -328,8 +370,8 @@ class Dapp extends Component {
     });
   }
 
-  handleWinEvent(account, values) {
-    const win = parsers.parseWin(values);
+  handleWinEvent(event) {
+    const win = parsers.parseWin(event.values);
     this.setState((prevState) => {
       const newState = {
         state: {
@@ -340,8 +382,8 @@ class Dapp extends Component {
       };
 
       // update our winning balance
-      if (win.participant === account) {
-        const { raiser, state, contractAddress } = this.state;
+      if (win.participant === prevState.account) {
+        const { raiser, state, contractAddress } = prevState;
         // preserve existing balances
         newState.balances = { ...prevState.balances };
         // add new balance entry
@@ -362,24 +404,24 @@ class Dapp extends Component {
       };
 
       // update our cancellation balance
-      const { raiser, participant, contractAddress } = this.state;
+      const { raiser, participant, contractAddress } = prevState;
       // add new balance entry
       newState.balances[contractAddress] = participant.entries.times(raiser.valuePerEntry);
       return newState;
     });
   }
 
-  handleWithdrawalEvent(account, values, contractAddress) {
-    const withdrawal = parsers.parseWithdrawal(values);
+  handleWithdrawalEvent(event) {
+    const withdrawal = parsers.parseWithdrawal(event.values);
     // set our balance to zero if we withdrew
-    if (withdrawal.address === account) {
+    if (withdrawal.address === this.state.account) {
       this.setState((prevState) => {
         const newState = {
           isLoading: { ...prevState.isLoading, isWithdrawing: false },
           balances: { ...prevState.balances }
         };
-        // delete balance entry for this contract addy
-        delete newState.balances[contractAddress];
+        // delete balance entry for this event's contract addy
+        delete newState.balances[event.contractAddress];
         return newState;
       });
     }
