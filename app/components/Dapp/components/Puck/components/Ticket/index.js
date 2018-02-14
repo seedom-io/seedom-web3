@@ -49,13 +49,13 @@ class Ticket extends Content {
               REVEAL ON
             </text>
             <text className="random" textAnchor="end" x="570" y="225" fontFamily="Moon Bold" fontSize="20px" fill="white">
-              {raiser.revealTime.toString()}
+              {raiser.revealTime.toLocaleString({ timeZoneName: 'short' })}
             </text>
             <text className="header" textAnchor="end" x="570" y="250" fontFamily="Moon Regular" fontSize="20px" fill="white">
               ENDS ON
             </text>
             <text className="random" textAnchor="end" x="570" y="275" fontFamily="Moon Bold" fontSize="20px" fill="white">
-              {raiser.endTime.toString()}
+              {raiser.endTime.toLocaleString('en-US', { timeZoneName: 'short' })}
             </text>
           </svg>
         </div>

@@ -62,6 +62,7 @@ const getComponent = ({
   isObtainingMoreEntries,
   hasSkippedWithdraw
 }) => {
+  return 'ticket';
   // balances?
   if ((Object.keys(balances).length > 0) && !hasSkippedWithdraw) {
     return 'withdraw';
