@@ -37,42 +37,42 @@ class Nav extends React.Component {
               <span className="navbar-item">
                 <a className="button is-white is-outlined is-small" href="https://github.com/seedom/seedom-solidity/blob/master/contract/seedom.sol">
                   <span className="icon">
-                    <i className="fa fa-github" />
+                    <i className="fab fa-github" />
                   </span>
                   <span>View Smart Contract</span>
                 </a>
               </span>
               <a className="navbar-item" href="https://medium.com/@seedom.io">
                 <span className="icon">
-                  <i className="fa fa-lg fa-medium" />
+                  <i className="fab fa-lg fa-medium" />
                 </span>
               </a>
               <a className="navbar-item" href="http://reddit.com/r/seedom_io">
                 <span className="icon">
-                  <i className="fa fa-lg fa-reddit" />
+                  <i className="fab fa-lg fa-reddit" />
                 </span>
               </a>
               <a className="navbar-item" href="https://www.facebook.com/seedom.io">
                 <span className="icon">
-                  <i className="fa fa-lg fa-facebook" />
+                  <i className="fab fa-lg fa-facebook" />
                 </span>
               </a>
 
               <a className="navbar-item" href="https://twitter.com/seedom_io">
                 <span className="icon">
-                  <i className="fa fa-lg fa-twitter" />
+                  <i className="fab fa-lg fa-twitter" />
                 </span>
               </a>
 
               <a className="navbar-item" href="https://www.instagram.com/seedom.io/">
                 <span className="icon">
-                  <i className="fa fa-lg fa-instagram" />
+                  <i className="fab fa-lg fa-instagram" />
                 </span>
               </a>
 
               <a className="navbar-item" href="https://t.me/seedomio">
                 <span className="icon">
-                  <i className="fa fa-lg fa-telegram" />
+                  <i className="fab fa-lg fa-telegram" />
                 </span>
               </a>
             </div>

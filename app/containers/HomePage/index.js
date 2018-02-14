@@ -21,8 +21,8 @@ class HomePage extends Component {
               <div className="column feature">
                 <span className="icon is-large has-text-success">
                   <span className="fa-stack fa-lg">
-                    <i className="fa fa-square fa-stack-2x" />
-                    <i className="fa fa-globe fa-stack-1x fa-inverse" />
+                    <i className="fas fa-square fa-stack-2x" />
+                    <i className="fas fa-globe fa-stack-1x fa-inverse" />
                   </span>
                 </span>
                 <h2 className="subtitle">Purposeful</h2>
@@ -30,7 +30,7 @@ class HomePage extends Component {
                 <p>legitimate, active, and relevant</p>
                 <p>
                   <span className="icon has-text-danger">
-                    <i className="fa fa-heart" />
+                    <i className="fas fa-heart" />
                   </span>
                 </p>
               </div>
@@ -38,8 +38,8 @@ class HomePage extends Component {
               <div className="column feature">
                 <span className="icon is-large has-text-success">
                   <span className="fa-stack fa-lg">
-                    <i className="fa fa-square fa-stack-2x" />
-                    <i className="fa fa-eye fa-stack-1x fa-inverse" />
+                    <i className="fas fa-square fa-stack-2x" />
+                    <i className="fas fa-eye fa-stack-1x fa-inverse" />
                   </span>
                 </span>
                 <h2 className="subtitle has-text-weight-light">Transparent</h2>
@@ -51,8 +51,8 @@ class HomePage extends Component {
               <div className="column feature">
                 <span className="icon is-large has-text-success">
                   <span className="fa-stack fa-lg">
-                    <i className="fa fa-square fa-stack-2x" />
-                    <i className="fa fa-life-ring fa-stack-1x fa-inverse" />
+                    <i className="fas fa-square fa-stack-2x" />
+                    <i className="fas fa-life-ring fa-stack-1x fa-inverse" />
                   </span>
                 </span>
                 <h2 className="subtitle has-text-weight-light">Safe</h2>
@@ -64,8 +64,8 @@ class HomePage extends Component {
               <div className="column feature">
                 <span className="icon is-large has-text-success">
                   <span className="fa-stack fa-lg">
-                    <i className="fa fa-square fa-stack-2x" />
-                    <i className="fa fa-lock fa-stack-1x fa-inverse" />
+                    <i className="fas fa-square fa-stack-2x" />
+                    <i className="fas fa-lock fa-stack-1x fa-inverse" />
                   </span>
                 </span>
                 <h2 className="subtitle">Secure</h2>
