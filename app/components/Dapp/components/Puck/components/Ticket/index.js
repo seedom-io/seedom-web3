@@ -2,7 +2,7 @@ import React from 'react';
 import Content from '../Content';
 import Indicator from '../Indicator';
 import './index.scss';
-import charityLogo from '../../../../../../img/logos/charity.png';
+import charityLogo from '../../../../../../img/logos/charity-logo.png';
 import seedomTicket from '../../../../../../../../seedom-assets/ticket/seedom-ticket.svg';
 import * as saveSvgAsPng from 'save-svg-as-png';
 import * as randoms from '../../../../utils/randoms';
