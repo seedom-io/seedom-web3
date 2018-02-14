@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import Content from '../Content';
 import Indicator from '../Indicator';
 import Entries from '../Entries';
-import charityLogo from '../../../../../../img/logos/charity.png';
 import { localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
 import './index.scss';
 
@@ -50,7 +49,7 @@ class Raise extends Content {
         <Indicator type={isRaising ? 'waiting' : null} />
         <div className="seedom-overlay">
 
-          <img src={charityLogo} />
+          <div className="charity-logo" />
 
           <div className="text">1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
 

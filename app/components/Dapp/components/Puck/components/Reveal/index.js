@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import Content from '../Content';
 import Indicator from '../Indicator';
 import Random from '../Random';
-import charityLogo from '../../../../../../img/logos/charity.png';
 import './index.scss';
 
 class Reveal extends Content {
@@ -34,7 +33,7 @@ class Reveal extends Content {
     return this.state.isRandomValid;
   }
 
-  handleSubmit = event => {
+  handleSubmit = () => {
     this.validateForm(() => {
       const { onReveal } = this.props;
       if (this.isFormValid()) {
@@ -61,7 +60,7 @@ class Reveal extends Content {
         <Indicator type={isRevealing ? 'waiting' : null} />
         <div className="seedom-overlay">
 
-          <img src={charityLogo} />
+          <div className="charity-logo" />
 
           <Random
             disabled={isRevealing}

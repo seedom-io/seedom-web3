@@ -4,7 +4,6 @@ import Indicator from '../Indicator';
 import * as randoms from '../../../../utils/randoms';
 import * as bytes from '../../../../utils/bytes';
 import './index.scss';
-import charityLogo from '../../../../../../img/logos/charity.png';
 
 class Win extends Content {
   render() {
@@ -16,7 +15,7 @@ class Win extends Content {
         <Indicator type={isShown ? 'win' : null} />
         <div className="seedom-overlay layout">
           <div className="division text charity">
-            <img src={charityLogo} />
+            <div className="charity-logo" />
           </div>
           <div className="division text random">
             <div className="left">

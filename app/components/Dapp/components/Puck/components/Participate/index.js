@@ -5,7 +5,6 @@ import Content from '../Content';
 import Entries from '../Entries';
 import Random from '../Random';
 import Indicator from '../Indicator';
-import charityLogo from '../../../../../../img/logos/charity.png';
 import './index.scss';
 
 class Participate extends Content {
@@ -71,7 +70,7 @@ class Participate extends Content {
         <Indicator type={isParticipating ? 'waiting' : null} />
         <div className="seedom-overlay">
 
-          <img src={charityLogo} />
+          <div className="charity-logo" />
 
           <Entries
             raiser={raiser}

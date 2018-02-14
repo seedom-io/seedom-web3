@@ -1,8 +1,6 @@
 import React from 'react';
 import Content from '../Content';
 import Indicator from '../Indicator';
-import metamaskLogo from '../../../../../../img/logos/metamask.png';
-import charityLogo from '../../../../../../img/logos/charity.png';
 
 class Error extends Content {
   render() {
@@ -21,13 +19,13 @@ class Error extends Content {
         <div className="seedom-overlay">
           {{
             charityHashedRandom: (
-              <img src={charityLogo} />
+              <div className="charity-logo" />
             ),
             hashedRandom: (
-              <img src={charityLogo} />
+              <div className="charity-logo" />
             ),
             metamask: (
-              <img src={metamaskLogo} />
+              <div className="metamask-logo" />
             )
           }[type]}
         </div>
@@ -35,20 +33,20 @@ class Error extends Content {
           {{
             charityHashedRandom: (
               <div className="seedom-overlay layout">
-                <div className="division text">CHARITY FAILED<br />TO SEED</div>
-                <div className="division text">THEIR RANDOM<br />MESSAGE</div>
+                <div className="division text">charity failed<br />to seed</div>
+                <div className="division text">their random<br />message</div>
               </div>
             ),
             hashedRandom: (
               <div className="seedom-overlay layout">
-                <div className="division text">PARTICIPATION NOT<br />DETECTED</div>
-                <div className="division text">DURING<br />PARTICIPATION PHASE</div>
+                <div className="division text">participation not<br />detected</div>
+                <div className="division text">during<br />participation phase</div>
               </div>
             ),
             metamask: (
               <div className="seedom-overlay layout">
-                <div className="division text">METAMASK PLUGIN</div>
-                <div className="division text">NOT DETECTED</div>
+                <div className="division text">metamask plugin</div>
+                <div className="division text">not detected</div>
               </div>
             )
           }[type]}
