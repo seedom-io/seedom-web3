@@ -17,8 +17,6 @@ class Participate extends Content {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      isEmailValid: true,
       random: '',
       isRandomValid: true,
       isFormValid: true
@@ -27,22 +25,18 @@ class Participate extends Content {
 
   show() {
     super.show();
-    this.email.focus();
+    this.entries.focus();
   }
 
   validateForm = (done) => {
-    const { email } = this.state;
-
-    const isEmailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) !== null;
     const isEntriesValid = this.entries.validate();
 
     const isRandomValid = this.random.validate();
 
     this.setState({
-      isEmailValid,
       isEntriesValid,
       isRandomValid,
-      isFormValid: isEmailValid && isEntriesValid && isRandomValid
+      isFormValid: isEntriesValid && isRandomValid
     }, done);
   }
 
@@ -62,10 +56,6 @@ class Participate extends Content {
     });
   }
 
-  handleEmailChange = email => {
-    this.setState({ email });
-  };
-
   handleRandomChange = random => {
     this.setState({ random });
   };
@@ -75,8 +65,6 @@ class Participate extends Content {
 
     const {
       className,
-      email,
-      isEmailValid
     } = this.state;
 
     return (
@@ -86,17 +74,6 @@ class Participate extends Content {
         <div className="seedom-overlay">
 
           <img src={charityLogo} />
-
-          <Field
-            format="textbox"
-            type="text"
-            value={email}
-            placeholder="email address"
-            disabled={isParticipating}
-            isValid={isEmailValid}
-            onChange={this.handleEmailChange}
-            ref={(component) => { this.email = component; }}
-          />
 
           <Entries
             raiser={raiser}
