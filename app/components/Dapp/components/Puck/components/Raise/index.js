@@ -49,7 +49,7 @@ class Raise extends Content {
 
           <img src={charityLogo} />
 
-          <div className="etherPerEntry">1 ENTRY = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
+          <div className="text">1 ENTRY = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
 
           <Entries
             raiser={raiser}

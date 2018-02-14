@@ -24,6 +24,7 @@ const parseRaiser = raiser => {
 const parseState = state => {
   return {
     charityHashedRandom: String(state._charityHashedRandom),
+    charityRandom: String(state._charityRandom),
     winner: String(state._winner),
     winnerRandom: String(state._winnerRandom),
     cancelled: Boolean(state._cancelled),
@@ -74,8 +75,9 @@ const parseRevelation = revelation => {
 
 const parseWin = win => {
   return {
-    participant: String(win._participant),
-    random: String(win._random)
+    winner: String(win._winner),
+    winnerRandom: String(win._winnerRandom),
+    charityRandom: String(win._charityRandom)
   };
 };
 

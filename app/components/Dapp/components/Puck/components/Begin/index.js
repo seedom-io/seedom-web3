@@ -1,7 +1,6 @@
 import React from 'react';
 import Content from '../Content';
 import { localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
-import './index.scss';
 import charityLogo from '../../../../../../img/logos/charity.png';
 
 class Begin extends Content {
@@ -11,9 +10,19 @@ class Begin extends Content {
 
     return (
       <div className={`seedom-content begin ${className}`}>
-        <img src={charityLogo} />
-        <div className="etherPerEntry">1 ENTRY = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
-        <a className="button is-primary is-outlined" onClick={onBegin}>OBTAIN ENTRIES</a>
+        <div className="seedom-overlay">
+          <img src={charityLogo} />
+        </div>
+        <div className="seedom-overlay layout">
+          <div className="header-footer division text">1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
+          <div className="header-footer division">
+            <div className="field">
+              <div className="control">
+                <a className="button is-dark" onClick={onBegin}>obtain entries</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

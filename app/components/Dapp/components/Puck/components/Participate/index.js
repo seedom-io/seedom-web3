@@ -111,7 +111,7 @@ class Participate extends Content {
 
           <div className="field">
             <div className="control">
-              <a className="button is-primary is-outlined" disabled={isParticipating} onClick={this.handleSubmit}>PARTICIPATE</a>
+              <a className="button is-dark" disabled={isParticipating} onClick={this.handleSubmit}>PARTICIPATE</a>
             </div>
           </div>
 

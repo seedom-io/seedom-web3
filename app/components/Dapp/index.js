@@ -396,13 +396,14 @@ class Dapp extends Component {
       const newState = {
         state: {
           ...prevState.state,
-          winner: win.participant,
-          winnerRandom: win.random
+          winner: win.winner,
+          winnerRandom: win.winnerRandom,
+          charityRandom: win.charityRandom
         }
       };
 
       // update our winning balance
-      if (win.participant === prevState.account) {
+      if (win.winner === prevState.account) {
         const { raiser, state, contractAddress } = prevState;
         // preserve existing balances
         newState.balances = { ...prevState.balances };

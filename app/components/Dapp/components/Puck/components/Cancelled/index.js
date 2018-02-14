@@ -2,7 +2,6 @@ import React from 'react';
 import Content from '../Content';
 import Indicator from '../Indicator';
 import charityLogo from '../../../../../../img/logos/charity.png';
-import './index.scss';
 
 class Cancelled extends Content {
   render() {
@@ -14,9 +13,9 @@ class Cancelled extends Content {
         <div className="seedom-overlay">
           <img src={charityLogo} />
         </div>
-        <div className="seedom-overlay">
-          <div className="puck-message top">RAISER</div>
-          <div className="puck-message">CANCELLED</div>
+        <div className="seedom-overlay layout">
+          <div className="division text">raiser</div>
+          <div className="division text">cancelled</div>
         </div>
       </div>
     );

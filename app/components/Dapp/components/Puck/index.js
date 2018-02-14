@@ -15,7 +15,8 @@ import Withdraw from './components/Withdraw';
 import Cancel from './components/Cancel';
 import Cancelled from './components/Cancelled';
 import Error from './components/Error';
-import seedomLogo from '../../../../img/logos/seedom.svg';
+import Ticket from './components/Ticket';
+import seedomLogo from '../../../../../../seedom-assets/logo/o/seedom-o-outlined-white-transparent.svg';
 import './index.scss';
 
 const PHASE_REFRESH = 1000;
@@ -53,14 +54,16 @@ const getComponent = ({
   phase,
   state,
   participant,
+  random,
   balances,
   isLoading,
   hasBegun,
+  hasSeenTicket,
   isObtainingMoreEntries,
-  isWithdrawSkipped
+  hasSkippedWithdraw
 }) => {
   // balances?
-  if ((Object.keys(balances).length > 0) && !isWithdrawSkipped) {
+  if ((Object.keys(balances).length > 0) && !hasSkippedWithdraw) {
     return 'withdraw';
   }
 
@@ -91,6 +94,10 @@ const getComponent = ({
           return 'begin';
         }
         return 'participate';
+      }
+
+      if (!hasSeenTicket && random) {
+        return 'ticket';
       }
 
       if (!isObtainingMoreEntries && !isLoading.isRaising) {
@@ -160,9 +167,11 @@ class Puck extends Component {
 
     this.state = {
       phase: null,
+      random: null,
       hasBegun: false,
+      hasSeenTicket: false,
       isObtainingMoreEntries: false,
-      isWithdrawSkipped: false
+      hasSkippedWithdraw: false
     };
   }
 
@@ -185,8 +194,17 @@ class Puck extends Component {
   }
 
   handleParticipate = ({ random, entries }) => {
-    this.props.onParticipate({ random, entries }, () => {
-      this.setState({ hasBegun: false });
+    // temporarily save random for the ticket
+    this.setState({ random }, () => {
+      this.props.onParticipate({ random, entries });
+    });
+  }
+
+  handleTicketSeen = () => {
+    // remove random forever
+    this.setState({
+      random: null,
+      hasSeenTicket: true
     });
   }
 
@@ -209,7 +227,7 @@ class Puck extends Component {
   }
 
   handleWithdrawSkipped = () => {
-    this.setState({ isWithdrawSkipped: true });
+    this.setState({ hasSkippedWithdraw: true });
   }
 
   handleCancel = () => {
@@ -219,9 +237,11 @@ class Puck extends Component {
   render() {
     const {
       phase,
+      random,
       hasBegun,
+      hasSeenTicket,
       isObtainingMoreEntries,
-      isWithdrawSkipped
+      hasSkippedWithdraw
     } = this.state;
 
     const {
@@ -241,11 +261,13 @@ class Puck extends Component {
       raiser,
       state,
       participant,
+      random,
       balances,
       isLoading,
       hasBegun,
+      hasSeenTicket,
       isObtainingMoreEntries,
-      isWithdrawSkipped
+      hasSkippedWithdraw
     });
 
     const isAnyLoading =
@@ -265,12 +287,13 @@ class Puck extends Component {
           <Seed isShown={component === 'seed'} />
           <Begin isShown={component === 'begin'} raiser={raiser} onBegin={this.handleBegin} />
           <Participate isShown={component === 'participate'} raiser={raiser} isParticipating={isLoading.isParticipating} onParticipate={this.handleParticipate} />
+          <Ticket isShown={component === 'ticket'} raiser={raiser} random={random} onTicketSeen={this.handleTicketSeen} />
           <Participated isShown={component === 'participated'} participant={participant} onGetMoreEntries={this.handleGetMoreEntries} />
           <Raise isShown={component === 'raise'} raiser={raiser} isRaising={isLoading.isRaising} onRaise={this.handleRaise} />
           <Reveal isShown={component === 'reveal'} isRevealing={isLoading.isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />
           <Revealed isShown={component === 'revealed'} participant={participant} />
           <End isShown={component === 'end'} />
-          <Win isShown={component === 'win'} winner={state.winner} winnerRandom={state.winnerRandom} />
+          <Win isShown={component === 'win'} state={state} />
           <Withdraw isShown={component === 'withdraw'} balances={balances} isWithdrawing={isLoading.isWithdrawing} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
           <Cancel isShown={component === 'cancel'} isCancelling={isLoading.isCancelling} onCancel={this.handleCancel} />
           <Cancelled isShown={component === 'cancelled'} />

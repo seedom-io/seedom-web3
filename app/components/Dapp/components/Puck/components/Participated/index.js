@@ -17,14 +17,14 @@ class Participate extends Content {
         <div className="seedom-overlay">
           <img src={charityLogo} />
         </div>
-        <div className="seedom-overlay">
-          <div className="entries">
-            <div className="total">{localeNumber(entries)}</div>
-            ENTRIES OBTAINED
+        <div className="seedom-overlay layout">
+          <div className="division text">
+            <div className="entries">{localeNumber(entries)}</div>
+            <div>entries obtained</div>
           </div>
-        </div>
-        <div className="seedom-overlay">
-          <a className="button is-black is-outlined" onClick={onGetMoreEntries}>GET MORE ENTRIES</a>
+          <div className="division">
+            <a className="button is-dark" onClick={onGetMoreEntries}>GET MORE ENTRIES</a>
+          </div>
         </div>
       </div>
     );
