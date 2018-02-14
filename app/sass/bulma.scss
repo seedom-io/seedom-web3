@@ -18,6 +18,21 @@
   src: url('../fonts/moon-light.otf')
 }
 
+@font-face {
+  font-family: 'CamphorPro Regular';
+  src: url('../fonts/CamphorPro-Regular.woff')
+}
+
+@font-face {
+  font-family: 'CamphorPro Heavy';
+  src: url('../fonts/CamphorPro-Heavy.woff')
+}
+
+@font-face {
+  font-family: 'CamphorPro Light';
+  src: url('../fonts/CamphorPro-Light.woff')
+}
+
 .navbar-item,
 .navbar-link {
   padding: 0rem 1rem
@@ -33,3 +48,5 @@
   padding: 3rem 1.5rem 3rem;
   text-shadow: black 0px 0 20px;
 }
+
+$family-primary: 'CamphorPro Regular';
