@@ -52,7 +52,7 @@ class Raise extends Content {
 
           <img src={charityLogo} />
 
-          <div className="text">1 ENTRY = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
+          <div className="text">1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
 
           <Entries
             raiser={raiser}
@@ -62,7 +62,7 @@ class Raise extends Content {
 
           <div className="field">
             <div className="control">
-              <a className="button is-primary is-outlined" disabled={isRaising} onClick={this.handleSubmit}>GET MORE ENTRIES</a>
+              <a className="button is-dark" disabled={isRaising} onClick={this.handleSubmit}>get more entries</a>
             </div>
           </div>
 

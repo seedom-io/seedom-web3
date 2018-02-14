@@ -70,7 +70,7 @@ class Reveal extends Content {
 
           <div className="field">
             <div className="control">
-              <a className="button is-primary is-outlined" disabled={isRevealing} onClick={this.handleSubmit}>REVEAL</a>
+              <a className="button is-dark" disabled={isRevealing} onClick={this.handleSubmit}>reveal</a>
             </div>
           </div>
 

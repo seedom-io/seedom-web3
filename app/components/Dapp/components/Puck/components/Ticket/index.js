@@ -13,7 +13,7 @@ const MAX_Y = 300;
 class Ticket extends Content {
   saveTicket = () => {
     // set ticket to seen
-    saveSvgAsPng.svgAsPngUri(this.svg, { encoderOptions: 1 }, (uri) => {
+    saveSvgAsPng.svgAsPngUri(this.svg, { encoderOptions: 0.9, scale: 2.0 }, (uri) => {
       saveSvgAsPng.download('seedom-ticket.png', uri);
       this.props.onTicketSeen();
     });
@@ -39,22 +39,22 @@ class Ticket extends Content {
           >
             <image xlinkHref={seedomTicket} x="0" y="0" height={MAX_Y} width={MAX_X} />
             <image xlinkHref={charityLogo} x="92" y="155" width="90" />
-            <text className="random" textAnchor="end" x="570" y="45" fontFamily="Moon Bold" fontSize="20px" fill="white">
+            <text className="random" textAnchor="end" x="570" y="45" fontFamily="CamphorPro Heavy" fontSize="20px" fill="white">
               {random}
             </text>
-            <text className="header" textAnchor="end" x="570" y="70" fontFamily="Moon Regular" fontSize="20px" fill="white">
+            <text className="header" textAnchor="end" x="570" y="70" fontFamily="CamphorPro Regular" fontSize="20px" fill="white">
               YOUR RANDOM MESSAGE
             </text>
-            <text className="header" textAnchor="end" x="570" y="200" fontFamily="Moon Regular" fontSize="20px" fill="white">
+            <text className="header" textAnchor="end" x="570" y="200" fontFamily="CamphorPro Regular" fontSize="20px" fill="white">
               REVEAL ON
             </text>
-            <text className="random" textAnchor="end" x="570" y="225" fontFamily="Moon Bold" fontSize="20px" fill="white">
+            <text className="random" textAnchor="end" x="570" y="225" fontFamily="CamphorPro Heavy" fontSize="20px" fill="white">
               {raiser.revealTime.toString()}
             </text>
-            <text className="header" textAnchor="end" x="570" y="250" fontFamily="Moon Regular" fontSize="20px" fill="white">
+            <text className="header" textAnchor="end" x="570" y="250" fontFamily="CamphorPro Regular" fontSize="20px" fill="white">
               ENDS ON
             </text>
-            <text className="random" textAnchor="end" x="570" y="275" fontFamily="Moon Bold" fontSize="20px" fill="white">
+            <text className="random" textAnchor="end" x="570" y="275" fontFamily="CamphorPro Heavy" fontSize="20px" fill="white">
               {raiser.endTime.toString()}
             </text>
           </svg>

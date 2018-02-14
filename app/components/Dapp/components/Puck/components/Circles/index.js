@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './index.scss';
-import { setInterval, clearInterval } from 'timers';
+import { setInterval } from 'timers';
 
 const MAX_X = 1000;
 const MAX_Y = 1000;
@@ -13,7 +13,7 @@ const PROGRESS_STROKE_WIDTH = 30;
 const PHASE_STROKE_WIDTH = 50;
 const BACKGROUND_PADDING = 50;
 const LOADERS_PERCENTAGE = 20;
-const LOADERS_TEXT = "COMMUNICATING WITH ETHEREUM";
+const LOADERS_TEXT = 'COMMUNICATING WITH ETHEREUM';
 
 const getPhasePercentages = (raiser, now) => {
   if (!raiser) {
@@ -73,7 +73,7 @@ const getProgressText = (raiser, now) => {
   // what's left is seconds
   const seconds = Math.floor(timeUntilNextPhase % 60);
 
-  return `${phaseName} IN - ${days}D|${hours}H|${minutes}M|${seconds}S`;
+  return `${phaseName} IN - ${days}D ${hours}H ${minutes}M ${seconds}S`;
 };
 
 const getProgressRadius = () => {
