@@ -11,6 +11,8 @@ class Participate extends Content {
     const { isShown, participant, onGetMoreEntries } = this.props;
     const entries = participant ? participant.entries : zero();
 
+    const localeEntries = localeNumber(entries);
+
     return (
       <div className={`seedom-content participated ${className}`}>
         <Indicator type={isShown ? 'checkmark' : null} />
@@ -19,8 +21,8 @@ class Participate extends Content {
         </div>
         <div className="seedom-overlay layout">
           <div className="division text">
-            <div className="entries">{localeNumber(entries)}</div>
-            <div>entries obtained</div>
+            <div className="entries">{localeEntries}</div>
+            <div>{Number(localeEntries) === 1 ? 'entry' : 'entries'} obtained</div>
           </div>
           <div className="division">
             <a className="button is-dark" onClick={onGetMoreEntries}>GET MORE ENTRIES</a>
