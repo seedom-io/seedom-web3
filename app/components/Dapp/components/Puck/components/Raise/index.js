@@ -27,7 +27,7 @@ class Raise extends Content {
     return this.state.isEntriesValid;
   }
 
-  handleSubmit = event => {
+  handleSubmit = () => {
     this.validateForm(() => {
       const { onRaise } = this.props;
       if (this.isFormValid()) {
@@ -43,7 +43,7 @@ class Raise extends Content {
 
   render() {
     const { className } = this.state;
-    const { raiser, isRaising } = this.props;
+    const { raiser, isRaising, onRaisingCancelled } = this.props;
 
     return (
       <div className={`seedom-content raise ${className}`}>
@@ -63,6 +63,11 @@ class Raise extends Content {
           <div className="field">
             <div className="control">
               <a className="button is-dark" disabled={isRaising} onClick={this.handleSubmit}>get more entries</a>
+            </div>
+          </div>
+          <div className="field">
+            <div className="control">
+              <a className="button is-white is-outlined" onClick={onRaisingCancelled}>cancel</a>
             </div>
           </div>
 

@@ -64,12 +64,12 @@ class Ticket extends Content {
           <div className="division">
             <div className="field">
               <div className="control">
-                <a className="button is-white is-outlined" onClick={onTicketSeen}>skip saving</a>
+                <a className="button is-dark" onClick={this.saveTicket}>save ticket</a>
               </div>
             </div>
             <div className="field">
               <div className="control">
-                <a className="button is-dark" onClick={this.saveTicket}>save ticket</a>
+                <a className="button is-white is-outlined" onClick={onTicketSeen}>skip saving</a>
               </div>
             </div>
           </div>

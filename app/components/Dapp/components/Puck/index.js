@@ -59,7 +59,7 @@ const getComponent = ({
   isLoading,
   hasBegun,
   hasSeenTicket,
-  isObtainingMoreEntries,
+  hasStartedRaising,
   hasSkippedWithdraw
 }) => {
   // balances?
@@ -100,7 +100,7 @@ const getComponent = ({
         return 'ticket';
       }
 
-      if (!isObtainingMoreEntries && !isLoading.isRaising) {
+      if (!hasStartedRaising && !isLoading.isRaising) {
         return 'participated';
       }
 
@@ -170,7 +170,7 @@ class Puck extends Component {
       random: null,
       hasBegun: false,
       hasSeenTicket: false,
-      isObtainingMoreEntries: false,
+      hasStartedRaising: false,
       hasSkippedWithdraw: false
     };
   }
@@ -208,12 +208,16 @@ class Puck extends Component {
     });
   }
 
-  handleGetMoreEntries = () => {
-    this.setState({ isObtainingMoreEntries: true });
+  handleStartedRaising = () => {
+    this.setState({ hasStartedRaising: true });
+  }
+
+  handleRaisingCancelled = () => {
+    this.setState({ hasStartedRaising: false });
   }
 
   handleRaise = (entries) => {
-    this.setState({ isObtainingMoreEntries: false }, () => {
+    this.setState({ hasStartedRaising: false }, () => {
       this.props.onRaise(entries);
     });
   }
@@ -240,7 +244,7 @@ class Puck extends Component {
       random,
       hasBegun,
       hasSeenTicket,
-      isObtainingMoreEntries,
+      hasStartedRaising,
       hasSkippedWithdraw
     } = this.state;
 
@@ -266,7 +270,7 @@ class Puck extends Component {
       isLoading,
       hasBegun,
       hasSeenTicket,
-      isObtainingMoreEntries,
+      hasStartedRaising,
       hasSkippedWithdraw
     });
 
@@ -288,8 +292,8 @@ class Puck extends Component {
           <Begin isShown={component === 'begin'} raiser={raiser} onBegin={this.handleBegin} />
           <Participate isShown={component === 'participate'} raiser={raiser} isParticipating={isLoading.isParticipating} onParticipate={this.handleParticipate} />
           <Ticket isShown={component === 'ticket'} raiser={raiser} random={random} onTicketSeen={this.handleTicketSeen} />
-          <Participated isShown={component === 'participated'} participant={participant} onGetMoreEntries={this.handleGetMoreEntries} />
-          <Raise isShown={component === 'raise'} raiser={raiser} isRaising={isLoading.isRaising} onRaise={this.handleRaise} />
+          <Participated isShown={component === 'participated'} participant={participant} onStartedRaising={this.handleStartedRaising} />
+          <Raise isShown={component === 'raise'} raiser={raiser} isRaising={isLoading.isRaising} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
           <Reveal isShown={component === 'reveal'} isRevealing={isLoading.isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />
           <Revealed isShown={component === 'revealed'} participant={participant} />
           <End isShown={component === 'end'} />

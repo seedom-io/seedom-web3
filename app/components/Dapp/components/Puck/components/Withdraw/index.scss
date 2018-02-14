@@ -1,28 +1,16 @@
 .seedom-content.withdraw {
 
-  img {
-    height: 20%;
+  .balance {
+    font-size: 40px;
+    font-family: "CamphorPro Heavy";
   }
 
-  .puck-message {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 30%;
-
-    .balance {
-      color: white;
-      font-size: 60px;
-      font-weight: bold;
-    }
+  .top {
+    margin-top: 20%;
   }
 
-  a {
-    margin-top: 10px;
-
-    &.top {
-      margin-top: 35%;
-    }
+  .bottom {
+    margin-bottom: 20%;
   }
 
 }

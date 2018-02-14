@@ -8,9 +8,8 @@ import './index.scss';
 class Participate extends Content {
   render() {
     const { className } = this.state;
-    const { isShown, participant, onGetMoreEntries } = this.props;
+    const { isShown, participant, onStartedRaising } = this.props;
     const entries = participant ? participant.entries : zero();
-
     const localeEntries = localeNumber(entries);
 
     return (
@@ -25,7 +24,7 @@ class Participate extends Content {
             <div>{Number(localeEntries) === 1 ? 'entry' : 'entries'} obtained</div>
           </div>
           <div className="division">
-            <a className="button is-dark" onClick={onGetMoreEntries}>GET MORE ENTRIES</a>
+            <a className="button is-dark" onClick={onStartedRaising}>get more entries</a>
           </div>
         </div>
       </div>

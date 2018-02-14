@@ -24,7 +24,7 @@ const setupEventsHandler = (contract, fromBlock, triage) => {
     triage({
       type: result.event.toLowerCase(),
       values: result.returnValues,
-      contractAddress: result.contractAddress,
+      contractAddress: result.address,
       blockNumber: result.blockNumber,
       transactionHash: result.transactionHash,
       transactionIndex: result.transactionIndex,

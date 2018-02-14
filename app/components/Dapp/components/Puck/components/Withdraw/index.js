@@ -36,22 +36,30 @@ class Withdraw extends Content {
 
   render() {
     const { className } = this.state;
-    const { onWithdrawSkipped, isWithdrawing } = this.props;
+    const { isShown, onWithdrawSkipped, isWithdrawing } = this.props;
     const maxBalance = this.getMaxBalance();
 
     return (
       <div className={`seedom-content withdraw ${className}`}>
-        <Indicator type="withdraw" />
-        <div className="seedom-overlay">
-          <div className="puck-message">
-            YOU HAVE
-            <div className="balance">{localeDecimal(getEtherFromWei(maxBalance.balance))}</div>
-            ETHER TO WITHDRAW!
+        <Indicator type={isShown ? 'success' : null} />
+        <div className="seedom-overlay layout">
+          <div className="division text top">
+            <div>you have</div>
+            <div className="balance">{localeDecimal(getEtherFromWei(maxBalance.balance))}Ξ</div>
+            <div>to withdraw!</div>
           </div>
-        </div>
-        <div className="seedom-overlay">
-          <a className="button is-dark is-outlined top" disabled={isWithdrawing} onClick={onWithdrawSkipped}>SKIP UNTIL REFRESH</a>
-          <a className="button is-black is-outlined" disabled={isWithdrawing} onClick={() => this.handleWithdraw(maxBalance.contractAddress)}>WITHDRAW</a>
+          <div className="division bottom">
+            <div className="field">
+              <div className="control">
+                <a className="button is-dark" disabled={isWithdrawing} onClick={() => this.handleWithdraw(maxBalance.contractAddress)}>withdraw ether</a>
+              </div>
+            </div>
+            <div className="field">
+              <div className="control">
+                <a className="button is-white is-outlined" disabled={isWithdrawing} onClick={onWithdrawSkipped}>skip for now</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
