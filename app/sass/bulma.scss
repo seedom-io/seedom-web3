@@ -3,6 +3,32 @@
 @import './layout/footer';
 @import '../../node_modules/bulma/bulma.sass';
 
+@font-face {
+  font-family: 'Moon Regular';
+  src: url('../fonts/moon-regular.otf')
+}
+
+@font-face {
+  font-family: 'Moon Bold';
+  src: url('../fonts/moon-bold.otf')
+}
+
+@font-face {
+  font-family: 'Moon Light';
+  src: url('../fonts/moon-light.otf')
+}
+
+.navbar-item,
+.navbar-link {
+  padding: 0rem 1rem
+}
+
+.field {
+  &:not(:last-child) {
+    margin-bottom: 0.5rem
+  }
+}
+
 .footer {
   padding: 3rem 1.5rem 3rem;
   text-shadow: black 0px 0 20px;

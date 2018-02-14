@@ -54,16 +54,16 @@ const getComponent = ({
   phase,
   state,
   participant,
+  random,
   balances,
   isLoading,
   hasBegun,
+  hasSeenTicket,
   isObtainingMoreEntries,
-  isWithdrawSkipped
+  hasSkippedWithdraw
 }) => {
-  return 'win';
-
   // balances?
-  if ((Object.keys(balances).length > 0) && !isWithdrawSkipped) {
+  if ((Object.keys(balances).length > 0) && !hasSkippedWithdraw) {
     return 'withdraw';
   }
 
@@ -94,6 +94,10 @@ const getComponent = ({
           return 'begin';
         }
         return 'participate';
+      }
+
+      if (!hasSeenTicket && random) {
+        return 'ticket';
       }
 
       if (!isObtainingMoreEntries && !isLoading.isRaising) {
@@ -163,9 +167,11 @@ class Puck extends Component {
 
     this.state = {
       phase: null,
+      random: null,
       hasBegun: false,
+      hasSeenTicket: false,
       isObtainingMoreEntries: false,
-      isWithdrawSkipped: false
+      hasSkippedWithdraw: false
     };
   }
 
@@ -188,8 +194,17 @@ class Puck extends Component {
   }
 
   handleParticipate = ({ random, entries }) => {
-    this.props.onParticipate({ random, entries }, () => {
-      this.setState({ hasBegun: false });
+    // temporarily save random for the ticket
+    this.setState({ random }, () => {
+      this.props.onParticipate({ random, entries });
+    });
+  }
+
+  handleTicketSeen = () => {
+    // remove random forever
+    this.setState({
+      random: null,
+      hasSeenTicket: true
     });
   }
 
@@ -212,7 +227,7 @@ class Puck extends Component {
   }
 
   handleWithdrawSkipped = () => {
-    this.setState({ isWithdrawSkipped: true });
+    this.setState({ hasSkippedWithdraw: true });
   }
 
   handleCancel = () => {
@@ -222,9 +237,11 @@ class Puck extends Component {
   render() {
     const {
       phase,
+      random,
       hasBegun,
+      hasSeenTicket,
       isObtainingMoreEntries,
-      isWithdrawSkipped
+      hasSkippedWithdraw
     } = this.state;
 
     const {
@@ -244,11 +261,13 @@ class Puck extends Component {
       raiser,
       state,
       participant,
+      random,
       balances,
       isLoading,
       hasBegun,
+      hasSeenTicket,
       isObtainingMoreEntries,
-      isWithdrawSkipped
+      hasSkippedWithdraw
     });
 
     const isAnyLoading =
@@ -268,7 +287,7 @@ class Puck extends Component {
           <Seed isShown={component === 'seed'} />
           <Begin isShown={component === 'begin'} raiser={raiser} onBegin={this.handleBegin} />
           <Participate isShown={component === 'participate'} raiser={raiser} isParticipating={isLoading.isParticipating} onParticipate={this.handleParticipate} />
-          <Ticket isShown={component === 'ticket'} />
+          <Ticket isShown={component === 'ticket'} raiser={raiser} random={random} onTicketSeen={this.handleTicketSeen} />
           <Participated isShown={component === 'participated'} participant={participant} onGetMoreEntries={this.handleGetMoreEntries} />
           <Raise isShown={component === 'raise'} raiser={raiser} isRaising={isLoading.isRaising} onRaise={this.handleRaise} />
           <Reveal isShown={component === 'reveal'} isRevealing={isLoading.isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />

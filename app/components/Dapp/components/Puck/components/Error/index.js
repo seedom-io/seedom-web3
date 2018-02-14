@@ -8,6 +8,11 @@ class Error extends Content {
   render() {
     const { className } = this.state;
     const { isShown, error } = this.props;
+
+    if (!error) {
+      return null;
+    }
+
     const type = error.split('-')[1];
 
     return (

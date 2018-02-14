@@ -37,7 +37,6 @@ class Withdraw extends Content {
   render() {
     const { className } = this.state;
     const { onWithdrawSkipped, isWithdrawing } = this.props;
-
     const maxBalance = this.getMaxBalance();
 
     return (

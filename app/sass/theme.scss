@@ -15,17 +15,6 @@ $win: purple;
 
 $navbar-item-img-max-height: auto;
 
-.navbar-item,
-.navbar-link {
-  padding: 0rem 1rem
-}
-
-.field {
-  &:not(:last-child) {
-    margin-bottom: 0.5rem
-  }
-}
-
 $puck-background: lighten($background, 10%);
 $participation-phase: lighten($puck-background, 10%);
 $revelation-phase: lighten($participation-phase, 10%);
