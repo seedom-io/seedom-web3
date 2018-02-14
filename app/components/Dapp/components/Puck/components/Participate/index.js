@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Content from '../Content';
 import Entries from '../Entries';
 import Random from '../Random';
-import Field from '../Field';
 import Indicator from '../Indicator';
 import charityLogo from '../../../../../../img/logos/charity.png';
 import './index.scss';
@@ -49,7 +48,7 @@ class Participate extends Content {
         const random = this.random.value();
         onParticipate({ random, entries });
       } else {
-        toast.error('There was a problem submitting.', {
+        toast.error('There was a problem participating.', {
           position: toast.POSITION.TOP_CENTER
         });
       }
@@ -69,7 +68,6 @@ class Participate extends Content {
 
     return (
       <div className={`seedom-content participate ${className}`}>
-        <ToastContainer />
         <Indicator type={isParticipating ? 'waiting' : null} />
         <div className="seedom-overlay">
 

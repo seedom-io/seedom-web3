@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import Content from '../Content';
 import Indicator from '../Indicator';
 import Random from '../Random';
@@ -40,7 +41,9 @@ class Reveal extends Content {
         const random = this.random.value();
         onReveal(random);
       } else {
-        console.log('nope');
+        toast.error('There was a problem revealing.', {
+          position: toast.POSITION.TOP_CENTER
+        });
       }
     });
   }

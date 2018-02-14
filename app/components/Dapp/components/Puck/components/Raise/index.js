@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import Content from '../Content';
 import Indicator from '../Indicator';
 import Entries from '../Entries';
@@ -33,7 +34,9 @@ class Raise extends Content {
         const entries = this.entries.value();
         onRaise(entries);
       } else {
-        console.log('nope');
+        toast.error('There was a problem raising', {
+          position: toast.POSITION.TOP_CENTER
+        });
       }
     });
   };
