@@ -1,11 +1,18 @@
 html,body {
   font-family: 'Raleway', sans-serif;
+  background-color: #1C1D21;
+  color: white;
 }
+
+.box, strong {
+  color: white;
+}
+
 .hero.is-info {
   background: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
-    ), url('./images/hero.jpeg') no-repeat center center fixed;
+    ), url('../images/hero.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -32,12 +39,15 @@ blockquote.is-large {
   }
 }
 
-section.advantages {
+section.advantages, section.team {
   padding: 70px 0;
   background-color: rgb(17, 17, 20);
-  color: white;
   border-top: 1px solid rgba(255,255,255,0.14);
   border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+
+section.team {
+  background-color: transparent;
 }
 
 .feature .icon {
@@ -50,6 +60,10 @@ section.advantages {
 
 .fa-inverse {
   color: rgba(255, 255, 255, 0.767);
+}
+
+img.circle {
+  border-radius: 50%;
 }
 
 .title {
@@ -68,7 +82,7 @@ section.process {
   background: linear-gradient(
     rgba(0, 0, 0, 0.7),
     rgba(0, 0, 0, 0.7)
-  ), url('./images/space-forest.jpeg') no-repeat center center fixed;
+  ), url('../images/space-forest.jpeg') no-repeat center center fixed;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
@@ -91,4 +105,17 @@ a {
 
 a:hover {
   color: #fff;
+}
+
+.card {
+  background-color: black;
+  opacity: 0.9;
+}
+
+.card a {
+  color: #31CF65 !important;
+}
+
+.card .title {
+  margin-bottom: 0 !important;
 }

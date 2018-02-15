@@ -1,0 +1,19 @@
+.pricing-table .pricing-plan {
+  background-color: black;
+  opacity: .9;
+  border: none;
+}
+
+.pricing-table .pricing-plan .plan-header {
+  background-color: black;
+}
+
+.pricing-table .pricing-plan .plan-price {
+  background-color: black;
+}
+
+.pricing-table .pricing-plan .plan-item {
+  background-color: black;
+  border: none;
+  color: inherit;
+}
