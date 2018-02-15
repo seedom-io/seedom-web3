@@ -29,7 +29,7 @@ class Header extends Component {
     return (
       <div className="seedom-header">
         <Item title="reveal date" value={dates.localeDate(raiser.revealTime)} />
-        <Item title="network" value={network || 'localhost'} />
+        <Item title="network" value={network} />
         <Item title="end date" value={dates.localeDate(raiser.endTime)} />
       </div>
     );

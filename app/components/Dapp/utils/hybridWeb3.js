@@ -15,7 +15,7 @@ const getNetworkName = (id) => {
     case '42':
       return 'kovan';
     default:
-      return null;
+      return 'localhost';
   }
 };
 

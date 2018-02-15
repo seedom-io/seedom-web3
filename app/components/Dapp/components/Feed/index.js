@@ -41,7 +41,7 @@ class Feed extends Component {
             {feed.map((feedItem) => (
               <tr
                 key={`${feedItem.event.transactionHash}-${feedItem.event.transactionIndex}`}
-                onClick={this.openTransaction(feedItem.event.transactionHash)}
+                onClick={() => { this.openTransaction(feedItem.event.transactionHash); }}
               >
                 <td>{feedItem.event.type}</td>
                 <td>{bytes.shorten(feedItem.participant)}</td>
