@@ -8,6 +8,7 @@ import HybridWeb3 from './utils/hybridWeb3';
 import * as randoms from './utils/randoms';
 import * as parsers from './utils/parsers';
 import * as bytes from './utils/bytes';
+import * as etherscan from './utils/etherscan';
 import { BigNumber } from 'bignumber.js';
 import './index.scss';
 
@@ -86,8 +87,8 @@ class Dapp extends Component {
 
   handleHybridWeb3Event = (event, value) => {
     const newState = {};
-    if (event === 'networkId') {
-      newState.networkId = value;
+    if (event === 'network') {
+      newState.network = value;
     } else if (event === 'account') {
       newState.account = value;
     } else if (event === 'isCorrectNetwork') {
@@ -138,8 +139,8 @@ class Dapp extends Component {
   }
 
   retrieveUserData() {
-    const { networkId, account } = this.state;
-    if (networkId && account) {
+    const { network, account } = this.state;
+    if (network && account) {
       this.retrieveParticipant();
       this.retrieveBalances();
     }
@@ -544,7 +545,7 @@ class Dapp extends Component {
 
   render() {
     const {
-      networkId,
+      network,
       account,
       contractAddress,
       raiser,
@@ -566,9 +567,7 @@ class Dapp extends Component {
       received = state.totalEntries.times(raiser.valuePerEntry);
       charityReward = received.times(raiser.charitySplit).dividedBy(1000);
       winnerReward = received.times(raiser.winnerSplit).dividedBy(1000);
-      totalParticipants = state.totalParticipants;
-      totalEntries = state.totalEntries;
-      totalRevealed = state.totalRevealed;
+      ({ totalParticipants, totalEntries, totalRevealed } = state);
     }
 
     // render only if we have a contract address, raiser, and state
@@ -587,7 +586,7 @@ class Dapp extends Component {
             winner={winnerReward}
           />
           <Puck
-            networkId={networkId}
+            network={network}
             account={account}
             raiser={raiser}
             state={state}
@@ -609,13 +608,14 @@ class Dapp extends Component {
         </div>
         <div className="container">
           <div className="content has-text-centered">
-            <Feed feed={feed} />
+            <Feed feed={feed} network={network} />
           </div>
         </div>
         <div className="container">
           <div className="content has-text-centered">
             <p>
-              View more live <strong>Seedom</strong> data on <a className="is-green" href={`https://etherscan.io/address/${contractAddress}`}>Etherscan</a>.
+              View more live <strong>Seedom</strong> data on&nbsp;
+              <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network, contractAddress)}>Etherscan</a>.
             </p>
           </div>
         </div>

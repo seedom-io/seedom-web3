@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as bytes from '../../utils/bytes';
 import * as randoms from '../../utils/randoms';
 import { localeNumber } from '../../utils/numbers';
+import * as etherscan from '../../utils/etherscan';
 import './index.scss';
 
 const getData = (feedItem) => {
@@ -14,6 +15,14 @@ const getData = (feedItem) => {
 };
 
 class Feed extends Component {
+  openTransaction = (transactionHash) => {
+    const { network } = this.props;
+    const etherscanUrl = etherscan.getTransactionUrl(network, transactionHash);
+    if (etherscanUrl) {
+      window.open(etherscanUrl, '_blank');
+    }
+  }
+
   render() {
     const { feed } = this.props;
 
@@ -30,7 +39,10 @@ class Feed extends Component {
           </thead>
           <tbody>
             {feed.map((feedItem) => (
-              <tr key={`${feedItem.event.transactionHash}-${feedItem.event.transactionIndex}`}>
+              <tr
+                key={`${feedItem.event.transactionHash}-${feedItem.event.transactionIndex}`}
+                onClick={this.openTransaction(feedItem.event.transactionHash)}
+              >
                 <td>{feedItem.event.type}</td>
                 <td>{bytes.shorten(feedItem.participant)}</td>
                 <td>{localeNumber(feedItem.entries)}</td>

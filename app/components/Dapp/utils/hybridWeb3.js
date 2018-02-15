@@ -2,6 +2,23 @@
 
 import Web3 from 'web3';
 
+const getNetworkName = (id) => {
+  switch (id) {
+    case '1':
+      return 'mainnet';
+    case '2':
+      return 'morden';
+    case '3':
+      return 'ropsten';
+    case '4':
+      return 'rinkeby';
+    case '42':
+      return 'kovan';
+    default:
+      return null;
+  }
+};
+
 class HybridWeb3 {
   constructor(onChange) {
     this.onChange = onChange;
@@ -24,6 +41,10 @@ class HybridWeb3 {
 
   setupWsWeb3() {
     this.wsWeb3 = new Web3(ETH_URL);
+    // set we network
+    this.wsWeb3.eth.net.getId((error, id) => {
+      this.wsNetworkId = id;
+    });
   }
 
   init() {
@@ -38,14 +59,11 @@ class HybridWeb3 {
   }
 
   checkNetwork() {
-    this.rpcWeb3.eth.net.getId((error, networkId) => {
-      if (this.networkId !== networkId) {
-        this.networkId = networkId;
-        this.onChange('networkId', networkId);
-
-        this.wsWeb3.eth.net.getId((wsError, wsNetworkId) => {
-          this.onChange('isCorrectNetwork', wsNetworkId === networkId);
-        });
+    this.rpcWeb3.eth.net.getId((error, id) => {
+      if (this.rpcNetworkId !== id) {
+        this.rpcNetworkId = id;
+        this.onChange('network', getNetworkName(id));
+        this.onChange('isCorrectNetwork', id === this.wsNetworkId);
       }
     });
   }

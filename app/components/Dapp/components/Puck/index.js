@@ -49,7 +49,7 @@ const getPhase = (raiser) => {
 };
 
 const getComponent = ({
-  networkId,
+  network,
   account,
   phase,
   state,
@@ -78,7 +78,7 @@ const getComponent = ({
   }
 
   // metamask check
-  if (!networkId || !account) {
+  if (!network || !account) {
     return 'error-metamask';
   }
 
@@ -138,7 +138,7 @@ const getComponent = ({
 
 class Puck extends Component {
   static propTypes = {
-    networkId: PropTypes.number,
+    network: PropTypes.string,
     account: PropTypes.string,
     raiser: PropTypes.shape(),
     state: PropTypes.shape(),
@@ -153,7 +153,7 @@ class Puck extends Component {
   }
 
   static defaultProps = {
-    networkId: null,
+    network: null,
     account: null,
     raiser: null,
     state: null,
@@ -249,7 +249,7 @@ class Puck extends Component {
     } = this.state;
 
     const {
-      networkId,
+      network,
       account,
       raiser,
       state,
@@ -259,7 +259,7 @@ class Puck extends Component {
     } = this.props;
 
     const component = getComponent({
-      networkId,
+      network,
       account,
       phase,
       raiser,
@@ -297,7 +297,7 @@ class Puck extends Component {
           <Reveal isShown={component === 'reveal'} isRevealing={isLoading.isRevealing} setLoading={this.setLoading} onReveal={this.handleReveal} />
           <Revealed isShown={component === 'revealed'} participant={participant} />
           <End isShown={component === 'end'} />
-          <Win isShown={component === 'win'} state={state} />
+          <Win isShown={component === 'win'} state={state} network={network} />
           <Withdraw isShown={component === 'withdraw'} balances={balances} isWithdrawing={isLoading.isWithdrawing} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
           <Cancel isShown={component === 'cancel'} isCancelling={isLoading.isCancelling} onCancel={this.handleCancel} />
           <Cancelled isShown={component === 'cancelled'} />
