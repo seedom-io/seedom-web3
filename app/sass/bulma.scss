@@ -23,6 +23,10 @@
   padding: 0rem 1rem
 }
 
+.hero-body {
+  padding-top: 0;
+}
+
 .field {
   &:not(:last-child) {
     margin-bottom: 0.5rem

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ToastContainer, toast } from 'react-toastify';
+import Header from './components/Header';
 import Puck from './components/Puck';
-import Hud from './components/Hud';
+import Stats from './components/Stats';
 import Feed from './components/Feed';
 import HybridWeb3 from './utils/hybridWeb3';
 import * as randoms from './utils/randoms';
@@ -556,20 +557,6 @@ class Dapp extends Component {
       isLoading
     } = this.state;
 
-    let received;
-    let charityReward;
-    let winnerReward;
-    let totalParticipants;
-    let totalEntries;
-    let totalRevealed;
-    // once we have the raiser and state, calculate HUD data
-    if (raiser && state) {
-      received = state.totalEntries.times(raiser.valuePerEntry);
-      charityReward = received.times(raiser.charitySplit).dividedBy(1000);
-      winnerReward = received.times(raiser.winnerSplit).dividedBy(1000);
-      ({ totalParticipants, totalEntries, totalRevealed } = state);
-    }
-
     // render only if we have a contract address, raiser, and state
     if (!contractAddress || !raiser || !state) {
       return null;
@@ -578,12 +565,12 @@ class Dapp extends Component {
     return (
       <div className="seedom-dapp">
         <ToastContainer />
+        <Header raiser={raiser} network={network} />
         <div className="dapp-container">
-          <Hud
+          <Stats
             side="left"
-            received={received}
-            charity={charityReward}
-            winner={winnerReward}
+            raiser={raiser}
+            state={state}
           />
           <Puck
             network={network}
@@ -599,11 +586,10 @@ class Dapp extends Component {
             onWithdraw={this.handleWithdraw}
             onCancel={this.handleCancel}
           />
-          <Hud
+          <Stats
             side="right"
-            participants={totalParticipants}
-            entries={totalEntries}
-            revealed={totalRevealed}
+            raiser={raiser}
+            state={state}
           />
         </div>
         <div className="container">
