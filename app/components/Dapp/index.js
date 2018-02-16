@@ -19,9 +19,9 @@ const GAS_PRICE = 20000000000;
 const PAST_BLOCKS_BACK = 10000;
 const MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
 
-const setupEventsHandler = (contract, block, fromBlock, triage) => {
+const setupEventsHandler = (contract, fromBlockNumber, triage) => {
   contract.ws.events.allEvents({
-    fromBlock
+    fromBlockNumber
   }, (error, result) => {
     triage({
       type: result.event.toLowerCase(),
@@ -29,8 +29,7 @@ const setupEventsHandler = (contract, block, fromBlock, triage) => {
       contractAddress: result.address,
       blockNumber: result.blockNumber,
       transactionHash: result.transactionHash,
-      transactionIndex: result.transactionIndex,
-      fromBlock
+      transactionIndex: result.transactionIndex
     });
   });
 };
