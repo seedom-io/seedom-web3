@@ -14,8 +14,8 @@ import { BigNumber } from 'bignumber.js';
 import './index.scss';
 
 const MAX_FEED_ITEMS = 10;
-const GAS = 150000;
-const GAS_PRICE = 20000000000;
+const GAS = 200000;
+const GAS_PRICE = 2000000000;
 const FEED_BLOCKS_BACK = 10000;
 const MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
 
