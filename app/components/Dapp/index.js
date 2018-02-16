@@ -39,10 +39,7 @@ const getWeb3Instance = (web3, contract) => {
     return null;
   }
 
-  return new web3.eth.Contract(contract.abi, contract.address, {
-    gas: GAS,
-    gasPrice: GAS_PRICE
-  });
+  return new web3.eth.Contract(contract.abi, contract.address);
 };
 
 const addFeedItem = (feed, obj, event) => {
@@ -455,11 +452,16 @@ class Dapp extends Component {
       newState.isLoading[isLoadingName] = true;
       return newState;
     }, () => {
-      const resultHandler = this.handleSendCall(method, options, isLoadingName);
+      const fullOptions = {
+        ...options,
+        gas: GAS,
+        gasPrice: GAS_PRICE,
+      };
+      const resultHandler = this.handleSendCall(method, fullOptions, isLoadingName);
       if (method === null) {
-        this.hybridWeb3.rpcWeb3.eth.call(options, resultHandler);
+        this.hybridWeb3.rpcWeb3.eth.call(fullOptions, resultHandler);
       } else {
-        method.call(options, resultHandler);
+        method.call(fullOptions, resultHandler);
       }
     });
   }
