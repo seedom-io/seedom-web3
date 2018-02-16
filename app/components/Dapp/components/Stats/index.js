@@ -40,16 +40,16 @@ class Stats extends Component {
       <div className={`seedom-stats ${side}`}>
         {((side === 'top') || (side === 'left')) &&
           <div className="panel left">
-            <Stat title="received" value={localeDecimal(getEtherFromWei(received))} symbol="Ξ" />
-            <Stat title="charity" value={localeDecimal(getEtherFromWei(charityReward))} symbol="Ξ" />
-            <Stat title="winner" value={localeDecimal(getEtherFromWei(winnerReward))} symbol="Ξ" />
+            <Stat title="total received" value={localeDecimal(getEtherFromWei(received))} symbol="Ξ" />
+            <Stat title="charity will get" value={localeDecimal(getEtherFromWei(charityReward))} symbol="Ξ" />
+            <Stat title="winner will get" value={localeDecimal(getEtherFromWei(winnerReward))} symbol="Ξ" />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&
           <div className="panel right">
-            <Stat title="participants" value={localeNumber(totalParticipants)} />
-            <Stat title="entries" value={localeNumber(totalEntries)} />
-            <Stat title="revealed" value={localeNumber(totalRevealed)} />
+            <Stat title="total participants" value={localeNumber(totalParticipants)} />
+            <Stat title="total entries" value={localeNumber(totalEntries)} />
+            <Stat title="total revealed" value={localeNumber(totalRevealed)} />
           </div>
         }
       </div>
