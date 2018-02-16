@@ -4,15 +4,15 @@ import Web3 from 'web3';
 
 const getNetworkName = (id) => {
   switch (id) {
-    case '1':
+    case 1:
       return 'mainnet';
-    case '2':
+    case 2:
       return 'morden';
-    case '3':
+    case 3:
       return 'ropsten';
-    case '4':
+    case 4:
       return 'rinkeby';
-    case '42':
+    case 42:
       return 'kovan';
     default:
       return 'localhost';
