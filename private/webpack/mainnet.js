@@ -14,7 +14,7 @@ module.exports = merge(base, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('dev'),
+      'process.env.NODE_ENV': JSON.stringify('production'),
       ETH_URL: JSON.stringify('wss://manager2.seedom.io:8550'),
       ETH_CONTRACTS: JSON.stringify(h.getContracts(cwd, 'mainnet'))
     })
