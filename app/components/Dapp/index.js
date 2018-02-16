@@ -16,12 +16,12 @@ import './index.scss';
 const MAX_FEED_ITEMS = 10;
 const GAS = 150000;
 const GAS_PRICE = 20000000000;
-const PAST_BLOCKS_BACK = 10000;
+const FEED_BLOCKS_BACK = 10000;
 const MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
 
 const setupEventsHandler = (contract, fromBlockNumber, triage) => {
   contract.ws.events.allEvents({
-    fromBlockNumber
+    fromBlock: fromBlockNumber
   }, (error, result) => {
     triage({
       type: result.event.toLowerCase(),
@@ -221,11 +221,12 @@ class Dapp extends Component {
   }
 
   setupEventHandlers() {
-    this.hybridWeb3.wsWeb3.eth.getBlockNumber((error, blockNumber) => {
-      // get the past block number
-      let pastBlockNumber = blockNumber - PAST_BLOCKS_BACK;
-      if (pastBlockNumber < 0) {
-        pastBlockNumber = 0;
+    // get latest block number
+    this.hybridWeb3.wsWeb3.eth.getBlockNumber((error, latestBlockNumber) => {
+      // get the feed block number (what block to start at for feed)
+      let feedBlockNumber = latestBlockNumber - FEED_BLOCKS_BACK;
+      if (feedBlockNumber < 0) {
+        feedBlockNumber = 0;
       }
 
       // set up event handlers for each contract
@@ -235,13 +236,13 @@ class Dapp extends Component {
         let fromBlockNumber;
         let triager;
         if (contractAddress === this.state.contractAddress) {
-          // for current contract, pull old events and listen for new
-          fromBlockNumber = pastBlockNumber;
-          triager = (params) => this.triageEvent(params, blockNumber);
+          // for current contract, pull old events (for feed) and listen for new
+          fromBlockNumber = feedBlockNumber;
+          triager = (event) => this.triageEvent(event, latestBlockNumber);
         } else {
           // for legacy contracts, only listen for legacy events (withdraw)
-          fromBlockNumber = pastBlockNumber;
-          triager = (params) => this.triageLegacyEvent(params);
+          fromBlockNumber = latestBlockNumber;
+          triager = (event) => this.triageLegacyEvent(event);
         }
 
         setupEventsHandler(contract, fromBlockNumber, triager);
@@ -249,8 +250,8 @@ class Dapp extends Component {
     });
   }
 
-  triageEvent(event, blockNumber) {
-    if (event.blockNumber > blockNumber) {
+  triageEvent(event, latestBlockNumber) {
+    if (event.blockNumber > latestBlockNumber) {
       this.triageNewEvent(event);
     } else {
       this.triageFeedEvent(event);

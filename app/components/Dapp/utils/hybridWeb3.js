@@ -25,12 +25,12 @@ class HybridWeb3 {
     this.setupWeb3s();
   }
 
-  setupWeb3s = () => {
+  setupWeb3s() {
     this.setupRpcWeb3();
     this.setupWsWeb3();
   }
 
-  setupRpcWeb3 = () => {
+  setupRpcWeb3() {
     if (typeof window !== 'undefined') {
       // set MetaMask web3 at v1.0
       if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
@@ -39,26 +39,27 @@ class HybridWeb3 {
     }
   }
 
-  setupWsWeb3 = () => {
+  setupWsWeb3() {
     this.wsWeb3 = new Web3(ETH_URL);
+  }
+
+  init() {
     // set we network
     this.wsWeb3.eth.net.getId((error, id) => {
       this.wsNetworkId = id;
+      // if no rpc, no need to set up the interval
+      if (!this.rpcWeb3) {
+        return;
+      }
+
+      setInterval(() => {
+        this.checkNetwork();
+        this.checkAccount();
+      }, 1000);
     });
   }
 
-  init = () => {
-    if (!this.rpcWeb3) {
-      return;
-    }
-
-    setInterval(() => {
-      this.checkNetwork();
-      this.checkAccount();
-    }, 1000);
-  }
-
-  checkNetwork = () => {
+  checkNetwork() {
     this.rpcWeb3.eth.net.getId((error, id) => {
       if (this.rpcNetworkId !== id) {
         this.rpcNetworkId = id;
@@ -68,7 +69,7 @@ class HybridWeb3 {
     });
   }
 
-  checkAccount = () => {
+  checkAccount() {
     this.rpcWeb3.eth.getAccounts((error, accounts) => {
       const [account] = accounts;
       if (account !== this.account) {

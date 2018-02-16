@@ -82,6 +82,11 @@ const getComponent = ({
     return 'error-metamask';
   }
 
+  // wait for a participant
+  if (!participant) {
+    return null;
+  }
+
   // switch on phase
   switch (phase) {
     case 'participation':
