@@ -19,7 +19,6 @@ const getNetworkName = (id) => {
   }
 };
 
-
 class HybridWeb3 {
   constructor(onChange) {
     this.onChange = onChange;
