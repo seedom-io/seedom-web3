@@ -7,7 +7,7 @@ const getEtherFromWei = (bigNumber) => {
 };
 
 const localeDecimal = (bigNumber) => {
-  return bigNumber.toFormat(2);
+  return bigNumber.toFormat(3);
 };
 
 const localeNumber = (bigNumber) => {
