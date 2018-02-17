@@ -169,7 +169,7 @@ class Circles extends React.Component {
     const participationPathFlipped = getPathFlipped(phasePercentages.participation);
 
     const progressPathDescription = getPathDescription(progressRadius);
-    const flippedProgressPathDescription = getPathDescription(progressRadius, participationPathFlipped);
+    const flippedProgressPathDescription = getPathDescription(progressRadius, true);
     const loadersPathDescription = getPathDescription(loadersRadius);
 
     const progressTextShown = getProgressTextShown(phasePercentages.progress);
