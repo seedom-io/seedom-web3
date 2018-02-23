@@ -1,6 +1,7 @@
 import React from 'react';
 import Content from '../Content';
 import { localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
+import './index.scss';
 
 class Begin extends Content {
   render() {
@@ -13,7 +14,10 @@ class Begin extends Content {
           <div className="charity-logo" />
         </div>
         <div className="seedom-overlay layout">
-          <div className="header-footer division text">1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
+          <div className="header-footer division text">
+            <div>1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
+            <div className="supporting">now seeding</div>
+          </div>
           <div className="header-footer division">
             <div className="field">
               <div className="control">
