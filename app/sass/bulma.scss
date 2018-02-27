@@ -20,7 +20,26 @@
 
 .navbar-item,
 .navbar-link {
-  padding: 0rem 1rem
+  padding: 0rem 1rem;
+}
+
+.navbar-start {
+
+  .navbar-item {
+    color: $primary;
+
+    &.is-active:not(:hover) {
+      background-color: $primary;
+    }
+
+  }
+}
+
+.navbar-end {
+  .navbar-item {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 }
 
 .hero-body {
