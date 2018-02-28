@@ -6,13 +6,37 @@ const updateFeed = (feed, action) => {
   return newFeed;
 };
 
-const handleSeedEvent = (prevState, action) => {
+const handleRaiser = (prevState, action) => {
+  const newState = { ...prevState };
+  newState.raiser = action.raiser;
+  return newState;
+};
+
+const handleState = (prevState, action) => {
+  const newState = { ...prevState };
+  newState.state = action.state;
+  return newState;
+};
+
+const handleParticipant = (prevState, action) => {
+  const newState = { ...prevState };
+  newState.participant = action.participant;
+  return newState;
+};
+
+const handleBalances = (prevState, action) => {
+  const newState = { ...prevState };
+  newState.balances = action.balances;
+  return newState;
+};
+
+const handleSeed = (prevState, action) => {
   const newState = { ...prevState };
   newState.state.charitySecret = action.seed.charitySecret;
   return newState;
 };
 
-const handleParticipationEvent = (prevState, action) => {
+const handleParticipation = (prevState, action) => {
   const newState = { ...prevState };
   newState.state.totalParticipants = newState.state.totalParticipants.plus(1);
   newState.state.totalEntries = newState.state.totalEntries.plus(action.participation.entries);
@@ -27,7 +51,7 @@ const handleParticipationEvent = (prevState, action) => {
   return newState;
 };
 
-const handleRaiseEvent = (prevState, action) => {
+const handleRaise = (prevState, action) => {
   const newState = { ...prevState };
   newState.state.totalEntries = newState.state.totalEntries.plus(action.raise.entries);
   newState.feed = updateFeed(newState.feed, action);
@@ -40,13 +64,13 @@ const handleRaiseEvent = (prevState, action) => {
   return newState;
 };
 
-const handleRevelationEvent = (prevState, action) => {
+const handleRevelation = (prevState, action) => {
   const newState = { ...prevState };
   newState.state.charityMessage = action.revelation.charityMessage;
   return newState;
 };
 
-const handleSelectionEvent = (prevState, action) => {
+const handleSelection = (prevState, action) => {
   const newState = { ...prevState };
   newState.state.selected = action.selection.selected;
   newState.state.selectedMessage = action.selection.selectedMessage;
@@ -63,7 +87,7 @@ const handleSelectionEvent = (prevState, action) => {
   return newState;
 };
 
-const handleCancellationEvent = (prevState) => {
+const handleCancellation = (prevState) => {
   const newState = { ...prevState };
   newState.isLoading.isCancelling = false;
   newState.state.cancelled = true;
@@ -76,7 +100,7 @@ const handleCancellationEvent = (prevState) => {
   return newState;
 };
 
-const handleWithdrawalEvent = (prevState, action) => {
+const handleWithdrawal = (prevState, action) => {
   const newState = { ...prevState };
   // set our balance to zero if we withdrew
   if (action.data.address === newState.account) {
@@ -88,32 +112,31 @@ const handleWithdrawalEvent = (prevState, action) => {
 
 const seedomReducer = (prevState = {}, action) => {
   switch (action.type) {
+    case 'SEEDOM_RAISER':
+      return handleRaiser(prevState, action);
+    case 'SEEDOM_STATE':
+      return handleState(prevState, action);
+    case 'SEEDOM_PARTICIPANT':
+      return handleParticipant(prevState, action);
+    case 'SEEDOM_BALANCES':
+      return handleBalances(prevState, action);
     case 'SEEDOM_SEED':
-      return handleSeedEvent(prevState, action);
+      return handleSeed(prevState, action);
     case 'SEEDOM_PARTICIPATION':
-      return handleParticipationEvent(prevState, action);
+      return handleParticipation(prevState, action);
     case 'SEEDOM_RAISE':
-      return handleRaiseEvent(prevState, action);
+      return handleRaise(prevState, action);
     case 'SEEDOM_REVELATION':
-      return handleRevelationEvent(prevState, action);
+      return handleRevelation(prevState, action);
     case 'SEEDOM_SELECTION':
-      return handleSelectionEvent(prevState, action);
+      return handleSelection(prevState, action);
     case 'SEEDOM_CANCELLATION':
-      return handleCancellationEvent(prevState);
+      return handleCancellation(prevState);
     case 'SEEDOM_WITHDRAW':
-      return handleWithdrawalEvent(prevState, action);
+      return handleWithdrawal(prevState, action);
     default:
       return prevState;
   }
 };
 
 export default seedomReducer;
-
-/*triageEvent(action, latestBlockNumber) {
-  if (action.blockNumber > latestBlockNumber) {
-    this.triageNewEvent(action);
-  } else {
-    this.triageFeedEvent(action);
-  }
-}
-*/

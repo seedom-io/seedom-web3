@@ -13,7 +13,16 @@ const allCall = ({ contractName, method, args }) => ({
   args
 });
 
+const send = ({ contractName, contractAddress, method, args }) => ({
+  type: 'ETHEREUM_SEND',
+  contractName,
+  contractAddress,
+  method,
+  args
+});
+
 export {
   call,
-  allCall
+  allCall,
+  send
 };

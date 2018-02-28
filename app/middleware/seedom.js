@@ -46,7 +46,7 @@ const seedomMiddleware = store => {
   const handleBalances = (next, action) => {
     return next({
       type: 'SEEDOM_BALANCES',
-      participant: seedomParser.parseBalances(action.data)
+      balances: seedomParser.parseBalances(action.data)
     });
   };
 
@@ -66,7 +66,7 @@ const seedomMiddleware = store => {
     }
   };
 
-  const handleEthereumUser = (action) => {
+  const handleEthereumUser = (next, action) => {
     // first pull data from state
     const state = store.getState();
     let { network, account } = state;
@@ -80,15 +80,16 @@ const seedomMiddleware = store => {
     }
     // get user data
     if (network && account) {
-      store.dispatch(ethereumActions.call('seedom', 'participants', [state.account]));
-      store.dispatch(ethereumActions.allCall('seedom', 'balance', [state.account]));
+      store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'participants', args: [state.account] }));
+      store.dispatch(ethereumActions.allCall({ contractName: 'seedom', method: 'balance' }));
     }
+    return next(action);
   };
 
-  const handleEthereumRefresh = () => {
-    store.dispatch(ethereumActions.call('seedom', 'raiser'));
-    store.dispatch(ethereumActions.call('seedom', 'state'));
-    handleEthereumUser();
+  const handleEthereumRefresh = (next, action) => {
+    store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'raiser' }));
+    store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'state' }));
+    return handleEthereumUser(next, action);
   };
 
   const handleEthereumEvent = (next, action) => {
@@ -131,9 +132,9 @@ const seedomMiddleware = store => {
         return handleEthereumAllCallData(next, action);
       case 'ETHEREUM_NETWORK':
       case 'ETHEREUM_ACCOUNT':
-        return handleEthereumUser(action);
+        return handleEthereumUser(next, action);
       case 'ETHEREUM_REFRESH':
-        return handleEthereumRefresh();
+        return handleEthereumRefresh(next, action);
       default:
         return next(action);
     }

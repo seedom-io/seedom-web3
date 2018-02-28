@@ -2,9 +2,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import { connect, Provider } from 'react-redux';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import createHistory from 'history/createBrowserHistory';
+import reduceReducers from './utils/reduceReducers';
+import seedomReducer from './reducers/seedom';
+import ethereumReducer from './reducers/ethereum';
+import seedomMiddleware from './middleware/seedom';
 import ethereumMiddleware from './middleware/ethereum';
 
 import './sass/bulma.scss';
@@ -21,11 +25,16 @@ import Footer from './components/footer';
 const history = createHistory();
 
 const store = createStore(
-  routerReducer,
+  reduceReducers(
+    routerReducer,
+    ethereumReducer,
+    seedomReducer
+  ),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(
+    routerMiddleware(history),
     ethereumMiddleware,
-    routerMiddleware(history)
+    seedomMiddleware
   )
 );
 

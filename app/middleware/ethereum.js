@@ -44,7 +44,7 @@ const ethereumMiddleware = (store) => {
   const contracts = {};
   const primaryContractAddresses = {};
   // set all contracts (last six)
-  for (const contractName of ETH_CONTRACTS) {
+  for (const contractName in ETH_CONTRACTS) {
     const releases = ETH_CONTRACTS[contractName];
     for (const release of releases) {
       // save first address (primary contract)
@@ -59,7 +59,6 @@ const ethereumMiddleware = (store) => {
       // add to map of contracts
       contracts[contractName][release.address] = {
         address: release.address,
-        lastBlockTime: new Date(),
         ws: new wsWeb3.eth.Contract(release.abi, release.address),
         rpc: new rpcWeb3.eth.Contract(release.abi, release.address)
       };
@@ -106,9 +105,9 @@ const ethereumMiddleware = (store) => {
     const now = (new Date()).getTime();
     for (const contractName in contracts) {
       const releases = contracts[contractName];
-      for (const release of releases) {
-        const lastBlockAge = (now - release.lastBlockTime.getTime());
-        if (lastBlockAge > MAX_LAST_BLOCK_AGE) {
+      for (const contractAddress in releases) {
+        const release = releases[contractAddress];
+        if (!release.lastBlockTime || ((now - release.lastBlockTime.getTime()) > MAX_LAST_BLOCK_AGE)) {
           // last block time to now
           release.lastBlockTime = new Date();
           console.log(`last block received too old for contract address ${release.address} , refreshing data`);
@@ -140,7 +139,8 @@ const ethereumMiddleware = (store) => {
         contractAddress: result.address,
         blockNumber: result.blockNumber,
         transactionHash: result.transactionHash,
-        transactionIndex: result.transactionIndex
+        transactionIndex: result.transactionIndex,
+        account
       });
     });
   };
@@ -163,7 +163,8 @@ const ethereumMiddleware = (store) => {
     for (const contractName in contracts) {
       const releases = contracts[contractName];
       const primaryContractAddress = primaryContractAddresses[contractName];
-      for (const release of releases) {
+      for (const contractAddress in releases) {
+        const release = releases[contractAddress];
         const fromBlockNumber =
           (release.address === primaryContractAddress) ? pastBlockNumber : startingBlockNumber;
         setupEventsHandler(contractName, release, fromBlockNumber);
