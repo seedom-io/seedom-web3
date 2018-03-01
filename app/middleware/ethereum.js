@@ -103,6 +103,8 @@ const ethereumMiddleware = (store) => {
 
   const checkRefresh = () => {
     const now = (new Date()).getTime();
+    const contractAddresses = [];
+
     for (const contractName in contracts) {
       const releases = contracts[contractName];
       for (const contractAddress in releases) {
@@ -110,10 +112,13 @@ const ethereumMiddleware = (store) => {
         if (!release.lastBlockTime || ((now - release.lastBlockTime.getTime()) > MAX_LAST_BLOCK_AGE)) {
           // last block time to now
           release.lastBlockTime = new Date();
-          console.log(`last block received too old for contract address ${release.address} , refreshing data`);
-          store.dispatch({ type: 'ETHEREUM_REFRESH', contractAddress: release.address });
+          contractAddresses.push(release.address);
         }
       }
+    }
+
+    if (contractAddresses.length > 0) {
+      store.dispatch({ type: 'ETHEREUM_REFRESH', contractAddresses });
     }
   };
 

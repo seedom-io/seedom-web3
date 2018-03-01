@@ -87,9 +87,15 @@ const seedomMiddleware = store => {
   };
 
   const handleEthereumRefresh = (next, action) => {
-    store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'raiser' }));
-    store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'state' }));
-    return handleEthereumUser(next, action);
+    const state = store.getState();
+    const { primaryContractAddresses } = state;
+    const { contractAddresses } = action;
+    if (contractAddresses.indexOf(primaryContractAddresses.seedom) > -1) {
+      store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'raiser' }));
+      store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'state' }));
+      return handleEthereumUser(next, action);
+    }
+    return next(action);
   };
 
   const handleEthereumEvent = (next, action) => {
