@@ -5,7 +5,7 @@ import './index.scss';
 import charityLogo from '../../../../../../img/logos/charity-logo.png';
 import seedomTicket from '../../../../../../../../seedom-assets/ticket/seedom-ticket.svg';
 import * as saveSvgAsPng from 'save-svg-as-png';
-import * as randoms from '../../../../../../utils/randoms';
+import * as messages from '../../../../../../utils/messages';
 import * as dates from '../../../../../../utils/dates';
 
 const MAX_X = 600;
@@ -45,9 +45,6 @@ class Ticket extends Content {
             </text>
             <text className="header" textAnchor="end" x="570" y="70" fontFamily="CamphorPro Regular" fontSize="20px" fill="white">
               YOUR RANDOM MESSAGE
-            </text>
-            <text className="header" textAnchor="end" x="570" y="190" fontFamily="CamphorPro Heavy" fontSize="20px" fill="white">
-              {dates.localeDate(raiser.revealTime)}
             </text>
             <text className="random" textAnchor="end" x="570" y="215" fontFamily="CamphorPro Regular" fontSize="20px" fill="white">
               REVEAL DATE

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as bytes from '../../../../utils/bytes';
-import * as randoms from '../../../../utils/randoms';
+import * as messages from '../../../../utils/messages';
 import { localeNumber } from '../../../../utils/numbers';
 import * as etherscan from '../../../../utils/etherscan';
 import './index.scss';
@@ -9,7 +9,7 @@ const getData = (feedItem) => {
   if (feedItem.hashedRandom) {
     return bytes.shorten(feedItem.hashedRandom);
   } else if (feedItem.random) {
-    return randoms.dehexRandom(feedItem.random);
+    return messages.dehexMessage(feedItem.random);
   }
   return null;
 };

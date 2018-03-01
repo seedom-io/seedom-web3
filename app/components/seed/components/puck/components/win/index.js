@@ -1,7 +1,7 @@
 import React from 'react';
 import Content from '../content';
 import Indicator from '../indicator';
-import * as randoms from '../../../../../../utils/randoms';
+import * as messages from '../../../../../../utils/messages';
 import * as bytes from '../../../../../../utils/bytes';
 import * as etherscan from '../../../../../../utils/etherscan';
 import './index.scss';
@@ -21,17 +21,17 @@ class Win extends Content {
           <div className="division text random">
             <div className="left">
               <div className="header">charity message</div>
-              <div className="random">{randoms.dehexRandom(state.charityRandom)}</div>
+              <div className="random">{messages.dehexMessage(state.charityMessage)}</div>
             </div>
             <div className="right">
               <div className="header">winner message</div>
-              <div className="random">{randoms.dehexRandom(state.winnerRandom)}</div>
+              <div className="random">{messages.dehexMessage(state.selectedMessage)}</div>
             </div>
           </div>
           <div className="division text address">
             <div>
               <div>congratulations</div>
-              <a target="_blank" href={etherscan.getAddressUrl(network, state.winner)}>{bytes.shorten(state.winner)}</a>
+              <a target="_blank" href={etherscan.getAddressUrl(network, state.selected)}>{bytes.shorten(state.selected)}</a>
             </div>
           </div>
         </div>

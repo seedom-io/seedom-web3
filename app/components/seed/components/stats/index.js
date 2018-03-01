@@ -33,8 +33,8 @@ class Stats extends Component {
     // once we have the raiser and state, calculate HUD data
     const received = state.totalEntries.times(raiser.valuePerEntry);
     const charityReward = received.times(raiser.charitySplit).dividedBy(1000);
-    const winnerReward = received.times(raiser.winnerSplit).dividedBy(1000);
-    const { totalParticipants, totalEntries, totalRevealed } = state;
+    const selectedReward = received.times(raiser.selectedSplit).dividedBy(1000);
+    const { totalParticipants, totalEntries } = state;
 
     return (
       <div className={`seedom-stats ${side}`}>
@@ -42,14 +42,13 @@ class Stats extends Component {
           <div className="panel left">
             <Stat title="total received" value={localeDecimal(getEtherFromWei(received))} symbol="Ξ" />
             <Stat title="charity will get" value={localeDecimal(getEtherFromWei(charityReward))} symbol="Ξ" />
-            <Stat title="winner will get" value={localeDecimal(getEtherFromWei(winnerReward))} symbol="Ξ" />
+            <Stat title="selected will get" value={localeDecimal(getEtherFromWei(selectedReward))} symbol="Ξ" />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&
           <div className="panel right">
             <Stat title="total participants" value={localeNumber(totalParticipants)} />
             <Stat title="total entries" value={localeNumber(totalEntries)} />
-            <Stat title="total revealed" value={localeNumber(totalRevealed)} />
           </div>
         }
       </div>

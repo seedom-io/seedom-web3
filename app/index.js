@@ -15,7 +15,7 @@ import './sass/bulma.scss';
 
 import Head from './components/head';
 import Nav from './components/nav';
-//import Seed from './components/seed';
+import Seed from './components/seed';
 import Suggest from './components/suggest';
 import History from './components/history';
 import Guide from './components/guide';
@@ -44,7 +44,7 @@ const ConnectedSwitch = connect(state => ({
 
 const AppContainer = () => (
   <ConnectedSwitch>
-    <Route exact path="/" component={Suggest} />
+    <Route exact path="/" component={Seed} />
     <Route path="/suggest" component={Suggest} />
     <Route path="/history" component={History} />
     <Route path="/guide" component={Guide} />

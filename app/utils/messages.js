@@ -1,18 +1,18 @@
 import { keccak256 } from 'js-sha3';
 
-const hexRandom = (random) => {
+const hexMessage = (message) => {
   const buffer = Buffer.alloc(32);
-  buffer.write(random);
+  buffer.write(message);
   return `0x${buffer.toString('hex')}`;
 };
 
-const dehexRandom = (randomHex) => {
-  const randomHexMeat = randomHex.substr(2);
-  const randomBuffer = Buffer.from(randomHexMeat, 'hex');
-  return randomBuffer.toString();
+const dehexMessage = (messageHex) => {
+  const messageHexMeat = messageHex.substr(2);
+  const messageBuffer = Buffer.from(messageHexMeat, 'hex');
+  return messageBuffer.toString();
 };
 
-const hashRandom = (randomHex, participant) => {
+/*const hashRandom = (randomHex, participant) => {
   const hasher = new keccak256.create(256); // eslint-disable-line new-cap
 
   const randomHexMeat = randomHex.substr(2);
@@ -24,6 +24,6 @@ const hashRandom = (randomHex, participant) => {
   hasher.update(participantBuffer);
 
   return `0x${hasher.hex()}`;
-};
+};*/
 
-export { hexRandom, dehexRandom, hashRandom };
+export { hexMessage, dehexMessage };

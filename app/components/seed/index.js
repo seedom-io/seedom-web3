@@ -6,84 +6,64 @@ import Header from './components/header';
 import Puck from './components/puck';
 import Stats from './components/stats';
 import Feed from './components/feed';
-import HybridWeb3 from '../../utils/hybridWeb3';
-import * as randoms from '../../utils/randoms';
-import * as parsers from '../../utils/parsers';
-import * as bytes from '../../utils/bytes';
+import * as messages from '../../utils/messages';
 import * as etherscan from '../../utils/etherscan';
-import { BigNumber } from 'bignumber.js';
+import * as ethereumActions from '../../actions/ethereum';
 import './index.scss';
 
-const MAX_FEED_ITEMS = 10;
-const GAS = 200000;
-const GAS_PRICE = 2000000000;
-const FEED_BLOCKS_BACK = 10000;
-const MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
-
 class Seed extends Component {
-
-
   handleParticipate = ({ random, entries }) => {
-    const { account, raiser } = this.state;
-    const randomHex = randoms.hexRandom(random);
-    const hashedRandom = randoms.hashRandom(randomHex, account);
+    const { raiser } = this.props.state;
+    const messageHex = messages.hexRandom(random);
     const value = entries.times(raiser.valuePerEntry);
-
-    this.handleSend(this.getContract().rpc.methods.participate(hashedRandom), {
-      from: account, value
-    }, 'isParticipating');
+    this.setState({ isLoading: true }, () => {
+      this.props.dispatch(ethereumActions.send({
+        contractName: 'seedom', method: 'participate', args: [messageHex], value
+      }));
+    });
   }
 
   handleRaise = (entries) => {
-    const { account, raiser, contractAddress } = this.state;
+    const { raiser } = this.props.state;
     const value = entries.times(raiser.valuePerEntry);
-
-    this.handleSend(null, {
-      to: contractAddress, value, from: account
-    }, 'isRaising');
-  }
-
-  handleReveal = (random) => {
-    const { account } = this.state;
-    const randomHex = randoms.hexRandom(random);
-
-    this.handleSend(this.getContract().rpc.methods.reveal(randomHex), {
-      from: account
-    }, 'isRevealing');
+    this.setState({ isLoading: true }, () => {
+      this.props.dispatch(ethereumActions.send({
+        contractName: 'seedom', value
+      }));
+    });
   }
 
   handleWithdraw = (contractAddress) => {
-    const { account } = this.state;
-    const contract = this.contracts[contractAddress];
-
-    this.handleSend(contract.rpc.methods.withdraw(), {
-      from: account
-    }, 'isWithdrawing');
+    this.setState({ isLoading: true }, () => {
+      this.props.dispatch(ethereumActions.send({
+        contractName: 'seedom', contractAddress, method: 'withdraw'
+      }));
+    });
   }
 
   handleCancel = () => {
-    const { account } = this.state;
-
-    this.handleSend(this.getContract().rpc.methods.cancel(), {
-      from: account
-    }, 'isCancelling');
+    this.setState({ isLoading: true }, () => {
+      this.props.dispatch(ethereumActions.send({
+        contractName: 'seedom', method: 'cancel'
+      }));
+    });
   }
 
   render() {
     const {
       network,
       account,
-      contractAddress,
+      primaryContractAddresses,
       raiser,
       state,
       participant,
       balances,
       feed,
       isLoading
-    } = this.state;
+    } = this.props.state;
 
     // render only if we have a contract address, raiser, and state
-    if (!contractAddress || !raiser || !state) {
+    if (!primaryContractAddresses || !raiser || !state) {
       return null;
     }
 
@@ -107,7 +87,6 @@ class Seed extends Component {
             isLoading={isLoading}
             onParticipate={this.handleParticipate}
             onRaise={this.handleRaise}
-            onReveal={this.handleReveal}
             onWithdraw={this.handleWithdraw}
             onCancel={this.handleCancel}
           />
@@ -119,14 +98,9 @@ class Seed extends Component {
         </div>
         <div className="container">
           <div className="content has-text-centered">
-            <Feed feed={feed} network={network} />
-          </div>
-        </div>
-        <div className="container">
-          <div className="content has-text-centered">
             <p>
               View more live <strong>Seedom</strong> data on&nbsp;
-              <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network, contractAddress)}>Etherscan</a>.
+              <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network, primaryContractAddresses.seedom)}>Etherscan</a>.
             </p>
           </div>
         </div>
@@ -135,18 +109,20 @@ class Seed extends Component {
   }
 }
 
+/*
+<div className="container">
+          <div className="content has-text-centered">
+            <Feed feed={feed} network={network} />
+          </div>
+        </div>
+        */
+
 const mapStateToProps = state => {
-  return {
-    todos: getVisibleTodos(state.todos, state.visibilityFilter)
-  }
+  return { state };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    onTodoClick: id => {
-      dispatch(toggleTodo(id))
-    }
-  }
+  return { dispatch };
 };
 
 export default connect(

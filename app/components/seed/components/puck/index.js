@@ -126,8 +126,7 @@ class Puck extends Component {
     raiser: PropTypes.shape(),
     state: PropTypes.shape(),
     participant: PropTypes.shape(),
-    balances: PropTypes.shape(),
-    isLoading: PropTypes.shape(),
+    isLoading: PropTypes.bool,
     onParticipate: PropTypes.func.isRequired,
     onRaise: PropTypes.func.isRequired,
     onWithdraw: PropTypes.func.isRequired,
@@ -252,29 +251,23 @@ class Puck extends Component {
       hasSkippedWithdraw
     });
 
-    const isAnyLoading =
-      isLoading.isParticipating ||
-      isLoading.isRaising ||
-      isLoading.isWithdrawing ||
-      isLoading.isCancelling;
-
     return (
       <div className="seedom-puck">
         <div className="intro">
           <img alt="seedom" src={seedomLogo} />
         </div>
         <div className="interface">
-          <Circles percentage={50} isLoading={isAnyLoading} raiser={raiser} />
+          <Circles percentage={50} isLoading={isLoading} raiser={raiser} />
           <Seed isShown={component === 'seed'} />
           <Begin isShown={component === 'begin'} raiser={raiser} onBegin={this.handleBegin} />
-          <Participate isShown={component === 'participate'} raiser={raiser} isParticipating={isLoading.isParticipating} onParticipate={this.handleParticipate} />
+          <Participate isShown={component === 'participate'} raiser={raiser} isParticipating={isLoading} onParticipate={this.handleParticipate} />
           <Ticket isShown={component === 'ticket'} raiser={raiser} random={random} onTicketSeen={this.handleTicketSeen} />
           <Participated isShown={component === 'participated'} participant={participant} onStartedRaising={this.handleStartedRaising} />
-          <Raise isShown={component === 'raise'} raiser={raiser} isRaising={isLoading.isRaising} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
+          <Raise isShown={component === 'raise'} raiser={raiser} isRaising={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
           <End isShown={component === 'end'} />
           <Win isShown={component === 'win'} state={state} network={network} />
-          <Withdraw isShown={component === 'withdraw'} balances={balances} isWithdrawing={isLoading.isWithdrawing} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
-          <Cancel isShown={component === 'cancel'} isCancelling={isLoading.isCancelling} onCancel={this.handleCancel} />
+          <Withdraw isShown={component === 'withdraw'} balances={balances} isWithdrawing={isLoading} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
+          <Cancel isShown={component === 'cancel'} isCancelling={isLoading} onCancel={this.handleCancel} />
           <Cancelled isShown={component === 'cancelled'} />
           <Error isShown={component && component.startsWith('error')} error={component} />
         </div>

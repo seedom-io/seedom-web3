@@ -43,7 +43,7 @@ const handleParticipation = (prevState, action) => {
   newState.feed = updateFeed(newState.feed, action);
 
   if (action.data.participant === newState.account) {
-    newState.isLoading.isParticipating = false;
+    newState.isLoading = false;
     newState.participant.entries = action.participation.entries;
     newState.participant.message = action.participation.message;
   }
@@ -57,7 +57,7 @@ const handleRaise = (prevState, action) => {
   newState.feed = updateFeed(newState.feed, action);
 
   if (action.raise.participant === newState.account) {
-    newState.isLoading.isRaising = false;
+    newState.isLoading = false;
     newState.participant.entries = newState.participant.entries.plus(action.raise.entries);
   }
 
@@ -89,7 +89,7 @@ const handleSelection = (prevState, action) => {
 
 const handleCancellation = (prevState) => {
   const newState = { ...prevState };
-  newState.isLoading.isCancelling = false;
+  newState.isLoading = false;
   newState.state.cancelled = true;
 
   // update our cancellation balance
@@ -104,7 +104,7 @@ const handleWithdrawal = (prevState, action) => {
   const newState = { ...prevState };
   // set our balance to zero if we withdrew
   if (action.data.address === newState.account) {
-    newState.isLoading.isWithdrawing = false;
+    newState.isLoading = false;
     delete newState.balances[action.contractAddress];
   }
   return newState;
