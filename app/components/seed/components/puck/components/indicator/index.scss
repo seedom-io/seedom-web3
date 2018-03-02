@@ -1,0 +1,87 @@
+@import '../../../../../../sass/theme.scss';
+
+.seedom-overlay > .indicator {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: white;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  transform: scale(0);
+
+  &.show {
+    animation: 0.5s ease-out 1s 1 zoomIn;
+    animation-fill-mode: forwards;
+  }
+
+  .circle {
+    stroke: transparent;
+    transform-origin: 50% 50%;
+
+    &.checkmark {
+      fill: $success;
+    }
+
+    &.waiting {
+      fill: $waiting;
+      animation: 2s ease-in-out 1s infinite pulse;
+    }
+
+    &.error {
+      fill: $error;
+    }
+
+    &.cancel {
+      fill: $error;
+      animation: 2s ease-in-out 1s infinite pulse;
+    }
+
+    &.selection {
+      fill: $primary;
+      animation: 5s ease-in-out 0s infinite win;
+    }
+
+    &.success {
+      fill: $primary;
+      animation: 2s ease-in-out 1s infinite pulse;
+    }
+
+  }
+
+  .element {
+    fill: transparent;
+    transform-origin: 50% 50%;
+
+    &.pulse {
+      fill: $primary;
+      stroke: transparent;
+      animation: 3s ease-in-out 0s infinite win;
+    }
+
+  }
+
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+@keyframes win {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
