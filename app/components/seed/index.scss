@@ -1,22 +1,57 @@
 @import '../../sass/theme.scss';
 
-.seedom-dapp {
+.seedom-seed {
+  display: flex;
+  flex-direction: column;
 
-  .dapp-container {
+  .dapp {
     display: flex;
     flex-direction: column;
+    align-items: center;
+
+    .seedom-stats {
+      flex: none;
+    }
+
+    .seedom-puck {
+      width: 90%;
+    }
 
     @include tablet {
       flex-direction: column;
+
+      .seedom-puck {
+        width: 70%;
+      }
+
     }
 
     @include desktop {
       flex-direction: row;
+
+      .seedom-stats {
+        flex: 0.2;
+      }
+
+      .seedom-puck {
+        flex: 0.6;
+      }
     }
 
+    @include fullhd {
+      flex-direction: row;
+
+      .seedom-stats {
+        flex: 0.3;
+      }
+
+      .seedom-puck {
+        flex: 0.4;
+      }
+    }
   }
 
-  .container {
+  .accessory {
     margin-top: 40px;
     text-shadow: black 0px 0 20px;
   }

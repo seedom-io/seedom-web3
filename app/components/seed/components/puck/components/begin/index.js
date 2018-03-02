@@ -15,7 +15,10 @@ class Begin extends Content {
         </div>
         <div className="seedom-overlay layout">
           <div className="header-footer division text">
-            <div>1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
+            <div>
+              1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}
+              <span className="ether">Ξ</span>
+            </div>
             <div className="supporting">now seeding</div>
           </div>
           <div className="header-footer division">

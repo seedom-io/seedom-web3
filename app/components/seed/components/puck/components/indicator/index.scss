@@ -38,7 +38,7 @@
       animation: 2s ease-in-out 1s infinite pulse;
     }
 
-    &.win {
+    &.selection {
       fill: $primary;
       animation: 5s ease-in-out 0s infinite win;
     }

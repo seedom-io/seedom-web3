@@ -1,16 +1,10 @@
-.seedom-content.win {
+.seedom-content.selection {
 
   .division.charity {
-
-    .charity-logo {
-      height: 20%;
-      margin-top: 10%;
-    }
-
+    flex: 1;
   }
 
-  .division.random {
-    flex: none;
+  .division.display {
     display: flex;
     flex-direction: row;
     width: 75%;
@@ -25,6 +19,10 @@
 
     .right {
       flex: 1;
+    }
+
+    &.bottom {
+      align-items: top;
     }
 
   }

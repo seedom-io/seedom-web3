@@ -68,10 +68,10 @@ class Seed extends Component {
     }
 
     return (
-      <div className="seedom-dapp">
+      <div className="seedom-seed">
         <ToastContainer />
         <Header raiser={raiser} network={network} />
-        <div className="dapp-container">
+        <div className="dapp">
           <Stats
             side="left"
             raiser={raiser}
@@ -96,7 +96,7 @@ class Seed extends Component {
             state={state}
           />
         </div>
-        <div className="container">
+        <div className="accessory">
           <div className="content has-text-centered">
             <p>
               View more live <strong>Seedom</strong> data on&nbsp;
@@ -110,7 +110,7 @@ class Seed extends Component {
 }
 
 /*
-<div className="container">
+<div className="accessory">
           <div className="content has-text-centered">
             <Feed feed={feed} network={network} />
           </div>

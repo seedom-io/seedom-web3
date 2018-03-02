@@ -1,8 +1,7 @@
 @import '../../../../../../sass/theme.scss';
 
 .seedom-circles {
-  position: absolute;
-  left: 0; top: 0; right: 0; bottom: 0;
+  position: relative;
   transform: rotate(-90deg);
 
   text {
@@ -83,16 +82,6 @@
 
         circle {
           stroke: $participation-phase;
-          transform-origin: 50% 50%;
-        }
-      }
-
-      &.revelation {
-        animation: ringIn $revelation-phase-duration ease-out $revelation-phase-delay;
-        animation-fill-mode: forwards;
-
-        circle {
-          stroke: $revelation-phase;
           transform-origin: 50% 50%;
         }
       }

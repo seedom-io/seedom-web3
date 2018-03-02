@@ -16,7 +16,7 @@ class Indicator extends Component {
             error: (
               <path className="element" d="M16,16 L36,36 M36,16 L16,36" />
             ),
-            win: (
+            selection: (
               <circle className="element pulse" cx="26" cy="26" r="25" />
             )
           }[type]}

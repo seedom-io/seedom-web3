@@ -33,3 +33,13 @@ $progress-phase-duration: 1s;
 
 $loading-spin-duration: 8s;
 $loading-fade-duration: 0.5s;
+
+.ether {
+  color: $primary;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  &.is-dark {
+    color: $grey-dark;
+  }
+
+}

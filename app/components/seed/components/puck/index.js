@@ -8,7 +8,7 @@ import Participate from './components/participate';
 import Participated from './components/participated';
 import Raise from './components/raise';
 import End from './components/end';
-import Win from './components/win';
+import Select from './components/select';
 import Withdraw from './components/withdraw';
 import Cancel from './components/cancel';
 import Cancelled from './components/cancelled';
@@ -55,6 +55,7 @@ const getComponent = ({
   hasStartedRaising,
   hasSkippedWithdraw
 }) => {
+  return 'begin';
   // balances?
   if ((Object.keys(balances).length > 0) && !hasSkippedWithdraw) {
     return 'withdraw';
@@ -62,7 +63,7 @@ const getComponent = ({
 
   // winner?
   if (!bytes.isZero20(state.winner)) {
-    return 'win';
+    return 'select';
   }
 
   // cancelled?
@@ -265,7 +266,7 @@ class Puck extends Component {
           <Participated isShown={component === 'participated'} participant={participant} onStartedRaising={this.handleStartedRaising} />
           <Raise isShown={component === 'raise'} raiser={raiser} isRaising={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
           <End isShown={component === 'end'} />
-          <Win isShown={component === 'win'} state={state} network={network} />
+          <Select isShown={component === 'select'} state={state} network={network} />
           <Withdraw isShown={component === 'withdraw'} balances={balances} isWithdrawing={isLoading} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
           <Cancel isShown={component === 'cancel'} isCancelling={isLoading} onCancel={this.handleCancel} />
           <Cancelled isShown={component === 'cancelled'} />

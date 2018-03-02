@@ -5,7 +5,6 @@ import './index.scss';
 class Stat extends Component {
   render() {
     const { title, value, symbol } = this.props;
-
     return (
       <div className="stat">
         <div className="stat-title">
@@ -13,7 +12,7 @@ class Stat extends Component {
         </div>
         <div className="stat-value">
           {value}
-          <span className="stat-symbol">
+          <span className="ether">
             {symbol}
           </span>
         </div>
@@ -40,7 +39,6 @@ class Stats extends Component {
       <div className={`seedom-stats ${side}`}>
         {((side === 'top') || (side === 'left')) &&
           <div className="panel left">
-            <Stat title="total received" value={localeDecimal(getEtherFromWei(received))} symbol="Ξ" />
             <Stat title="charity will get" value={localeDecimal(getEtherFromWei(charityReward))} symbol="Ξ" />
             <Stat title="selected will get" value={localeDecimal(getEtherFromWei(selectedReward))} symbol="Ξ" />
           </div>

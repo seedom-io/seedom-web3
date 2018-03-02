@@ -14,65 +14,35 @@ const BACKGROUND_PADDING = 50;
 const LOADERS_PERCENTAGE = 20;
 const LOADERS_TEXT = 'COMMUNICATING WITH ETHEREUM';
 
-const getPhasePercentages = (raiser, now) => {
-  if (!raiser) {
-    return {
-      participation: 0,
-      revelation: 0,
-      progress: 0
-    };
-  }
-
-  const { deployTime, revealTime, endTime } = raiser;
+const getProgressPercentage = (raiser, now) => {
+  const { deployTime, endTime } = raiser;
   const raiserTime = endTime - deployTime;
-  const participationTime = revealTime - deployTime;
-  const revelationTime = endTime - revealTime;
   const progressTime = now - deployTime;
-
-  return {
-    participation: 100 * (participationTime / raiserTime),
-    revelation: 100 * (revelationTime / raiserTime),
-    progress: progressTime > raiserTime ? 100 : 100 * (progressTime / raiserTime)
-  };
+  return progressTime > raiserTime ? 100 : 100 * (progressTime / raiserTime);
 };
 
 const getProgressText = (raiser, now) => {
-  if (!raiser) {
-    return null;
-  }
-
-  const { revealTime, endTime } = raiser;
-  const timeUntilReveal = revealTime - now;
-  const timeUntilEnd = endTime - now;
+  const { endTime } = raiser;
+  let timeUntilEnd = endTime - now;
 
   if (timeUntilEnd <= 0) {
     return 'FINISHED';
   }
 
-  let timeUntilNextPhase;
-  let phaseName;
-  if (timeUntilReveal >= 0) {
-    timeUntilNextPhase = timeUntilReveal;
-    phaseName = 'REVEAL';
-  } else if (timeUntilEnd >= 0) {
-    timeUntilNextPhase = timeUntilEnd;
-    phaseName = 'END';
-  }
-
-  timeUntilNextPhase /= 1000;
+  timeUntilEnd /= 1000;
   // calculate (and subtract) whole days
-  const days = Math.floor(timeUntilNextPhase / 86400);
-  timeUntilNextPhase -= days * 86400;
+  const days = Math.floor(timeUntilEnd / 86400);
+  timeUntilEnd -= days * 86400;
   // calculate (and subtract) whole hours
-  const hours = Math.floor(timeUntilNextPhase / 3600) % 24;
-  timeUntilNextPhase -= hours * 3600;
+  const hours = Math.floor(timeUntilEnd / 3600) % 24;
+  timeUntilEnd -= hours * 3600;
   // calculate (and subtract) whole minutes
-  const minutes = Math.floor(timeUntilNextPhase / 60) % 60;
-  timeUntilNextPhase -= minutes * 60;
+  const minutes = Math.floor(timeUntilEnd / 60) % 60;
+  timeUntilEnd -= minutes * 60;
   // what's left is seconds
-  const seconds = Math.floor(timeUntilNextPhase % 60);
+  const seconds = Math.floor(timeUntilEnd % 60);
 
-  return `${phaseName} IN - ${days}D ${hours}H ${minutes}M ${seconds}S`;
+  return `ENDS IN - ${days}D ${hours}H ${minutes}M ${seconds}S`;
 };
 
 const getProgressRadius = () => {
@@ -83,7 +53,7 @@ const getLoadersRadius = () => {
   return FULL_RADIUS - (LOADERS_STROKE_WIDTH / 2);
 };
 
-const getPhasesRadius = () => {
+const getPhaseRadius = () => {
   return FULL_RADIUS - (PHASE_STROKE_WIDTH / 2);
 };
 
@@ -91,15 +61,13 @@ const getPathFlipped = (percentage) => {
   return percentage > 30 && percentage < 70;
 };
 
-const getPathStyle = (radius, percentage, offset) => {
+const getPathStyle = (radius, percentage) => {
   const diameter = Math.PI * 2 * radius;
   const dashoffset = ((100 - percentage) / 100) * diameter;
-  const rotation = 360 * (offset / 100);
 
   return {
     strokeDasharray: `${diameter}px ${diameter}px`,
-    strokeDashoffset: `${dashoffset}px`,
-    transform: `rotate(${rotation}deg)`
+    strokeDashoffset: `${dashoffset}px`
   };
 };
 
@@ -153,28 +121,25 @@ class Circles extends React.Component {
     const { raiser, isLoading } = this.props;
     const { now } = this.state;
 
-    const phasePercentages = getPhasePercentages(raiser, now);
+    const progressPercentage = getProgressPercentage(raiser, now);
     const progressText = getProgressText(raiser, now);
 
     const progressRadius = getProgressRadius();
     const loadersRadius = getLoadersRadius();
 
-    const progressPathStyle = getPathStyle(progressRadius, phasePercentages.progress);
-    const participationPathStyle = getPathStyle(progressRadius, phasePercentages.participation);
-    const revelationPathStyle = getPathStyle(progressRadius, phasePercentages.revelation, phasePercentages.participation);
+    const progressPathStyle = getPathStyle(progressRadius, progressPercentage);
+    const participationPathStyle = getPathStyle(progressRadius, 100);
     const loadersPathStyle = getPathStyle(loadersRadius, LOADERS_PERCENTAGE);
 
-    const progressPathFlipped = getPathFlipped(phasePercentages.progress);
-    const participationPathFlipped = getPathFlipped(phasePercentages.participation);
+    const progressPathFlipped = getPathFlipped(progressPercentage);
 
     const progressPathDescription = getPathDescription(progressRadius);
     const flippedProgressPathDescription = getPathDescription(progressRadius, true);
     const loadersPathDescription = getPathDescription(loadersRadius);
 
-    const progressTextShown = getProgressTextShown(phasePercentages.progress);
+    const progressTextShown = getProgressTextShown(progressPercentage);
 
-    const participationTextOffset = getTextOffset(participationPathFlipped, phasePercentages.participation);
-    const progressTextOffset = getTextOffset(progressPathFlipped, phasePercentages.progress);
+    const progressTextOffset = getTextOffset(progressPathFlipped, progressPercentage);
 
     return (
       <svg
@@ -252,7 +217,6 @@ class Circles extends React.Component {
           />
 
           <g className="phase participation">
-
             <circle
               cx={CENTER_X}
               cy={CENTER_Y}
@@ -261,32 +225,6 @@ class Circles extends React.Component {
               fillOpacity={0}
               style={participationPathStyle}
             />
-
-            <text>
-              <textPath className={`phase-text ${participationPathFlipped ? "flipped" : null}`} xlinkHref={`${participationPathFlipped ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${participationTextOffset}%`}>
-                PARTICIPATION PHASE
-              </textPath>
-            </text>
-
-          </g>
-
-          <g className="phase revelation">
-
-            <circle
-              cx={CENTER_X}
-              cy={CENTER_Y}
-              r={progressRadius}
-              strokeWidth={PHASE_STROKE_WIDTH}
-              fillOpacity={0}
-              style={revelationPathStyle}
-            />
-
-            <text>
-              <textPath className="phase-text" xlinkHref="#seedom-circles-progress-path" startOffset="99%">
-                REVELATION PHASE
-              </textPath>
-            </text>
-
           </g>
 
           <g className="phase progress">

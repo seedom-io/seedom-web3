@@ -45,7 +45,10 @@ class Withdraw extends Content {
         <div className="seedom-overlay layout">
           <div className="division text top">
             <div>you have</div>
-            <div className="balance">{localeDecimal(getEtherFromWei(maxBalance.balance))}Ξ</div>
+            <div className="balance">
+              {localeDecimal(getEtherFromWei(maxBalance.balance))}
+              <span className="ether is-dark">Ξ</span>
+            </div>
             <div>to withdraw!</div>
           </div>
           <div className="division bottom">
