@@ -18,9 +18,9 @@
     }
 
     .seedom-puck {
-      width: 90%;
-      margin-top: $large-padding;
-      margin-bottom: $large-padding;
+      width: 100%;
+      margin-top: $medium-padding;
+      margin-bottom: $medium-padding;
     }
 
     @include tablet {
@@ -28,6 +28,8 @@
 
       .seedom-puck {
         width: 70%;
+        margin-top: $large-padding;
+        margin-bottom: $large-padding;
       }
 
     }
