@@ -152,6 +152,7 @@ class Circles extends React.Component {
           cx={CENTER_X}
           cy={CENTER_Y}
           r={FULL_RADIUS}
+          opacity={0.9}
         />
 
         <g className={`loaders-container ${isLoading ? 'show' : 'hide'}`}>

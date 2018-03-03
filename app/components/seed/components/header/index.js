@@ -4,10 +4,10 @@ import './index.scss';
 
 class Item extends Component {
   render() {
-    const { title, value } = this.props;
+    const { type, title, value } = this.props;
 
     return (
-      <div className="item">
+      <div className={`item ${type}`}>
         <div className="item-title">
           {title}
         </div>
@@ -28,9 +28,10 @@ class Header extends Component {
 
     return (
       <div className="seedom-header">
-        <Item title="start date" value={dates.localeDate(raiser.deployTime)} />
-        <Item title="network" value={network} />
-        <Item title="end date" value={dates.localeDate(raiser.endTime)} />
+        <div className="background" />
+        <Item type="side" title="start date" value={dates.localeDate(raiser.deployTime)} />
+        <Item type="center" title="network" value={network} />
+        <Item type="side" title="end date" value={dates.localeDate(raiser.endTime)} />
       </div>
     );
   }

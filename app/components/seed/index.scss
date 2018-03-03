@@ -3,6 +3,10 @@
 .seedom-seed {
   display: flex;
   flex-direction: column;
+  background-image: url('../../img/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 
   .dapp {
     display: flex;
@@ -15,6 +19,8 @@
 
     .seedom-puck {
       width: 90%;
+      margin-top: $large-padding;
+      margin-bottom: $large-padding;
     }
 
     @include tablet {
@@ -52,8 +58,19 @@
   }
 
   .accessory {
-    margin-top: 40px;
-    text-shadow: black 0px 0 20px;
+    margin-top: $large-padding;
+    color: white;
+    text-shadow: black 0px 0 10px;
+    margin-bottom: $large-padding;
+
+    strong {
+      color: white;
+    }
+
+    a {
+      font-weight: bold;
+    }
+
   }
 
 }

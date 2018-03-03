@@ -14,6 +14,10 @@ $success: $primary;
 $error: darken(#ff3860, 10%);
 $win: purple;
 
+$large-padding: 50px;
+$medium-padding: 20px;
+$small-padding: 10px;
+
 $navbar-item-img-max-height: auto;
 
 $puck-background: lighten($background, 10%);
@@ -41,5 +45,4 @@ $loading-fade-duration: 0.5s;
   &.is-dark {
     color: $grey-dark;
   }
-
 }

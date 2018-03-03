@@ -7,6 +7,7 @@ import Begin from './components/begin';
 import Participate from './components/participate';
 import Participated from './components/participated';
 import Raise from './components/raise';
+import Reveal from './components/reveal';
 import End from './components/end';
 import Select from './components/select';
 import Withdraw from './components/withdraw';
@@ -14,7 +15,7 @@ import Cancel from './components/cancel';
 import Cancelled from './components/cancelled';
 import Error from './components/error';
 import Ticket from './components/ticket';
-import seedomLogo from '../../../../../../seedom-assets/logo/o/seedom-o-outlined-white-transparent.svg';
+import seedomLogo from '../../../../../../seedom-assets/logo/o/seedom-o-white-transparent.svg';
 import './index.scss';
 
 const PHASE_REFRESH = 1000;
@@ -265,6 +266,7 @@ class Puck extends Component {
           <Ticket isShown={component === 'ticket'} raiser={raiser} random={random} onTicketSeen={this.handleTicketSeen} />
           <Participated isShown={component === 'participated'} participant={participant} onStartedRaising={this.handleStartedRaising} />
           <Raise isShown={component === 'raise'} raiser={raiser} isRaising={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
+          <Reveal isShown={component === 'reveal'} />
           <End isShown={component === 'end'} />
           <Select isShown={component === 'select'} state={state} network={network} />
           <Withdraw isShown={component === 'withdraw'} balances={balances} isWithdrawing={isLoading} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
