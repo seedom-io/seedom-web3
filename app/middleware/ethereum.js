@@ -60,7 +60,7 @@ const ethereumMiddleware = (store) => {
       contracts[contractName][release.address] = {
         address: release.address,
         ws: new wsWeb3.eth.Contract(release.abi, release.address),
-        rpc: new rpcWeb3.eth.Contract(release.abi, release.address)
+        rpc: rpcWeb3 ? new rpcWeb3.eth.Contract(release.abi, release.address) : null
       };
     }
   }
