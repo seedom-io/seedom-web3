@@ -20,7 +20,7 @@
 
 .navbar-item,
 .navbar-link {
-  padding: 0rem 1rem;
+  padding: 0.2rem 1rem;
 }
 
 .navbar-start {
@@ -33,6 +33,10 @@
     }
 
   }
+}
+
+.navbar-item img {
+  max-height: 3.6rem;
 }
 
 .navbar-end {
