@@ -38,13 +38,15 @@ class Stats extends Component {
     return (
       <div className={`seedom-stats ${side}`}>
         {((side === 'top') || (side === 'left')) &&
-          <div className="panel left">
+          <div className="panel">
+            <div className="background" />
             <Stat title="charity will get" value={localeDecimal(getEtherFromWei(charityReward))} symbol="Ξ" />
             <Stat title="selected will get" value={localeDecimal(getEtherFromWei(selectedReward))} symbol="Ξ" />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&
-          <div className="panel right">
+          <div className="panel">
+            <div className="background" />
             <Stat title="total participants" value={localeNumber(totalParticipants)} />
             <Stat title="total entries" value={localeNumber(totalEntries)} />
           </div>
