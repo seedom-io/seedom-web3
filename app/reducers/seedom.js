@@ -81,7 +81,7 @@ const handleSelection = (prevState, action) => {
   if (action.selection.selected === newState.account) {
     const { raiser, state, primaryContractAddresses } = newState;
     newState.balances[primaryContractAddresses.seedom] =
-      state.totalEntries.times(raiser.winnerSplit).dividedBy(1000).times(raiser.valuePerEntry);
+      state.totalEntries.times(raiser.selectedSplit).dividedBy(1000).times(raiser.valuePerEntry);
   }
 
   return newState;
@@ -110,6 +110,14 @@ const handleWithdrawal = (prevState, action) => {
   return newState;
 };
 
+const handleEthereumSend = (prevState) => {
+  return { ...prevState, isLoading: true };
+};
+
+const handleEthereumSendError = (prevState) => {
+  return { ...prevState, isLoading: false };
+};
+
 const seedomReducer = (prevState = {}, action) => {
   switch (action.type) {
     case 'SEEDOM_RAISER':
@@ -132,8 +140,12 @@ const seedomReducer = (prevState = {}, action) => {
       return handleSelection(prevState, action);
     case 'SEEDOM_CANCELLATION':
       return handleCancellation(prevState);
-    case 'SEEDOM_WITHDRAW':
+    case 'SEEDOM_WITHDRAWAL':
       return handleWithdrawal(prevState, action);
+    case 'ETHEREUM_SEND':
+      return handleEthereumSend(prevState);
+    case 'ETHEREUM_SEND_ERROR':
+      return handleEthereumSendError(prevState);
     default:
       return prevState;
   }

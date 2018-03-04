@@ -196,13 +196,14 @@ const ethereumMiddleware = (store) => {
     getWsMethod(contractName, contractAddress, method, args).call({ from: account })
       .then(
         data => {
-          next({ ...action, type: 'ETHEREUM_CALL_DATA', data });
+          store.dispatch({ ...action, type: 'ETHEREUM_CALL_DATA', data });
         },
         error => {
           console.error(error);
-          next({ ...action, type: 'ETHEREUM_CALL_ERROR', error });
+          store.dispatch({ ...action, type: 'ETHEREUM_CALL_ERROR', error });
         }
       );
+    return next(action);
   };
 
   const handleAllCall = (next, action) => {
@@ -222,13 +223,19 @@ const ethereumMiddleware = (store) => {
       for (let i = 0; i < datas.length; i += 1) {
         data[contractAddresses[i]] = datas[i];
       }
-      next({ ...action, type: 'ETHEREUM_ALLCALL_DATA', data });
+      store.dispatch({ ...action, type: 'ETHEREUM_ALLCALL_DATA', data });
     });
+
+    return next(action);
   };
 
-  const handleSendError = (error, next, action) => {
+  const handleSendError = (error, action) => {
     console.error(error.message);
-    next({ ...action, type: 'ETHEREUM_SEND_ERROR', error });
+    store.dispatch({ ...action, type: 'ETHEREUM_SEND_ERROR', error });
+  };
+
+  const handleSendSuccess = (action) => {
+    store.dispatch({ ...action, type: 'ETHEREUM_SEND_SUCCESS' });
   };
 
   const handleSendCall = (options, next, action) => {
@@ -251,7 +258,12 @@ const ethereumMiddleware = (store) => {
         .on('error', (sendError) => {
           const { message } = sendError;
           if (message.includes('User denied')) {
-            handleSendError(sendError, next, action);
+            handleSendError(sendError, action);
+          }
+        })
+        .on('confirmation', (confirmationNumber) => {
+          if (confirmationNumber === 0) {
+            handleSendSuccess(action);
           }
         });
     };
@@ -262,10 +274,13 @@ const ethereumMiddleware = (store) => {
     const options = {
       value,
       from: account,
-      to: contractAddress,
       gas: GAS,
       gasPrice: GAS_PRICE,
     };
+
+    options.to = !contractAddress
+      ? primaryContractAddresses[contractName]
+      : contractAddress;
 
     const handler = handleSendCall(options, next, action);
     if (!method) {
@@ -273,6 +288,8 @@ const ethereumMiddleware = (store) => {
     } else {
       getWsMethod(contractName, contractAddress, method, args).call(options, handler);
     }
+
+    return next(action);
   };
 
   return next => action => {

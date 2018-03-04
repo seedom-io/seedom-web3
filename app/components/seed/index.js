@@ -16,37 +16,29 @@ class Seed extends Component {
     const { raiser } = this.props.state;
     const messageHex = messages.hexMessage(message);
     const value = entries.times(raiser.valuePerEntry);
-    this.setState({ isLoading: true }, () => {
-      this.props.dispatch(ethereumActions.send({
-        contractName: 'seedom', method: 'participate', args: [messageHex], value
-      }));
-    });
+    this.props.dispatch(ethereumActions.send({
+      contractName: 'seedom', method: 'participate', args: [messageHex], value
+    }));
   }
 
   handleRaise = (entries) => {
     const { raiser } = this.props.state;
     const value = entries.times(raiser.valuePerEntry);
-    this.setState({ isLoading: true }, () => {
-      this.props.dispatch(ethereumActions.send({
-        contractName: 'seedom', value
-      }));
-    });
+    this.props.dispatch(ethereumActions.send({
+      contractName: 'seedom', value
+    }));
   }
 
   handleWithdraw = (contractAddress) => {
-    this.setState({ isLoading: true }, () => {
-      this.props.dispatch(ethereumActions.send({
-        contractName: 'seedom', contractAddress, method: 'withdraw'
-      }));
-    });
+    this.props.dispatch(ethereumActions.send({
+      contractName: 'seedom', contractAddress, method: 'withdraw'
+    }));
   }
 
   handleCancel = () => {
-    this.setState({ isLoading: true }, () => {
-      this.props.dispatch(ethereumActions.send({
-        contractName: 'seedom', method: 'cancel'
-      }));
-    });
+    this.props.dispatch(ethereumActions.send({
+      contractName: 'seedom', method: 'cancel'
+    }));
   }
 
   render() {

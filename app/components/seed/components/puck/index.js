@@ -159,7 +159,7 @@ class Puck extends Component {
       isParticipating: false,
       isTicketing: false,
       isRaising: false,
-      isWithdrawing: false
+      isWithdrawing: true
     };
   }
 
@@ -214,7 +214,7 @@ class Puck extends Component {
   }
 
   handleWithdrawSkipped = () => {
-    this.setState({ isWithdrawing: true });
+    this.setState({ isWithdrawing: false });
   }
 
   handleCancel = () => {
@@ -266,7 +266,7 @@ class Puck extends Component {
           <Begin isShown={component === 'begin'} raiser={raiser} onBegin={this.handleBegin} />
           <Participate isShown={component === 'participate'} raiser={raiser} isLoading={isLoading} onParticipate={this.handleParticipate} />
           <Ticket isShown={component === 'ticket'} account={account} raiser={raiser} participant={participant} onTicketingOver={this.handleTicketingOver} />
-          <Participated isShown={component === 'participated'} participant={participant} onRaising={this.handleRaising} />
+          <Participated isShown={component === 'participated'} participant={participant} onRaising={this.handleRaising} onTicketing={this.handleTicketing} />
           <Raise isShown={component === 'raise'} raiser={raiser} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
           <Reveal isShown={component === 'reveal'} />
           <End isShown={component === 'end'} />

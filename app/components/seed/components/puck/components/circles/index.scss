@@ -30,7 +30,7 @@
     opacity: 0;
     transform-origin: 50% 50%;
 
-    /*&.show {
+    &.show {
       animation: spin $loading-spin-duration ease-in-out 0s infinite, fadeIn $loading-fade-duration ease-in-out 0s 1;
       animation-fill-mode: forwards;
     }
@@ -38,7 +38,7 @@
     &.hide {
       animation: spin $loading-spin-duration ease-in-out 0s infinite, fadeOut $loading-fade-duration ease-in-out 0s 1;
       animation-fill-mode: forwards;
-    }*/
+    }
 
     .loaders-arc {
       stroke: $primary;
