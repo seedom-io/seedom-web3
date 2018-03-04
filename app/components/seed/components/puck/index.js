@@ -48,22 +48,21 @@ const getComponent = ({
   phase,
   state,
   participant,
-  random,
   balances,
   isLoading,
-  hasBegun,
-  hasSeenTicket,
-  hasStartedRaising,
-  hasSkippedWithdraw
+  isParticipating,
+  isTicketing,
+  isRaising,
+  isWithdrawing
 }) => {
-  return 'begin';
+  return 'select';
   // balances?
-  if ((Object.keys(balances).length > 0) && !hasSkippedWithdraw) {
+  if ((Object.keys(balances).length > 0) && isWithdrawing) {
     return 'withdraw';
   }
 
-  // winner?
-  if (!bytes.isZero20(state.winner)) {
+  // selected participant
+  if (!bytes.isZero20(state.selected)) {
     return 'select';
   }
 
@@ -85,30 +84,38 @@ const getComponent = ({
   // switch on phase
   switch (phase) {
     case 'participation':
-      if (bytes.isZero32(state.charityHashedRandom)) {
+      if (bytes.isZero32(state.charitySecret)) {
         return 'seed';
       }
 
-      if (bytes.isZero32(participant.hashedRandom)) {
-        if (!hasBegun) {
+      if (bytes.isZero32(participant.message)) {
+        if (!isParticipating) {
           return 'begin';
         }
         return 'participate';
       }
 
-      if (!hasSeenTicket && random) {
+      if (isTicketing) {
         return 'ticket';
       }
 
-      if (!hasStartedRaising && !isLoading.isRaising) {
+      if (!isRaising && !isLoading) {
         return 'participated';
       }
 
       return 'raise';
 
     case 'end':
-      if (bytes.isZero32(participant.charityHashedRandom)) {
-        return 'error-charityHashedRandom';
+      if (bytes.isZero32(state.charitySecret)) {
+        return 'error-charitySecret';
+      }
+
+      if (bytes.isZero32(participant.secret)) {
+        return 'error-participantSecret';
+      }
+
+      if (bytes.isZero32(state.charityMessage)) {
+        return 'reveal';
       }
 
       return 'end';
@@ -128,6 +135,7 @@ class Puck extends Component {
     raiser: PropTypes.shape(),
     state: PropTypes.shape(),
     participant: PropTypes.shape(),
+    balances: PropTypes.shape(),
     isLoading: PropTypes.bool,
     onParticipate: PropTypes.func.isRequired,
     onRaise: PropTypes.func.isRequired,
@@ -141,20 +149,18 @@ class Puck extends Component {
     raiser: null,
     state: null,
     participant: null,
-    balances: [],
+    balances: {},
     isLoading: null
   };
 
   constructor(props) {
     super(props);
-
     this.state = {
       phase: null,
-      random: null,
-      hasBegun: false,
-      hasSeenTicket: false,
-      hasStartedRaising: false,
-      hasSkippedWithdraw: false
+      isParticipating: false,
+      isTicketing: false,
+      isRaising: false,
+      isWithdrawing: false
     };
   }
 
@@ -173,34 +179,33 @@ class Puck extends Component {
   }
 
   handleBegin = () => {
-    this.setState({ hasBegun: true });
+    this.setState({ isParticipating: true });
   }
 
-  handleParticipate = ({ random, entries }) => {
-    // temporarily save random for the ticket
-    this.setState({ random }, () => {
-      this.props.onParticipate({ random, entries });
+  handleParticipate = ({ message, entries }) => {
+    this.setState({ isTicketing: true }, () => {
+      this.props.onParticipate({ message, entries });
     });
   }
 
-  handleTicketSeen = () => {
-    // remove random forever
-    this.setState({
-      random: null,
-      hasSeenTicket: true
-    });
+  handleTicketing = () => {
+    this.setState({ isTicketing: true });
   }
 
-  handleStartedRaising = () => {
-    this.setState({ hasStartedRaising: true });
+  handleTicketingOver = () => {
+    this.setState({ isTicketing: false });
+  }
+
+  handleRaising = () => {
+    this.setState({ isRaising: true });
   }
 
   handleRaisingCancelled = () => {
-    this.setState({ hasStartedRaising: false });
+    this.setState({ isRaising: false });
   }
 
   handleRaise = (entries) => {
-    this.setState({ hasStartedRaising: false }, () => {
+    this.setState({ isRaising: false }, () => {
       this.props.onRaise(entries);
     });
   }
@@ -210,7 +215,7 @@ class Puck extends Component {
   }
 
   handleWithdrawSkipped = () => {
-    this.setState({ hasSkippedWithdraw: true });
+    this.setState({ isWithdrawing: true });
   }
 
   handleCancel = () => {
@@ -220,11 +225,10 @@ class Puck extends Component {
   render() {
     const {
       phase,
-      random,
-      hasBegun,
-      hasSeenTicket,
-      hasStartedRaising,
-      hasSkippedWithdraw
+      isParticipating,
+      isTicketing,
+      isRaising,
+      isWithdrawing
     } = this.state;
 
     const {
@@ -244,13 +248,12 @@ class Puck extends Component {
       raiser,
       state,
       participant,
-      random,
       balances,
       isLoading,
-      hasBegun,
-      hasSeenTicket,
-      hasStartedRaising,
-      hasSkippedWithdraw
+      isParticipating,
+      isTicketing,
+      isRaising,
+      isWithdrawing
     });
 
     return (
@@ -262,15 +265,15 @@ class Puck extends Component {
           <Circles percentage={50} isLoading={isLoading} raiser={raiser} />
           <Seed isShown={component === 'seed'} />
           <Begin isShown={component === 'begin'} raiser={raiser} onBegin={this.handleBegin} />
-          <Participate isShown={component === 'participate'} raiser={raiser} isParticipating={isLoading} onParticipate={this.handleParticipate} />
-          <Ticket isShown={component === 'ticket'} raiser={raiser} random={random} onTicketSeen={this.handleTicketSeen} />
-          <Participated isShown={component === 'participated'} participant={participant} onStartedRaising={this.handleStartedRaising} />
-          <Raise isShown={component === 'raise'} raiser={raiser} isRaising={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
+          <Participate isShown={component === 'participate'} raiser={raiser} isLoading={isLoading} onParticipate={this.handleParticipate} />
+          <Ticket isShown={component === 'ticket'} account={account} raiser={raiser} participant={participant} onTicketingOver={this.handleTicketingOver} />
+          <Participated isShown={component === 'participated'} participant={participant} onRaising={this.handleRaising} />
+          <Raise isShown={component === 'raise'} raiser={raiser} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
           <Reveal isShown={component === 'reveal'} />
           <End isShown={component === 'end'} />
           <Select isShown={component === 'select'} state={state} network={network} />
-          <Withdraw isShown={component === 'withdraw'} balances={balances} isWithdrawing={isLoading} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
-          <Cancel isShown={component === 'cancel'} isCancelling={isLoading} onCancel={this.handleCancel} />
+          <Withdraw isShown={component === 'withdraw'} balances={balances} isLoading={isLoading} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
+          <Cancel isShown={component === 'cancel'} isLoading={isLoading} onCancel={this.handleCancel} />
           <Cancelled isShown={component === 'cancelled'} />
           <Error isShown={component && component.startsWith('error')} error={component} />
         </div>

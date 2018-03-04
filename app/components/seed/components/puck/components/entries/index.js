@@ -58,12 +58,16 @@ class Entries extends Component {
         min={1}
         placeholder="entries"
         value={value.toString()}
-        addon={`${localeDecimal(getEtherFromWei(wei))}Ξ`}
         disabled={disabled}
         isValid={isValid}
         onChange={this.handleChange}
         ref={(component) => { this.field = component; }}
-      />
+      >
+        <span>
+          {`${localeDecimal(getEtherFromWei(wei))}`}
+          <span className="ether is-dark">Ξ</span>
+        </span>
+      </Field>
     );
   }
 }

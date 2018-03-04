@@ -9,7 +9,7 @@ import './index.scss';
 
 class Participate extends Content {
   static propTypes = {
-    isParticipating: PropTypes.bool.isRequired
+    isLoading: PropTypes.bool.isRequired
   }
 
   constructor(props) {
@@ -53,7 +53,7 @@ class Participate extends Content {
   }
 
   render() {
-    const { raiser, isParticipating } = this.props;
+    const { raiser, isLoading } = this.props;
 
     const {
       className,
@@ -61,25 +61,25 @@ class Participate extends Content {
 
     return (
       <div className={`seedom-content participate ${className}`}>
-        <Indicator type={isParticipating ? 'waiting' : null} />
-        <div className="seedom-overlay">
+        <Indicator type={isLoading ? 'waiting' : null} />
+        <div className="seedom-overlay layout">
 
-          <div className="charity-logo" />
+          <div className="charity-logo small" />
 
           <Entries
             raiser={raiser}
-            disabled={isParticipating}
+            disabled={isLoading}
             ref={(component) => { this.entries = component; }}
           />
 
           <Message
-            disabled={isParticipating}
+            disabled={isLoading}
             ref={(component) => { this.message = component; }}
           />
 
           <div className="field">
             <div className="control">
-              <a className="button is-dark" disabled={isParticipating} onClick={this.handleSubmit}>PARTICIPATE</a>
+              <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>PARTICIPATE</a>
             </div>
           </div>
 

@@ -57,7 +57,7 @@ class Field extends Component {
       disabled,
       value,
       maxLength,
-      addon,
+      children,
       isValid,
       min
     } = this.props;
@@ -101,7 +101,7 @@ class Field extends Component {
                   onChange={this.handleChange}
                   ref={(input) => { this.input = input; }}
                 />
-                <div className="addon">{addon}</div>
+                <div className="addon">{children}</div>
               </div>
             ),
           }[format]}

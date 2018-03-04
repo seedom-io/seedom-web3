@@ -5,7 +5,7 @@ import Indicator from '../indicator';
 
 class Cancel extends Content {
   static propTypes = {
-    isCancelling: PropTypes.bool.isRequired
+    isLoading: PropTypes.bool.isRequired
   }
 
   handleSubmit = () => {
@@ -15,20 +15,22 @@ class Cancel extends Content {
 
   render() {
     const { className } = this.state;
-    const { isCancelling } = this.props;
+    const { isLoading } = this.props;
 
     return (
       <div className={`seedom-content cancel ${className}`}>
         <Indicator type="cancel" />
-        <div className="seedom-overlay">
-          <div className="charity-logo" />
-        </div>
         <div className="seedom-overlay layout">
-          <div className="division text">end expired<br />please cancel<br />for the community</div>
-          <div className="division">
+          <div className="division top third">
+            <div className="charity-logo small" />
+          </div>
+          <div className="division text center">
+            raiser expired<br />please cancel for<br />the community
+          </div>
+          <div className="division bottom third">
             <div className="field">
               <div className="control">
-                <a className="button is-dark" disabled={isCancelling} onClick={this.handleSubmit}>cancel</a>
+                <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>cancel</a>
               </div>
             </div>
           </div>

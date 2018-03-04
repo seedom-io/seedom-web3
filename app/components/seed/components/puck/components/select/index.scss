@@ -4,25 +4,30 @@
     flex: 1;
   }
 
-  .division.display {
-    display: flex;
-    flex-direction: row;
-    width: 75%;
+  .division {
 
     .header {
-      font-size: 12px;
+      font-size: 14px;
     }
 
-    .left {
-      flex: 1;
-    }
+    &.center {
+      width: 75%;
+      flex-direction: row;
 
-    .right {
-      flex: 1;
+      .left {
+        flex: 1;
+      }
+
+      .right {
+        flex: 1;
+      }
+
     }
 
     &.bottom {
+      width: 50%;
       align-items: top;
+      padding-top: 0;
     }
 
   }

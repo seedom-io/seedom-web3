@@ -18,10 +18,10 @@ class Error extends Content {
         <Indicator type={isShown ? 'error' : null} />
         <div className="seedom-overlay">
           {{
-            charityHashedRandom: (
+            charitySecret: (
               <div className="charity-logo" />
             ),
-            hashedRandom: (
+            participantSecret: (
               <div className="charity-logo" />
             ),
             metamask: (
@@ -31,16 +31,16 @@ class Error extends Content {
         </div>
         <div className="seedom-overlay">
           {{
-            charityHashedRandom: (
+            charitySecret: (
               <div className="seedom-overlay layout">
                 <div className="division text">charity failed<br />to seed</div>
-                <div className="division text">their random<br />message</div>
+                <div className="division text">their secret<br />message</div>
               </div>
             ),
-            hashedRandom: (
+            participantSecret: (
               <div className="seedom-overlay layout">
-                <div className="division text">participation not<br />detected</div>
-                <div className="division text">during<br />participation phase</div>
+                <div className="division text">this raiser<br />has already ended</div>
+                <div className="division text">stay tuned for<br />selection</div>
               </div>
             ),
             metamask: (

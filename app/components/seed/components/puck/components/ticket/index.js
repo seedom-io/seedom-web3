@@ -7,16 +7,17 @@ import seedomTicket from '../../../../../../../../seedom-assets/ticket/seedom-ti
 import * as saveSvgAsPng from 'save-svg-as-png';
 import * as messages from '../../../../../../utils/messages';
 import * as dates from '../../../../../../utils/dates';
+import * as bytes from '../../../../../../utils/bytes';
 
 const MAX_X = 600;
 const MAX_Y = 300;
 
 class Ticket extends Content {
-  saveTicket = () => {
+  saveTicket = (address) => {
     // set ticket to seen
-    saveSvgAsPng.svgAsPngUri(this.svg, { encoderOptions: 0.9, scale: 2.0 }, (uri) => {
-      saveSvgAsPng.download('seedom-ticket.png', uri);
-      this.props.onTicketSeen();
+    saveSvgAsPng.svgAsPngUri(this.svg, { encoderOptions: 1.0, scale: 1.0 }, (uri) => {
+      saveSvgAsPng.download(`seedom-ticket-${address}.png`, uri);
+      this.props.onTicketingOver();
     });
   }
 
@@ -24,10 +25,14 @@ class Ticket extends Content {
     const { className } = this.state;
     const {
       isShown,
-      onTicketSeen,
+      onTicketingOver,
+      account,
       raiser,
-      random
+      participant
     } = this.props;
+
+    const address = account ? bytes.shorten(account) : '';
+    const message = participant ? messages.dehexMessage(participant.message) : '';
 
     return (
       <div className={`seedom-content ticket ${className}`}>
@@ -40,19 +45,22 @@ class Ticket extends Content {
           >
             <image xlinkHref={seedomTicket} x="0" y="0" height={MAX_Y} width={MAX_X} />
             <image xlinkHref={charityLogo} x="92" y="155" width="90" />
-            <text className="random" textAnchor="end" x="570" y="45" fontFamily="CamphorPro Heavy" fontSize="20px" fill="white">
-              {random}
+            <text textAnchor="end" x="570" y="130" fontFamily="CamphorPro Heavy" fontSize="20px" fill="#54BA63">
+              test
             </text>
-            <text className="header" textAnchor="end" x="570" y="70" fontFamily="CamphorPro Regular" fontSize="20px" fill="white">
-              YOUR RANDOM MESSAGE
+            <text textAnchor="end" x="570" y="155" fontFamily="CamphorPro Regular" fontSize="20px" fill="#54BA63">
+              YOUR MESSAGE
             </text>
-            <text className="random" textAnchor="end" x="570" y="215" fontFamily="CamphorPro Regular" fontSize="20px" fill="white">
-              REVEAL DATE
+            <text textAnchor="end" x="570" y="190" fontFamily="CamphorPro Heavy" fontSize="20px" fill="#54BA63">
+              {address}
             </text>
-            <text className="header" textAnchor="end" x="570" y="250" fontFamily="CamphorPro Heavy" fontSize="20px" fill="white">
+            <text textAnchor="end" x="570" y="215" fontFamily="CamphorPro Regular" fontSize="20px" fill="#54BA63">
+              YOUR ADDRESS
+            </text>
+            <text textAnchor="end" x="570" y="250" fontFamily="CamphorPro Heavy" fontSize="20px" fill="#54BA63">
               {dates.localeDate(raiser.endTime)}
             </text>
-            <text className="random" textAnchor="end" x="570" y="275" fontFamily="CamphorPro Regular" fontSize="20px" fill="white">
+            <text textAnchor="end" x="570" y="275" fontFamily="CamphorPro Regular" fontSize="20px" fill="#54BA63">
               END DATE
             </text>
           </svg>
@@ -62,12 +70,12 @@ class Ticket extends Content {
           <div className="division">
             <div className="field">
               <div className="control">
-                <a className="button is-dark" onClick={this.saveTicket}>save ticket</a>
+                <a className="button is-dark" onClick={() => this.saveTicket(address)}>save your ticket</a>
               </div>
             </div>
             <div className="field">
               <div className="control">
-                <a className="button is-white is-outlined" onClick={onTicketSeen}>skip saving</a>
+                <a className="button is-white is-outlined" onClick={onTicketingOver}>skip saving</a>
               </div>
             </div>
           </div>

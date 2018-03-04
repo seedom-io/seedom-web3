@@ -14,14 +14,14 @@ class Begin extends Content {
           <div className="charity-logo" />
         </div>
         <div className="seedom-overlay layout">
-          <div className="header-footer division text">
+          <div className="division text">
             <div>
               1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}
               <span className="ether">Ξ</span>
             </div>
             <div className="supporting">now seeding</div>
           </div>
-          <div className="header-footer division">
+          <div className="division">
             <div className="field">
               <div className="control">
                 <a className="button is-dark" onClick={onBegin}>obtain entries</a>

@@ -15,10 +15,10 @@ class Select extends Content {
       <div className={`seedom-content selection ${className}`}>
         <Indicator type={isShown ? 'selection' : null} />
         <div className="seedom-overlay layout">
-          <div className="division text charity">
-            <div className="charity-logo" />
+          <div className="division text third top">
+            <div className="charity-logo small" />
           </div>
-          <div className="division text display">
+          <div className="division text center">
             <div className="left">
               <div className="header">charity message</div>
               <div className="random">{messages.dehexMessage(state.charityMessage)}</div>
@@ -28,7 +28,7 @@ class Select extends Content {
               <div className="random">{messages.dehexMessage(state.ownerMessage)}</div>
             </div>
           </div>
-          <div className="division text display bottom">
+          <div className="division text third bottom">
             <div className="header">selected message</div>
             <div className="random">{messages.dehexMessage(state.selectedMessage)}</div>
           </div>

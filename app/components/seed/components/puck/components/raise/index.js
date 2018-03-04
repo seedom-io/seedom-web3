@@ -42,26 +42,29 @@ class Raise extends Content {
 
   render() {
     const { className } = this.state;
-    const { raiser, isRaising, onRaisingCancelled } = this.props;
+    const { raiser, isLoading, onRaisingCancelled } = this.props;
 
     return (
       <div className={`seedom-content raise ${className}`}>
-        <Indicator type={isRaising ? 'waiting' : null} />
+        <Indicator type={isLoading ? 'waiting' : null} />
         <div className="seedom-overlay">
 
-          <div className="charity-logo" />
+          <div className="charity-logo small" />
 
-          <div className="text">1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}Ξ</div>
+          <div className="text">
+            1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}
+            <span className="ether">Ξ</span>
+          </div>
 
           <Entries
             raiser={raiser}
-            disabled={isRaising}
+            disabled={isLoading}
             ref={(component) => { this.entries = component; }}
           />
 
           <div className="field">
             <div className="control">
-              <a className="button is-dark" disabled={isRaising} onClick={this.handleSubmit}>get more entries</a>
+              <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>get more entries</a>
             </div>
           </div>
           <div className="field">

@@ -1,3 +1,5 @@
+@import '../../../../../../sass/theme.scss';
+
 .seedom-overlay {
   position: absolute;
   left: 0; top: 0; right: 0; bottom: 0;
@@ -12,8 +14,16 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height: 30%;
+    filter:
+      drop-shadow(2px 1px 0 black)
+      drop-shadow(-1px -1px 0 black);
+    height: 28%;
     width: 100%;
+
+    &.small {
+      height: 20%;
+    }
+
   }
 
   .seedom-logo {
@@ -21,7 +31,10 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height: 25%;
+    filter:
+      drop-shadow(2px 1px 0 black)
+      drop-shadow(-1px -1px 0 black);
+    height: 28%;
     width: 100%;
   }
 
@@ -30,7 +43,10 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height: 30%;
+    filter:
+      drop-shadow(2px 1px 0 black)
+      drop-shadow(-1px -1px 0 black);
+    height: 28%;
     width: 100%;
   }
 
@@ -58,6 +74,35 @@
       flex-direction: column;
       align-items: center;
       width: 100%;
+
+      &.top {
+        justify-content: flex-end;
+
+        &.half {
+          padding-bottom: 3%;
+        }
+
+        &.third {
+          padding-bottom: 5%;
+        }
+      }
+
+      &.center {
+        flex: none;
+      }
+
+      &.bottom {
+        justify-content: flex-start;
+
+        &.half {
+          padding-top: 3%;
+        }
+
+        &.third {
+          padding-top: 5%;
+        }
+      }
+
     }
 
   }
