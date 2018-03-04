@@ -67,7 +67,7 @@ const getComponent = ({
 
   // cancelled?
   if (state.cancelled) {
-    return 'cancel';
+    return 'cancelled';
   }
 
   // metamask check
