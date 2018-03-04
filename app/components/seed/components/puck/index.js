@@ -55,7 +55,6 @@ const getComponent = ({
   isRaising,
   isWithdrawing
 }) => {
-  return 'select';
   // balances?
   if ((Object.keys(balances).length > 0) && isWithdrawing) {
     return 'withdraw';

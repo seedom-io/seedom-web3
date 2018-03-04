@@ -21,16 +21,16 @@ class Select extends Content {
           <div className="division text center">
             <div className="left">
               <div className="header">charity message</div>
-              <div className="random">{messages.dehexMessage(state.charityMessage)}</div>
+              <div className="message">{messages.dehexMessage(state.charityMessage)}</div>
             </div>
             <div className="right">
               <div className="header">owner message</div>
-              <div className="random">{messages.dehexMessage(state.ownerMessage)}</div>
+              <div className="message">{messages.dehexMessage(state.ownerMessage)}</div>
             </div>
           </div>
           <div className="division text third bottom">
             <div className="header">selected message</div>
-            <div className="random">{messages.dehexMessage(state.selectedMessage)}</div>
+            <div className="message">{messages.dehexMessage(state.selectedMessage)}</div>
           </div>
         </div>
       </div>

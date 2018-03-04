@@ -240,7 +240,7 @@ const ethereumMiddleware = (store) => {
 
       let transaction;
       const { method } = action;
-      if (method === null) {
+      if (!method) {
         transaction = rpcWeb3.eth.sendTransaction(options);
       } else {
         const { contractName, contractAddress, args } = action;
@@ -268,7 +268,7 @@ const ethereumMiddleware = (store) => {
     };
 
     const handler = handleSendCall(options, next, action);
-    if (method === null) {
+    if (!method) {
       rpcWeb3.eth.call(options, handler);
     } else {
       getWsMethod(contractName, contractAddress, method, args).call(options, handler);

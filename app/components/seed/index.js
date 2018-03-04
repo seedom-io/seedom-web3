@@ -12,9 +12,9 @@ import * as ethereumActions from '../../actions/ethereum';
 import './index.scss';
 
 class Seed extends Component {
-  handleParticipate = ({ random, entries }) => {
+  handleParticipate = ({ message, entries }) => {
     const { raiser } = this.props.state;
-    const messageHex = messages.hexRandom(random);
+    const messageHex = messages.hexMessage(message);
     const value = entries.times(raiser.valuePerEntry);
     this.setState({ isLoading: true }, () => {
       this.props.dispatch(ethereumActions.send({

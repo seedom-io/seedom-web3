@@ -15,7 +15,7 @@ class Seed extends Content {
         </div>
         <div className="seedom-overlay layout">
           <div className="division text">please wait<br />for</div>
-          <div className="division text">to seed their<br />random message</div>
+          <div className="division text">to seed their<br />secret message</div>
         </div>
       </div>
     );

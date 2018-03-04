@@ -109,7 +109,7 @@ const seedomMiddleware = store => {
     const type = `SEEDOM_${eventName}`;
     switch (eventName) {
       case 'SEED':
-        return next({ type, participation: seedomParser.parseSeed(action.values) });
+        return next({ type, seed: seedomParser.parseSeed(action.values) });
       case 'PARTICIPATION':
         return next({ type, participation: seedomParser.parseParticipation(action.values) });
       case 'RAISE':

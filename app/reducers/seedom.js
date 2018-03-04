@@ -1,9 +1,9 @@
 const MAX_FEED_ITEMS = 20;
 
 const updateFeed = (feed, action) => {
-  const newFeed = feed.slice(0, MAX_FEED_ITEMS);
+  /*const newFeed = feed.slice(0, MAX_FEED_ITEMS);
   newFeed.unshift(action);
-  return newFeed;
+  return newFeed;*/
 };
 
 const handleRaiser = (prevState, action) => {
@@ -42,7 +42,7 @@ const handleParticipation = (prevState, action) => {
   newState.state.totalEntries = newState.state.totalEntries.plus(action.participation.entries);
   newState.feed = updateFeed(newState.feed, action);
 
-  if (action.data.participant === newState.account) {
+  if (action.participation.participant === newState.account) {
     newState.isLoading = false;
     newState.participant.entries = action.participation.entries;
     newState.participant.message = action.participation.message;
@@ -103,7 +103,7 @@ const handleCancellation = (prevState) => {
 const handleWithdrawal = (prevState, action) => {
   const newState = { ...prevState };
   // set our balance to zero if we withdrew
-  if (action.data.address === newState.account) {
+  if (action.withdrawal.address === newState.account) {
     newState.isLoading = false;
     delete newState.balances[action.contractAddress];
   }

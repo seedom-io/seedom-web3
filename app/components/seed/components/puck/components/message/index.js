@@ -18,7 +18,7 @@ class Message extends Component {
   }
 
   focus = () => {
-    this.random.focus();
+    this.message.focus();
   }
 
   validate = () => {
@@ -50,7 +50,7 @@ class Message extends Component {
         disabled={disabled}
         isValid={isValid}
         onChange={this.handleChange}
-        ref={(component) => { this.random = component; }}
+        ref={(component) => { this.message = component; }}
       />
     );
   }
