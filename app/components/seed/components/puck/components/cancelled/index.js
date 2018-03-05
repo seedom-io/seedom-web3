@@ -13,10 +13,8 @@ class Cancelled extends Content {
           <div className="division top medium-pad">
             <div className="charity-logo small" />
           </div>
-          <div className="division text bottom medium-pad">
-            <span>
-              raiser cancelled<br />please check back<br />later
-            </span>
+          <div className="division text bottom medium-pad narrow">
+            <span>raiser cancelled, please check back later</span>
           </div>
         </div>
       </div>
