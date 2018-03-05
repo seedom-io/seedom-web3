@@ -1,0 +1,27 @@
+@import '../../../../sass/theme.scss';
+
+.seedom-collapse {
+  width: 100%;
+  height: 60px;
+  background-color: $background;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  .toggle {
+    font-size: 20px;
+    color: $primary;
+
+    &.left {
+      padding-right: $medium-padding;
+    }
+    &.right {
+      padding-left: $medium-padding;
+    }
+  }
+
+}

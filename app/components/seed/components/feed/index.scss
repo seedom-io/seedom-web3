@@ -1,29 +1,92 @@
 @import '../../../../sass/theme.scss';
 
 .seedom-feed {
-  animation: fadeIn 1s ease-out 0s 1, zoomIn 1s ease-out 0s 1;
-  animation-fill-mode: forwards;
 
-  table {
-    background-color: transparent;
-    color: white;
-
-    thead > tr > th {
-        color: white;
-    }
-
-    thead {
-      tr:hover {
-        background: inherit;
-      }
-    }
-
-    tbody {
-      tr:hover {
-        background-image: linear-gradient(to right, #408613, #1A4160)
-      }
-    }
+  .seedom-collapse {
   }
+
+  .item {
+    background-color: $puck-background;
+    border-top: 1px solid $participation-phase;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 16px;
+    padding: $small-padding;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $participation-phase;
+    }
+
+    &:first-child {
+      border-top: none;
+    }
+
+    .icon {
+      flex: none;
+      font-size: 30px;
+      margin-left: $small-padding;
+      margin-right: $small-padding;
+    }
+
+    .contents {
+      display: flex;
+      flex-direction: column;
+      margin-left: $small-padding;
+      flex: 1;
+
+      .side {
+        display: flex;
+        flex-direction: row;
+
+        .blocknum {
+          flex: none;
+        }
+
+        .address {
+          flex: 1;
+          text-align: right;
+        }
+
+        .entries {
+          flex: none;
+          text-transform: uppercase;
+        }
+
+        .messages {
+          flex: 1;
+          text-align: right;
+          color: $primary;
+          font-weight: bold;
+        }
+
+      }
+
+      @include desktop {
+        flex-direction: row;
+        margin-left: 0;
+
+        .side {
+
+          > div {
+            margin-left: $small-padding;
+            margin-right: $small-padding;
+          }
+
+          &.right {
+            flex: 1;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
 }
 
 @keyframes zoomIn {

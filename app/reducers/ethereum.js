@@ -6,8 +6,6 @@ const ethereumReducer = (state = {}, action) => {
       return { ...state, account: action.account };
     case 'ETHEREUM_PRIMARY_CONTRACT_ADDRESSES':
       return { ...state, primaryContractAddresses: action.primaryContractAddresses };
-    case 'ETHEREUM_STARTING_BLOCK_NUMBER':
-      return { ...state, startingBlockNumber: action.startingBlockNumber };
     default:
       return state;
   }

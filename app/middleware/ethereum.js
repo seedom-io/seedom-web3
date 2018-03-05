@@ -132,7 +132,7 @@ const ethereumMiddleware = (store) => {
     }, 1000);
   });
 
-  const setupEventsHandler = (contractName, release, fromBlockNumber) => {
+  const setupEventsHandler = (contractName, release, fromBlockNumber, startingBlockNumber) => {
     release.ws.events.allEvents({
       fromBlock: fromBlockNumber
     }, (error, result) => {
@@ -145,19 +145,13 @@ const ethereumMiddleware = (store) => {
         blockNumber: result.blockNumber,
         transactionHash: result.transactionHash,
         transactionIndex: result.transactionIndex,
-        account
+        old: result.blockNumber <= startingBlockNumber
       });
     });
   };
 
   // get starting block and setup event handlers
   wsWeb3.eth.getBlockNumber((error, startingBlockNumber) => {
-    // dispatch starting block number
-    store.dispatch({
-      type: 'ETHEREUM_STARTING_BLOCK_NUMBER',
-      startingBlockNumber
-    });
-
     // get the feed block number (what block to start at for feed)
     let pastBlockNumber = startingBlockNumber - PAST_BLOCKS_BACK;
     if (pastBlockNumber < 0) {
@@ -172,7 +166,7 @@ const ethereumMiddleware = (store) => {
         const release = releases[contractAddress];
         const fromBlockNumber =
           (release.address === primaryContractAddress) ? pastBlockNumber : startingBlockNumber;
-        setupEventsHandler(contractName, release, fromBlockNumber);
+        setupEventsHandler(contractName, release, fromBlockNumber, startingBlockNumber);
       }
     }
   });

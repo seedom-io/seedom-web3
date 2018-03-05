@@ -6,6 +6,7 @@ import Header from './components/header';
 import Puck from './components/puck';
 import Stats from './components/stats';
 import Feed from './components/feed';
+import About from './components/about';
 import * as messages from '../../utils/messages';
 import * as etherscan from '../../utils/etherscan';
 import * as ethereumActions from '../../actions/ethereum';
@@ -62,33 +63,43 @@ class Seed extends Component {
     return (
       <div className="seedom-seed">
         <ToastContainer />
-        <Header raiser={raiser} network={network} />
-        <div className="dapp">
-          <Stats
-            side="left"
-            raiser={raiser}
-            state={state}
-          />
-          <Puck
-            network={network}
-            account={account}
-            raiser={raiser}
-            state={state}
-            participant={participant}
-            balances={balances}
-            isLoading={isLoading}
-            onParticipate={this.handleParticipate}
-            onRaise={this.handleRaise}
-            onWithdraw={this.handleWithdraw}
-            onCancel={this.handleCancel}
-          />
-          <Stats
-            side="right"
-            raiser={raiser}
-            state={state}
-          />
+        <div className="background">
+          <Header raiser={raiser} network={network} />
+          <div className="central">
+            <Stats
+              side="left"
+              raiser={raiser}
+              state={state}
+            />
+            <Puck
+              network={network}
+              account={account}
+              raiser={raiser}
+              state={state}
+              participant={participant}
+              balances={balances}
+              isLoading={isLoading}
+              onParticipate={this.handleParticipate}
+              onRaise={this.handleRaise}
+              onWithdraw={this.handleWithdraw}
+              onCancel={this.handleCancel}
+            />
+            <Stats
+              side="right"
+              raiser={raiser}
+              state={state}
+            />
+          </div>
         </div>
-        <div className="accessory">
+        <About />
+        <Feed feed={feed} network={network} />
+      </div>
+    );
+  }
+}
+
+/*
+<div className="accessory">
           <div className="content has-text-centered">
             <p>
               View more live <strong>Seedom</strong> data on&nbsp;
@@ -96,12 +107,6 @@ class Seed extends Component {
             </p>
           </div>
         </div>
-      </div>
-    );
-  }
-}
-
-/*
 <div className="accessory">
           <div className="content has-text-centered">
             <Feed feed={feed} network={network} />

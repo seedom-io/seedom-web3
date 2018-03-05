@@ -24,7 +24,7 @@ class Cancel extends Content {
           <div className="division top medium-pad">
             <div className="charity-logo small" />
           </div>
-          <div className="division text center restricted">
+          <div className="division text center narrow">
             raiser expired please cancel for the community
           </div>
           <div className="division bottom huge-pad">

@@ -109,19 +109,19 @@ const seedomMiddleware = store => {
     const type = `SEEDOM_${eventName}`;
     switch (eventName) {
       case 'SEED':
-        return next({ type, seed: seedomParser.parseSeed(action.values) });
+        return next({ ...action, type, seed: seedomParser.parseSeed(action.values) });
       case 'PARTICIPATION':
-        return next({ type, participation: seedomParser.parseParticipation(action.values) });
+        return next({ ...action, type, participation: seedomParser.parseParticipation(action.values) });
       case 'RAISE':
-        return next({ type, raise: seedomParser.parseRaise(action.values) });
+        return next({ ...action, type, raise: seedomParser.parseRaise(action.values) });
       case 'REVELATION':
-        return next({ type, revelation: seedomParser.parseRevelation(action.values) });
+        return next({ ...action, type, revelation: seedomParser.parseRevelation(action.values) });
       case 'SELECTION':
-        return next({ type, selection: seedomParser.parseSelection(action.values) });
+        return next({ ...action, type, selection: seedomParser.parseSelection(action.values) });
       case 'WITHDRAWAL':
-        return next({ type, withdrawal: seedomParser.parseWithdrawal(action.values) });
+        return next({ ...action, type, withdrawal: seedomParser.parseWithdrawal(action.values) });
       case 'CANCELLATION':
-        return next({ type });
+        return next({ ...action, type });
       default:
         return next(action);
     }
