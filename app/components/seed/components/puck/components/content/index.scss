@@ -75,16 +75,41 @@
       align-items: center;
       width: 100%;
 
+      &.wide {
+        width: 75%;
+      }
+
+      &.narrow {
+        width: 60%;
+      }
+
+      &.slim {
+        width: 50%;
+      }
+
       &.top {
         justify-content: flex-end;
 
-        &.half {
-          padding-bottom: 3%;
+        &.small-pad > :last-child {
+          margin-bottom: 3%;
         }
 
-        &.third {
-          padding-bottom: 5%;
+        &.medium-pad > :last-child {
+          margin-bottom: 5%;
         }
+
+        &.large-pad > :last-child {
+          margin-bottom: 8%;
+        }
+
+        &.huge-pad > :last-child {
+          margin-bottom: 11%;
+        }
+
+        &.giant-pad > :last-child {
+          margin-bottom: 14%;
+        }
+
       }
 
       &.center {
@@ -94,13 +119,26 @@
       &.bottom {
         justify-content: flex-start;
 
-        &.half {
-          padding-top: 3%;
+        &.small-pad > :first-child {
+          margin-top: 3%;
         }
 
-        &.third {
-          padding-top: 5%;
+        &.medium-pad > :first-child {
+          margin-top: 5%;
         }
+
+        &.large-pad > :first-child {
+          margin-top: 8%;
+        }
+
+        &.huge-pad > :first-child {
+          margin-top: 11%;
+        }
+
+        &.giant-pad > :first-child {
+          margin-top: 14%;
+        }
+
       }
 
     }

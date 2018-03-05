@@ -43,7 +43,7 @@ class Withdraw extends Content {
       <div className={`seedom-content withdraw ${className}`}>
         <Indicator type={isShown ? 'success' : null} />
         <div className="seedom-overlay layout">
-          <div className="division text half top">
+          <div className="division text top medium-pad">
             <div>you have</div>
             <div className="balance">
               {localeDecimal(getEtherFromWei(maxBalance.balance))}
@@ -51,7 +51,7 @@ class Withdraw extends Content {
             </div>
             <div>to withdraw!</div>
           </div>
-          <div className="division half bottom">
+          <div className="division bottom large-pad">
             <div className="field">
               <div className="control">
                 <a className="button is-dark" disabled={isLoading} onClick={() => this.handleWithdraw(maxBalance.contractAddress)}>withdraw ether</a>

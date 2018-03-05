@@ -10,12 +10,16 @@ class End extends Content {
     return (
       <div className={`seedom-content end ${className}`}>
         <Indicator type={isShown ? 'waiting' : null} />
-        <div className="seedom-overlay">
-          <div className="seedom-logo" />
-        </div>
         <div className="seedom-overlay layout">
-          <div className="division text">please wait<br />for</div>
-          <div className="division text">to end the<br />raiser</div>
+          <div className="division text top small-pad narrow">
+            <span>please wait for</span>
+          </div>
+          <div className="division text center">
+            <div className="seedom-logo" />
+          </div>
+          <div className="division text bottom small-pad narrow">
+            <span>to end the raiser</span>
+          </div>
         </div>
       </div>
     );

@@ -37,37 +37,39 @@ class Ticket extends Content {
     return (
       <div className={`seedom-content ticket ${className}`}>
         <Indicator type={isShown ? 'success' : null} />
-        <div className="seedom-overlay">
-          <svg
-            className="seedom-ticket"
-            viewBox={`0 0 ${MAX_X} ${MAX_Y}`}
-            ref={(svg) => { this.svg = svg; }}
-          >
-            <image xlinkHref={seedomTicket} x="0" y="0" height={MAX_Y} width={MAX_X} />
-            <image xlinkHref={charityLogo} x="92" y="155" width="90" />
-            <text textAnchor="end" x="570" y="130" fontFamily="CamphorPro Heavy" fontSize="20px" fill="#54BA63">
-              test
-            </text>
-            <text textAnchor="end" x="570" y="155" fontFamily="CamphorPro Regular" fontSize="20px" fill="#54BA63">
-              YOUR MESSAGE
-            </text>
-            <text textAnchor="end" x="570" y="190" fontFamily="CamphorPro Heavy" fontSize="20px" fill="#54BA63">
-              {address}
-            </text>
-            <text textAnchor="end" x="570" y="215" fontFamily="CamphorPro Regular" fontSize="20px" fill="#54BA63">
-              YOUR ADDRESS
-            </text>
-            <text textAnchor="end" x="570" y="250" fontFamily="CamphorPro Heavy" fontSize="20px" fill="#54BA63">
-              {dates.localeDate(raiser.endTime)}
-            </text>
-            <text textAnchor="end" x="570" y="275" fontFamily="CamphorPro Regular" fontSize="20px" fill="#54BA63">
-              END DATE
-            </text>
-          </svg>
-        </div>
         <div className="seedom-overlay layout">
-          <div className="division text">your<br />ticket</div>
-          <div className="division">
+          <div className="division text top huge-pad narrow">
+            <span>your ticket</span>
+          </div>
+          <div className="division center">
+            <svg
+              className="seedom-ticket"
+              viewBox={`0 0 ${MAX_X} ${MAX_Y}`}
+              ref={(svg) => { this.svg = svg; }}
+            >
+              <image xlinkHref={seedomTicket} x="0" y="0" height={MAX_Y} width={MAX_X} />
+              <image xlinkHref={charityLogo} x="92" y="155" width="90" />
+              <text textAnchor="end" x="570" y="130" fontFamily="CamphorPro Heavy" fontSize="20px" fill="#54BA63">
+                {message}
+              </text>
+              <text textAnchor="end" x="570" y="155" fontFamily="CamphorPro Regular" fontSize="20px" fill="#54BA63">
+                YOUR MESSAGE
+              </text>
+              <text textAnchor="end" x="570" y="190" fontFamily="CamphorPro Heavy" fontSize="20px" fill="#54BA63">
+                {address}
+              </text>
+              <text textAnchor="end" x="570" y="215" fontFamily="CamphorPro Regular" fontSize="20px" fill="#54BA63">
+                YOUR ADDRESS
+              </text>
+              <text textAnchor="end" x="570" y="250" fontFamily="CamphorPro Heavy" fontSize="20px" fill="#54BA63">
+                {dates.localeDate(raiser.endTime)}
+              </text>
+              <text textAnchor="end" x="570" y="275" fontFamily="CamphorPro Regular" fontSize="20px" fill="#54BA63">
+                END DATE
+              </text>
+            </svg>
+          </div>
+          <div className="division bottom small-pad">
             <div className="field">
               <div className="control">
                 <a className="button is-dark" onClick={() => this.saveTicket(address)}>save your ticket</a>

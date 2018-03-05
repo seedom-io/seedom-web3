@@ -14,7 +14,7 @@ class Participate extends Content {
 
     return (
       <div className={`seedom-content participated ${className}`}>
-        <Indicator type={isShown ? 'checkmark' : null} />
+        <Indicator type={isShown ? 'success' : null} />
         <div className="seedom-overlay">
           <div className="text entries">{localeEntries}</div>
           <div className="text obtained">{Number(localeEntries) === 1 ? 'entry' : 'entries'} obtained</div>

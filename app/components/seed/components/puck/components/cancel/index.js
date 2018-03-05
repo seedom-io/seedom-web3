@@ -21,13 +21,13 @@ class Cancel extends Content {
       <div className={`seedom-content cancel ${className}`}>
         <Indicator type="cancel" />
         <div className="seedom-overlay layout">
-          <div className="division top third">
+          <div className="division top medium-pad">
             <div className="charity-logo small" />
           </div>
-          <div className="division text center">
-            raiser expired<br />please cancel for<br />the community
+          <div className="division text center restricted">
+            raiser expired please cancel for the community
           </div>
-          <div className="division bottom third">
+          <div className="division bottom huge-pad">
             <div className="field">
               <div className="control">
                 <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>cancel</a>
