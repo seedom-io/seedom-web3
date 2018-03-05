@@ -18,8 +18,7 @@ import Nav from './components/nav';
 import Seed from './components/seed';
 import Suggest from './components/suggest';
 import History from './components/history';
-import Guide from './components/guide';
-import FAQ from './components/faq';
+import Help from './components/help';
 import Footer from './components/footer';
 
 const history = createHistory();
@@ -47,8 +46,7 @@ const AppContainer = () => (
     <Route exact path="/" component={Seed} />
     <Route path="/suggest" component={Suggest} />
     <Route path="/history" component={History} />
-    <Route path="/guide" component={Guide} />
-    <Route path="/faq" component={FAQ} />
+    <Route path="/help" component={Help} />
   </ConnectedSwitch>
 );
 
