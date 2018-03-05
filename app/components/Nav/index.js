@@ -1,8 +1,20 @@
 import React from 'react';
 import classnames from 'classnames';
 import logo from '../../img/logos/seedom-white@4x.png';
-import NavToggle from './NavToggle';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+const NavToggle = ({ onClick }) => (
+  <span className="navbar-burger burger" onClick={onClick}>
+    <span />
+    <span />
+    <span />
+  </span>
+);
+
+NavToggle.propTypes = {
+  onClick: PropTypes.func.isRequired
+};
 
 class Nav extends React.Component {
   constructor(props) {

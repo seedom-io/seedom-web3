@@ -3,7 +3,7 @@ import './index.scss';
 
 class Collapse extends Component {
   toggle = () => {
-    const collapsed = this.props.collapsed ? false : true;
+    const collapsed = !this.props.collapsed;
     this.props.onToggle(collapsed);
   }
 
