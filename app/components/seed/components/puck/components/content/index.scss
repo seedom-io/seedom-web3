@@ -23,7 +23,6 @@
     &.small {
       height: 20%;
     }
-
   }
 
   .seedom-logo {
@@ -36,6 +35,10 @@
       drop-shadow(-1px -1px 0 black);
     height: 28%;
     width: 100%;
+
+    &.small {
+      height: 20%;
+    }
   }
 
   .metamask-logo {
@@ -48,6 +51,10 @@
       drop-shadow(-1px -1px 0 black);
     height: 28%;
     width: 100%;
+
+    &.small {
+      height: 20%;
+    }
   }
 
   .button {

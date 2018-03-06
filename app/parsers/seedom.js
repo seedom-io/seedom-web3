@@ -29,7 +29,7 @@ const parseState = state => {
     selected: String(state._selected),
     selectedMessage: String(state._selectedMessage),
     selectedWithdrawn: Boolean(state._selectedWithdrawn),
-    ownerMessage: String(state._selectedMessage),
+    ownerMessage: String(state._ownerMessage),
     ownerWithdrawn: Boolean(state._selectedWithdrawn),
     cancelled: Boolean(state._cancelled),
     totalParticipants: new BigNumber(state._totalParticipants),

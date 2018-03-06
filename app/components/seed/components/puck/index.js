@@ -14,6 +14,7 @@ import Withdraw from './components/withdraw';
 import Cancel from './components/cancel';
 import Cancelled from './components/cancelled';
 import Error from './components/error';
+import Metamask from './components/metamask';
 import Ticket from './components/ticket';
 import seedomLogo from '../../../../../../seedom-assets/logo/o/seedom-o-white-transparent.svg';
 import './index.scss';
@@ -72,7 +73,7 @@ const getComponent = ({
 
   // metamask check
   if (!network || !account) {
-    return 'error-metamask';
+    return 'metamask';
   }
 
   // wait for a participant
@@ -274,7 +275,7 @@ class Puck extends Component {
           <Withdraw isShown={component === 'withdraw'} balances={balances} isLoading={isLoading} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
           <Cancel isShown={component === 'cancel'} isLoading={isLoading} onCancel={this.handleCancel} />
           <Cancelled isShown={component === 'cancelled'} />
-          <Error isShown={component && component.startsWith('error')} error={component} />
+          <Metamask isShown={component === 'metamask'} />
         </div>
       </div>
     );
