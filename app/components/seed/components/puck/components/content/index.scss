@@ -1,0 +1,161 @@
+@import '../../../../../../sass/theme.scss';
+
+.seedom-overlay {
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+
+  .charity-logo {
+    background-image: url('../../../../../../img/logos/charity-logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    filter:
+      drop-shadow(2px 1px 0 black)
+      drop-shadow(-1px -1px 0 black);
+    height: 28%;
+    width: 100%;
+
+    &.small {
+      height: 20%;
+    }
+
+  }
+
+  .seedom-logo {
+    background-image: url('../../../../../../img/logos/seedom-white@4x.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    filter:
+      drop-shadow(2px 1px 0 black)
+      drop-shadow(-1px -1px 0 black);
+    height: 28%;
+    width: 100%;
+  }
+
+  .metamask-logo {
+    background-image: url('../../../../../../img/logos/metamask-logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    filter:
+      drop-shadow(2px 1px 0 black)
+      drop-shadow(-1px -1px 0 black);
+    height: 28%;
+    width: 100%;
+  }
+
+  .button {
+    text-transform: uppercase;
+
+    &:not(.is-outlined) {
+      font-family: 'CamphorPro Heavy';
+    }
+  }
+
+  .text {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &.layout {
+
+    .division {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      &.wide {
+        width: 75%;
+      }
+
+      &.narrow {
+        width: 60%;
+      }
+
+      &.slim {
+        width: 50%;
+      }
+
+      &.top {
+        justify-content: flex-end;
+
+        &.small-pad > :last-child {
+          margin-bottom: 3%;
+        }
+
+        &.medium-pad > :last-child {
+          margin-bottom: 5%;
+        }
+
+        &.large-pad > :last-child {
+          margin-bottom: 8%;
+        }
+
+        &.huge-pad > :last-child {
+          margin-bottom: 11%;
+        }
+
+        &.giant-pad > :last-child {
+          margin-bottom: 14%;
+        }
+
+      }
+
+      &.center {
+        flex: none;
+      }
+
+      &.bottom {
+        justify-content: flex-start;
+
+        &.small-pad > :first-child {
+          margin-top: 3%;
+        }
+
+        &.medium-pad > :first-child {
+          margin-top: 5%;
+        }
+
+        &.large-pad > :first-child {
+          margin-top: 8%;
+        }
+
+        &.huge-pad > :first-child {
+          margin-top: 11%;
+        }
+
+        &.giant-pad > :first-child {
+          margin-top: 14%;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+.seedom-content {
+  @extend .seedom-overlay;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 1s ease 0s;
+
+  &.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}

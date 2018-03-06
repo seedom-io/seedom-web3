@@ -1,0 +1,100 @@
+@import '../../../../sass/theme.scss';
+
+.seedom-feed {
+
+  .seedom-collapse {
+  }
+
+  .item {
+    background-color: $puck-background;
+    border-top: 1px solid $participation-phase;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 16px;
+    padding: $small-padding;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $participation-phase;
+    }
+
+    &:first-child {
+      border-top: none;
+    }
+
+    .icon {
+      flex: none;
+      font-size: 30px;
+      margin-left: $small-padding;
+      margin-right: $small-padding;
+    }
+
+    .contents {
+      display: flex;
+      flex-direction: column;
+      margin-left: $small-padding;
+      flex: 1;
+
+      .side {
+        display: flex;
+        flex-direction: row;
+
+        .blocknum {
+          flex: none;
+        }
+
+        .address {
+          flex: 1;
+          text-align: right;
+        }
+
+        .entries {
+          flex: none;
+          text-transform: uppercase;
+        }
+
+        .messages {
+          flex: 1;
+          text-align: right;
+          color: $primary;
+          font-weight: bold;
+        }
+
+      }
+
+      @include desktop {
+        flex-direction: row;
+        margin-left: 0;
+
+        .side {
+
+          > div {
+            margin-left: $small-padding;
+            margin-right: $small-padding;
+          }
+
+          &.right {
+            flex: 1;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

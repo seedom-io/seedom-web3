@@ -1,0 +1,83 @@
+@import '../../sass/theme.scss';
+
+.seedom-seed {
+  display: flex;
+  flex-direction: column;
+
+  > .background {
+    display: flex;
+    flex-direction: column;
+    background-image: url('../../img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    .central {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .seedom-stats {
+        flex: none;
+      }
+
+      .seedom-puck {
+        width: 100%;
+        margin-top: $medium-padding;
+        margin-bottom: $medium-padding;
+      }
+
+      @include tablet {
+        flex-direction: column;
+
+        .seedom-puck {
+          width: 70%;
+          margin-top: $large-padding;
+          margin-bottom: $large-padding;
+        }
+
+      }
+
+      @include desktop {
+        flex-direction: row;
+
+        .seedom-stats {
+          flex: 0.2;
+        }
+
+        .seedom-puck {
+          flex: 0.6;
+        }
+      }
+
+      @include fullhd {
+        flex-direction: row;
+
+        .seedom-stats {
+          flex: 0.3;
+        }
+
+        .seedom-puck {
+          flex: 0.4;
+        }
+      }
+    }
+  }
+
+  .accessory {
+    margin-top: $large-padding;
+    color: white;
+    text-shadow: black 0px 0 10px;
+    margin-bottom: $large-padding;
+
+    strong {
+      color: white;
+    }
+
+    a {
+      font-weight: bold;
+    }
+
+  }
+
+}

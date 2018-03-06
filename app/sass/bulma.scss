@@ -2,6 +2,7 @@
 @import './components/navbar';
 @import './layout/footer';
 @import '../../node_modules/bulma/bulma.sass';
+@import '../../node_modules/react-redux-toastr/src/styles/index.scss';
 
 @font-face {
   font-family: 'CamphorPro Regular';
@@ -18,9 +19,38 @@
   src: url('../fonts/CamphorPro-Light.woff')
 }
 
+.redux-toastr {
+  .top-left, .top-right, .top-center {
+    top: 40px;
+  }
+}
+
 .navbar-item,
 .navbar-link {
-  padding: 0rem 1rem
+  padding: 0.2rem 1rem;
+}
+
+.navbar-start {
+
+  .navbar-item {
+    color: $primary;
+
+    &.is-active:not(:hover) {
+      background-color: $primary;
+    }
+
+  }
+}
+
+.navbar-item img {
+  max-height: 3.6rem;
+}
+
+.navbar-end {
+  .navbar-item {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 }
 
 .hero-body {
@@ -29,7 +59,7 @@
 
 .field {
   &:not(:last-child) {
-    margin-bottom: 0.5rem
+    margin-bottom: $small-padding;
   }
 }
 

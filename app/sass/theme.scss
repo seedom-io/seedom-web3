@@ -14,6 +14,10 @@ $success: $primary;
 $error: darken(#ff3860, 10%);
 $win: purple;
 
+$large-padding: 50px;
+$medium-padding: 20px;
+$small-padding: 10px;
+
 $navbar-item-img-max-height: auto;
 
 $puck-background: lighten($background, 10%);
@@ -33,3 +37,12 @@ $progress-phase-duration: 1s;
 
 $loading-spin-duration: 8s;
 $loading-fade-duration: 0.5s;
+
+.ether {
+  color: $primary;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  &.is-dark {
+    color: $grey-dark;
+  }
+}
