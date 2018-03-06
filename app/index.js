@@ -2,8 +2,11 @@ import React from 'react';
 import { render } from 'react-dom';
 import { connect, Provider } from 'react-redux';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { Route, Switch } from 'react-router-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { reducer as toastrReducer } from 'react-redux-toastr';
+import ReduxToastr from 'react-redux-toastr'
 import createHistory from 'history/createBrowserHistory';
 import reduceReducers from './utils/reduceReducers';
 import seedomReducer from './reducers/seedom';
@@ -24,17 +27,19 @@ import Footer from './components/footer';
 const history = createHistory();
 
 const store = createStore(
-  reduceReducers(
-    routerReducer,
-    ethereumReducer,
-    seedomReducer
-  ),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(
+  combineReducers({
+    seedom: reduceReducers(
+      ethereumReducer,
+      seedomReducer
+    ),
+    toastr: toastrReducer,
+    router: routerReducer
+  }),
+  composeWithDevTools(applyMiddleware(
     routerMiddleware(history),
     ethereumMiddleware,
     seedomMiddleware
-  )
+  ))
 );
 
 const ConnectedSwitch = connect(state => ({
@@ -51,13 +56,22 @@ const AppContainer = () => (
 );
 
 const App = connect(state => ({
-  location: state.location,
+  location: state.router.location,
 }))(AppContainer);
 
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
+        <ReduxToastr
+          timeOut={4000}
+          newestOnTop={false}
+          preventDuplicates
+          position="top-center"
+          transitionIn="fadeIn"
+          transitionOut="fadeOut"
+          progressBar
+        />
         <Head />
         <Nav />
         <App />

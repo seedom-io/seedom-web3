@@ -1,5 +1,6 @@
 import * as ethereumActions from '../actions/ethereum';
 import * as seedomParser from '../parsers/seedom';
+import { toastr } from 'react-redux-toastr';
 
 const seedomMiddleware = store => {
   const handleRaiser = (next, action) => {
@@ -69,7 +70,7 @@ const seedomMiddleware = store => {
   const handleEthereumUser = (next, action) => {
     // first pull data from state
     const state = store.getState();
-    let { network, account } = state;
+    let { network, account } = state.seedom;
     // augment with action data
     if (action) {
       if (action.network) {
@@ -88,7 +89,7 @@ const seedomMiddleware = store => {
 
   const handleEthereumRefresh = (next, action) => {
     const state = store.getState();
-    const { primaryContractAddresses } = state;
+    const { primaryContractAddresses } = state.seedom;
     const { contractAddresses } = action;
     if (contractAddresses.indexOf(primaryContractAddresses.seedom) > -1) {
       store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'raiser' }));
@@ -127,6 +128,10 @@ const seedomMiddleware = store => {
     }
   };
 
+  const handleEthereumError = (action) => {
+    toastr.error('Error', action.error.message);
+  };
+
   return next => action => {
     const { type } = action;
     switch (type) {
@@ -141,6 +146,9 @@ const seedomMiddleware = store => {
         return handleEthereumUser(next, action);
       case 'ETHEREUM_REFRESH':
         return handleEthereumRefresh(next, action);
+      case 'ETHEREUM_CALL_ERROR':
+      case 'ETHEREUM_SEND_ERROR':
+        return handleEthereumError(action);
       default:
         return next(action);
     }

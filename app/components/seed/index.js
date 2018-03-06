@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
-import { ToastContainer, toast } from 'react-toastify';
 import Header from './components/header';
 import Puck from './components/puck';
 import Stats from './components/stats';
@@ -14,7 +13,7 @@ import './index.scss';
 
 class Seed extends Component {
   handleParticipate = ({ message, entries }) => {
-    const { raiser } = this.props.state;
+    const { raiser } = this.props.seedom;
     const messageHex = messages.hexMessage(message);
     const value = entries.times(raiser.valuePerEntry);
     this.props.dispatch(ethereumActions.send({
@@ -23,7 +22,7 @@ class Seed extends Component {
   }
 
   handleRaise = (entries) => {
-    const { raiser } = this.props.state;
+    const { raiser } = this.props.seedom;
     const value = entries.times(raiser.valuePerEntry);
     this.props.dispatch(ethereumActions.send({
       contractName: 'seedom', value
@@ -53,7 +52,7 @@ class Seed extends Component {
       balances,
       feed,
       isLoading
-    } = this.props.state;
+    } = this.props.seedom;
 
     // render only if we have a contract address, raiser, and state
     if (!primaryContractAddresses || !raiser || !state) {
@@ -62,7 +61,6 @@ class Seed extends Component {
 
     return (
       <div className="seedom-seed">
-        <ToastContainer />
         <div className="background">
           <Header raiser={raiser} network={network} />
           <div className="central">
@@ -115,7 +113,7 @@ class Seed extends Component {
         */
 
 const mapStateToProps = state => {
-  return { state };
+  return { seedom: state.seedom };
 };
 
 const mapDispatchToProps = dispatch => {

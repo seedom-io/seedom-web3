@@ -2,6 +2,7 @@
 @import './components/navbar';
 @import './layout/footer';
 @import '../../node_modules/bulma/bulma.sass';
+@import '../../node_modules/react-redux-toastr/src/styles/index.scss';
 
 @font-face {
   font-family: 'CamphorPro Regular';
@@ -16,6 +17,12 @@
 @font-face {
   font-family: 'CamphorPro Light';
   src: url('../fonts/CamphorPro-Light.woff')
+}
+
+.redux-toastr {
+  .top-left, .top-right, .top-center {
+    top: 40px;
+  }
 }
 
 .navbar-item,

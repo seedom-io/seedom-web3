@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { toast } from 'react-toastify';
 import Content from '../content';
 import Indicator from '../indicator';
 import Entries from '../entries';
