@@ -54,11 +54,6 @@ class Seed extends Component {
       isLoading
     } = this.props.seedom;
 
-    // render only if we have a contract address, raiser, and state
-    if (!primaryContractAddresses || !raiser || !state) {
-      return null;
-    }
-
     return (
       <div className="seedom-seed">
         <div className="background">

@@ -80,7 +80,7 @@ const seedomMiddleware = store => {
       }
     }
     // get user data
-    if (network && account) {
+    if (network && network.supported && account) {
       store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'participants', args: [account] }));
       store.dispatch(ethereumActions.allCall({ contractName: 'seedom', method: 'balance' }));
     }

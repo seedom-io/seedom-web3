@@ -5,7 +5,7 @@ const MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
 const GAS = 200000;
 const GAS_PRICE = 4000000000;
 
-const getNetworkName = (id) => {
+const getNetwork = (id) => {
   switch (id) {
     case 1:
       return 'mainnet';
@@ -34,142 +34,14 @@ const getRpcWeb3 = () => {
 };
 
 const ethereumMiddleware = (store) => {
+  // client web3 is source of truth
+  const clientWeb3 = getRpcWeb3();
+  // middleware state
+  let serverWeb3;
   let account;
-  let rpcNetworkId;
-  let wsNetworkId;
-  // set up rpc and ws web3s
-  const wsWeb3 = new Web3(ETH_URL);
-  const rpcWeb3 = getRpcWeb3();
-
+  let networkId;
   const contracts = {};
   const primaryContractAddresses = {};
-  // set all contracts (last six)
-  for (const contractName in ETH_CONTRACTS) {
-    const releases = ETH_CONTRACTS[contractName];
-    for (const release of releases) {
-      // save first address (primary contract)
-      if (!(contractName in primaryContractAddresses)) {
-        primaryContractAddresses[contractName] = release.address;
-      }
-
-      if (!(contractName in contracts)) {
-        contracts[contractName] = {};
-      }
-
-      // add to map of contracts
-      contracts[contractName][release.address] = {
-        address: release.address,
-        ws: new wsWeb3.eth.Contract(release.abi, release.address),
-        rpc: rpcWeb3 ? new rpcWeb3.eth.Contract(release.abi, release.address) : null
-      };
-    }
-  }
-
-  // dispatch primary contract addresses
-  store.dispatch({
-    type: 'ETHEREUM_PRIMARY_CONTRACT_ADDRESSES',
-    primaryContractAddresses
-  });
-
-  const checkNetwork = () => {
-    if (rpcWeb3) {
-      rpcWeb3.eth.net.getId((error, id) => {
-        // only accept a network change if it matches the ws network
-        if ((id === wsNetworkId) && (id !== rpcNetworkId)) {
-          rpcNetworkId = id;
-          store.dispatch({
-            type: 'ETHEREUM_NETWORK',
-            network: getNetworkName(id)
-          });
-        }
-      });
-    }
-  };
-
-  const checkAccount = () => {
-    if (rpcWeb3) {
-      rpcWeb3.eth.getAccounts((error, newAccounts) => {
-        const [newAccount] = newAccounts;
-        if (newAccount !== account) {
-          account = newAccount;
-          store.dispatch({
-            type: 'ETHEREUM_ACCOUNT',
-            account
-          });
-        }
-      });
-    }
-  };
-
-  const checkRefresh = () => {
-    const now = (new Date()).getTime();
-    const contractAddresses = [];
-
-    for (const contractName in contracts) {
-      const releases = contracts[contractName];
-      for (const contractAddress in releases) {
-        const release = releases[contractAddress];
-        if (!release.lastBlockTime || ((now - release.lastBlockTime.getTime()) > MAX_LAST_BLOCK_AGE)) {
-          // last block time to now
-          release.lastBlockTime = new Date();
-          contractAddresses.push(release.address);
-        }
-      }
-    }
-
-    if (contractAddresses.length > 0) {
-      store.dispatch({ type: 'ETHEREUM_REFRESH', contractAddresses });
-    }
-  };
-
-  // set up web3 change detection polling
-  wsWeb3.eth.net.getId((error, id) => {
-    wsNetworkId = id;
-    setInterval(() => {
-      checkNetwork();
-      checkAccount();
-      checkRefresh();
-    }, 1000);
-  });
-
-  const setupEventsHandler = (contractName, release, fromBlockNumber, startingBlockNumber) => {
-    release.ws.events.allEvents({
-      fromBlock: fromBlockNumber
-    }, (error, result) => {
-      store.dispatch({
-        type: 'ETHEREUM_EVENT',
-        eventName: result.event.toUpperCase(),
-        contractName,
-        values: result.returnValues,
-        contractAddress: result.address,
-        blockNumber: result.blockNumber,
-        transactionHash: result.transactionHash,
-        transactionIndex: result.transactionIndex,
-        old: result.blockNumber <= startingBlockNumber
-      });
-    });
-  };
-
-  // get starting block and setup event handlers
-  wsWeb3.eth.getBlockNumber((error, startingBlockNumber) => {
-    // get the feed block number (what block to start at for feed)
-    let pastBlockNumber = startingBlockNumber - PAST_BLOCKS_BACK;
-    if (pastBlockNumber < 0) {
-      pastBlockNumber = 0;
-    }
-
-    // set up event handlers for each contract
-    for (const contractName in contracts) {
-      const releases = contracts[contractName];
-      const primaryContractAddress = primaryContractAddresses[contractName];
-      for (const contractAddress in releases) {
-        const release = releases[contractAddress];
-        const fromBlockNumber =
-          (release.address === primaryContractAddress) ? pastBlockNumber : startingBlockNumber;
-        setupEventsHandler(contractName, release, fromBlockNumber, startingBlockNumber);
-      }
-    }
-  });
 
   const getRelease = (contractName, contractAddress) => {
     return contractAddress
@@ -177,17 +49,17 @@ const ethereumMiddleware = (store) => {
       : contracts[contractName][primaryContractAddresses[contractName]];
   };
 
-  const getRpcMethod = (contractName, contractAddress, method, args) => {
-    return getRelease(contractName, contractAddress).rpc.methods[method].apply(null, args);
+  const getClientMethod = (contractName, contractAddress, method, args) => {
+    return getRelease(contractName, contractAddress).client.methods[method].apply(null, args);
   };
 
-  const getWsMethod = (contractName, contractAddress, method, args) => {
-    return getRelease(contractName, contractAddress).ws.methods[method].apply(null, args);
+  const getServerMethod = (contractName, contractAddress, method, args) => {
+    return getRelease(contractName, contractAddress).server.methods[method].apply(null, args);
   };
 
   const handleCall = (next, action) => {
     const { contractName, contractAddress, method, args } = action;
-    getWsMethod(contractName, contractAddress, method, args).call({ from: account })
+    getServerMethod(contractName, contractAddress, method, args).call({ from: account })
       .then(
         data => {
           store.dispatch({ ...action, type: 'ETHEREUM_CALL_DATA', data });
@@ -208,7 +80,7 @@ const ethereumMiddleware = (store) => {
     // loop over last 6 contracts to execute call
     for (const contractAddress of contractAddresses) {
       promises
-        .push(getWsMethod(contractName, contractAddress, method, args)
+        .push(getServerMethod(contractName, contractAddress, method, args)
           .call({ from: account }));
     }
 
@@ -242,10 +114,10 @@ const ethereumMiddleware = (store) => {
       let transaction;
       const { method } = action;
       if (!method) {
-        transaction = rpcWeb3.eth.sendTransaction(options);
+        transaction = clientWeb3.eth.sendTransaction(options);
       } else {
         const { contractName, contractAddress, args } = action;
-        transaction = getRpcMethod(contractName, contractAddress, method, args).send(options);
+        transaction = getClientMethod(contractName, contractAddress, method, args).send(options);
       }
 
       transaction
@@ -278,13 +150,186 @@ const ethereumMiddleware = (store) => {
 
     const handler = handleSendCall(options, next, action);
     if (!method) {
-      rpcWeb3.eth.call(options, handler);
+      clientWeb3.eth.call(options, handler);
     } else {
-      getWsMethod(contractName, contractAddress, method, args).call(options, handler);
+      getServerMethod(contractName, contractAddress, method, args).call(options, handler);
     }
 
     return next(action);
   };
+
+  const destroyCurrentNetwork = () => {
+    for (const contractName in contracts) {
+      const releases = contracts[contractName];
+      for (const contractAddress in releases) {
+        const release = releases[contractAddress];
+        release.server.currentProvider.connection.close();
+      }
+      delete contracts[contractName];
+      delete primaryContractAddresses[contractName];
+    }
+  };
+
+  const setupServerWeb3 = (network) => {
+    const ethNetwork = ETH_NETWORKS[network];
+    if (ethNetwork) {
+      serverWeb3 = new Web3(ethNetwork.url);
+      return true;
+    }
+    serverWeb3 = null;
+    return false;
+  };
+
+  const setupContracts = (network) => {
+    const deployments = ETH_DEPLOYMENTS[network];
+    // set all contracts (last six)
+    for (const contractName in deployments) {
+      const releases = deployments[contractName];
+      for (const release of releases) {
+        // save first address (primary contract)
+        if (!(contractName in primaryContractAddresses)) {
+          primaryContractAddresses[contractName] = release.address;
+        }
+
+        if (!(contractName in contracts)) {
+          contracts[contractName] = {};
+        }
+
+        // add to map of contracts
+        contracts[contractName][release.address] = {
+          address: release.address,
+          server: new serverWeb3.eth.Contract(release.abi, release.address),
+          client: new clientWeb3.eth.Contract(release.abi, release.address)
+        };
+      }
+    }
+
+    // dispatch primary contract addresses
+    store.dispatch({
+      type: 'ETHEREUM_PRIMARY_CONTRACT_ADDRESSES',
+      primaryContractAddresses
+    });
+  };
+
+  const setupContractEventHandler = (
+    contractName,
+    release,
+    fromBlockNumber,
+    startingBlockNumber
+  ) => {
+    release.server.events.allEvents({
+      fromBlock: fromBlockNumber
+    }, (error, result) => {
+      store.dispatch({
+        type: 'ETHEREUM_EVENT',
+        eventName: result.event.toUpperCase(),
+        contractName,
+        values: result.returnValues,
+        contractAddress: result.address,
+        blockNumber: result.blockNumber,
+        transactionHash: result.transactionHash,
+        transactionIndex: result.transactionIndex,
+        old: result.blockNumber <= startingBlockNumber
+      });
+    });
+  };
+
+  const setupContractEventHandlers = () => {
+    // get starting block and setup event handlers
+    serverWeb3.eth.getBlockNumber((error, startingBlockNumber) => {
+      // get the feed block number (what block to start at for feed)
+      let pastBlockNumber = startingBlockNumber - PAST_BLOCKS_BACK;
+      if (pastBlockNumber < 0) {
+        pastBlockNumber = 0;
+      }
+
+      // set up event handlers for each contract
+      for (const contractName in contracts) {
+        const releases = contracts[contractName];
+        const primaryContractAddress = primaryContractAddresses[contractName];
+        for (const contractAddress in releases) {
+          const release = releases[contractAddress];
+          const fromBlockNumber =
+            (release.address === primaryContractAddress) ? pastBlockNumber : startingBlockNumber;
+          setupContractEventHandler(contractName, release, fromBlockNumber, startingBlockNumber);
+        }
+      }
+    });
+  };
+
+  const setupNetwork = (network) => {
+    // destroy old network
+    destroyCurrentNetwork();
+    // setup server web3
+    const supported = setupServerWeb3(network);
+    // continue if supported
+    if (supported) {
+      // setup contracts
+      setupContracts(network);
+      // setup event handlers
+      setupContractEventHandlers();
+    }
+    // dispatch new network
+    store.dispatch({
+      type: 'ETHEREUM_NETWORK',
+      network: {
+        name: network,
+        supported
+      }
+    });
+  };
+
+  const checkNetwork = () => {
+    clientWeb3.eth.net.getId((error, id) => {
+      if (id !== networkId) {
+        networkId = id;
+        setupNetwork(getNetwork(id));
+      }
+    });
+  };
+
+  const checkAccount = () => {
+    clientWeb3.eth.getAccounts((error, newAccounts) => {
+      const [newAccount] = newAccounts;
+      if (newAccount !== account) {
+        account = newAccount;
+        store.dispatch({
+          type: 'ETHEREUM_ACCOUNT',
+          account
+        });
+      }
+    });
+  };
+
+  const checkRefresh = () => {
+    const now = (new Date()).getTime();
+    const contractAddresses = [];
+
+    for (const contractName in contracts) {
+      const releases = contracts[contractName];
+      for (const contractAddress in releases) {
+        const release = releases[contractAddress];
+        if (!release.lastBlockTime || ((now - release.lastBlockTime.getTime()) > MAX_LAST_BLOCK_AGE)) {
+          // last block time to now
+          release.lastBlockTime = new Date();
+          contractAddresses.push(release.address);
+        }
+      }
+    }
+
+    if (contractAddresses.length > 0) {
+      store.dispatch({ type: 'ETHEREUM_REFRESH', contractAddresses });
+    }
+  };
+
+  // set up client web3 change detection polling
+  if (clientWeb3) {
+    setInterval(() => {
+      checkNetwork();
+      checkAccount();
+      checkRefresh();
+    }, 1000);
+  }
 
   return next => action => {
     const { type } = action;

@@ -43,6 +43,11 @@ class Raise extends Content {
     const { className } = this.state;
     const { raiser, isLoading, onRaisingCancelled } = this.props;
 
+    let etherPerEntry;
+    if (raiser) {
+      etherPerEntry = localeDecimal(getEtherFromWei(raiser.valuePerEntry));
+    }
+
     return (
       <div className={`seedom-content raise ${className}`}>
         <Indicator type={isLoading ? 'waiting' : null} />
@@ -51,7 +56,7 @@ class Raise extends Content {
           <div className="charity-logo small" />
 
           <div className="text">
-            1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}
+            1 entry = {etherPerEntry}
             <span className="ether">Ξ</span>
           </div>
 

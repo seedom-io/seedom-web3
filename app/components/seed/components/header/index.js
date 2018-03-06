@@ -26,12 +26,24 @@ class Header extends Component {
       network
     } = this.props;
 
+    let deployTime;
+    let endTime;
+    if (raiser) {
+      deployTime = dates.localeDate(raiser.deployTime);
+      endTime = dates.localeDate(raiser.endTime);
+    }
+
+    let networkName;
+    if (network) {
+      networkName = network.name;
+    }
+
     return (
       <div className="seedom-header">
         <div className="background" />
-        <Item type="side" title="start date" value={dates.localeDate(raiser.deployTime)} />
-        <Item type="center" title="network" value={network} />
-        <Item type="side" title="end date" value={dates.localeDate(raiser.endTime)} />
+        <Item type="side" title="start date" value={deployTime} />
+        <Item type="center" title="network" value={networkName} />
+        <Item type="side" title="end date" value={endTime} />
       </div>
     );
   }

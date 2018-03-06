@@ -29,26 +29,34 @@ class Stats extends Component {
       state
     } = this.props;
 
-    // once we have the raiser and state, calculate HUD data
-    const received = state.totalEntries.times(raiser.valuePerEntry);
-    const charityReward = received.times(raiser.charitySplit).dividedBy(1000);
-    const selectedReward = received.times(raiser.selectedSplit).dividedBy(1000);
-    const { totalParticipants, totalEntries } = state;
+    let charityReward;
+    let selectedReward;
+    let totalParticipants;
+    let totalEntries;
+    if (raiser && state) {
+      const received = state.totalEntries.times(raiser.valuePerEntry);
+      charityReward
+        = localeDecimal(getEtherFromWei(received.times(raiser.charitySplit).dividedBy(1000)));
+      selectedReward
+        = localeDecimal(getEtherFromWei(received.times(raiser.selectedSplit).dividedBy(1000)));
+      totalParticipants = localeNumber(state.totalParticipants);
+      totalEntries = localeNumber(state.totalEntries);
+    }
 
     return (
       <div className={`seedom-stats ${side}`}>
         {((side === 'top') || (side === 'left')) &&
           <div className="panel">
             <div className="background" />
-            <Stat title="charity will get" value={localeDecimal(getEtherFromWei(charityReward))} symbol="Ξ" />
-            <Stat title="selected will get" value={localeDecimal(getEtherFromWei(selectedReward))} symbol="Ξ" />
+            <Stat title="charity will get" value={charityReward} symbol="Ξ" />
+            <Stat title="selected will get" value={selectedReward} symbol="Ξ" />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&
           <div className="panel">
             <div className="background" />
-            <Stat title="total participants" value={localeNumber(totalParticipants)} />
-            <Stat title="total entries" value={localeNumber(totalEntries)} />
+            <Stat title="total participants" value={totalParticipants} />
+            <Stat title="total entries" value={totalEntries} />
           </div>
         }
       </div>

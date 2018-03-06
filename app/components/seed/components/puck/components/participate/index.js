@@ -53,11 +53,7 @@ class Participate extends Content {
 
   render() {
     const { raiser, isLoading } = this.props;
-
-    const {
-      className,
-    } = this.state;
-
+    const { className } = this.state;
     return (
       <div className={`seedom-content participate ${className}`}>
         <Indicator type={isLoading ? 'waiting' : null} />

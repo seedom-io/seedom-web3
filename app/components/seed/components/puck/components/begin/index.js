@@ -9,12 +9,17 @@ class Begin extends Content {
     const { className } = this.state;
     const { raiser, onBegin } = this.props;
 
+    let etherPerEntry;
+    if (raiser) {
+      etherPerEntry = localeDecimal(getEtherFromWei(raiser.valuePerEntry));
+    }
+
     return (
       <div className={`seedom-content begin ${className}`}>
         <div className="seedom-overlay layout">
           <div className="division text top small-pad">
             <div>
-              <span>1 entry = {localeDecimal(getEtherFromWei(raiser.valuePerEntry))}</span>
+              <span>1 entry = {etherPerEntry}</span>
               <span className="ether">Ξ</span>
             </div>
             <div className="supporting">now seeding</div>

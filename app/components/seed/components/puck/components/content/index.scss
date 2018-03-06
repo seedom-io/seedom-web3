@@ -41,21 +41,7 @@
     }
   }
 
-  .metamask-logo {
-    background-image: url('../../../../../../img/logos/metamask-logo.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    filter:
-      drop-shadow(2px 1px 0 black)
-      drop-shadow(-1px -1px 0 black);
-    height: 28%;
-    width: 100%;
 
-    &.small {
-      height: 20%;
-    }
-  }
 
   .button {
     text-transform: uppercase;

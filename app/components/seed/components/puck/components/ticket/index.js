@@ -33,6 +33,7 @@ class Ticket extends Content {
 
     const address = account ? bytes.shorten(account) : '';
     const message = participant ? messages.dehexMessage(participant.message) : '';
+    const endTime = raiser ? dates.localeDate(raiser.endTime) : '';
 
     return (
       <div className={`seedom-content ticket ${className}`}>
@@ -62,7 +63,7 @@ class Ticket extends Content {
                 YOUR ADDRESS
               </text>
               <text textAnchor="end" x="570" y="250" fontFamily="CamphorPro Heavy" fontSize="20px" fill="#54BA63">
-                {dates.localeDate(raiser.endTime)}
+                {endTime}
               </text>
               <text textAnchor="end" x="570" y="275" fontFamily="CamphorPro Regular" fontSize="20px" fill="#54BA63">
                 END DATE

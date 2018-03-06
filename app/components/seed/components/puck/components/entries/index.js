@@ -49,7 +49,11 @@ class Entries extends Component {
     const { raiser, disabled } = this.props;
     const { value, isValid } = this.state;
 
-    const wei = value.times(raiser.valuePerEntry);
+    let etherForEntries;
+    if (raiser) {
+      const weiForEntries = value.times(raiser.valuePerEntry);
+      etherForEntries = localeDecimal(getEtherFromWei(weiForEntries));
+    }
 
     return (
       <Field
@@ -64,7 +68,7 @@ class Entries extends Component {
         ref={(component) => { this.field = component; }}
       >
         <span>
-          {`${localeDecimal(getEtherFromWei(wei))}`}
+          {`${etherForEntries}`}
           <span className="ether is-dark">Ξ</span>
         </span>
       </Field>

@@ -15,9 +15,9 @@ module.exports = merge(base, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      ETH_URL: JSON.stringify('wss://manager2.seedom.io:8550'),
-      ETH_PATH: JSON.stringify('/mainnet/'),
-      ETH_CONTRACTS: JSON.stringify(h.getContracts(cwd, 'mainnet'))
+      ETH_PATH: JSON.stringify('/internal'),
+      ETH_NETWORKS: JSON.stringify(h.getNetworks(cwd)),
+      ETH_DEPLOYMENTS: JSON.stringify(h.getDeployments(cwd))
     })
   ]
 });

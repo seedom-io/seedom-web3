@@ -121,8 +121,12 @@ class Circles extends React.Component {
     const { raiser, isLoading } = this.props;
     const { now } = this.state;
 
-    const progressPercentage = getProgressPercentage(raiser, now);
-    const progressText = getProgressText(raiser, now);
+    let progressPercentage;
+    let progressText;
+    if (raiser) {
+      progressPercentage = getProgressPercentage(raiser, now);
+      progressText = getProgressText(raiser, now);
+    }
 
     const progressRadius = getProgressRadius();
     const loadersRadius = getLoadersRadius();

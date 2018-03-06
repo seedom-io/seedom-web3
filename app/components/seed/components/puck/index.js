@@ -13,8 +13,11 @@ import Select from './components/select';
 import Withdraw from './components/withdraw';
 import Cancel from './components/cancel';
 import Cancelled from './components/cancelled';
-import Error from './components/error';
-import Metamask from './components/metamask';
+import Ethereum from './components/ethereum';
+import Network from './components/network';
+import Account from './components/account';
+import SeedFailed from './components/seedFailed';
+import ParticipateFailed from './components/participateFailed';
 import Ticket from './components/ticket';
 import seedomLogo from '../../../../../../seedom-assets/logo/o/seedom-o-white-transparent.svg';
 import './index.scss';
@@ -22,8 +25,11 @@ import './index.scss';
 const PHASE_REFRESH = 1000;
 
 const getPhase = (raiser) => {
-  const now = Date.now();
+  if (!raiser) {
+    return null;
+  }
 
+  const now = Date.now();
   // participation phase
   if (now < raiser.endTime) {
     return 'participation';
@@ -56,9 +62,29 @@ const getComponent = ({
   isRaising,
   isWithdrawing
 }) => {
+  // ethereum check
+  if (!network) {
+    return 'ethereum';
+  }
+
+  // network check
+  if (!network.supported) {
+    return 'network';
+  }
+
+  // account check
+  if (!account) {
+    return 'account';
+  }
+
   // balances?
   if ((Object.keys(balances).length > 0) && isWithdrawing) {
     return 'withdraw';
+  }
+
+  // wait for state
+  if (!state) {
+    return null;
   }
 
   // selected participant
@@ -69,11 +95,6 @@ const getComponent = ({
   // cancelled?
   if (state.cancelled) {
     return 'cancelled';
-  }
-
-  // metamask check
-  if (!network || !account) {
-    return 'metamask';
   }
 
   // wait for a participant
@@ -107,11 +128,11 @@ const getComponent = ({
 
     case 'end':
       if (bytes.isZero32(state.charitySecret)) {
-        return 'error-charitySecret';
+        return 'seedFailed';
       }
 
-      if (bytes.isZero32(participant.secret)) {
-        return 'error-participantSecret';
+      if (bytes.isZero32(participant.message)) {
+        return 'participateFailed';
       }
 
       if (bytes.isZero32(state.charityMessage)) {
@@ -130,7 +151,7 @@ const getComponent = ({
 
 class Puck extends Component {
   static propTypes = {
-    network: PropTypes.string,
+    network: PropTypes.shape(),
     account: PropTypes.string,
     raiser: PropTypes.shape(),
     state: PropTypes.shape(),
@@ -275,7 +296,11 @@ class Puck extends Component {
           <Withdraw isShown={component === 'withdraw'} balances={balances} isLoading={isLoading} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
           <Cancel isShown={component === 'cancel'} isLoading={isLoading} onCancel={this.handleCancel} />
           <Cancelled isShown={component === 'cancelled'} />
-          <Metamask isShown={component === 'metamask'} />
+          <Ethereum isShown={component === 'ethereum'} />
+          <Network isShown={component === 'network'} />
+          <Account isShown={component === 'account'} />
+          <SeedFailed isShown={component === 'seedFailed'} />
+          <ParticipateFailed isShown={component === 'participateFailed'} />
         </div>
       </div>
     );
