@@ -59,6 +59,6 @@
     "test": "jest",
     "start": "npm run localhost",
     "dev": "webpack-dev-server --config private/webpack/dev.js",
-    "dist": "webpack --config private/webpack/production.js"
+    "dist": "webpack --config private/webpack/internal.js"
   }
 }

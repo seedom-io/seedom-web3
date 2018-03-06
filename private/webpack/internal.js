@@ -10,7 +10,7 @@ module.exports = merge(base, {
   devtool: 'cheap-module-eval-source-map',
   output: {
     filename: 'index.js',
-    path: path.resolve(cwd, 'dist')
+    path: path.resolve(cwd, 'dist/internal')
   },
   plugins: [
     new webpack.DefinePlugin({
