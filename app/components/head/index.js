@@ -6,7 +6,7 @@ class Head extends Component {
     return (
       <Helmet titleTemplate="%s - Seedom" defaultTitle="Seedom">
         <meta name="description" content="Seedom - Seeding the future of philanthropy" />
-        <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8" />
+        <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7" />
       </Helmet>
     );
   }
