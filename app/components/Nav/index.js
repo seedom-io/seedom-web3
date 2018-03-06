@@ -45,11 +45,11 @@ class Nav extends React.Component {
             </div>
             <div className={classnames('navbar-menu', { 'is-active': isNavBurgerActive })}>
               <div className="navbar-start">
-                <NavLink className="navbar-item" activeClassName="is-active" to="/" exact>SEED</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to="/suggest" exact>SUGGEST</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to="/history" exact>HISTORY</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to="/help" exact>HELP</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to="/about" exact>ABOUT</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to={ETH_PATH} exact>SEED</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}suggest`} exact>SUGGEST</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}history`} exact>HISTORY</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}help`} exact>HELP</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}about`} exact>ABOUT</NavLink>
               </div>
               <div className="navbar-end">
                 <a className="navbar-item" href="https://medium.com/@seedom.io">

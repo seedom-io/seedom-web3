@@ -16,6 +16,7 @@ module.exports = merge(base, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('dev'),
       ETH_URL: JSON.stringify('ws://localhost:8546'),
+      ETH_PATH: JSON.stringify('/'),
       ETH_CONTRACTS: JSON.stringify(h.getContracts(cwd, 'localhost'))
     })
   ]

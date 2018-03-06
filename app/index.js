@@ -48,10 +48,10 @@ const ConnectedSwitch = connect(state => ({
 
 const AppContainer = () => (
   <ConnectedSwitch>
-    <Route exact path="/" component={Seed} />
-    <Route path="/suggest" component={Suggest} />
-    <Route path="/history" component={History} />
-    <Route path="/help" component={Help} />
+    <Route exact path={ETH_PATH} component={Seed} />
+    <Route path={`${ETH_PATH}suggest`} component={Suggest} />
+    <Route path={`${ETH_PATH}history`} component={History} />
+    <Route path={`${ETH_PATH}help`} component={Help} />
   </ConnectedSwitch>
 );
 
