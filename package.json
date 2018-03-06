@@ -59,9 +59,6 @@
     "test": "jest",
     "start": "npm run localhost",
     "dev": "webpack-dev-server --config private/webpack/dev.js",
-    "localhost": "webpack --config private/webpack/localhost.js",
-    "ropsten": "webpack --config private/webpack/ropsten.js",
-    "mainnet": "webpack --config private/webpack/mainnet.js",
-    "dist": "npm run localhost && npm run ropsten && npm run mainnet"
+    "dist": "webpack --config private/webpack/production.js"
   }
 }
