@@ -15,7 +15,7 @@ module.exports = merge(base, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      ETH_PATH: JSON.stringify('/internal'),
+      ETH_PATH: JSON.stringify('/internal/'),
       ETH_NETWORKS: JSON.stringify(h.getNetworks(cwd)),
       ETH_DEPLOYMENTS: JSON.stringify(h.getDeployments(cwd))
     })
