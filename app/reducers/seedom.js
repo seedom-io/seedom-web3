@@ -146,14 +146,6 @@ const handleWithdrawal = (prevState, action) => {
   return newState;
 };
 
-const handleEthereumSend = (prevState) => {
-  return { ...prevState, isLoading: true };
-};
-
-const handleEthereumSendError = (prevState) => {
-  return { ...prevState, isLoading: false };
-};
-
 const seedomReducer = (prevState = {}, action) => {
   switch (action.type) {
     case 'SEEDOM_RAISER':
@@ -178,10 +170,6 @@ const seedomReducer = (prevState = {}, action) => {
       return handleCancellation(prevState);
     case 'SEEDOM_WITHDRAWAL':
       return handleWithdrawal(prevState, action);
-    case 'ETHEREUM_SEND':
-      return handleEthereumSend(prevState, action);
-    case 'ETHEREUM_SEND_ERROR':
-      return handleEthereumSendError(prevState);
     default:
       return prevState;
   }

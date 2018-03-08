@@ -1,4 +1,5 @@
 import Web3 from 'web3';
+import { toastr } from 'react-redux-toastr';
 
 const PAST_BLOCKS_BACK = 10000;
 const MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
@@ -66,7 +67,7 @@ const ethereumMiddleware = (store) => {
         },
         error => {
           console.error(error);
-          store.dispatch({ ...action, type: 'ETHEREUM_CALL_ERROR', error });
+          toastr.error('Call Error', error.message);
         }
       );
     return next(action);
@@ -97,7 +98,7 @@ const ethereumMiddleware = (store) => {
 
   const handleSendError = (error, action) => {
     console.error(error.message);
-    store.dispatch({ ...action, type: 'ETHEREUM_SEND_ERROR', error });
+    toastr.error('Send Error', error.message);
   };
 
   const handleSendSuccess = (action) => {

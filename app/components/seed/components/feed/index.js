@@ -61,61 +61,51 @@ class Feed extends Component {
     return (
       <div className="seedom-feed">
         <Collapse title="live activity feed" collapsed={collapsed} onToggle={this.handleOnToggle} />
-        {feed && !collapsed && (
-          <div>
-            {feed.map((item) => (
-              <div
-                className="item"
-                key={`${item.transactionHash}-${item.transactionIndex}`}
-                onClick={() => { this.openTransaction(item.transactionHash); }}
-              >
-                <div className="icon">
-                  {{
-                    SEEDOM_PARTICIPATION: (
-                      <i class="fas fa-arrow-alt-circle-right"></i>
-                    ),
-                    SEEDOM_RAISE: (
-                      <i class="far fa-arrow-alt-circle-up"></i>
-                    ),
-                  }[item.type]}
-                </div>
-                <div className="contents">
-                  <div className="side left">
-                    <div className="blocknum">
-                      <i class="fas fa-cube"></i> {item.blockNumber}
+        <div className="seedom-table">
+          {feed && !collapsed && (
+            <div>
+              {feed.map((item) => (
+                <div
+                  className="row"
+                  key={`${item.transactionHash}-${item.transactionIndex}`}
+                  onClick={() => { this.openTransaction(item.transactionHash); }}
+                >
+                  <div className="icon">
+                    {{
+                      SEEDOM_PARTICIPATION: (
+                        <i class="fas fa-arrow-alt-circle-right"></i>
+                      ),
+                      SEEDOM_RAISE: (
+                        <i class="far fa-arrow-alt-circle-up"></i>
+                      ),
+                    }[item.type]}
+                  </div>
+                  <div className="contents">
+                    <div className="side left">
+                      <div className="blocknum">
+                        <i class="fas fa-cube"></i> {item.blockNumber}
+                      </div>
+                      <div className="address">
+                        {bytes.shorten(getAddress(item))}
+                      </div>
                     </div>
-                    <div className="address">
-                      {bytes.shorten(getAddress(item))}
+                    <div className="side right">
+                      <div className="entries">
+                        {numbers.localeNumber(getEntries(item))} entries
+                      </div>
+                      <div className="messages">
+                        {getMessage(item)}
+                      </div>
                     </div>
                   </div>
-                  <div className="side right">
-                    <div className="entries">
-                      {numbers.localeNumber(getEntries(item))} entries
-                    </div>
-                    <div className="messages">
-                      {getMessage(item)}
-                    </div>
-                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     );
   }
 }
-
-/*
-<div className="item" key={`${item.event.transactionHash}-${item.event.transactionIndex}`} onClick={() => { this.openTransaction(item.event.transactionHash); }}>
-              {feedItem.event.type}
-              {bytes.shorten(item.participant)}
-              {localeNumber(item.entries)}
-              {getData(item)}
-            </div>*/
-
-/*
-
-        */
 
 export default Feed;

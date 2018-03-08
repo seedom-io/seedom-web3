@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import './index.scss';
 
 class Suggest extends Component {
   render() {
     return (
-      <div>
-        Suggest
+      <div className="seedom-table">
+        <div className="row">
+          Suggest
+        </div>
       </div>
     );
   }

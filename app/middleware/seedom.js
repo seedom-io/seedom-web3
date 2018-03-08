@@ -1,6 +1,5 @@
 import * as ethereumActions from '../actions/ethereum';
 import * as seedomParser from '../parsers/seedom';
-import { toastr } from 'react-redux-toastr';
 
 const seedomMiddleware = store => {
   const handleRaiser = (next, action) => {
@@ -128,10 +127,6 @@ const seedomMiddleware = store => {
     }
   };
 
-  const handleEthereumError = (action) => {
-    toastr.error('Error', action.error.message);
-  };
-
   return next => action => {
     const { type } = action;
     switch (type) {
@@ -146,9 +141,6 @@ const seedomMiddleware = store => {
         return handleEthereumUser(next, action);
       case 'ETHEREUM_REFRESH':
         return handleEthereumRefresh(next, action);
-      case 'ETHEREUM_CALL_ERROR':
-      case 'ETHEREUM_SEND_ERROR':
-        return handleEthereumError(action);
       default:
         return next(action);
     }
