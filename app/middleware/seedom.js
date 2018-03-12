@@ -69,7 +69,7 @@ const seedomMiddleware = store => {
   const handleEthereumUser = (next, action) => {
     // first pull data from state
     const state = store.getState();
-    let { network, account } = state.seedom;
+    let { network, account } = state.ethereum;
     // augment with action data
     if (action) {
       if (action.network) {
@@ -88,7 +88,7 @@ const seedomMiddleware = store => {
 
   const handleEthereumRefresh = (next, action) => {
     const state = store.getState();
-    const { primaryContractAddresses } = state.seedom;
+    const { primaryContractAddresses } = state.ethereum;
     const { contractAddresses } = action;
     if (contractAddresses.indexOf(primaryContractAddresses.seedom) > -1) {
       store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'raiser' }));

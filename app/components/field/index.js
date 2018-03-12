@@ -26,24 +26,24 @@ class Field extends Component {
     value: PropTypes.string,
     maxLength: PropTypes.number,
     min: PropTypes.number,
-    addon: PropTypes.string,
     placeholder: PropTypes.string.isRequired,
     disabled: PropTypes.bool.isRequired,
     isValid: PropTypes.bool,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    children: PropTypes.element
   };
 
   static defaultProps = {
     value: '',
-    addon: '',
     maxLength: 0,
     min: null,
-    isValid: true
-  }
+    isValid: true,
+    children: null
+  };
 
   focus = () => {
     this.input.focus();
-  }
+  };
 
   handleChange = event => {
     this.props.onChange(event.target.value);

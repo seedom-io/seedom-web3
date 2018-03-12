@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
 
 class Seed extends Content {
+  static propTypes = {
+    isShown: PropTypes.bool.isRequired
+  };
+
   render() {
     const { className } = this.state;
     const { isShown } = this.props;

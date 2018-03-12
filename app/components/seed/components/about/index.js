@@ -11,7 +11,7 @@ class About extends Component {
 
   handleOnToggle = (collapsed) => {
     this.setState({ collapsed });
-  }
+  };
 
   render() {
     const { collapsed } = this.state;

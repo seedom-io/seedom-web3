@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import * as dates from '../../../../utils/dates';
 import './index.scss';
 
 class Item extends Component {
+  static propTypes = {
+    type: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    value: PropTypes.string
+  };
+
+  static defaultProps = {
+    value: null
+  };
+
   render() {
     const { type, title, value } = this.props;
 
@@ -20,6 +31,16 @@ class Item extends Component {
 }
 
 class Header extends Component {
+  static propTypes = {
+    raiser: PropTypes.shape(),
+    network: PropTypes.shape()
+  };
+
+  static defaultProps = {
+    raiser: null,
+    network: null
+  };
+
   render() {
     const {
       raiser,

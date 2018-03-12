@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import * as bytes from '../../../../utils/bytes';
 import * as numbers from '../../../../utils/numbers';
 import * as etherscan from '../../../../utils/etherscan';
@@ -35,6 +36,16 @@ const getMessage = (item) => {
 };
 
 class Feed extends Component {
+  static propTypes = {
+    network: PropTypes.shape(),
+    feed: PropTypes.arrayOf(PropTypes.shape())
+  };
+
+  static defaultProps = {
+    network: null,
+    feed: []
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -61,7 +72,7 @@ class Feed extends Component {
       <div className="seedom-feed">
         <Collapse title="live activity feed" collapsed={collapsed} onToggle={this.handleOnToggle} />
         <div className="seedom-table">
-          {feed && !collapsed && (
+          {!collapsed && (
             <div>
               {feed.map((item) => (
                 <div
@@ -72,17 +83,17 @@ class Feed extends Component {
                   <div className="icon">
                     {{
                       SEEDOM_PARTICIPATION: (
-                        <i class="fas fa-arrow-alt-circle-right"></i>
+                        <i className="fas fa-arrow-alt-circle-right"></i>
                       ),
                       SEEDOM_RAISE: (
-                        <i class="far fa-arrow-alt-circle-up"></i>
+                        <i className="far fa-arrow-alt-circle-up"></i>
                       ),
                     }[item.type]}
                   </div>
                   <div className="contents">
                     <div className="side left">
                       <div className="blocknum">
-                        <i class="fas fa-cube"></i> {item.blockNumber}
+                        <i className="fas fa-cube"></i> {item.blockNumber}
                       </div>
                       <div className="address">
                         {bytes.shorten(getAddress(item))}

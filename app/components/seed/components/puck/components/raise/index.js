@@ -3,13 +3,21 @@ import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
 import Entries from '../entries';
+import { toastr } from 'react-redux-toastr';
 import { localeDecimal, getEtherFromWei } from '../../../../../../utils/numbers';
 import './index.scss';
 
 class Raise extends Content {
   static propTypes = {
-    isRaising: PropTypes.bool.isRequired
-  }
+    raiser: PropTypes.shape(),
+    isLoading: PropTypes.bool,
+    onRaisingCancelled: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    raiser: null,
+    isLoading: false
+  };
 
   show() {
     super.show();
@@ -32,9 +40,7 @@ class Raise extends Content {
         const entries = this.entries.value();
         onRaise(entries);
       } else {
-        toast.error('There was a problem raising', {
-          position: toast.POSITION.TOP_CENTER
-        });
+        toastr.warning('RAISE', 'form invalid');
       }
     });
   };

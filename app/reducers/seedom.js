@@ -1,15 +1,11 @@
 const MAX_FEED_ITEMS = 20;
 
 const getNewState = (prevState) => {
-  const newState = { ...prevState };
-  if (!('feed' in prevState)) {
-    newState.feed = [];
-  }
-  return newState;
+  return { ...prevState };
 };
 
 const updateFeed = (feed, action) => {
-  const newFeed = feed.slice(0, MAX_FEED_ITEMS);
+  const newFeed = feed ? feed.slice(0, MAX_FEED_ITEMS) : [];
   newFeed.unshift(action);
   return newFeed;
 };

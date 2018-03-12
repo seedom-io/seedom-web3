@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
 import './index.scss';
@@ -12,6 +13,20 @@ const MAX_X = 600;
 const MAX_Y = 300;
 
 class Ticket extends Content {
+  static propTypes = {
+    isShown: PropTypes.bool.isRequired,
+    onTicketingOver: PropTypes.func.isRequired,
+    account: PropTypes.string,
+    raiser: PropTypes.shape(),
+    participant: PropTypes.shape()
+  };
+
+  static defaultProps = {
+    account: null,
+    raiser: null,
+    participant: null
+  };
+
   saveTicket = (address) => {
     // set ticket to seen
     saveSvgAsPng.svgAsPngUri(this.svg, { encoderOptions: 1.0, scale: 1.0 }, (uri) => {

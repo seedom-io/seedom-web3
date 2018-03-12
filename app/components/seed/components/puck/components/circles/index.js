@@ -95,12 +95,13 @@ const getProgressTextShown = (percentage) => {
 class Circles extends React.Component {
   static propTypes = {
     raiser: PropTypes.shape(),
-    isLoading: PropTypes.bool.isRequired
+    isLoading: PropTypes.bool
   };
 
   static defaultProps = {
-    raiser: null
-  }
+    raiser: null,
+    isLoading: false
+  };
 
   constructor(props) {
     super(props);

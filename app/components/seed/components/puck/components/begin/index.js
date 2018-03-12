@@ -1,10 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Content from '../content';
 import { localeDecimal, getEtherFromWei } from '../../../../../../utils/numbers';
 import { Link } from 'react-router-dom';
 import './index.scss';
 
 class Begin extends Content {
+  static propTypes = {
+    raiser: PropTypes.shape(),
+    onBegin: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    raiser: null
+  };
+
   render() {
     const { className } = this.state;
     const { raiser, onBegin } = this.props;

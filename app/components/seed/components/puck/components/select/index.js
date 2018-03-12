@@ -1,10 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
 import * as etherscan from '../../../../../../utils/etherscan';
 import './index.scss';
 
 class Select extends Content {
+  static propTypes = {
+    isShown: PropTypes.bool.isRequired,
+    state: PropTypes.shape(),
+    network: PropTypes.shape()
+  };
+
+  static defaultProps = {
+    state: null,
+    network: null
+  };
+
   render() {
     const { className } = this.state;
     const { isShown, state, network } = this.props;

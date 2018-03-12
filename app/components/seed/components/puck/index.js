@@ -109,7 +109,7 @@ const getComponent = ({
         return 'seed';
       }
 
-      if (bytes.isZero32(participant.message)) {
+      if (participant.message === '') {
         if (!isParticipating) {
           return 'begin';
         }
@@ -131,11 +131,11 @@ const getComponent = ({
         return 'seedFailed';
       }
 
-      if (bytes.isZero32(participant.message)) {
+      if (participant.message === '') {
         return 'participateFailed';
       }
 
-      if (bytes.isZero32(state.charityMessage)) {
+      if (state.charityMessage === '') {
         return 'reveal';
       }
 
@@ -162,7 +162,7 @@ class Puck extends Component {
     onRaise: PropTypes.func.isRequired,
     onWithdraw: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired
-  }
+  };
 
   static defaultProps = {
     network: null,
@@ -171,7 +171,7 @@ class Puck extends Component {
     state: null,
     participant: null,
     balances: {},
-    isLoading: null
+    isLoading: false
   };
 
   constructor(props) {

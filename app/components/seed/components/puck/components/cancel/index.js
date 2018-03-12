@@ -5,8 +5,13 @@ import Indicator from '../indicator';
 
 class Cancel extends Content {
   static propTypes = {
-    isLoading: PropTypes.bool.isRequired
-  }
+    isLoading: PropTypes.bool,
+    onCancel: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    isLoading: false
+  };
 
   handleSubmit = () => {
     const { onCancel } = this.props;

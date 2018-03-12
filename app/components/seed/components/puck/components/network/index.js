@@ -1,10 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
 import { Link } from 'react-router-dom';
 import './index.scss';
 
 class Network extends Content {
+  static propTypes = {
+    isShown: PropTypes.bool.isRequired
+  };
+
   openMetamask = () => {
     window.open(METAMASK_URL, '_blank');
   }

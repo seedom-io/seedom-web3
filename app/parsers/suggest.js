@@ -4,8 +4,8 @@ import * as bytes from '../utils/bytes';
 const parseStatus = status => {
   return {
     maxScore: new BigNumber(status._maxScore),
-    hasRight: new BigNumber(status._hasRight),
-    canVote: new BigNumber(status._canVote)
+    hasRight: Boolean(status._hasRight),
+    canVote: Boolean(status._canVote)
   };
 };
 

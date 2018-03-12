@@ -10,6 +10,17 @@ class Withdraw extends Content {
     isLoading: PropTypes.bool.isRequired
   }
 
+  static propTypes = {
+    isShown: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool,
+    onWithdrawSkipped: PropTypes.func.isRequired,
+    onWithdraw: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    isLoading: false
+  };
+
   getMaxBalance() {
     const { balances } = this.props;
 

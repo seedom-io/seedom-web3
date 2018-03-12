@@ -7,7 +7,7 @@ class Footer extends Component {
         <div className="container">
           <div className="content has-text-centered">
             <p>
-              <strong>Seedom</strong> by the <a className="is-green" href="mailto:team@seedom.io">Seedom Team</a>.
+              <strong>Seedom</strong> by the <a className="is-green" href="mailto:team@seedom.io">Seedom Team</a>
             </p>
           </div>
         </div>

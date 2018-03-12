@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './index.scss';
 
 class Content extends Component {
+  static propTypes = {
+    isShown: PropTypes.bool.isRequired
+  };
 
   constructor(props) {
     super(props);

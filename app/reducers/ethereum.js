@@ -1,9 +1,17 @@
+const getNewState = (prevState) => {
+  return { ...prevState };
+};
+
 const handleEthereumSend = (prevState) => {
-  return { ...prevState, isLoading: true };
+  const newState = getNewState(prevState);
+  newState.isLoading = true;
+  return newState;
 };
 
 const handleEthereumSendError = (prevState) => {
-  return { ...prevState, isLoading: false };
+  const newState = getNewState(prevState);
+  newState.isLoading = false;
+  return newState;
 };
 
 const ethereumReducer = (prevState = {}, action) => {

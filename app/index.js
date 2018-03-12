@@ -9,8 +9,10 @@ import { reducer as toastrReducer } from 'react-redux-toastr';
 import ReduxToastr from 'react-redux-toastr'
 import createHistory from 'history/createBrowserHistory';
 import reduceReducers from './utils/reduceReducers';
+import suggestReducer from './reducers/suggest';
 import seedomReducer from './reducers/seedom';
 import ethereumReducer from './reducers/ethereum';
+import suggestMiddleware from './middleware/suggest';
 import seedomMiddleware from './middleware/seedom';
 import ethereumMiddleware from './middleware/ethereum';
 
@@ -28,9 +30,10 @@ const history = createHistory();
 
 const store = createStore(
   combineReducers({
-    seedom: reduceReducers(
+    ethereum: reduceReducers(
       ethereumReducer,
-      seedomReducer
+      seedomReducer,
+      suggestReducer
     ),
     toastr: toastrReducer,
     router: routerReducer
@@ -38,7 +41,8 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(
     routerMiddleware(history),
     ethereumMiddleware,
-    seedomMiddleware
+    seedomMiddleware,
+    suggestMiddleware
   ))
 );
 

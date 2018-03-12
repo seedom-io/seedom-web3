@@ -4,12 +4,13 @@ import Content from '../content';
 import Entries from '../entries';
 import Message from '../message';
 import Indicator from '../indicator';
+import { toastr } from 'react-redux-toastr';
 import './index.scss';
 
 class Participate extends Content {
   static propTypes = {
-    isLoading: PropTypes.bool.isRequired
-  }
+    isLoading: PropTypes.bool
+  };
 
   constructor(props) {
     super(props);
@@ -44,9 +45,7 @@ class Participate extends Content {
         const message = this.message.value();
         onParticipate({ message, entries });
       } else {
-        toast.error('There was a problem participating.', {
-          position: toast.POSITION.TOP_CENTER
-        });
+        toastr.warning('PARTICIPATE', 'form invalid');
       }
     });
   }

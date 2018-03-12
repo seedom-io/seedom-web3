@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
 import { zero, localeNumber } from '../../../../../../utils/numbers';
@@ -6,6 +7,17 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 
 class Participate extends Content {
+  static propTypes = {
+    isShown: PropTypes.bool.isRequired,
+    participant: PropTypes.shape(),
+    onRaising: PropTypes.func.isRequired,
+    onTicketing: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    participant: null
+  };
+
   render() {
     const { className } = this.state;
     const { isShown, participant, onRaising, onTicketing } = this.props;

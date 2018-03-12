@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './index.scss';
 
 class Indicator extends Component {
+  static propTypes = {
+    type: PropTypes.string
+  };
+
+  static defaultProps = {
+    type: null
+  };
+
   render() {
     const { type } = this.props;
     return (

@@ -67,7 +67,7 @@ const ethereumMiddleware = (store) => {
         },
         error => {
           console.error(error);
-          toastr.error('Call Error', error.message);
+          toastr.error('ETHEREUM', error.message);
         }
       );
     return next(action);
@@ -98,7 +98,7 @@ const ethereumMiddleware = (store) => {
 
   const handleSendError = (error, action) => {
     console.error(error.message);
-    toastr.error('Send Error', error.message);
+    toastr.error('ETHEREUM', error.message);
   };
 
   const handleSendSuccess = (action) => {

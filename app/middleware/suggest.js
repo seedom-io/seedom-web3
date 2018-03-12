@@ -45,7 +45,7 @@ const suggestMiddleware = store => {
 
   const handleEthereumRefresh = (next, action) => {
     const state = store.getState();
-    const { primaryContractAddresses } = state.suggest;
+    const { primaryContractAddresses } = state.ethereum;
     const { contractAddresses } = action;
     if (contractAddresses.indexOf(primaryContractAddresses.suggest) > -1) {
       store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'status' }));

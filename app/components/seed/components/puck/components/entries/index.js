@@ -6,8 +6,13 @@ import { BigNumber } from 'bignumber.js';
 
 class Entries extends Component {
   static propTypes = {
-    raiser: PropTypes.shape().isRequired,
-    disabled: PropTypes.bool.isRequired
+    raiser: PropTypes.shape(),
+    disabled: PropTypes.bool
+  };
+
+  static defaultProps = {
+    raiser: null,
+    disabled: false
   };
 
   constructor(props) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from './components/header';
 import Puck from './components/puck';
@@ -12,8 +12,12 @@ import * as ethereumActions from '../../actions/ethereum';
 import './index.scss';
 
 class Seed extends Component {
+  static propTypes = {
+    ethereum: PropTypes.shape().isRequired
+  };
+
   handleParticipate = ({ message, entries }) => {
-    const { raiser } = this.props.seedom;
+    const { raiser } = this.props.ethereum;
     const messageBytes = bytes.bytesString(message);
     const value = entries.times(raiser.valuePerEntry);
     this.props.dispatch(ethereumActions.send({
@@ -22,7 +26,7 @@ class Seed extends Component {
   };
 
   handleRaise = (entries) => {
-    const { raiser } = this.props.seedom;
+    const { raiser } = this.props.ethereum;
     const value = entries.times(raiser.valuePerEntry);
     this.props.dispatch(ethereumActions.send({
       contractName: 'seedom', value
@@ -45,14 +49,13 @@ class Seed extends Component {
     const {
       network,
       account,
-      primaryContractAddresses,
       raiser,
       state,
       participant,
       balances,
       feed,
       isLoading
-    } = this.props.seedom;
+    } = this.props.ethereum;
 
     return (
       <div className="seedom-seed">
@@ -108,7 +111,7 @@ class Seed extends Component {
         */
 
 const mapStateToProps = state => {
-  return { seedom: state.seedom };
+  return { ethereum: state.ethereum };
 };
 
 const mapDispatchToProps = dispatch => {
