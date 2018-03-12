@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Field from '../field';
+import Field from '../../../../../field';
 import { zero, localeDecimal, getEtherFromWei } from '../../../../../../utils/numbers';
 import { BigNumber } from 'bignumber.js';
 

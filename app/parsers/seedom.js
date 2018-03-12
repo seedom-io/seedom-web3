@@ -1,4 +1,5 @@
 import { BigNumber } from 'bignumber.js';
+import * as bytes from '../utils/bytes';
 
 const epochToDate = seconds => {
   return new Date(seconds * 1000);
@@ -24,12 +25,12 @@ const parseRaiser = raiser => {
 const parseState = state => {
   return {
     charitySecret: String(state._charitySecret),
-    charityMessage: String(state._charityMessage),
+    charityMessage: String(bytes.stringBytes(state._charityMessage)),
     charityWithdrawn: Boolean(state._charityWithdrawn),
     selected: String(state._selected),
-    selectedMessage: String(state._selectedMessage),
+    selectedMessage: String(bytes.stringBytes(state._selectedMessage)),
     selectedWithdrawn: Boolean(state._selectedWithdrawn),
-    ownerMessage: String(state._ownerMessage),
+    ownerMessage: String(bytes.stringBytes(state._ownerMessage)),
     ownerWithdrawn: Boolean(state._selectedWithdrawn),
     cancelled: Boolean(state._cancelled),
     totalParticipants: new BigNumber(state._totalParticipants),
@@ -46,14 +47,14 @@ const parseSeed = seed => {
 const parseParticipant = participant => {
   return {
     entries: new BigNumber(participant._entries),
-    message: String(participant._message)
+    message: String(bytes.stringBytes(participant._message))
   };
 };
 
 const parseParticipation = participation => {
   return {
     participant: String(participation._participant),
-    message: String(participation._message),
+    message: String(bytes.stringBytes(participation._message)),
     entries: new BigNumber(participation._entries),
     refund: new BigNumber(participation._refund),
   };
@@ -69,16 +70,16 @@ const parseRaise = raise => {
 
 const parseRevelation = revelation => {
   return {
-    charityMessage: String(revelation._charityMessage),
+    charityMessage: String(bytes.stringBytes(revelation._charityMessage)),
   };
 };
 
 const parseSelection = selection => {
   return {
     selected: String(selection._selected),
-    selectedMessage: String(selection._selectedMessage),
-    charityMessage: String(selection._charityMessage),
-    ownerMessage: String(selection._ownerMessage)
+    selectedMessage: String(bytes.stringBytes(selection._selectedMessage)),
+    charityMessage: String(bytes.stringBytes(selection._charityMessage)),
+    ownerMessage: String(bytes.stringBytes(selection._ownerMessage))
   };
 };
 

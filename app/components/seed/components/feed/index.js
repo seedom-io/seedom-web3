@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as bytes from '../../../../utils/bytes';
-import * as messages from '../../../../utils/messages';
 import * as numbers from '../../../../utils/numbers';
 import * as etherscan from '../../../../utils/etherscan';
 import Collapse from '../collapse';
@@ -30,7 +29,7 @@ const getEntries = (item) => {
 
 const getMessage = (item) => {
   if (item.type === 'SEEDOM_PARTICIPATION') {
-    return messages.dehexMessage(item.participation.message);
+    return item.participation.message;
   }
   return null;
 };

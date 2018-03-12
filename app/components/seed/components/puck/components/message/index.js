@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Field from '../field';
+import Field from '../../../../../field';
 
 const MAX_LENGTH = 32;
 

@@ -5,7 +5,6 @@ import './index.scss';
 import charityLogo from '../../../../../../img/logos/charity-logo.png';
 import seedomTicket from '../../../../../../../../seedom-assets/ticket/seedom-ticket.svg';
 import * as saveSvgAsPng from 'save-svg-as-png';
-import * as messages from '../../../../../../utils/messages';
 import * as dates from '../../../../../../utils/dates';
 import * as bytes from '../../../../../../utils/bytes';
 
@@ -32,7 +31,7 @@ class Ticket extends Content {
     } = this.props;
 
     const address = account ? bytes.shorten(account) : '';
-    const message = participant ? messages.dehexMessage(participant.message) : '';
+    const message = participant ? participant.message : '';
     const endTime = raiser ? dates.localeDate(raiser.endTime) : '';
 
     return (

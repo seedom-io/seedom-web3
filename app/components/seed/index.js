@@ -6,7 +6,7 @@ import Puck from './components/puck';
 import Stats from './components/stats';
 import Feed from './components/feed';
 import About from './components/about';
-import * as messages from '../../utils/messages';
+import * as bytes from '../../utils/bytes';
 import * as etherscan from '../../utils/etherscan';
 import * as ethereumActions from '../../actions/ethereum';
 import './index.scss';
@@ -14,12 +14,12 @@ import './index.scss';
 class Seed extends Component {
   handleParticipate = ({ message, entries }) => {
     const { raiser } = this.props.seedom;
-    const messageHex = messages.hexMessage(message);
+    const messageBytes = bytes.bytesString(message);
     const value = entries.times(raiser.valuePerEntry);
     this.props.dispatch(ethereumActions.send({
-      contractName: 'seedom', method: 'participate', args: [messageHex], value
+      contractName: 'seedom', method: 'participate', args: [messageBytes], value
     }));
-  }
+  };
 
   handleRaise = (entries) => {
     const { raiser } = this.props.seedom;
@@ -27,19 +27,19 @@ class Seed extends Component {
     this.props.dispatch(ethereumActions.send({
       contractName: 'seedom', value
     }));
-  }
+  };
 
   handleWithdraw = (contractAddress) => {
     this.props.dispatch(ethereumActions.send({
       contractName: 'seedom', contractAddress, method: 'withdraw'
     }));
-  }
+  };
 
   handleCancel = () => {
     this.props.dispatch(ethereumActions.send({
       contractName: 'seedom', method: 'cancel'
     }));
-  }
+  };
 
   render() {
     const {

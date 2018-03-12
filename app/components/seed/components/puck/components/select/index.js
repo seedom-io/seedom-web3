@@ -1,8 +1,6 @@
 import React from 'react';
 import Content from '../content';
 import Indicator from '../indicator';
-import * as messages from '../../../../../../utils/messages';
-import * as bytes from '../../../../../../utils/bytes';
 import * as etherscan from '../../../../../../utils/etherscan';
 import './index.scss';
 
@@ -15,9 +13,7 @@ class Select extends Content {
     let ownerMessage;
     let selectedMessage;
     if (state) {
-      charityMessage = messages.dehexMessage(state.charityMessage);
-      ownerMessage = messages.dehexMessage(state.ownerMessage);
-      selectedMessage = messages.dehexMessage(state.selectedMessage);
+      ({ charityMessage, ownerMessage, selectedMessage } = state);
     }
 
     return (

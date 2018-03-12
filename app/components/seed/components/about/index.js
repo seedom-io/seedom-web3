@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import * as bytes from '../../../../utils/bytes';
-import * as messages from '../../../../utils/messages';
-import { localeNumber } from '../../../../utils/numbers';
-import * as etherscan from '../../../../utils/etherscan';
 import Collapse from '../collapse';
 
 class About extends Component {

@@ -1,4 +1,5 @@
 import { BigNumber } from 'bignumber.js';
+import * as bytes from '../utils/bytes';
 
 const parseStatus = status => {
   return {
@@ -12,7 +13,7 @@ const parseCharities = charities => {
   const parsedCharities = [];
   for (let charityIndex = 0; charityIndex < charities._names.length; charityIndex += 1) {
     const parsedCharity = {
-      name: String(charities._names[charityIndex]),
+      name: String(bytes.stringBytes(charities._names[charityIndex])),
       caster: new BigNumber(charities._casters[charityIndex]),
       totalScores: new BigNumber(charities._totalScores[charityIndex]),
       totalVotes: new BigNumber(charities._totalVotes[charityIndex])
@@ -43,7 +44,7 @@ const parseCastSuggest = castSuggest => {
   return {
     caster: String(castSuggest._caster),
     charityIndex: new BigNumber(castSuggest._charityIndex),
-    charityName: String(castSuggest._charityName),
+    charityName: String(bytes.stringBytes(castSuggest._charityName)),
     score: new BigNumber(castSuggest._score)
   };
 };
