@@ -5,7 +5,7 @@ const parseStatus = status => {
   return {
     maxScore: new BigNumber(status._maxScore),
     hasRight: Boolean(status._hasRight),
-    canVote: Boolean(status._canVote)
+    hasVoted: Boolean(status._hasVoted)
   };
 };
 
@@ -27,25 +27,25 @@ const parseCharities = charities => {
 const parseVotes = votes => {
   const parsedVotes = {};
   for (let voteIndex = 0; voteIndex < votes._charityIndexes.length; voteIndex += 1) {
-    parsedVotes[votes._charityIndexes[voteIndex]] = votes._scores[voteIndex];
+    parsedVotes[votes._charityIndexes[voteIndex]] = new BigNumber(votes._scores[voteIndex]);
   }
   return parsedVotes;
 };
 
-const parseCastCharity = castCharity => {
+const parseCastIndex = castIndex => {
   return {
-    caster: String(castCharity._caster),
-    charityIndex: new BigNumber(castCharity._charityIndex),
-    score: new BigNumber(castCharity._score)
+    caster: String(castIndex._caster),
+    charityIndex: new BigNumber(castIndex._charityIndex),
+    score: new BigNumber(castIndex._score)
   };
 };
 
-const parseCastSuggest = castSuggest => {
+const parseCastName = castName => {
   return {
-    caster: String(castSuggest._caster),
-    charityIndex: new BigNumber(castSuggest._charityIndex),
-    charityName: String(bytes.stringBytes(castSuggest._charityName)),
-    score: new BigNumber(castSuggest._score)
+    caster: String(castName._caster),
+    charityIndex: new BigNumber(castName._charityIndex),
+    charityName: String(bytes.stringBytes(castName._charityName)),
+    score: new BigNumber(castName._score)
   };
 };
 
@@ -53,6 +53,6 @@ export {
   parseStatus,
   parseCharities,
   parseVotes,
-  parseCastCharity,
-  parseCastSuggest
+  parseCastIndex,
+  parseCastName
 };

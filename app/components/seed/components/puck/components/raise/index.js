@@ -19,26 +19,28 @@ class Raise extends Content {
     isLoading: false
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isFormValid: true
+    };
+  }
+
   show() {
     super.show();
     this.entries.focus();
   }
 
   validateForm = (done) => {
-    const isEntriesValid = this.entries.validate();
-    this.setState({ isEntriesValid }, done);
-  }
-
-  isFormValid = () => {
-    return this.state.isEntriesValid;
+    const isFormValid = this.entries.validate();
+    this.setState({ isFormValid }, done);
   }
 
   handleSubmit = () => {
     this.validateForm(() => {
-      const { onRaise } = this.props;
-      if (this.isFormValid()) {
+      if (this.props.isFormValid) {
         const entries = this.entries.value();
-        onRaise(entries);
+        this.props.onRaise(entries);
       } else {
         toastr.warning('RAISE', 'form invalid');
       }

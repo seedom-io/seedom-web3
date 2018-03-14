@@ -5,6 +5,7 @@
 $background: #4a4a4a;
 $body-background-color: #1C1D21;
 $family-primary: 'CamphorPro Regular';
+$footer-background-color: $body-background-color;
 
 $primary: #31CF65;
 $link: $primary;
@@ -18,6 +19,10 @@ $large-padding: 50px;
 $medium-padding: 20px;
 $small-padding: 10px;
 
+$navbar-background-color: black;
+$navbar-item-color: white;
+$navbar-item-hover-color: white;
+$navbar-item-hover-background-color: $primary;
 $navbar-item-img-max-height: auto;
 
 $puck-background: lighten($background, 10%);
@@ -38,11 +43,3 @@ $progress-phase-duration: 1s;
 $loading-spin-duration: 8s;
 $loading-fade-duration: 0.5s;
 
-.ether {
-  color: $primary;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-  &.is-dark {
-    color: $grey-dark;
-  }
-}

@@ -15,8 +15,6 @@ class Participate extends Content {
   constructor(props) {
     super(props);
     this.state = {
-      isEntriesValid: true,
-      isMessageValid: true,
       isFormValid: true
     };
   }
@@ -30,20 +28,16 @@ class Participate extends Content {
     const isEntriesValid = this.entries.validate();
     const isMessageValid = this.message.validate();
     this.setState({
-      isEntriesValid,
-      isMessageValid,
       isFormValid: isEntriesValid && isMessageValid
     }, done);
   }
 
   handleSubmit = () => {
     this.validateForm(() => {
-      const { isFormValid } = this.state;
-      if (isFormValid) {
-        const { onParticipate } = this.props;
+      if (this.state.isFormValid) {
         const entries = this.entries.value();
         const message = this.message.value();
-        onParticipate({ message, entries });
+        this.props.onParticipate({ message, entries });
       } else {
         toastr.warning('PARTICIPATE', 'form invalid');
       }

@@ -65,10 +65,10 @@ const suggestMiddleware = store => {
     const { eventName } = action;
     const type = `SUGGEST_${eventName}`;
     switch (eventName) {
-      case 'CASTCHARITY':
-        return next({ ...action, type, castCharity: suggestParser.parseCastCharity(action.values) });
-      case 'CASTSUGGEST':
-        return next({ ...action, type, castSuggest: suggestParser.parseCastSuggest(action.values) });
+      case 'CASTINDEX':
+        return next({ ...action, type, castIndex: suggestParser.parseCastIndex(action.values) });
+      case 'CASTNAME':
+        return next({ ...action, type, castName: suggestParser.parseCastName(action.values) });
       default:
         return next(action);
     }

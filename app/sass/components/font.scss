@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'CamphorPro Regular';
+  src: url('../fonts/CamphorPro-Regular.woff')
+}
+
+@font-face {
+  font-family: 'CamphorPro Heavy';
+  src: url('../fonts/CamphorPro-Heavy.woff')
+}
+
+@font-face {
+  font-family: 'CamphorPro Light';
+  src: url('../fonts/CamphorPro-Light.woff')
+}
+
+$family-primary: 'CamphorPro Regular';

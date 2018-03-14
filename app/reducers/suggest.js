@@ -20,13 +20,13 @@ const handleVotes = (prevState, action) => {
   return newState;
 };
 
-const handleCastCharity = (prevState, action) => {
+const handleCastIndex = (prevState, action) => {
   if (action.old) {
     return prevState;
   }
 
   const newState = getNewState(prevState);
-  const { caster, charityIndex, score } = action.castCharity;
+  const { caster, charityIndex, score } = action.castIndex;
   // update charity data
   const charity = newState.charities[charityIndex];
   charity.totalScores.plus(score);
@@ -39,13 +39,13 @@ const handleCastCharity = (prevState, action) => {
   return newState;
 };
 
-const handleCastSuggest = (prevState, action) => {
+const handleCastName = (prevState, action) => {
   if (action.old) {
     return prevState;
   }
 
   const newState = getNewState(prevState);
-  const { caster, charityIndex, charityName, score } = action.castSuggest;
+  const { caster, charityIndex, charityName, score } = action.castName;
   // add new charity
   newState.charities[charityIndex] = {
     name: charityName,
@@ -70,10 +70,10 @@ const suggestReducer = (prevState = {}, action) => {
       return handleCharities(prevState, action);
     case 'SUGGEST_VOTES':
       return handleVotes(prevState, action);
-    case 'SUGGEST_CASTCHARITY':
-      return handleCastCharity(prevState, action);
-    case 'SUGGEST_CASTSUGGEST':
-      return handleCastSuggest(prevState, action);
+    case 'SUGGEST_CASTINDEX':
+      return handleCastIndex(prevState, action);
+    case 'SUGGEST_CASTNAME':
+      return handleCastName(prevState, action);
     default:
       return prevState;
   }

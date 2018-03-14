@@ -2,29 +2,60 @@
 
 .seedom-feed {
 
-  .seedom-table > .row > .contents > .side {
+  > .seedom-table .row {
 
-    .blocknum {
-      flex: none;
-    }
-
-    .address {
+    .contents {
+      display: flex;
+      flex-direction: column;
+      margin-left: $small-padding;
       flex: 1;
-      text-align: right;
-    }
 
-    .entries {
-      flex: none;
-      text-transform: uppercase;
-    }
+      > .side {
+        display: flex;
+        flex-direction: row;
 
-    .messages {
-      flex: 1;
-      text-align: right;
-      color: $primary;
-      font-weight: bold;
-    }
+        .blocknum {
+          flex: none;
+        }
 
+        .address {
+          flex: 1;
+          text-align: right;
+        }
+
+        .entries {
+          flex: none;
+          text-transform: uppercase;
+        }
+
+        .messages {
+          flex: 1;
+          text-align: right;
+          color: $primary;
+          font-weight: bold;
+        }
+
+      }
+
+      @include desktop {
+        flex-direction: row;
+        margin-left: 0;
+
+        .side {
+
+          > div {
+            margin-left: $small-padding;
+            margin-right: $small-padding;
+          }
+
+          &.right {
+            flex: 1;
+          }
+
+        }
+
+      }
+
+    }
   }
-
 }

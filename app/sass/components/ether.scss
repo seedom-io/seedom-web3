@@ -1,0 +1,8 @@
+.ether {
+  color: $primary;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  &.is-dark {
+    color: $grey-dark;
+  }
+}

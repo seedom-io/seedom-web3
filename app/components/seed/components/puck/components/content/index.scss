@@ -41,7 +41,11 @@
     }
   }
 
-
+  .field {
+    &:not(:last-child) {
+      margin-bottom: $small-padding;
+    }
+  }
 
   .button {
     text-transform: uppercase;
