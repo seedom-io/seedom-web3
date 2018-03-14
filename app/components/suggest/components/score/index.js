@@ -6,9 +6,13 @@ import { zero } from '../../../../utils/numbers';
 
 class Score extends Component {
   static propTypes = {
-    value: PropTypes.shape().isRequired,
+    value: PropTypes.shape(),
     disabled: PropTypes.bool.isRequired,
     maxScore: PropTypes.shape().isRequired
+  };
+
+  static defaultProps = {
+    value: zero()
   };
 
   constructor(props) {

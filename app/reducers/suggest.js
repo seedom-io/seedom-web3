@@ -62,6 +62,16 @@ const handleCastName = (prevState, action) => {
   return newState;
 };
 
+const handleSeedomParticipation = (prevState, action) => {
+  if (action.old || (action.participation.participant !== prevState.account)) {
+    return prevState;
+  }
+
+  const newState = getNewState(prevState);
+  newState.status.hasRight = true;
+  return newState;
+};
+
 const suggestReducer = (prevState = {}, action) => {
   switch (action.type) {
     case 'SUGGEST_STATUS':
@@ -74,6 +84,8 @@ const suggestReducer = (prevState = {}, action) => {
       return handleCastIndex(prevState, action);
     case 'SUGGEST_CASTNAME':
       return handleCastName(prevState, action);
+    case 'SEEDOM_PARTICIPATION':
+      return handleSeedomParticipation(prevState, action);
     default:
       return prevState;
   }
