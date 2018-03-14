@@ -1,14 +1,16 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const WebappWebpackPlugin = require('webapp-webpack-plugin');
 
 const cwd = process.cwd();
 
 module.exports = {
   entry: path.resolve(cwd, 'app/index.js'),
   plugins: [
-    new FaviconsWebpackPlugin(path.join(cwd, 'app/img/logos/seedom-dark.svg')),
+    new WebappWebpackPlugin({
+      inject: true,
+      logo: path.join(cwd, 'app/img/logos/seedom-dark.svg')
+    }),
     new HtmlWebpackPlugin({
       template: 'app/index.html'
     })
