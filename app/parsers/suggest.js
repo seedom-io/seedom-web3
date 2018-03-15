@@ -36,7 +36,10 @@ const parseCastIndex = castIndex => {
   return {
     caster: String(castIndex._caster),
     charityIndex: new BigNumber(castIndex._charityIndex),
-    score: new BigNumber(castIndex._score)
+    score: new BigNumber(castIndex._score),
+    totalScores: new BigNumber(castIndex._totalScores),
+    totalVotes: new BigNumber(castIndex._totalVotes),
+    hasVoted: Boolean(castIndex._hasVoted)
   };
 };
 

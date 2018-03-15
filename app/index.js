@@ -20,7 +20,7 @@ import './sass/bulma.scss';
 
 import Head from './components/head';
 import Nav from './components/nav';
-import Seed from './components/seed';
+import Participate from './components/participate';
 import Suggest from './components/suggest';
 import History from './components/history';
 import Help from './components/help';
@@ -52,7 +52,7 @@ const ConnectedSwitch = connect(state => ({
 
 const AppContainer = () => (
   <ConnectedSwitch>
-    <Route exact path={ETH_PATH} component={Seed} />
+    <Route exact path={ETH_PATH} component={Participate} />
     <Route path={`${ETH_PATH}suggest`} component={Suggest} />
     <Route path={`${ETH_PATH}history`} component={History} />
     <Route path={`${ETH_PATH}help`} component={Help} />

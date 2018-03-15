@@ -41,6 +41,10 @@
     }
   }
 
+  .seedom-field {
+    width: 50%;
+  }
+
   .field {
     &:not(:last-child) {
       margin-bottom: $small-padding;

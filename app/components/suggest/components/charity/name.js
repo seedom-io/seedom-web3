@@ -61,13 +61,13 @@ class CharityName extends Component {
 
     if (status.hasVoted) {
       return (
-        <div className="voted-row">
+        <div className="row voted">
           thank you for voting!
         </div>
       );
     } else if (status.hasRight) {
       return (
-        <div className="name-row">
+        <div className="row name">
           <Field
             format="textbox"
             type="text"
@@ -86,7 +86,7 @@ class CharityName extends Component {
           />
           <div className="field">
             <div className="control">
-              <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>vote</a>
+              <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>submit</a>
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ class CharityName extends Component {
     }
 
     return (
-      <div className="participate-row">
+      <div className="row participate">
         <div className="field">
           <div className="control">
             <Link className="button is-white is-outlined" to={`${ETH_PATH}`}>participate first to suggest</Link>

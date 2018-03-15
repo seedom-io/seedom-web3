@@ -11,7 +11,7 @@ import * as etherscan from '../../utils/etherscan';
 import * as ethereumActions from '../../actions/ethereum';
 import './index.scss';
 
-class Seed extends Component {
+class Participate extends Component {
   static propTypes = {
     ethereum: PropTypes.shape().isRequired
   };
@@ -121,4 +121,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Seed);
+)(Participate);

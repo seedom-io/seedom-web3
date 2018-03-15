@@ -1,25 +1,8 @@
 @import '../../sass/theme.scss';
 
 .seedom-field {
-  width: 50%;
 
   .control {
-
-    &.textbox {
-      input {
-        text-align: center;
-        background-color: $puck-input-background;
-      }
-    }
-
-    &.textblock {
-      textarea {
-        min-width: 0;
-        resize: none;
-        text-align: center;
-        background-color: $puck-input-background;
-      }
-    }
 
     &.addonbox {
 
@@ -27,16 +10,7 @@
         display: flex;
         flex-direction: row;
 
-        input {
-          background-color: $puck-input-background;
-          border-radius: $radius 0 0 $radius;
-          border-right: 0;
-          text-align: left;
-          flex: 1;
-        }
-
         .addon {
-          border-radius: 0 $radius $radius 0;
           border: 1px solid $link;
           background-color: $link;
           display: flex;

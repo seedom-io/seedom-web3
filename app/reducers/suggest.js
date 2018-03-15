@@ -25,15 +25,29 @@ const handleCastIndex = (prevState, action) => {
     return prevState;
   }
 
+  const {
+    caster,
+    charityIndex,
+    score,
+    totalScores,
+    totalVotes,
+    hasVoted
+  } = action.castIndex;
   const newState = getNewState(prevState);
-  const { caster, charityIndex, score } = action.castIndex;
+  newState.isLoading = false;
   // update charity data
   const charity = newState.charities[charityIndex];
-  charity.totalScores.plus(score);
-  charity.totalVotes.plus(1);
+  charity.totalScores = totalScores;
+  charity.totalVotes = totalVotes;
   // add our votes to our votes
   if (caster === newState.account) {
-    newState.votes[charityIndex] = score;
+    newState.status.hasVoted = hasVoted;
+    // delete existing vote?
+    if (score > 0) {
+      newState.votes[charityIndex] = score;
+    } else {
+      delete newState.votes[charityIndex];
+    }
   }
 
   return newState;
@@ -45,6 +59,7 @@ const handleCastName = (prevState, action) => {
   }
 
   const newState = getNewState(prevState);
+  newState.isLoading = false;
   const { caster, charityIndex, charityName, score } = action.castName;
   // add new charity
   newState.charities[charityIndex] = {
@@ -57,6 +72,7 @@ const handleCastName = (prevState, action) => {
   // add our votes to our votes
   if (caster === newState.account) {
     newState.votes[charityIndex] = score;
+    newState.status.hasVoted = true;
   }
 
   return newState;

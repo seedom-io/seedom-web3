@@ -71,7 +71,7 @@ class Feed extends Component {
     return (
       <div className="seedom-feed">
         <Collapse title="live activity feed" collapsed={collapsed} onToggle={this.handleOnToggle} />
-        <div className="seedom-table">
+        <div className="list">
           {!collapsed && (
             <div>
               {feed.map((item) => (

@@ -30,6 +30,12 @@ class Nav extends React.Component {
     });
   }
 
+  handleNavLink = () => {
+    this.setState({
+      isNavBurgerActive: false
+    });
+  }
+
   render() {
     const { isNavBurgerActive } = this.state;
 
@@ -45,11 +51,11 @@ class Nav extends React.Component {
             </div>
             <div className={classnames('navbar-menu', { 'is-active': isNavBurgerActive })}>
               <div className="navbar-start">
-                <NavLink className="navbar-item" activeClassName="is-active" to={ETH_PATH} onClick={this.handleNavToggle} exact>SEED</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}suggest`} onClick={this.handleNavToggle} exact>SUGGEST</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}history`} onClick={this.handleNavToggle} exact>HISTORY</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}help`} onClick={this.handleNavToggle} exact>HELP</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}about`} onClick={this.handleNavToggle} exact>ABOUT</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to={ETH_PATH} onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}suggest`} onClick={this.handleNavLink} exact>SUGGEST</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}history`} onClick={this.handleNavLink} exact>HISTORY</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}help`} onClick={this.handleNavLink} exact>HELP</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}about`} onClick={this.handleNavLink} exact>ABOUT</NavLink>
               </div>
               <div className="navbar-end">
                 <a className="navbar-item" href="https://medium.com/@seedom.io">

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toastr } from 'react-redux-toastr';
 import Score from '../score';
+import * as heatmap from '../../../../utils/heatmap';
 import './index.scss';
 
 class CharityIndex extends Component {
@@ -42,12 +43,19 @@ class CharityIndex extends Component {
     });
   };
 
+  getHeatmapColor = () => {
+    const { charity, status } = this.props;
+    const averageScore = charity.totalScores.div(charity.totalVotes);
+    const value = averageScore.div(status.maxScore);
+    return heatmap.color(value);
+  };
+
   render() {
     const { status, charity, vote, index, isLoading } = this.props;
     const { name, isFormValid } = this.state;
 
     return (
-      <div className="row">
+      <div className="row index" style={{ backgroundColor: this.getHeatmapColor() }}>
 
         <div className="name">{charity.name}</div>
 

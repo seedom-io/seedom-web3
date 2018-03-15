@@ -33,7 +33,7 @@ class Suggest extends Component {
 
     return (
       <div className="seedom-suggest">
-        <div className="seedom-table">
+        <div className="list">
           <div>
             <CharityName
               status={status}

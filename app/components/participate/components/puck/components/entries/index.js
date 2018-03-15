@@ -64,7 +64,7 @@ class Entries extends Component {
       <Field
         format="addonbox"
         type="number"
-        min={1}
+        min={new BigNumber(1)}
         placeholder="entries"
         value={value.toString()}
         disabled={disabled}

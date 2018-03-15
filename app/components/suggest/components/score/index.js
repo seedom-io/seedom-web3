@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Field from '../../../field';
 import { BigNumber } from 'bignumber.js';
 import { zero } from '../../../../utils/numbers';
+import './index.scss';
 
 class Score extends Component {
   static propTypes = {
@@ -59,8 +60,10 @@ class Score extends Component {
     return (
       <div className="seedom-score">
         <Field
-          format="textblock"
-          type="text"
+          format="textbox"
+          type="number"
+          min={new BigNumber(1)}
+          max={maxScore}
           value={value.toString()}
           maxLength={maxScore.toString().length}
           placeholder=""
@@ -69,8 +72,8 @@ class Score extends Component {
           onChange={this.handleChange}
           ref={(component) => { this.score = component; }}
         />
-        /
-        {maxScore.toString()}
+        <div className="divider">/</div>
+        <div className="max-score">{maxScore.toString()}</div>
       </div>
     );
   }

@@ -1,5 +1,37 @@
+@import '../theme.scss';
+
 .field {
+
   &:not(:last-child) {
     margin-bottom: 0;
   }
+
+  input {
+    border: 0;
+    outline: none;
+    border-radius: 0;
+    border-bottom: 1px solid $primary;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: $small-padding;
+    padding-right: $small-padding;
+
+    &::placeholder {
+      color: white;
+    }
+
+  }
+
+  textarea {
+    min-width: 0;
+    resize: none;
+    text-align: center;
+    border-radius: 0;
+
+    &::placeholder {
+      color: white;
+    }
+
+  }
+
 }
