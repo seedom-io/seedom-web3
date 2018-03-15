@@ -16,8 +16,10 @@ const parseCharities = charities => {
       name: String(bytes.stringBytes(charities._names[charityIndex])),
       caster: new BigNumber(charities._casters[charityIndex]),
       totalScores: new BigNumber(charities._totalScores[charityIndex]),
-      totalVotes: new BigNumber(charities._totalVotes[charityIndex])
+      totalVotes: new BigNumber(charities._totalVotes[charityIndex]),
     };
+    // calculate average score
+    parsedCharity.averageScore = parsedCharity.totalScores.div(parsedCharity.totalVotes);
     parsedCharities[charityIndex] = parsedCharity;
   }
 

@@ -6,6 +6,10 @@ import * as ethereumActions from '../../actions/ethereum';
 import CharityName from './components/charity/name';
 import CharityIndex from './components/charity/index';
 
+const charitySort = (a, b) => {
+  return a.averageScore.comparedTo(b.averageScore);
+};
+
 class Suggest extends Component {
   static propTypes = {
     ethereum: PropTypes.shape().isRequired
@@ -40,7 +44,7 @@ class Suggest extends Component {
               isLoading={isLoading}
               onVoteName={this.handleVoteName}
             />
-            {charities.map((charity, index) => (
+            {charities.sort(charitySort).map((charity, index) => (
               <CharityIndex
                 status={status}
                 charity={charity}

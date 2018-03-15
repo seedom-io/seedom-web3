@@ -39,6 +39,7 @@ const handleCastIndex = (prevState, action) => {
   const charity = newState.charities[charityIndex];
   charity.totalScores = totalScores;
   charity.totalVotes = totalVotes;
+  charity.averageScore = charity.totalScores.div(charity.totalVotes);
   // add our votes to our votes
   if (caster === newState.account) {
     newState.status.hasVoted = hasVoted;
@@ -66,7 +67,8 @@ const handleCastName = (prevState, action) => {
     name: charityName,
     caster,
     totalScores: score,
-    totalVotes: 1
+    totalVotes: 1,
+    averageScore: score
   };
 
   // add our votes to our votes
