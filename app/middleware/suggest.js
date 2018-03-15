@@ -2,10 +2,10 @@ import * as ethereumActions from '../actions/ethereum';
 import * as suggestParser from '../parsers/suggest';
 
 const suggestMiddleware = store => {
-  const handleStatus = (next, action) => {
+  const handleCaster = (next, action) => {
     return next({
-      type: 'SUGGEST_STATUS',
-      status: suggestParser.parseStatus(action.data)
+      type: 'SUGGEST_CASTER',
+      caster: suggestParser.parseCaster(action.data)
     });
   };
 
@@ -32,8 +32,8 @@ const suggestMiddleware = store => {
 
     const { method } = action;
     switch (method) {
-      case 'status':
-        return handleStatus(next, action);
+      case 'caster':
+        return handleCaster(next, action);
       case 'charities':
         return handleCharities(next, action);
       case 'votes':
@@ -48,7 +48,7 @@ const suggestMiddleware = store => {
     const { primaryContractAddresses } = state.ethereum;
     const { contractAddresses } = action;
     if (contractAddresses.indexOf(primaryContractAddresses.suggest) > -1) {
-      store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'status' }));
+      store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'caster' }));
       store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'charities' }));
       store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'votes' }));
     }

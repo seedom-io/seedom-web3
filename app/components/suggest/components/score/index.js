@@ -24,6 +24,12 @@ class Score extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.value.isEqualTo(nextProps.value)) {
+      this.setState({ value: nextProps.value });
+    }
+  }
+
   focus = () => {
     this.score.focus();
   }
@@ -73,7 +79,7 @@ class Score extends Component {
           ref={(component) => { this.score = component; }}
         />
         <div className="divider">/</div>
-        <div className="max-score">{maxScore.toString()}</div>
+        <div className="score">{maxScore.toString()}</div>
       </div>
     );
   }

@@ -1,0 +1,24 @@
+@import '../../../../sass/theme.scss';
+
+.seedom-suggest {
+
+  .row.name {
+
+    >.seedom-field {
+      width: 100%;
+      flex: 1;
+
+      input {
+        font-size: 20px;
+      }
+    }
+
+    .seedom-score {
+      flex: none;
+      padding-left: $small-padding;
+      padding-right: $small-padding;
+    }
+
+  }
+
+}

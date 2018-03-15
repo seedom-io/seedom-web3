@@ -6,6 +6,10 @@ const h = require('./helper');
 const cwd = process.cwd();
 
 module.exports = merge(base, {
+  devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true
+  },
   plugins: [
     new webpack.DefinePlugin({
       ETH_PATH: JSON.stringify('/'),

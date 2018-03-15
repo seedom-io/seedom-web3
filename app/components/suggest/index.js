@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as bytes from '../../utils/bytes';
 import * as ethereumActions from '../../actions/ethereum';
-import CharityName from './components/charity/name';
-import CharityIndex from './components/charity/index';
+import Caster from './components/caster';
+import Name from './components/name';
+import Index from './components/index';
+import './index.scss';
 
 const charitySort = (a, b) => {
   return a.averageScore.comparedTo(b.averageScore);
@@ -29,31 +31,37 @@ class Suggest extends Component {
   };
 
   render() {
-    const { status, charities, votes, isLoading } = this.props.ethereum;
+    const {
+      caster,
+      charities,
+      votes,
+      account,
+      isLoading
+    } = this.props.ethereum;
 
-    if (!status || !charities || !votes) {
+    if (!caster || !charities || !votes) {
       return null;
     }
 
     return (
       <div className="seedom-suggest">
         <div className="list">
-          <div>
-            <CharityName
-              status={status}
-              isLoading={isLoading}
-              onVoteName={this.handleVoteName}
+          <Caster caster={caster} />
+          <Name
+            caster={caster}
+            isLoading={isLoading}
+            onVoteName={this.handleVoteName}
+          />
+          {charities.sort(charitySort).map((charity, index) => (
+            <Index
+              caster={caster}
+              charity={charity}
+              vote={votes[index]}
+              index={index}
+              account={account}
+              onVoteIndex={this.handleVoteIndex}
             />
-            {charities.sort(charitySort).map((charity, index) => (
-              <CharityIndex
-                status={status}
-                charity={charity}
-                vote={votes[index]}
-                index={index}
-                onVoteIndex={this.handleVoteIndex}
-              />
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     );

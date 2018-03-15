@@ -1,10 +1,12 @@
+import { zero } from '../utils/numbers';
+
 const getNewState = (prevState) => {
   return { ...prevState };
 };
 
-const handleStatus = (prevState, action) => {
+const handleCaster = (prevState, action) => {
   const newState = getNewState(prevState);
-  newState.status = action.status;
+  newState.caster = action.caster;
   return newState;
 };
 
@@ -27,27 +29,31 @@ const handleCastIndex = (prevState, action) => {
 
   const {
     caster,
-    charityIndex,
     score,
-    totalScores,
     totalVotes,
-    hasVoted
+    charityIndex,
+    charityTotalScores,
+    charityTotalVotes
   } = action.castIndex;
   const newState = getNewState(prevState);
+  // update is loading
   newState.isLoading = false;
   // update charity data
   const charity = newState.charities[charityIndex];
-  charity.totalScores = totalScores;
-  charity.totalVotes = totalVotes;
-  charity.averageScore = charity.totalScores.div(charity.totalVotes);
+  charity.totalScores = charityTotalScores;
+  charity.totalVotes = charityTotalVotes;
+  // update average score
+  charity.averageScore = charity.totalVotes.isGreaterThan(0)
+    ? charity.totalScores.div(charity.totalVotes)
+    : zero();
   // add our votes to our votes
   if (caster === newState.account) {
-    newState.status.hasVoted = hasVoted;
-    // delete existing vote?
-    if (score > 0) {
-      newState.votes[charityIndex] = score;
-    } else {
+    newState.caster.totalVotes = totalVotes;
+    // delete existing vote if we did not cast the charity (name)
+    if ((score === 0) && (charity.caster !== newState.account)) {
       delete newState.votes[charityIndex];
+    } else {
+      newState.votes[charityIndex] = score;
     }
   }
 
@@ -74,7 +80,7 @@ const handleCastName = (prevState, action) => {
   // add our votes to our votes
   if (caster === newState.account) {
     newState.votes[charityIndex] = score;
-    newState.status.hasVoted = true;
+    newState.caster.totalVotes = newState.caster.totalVotes.plus(1);
   }
 
   return newState;
@@ -86,14 +92,14 @@ const handleSeedomParticipation = (prevState, action) => {
   }
 
   const newState = getNewState(prevState);
-  newState.status.hasRight = true;
+  newState.caster.maxVotes = newState.caster.maxVotes.plus(1);
   return newState;
 };
 
 const suggestReducer = (prevState = {}, action) => {
   switch (action.type) {
-    case 'SUGGEST_STATUS':
-      return handleStatus(prevState, action);
+    case 'SUGGEST_CASTER':
+      return handleCaster(prevState, action);
     case 'SUGGEST_CHARITIES':
       return handleCharities(prevState, action);
     case 'SUGGEST_VOTES':

@@ -1,0 +1,18 @@
+@import '../../sass/theme.scss';
+
+.seedom-suggest {
+
+  .list {
+
+    .row {
+      background-color: $puck-background;
+      color: white;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: $small-padding;
+    }
+
+  }
+
+}

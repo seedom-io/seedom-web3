@@ -8,15 +8,15 @@ import './index.scss';
 
 const MAX_NAME_LENGTH = 32;
 
-class CharityName extends Component {
+class Name extends Component {
   static propTypes = {
-    status: PropTypes.shape(),
+    caster: PropTypes.shape(),
     isLoading: PropTypes.bool,
     onVoteName: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    status: null,
+    caster: null,
     isLoading: false
   };
 
@@ -56,48 +56,34 @@ class CharityName extends Component {
   };
 
   render() {
-    const { status, isLoading } = this.props;
+    const { caster, isLoading } = this.props;
     const { name, isNameValid } = this.state;
 
-    if (status.hasVoted) {
-      return (
-        <div className="row voted">
-          thank you for voting!
-        </div>
-      );
-    } else if (status.hasRight) {
-      return (
-        <div className="row name">
-          <Field
-            format="textbox"
-            type="text"
-            placeholder="suggest a new charity"
-            value={name.toString()}
-            maxLength={10}
-            disabled={isLoading}
-            isValid={isNameValid}
-            onChange={this.handleNameChange}
-            ref={(component) => { this.name = component; }}
-          />
-          <Score
-            maxScore={status.maxScore}
-            disabled={isLoading}
-            ref={(component) => { this.score = component; }}
-          />
-          <div className="field">
-            <div className="control">
-              <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>submit</a>
-            </div>
-          </div>
-        </div>
-      );
+    if (caster.totalVotes.isEqualTo(caster.maxVotes)) {
+      return null;
     }
 
     return (
-      <div className="row participate">
+      <div className="row name">
+        <Field
+          format="textbox"
+          type="text"
+          placeholder="suggest a new charity"
+          value={name.toString()}
+          maxLength={10}
+          disabled={isLoading}
+          isValid={isNameValid}
+          onChange={this.handleNameChange}
+          ref={(component) => { this.name = component; }}
+        />
+        <Score
+          maxScore={caster.maxScore}
+          disabled={isLoading}
+          ref={(component) => { this.score = component; }}
+        />
         <div className="field">
           <div className="control">
-            <Link className="button is-white is-outlined" to={`${ETH_PATH}`}>participate first to suggest</Link>
+            <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>submit</a>
           </div>
         </div>
       </div>
@@ -105,4 +91,4 @@ class CharityName extends Component {
   }
 }
 
-export default CharityName;
+export default Name;
