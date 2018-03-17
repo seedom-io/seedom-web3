@@ -25,17 +25,17 @@ class Caster extends Component {
         )}
         {caster.maxVotes.isGreaterThan(0) && (
           caster.totalVotes.isEqualTo(0) ? (
-            <div className="status">
-              suggest new charity or score existing
+            <div className="bit header stretch">
+              help us decide our future!
             </div>
           ) : (
-            <div className="status">
+            <div className="bit header stretch">
               thank you for voting!
             </div>
           )
         )}
-        <div className="votes">
-          <span className="header">cast votes</span>&nbsp;&nbsp;
+        <div className="bit end">
+          <span className="header">votes cast</span>
           {caster.totalVotes.toString()} / {caster.maxVotes.toString()}
         </div>
       </div>

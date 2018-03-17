@@ -3,9 +3,11 @@
 .seedom-suggest {
 
   .row.name {
+    border-top: 1px solid $participation-phase;
 
     >.seedom-field {
       width: 100%;
+      padding-right: $small-padding;
       flex: 1;
 
       input {
@@ -13,11 +15,8 @@
       }
     }
 
-    .seedom-score {
-      flex: none;
-      padding-left: $small-padding;
-      padding-right: $small-padding;
-    }
+
+
 
   }
 

@@ -4,24 +4,10 @@
 
   .row.caster {
     text-transform: uppercase;
-    font-size: 20px;
 
     .field {
       flex: 1;
     }
-
-    .status {
-      flex: 1;
-    }
-
-    .votes {
-      flex: none;
-
-      .header {
-        font-weight: bold;
-      }
-    }
-
   }
 
 }

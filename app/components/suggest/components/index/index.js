@@ -11,7 +11,6 @@ class Index extends Component {
     caster: PropTypes.shape().isRequired,
     charity: PropTypes.shape().isRequired,
     vote: PropTypes.shape().isRequired,
-    index: PropTypes.number.isRequired,
     account: PropTypes.string.isRequired,
     isLoading: PropTypes.bool,
     onVoteIndex: PropTypes.func.isRequired
@@ -24,6 +23,7 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      editing: false,
       isFormValid: true
     };
   }
@@ -33,12 +33,20 @@ class Index extends Component {
     this.setState({ isFormValid }, done);
   };
 
+  handleEdit = () => {
+    this.setState({ editing: true });
+  };
+
+  handleCancel = () => {
+    this.setState({ editing: false });
+  };
+
   handleSubmit = () => {
     this.validateForm(() => {
       if (this.state.isFormValid) {
-        const { index, onVoteIndex } = this.props;
+        const { charity, onVoteIndex } = this.props;
         const score = this.score.value();
-        onVoteIndex({ index, score });
+        onVoteIndex({ index: charity.index, score });
       } else {
         toastr.warning('SUGGEST', 'score update form invalid');
       }
@@ -46,8 +54,8 @@ class Index extends Component {
   };
 
   handleRemove = () => {
-    const { index, onVoteIndex } = this.props;
-    onVoteIndex({ index, score: 0 });
+    const { charity, onVoteIndex } = this.props;
+    onVoteIndex({ index: charity.index, score: 0 });
   };
 
   getHeatmapColor = () => {
@@ -57,8 +65,16 @@ class Index extends Component {
   };
 
   render() {
-    const { caster, charity, vote, index, account, isLoading } = this.props;
-    const { name, isFormValid } = this.state;
+    const {
+      caster,
+      charity,
+      vote,
+      account,
+      isLoading
+    } = this.props;
+
+    const { editing } = this.state;
+
     const available =
       vote
       || (charity.caster === account)
@@ -67,44 +83,72 @@ class Index extends Component {
     return (
       <div className="row index" style={{ backgroundColor: this.getHeatmapColor() }}>
 
-        <div className="bit header">{charity.name}</div>
+        <div className="bit header-normal stretch">{charity.name}</div>
 
-        <div className="bit">
-          <span className="header">AVG SCORE</span>
-          {localeDecimal(charity.averageScore)}
+        <div className="bit header">
+          avg score
         </div>
 
         <div className="bit">
-          <span className="header">VOTES</span>
+          {localeDecimal(charity.averageScore)}
+        </div>
+
+        <div className="bit">|</div>
+
+        <div className="bit header">
+          votes
+        </div>
+
+        <div className="bit">
           {charity.totalVotes.toString()}
         </div>
 
         {available && (
-          <Score
-            value={vote}
-            maxScore={caster.maxScore}
-            disabled={isLoading}
-            ref={(component) => { this.score = component; }}
-          />
-        )}
-
-        {available && (
-          <div className="field tools">
-            <div className="control">
-              <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>
-                <i className="fas fa-pen-square"></i>
-              </a>
-            </div>
-          </div>
-        )}
-
-        {vote && vote.isGreaterThan(0) && (
-          <div className="field tools">
-            <div className="control">
-              <a className="button is-dark" disabled={isLoading} onClick={this.handleRemove}>
-                <i className="fas fa-minus-circle"></i>
-              </a>
-            </div>
+          <div className="tools">
+            {editing && (
+              <div>
+                <Score
+                  value={vote}
+                  maxScore={caster.maxScore}
+                  disabled={isLoading}
+                  ref={(component) => { this.score = component; }}
+                />
+                <div className="field">
+                  <div className="control">
+                    <a className="button is-dark is-outlined" disabled={isLoading} onClick={this.handleSubmit}>
+                      change vote
+                    </a>
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="control">
+                    <a className="button is-dark is-outlined" disabled={isLoading} onClick={this.handleCancel}>
+                      cancel
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+            {!editing && (
+              <div>
+                <div className="field tools">
+                  <div className="control">
+                    <a className="button is-dark is-outlined" disabled={isLoading} onClick={this.handleEdit}>
+                      <i className="fas fa-pen-square"></i>
+                    </a>
+                  </div>
+                </div>
+                {vote.isGreaterThan(0) && (
+                  <div className="field tools">
+                    <div className="control">
+                      <a className="button is-dark is-outlined" disabled={isLoading} onClick={this.handleRemove}>
+                        <i className="fas fa-minus-circle"></i>
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>

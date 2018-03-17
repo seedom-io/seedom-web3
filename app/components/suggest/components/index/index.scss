@@ -5,33 +5,11 @@
   .row.index {
 
     .bit {
-      padding-left: $small-padding;
-      padding-right: $small-padding;
-      font-size: 20px;
       filter: drop-shadow(2px 2px 7px black);
-
-      &.header {
-        flex: 1;
-        font-weight: bold;
-      }
-
-      .header {
-        padding-right: $small-padding;
-        font-weight: bold;
-      }
-
     }
 
     .seedom-score {
-      flex: none;
-      padding-left: $small-padding;
-      padding-right: $small-padding;
       filter: drop-shadow(2px 2px 7px black);
-    }
-
-    .tools {
-      padding-left: $small-padding;
-      padding-right: $small-padding;
     }
 
   }

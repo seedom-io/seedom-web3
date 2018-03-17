@@ -68,7 +68,7 @@ class Name extends Component {
         <Field
           format="textbox"
           type="text"
-          placeholder="suggest a new charity"
+          placeholder="enter new charity or vote below"
           value={name.toString()}
           maxLength={10}
           disabled={isLoading}
@@ -76,16 +76,25 @@ class Name extends Component {
           onChange={this.handleNameChange}
           ref={(component) => { this.name = component; }}
         />
-        <Score
-          maxScore={caster.maxScore}
-          disabled={isLoading}
-          ref={(component) => { this.score = component; }}
-        />
-        <div className="field">
-          <div className="control">
-            <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>submit</a>
+        {name.length > 0 && (
+          <div className="tools">
+            <div className="bit header">
+              score
+            </div>
+            <Score
+              maxScore={caster.maxScore}
+              disabled={isLoading}
+              ref={(component) => { this.score = component; }}
+            />
+            <div className="field">
+              <div className="control">
+                <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>
+                  <i className="fas fa-plus-circle"></i>
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }

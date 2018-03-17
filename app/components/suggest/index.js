@@ -9,7 +9,7 @@ import Index from './components/index';
 import './index.scss';
 
 const charitySort = (a, b) => {
-  return a.averageScore.comparedTo(b.averageScore);
+  return b.averageScore.comparedTo(a.averageScore);
 };
 
 class Suggest extends Component {
@@ -52,12 +52,11 @@ class Suggest extends Component {
             isLoading={isLoading}
             onVoteName={this.handleVoteName}
           />
-          {charities.sort(charitySort).map((charity, index) => (
+          {charities.sort(charitySort).map((charity) => (
             <Index
               caster={caster}
               charity={charity}
-              vote={votes[index]}
-              index={index}
+              vote={votes[charity.index]}
               account={account}
               onVoteIndex={this.handleVoteIndex}
             />

@@ -11,6 +11,49 @@
       flex-direction: row;
       align-items: center;
       padding: $small-padding;
+      height: $navbar-height;
+      font-size: 20px;
+
+      .bit {
+        padding-right: $small-padding;
+        flex: none;
+
+        &.end {
+          padding-right: 0;
+        }
+
+        &.header {
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+
+        &.header-normal {
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+
+        &.stretch {
+          flex: 1;
+        }
+
+      }
+
+      .tools {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex: none;
+
+        .seedom-score {
+          flex: none;
+          padding-right: $small-padding;
+          text-transform: uppercase;
+        }
+
+      }
+
+
+
     }
 
   }

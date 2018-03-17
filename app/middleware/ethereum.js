@@ -58,6 +58,11 @@ const ethereumMiddleware = (store) => {
     return getRelease(contractName, contractAddress).server.methods[method].apply(null, args);
   };
 
+  const handleCallError = (error, action) => {
+    console.error(error.message);
+    store.dispatch({ ...action, type: 'ETHEREUM_CALL_ERROR', error });
+  };
+
   const handleCall = (next, action) => {
     const { contractName, contractAddress, method, args } = action;
     getServerMethod(contractName, contractAddress, method, args).call({ from: account })
@@ -66,8 +71,7 @@ const ethereumMiddleware = (store) => {
           store.dispatch({ ...action, type: 'ETHEREUM_CALL_DATA', data });
         },
         error => {
-          console.error(error);
-          toastr.error('ETHEREUM', error.message);
+          handleCallError(error, action);
         }
       );
     return next(action);
@@ -97,8 +101,19 @@ const ethereumMiddleware = (store) => {
   };
 
   const handleSendError = (error, action) => {
-    console.error(error.message);
-    toastr.error('ETHEREUM', error.message);
+    let finalMessage;
+    const { message } = error;
+    if (message.includes('User denied')) {
+      finalMessage = 'USER CANCELLED TRANSACTION';
+    } else if (message.includes('Insufficient funds')) {
+      finalMessage = 'INSUFFICIENT FUNDS';
+    } else {
+      finalMessage = 'UNKNOWN ERROR';
+    }
+
+    // send out send error & toastr notification
+    store.dispatch({ ...action, type: 'ETHEREUM_SEND_ERROR', error: finalMessage });
+    toastr.error('ETHEREUM ERROR', finalMessage);
   };
 
   const handleSendSuccess = (action) => {
@@ -108,7 +123,7 @@ const ethereumMiddleware = (store) => {
   const handleSendCall = (options, next, action) => {
     return (callError) => {
       if (callError) {
-        handleSendError(callError, next, action);
+        handleSendError(callError, action);
         return;
       }
 
@@ -123,10 +138,7 @@ const ethereumMiddleware = (store) => {
 
       transaction
         .on('error', (sendError) => {
-          const { message } = sendError;
-          if (message.includes('User denied')) {
-            handleSendError(sendError, action);
-          }
+          handleSendError(sendError, action);
         })
         .on('confirmation', (confirmationNumber) => {
           if (confirmationNumber === 0) {

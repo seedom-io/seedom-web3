@@ -14,6 +14,7 @@ const parseCharities = charities => {
   const parsedCharities = [];
   for (let charityIndex = 0; charityIndex < charities._names.length; charityIndex += 1) {
     const parsedCharity = {
+      index: charityIndex,
       name: String(bytes.stringBytes(charities._names[charityIndex])),
       caster: String(charities._casters[charityIndex]),
       totalScores: new BigNumber(charities._totalScores[charityIndex]),
