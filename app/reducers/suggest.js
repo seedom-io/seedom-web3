@@ -43,8 +43,8 @@ const handleCastIndex = (prevState, action) => {
   charity.totalScores = charityTotalScores;
   charity.totalVotes = charityTotalVotes;
   // update average score
-  charity.averageScore = charity.totalVotes.isGreaterThan(0)
-    ? charity.totalScores.div(charity.totalVotes)
+  charity.averageScore = charityTotalVotes.isGreaterThan(0)
+    ? charityTotalScores.div(charityTotalVotes)
     : zero();
   // add our votes to our votes
   if (caster === newState.account) {

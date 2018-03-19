@@ -6,7 +6,7 @@ const MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
 const GAS = 200000;
 const GAS_PRICE = 4000000000;
 
-const getNetwork = (id) => {
+const getNetworkName = (id) => {
   switch (id) {
     case 1:
       return 'mainnet';
@@ -40,7 +40,7 @@ const ethereumMiddleware = (store) => {
   // middleware state
   let serverWeb3;
   let account;
-  let networkId;
+  let network;
   const contracts = {};
   const primaryContractAddresses = {};
 
@@ -183,8 +183,8 @@ const ethereumMiddleware = (store) => {
     }
   };
 
-  const setupServerWeb3 = (network) => {
-    const ethNetwork = ETH_NETWORKS[network];
+  const setupServerWeb3 = (networkName) => {
+    const ethNetwork = ETH_NETWORKS[networkName];
     if (ethNetwork) {
       serverWeb3 = new Web3(ethNetwork.url);
       return true;
@@ -193,8 +193,8 @@ const ethereumMiddleware = (store) => {
     return false;
   };
 
-  const setupContracts = (network) => {
-    const deployments = ETH_DEPLOYMENTS[network];
+  const setupContracts = (networkName) => {
+    const deployments = ETH_DEPLOYMENTS[networkName];
     // set all contracts (last six)
     for (const contractName in deployments) {
       const releases = deployments[contractName];
@@ -270,33 +270,50 @@ const ethereumMiddleware = (store) => {
     });
   };
 
-  const setupNetwork = (network) => {
+  const setupNetwork = (id) => {
     // destroy old network
     destroyCurrentNetwork();
     // setup server web3
-    const supported = setupServerWeb3(network);
+    const name = getNetworkName(id);
+    const supported = setupServerWeb3(name);
     // continue if supported
     if (supported) {
       // setup contracts
-      setupContracts(network);
+      setupContracts(name);
       // setup event handlers
       setupContractEventHandlers();
     }
+
+    // save network object
+    network = {
+      id,
+      name,
+      supported
+    };
+
     // dispatch new network
     store.dispatch({
       type: 'ETHEREUM_NETWORK',
-      network: {
-        name: network,
-        supported
-      }
+      network
     });
+  };
+
+  const checkUser = () => {
+    if (network && network.supported && account) {
+      store.dispatch({
+        type: 'ETHEREUM_USER',
+        network,
+        account
+      });
+    }
   };
 
   const checkNetwork = () => {
     clientWeb3.eth.net.getId((error, id) => {
-      if (id !== networkId) {
-        networkId = id;
-        setupNetwork(getNetwork(id));
+      if (!network || (id !== network.id)) {
+        setupNetwork(id);
+        // see if user established
+        checkUser();
       }
     });
   };
@@ -310,6 +327,8 @@ const ethereumMiddleware = (store) => {
           type: 'ETHEREUM_ACCOUNT',
           account
         });
+        // see if user established
+        checkUser();
       }
     });
   };

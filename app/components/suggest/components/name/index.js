@@ -65,6 +65,7 @@ class Name extends Component {
 
     return (
       <div className="row name">
+
         <Field
           format="textbox"
           type="text"
@@ -76,25 +77,32 @@ class Name extends Component {
           onChange={this.handleNameChange}
           ref={(component) => { this.name = component; }}
         />
+
         {name.length > 0 && (
           <div className="tools">
+
             <div className="bit header">
               score
             </div>
+
             <Score
+              value={caster.maxScore}
               maxScore={caster.maxScore}
               disabled={isLoading}
               ref={(component) => { this.score = component; }}
             />
+
             <div className="field">
               <div className="control">
-                <a className="button is-dark" disabled={isLoading} onClick={this.handleSubmit}>
+                <a className="button is-white" disabled={isLoading} onClick={this.handleSubmit}>
                   <i className="fas fa-plus-circle"></i>
                 </a>
               </div>
             </div>
+
           </div>
         )}
+
       </div>
     );
   }

@@ -8,10 +8,6 @@ import Name from './components/name';
 import Index from './components/index';
 import './index.scss';
 
-const charitySort = (a, b) => {
-  return b.averageScore.comparedTo(a.averageScore);
-};
-
 class Suggest extends Component {
   static propTypes = {
     ethereum: PropTypes.shape().isRequired
@@ -43,17 +39,26 @@ class Suggest extends Component {
       return null;
     }
 
+    // sort charities by average score
+    const sortedCharities = [...charities].sort((a, b) => {
+      return b.averageScore.comparedTo(a.averageScore);
+    });
+
     return (
       <div className="seedom-suggest">
         <div className="list">
+
           <Caster caster={caster} />
+
           <Name
             caster={caster}
             isLoading={isLoading}
             onVoteName={this.handleVoteName}
           />
-          {charities.sort(charitySort).map((charity) => (
+
+          {sortedCharities.map((charity) => (
             <Index
+              key={charity.index}
               caster={caster}
               charity={charity}
               vote={votes[charity.index]}
@@ -61,6 +66,7 @@ class Suggest extends Component {
               onVoteIndex={this.handleVoteIndex}
             />
           ))}
+
         </div>
       </div>
     );

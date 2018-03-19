@@ -43,14 +43,19 @@ const suggestMiddleware = store => {
     }
   };
 
+  const handleEthereumUser = (next, action) => {
+    store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'caster' }));
+    store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'votes' }));
+    return next(action);
+  };
+
   const handleEthereumRefresh = (next, action) => {
     const state = store.getState();
     const { primaryContractAddresses } = state.ethereum;
     const { contractAddresses } = action;
     if (contractAddresses.indexOf(primaryContractAddresses.suggest) > -1) {
-      store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'caster' }));
       store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'charities' }));
-      store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'votes' }));
+      return handleEthereumUser(next, action);
     }
     return next(action);
   };
@@ -83,6 +88,8 @@ const suggestMiddleware = store => {
         return handleEthereumCallData(next, action);
       case 'ETHEREUM_REFRESH':
         return handleEthereumRefresh(next, action);
+      case 'ETHEREUM_USER':
+        return handleEthereumUser(next, action);
       default:
         return next(action);
     }

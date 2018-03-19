@@ -16,6 +16,7 @@ class Caster extends Component {
     const { caster } = this.props;
     return (
       <div className="row caster">
+
         {caster.maxVotes.isEqualTo(0) && (
           <div className="field">
             <div className="control">
@@ -23,6 +24,7 @@ class Caster extends Component {
             </div>
           </div>
         )}
+
         {caster.maxVotes.isGreaterThan(0) && (
           caster.totalVotes.isEqualTo(0) ? (
             <div className="bit header stretch">
@@ -34,10 +36,15 @@ class Caster extends Component {
             </div>
           )
         )}
-        <div className="bit end">
+
+        <div className="bit header">
           <span className="header">votes cast</span>
+        </div>
+
+        <div className="bit end">
           {caster.totalVotes.toString()} / {caster.maxVotes.toString()}
         </div>
+
       </div>
     );
   }

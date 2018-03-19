@@ -67,22 +67,9 @@ const seedomMiddleware = store => {
   };
 
   const handleEthereumUser = (next, action) => {
-    // first pull data from state
-    const state = store.getState();
-    let { network, account } = state.ethereum;
-    // augment with action data
-    if (action) {
-      if (action.network) {
-        ({ network } = action);
-      } else if (action.account) {
-        ({ account } = action);
-      }
-    }
-    // get user data
-    if (network && network.supported && account) {
-      store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'participants', args: [account] }));
-      store.dispatch(ethereumActions.allCall({ contractName: 'seedom', method: 'balance' }));
-    }
+    const { account } = action;
+    store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'participants', args: [account] }));
+    store.dispatch(ethereumActions.allCall({ contractName: 'seedom', method: 'balance' }));
     return next(action);
   };
 
@@ -136,8 +123,7 @@ const seedomMiddleware = store => {
         return handleEthereumCallData(next, action);
       case 'ETHEREUM_ALLCALL_DATA':
         return handleEthereumAllCallData(next, action);
-      case 'ETHEREUM_NETWORK':
-      case 'ETHEREUM_ACCOUNT':
+      case 'ETHEREUM_USER':
         return handleEthereumUser(next, action);
       case 'ETHEREUM_REFRESH':
         return handleEthereumRefresh(next, action);

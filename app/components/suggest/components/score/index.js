@@ -13,7 +13,7 @@ class Score extends Component {
   };
 
   static defaultProps = {
-    value: zero()
+    value: null
   };
 
   constructor(props) {
@@ -25,7 +25,7 @@ class Score extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.value.isEqualTo(nextProps.value)) {
+    if (!this.props.value || !nextProps.value || !this.props.value.isEqualTo(nextProps.value)) {
       this.setState({ value: nextProps.value });
     }
   }
@@ -65,12 +65,13 @@ class Score extends Component {
 
     return (
       <div className="seedom-score">
+
         <Field
           format="textbox"
           type="number"
           min={new BigNumber(1)}
           max={maxScore}
-          value={value.toString()}
+          value={value ? value.toString() : maxScore.toString()}
           maxLength={maxScore.toString().length}
           placeholder=""
           disabled={disabled}
@@ -78,8 +79,11 @@ class Score extends Component {
           onChange={this.handleChange}
           ref={(component) => { this.score = component; }}
         />
+
         <div className="divider">/</div>
+
         <div className="score">{maxScore.toString()}</div>
+
       </div>
     );
   }

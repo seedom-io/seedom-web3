@@ -10,14 +10,15 @@ class Index extends Component {
   static propTypes = {
     caster: PropTypes.shape().isRequired,
     charity: PropTypes.shape().isRequired,
-    vote: PropTypes.shape().isRequired,
+    vote: PropTypes.shape(),
     account: PropTypes.string.isRequired,
     isLoading: PropTypes.bool,
     onVoteIndex: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    isLoading: false
+    isLoading: false,
+    vote: null
   };
 
   constructor(props) {
@@ -37,7 +38,7 @@ class Index extends Component {
     this.setState({ editing: true });
   };
 
-  handleCancel = () => {
+  handleDone = () => {
     this.setState({ editing: false });
   };
 
@@ -80,6 +81,8 @@ class Index extends Component {
       || (charity.caster === account)
       || !caster.totalVotes.isEqualTo(caster.maxVotes);
 
+    const voted = vote && vote.isGreaterThan(0);
+
     return (
       <div className="row index" style={{ backgroundColor: this.getHeatmapColor() }}>
 
@@ -104,51 +107,61 @@ class Index extends Component {
         </div>
 
         {available && (
-          <div className="tools">
+          <div className="available">
+
             {editing && (
-              <div>
+              <div className="tools">
+
                 <Score
                   value={vote}
                   maxScore={caster.maxScore}
                   disabled={isLoading}
                   ref={(component) => { this.score = component; }}
                 />
-                <div className="field">
+
+                <div className="field bit">
                   <div className="control">
-                    <a className="button is-dark is-outlined" disabled={isLoading} onClick={this.handleSubmit}>
-                      change vote
+                    <a className="button is-white is-outlined" disabled={isLoading} onClick={this.handleSubmit}>
+                      vote
                     </a>
                   </div>
                 </div>
-                <div className="field">
+
+                <div className="field bit end">
                   <div className="control">
-                    <a className="button is-dark is-outlined" disabled={isLoading} onClick={this.handleCancel}>
-                      cancel
+                    <a className="button is-white is-outlined" disabled={isLoading} onClick={this.handleDone}>
+                      done
                     </a>
                   </div>
                 </div>
+
               </div>
             )}
+
             {!editing && (
-              <div>
-                <div className="field tools">
+              <div className="tools">
+
+                <div className={`field bit ${!voted ? 'end' : ''}`}>
                   <div className="control">
-                    <a className="button is-dark is-outlined" disabled={isLoading} onClick={this.handleEdit}>
+                    <a className="button is-white is-outlined" disabled={isLoading} onClick={this.handleEdit}>
                       <i className="fas fa-pen-square"></i>
                     </a>
                   </div>
                 </div>
-                {vote.isGreaterThan(0) && (
-                  <div className="field tools">
+
+                {voted && (
+                  <div className="field bit end">
                     <div className="control">
-                      <a className="button is-dark is-outlined" disabled={isLoading} onClick={this.handleRemove}>
+                      <a className="button is-white is-outlined" disabled={isLoading} onClick={this.handleRemove}>
                         <i className="fas fa-minus-circle"></i>
                       </a>
                     </div>
                   </div>
                 )}
+
               </div>
             )}
+
           </div>
         )}
       </div>
