@@ -86,28 +86,32 @@ class Index extends Component {
     return (
       <div className="row index" style={{ backgroundColor: this.getHeatmapColor() }}>
 
-        <div className="bit header-normal stretch">{charity.name}</div>
+        <div className="area stretch">
 
-        <div className="bit header">
-          avg score
-        </div>
+          <div className="bit header-normal stretch">{charity.name}</div>
 
-        <div className="bit">
-          {localeDecimal(charity.averageScore)}
-        </div>
+          <div className="bit header">
+            avg score
+          </div>
 
-        <div className="bit">|</div>
+          <div className="bit">
+            {localeDecimal(charity.averageScore)}
+          </div>
 
-        <div className="bit header">
-          votes
-        </div>
+          <div className="bit">|</div>
 
-        <div className="bit">
-          {charity.totalVotes.toString()}
+          <div className="bit header">
+            votes
+          </div>
+
+          <div className="bit">
+            {charity.totalVotes.toString()}
+          </div>
+
         </div>
 
         {available && (
-          <div className="available">
+          <div className="area right">
 
             {editing && (
               <div className="tools">

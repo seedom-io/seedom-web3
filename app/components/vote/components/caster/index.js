@@ -17,32 +17,36 @@ class Caster extends Component {
     return (
       <div className="row caster">
 
-        {caster.maxVotes.isEqualTo(0) && (
-          <div className="field">
-            <div className="control">
-              <Link className="button is-white is-outlined" to={`${ETH_PATH}`}>participate first to vote</Link>
+        <div className="area">
+
+          {caster.maxVotes.isEqualTo(0) && (
+            <div className="field">
+              <div className="control">
+                <Link className="button is-white is-outlined" to={`${ETH_PATH}`}>participate first to vote</Link>
+              </div>
             </div>
+          )}
+
+          {caster.maxVotes.isGreaterThan(0) && (
+            caster.totalVotes.isEqualTo(0) ? (
+              <div className="bit header stretch">
+                help us decide our future!
+              </div>
+            ) : (
+              <div className="bit header stretch">
+                thank you for voting!
+              </div>
+            )
+          )}
+
+          <div className="bit header">
+            <span className="header">votes cast</span>
           </div>
-        )}
 
-        {caster.maxVotes.isGreaterThan(0) && (
-          caster.totalVotes.isEqualTo(0) ? (
-            <div className="bit header stretch">
-              help us decide our future!
-            </div>
-          ) : (
-            <div className="bit header stretch">
-              thank you for voting!
-            </div>
-          )
-        )}
+          <div className="bit end">
+            {caster.totalVotes.toString()} / {caster.maxVotes.toString()}
+          </div>
 
-        <div className="bit header">
-          <span className="header">votes cast</span>
-        </div>
-
-        <div className="bit end">
-          {caster.totalVotes.toString()} / {caster.maxVotes.toString()}
         </div>
 
       </div>

@@ -8,11 +8,28 @@
       background-color: $puck-background;
       color: white;
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
+      height: $navbar-height * 2;
       padding: $small-padding;
-      height: $navbar-height;
       font-size: 20px;
+
+      .area {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        &.stretch {
+          flex: 1;
+
+          @include desktop {
+            flex: none;
+          }
+        }
+
+        &.right {
+          justify-content: flex-end;
+        }
+      }
 
       .bit {
         padding-right: $small-padding;
@@ -51,7 +68,10 @@
         text-transform: uppercase;
       }
 
-
+      @include desktop {
+        flex-direction: row;
+        height: $navbar-height;
+      }
 
     }
 
