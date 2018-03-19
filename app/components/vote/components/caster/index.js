@@ -20,7 +20,7 @@ class Caster extends Component {
         {caster.maxVotes.isEqualTo(0) && (
           <div className="field">
             <div className="control">
-              <Link className="button is-white is-outlined" to={`${ETH_PATH}`}>participate first to suggest</Link>
+              <Link className="button is-white is-outlined" to={`${ETH_PATH}`}>participate first to vote</Link>
             </div>
           </div>
         )}

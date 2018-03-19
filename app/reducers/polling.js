@@ -70,6 +70,7 @@ const handleCastName = (prevState, action) => {
   const { caster, charityIndex, charityName, score } = action.castName;
   // add new charity
   newState.charities[charityIndex] = {
+    index: charityIndex,
     name: charityName,
     caster,
     totalScores: score,
@@ -96,17 +97,17 @@ const handleSeedomParticipation = (prevState, action) => {
   return newState;
 };
 
-const suggestReducer = (prevState = {}, action) => {
+const pollingReducer = (prevState = {}, action) => {
   switch (action.type) {
-    case 'SUGGEST_CASTER':
+    case 'POLLING_CASTER':
       return handleCaster(prevState, action);
-    case 'SUGGEST_CHARITIES':
+    case 'POLLING_CHARITIES':
       return handleCharities(prevState, action);
-    case 'SUGGEST_VOTES':
+    case 'POLLING_VOTES':
       return handleVotes(prevState, action);
-    case 'SUGGEST_CASTINDEX':
+    case 'POLLING_CASTINDEX':
       return handleCastIndex(prevState, action);
-    case 'SUGGEST_CASTNAME':
+    case 'POLLING_CASTNAME':
       return handleCastName(prevState, action);
     case 'SEEDOM_PARTICIPATION':
       return handleSeedomParticipation(prevState, action);
@@ -115,4 +116,4 @@ const suggestReducer = (prevState = {}, action) => {
   }
 };
 
-export default suggestReducer;
+export default pollingReducer;

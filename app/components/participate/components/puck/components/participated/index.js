@@ -38,7 +38,7 @@ class Participate extends Content {
           </div>
           <div className="field">
             <div className="control">
-              <Link className="button is-white is-outlined" to={`${ETH_PATH}suggest`}>suggest next charity</Link>
+              <Link className="button is-white is-outlined" to={`${ETH_PATH}vote`}>vote on next charity</Link>
             </div>
           </div>
           <div className="field">

@@ -52,7 +52,7 @@ class Nav extends React.Component {
             <div className={classnames('navbar-menu', { 'is-active': isNavBurgerActive })}>
               <div className="navbar-start">
                 <NavLink className="navbar-item" activeClassName="is-active" to={ETH_PATH} onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}suggest`} onClick={this.handleNavLink} exact>SUGGEST</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}vote`} onClick={this.handleNavLink} exact>VOTE</NavLink>
                 <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}history`} onClick={this.handleNavLink} exact>HISTORY</NavLink>
                 <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}help`} onClick={this.handleNavLink} exact>HELP</NavLink>
                 <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}about`} onClick={this.handleNavLink} exact>ABOUT</NavLink>

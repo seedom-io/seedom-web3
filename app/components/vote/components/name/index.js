@@ -50,7 +50,7 @@ class Name extends Component {
         const score = this.score.value();
         this.props.onVoteName({ name, score });
       } else {
-        toastr.warning('SUGGEST', 'new charity form invalid');
+        toastr.warning('VOTE', 'new charity form invalid');
       }
     });
   };
@@ -86,7 +86,6 @@ class Name extends Component {
             </div>
 
             <Score
-              value={caster.maxScore}
               maxScore={caster.maxScore}
               disabled={isLoading}
               ref={(component) => { this.score = component; }}

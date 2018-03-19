@@ -9,10 +9,10 @@ import { reducer as toastrReducer } from 'react-redux-toastr';
 import ReduxToastr from 'react-redux-toastr'
 import createHistory from 'history/createBrowserHistory';
 import reduceReducers from './utils/reduceReducers';
-import suggestReducer from './reducers/suggest';
+import pollingReducer from './reducers/polling';
 import seedomReducer from './reducers/seedom';
 import ethereumReducer from './reducers/ethereum';
-import suggestMiddleware from './middleware/suggest';
+import pollingMiddleware from './middleware/polling';
 import seedomMiddleware from './middleware/seedom';
 import ethereumMiddleware from './middleware/ethereum';
 
@@ -21,7 +21,7 @@ import './sass/bulma.scss';
 import Head from './components/head';
 import Nav from './components/nav';
 import Participate from './components/participate';
-import Suggest from './components/suggest';
+import Vote from './components/vote';
 import History from './components/history';
 import Help from './components/help';
 import Footer from './components/footer';
@@ -33,7 +33,7 @@ const store = createStore(
     ethereum: reduceReducers(
       ethereumReducer,
       seedomReducer,
-      suggestReducer
+      pollingReducer
     ),
     toastr: toastrReducer,
     router: routerReducer
@@ -42,7 +42,7 @@ const store = createStore(
     routerMiddleware(history),
     ethereumMiddleware,
     seedomMiddleware,
-    suggestMiddleware
+    pollingMiddleware
   ))
 );
 
@@ -53,7 +53,7 @@ const ConnectedSwitch = connect(state => ({
 const AppContainer = () => (
   <ConnectedSwitch>
     <Route exact path={ETH_PATH} component={Participate} />
-    <Route path={`${ETH_PATH}suggest`} component={Suggest} />
+    <Route path={`${ETH_PATH}vote`} component={Vote} />
     <Route path={`${ETH_PATH}history`} component={History} />
     <Route path={`${ETH_PATH}help`} component={Help} />
   </ConnectedSwitch>

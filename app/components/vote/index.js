@@ -8,7 +8,7 @@ import Name from './components/name';
 import Index from './components/index';
 import './index.scss';
 
-class Suggest extends Component {
+class Vote extends Component {
   static propTypes = {
     ethereum: PropTypes.shape().isRequired
   };
@@ -16,13 +16,13 @@ class Suggest extends Component {
   handleVoteName = ({ name, score }) => {
     const nameBytes = bytes.bytesString(name);
     this.props.dispatch(ethereumActions.send({
-      contractName: 'suggest', method: 'voteName', args: [nameBytes, score]
+      contractName: 'polling', method: 'voteName', args: [nameBytes, score]
     }));
   };
 
   handleVoteIndex = ({ index, score }) => {
     this.props.dispatch(ethereumActions.send({
-      contractName: 'suggest', method: 'voteIndex', args: [index, score]
+      contractName: 'polling', method: 'voteIndex', args: [index, score]
     }));
   };
 
@@ -45,7 +45,7 @@ class Suggest extends Component {
     });
 
     return (
-      <div className="seedom-suggest">
+      <div className="seedom-vote">
         <div className="list">
 
           <Caster caster={caster} />
@@ -84,4 +84,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Suggest);
+)(Vote);

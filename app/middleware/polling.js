@@ -1,32 +1,32 @@
 import * as ethereumActions from '../actions/ethereum';
-import * as suggestParser from '../parsers/suggest';
+import * as pollingParser from '../parsers/polling';
 
-const suggestMiddleware = store => {
+const pollingMiddleware = store => {
   const handleCaster = (next, action) => {
     return next({
-      type: 'SUGGEST_CASTER',
-      caster: suggestParser.parseCaster(action.data)
+      type: 'POLLING_CASTER',
+      caster: pollingParser.parseCaster(action.data)
     });
   };
 
   const handleCharities = (next, action) => {
     return next({
-      type: 'SUGGEST_CHARITIES',
-      charities: suggestParser.parseCharities(action.data)
+      type: 'POLLING_CHARITIES',
+      charities: pollingParser.parseCharities(action.data)
     });
   };
 
   const handleVotes = (next, action) => {
     return next({
-      type: 'SUGGEST_VOTES',
-      votes: suggestParser.parseVotes(action.data)
+      type: 'POLLING_VOTES',
+      votes: pollingParser.parseVotes(action.data)
     });
   };
 
   const handleEthereumCallData = (next, action) => {
     const { contractName } = action;
-    // only check for suggest data
-    if (contractName !== 'suggest') {
+    // only check for polling data
+    if (contractName !== 'polling') {
       return next(action);
     }
 
@@ -44,8 +44,8 @@ const suggestMiddleware = store => {
   };
 
   const handleEthereumUser = (next, action) => {
-    store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'caster' }));
-    store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'votes' }));
+    store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'caster' }));
+    store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'votes' }));
     return next(action);
   };
 
@@ -53,8 +53,8 @@ const suggestMiddleware = store => {
     const state = store.getState();
     const { primaryContractAddresses } = state.ethereum;
     const { contractAddresses } = action;
-    if (contractAddresses.indexOf(primaryContractAddresses.suggest) > -1) {
-      store.dispatch(ethereumActions.call({ contractName: 'suggest', method: 'charities' }));
+    if (contractAddresses.indexOf(primaryContractAddresses.polling) > -1) {
+      store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'charities' }));
       return handleEthereumUser(next, action);
     }
     return next(action);
@@ -62,18 +62,18 @@ const suggestMiddleware = store => {
 
   const handleEthereumEvent = (next, action) => {
     const { contractName } = action;
-    // only check for suggest data
-    if (contractName !== 'suggest') {
+    // only check for polling data
+    if (contractName !== 'polling') {
       return next(action);
     }
 
     const { eventName } = action;
-    const type = `SUGGEST_${eventName}`;
+    const type = `POLLING_${eventName}`;
     switch (eventName) {
       case 'CASTINDEX':
-        return next({ ...action, type, castIndex: suggestParser.parseCastIndex(action.values) });
+        return next({ ...action, type, castIndex: pollingParser.parseCastIndex(action.values) });
       case 'CASTNAME':
-        return next({ ...action, type, castName: suggestParser.parseCastName(action.values) });
+        return next({ ...action, type, castName: pollingParser.parseCastName(action.values) });
       default:
         return next(action);
     }
@@ -96,4 +96,4 @@ const suggestMiddleware = store => {
   };
 };
 
-export default suggestMiddleware;
+export default pollingMiddleware;

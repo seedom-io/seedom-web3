@@ -19,13 +19,13 @@ class Score extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value,
+      value: props.value ? props.value : props.maxScore,
       isValid: true
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.value || !nextProps.value || !this.props.value.isEqualTo(nextProps.value)) {
+    if (nextProps.value && this.props.value && !this.props.value.isEqualTo(nextProps.value)) {
       this.setState({ value: nextProps.value });
     }
   }
@@ -71,7 +71,7 @@ class Score extends Component {
           type="number"
           min={new BigNumber(1)}
           max={maxScore}
-          value={value ? value.toString() : maxScore.toString()}
+          value={value.toString()}
           maxLength={maxScore.toString().length}
           placeholder=""
           disabled={disabled}

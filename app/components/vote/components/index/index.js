@@ -49,7 +49,7 @@ class Index extends Component {
         const score = this.score.value();
         onVoteIndex({ index: charity.index, score });
       } else {
-        toastr.warning('SUGGEST', 'score update form invalid');
+        toastr.warning('VOTE', 'score update form invalid');
       }
     });
   };
@@ -144,7 +144,7 @@ class Index extends Component {
                 <div className={`field bit ${!voted ? 'end' : ''}`}>
                   <div className="control">
                     <a className="button is-white is-outlined" disabled={isLoading} onClick={this.handleEdit}>
-                      <i className="fas fa-pen-square"></i>
+                      vote
                     </a>
                   </div>
                 </div>
@@ -153,7 +153,7 @@ class Index extends Component {
                   <div className="field bit end">
                     <div className="control">
                       <a className="button is-white is-outlined" disabled={isLoading} onClick={this.handleRemove}>
-                        <i className="fas fa-minus-circle"></i>
+                        unvote
                       </a>
                     </div>
                   </div>
