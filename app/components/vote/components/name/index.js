@@ -4,7 +4,6 @@ import { toastr } from 'react-redux-toastr';
 import { Link } from 'react-router-dom';
 import Score from '../score';
 import Field from '../../../field';
-import './index.scss';
 
 const MAX_NAME_LENGTH = 32;
 
@@ -65,43 +64,51 @@ class Name extends Component {
 
     return (
       <div className="row name">
+        <div className="area stretch">
 
-        <Field
-          format="textbox"
-          type="text"
-          placeholder="enter new charity or vote below"
-          value={name.toString()}
-          maxLength={10}
-          disabled={isLoading}
-          isValid={isNameValid}
-          onChange={this.handleNameChange}
-          ref={(component) => { this.name = component; }}
-        />
-
-        {name.length > 0 && (
-          <div className="tools">
-
-            <div className="bit header">
-              score
-            </div>
-
-            <Score
-              maxScore={caster.maxScore}
+          <div className="bit begin stretch">
+            <Field
+              format="textbox"
+              type="text"
+              placeholder="enter new charity or vote below"
+              value={name.toString()}
+              maxLength={10}
               disabled={isLoading}
-              ref={(component) => { this.score = component; }}
+              isValid={isNameValid}
+              onChange={this.handleNameChange}
+              ref={(component) => { this.name = component; }}
             />
-
-            <div className="field">
-              <div className="control">
-                <a className="button is-white" disabled={isLoading} onClick={this.handleSubmit}>
-                  <i className="fas fa-plus-circle"></i>
-                </a>
-              </div>
-            </div>
-
           </div>
-        )}
 
+          {name.length > 0 && (
+            <div className="tools">
+
+              <div className="bit header">
+                score
+              </div>
+
+              <div className="bit">
+                <Score
+                  maxScore={caster.maxScore}
+                  disabled={isLoading}
+                  ref={(component) => { this.score = component; }}
+                />
+              </div>
+
+              <div className="bit">
+                <div className="field">
+                  <div className="control">
+                    <a className="button is-white" disabled={isLoading} onClick={this.handleSubmit}>
+                      <i className="fas fa-plus-circle"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          )}
+
+        </div>
       </div>
     );
   }

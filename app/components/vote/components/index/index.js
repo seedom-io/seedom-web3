@@ -4,7 +4,15 @@ import { toastr } from 'react-redux-toastr';
 import Score from '../score';
 import * as heatmap from '../../../../utils/heatmap';
 import { localeDecimal } from '../../../../utils/numbers';
-import './index.scss';
+import classNames from 'classnames';
+
+const rowClass = (available) => {
+  return classNames({
+    row: true,
+    index: true,
+    static: !available
+  });
+};
 
 class Index extends Component {
   static propTypes = {
@@ -84,14 +92,14 @@ class Index extends Component {
     const voted = vote && vote.isGreaterThan(0);
 
     return (
-      <div className="row index" style={{ backgroundColor: this.getHeatmapColor() }}>
+      <div className={rowClass(available)} style={{ backgroundColor: this.getHeatmapColor() }}>
 
         <div className="area stretch">
 
-          <div className="bit header-normal stretch">{charity.name}</div>
+          <div className="bit begin header-normal stretch">{charity.name}</div>
 
           <div className="bit header">
-            avg score
+            score
           </div>
 
           <div className="bit">
@@ -116,26 +124,32 @@ class Index extends Component {
             {editing && (
               <div className="tools">
 
-                <Score
-                  value={vote}
-                  maxScore={caster.maxScore}
-                  disabled={isLoading}
-                  ref={(component) => { this.score = component; }}
-                />
+                <div className="bit">
+                  <Score
+                    value={vote}
+                    maxScore={caster.maxScore}
+                    disabled={isLoading}
+                    ref={(component) => { this.score = component; }}
+                  />
+                </div>
 
-                <div className="field bit">
-                  <div className="control">
-                    <a className="button is-white is-outlined" disabled={isLoading} onClick={this.handleSubmit}>
-                      vote
-                    </a>
+                <div className="bit">
+                  <div className="field">
+                    <div className="control">
+                      <a className="button is-white" disabled={isLoading} onClick={this.handleSubmit}>
+                        vote
+                      </a>
+                    </div>
                   </div>
                 </div>
 
-                <div className="field bit end">
-                  <div className="control">
-                    <a className="button is-white is-outlined" disabled={isLoading} onClick={this.handleDone}>
-                      done
-                    </a>
+                <div className="bit">
+                  <div className="field">
+                    <div className="control">
+                      <a className="button is-white" disabled={isLoading} onClick={this.handleDone}>
+                        done
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -145,20 +159,24 @@ class Index extends Component {
             {!editing && (
               <div className="tools">
 
-                <div className={`field bit ${!voted ? 'end' : ''}`}>
-                  <div className="control">
-                    <a className="button is-white is-outlined" disabled={isLoading} onClick={this.handleEdit}>
-                      vote
-                    </a>
+                <div className="bit">
+                  <div className="field">
+                    <div className="control">
+                      <a className="button is-white" disabled={isLoading} onClick={this.handleEdit}>
+                        vote
+                      </a>
+                    </div>
                   </div>
                 </div>
 
                 {voted && (
-                  <div className="field bit end">
-                    <div className="control">
-                      <a className="button is-white is-outlined" disabled={isLoading} onClick={this.handleRemove}>
-                        unvote
-                      </a>
+                  <div className="bit">
+                    <div className="field">
+                      <div className="control">
+                        <a className="button is-white" disabled={isLoading} onClick={this.handleRemove}>
+                          unvote
+                        </a>
+                      </div>
                     </div>
                   </div>
                 )}

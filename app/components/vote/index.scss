@@ -9,72 +9,94 @@
       color: white;
       display: flex;
       flex-direction: column;
-      height: $navbar-height * 2;
       padding: $small-padding;
+      height: $navbar-height;
+      justify-content: center;
       font-size: 20px;
-
-      .area {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        &.stretch {
-          flex: 1;
-
-          @include desktop {
-            flex: none;
-          }
-        }
-
-        &.right {
-          justify-content: flex-end;
-        }
-      }
-
-      .bit {
-        padding-right: $small-padding;
-        flex: none;
-
-        &.end {
-          padding-right: 0;
-        }
-
-        &.header {
-          font-weight: bold;
-          text-transform: uppercase;
-        }
-
-        &.header-normal {
-          font-weight: bold;
-        }
-
-        &.stretch {
-          flex: 1;
-        }
-
-      }
-
-      .tools {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        flex: none;
-        text-transform: uppercase;
-      }
-
-      .seedom-score {
-        flex: none;
-        padding-right: $small-padding;
-        text-transform: uppercase;
-      }
 
       @include desktop {
         flex-direction: row;
         height: $navbar-height;
       }
 
+      &.caster {
+        text-transform: uppercase;
+      }
+
+      &.index {
+        height: $navbar-height * 1.8;
+        border-top: 1px solid black;
+
+        @include desktop {
+          height: $navbar-height;
+        }
+
+        &.static {
+          height: $navbar-height;
+        }
+
+        .bit {
+          filter: drop-shadow(2px 2px 4px black);
+        }
+      }
+
+      &.name {
+        border-top: 1px solid $participation-phase;
+
+        .seedom-field {
+          input {
+            font-size: 20px;
+          }
+        }
+      }
+
+      .area {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex: 1;
+
+        @include desktop {
+          flex: none;
+
+          &.stretch {
+            flex: 1;
+          }
+        }
+
+        &.right {
+          justify-content: flex-end;
+        }
+
+        .bit {
+          padding-left: $small-padding;
+
+          &.begin {
+            padding-left: 0;
+          }
+
+          &.header {
+            font-weight: bold;
+            text-transform: uppercase;
+          }
+
+          &.header-normal {
+            font-weight: bold;
+          }
+
+          &.stretch {
+            flex: 1;
+          }
+        }
+
+        .tools {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          flex: none;
+          text-transform: uppercase;
+        }
+      }
     }
-
   }
-
 }

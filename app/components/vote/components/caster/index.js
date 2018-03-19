@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './index.scss';
 
 class Caster extends Component {
   static propTypes = {
@@ -16,24 +15,25 @@ class Caster extends Component {
     const { caster } = this.props;
     return (
       <div className="row caster">
-
-        <div className="area">
+        <div className="area stretch">
 
           {caster.maxVotes.isEqualTo(0) && (
-            <div className="field">
-              <div className="control">
-                <Link className="button is-white is-outlined" to={`${ETH_PATH}`}>participate first to vote</Link>
+            <div className="bit begin stretch">
+              <div className="field">
+                <div className="control">
+                  <Link className="button is-white is-outlined" to={`${ETH_PATH}`}>participate first to vote</Link>
+                </div>
               </div>
             </div>
           )}
 
           {caster.maxVotes.isGreaterThan(0) && (
             caster.totalVotes.isEqualTo(0) ? (
-              <div className="bit header stretch">
+              <div className="bit begin stretch">
                 help us decide our future!
               </div>
             ) : (
-              <div className="bit header stretch">
+              <div className="bit begin stretch">
                 thank you for voting!
               </div>
             )
@@ -43,12 +43,11 @@ class Caster extends Component {
             <span className="header">votes cast</span>
           </div>
 
-          <div className="bit end">
+          <div className="bit">
             {caster.totalVotes.toString()} / {caster.maxVotes.toString()}
           </div>
 
         </div>
-
       </div>
     );
   }
