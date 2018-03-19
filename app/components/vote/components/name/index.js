@@ -9,13 +9,13 @@ const MAX_NAME_LENGTH = 32;
 
 class Name extends Component {
   static propTypes = {
-    caster: PropTypes.shape(),
+    caster: PropTypes.shape().isRequired,
+    ended: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool,
     onVoteName: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    caster: null,
     isLoading: false
   };
 
@@ -55,10 +55,10 @@ class Name extends Component {
   };
 
   render() {
-    const { caster, isLoading } = this.props;
+    const { caster, ended, isLoading } = this.props;
     const { name, isNameValid } = this.state;
 
-    if (caster.totalVotes.isEqualTo(caster.maxVotes)) {
+    if (ended || caster.totalVotes.isEqualTo(caster.maxVotes)) {
       return null;
     }
 

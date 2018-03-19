@@ -2,42 +2,57 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+const getStatus = ({ caster, ended }) => {
+  if (ended) {
+    return 'ended';
+  } else if (caster.maxVotes.isEqualTo(0)) {
+    return 'participate';
+  } else if (caster.totalVotes.isEqualTo(0)) {
+    return 'decide';
+  }
+  return 'thanks';
+};
+
 class Caster extends Component {
   static propTypes = {
-    caster: PropTypes.shape()
-  };
-
-  static defaultProps = {
-    caster: null
+    caster: PropTypes.shape().isRequired,
+    ended: PropTypes.bool.isRequired
   };
 
   render() {
-    const { caster } = this.props;
+    const { caster, ended } = this.props;
+    const status = getStatus({ caster, ended });
+
     return (
       <div className="row caster">
         <div className="area stretch">
 
-          {caster.maxVotes.isEqualTo(0) && (
-            <div className="bit begin stretch">
-              <div className="field">
-                <div className="control">
-                  <Link className="button is-white is-outlined" to={`${ETH_PATH}`}>participate first to vote</Link>
+          {{
+            ended: (
+              <div className="bit begin stretch">
+                raiser ended
+              </div>
+            ),
+            participate: (
+              <div className="bit begin stretch">
+                <div className="field">
+                  <div className="control">
+                    <Link className="button is-white is-outlined" to={`${ETH_PATH}`}>participate first to vote</Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-
-          {caster.maxVotes.isGreaterThan(0) && (
-            caster.totalVotes.isEqualTo(0) ? (
+            ),
+            decide: (
               <div className="bit begin stretch">
                 help us decide our future!
               </div>
-            ) : (
+            ),
+            thanks: (
               <div className="bit begin stretch">
                 thank you for voting!
               </div>
             )
-          )}
+          }[status]}
 
           <div className="bit header">
             <span className="header">votes cast</span>

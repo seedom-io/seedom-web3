@@ -17,6 +17,7 @@ const rowClass = (available) => {
 class Index extends Component {
   static propTypes = {
     caster: PropTypes.shape().isRequired,
+    ended: PropTypes.bool.isRequired,
     charity: PropTypes.shape().isRequired,
     vote: PropTypes.shape(),
     account: PropTypes.string.isRequired,
@@ -76,6 +77,7 @@ class Index extends Component {
   render() {
     const {
       caster,
+      ended,
       charity,
       vote,
       account,
@@ -85,9 +87,11 @@ class Index extends Component {
     const { editing } = this.state;
 
     const available =
-      vote
-      || (charity.caster === account)
-      || !caster.totalVotes.isEqualTo(caster.maxVotes);
+      !ended && (
+        vote
+        || (charity.caster === account)
+        || !caster.totalVotes.isEqualTo(caster.maxVotes)
+      );
 
     const voted = vote && vote.isGreaterThan(0);
 

@@ -31,11 +31,12 @@ class Vote extends Component {
       caster,
       charities,
       votes,
+      raiser,
       account,
       isLoading
     } = this.props.ethereum;
 
-    if (!caster || !charities || !votes) {
+    if (!caster || !charities || !votes || !raiser) {
       return null;
     }
 
@@ -44,14 +45,20 @@ class Vote extends Component {
       return b.averageScore.comparedTo(a.averageScore);
     });
 
+    const ended = (new Date()) >= raiser.endTime;
+
     return (
       <div className="seedom-vote">
         <div className="list">
 
-          <Caster caster={caster} />
+          <Caster
+            caster={caster}
+            ended={ended}
+          />
 
           <Name
             caster={caster}
+            ended={ended}
             isLoading={isLoading}
             onVoteName={this.handleVoteName}
           />
@@ -60,6 +67,7 @@ class Vote extends Component {
             <Index
               key={charity.index}
               caster={caster}
+              ended={ended}
               charity={charity}
               vote={votes[charity.index]}
               account={account}
