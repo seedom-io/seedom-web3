@@ -44,7 +44,7 @@ class Stats extends Component {
 
   static defaultProps = {
     raiser: null,
-    state: false
+    state: null
   };
 
   render() {
