@@ -65,7 +65,9 @@ class Raise extends Content {
 
           <div className="text">
             1 entry = {etherPerEntry}
-            <span className="ether">&#9776;</span>
+            <span className="ether">
+              <i className="fas fa-bars" />
+            </span>
           </div>
 
           <Entries

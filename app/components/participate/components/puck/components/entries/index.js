@@ -74,7 +74,9 @@ class Entries extends Component {
       >
         <span>
           {`${etherForEntries}`}
-          <span className="ether is-dark">&#9776;</span>
+          <span className="ether is-dark">
+            <i className="fas fa-bars" />
+          </span>
         </span>
       </Field>
     );

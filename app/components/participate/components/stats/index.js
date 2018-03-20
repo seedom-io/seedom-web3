@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { localeNumber, localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
 import './index.scss';
 
 class Stat extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    ether: PropTypes.bool
+  };
+
+  static defaultProps = {
+    value: null,
+    ether: false
+  };
+
   render() {
-    const { title, value, symbol } = this.props;
+    const { title, value, ether } = this.props;
     return (
       <div className="stat">
         <div className="stat-title">
@@ -12,9 +24,11 @@ class Stat extends Component {
         </div>
         <div className="stat-value">
           {value}
-          <span className="ether">
-            {symbol}
-          </span>
+          {ether && (
+            <span className="ether">
+              <i className="fas fa-bars" />
+            </span>
+          )}
         </div>
       </div>
     );
@@ -22,6 +36,17 @@ class Stat extends Component {
 }
 
 class Stats extends Component {
+  static propTypes = {
+    side: PropTypes.string.isRequired,
+    raiser: PropTypes.shape(),
+    state: PropTypes.shape()
+  };
+
+  static defaultProps = {
+    raiser: null,
+    state: false
+  };
+
   render() {
     const {
       side,
@@ -48,8 +73,8 @@ class Stats extends Component {
         {((side === 'top') || (side === 'left')) &&
           <div className="panel">
             <div className="background" />
-            <Stat title="charity will get" value={charityReward} symbol="&#9776;" />
-            <Stat title="selected will get" value={selectedReward} symbol="&#9776;" />
+            <Stat title="charity will get" value={charityReward} ether />
+            <Stat title="selected will get" value={selectedReward} ether />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&
