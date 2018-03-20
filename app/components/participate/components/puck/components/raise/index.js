@@ -38,7 +38,7 @@ class Raise extends Content {
 
   handleSubmit = () => {
     this.validateForm(() => {
-      if (this.props.isFormValid) {
+      if (this.state.isFormValid) {
         const entries = this.entries.value();
         this.props.onRaise(entries);
       } else {
@@ -65,7 +65,7 @@ class Raise extends Content {
 
           <div className="text">
             1 entry = {etherPerEntry}
-            <span className="ether">Ξ</span>
+            <span className="ether">&Xi;</span>
           </div>
 
           <Entries

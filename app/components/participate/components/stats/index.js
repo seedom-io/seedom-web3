@@ -48,8 +48,8 @@ class Stats extends Component {
         {((side === 'top') || (side === 'left')) &&
           <div className="panel">
             <div className="background" />
-            <Stat title="charity will get" value={charityReward} symbol="Ξ" />
-            <Stat title="selected will get" value={selectedReward} symbol="Ξ" />
+            <Stat title="charity will get" value={charityReward} symbol="&Xi;" />
+            <Stat title="selected will get" value={selectedReward} symbol="&Xi;" />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&

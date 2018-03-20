@@ -30,7 +30,7 @@ class Begin extends Content {
           <div className="division text top small-pad">
             <div>
               <span>1 entry = {etherPerEntry}</span>
-              <span className="ether">Ξ</span>
+              <span className="ether">&Xi;</span>
             </div>
             <div className="supporting">now seeding</div>
           </div>
