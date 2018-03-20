@@ -55,7 +55,6 @@ const pollingMiddleware = store => {
     const { contractAddresses } = action;
     if (contractAddresses.indexOf(primaryContractAddresses.polling) > -1) {
       store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'charities' }));
-      return handleEthereumUser(next, action);
     }
     return next(action);
   };

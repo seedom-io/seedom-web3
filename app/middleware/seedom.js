@@ -80,7 +80,6 @@ const seedomMiddleware = store => {
     if (contractAddresses.indexOf(primaryContractAddresses.seedom) > -1) {
       store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'raiser' }));
       store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'state' }));
-      return handleEthereumUser(next, action);
     }
     return next(action);
   };
