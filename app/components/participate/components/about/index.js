@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Collapse from '../collapse';
+import Collapse from '../../../collapse';
 
 class About extends Component {
   constructor(props) {

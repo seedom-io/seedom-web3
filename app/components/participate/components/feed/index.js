@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as bytes from '../../../../utils/bytes';
 import * as numbers from '../../../../utils/numbers';
 import * as etherscan from '../../../../utils/etherscan';
-import Collapse from '../collapse';
+import Collapse from '../../../collapse';
 import './index.scss';
 
 const getAddress = (item) => {
@@ -61,7 +61,7 @@ class Feed extends Component {
     }
   }
 
-  handleOnToggle = (collapsed) => {
+  handleToggle = (collapsed) => {
     this.setState({ collapsed });
   }
 
@@ -70,49 +70,47 @@ class Feed extends Component {
     const { collapsed } = this.state;
     return (
       <div className="seedom-feed">
-        <Collapse title="live activity feed" collapsed={collapsed} onToggle={this.handleOnToggle} />
-        <div className="list">
-          {!collapsed && (
-            <div>
-              {feed.map((item) => (
-                <div
-                  className="row"
-                  key={`${item.transactionHash}-${item.transactionIndex}`}
-                  onClick={() => { this.openTransaction(item.transactionHash); }}
-                >
-                  <div className="icon">
-                    {{
-                      SEEDOM_PARTICIPATION: (
-                        <i className="fas fa-arrow-alt-circle-right"></i>
-                      ),
-                      SEEDOM_RAISE: (
-                        <i className="far fa-arrow-alt-circle-up"></i>
-                      ),
-                    }[item.type]}
-                  </div>
-                  <div className="contents">
-                    <div className="side left">
-                      <div className="blocknum">
-                        <i className="fas fa-cube"></i> {item.blockNumber}
-                      </div>
-                      <div className="address">
-                        {bytes.shorten(getAddress(item))}
-                      </div>
+        <Collapse title="live activity feed" collapsed={collapsed} onToggle={this.handleToggle} />
+        {!collapsed && (
+          <div className="list">
+            {feed.map((item) => (
+              <div
+                className="row"
+                key={`${item.transactionHash}-${item.transactionIndex}`}
+                onClick={() => { this.openTransaction(item.transactionHash); }}
+              >
+                <div className="icon">
+                  {{
+                    SEEDOM_PARTICIPATION: (
+                      <i className="fas fa-arrow-alt-circle-right"></i>
+                    ),
+                    SEEDOM_RAISE: (
+                      <i className="far fa-arrow-alt-circle-up"></i>
+                    ),
+                  }[item.type]}
+                </div>
+                <div className="contents">
+                  <div className="side left">
+                    <div className="blocknum">
+                      <i className="fas fa-cube"></i> {item.blockNumber}
                     </div>
-                    <div className="side right">
-                      <div className="entries">
-                        {numbers.localeNumber(getEntries(item))} entries
-                      </div>
-                      <div className="messages">
-                        {getMessage(item)}
-                      </div>
+                    <div className="address">
+                      {bytes.shorten(getAddress(item))}
+                    </div>
+                  </div>
+                  <div className="side right">
+                    <div className="entries">
+                      {numbers.localeNumber(getEntries(item))} entries
+                    </div>
+                    <div className="messages">
+                      {getMessage(item)}
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     );
   }
