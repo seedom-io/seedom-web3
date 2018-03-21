@@ -24,6 +24,7 @@ import Participate from './components/participate';
 import Vote from './components/vote';
 import History from './components/history';
 import Help from './components/help';
+import About from './components/about';
 import Footer from './components/footer';
 
 const history = createHistory();
@@ -56,6 +57,7 @@ const AppContainer = () => (
     <Route path={`${ETH_PATH}vote`} component={Vote} />
     <Route path={`${ETH_PATH}history`} component={History} />
     <Route path={`${ETH_PATH}help`} component={Help} />
+    <Route path={`${ETH_PATH}about`} component={About} />
   </ConnectedSwitch>
 );
 

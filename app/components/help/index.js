@@ -1,48 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import Sections from '../sections';
 import Collapse from '../collapse';
 
-class Help extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: []
-    };
-    // handle #toggles
-    this.handleHash(props);
-  }
+const accessingDesktop = 'accessing-desktop';
+const accessingMobile = 'accessing-mobile';
+const obtainingEther = 'obtaining-ether';
+const participating = 'participating';
+const voting = 'voting';
 
-  componentWillReceiveProps(newProps) {
-    this.handleHash(newProps);
-  }
-
-  handleHash = (props) => {
-    const hash = props.router.location.hash;
-    if (hash !== '') {
-      this.state.open = [hash.substring(1)];
-    }
-  }
-
-  handleToggle = (name) => {
-    const newState = { open: [...this.state.open] };
-    const openIndex = newState.open.indexOf(name);
-    if (openIndex >= 0) {
-      delete newState.open[openIndex];
-    } else {
-      newState.open.push(name);
-    }
-
-    this.setState(newState);
-  }
-
+class Help extends Sections {
   render() {
     const { open } = this.state;
-
-    const accessingDesktop = 'accessing-desktop';
-    const accessingMobile = 'accessing-mobile';
-    const obtainingEther = 'obtaining-ether';
-    const participating = 'participating';
-    const voting = 'voting';
 
     const accessingDesktopOpen = open.includes(accessingDesktop);
     const accessingMobileOpen = open.includes(accessingMobile);
