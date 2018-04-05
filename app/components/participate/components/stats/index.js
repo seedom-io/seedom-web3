@@ -38,19 +38,19 @@ class Stat extends Component {
 class Stats extends Component {
   static propTypes = {
     side: PropTypes.string.isRequired,
-    raiser: PropTypes.shape(),
+    deployment: PropTypes.shape(),
     state: PropTypes.shape()
   };
 
   static defaultProps = {
-    raiser: null,
+    deployment: null,
     state: null
   };
 
   render() {
     const {
       side,
-      raiser,
+      deployment,
       state
     } = this.props;
 
@@ -58,12 +58,12 @@ class Stats extends Component {
     let participantReward;
     let totalParticipants;
     let totalEntries;
-    if (raiser && state) {
-      const received = state.totalEntries.times(raiser.valuePerEntry);
+    if (deployment && state) {
+      const received = state.totalEntries.times(deployment.valuePerEntry);
       causeReward
-        = localeDecimal(getEtherFromWei(received.times(raiser.causeSplit).dividedBy(1000)));
+        = localeDecimal(getEtherFromWei(received.times(deployment.causeSplit).dividedBy(1000)));
       participantReward
-        = localeDecimal(getEtherFromWei(received.times(raiser.participantSplit).dividedBy(1000)));
+        = localeDecimal(getEtherFromWei(received.times(deployment.participantSplit).dividedBy(1000)));
       totalParticipants = localeNumber(state.totalParticipants);
       totalEntries = localeNumber(state.totalEntries);
     }

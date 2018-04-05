@@ -6,7 +6,7 @@ import { zero, localeNumber } from '../../../../../../utils/numbers';
 import { Link } from 'react-router-dom';
 import './index.scss';
 
-class Participate extends Content {
+class Participation extends Content {
   static propTypes = {
     isShown: PropTypes.bool.isRequired,
     participant: PropTypes.shape(),
@@ -52,4 +52,4 @@ class Participate extends Content {
   }
 }
 
-export default Participate;
+export default Participation;

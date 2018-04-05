@@ -32,26 +32,26 @@ class Item extends Component {
 
 class Header extends Component {
   static propTypes = {
-    raiser: PropTypes.shape(),
+    deployment: PropTypes.shape(),
     network: PropTypes.shape()
   };
 
   static defaultProps = {
-    raiser: null,
+    deployment: null,
     network: null
   };
 
   render() {
     const {
-      raiser,
+      deployment,
       network
     } = this.props;
 
     let deployTime;
     let endTime;
-    if (raiser) {
-      deployTime = dates.localeDate(raiser.deployTime);
-      endTime = dates.localeDate(raiser.endTime);
+    if (deployment) {
+      deployTime = dates.localeDate(deployment.deployTime);
+      endTime = dates.localeDate(deployment.endTime);
     }
 
     let networkName;

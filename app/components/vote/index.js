@@ -31,12 +31,12 @@ class Vote extends Component {
       caster,
       causes,
       votes,
-      raiser,
+      deployment,
       account,
       isLoading
     } = this.props.ethereum;
 
-    if (!caster || !causes || !votes || !raiser) {
+    if (!caster || !causes || !votes || !deployment) {
       return null;
     }
 
@@ -45,7 +45,7 @@ class Vote extends Component {
       return b.averageScore.comparedTo(a.averageScore);
     });
 
-    const ended = (new Date()) >= raiser.endTime;
+    const ended = (new Date()) >= deployment.endTime;
 
     return (
       <div className="seedom-vote">

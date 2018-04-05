@@ -10,9 +10,9 @@ const updateFeed = (feed, action) => {
   return newFeed;
 };
 
-const handleRaiser = (prevState, action) => {
+const handleDeployment = (prevState, action) => {
   const newState = getNewState(prevState);
-  newState.raiser = action.raiser;
+  newState.deployment = action.deployment;
   return newState;
 };
 
@@ -34,13 +34,13 @@ const handleBalances = (prevState, action) => {
   return newState;
 };
 
-const handleSeed = (prevState, action) => {
+const handleBeginning = (prevState, action) => {
   if (action.old) {
     return prevState;
   }
 
   const newState = getNewState(prevState);
-  newState.state.causeSecret = action.seed.causeSecret;
+  newState.state.causeSecret = action.beginning.causeSecret;
   return newState;
 };
 
@@ -103,9 +103,9 @@ const handleSelection = (prevState, action) => {
 
   // update participant balance
   if (action.selection.participant === newState.account) {
-    const { raiser, state, primaryContractAddresses } = newState;
-    newState.balances[primaryContractAddresses.seedom] =
-      state.totalEntries.times(raiser.participantSplit).dividedBy(1000).times(raiser.valuePerEntry);
+    const { deployment, state, primaryContractAddresses } = newState;
+    newState.balances[primaryContractAddresses.fundraiser] =
+      state.totalEntries.times(deployment.participantSplit).dividedBy(1000).times(deployment.valuePerEntry);
   }
 
   return newState;
@@ -121,9 +121,9 @@ const handleCancellation = (prevState, action) => {
   newState.state.cancelled = true;
 
   // update our cancellation balance
-  const { raiser, participant, primaryContractAddresses } = newState;
-  newState.balances[primaryContractAddresses.seedom] =
-    participant.entries.times(raiser.valuePerEntry);
+  const { deployment, participant, primaryContractAddresses } = newState;
+  newState.balances[primaryContractAddresses.fundraiser] =
+    participant.entries.times(deployment.valuePerEntry);
 
   return newState;
 };
@@ -142,18 +142,18 @@ const handleWithdrawal = (prevState, action) => {
   return newState;
 };
 
-const seedomReducer = (prevState = {}, action) => {
+const fundraiserReducer = (prevState = {}, action) => {
   switch (action.type) {
-    case 'FUNDRAISER_RAISER':
-      return handleRaiser(prevState, action);
+    case 'FUNDRAISER_DEPLOYMENT':
+      return handleDeployment(prevState, action);
     case 'FUNDRAISER_STATE':
       return handleState(prevState, action);
     case 'FUNDRAISER_PARTICIPANT':
       return handleParticipant(prevState, action);
     case 'FUNDRAISER_BALANCES':
       return handleBalances(prevState, action);
-    case 'FUNDRAISER_SEED':
-      return handleSeed(prevState, action);
+    case 'FUNDRAISER_BEGINNING':
+      return handleBeginning(prevState, action);
     case 'FUNDRAISER_PARTICIPATION':
       return handleParticipation(prevState, action);
     case 'FUNDRAISER_RAISE':
@@ -171,4 +171,4 @@ const seedomReducer = (prevState = {}, action) => {
   }
 };
 
-export default seedomReducer;
+export default fundraiserReducer;

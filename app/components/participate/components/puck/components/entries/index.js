@@ -6,12 +6,12 @@ import { BigNumber } from 'bignumber.js';
 
 class Entries extends Component {
   static propTypes = {
-    raiser: PropTypes.shape(),
+    deployment: PropTypes.shape(),
     disabled: PropTypes.bool
   };
 
   static defaultProps = {
-    raiser: null,
+    deployment: null,
     disabled: false
   };
 
@@ -51,12 +51,12 @@ class Entries extends Component {
   };
 
   render() {
-    const { raiser, disabled } = this.props;
+    const { deployment, disabled } = this.props;
     const { value, isValid } = this.state;
 
     let etherForEntries;
-    if (raiser) {
-      const weiForEntries = value.times(raiser.valuePerEntry);
+    if (deployment) {
+      const weiForEntries = value.times(deployment.valuePerEntry);
       etherForEntries = localeDecimal(getEtherFromWei(weiForEntries));
     }
 

@@ -5,20 +5,20 @@ const epochToDate = seconds => {
   return new Date(seconds * 1000);
 };
 
-const parseRaiser = raiser => {
+const parseDeployment = deployment => {
   return {
-    cause: String(raiser._cause),
-    causeSplit: new BigNumber(raiser._causeSplit),
-    participantSplit: new BigNumber(raiser._participantSplit),
-    owner: String(raiser._owner),
-    ownerSplit: new BigNumber(raiser._ownerSplit),
-    ownerSecret: String(raiser._ownerSecret),
-    valuePerEntry: new BigNumber(raiser._valuePerEntry),
-    deployTime: epochToDate(raiser._deployTime),
-    endTime: epochToDate(raiser._endTime),
-    expireTime: epochToDate(raiser._expireTime),
-    destructTime: epochToDate(raiser._destructTime),
-    maxParticipants: new BigNumber(raiser._maxParticipants)
+    cause: String(deployment._cause),
+    causeSplit: new BigNumber(deployment._causeSplit),
+    participantSplit: new BigNumber(deployment._participantSplit),
+    owner: String(deployment._owner),
+    ownerSplit: new BigNumber(deployment._ownerSplit),
+    ownerSecret: String(deployment._ownerSecret),
+    valuePerEntry: new BigNumber(deployment._valuePerEntry),
+    deployTime: epochToDate(deployment._deployTime),
+    endTime: epochToDate(deployment._endTime),
+    expireTime: epochToDate(deployment._expireTime),
+    destructTime: epochToDate(deployment._destructTime),
+    maxParticipants: new BigNumber(deployment._maxParticipants)
   };
 };
 
@@ -38,9 +38,9 @@ const parseState = state => {
   };
 };
 
-const parseBegin = begin => {
+const parseBeginning = beginning => {
   return {
-    causeSecret: String(begin._causeSecret),
+    causeSecret: String(beginning._causeSecret),
   };
 };
 
@@ -102,9 +102,9 @@ const parseBalances = balances => {
 };
 
 export {
-  parseRaiser,
+  parseDeployment,
   parseState,
-  parseBegin,
+  parseBeginning,
   parseParticipant,
   parseParticipation,
   parseRaise,

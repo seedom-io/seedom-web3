@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
 
-class ParticipateFailed extends Content {
+class ParticipationFailed extends Content {
   static propTypes = {
     isShown: PropTypes.bool.isRequired
   };
@@ -19,7 +19,7 @@ class ParticipateFailed extends Content {
             <div className="cause-logo" />
           </div>
           <div className="division text bottom giant-pad narrow">
-            <span>raiser no longer accepting participants, stay tuned for selection</span>
+            <span>participation closed, stay tuned for selection</span>
           </div>
         </div>
       </div>
@@ -27,4 +27,4 @@ class ParticipateFailed extends Content {
   }
 }
 
-export default ParticipateFailed;
+export default ParticipationFailed;

@@ -17,13 +17,13 @@ class Ticket extends Content {
     isShown: PropTypes.bool.isRequired,
     onTicketingOver: PropTypes.func.isRequired,
     account: PropTypes.string,
-    raiser: PropTypes.shape(),
+    deployment: PropTypes.shape(),
     participant: PropTypes.shape()
   };
 
   static defaultProps = {
     account: null,
-    raiser: null,
+    deployment: null,
     participant: null
   };
 
@@ -41,13 +41,13 @@ class Ticket extends Content {
       isShown,
       onTicketingOver,
       account,
-      raiser,
+      deployment,
       participant
     } = this.props;
 
     const address = account ? bytes.shorten(account) : '';
     const message = participant ? participant.message : '';
-    const endTime = raiser ? dates.localeDate(raiser.endTime) : '';
+    const endTime = deployment ? dates.localeDate(deployment.endTime) : '';
 
     return (
       <div className={`seedom-content ticket ${className}`}>

@@ -7,21 +7,21 @@ import './index.scss';
 
 class Welcome extends Content {
   static propTypes = {
-    raiser: PropTypes.shape(),
-    onBegin: PropTypes.func.isRequired
+    deployment: PropTypes.shape(),
+    onCountMeIn: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    raiser: null
+    deployment: null
   };
 
   render() {
     const { className } = this.state;
-    const { raiser, onCountMeIn } = this.props;
+    const { deployment, onCountMeIn } = this.props;
 
     let etherPerEntry;
-    if (raiser) {
-      etherPerEntry = localeDecimal(getEtherFromWei(raiser.valuePerEntry));
+    if (deployment) {
+      etherPerEntry = localeDecimal(getEtherFromWei(deployment.valuePerEntry));
     }
 
     return (

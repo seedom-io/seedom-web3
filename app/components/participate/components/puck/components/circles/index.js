@@ -14,15 +14,15 @@ const BACKGROUND_PADDING = 50;
 const LOADERS_PERCENTAGE = 20;
 const LOADERS_TEXT = 'COMMUNICATING WITH ETHEREUM';
 
-const getProgressPercentage = (raiser, now) => {
-  const { deployTime, endTime } = raiser;
-  const raiserTime = endTime - deployTime;
+const getProgressPercentage = (deployment, now) => {
+  const { deployTime, endTime } = deployment;
+  const deploymentTime = endTime - deployTime;
   const progressTime = now - deployTime;
-  return progressTime > raiserTime ? 100 : 100 * (progressTime / raiserTime);
+  return progressTime > deploymentTime ? 100 : 100 * (progressTime / deploymentTime);
 };
 
-const getProgressText = (raiser, now) => {
-  const { endTime } = raiser;
+const getProgressText = (deployment, now) => {
+  const { endTime } = deployment;
   let timeUntilEnd = endTime - now;
 
   if (timeUntilEnd <= 0) {
@@ -51,10 +51,6 @@ const getProgressRadius = () => {
 
 const getLoadersRadius = () => {
   return FULL_RADIUS - (LOADERS_STROKE_WIDTH / 2);
-};
-
-const getPhaseRadius = () => {
-  return FULL_RADIUS - (PHASE_STROKE_WIDTH / 2);
 };
 
 const getPathFlipped = (percentage) => {
@@ -94,12 +90,12 @@ const getProgressTextShown = (percentage) => {
 
 class Circles extends React.Component {
   static propTypes = {
-    raiser: PropTypes.shape(),
+    deployment: PropTypes.shape(),
     isLoading: PropTypes.bool
   };
 
   static defaultProps = {
-    raiser: null,
+    deployment: null,
     isLoading: false
   };
 
@@ -119,14 +115,14 @@ class Circles extends React.Component {
   }
 
   render() {
-    const { raiser, isLoading } = this.props;
+    const { deployment, isLoading } = this.props;
     const { now } = this.state;
 
     let progressPercentage;
     let progressText;
-    if (raiser) {
-      progressPercentage = getProgressPercentage(raiser, now);
-      progressText = getProgressText(raiser, now);
+    if (deployment) {
+      progressPercentage = getProgressPercentage(deployment, now);
+      progressText = getProgressText(deployment, now);
     }
 
     const progressRadius = getProgressRadius();

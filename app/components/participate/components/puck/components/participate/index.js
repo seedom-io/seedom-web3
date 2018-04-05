@@ -45,7 +45,7 @@ class Participate extends Content {
   }
 
   render() {
-    const { raiser, isLoading } = this.props;
+    const { deployment, isLoading } = this.props;
     const { className } = this.state;
     return (
       <div className={`seedom-content participate ${className}`}>
@@ -55,7 +55,7 @@ class Participate extends Content {
           <div className="cause-logo small" />
 
           <Entries
-            raiser={raiser}
+            deployment={deployment}
             disabled={isLoading}
             ref={(component) => { this.entries = component; }}
           />

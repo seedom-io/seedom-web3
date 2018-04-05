@@ -30,7 +30,7 @@ class Caster extends Component {
           {{
             ended: (
               <div className="bit begin stretch">
-                raiser ended
+                fundraiser ended
               </div>
             ),
             participate: (

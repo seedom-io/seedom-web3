@@ -83,8 +83,8 @@ class HomePage extends Component {
               </div>
 
               <div className="column">
-                <a className="button is-success is-outlined" href="https://github.com/seedom/seedom-solidity/blob/master/contract/seedom.sol">
-                  <span>View Smart Contract</span>
+                <a className="button is-success is-outlined" href="https://github.com/seedom/seedom-solidity/blob/master/contract">
+                  <span>View Smart Contracts</span>
                 </a>
               </div>
               <div className="column is-offset-one-quarter" />

@@ -1,11 +1,11 @@
 import * as ethereumActions from '../actions/ethereum';
 import * as fundraiserParser from '../parsers/fundraiser';
 
-const seedomMiddleware = store => {
-  const handleRaiser = (next, action) => {
+const fundraiserMiddleware = store => {
+  const handleDeployment = (next, action) => {
     return next({
-      type: 'FUNDRAISER_RAISER',
-      raiser: fundraiserParser.parseRaiser(action.data)
+      type: 'FUNDRAISER_DEPLOYMENT',
+      deployment: fundraiserParser.parseDeployment(action.data)
     });
   };
 
@@ -25,15 +25,15 @@ const seedomMiddleware = store => {
 
   const handleEthereumCallData = (next, action) => {
     const { contractName } = action;
-    // only check for seedom data
-    if (contractName !== 'seedom') {
+    // only check for fundraiser data
+    if (contractName !== 'fundraiser') {
       return next(action);
     }
 
     const { method } = action;
     switch (method) {
-      case 'raiser':
-        return handleRaiser(next, action);
+      case 'deployment':
+        return handleDeployment(next, action);
       case 'state':
         return handleState(next, action);
       case 'participants':
@@ -52,8 +52,8 @@ const seedomMiddleware = store => {
 
   const handleEthereumAllCallData = (next, action) => {
     const { contractName } = action;
-    // only check for seedom data
-    if (contractName !== 'seedom') {
+    // only check for fundraiser data
+    if (contractName !== 'fundraiser') {
       return next(action);
     }
 
@@ -68,8 +68,8 @@ const seedomMiddleware = store => {
 
   const handleEthereumUser = (next, action) => {
     const { account } = action;
-    store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'participants', args: [account] }));
-    store.dispatch(ethereumActions.allCall({ contractName: 'seedom', method: 'balance' }));
+    store.dispatch(ethereumActions.call({ contractName: 'fundraiser', method: 'participants', args: [account] }));
+    store.dispatch(ethereumActions.allCall({ contractName: 'fundraiser', method: 'balance' }));
     return next(action);
   };
 
@@ -77,25 +77,25 @@ const seedomMiddleware = store => {
     const state = store.getState();
     const { primaryContractAddresses } = state.ethereum;
     const { contractAddresses } = action;
-    if (contractAddresses.indexOf(primaryContractAddresses.seedom) > -1) {
-      store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'raiser' }));
-      store.dispatch(ethereumActions.call({ contractName: 'seedom', method: 'state' }));
+    if (contractAddresses.indexOf(primaryContractAddresses.fundraiser) > -1) {
+      store.dispatch(ethereumActions.call({ contractName: 'fundraiser', method: 'deployment' }));
+      store.dispatch(ethereumActions.call({ contractName: 'fundraiser', method: 'state' }));
     }
     return next(action);
   };
 
   const handleEthereumEvent = (next, action) => {
     const { contractName } = action;
-    // only check for seedom data
-    if (contractName !== 'seedom') {
+    // only check for fundraiser data
+    if (contractName !== 'fundraiser') {
       return next(action);
     }
 
     const { eventName } = action;
     const type = `FUNDRAISER_${eventName}`;
     switch (eventName) {
-      case 'SEED':
-        return next({ ...action, type, seed: fundraiserParser.parseBegin(action.values) });
+      case 'BEGINNING':
+        return next({ ...action, type, beginning: fundraiserParser.parseBeginning(action.values) });
       case 'PARTICIPATION':
         return next({ ...action, type, participation: fundraiserParser.parseParticipation(action.values) });
       case 'RAISE':
@@ -132,4 +132,4 @@ const seedomMiddleware = store => {
   };
 };
 
-export default seedomMiddleware;
+export default fundraiserMiddleware;

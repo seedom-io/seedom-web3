@@ -9,13 +9,13 @@ import './index.scss';
 
 class Raise extends Content {
   static propTypes = {
-    raiser: PropTypes.shape(),
+    deployment: PropTypes.shape(),
     isLoading: PropTypes.bool,
     onRaisingCancelled: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    raiser: null,
+    deployment: null,
     isLoading: false
   };
 
@@ -49,11 +49,11 @@ class Raise extends Content {
 
   render() {
     const { className } = this.state;
-    const { raiser, isLoading, onRaisingCancelled } = this.props;
+    const { deployment, isLoading, onRaisingCancelled } = this.props;
 
     let etherPerEntry;
-    if (raiser) {
-      etherPerEntry = localeDecimal(getEtherFromWei(raiser.valuePerEntry));
+    if (deployment) {
+      etherPerEntry = localeDecimal(getEtherFromWei(deployment.valuePerEntry));
     }
 
     return (
@@ -71,7 +71,7 @@ class Raise extends Content {
           </div>
 
           <Entries
-            raiser={raiser}
+            deployment={deployment}
             disabled={isLoading}
             ref={(component) => { this.entries = component; }}
           />

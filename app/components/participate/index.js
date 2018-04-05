@@ -17,31 +17,31 @@ class Participate extends Component {
   };
 
   handleParticipate = ({ message, entries }) => {
-    const { raiser } = this.props.ethereum;
+    const { deployment } = this.props.ethereum;
     const messageBytes = bytes.bytesString(message);
-    const value = entries.times(raiser.valuePerEntry);
+    const value = entries.times(deployment.valuePerEntry);
     this.props.dispatch(ethereumActions.send({
-      contractName: 'seedom', method: 'participate', args: [messageBytes], value
+      contractName: 'fundraiser', method: 'participate', args: [messageBytes], value
     }));
   };
 
   handleRaise = (entries) => {
-    const { raiser } = this.props.ethereum;
-    const value = entries.times(raiser.valuePerEntry);
+    const { deployment } = this.props.ethereum;
+    const value = entries.times(deployment.valuePerEntry);
     this.props.dispatch(ethereumActions.send({
-      contractName: 'seedom', value
+      contractName: 'fundraiser', value
     }));
   };
 
   handleWithdraw = (contractAddress) => {
     this.props.dispatch(ethereumActions.send({
-      contractName: 'seedom', contractAddress, method: 'withdraw'
+      contractName: 'fundraiser', contractAddress, method: 'withdraw'
     }));
   };
 
   handleCancel = () => {
     this.props.dispatch(ethereumActions.send({
-      contractName: 'seedom', method: 'cancel'
+      contractName: 'fundraiser', method: 'cancel'
     }));
   };
 
@@ -49,7 +49,7 @@ class Participate extends Component {
     const {
       network,
       account,
-      raiser,
+      deployment,
       state,
       participant,
       balances,
@@ -60,17 +60,17 @@ class Participate extends Component {
     return (
       <div className="seedom-seed">
         <div className="background">
-          <Header raiser={raiser} network={network} />
+          <Header deployment={deployment} network={network} />
           <div className="central">
             <Stats
               side="left"
-              raiser={raiser}
+              deployment={deployment}
               state={state}
             />
             <Puck
               network={network}
               account={account}
-              raiser={raiser}
+              deployment={deployment}
               state={state}
               participant={participant}
               balances={balances}
@@ -82,7 +82,7 @@ class Participate extends Component {
             />
             <Stats
               side="right"
-              raiser={raiser}
+              deployment={deployment}
               state={state}
             />
           </div>
@@ -99,7 +99,7 @@ class Participate extends Component {
           <div className="content has-text-centered">
             <p>
               View more live <strong>Seedom</strong> data on&nbsp;
-              <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network, primaryContractAddresses.seedom)}>Etherscan</a>.
+              <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network, primaryContractAddresses.fundraiser)}>Etherscan</a>.
             </p>
           </div>
         </div>

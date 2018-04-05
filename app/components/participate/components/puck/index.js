@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import * as bytes from '../../../../utils/bytes';
 import Circles from './components/circles';
 import Begin from './components/begin';
-import BeginFailed from './components/beginFailed';
+import BeginningFailed from './components/beginningFailed';
 import Welcome from './components/welcome';
 import Participate from './components/participate';
-import Participated from './components/participated';
+import Participation from './components/participation';
 import Raise from './components/raise';
 import Reveal from './components/reveal';
 import End from './components/end';
@@ -17,31 +17,31 @@ import Cancelled from './components/cancelled';
 import Ethereum from './components/ethereum';
 import Network from './components/network';
 import Account from './components/account';
-import ParticipateFailed from './components/participateFailed';
+import ParticipationFailed from './components/participationFailed';
 import Ticket from './components/ticket';
 import seedomLogo from '../../../../../../seedom-assets/logo/o/seedom-o-white-transparent.svg';
 import './index.scss';
 
 const PHASE_REFRESH = 1000;
 
-const getPhase = (raiser) => {
-  if (!raiser) {
+const getPhase = (deployment) => {
+  if (!deployment) {
     return null;
   }
 
   const now = Date.now();
   // participation phase
-  if (now < raiser.endTime) {
+  if (now < deployment.endTime) {
     return 'participation';
   }
 
   // end phase
-  if (now >= raiser.endTime && now < raiser.expireTime) {
+  if (now >= deployment.endTime && now < deployment.expireTime) {
     return 'end';
   }
 
   // expiration phase
-  if (now >= raiser.expireTime && now < raiser.destructTime) {
+  if (now >= deployment.expireTime && now < deployment.destructTime) {
     return 'expiration';
   }
 
@@ -121,18 +121,18 @@ const getComponent = ({
       }
 
       if (!isRaising && !isLoading) {
-        return 'participated';
+        return 'participation';
       }
 
       return 'raise';
 
     case 'end':
       if (bytes.isZero32(state.causeSecret)) {
-        return 'beginFailed';
+        return 'beginningFailed';
       }
 
       if (participant.message === '') {
-        return 'participateFailed';
+        return 'participationFailed';
       }
 
       if (state.causeMessage === '') {
@@ -153,7 +153,7 @@ class Puck extends Component {
   static propTypes = {
     network: PropTypes.shape(),
     account: PropTypes.string,
-    raiser: PropTypes.shape(),
+    deployment: PropTypes.shape(),
     state: PropTypes.shape(),
     participant: PropTypes.shape(),
     balances: PropTypes.shape(),
@@ -167,7 +167,7 @@ class Puck extends Component {
   static defaultProps = {
     network: null,
     account: null,
-    raiser: null,
+    deployment: null,
     state: null,
     participant: null,
     balances: {},
@@ -187,7 +187,7 @@ class Puck extends Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      const newPhase = getPhase(this.props.raiser);
+      const newPhase = getPhase(this.props.deployment);
       // if the phase changed, update state
       if (newPhase !== this.state.phase) {
         this.setState({ phase: newPhase });
@@ -255,7 +255,7 @@ class Puck extends Component {
     const {
       network,
       account,
-      raiser,
+      deployment,
       state,
       participant,
       balances,
@@ -266,7 +266,7 @@ class Puck extends Component {
       network,
       account,
       phase,
-      raiser,
+      deployment,
       state,
       participant,
       balances,
@@ -283,18 +283,18 @@ class Puck extends Component {
           <img alt="seedom" src={seedomLogo} />
         </div>
         <div className="interface">
-          <Circles percentage={50} isLoading={isLoading} raiser={raiser} />
+          <Circles percentage={50} isLoading={isLoading} deployment={deployment} />
           <Ethereum isShown={component === 'ethereum'} />
           <Network isShown={component === 'network'} />
           <Account isShown={component === 'account'} />
-          <Welcome isShown={component === 'welcome'} raiser={raiser} onCountMeIn={this.handleCountMeIn} />
+          <Welcome isShown={component === 'welcome'} deployment={deployment} onCountMeIn={this.handleCountMeIn} />
           <Begin isShown={component === 'begin'} />
-          <BeginFailed isShown={component === 'beginFailed'} />
-          <Participate isShown={component === 'participate'} raiser={raiser} isLoading={isLoading} onParticipate={this.handleParticipate} />
-          <ParticipateFailed isShown={component === 'participateFailed'} />
-          <Ticket isShown={component === 'ticket'} account={account} raiser={raiser} participant={participant} onTicketingOver={this.handleTicketingOver} />
-          <Participated isShown={component === 'participated'} participant={participant} onRaising={this.handleRaising} onTicketing={this.handleTicketing} />
-          <Raise isShown={component === 'raise'} raiser={raiser} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
+          <BeginningFailed isShown={component === 'beginningFailed'} />
+          <Participate isShown={component === 'participate'} deployment={deployment} isLoading={isLoading} onParticipate={this.handleParticipate} />
+          <Ticket isShown={component === 'ticket'} account={account} deployment={deployment} participant={participant} onTicketingOver={this.handleTicketingOver} />
+          <Participation isShown={component === 'participation'} participant={participant} onRaising={this.handleRaising} onTicketing={this.handleTicketing} />
+          <ParticipationFailed isShown={component === 'participationFailed'} />
+          <Raise isShown={component === 'raise'} deployment={deployment} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
           <Reveal isShown={component === 'reveal'} />
           <End isShown={component === 'end'} />
           <Selection isShown={component === 'selection'} state={state} network={network} />

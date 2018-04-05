@@ -87,7 +87,7 @@ const handleCastName = (prevState, action) => {
   return newState;
 };
 
-const handleSeedomParticipation = (prevState, action) => {
+const handleFundraiserParticipation = (prevState, action) => {
   if (action.old || (action.participation.participant !== prevState.account)) {
     return prevState;
   }
@@ -110,7 +110,7 @@ const pollingReducer = (prevState = {}, action) => {
     case 'POLLING_CASTNAME':
       return handleCastName(prevState, action);
     case 'FUNDRAISER_PARTICIPATION':
-      return handleSeedomParticipation(prevState, action);
+      return handleFundraiserParticipation(prevState, action);
     default:
       return prevState;
   }

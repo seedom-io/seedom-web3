@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
 
-class BeginFailed extends Content {
+class BeginningFailed extends Content {
   static propTypes = {
     isShown: PropTypes.bool.isRequired
   };
@@ -27,4 +27,4 @@ class BeginFailed extends Content {
   }
 }
 
-export default BeginFailed;
+export default BeginningFailed;
