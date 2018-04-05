@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import logo from '../../img/logos/seedom-white@4x.png';
+import logo from '../../../../seedom-assets/logo/full/seedom-full-white-transparent@4x.png';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
