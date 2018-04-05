@@ -1,25 +1,25 @@
 import * as ethereumActions from '../actions/ethereum';
-import * as seedomParser from '../parsers/seedom';
+import * as fundraiserParser from '../parsers/fundraiser';
 
 const seedomMiddleware = store => {
   const handleRaiser = (next, action) => {
     return next({
-      type: 'SEEDOM_RAISER',
-      raiser: seedomParser.parseRaiser(action.data)
+      type: 'FUNDRAISER_RAISER',
+      raiser: fundraiserParser.parseRaiser(action.data)
     });
   };
 
   const handleState = (next, action) => {
     return next({
-      type: 'SEEDOM_STATE',
-      state: seedomParser.parseState(action.data)
+      type: 'FUNDRAISER_STATE',
+      state: fundraiserParser.parseState(action.data)
     });
   };
 
   const handleParticipant = (next, action) => {
     return next({
-      type: 'SEEDOM_PARTICIPANT',
-      participant: seedomParser.parseParticipant(action.data)
+      type: 'FUNDRAISER_PARTICIPANT',
+      participant: fundraiserParser.parseParticipant(action.data)
     });
   };
 
@@ -45,8 +45,8 @@ const seedomMiddleware = store => {
 
   const handleBalances = (next, action) => {
     return next({
-      type: 'SEEDOM_BALANCES',
-      balances: seedomParser.parseBalances(action.data)
+      type: 'FUNDRAISER_BALANCES',
+      balances: fundraiserParser.parseBalances(action.data)
     });
   };
 
@@ -92,20 +92,20 @@ const seedomMiddleware = store => {
     }
 
     const { eventName } = action;
-    const type = `SEEDOM_${eventName}`;
+    const type = `FUNDRAISER_${eventName}`;
     switch (eventName) {
       case 'SEED':
-        return next({ ...action, type, seed: seedomParser.parseSeed(action.values) });
+        return next({ ...action, type, seed: fundraiserParser.parseBegin(action.values) });
       case 'PARTICIPATION':
-        return next({ ...action, type, participation: seedomParser.parseParticipation(action.values) });
+        return next({ ...action, type, participation: fundraiserParser.parseParticipation(action.values) });
       case 'RAISE':
-        return next({ ...action, type, raise: seedomParser.parseRaise(action.values) });
+        return next({ ...action, type, raise: fundraiserParser.parseRaise(action.values) });
       case 'REVELATION':
-        return next({ ...action, type, revelation: seedomParser.parseRevelation(action.values) });
+        return next({ ...action, type, revelation: fundraiserParser.parseRevelation(action.values) });
       case 'SELECTION':
-        return next({ ...action, type, selection: seedomParser.parseSelection(action.values) });
+        return next({ ...action, type, selection: fundraiserParser.parseSelection(action.values) });
       case 'WITHDRAWAL':
-        return next({ ...action, type, withdrawal: seedomParser.parseWithdrawal(action.values) });
+        return next({ ...action, type, withdrawal: fundraiserParser.parseWithdrawal(action.values) });
       case 'CANCELLATION':
         return next({ ...action, type });
       default:

@@ -61,7 +61,7 @@ class Raise extends Content {
         <Indicator type={isLoading ? 'waiting' : null} />
         <div className="seedom-overlay">
 
-          <div className="charity-logo small" />
+          <div className="cause-logo small" />
 
           <div className="text">
             1 entry = {etherPerEntry}

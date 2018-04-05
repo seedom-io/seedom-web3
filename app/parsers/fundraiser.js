@@ -7,9 +7,9 @@ const epochToDate = seconds => {
 
 const parseRaiser = raiser => {
   return {
-    charity: String(raiser._charity),
-    charitySplit: new BigNumber(raiser._charitySplit),
-    selectedSplit: new BigNumber(raiser._selectedSplit),
+    cause: String(raiser._cause),
+    causeSplit: new BigNumber(raiser._causeSplit),
+    participantSplit: new BigNumber(raiser._participantSplit),
     owner: String(raiser._owner),
     ownerSplit: new BigNumber(raiser._ownerSplit),
     ownerSecret: String(raiser._ownerSecret),
@@ -24,23 +24,23 @@ const parseRaiser = raiser => {
 
 const parseState = state => {
   return {
-    charitySecret: String(state._charitySecret),
-    charityMessage: String(bytes.stringBytes(state._charityMessage)),
-    charityWithdrawn: Boolean(state._charityWithdrawn),
-    selected: String(state._selected),
-    selectedMessage: String(bytes.stringBytes(state._selectedMessage)),
-    selectedWithdrawn: Boolean(state._selectedWithdrawn),
+    causeSecret: String(state._causeSecret),
+    causeMessage: String(bytes.stringBytes(state._causeMessage)),
+    causeWithdrawn: Boolean(state._causeWithdrawn),
+    participant: String(state._participant),
+    participantMessage: String(bytes.stringBytes(state._participantMessage)),
+    participantWithdrawn: Boolean(state._participantWithdrawn),
     ownerMessage: String(bytes.stringBytes(state._ownerMessage)),
-    ownerWithdrawn: Boolean(state._selectedWithdrawn),
+    ownerWithdrawn: Boolean(state._participantWithdrawn),
     cancelled: Boolean(state._cancelled),
     totalParticipants: new BigNumber(state._totalParticipants),
     totalEntries: new BigNumber(state._totalEntries)
   };
 };
 
-const parseSeed = seed => {
+const parseBegin = begin => {
   return {
-    charitySecret: String(seed._charitySecret),
+    causeSecret: String(begin._causeSecret),
   };
 };
 
@@ -70,15 +70,15 @@ const parseRaise = raise => {
 
 const parseRevelation = revelation => {
   return {
-    charityMessage: String(bytes.stringBytes(revelation._charityMessage)),
+    causeMessage: String(bytes.stringBytes(revelation._causeMessage)),
   };
 };
 
 const parseSelection = selection => {
   return {
-    selected: String(selection._selected),
-    selectedMessage: String(bytes.stringBytes(selection._selectedMessage)),
-    charityMessage: String(bytes.stringBytes(selection._charityMessage)),
+    participant: String(selection._participant),
+    participantMessage: String(bytes.stringBytes(selection._participantMessage)),
+    causeMessage: String(bytes.stringBytes(selection._causeMessage)),
     ownerMessage: String(bytes.stringBytes(selection._ownerMessage))
   };
 };
@@ -104,7 +104,7 @@ const parseBalances = balances => {
 export {
   parseRaiser,
   parseState,
-  parseSeed,
+  parseBegin,
   parseParticipant,
   parseParticipation,
   parseRaise,

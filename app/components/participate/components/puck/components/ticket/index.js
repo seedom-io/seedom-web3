@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
 import './index.scss';
-import charityLogo from '../../../../../../img/logos/charity-logo.png';
+import causeLogo from '../../../../../../img/logos/cause-logo.png';
 import seedomTicket from '../../../../../../../../seedom-assets/ticket/seedom-ticket.svg';
 import * as saveSvgAsPng from 'save-svg-as-png';
 import * as dates from '../../../../../../utils/dates';
@@ -63,7 +63,7 @@ class Ticket extends Content {
               ref={(svg) => { this.svg = svg; }}
             >
               <image xlinkHref={seedomTicket} x="0" y="0" height={MAX_Y} width={MAX_X} />
-              <image xlinkHref={charityLogo} x="92" y="155" width="90" />
+              <image xlinkHref={causeLogo} x="92" y="155" width="90" />
               <text textAnchor="end" x="570" y="130" fontFamily="CamphorPro Heavy" fontSize="20px" fill="#54BA63">
                 {message}
               </text>

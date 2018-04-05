@@ -11,10 +11,10 @@ class Cancelled extends Content {
         <Indicator type="error" />
         <div className="seedom-overlay layout">
           <div className="division top medium-pad">
-            <div className="charity-logo small" />
+            <div className="cause-logo small" />
           </div>
           <div className="division text bottom medium-pad narrow">
-            <span>raiser cancelled, please check back later</span>
+            <span>fundraiser cancelled, please check back later</span>
           </div>
         </div>
       </div>

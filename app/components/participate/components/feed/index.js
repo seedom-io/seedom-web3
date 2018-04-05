@@ -8,9 +8,9 @@ import './index.scss';
 
 const getAddress = (item) => {
   switch (item.type) {
-    case 'SEEDOM_PARTICIPATION':
+    case 'FUNDRAISER_PARTICIPATION':
       return item.participation.participant;
-    case 'SEEDOM_RAISE':
+    case 'FUNDRAISER_RAISE':
       return item.raise.participant;
     default:
       return null;
@@ -19,9 +19,9 @@ const getAddress = (item) => {
 
 const getEntries = (item) => {
   switch (item.type) {
-    case 'SEEDOM_PARTICIPATION':
+    case 'FUNDRAISER_PARTICIPATION':
       return item.participation.entries;
-    case 'SEEDOM_RAISE':
+    case 'FUNDRAISER_RAISE':
       return item.raise.entries;
     default:
       return null;
@@ -29,7 +29,7 @@ const getEntries = (item) => {
 };
 
 const getMessage = (item) => {
-  if (item.type === 'SEEDOM_PARTICIPATION') {
+  if (item.type === 'FUNDRAISER_PARTICIPATION') {
     return item.participation.message;
   }
   return null;
@@ -81,10 +81,10 @@ class Feed extends Component {
               >
                 <div className="icon">
                   {{
-                    SEEDOM_PARTICIPATION: (
+                    FUNDRAISER_PARTICIPATION: (
                       <i className="fas fa-arrow-alt-circle-right"></i>
                     ),
-                    SEEDOM_RAISE: (
+                    FUNDRAISER_RAISE: (
                       <i className="far fa-arrow-alt-circle-up"></i>
                     ),
                   }[item.type]}

@@ -52,7 +52,7 @@ class Participate extends Content {
         <Indicator type={isLoading ? 'waiting' : null} />
         <div className="seedom-overlay layout">
 
-          <div className="charity-logo small" />
+          <div className="cause-logo small" />
 
           <Entries
             raiser={raiser}

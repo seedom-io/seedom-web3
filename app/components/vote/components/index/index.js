@@ -18,7 +18,7 @@ class Index extends Component {
   static propTypes = {
     caster: PropTypes.shape().isRequired,
     ended: PropTypes.bool.isRequired,
-    charity: PropTypes.shape().isRequired,
+    cause: PropTypes.shape().isRequired,
     vote: PropTypes.shape(),
     account: PropTypes.string.isRequired,
     isLoading: PropTypes.bool,
@@ -54,9 +54,9 @@ class Index extends Component {
   handleSubmit = () => {
     this.validateForm(() => {
       if (this.state.isFormValid) {
-        const { charity, onVoteIndex } = this.props;
+        const { cause, onVoteIndex } = this.props;
         const score = this.score.value();
-        onVoteIndex({ index: charity.index, score });
+        onVoteIndex({ index: cause.index, score });
       } else {
         toastr.warning('VOTE', 'score update form invalid');
       }
@@ -64,13 +64,13 @@ class Index extends Component {
   };
 
   handleRemove = () => {
-    const { charity, onVoteIndex } = this.props;
-    onVoteIndex({ index: charity.index, score: 0 });
+    const { cause, onVoteIndex } = this.props;
+    onVoteIndex({ index: cause.index, score: 0 });
   };
 
   getHeatmapColor = () => {
-    const { charity, caster } = this.props;
-    const value = charity.averageScore.div(caster.maxScore);
+    const { cause, caster } = this.props;
+    const value = cause.averageScore.div(caster.maxScore);
     return heatmap.color(value);
   };
 
@@ -78,7 +78,7 @@ class Index extends Component {
     const {
       caster,
       ended,
-      charity,
+      cause,
       vote,
       account,
       isLoading
@@ -89,7 +89,7 @@ class Index extends Component {
     const available =
       !ended && (
         vote
-        || (charity.caster === account)
+        || (cause.caster === account)
         || !caster.totalVotes.isEqualTo(caster.maxVotes)
       );
 
@@ -100,14 +100,14 @@ class Index extends Component {
 
         <div className="area stretch">
 
-          <div className="bit begin header-normal stretch">{charity.name}</div>
+          <div className="bit begin header-normal stretch">{cause.name}</div>
 
           <div className="bit header">
             score
           </div>
 
           <div className="bit">
-            {localeDecimal(charity.averageScore)}
+            {localeDecimal(cause.averageScore)}
           </div>
 
           <div className="bit">|</div>
@@ -117,7 +117,7 @@ class Index extends Component {
           </div>
 
           <div className="bit">
-            {charity.totalVotes.toString()}
+            {cause.totalVotes.toString()}
           </div>
 
         </div>

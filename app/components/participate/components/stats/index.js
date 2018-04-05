@@ -54,16 +54,16 @@ class Stats extends Component {
       state
     } = this.props;
 
-    let charityReward;
-    let selectedReward;
+    let causeReward;
+    let participantReward;
     let totalParticipants;
     let totalEntries;
     if (raiser && state) {
       const received = state.totalEntries.times(raiser.valuePerEntry);
-      charityReward
-        = localeDecimal(getEtherFromWei(received.times(raiser.charitySplit).dividedBy(1000)));
-      selectedReward
-        = localeDecimal(getEtherFromWei(received.times(raiser.selectedSplit).dividedBy(1000)));
+      causeReward
+        = localeDecimal(getEtherFromWei(received.times(raiser.causeSplit).dividedBy(1000)));
+      participantReward
+        = localeDecimal(getEtherFromWei(received.times(raiser.participantSplit).dividedBy(1000)));
       totalParticipants = localeNumber(state.totalParticipants);
       totalEntries = localeNumber(state.totalEntries);
     }
@@ -73,8 +73,8 @@ class Stats extends Component {
         {((side === 'top') || (side === 'left')) &&
           <div className="panel">
             <div className="background" />
-            <Stat title="charity will get" value={charityReward} ether />
-            <Stat title="selected will get" value={selectedReward} ether />
+            <Stat title="cause will get" value={causeReward} ether />
+            <Stat title="one participant will get" value={participantReward} ether />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&

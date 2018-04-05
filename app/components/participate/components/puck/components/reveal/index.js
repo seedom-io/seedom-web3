@@ -19,7 +19,7 @@ class Reveal extends Content {
             <span>please wait for</span>
           </div>
           <div className="division text center">
-            <div className="charity-logo" />
+            <div className="cause-logo" />
           </div>
           <div className="division text bottom small-pad narrow">
             <span>to reveal their message</span>

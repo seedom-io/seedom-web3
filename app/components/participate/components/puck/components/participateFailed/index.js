@@ -16,7 +16,7 @@ class ParticipateFailed extends Content {
         <Indicator type={isShown ? 'error' : null} />
         <div className="seedom-overlay layout">
           <div className="division top">
-            <div className="charity-logo" />
+            <div className="cause-logo" />
           </div>
           <div className="division text bottom giant-pad narrow">
             <span>raiser no longer accepting participants, stay tuned for selection</span>

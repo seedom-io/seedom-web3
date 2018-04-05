@@ -9,10 +9,10 @@ const pollingMiddleware = store => {
     });
   };
 
-  const handleCharities = (next, action) => {
+  const handleCauses = (next, action) => {
     return next({
-      type: 'POLLING_CHARITIES',
-      charities: pollingParser.parseCharities(action.data)
+      type: 'POLLING_CAUSES',
+      causes: pollingParser.parseCauses(action.data)
     });
   };
 
@@ -34,8 +34,8 @@ const pollingMiddleware = store => {
     switch (method) {
       case 'caster':
         return handleCaster(next, action);
-      case 'charities':
-        return handleCharities(next, action);
+      case 'causes':
+        return handleCauses(next, action);
       case 'votes':
         return handleVotes(next, action);
       default:
@@ -54,7 +54,7 @@ const pollingMiddleware = store => {
     const { primaryContractAddresses } = state.ethereum;
     const { contractAddresses } = action;
     if (contractAddresses.indexOf(primaryContractAddresses.polling) > -1) {
-      store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'charities' }));
+      store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'causes' }));
     }
     return next(action);
   };

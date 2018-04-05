@@ -59,7 +59,7 @@ class Help extends Sections {
         )}
 
         <Collapse
-          title="voting for future charities"
+          title="voting for future causes"
           collapsed={!votingOpen}
           onToggle={() => this.handleToggle(voting)}
         />

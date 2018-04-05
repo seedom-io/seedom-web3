@@ -40,7 +40,7 @@ const handleSeed = (prevState, action) => {
   }
 
   const newState = getNewState(prevState);
-  newState.state.charitySecret = action.seed.charitySecret;
+  newState.state.causeSecret = action.seed.causeSecret;
   return newState;
 };
 
@@ -86,7 +86,7 @@ const handleRevelation = (prevState, action) => {
   }
 
   const newState = getNewState(prevState);
-  newState.state.charityMessage = action.revelation.charityMessage;
+  newState.state.causeMessage = action.revelation.causeMessage;
   return newState;
 };
 
@@ -96,16 +96,16 @@ const handleSelection = (prevState, action) => {
   }
 
   const newState = getNewState(prevState);
-  newState.state.selected = action.selection.selected;
-  newState.state.selectedMessage = action.selection.selectedMessage;
-  newState.state.charityMessage = action.selection.charityMessage;
+  newState.state.participant = action.selection.participant;
+  newState.state.participantMessage = action.selection.participantMessage;
+  newState.state.causeMessage = action.selection.causeMessage;
   newState.state.ownerMessage = action.selection.ownerMessage;
 
-  // update selected balance
-  if (action.selection.selected === newState.account) {
+  // update participant balance
+  if (action.selection.participant === newState.account) {
     const { raiser, state, primaryContractAddresses } = newState;
     newState.balances[primaryContractAddresses.seedom] =
-      state.totalEntries.times(raiser.selectedSplit).dividedBy(1000).times(raiser.valuePerEntry);
+      state.totalEntries.times(raiser.participantSplit).dividedBy(1000).times(raiser.valuePerEntry);
   }
 
   return newState;
@@ -144,27 +144,27 @@ const handleWithdrawal = (prevState, action) => {
 
 const seedomReducer = (prevState = {}, action) => {
   switch (action.type) {
-    case 'SEEDOM_RAISER':
+    case 'FUNDRAISER_RAISER':
       return handleRaiser(prevState, action);
-    case 'SEEDOM_STATE':
+    case 'FUNDRAISER_STATE':
       return handleState(prevState, action);
-    case 'SEEDOM_PARTICIPANT':
+    case 'FUNDRAISER_PARTICIPANT':
       return handleParticipant(prevState, action);
-    case 'SEEDOM_BALANCES':
+    case 'FUNDRAISER_BALANCES':
       return handleBalances(prevState, action);
-    case 'SEEDOM_SEED':
+    case 'FUNDRAISER_SEED':
       return handleSeed(prevState, action);
-    case 'SEEDOM_PARTICIPATION':
+    case 'FUNDRAISER_PARTICIPATION':
       return handleParticipation(prevState, action);
-    case 'SEEDOM_RAISE':
+    case 'FUNDRAISER_RAISE':
       return handleRaise(prevState, action);
-    case 'SEEDOM_REVELATION':
+    case 'FUNDRAISER_REVELATION':
       return handleRevelation(prevState, action);
-    case 'SEEDOM_SELECTION':
+    case 'FUNDRAISER_SELECTION':
       return handleSelection(prevState, action);
-    case 'SEEDOM_CANCELLATION':
+    case 'FUNDRAISER_CANCELLATION':
       return handleCancellation(prevState);
-    case 'SEEDOM_WITHDRAWAL':
+    case 'FUNDRAISER_WITHDRAWAL':
       return handleWithdrawal(prevState, action);
     default:
       return prevState;

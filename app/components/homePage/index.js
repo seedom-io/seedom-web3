@@ -15,7 +15,7 @@ class HomePage extends Component {
         </section>
         <section className="advantages">
           <div className="container has-text-centered">
-            <h1 className="title">The most powerful platform that benefits the world’s leading charities and their supporters.</h1>
+            <h1 className="title">The most powerful platform that benefits the world’s leading causes and their supporters.</h1>
             <div className="columns">
 
               <div className="column feature">
@@ -26,7 +26,7 @@ class HomePage extends Component {
                   </span>
                 </span>
                 <h2 className="subtitle">Purposeful</h2>
-                <p>Seedom chooses charities that are</p>
+                <p>Seedom chooses causes that are</p>
                 <p>legitimate, active, and relevant</p>
                 <p>
                   <span className="icon has-text-danger">
@@ -56,7 +56,7 @@ class HomePage extends Component {
                   </span>
                 </span>
                 <h2 className="subtitle has-text-weight-light">Safe</h2>
-                <p>The charity has full control</p>
+                <p>The cause has full control</p>
                 <p>Guaranteed winner</p>
                 <p>No backdoors and no loopholes</p>
               </div>

@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 class Head extends Component {
   componentDidMount() {
     ((window.gitter = {}).chat = {}).options = {
-      room: 'seedom_io/Lobby'
+      room: 'FUNDRAISER_io/Lobby'
     };
   }
 

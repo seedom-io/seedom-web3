@@ -21,11 +21,11 @@ class Select extends Content {
     const { className } = this.state;
     const { isShown, state, network } = this.props;
 
-    let charityMessage;
+    let causeMessage;
     let ownerMessage;
-    let selectedMessage;
+    let participantMessage;
     if (state) {
-      ({ charityMessage, ownerMessage, selectedMessage } = state);
+      ({ causeMessage, ownerMessage, participantMessage } = state);
     }
 
     return (
@@ -33,12 +33,12 @@ class Select extends Content {
         <Indicator type={isShown ? 'selection' : null} />
         <div className="seedom-overlay layout">
           <div className="division text top small-pad">
-            <div className="charity-logo small" />
+            <div className="cause-logo small" />
           </div>
           <div className="division text center narrow">
             <div className="left">
-              <div className="header">charity message</div>
-              <div className="value">{charityMessage}</div>
+              <div className="header">cause message</div>
+              <div className="value">{causeMessage}</div>
             </div>
             <div className="right">
               <div className="header">owner message</div>
@@ -46,8 +46,8 @@ class Select extends Content {
             </div>
           </div>
           <div className="division text bottom small-pad slim">
-            <div className="header">selected message</div>
-            <div className="value">{selectedMessage}</div>
+            <div className="header">participant message</div>
+            <div className="value">{participantMessage}</div>
           </div>
         </div>
       </div>

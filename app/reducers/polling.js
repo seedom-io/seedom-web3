@@ -10,9 +10,9 @@ const handleCaster = (prevState, action) => {
   return newState;
 };
 
-const handleCharities = (prevState, action) => {
+const handleCauses = (prevState, action) => {
   const newState = getNewState(prevState);
-  newState.charities = action.charities;
+  newState.causes = action.causes;
   return newState;
 };
 
@@ -31,29 +31,29 @@ const handleCastIndex = (prevState, action) => {
     caster,
     score,
     totalVotes,
-    charityIndex,
-    charityTotalScores,
-    charityTotalVotes
+    causeIndex,
+    causeTotalScores,
+    causeTotalVotes
   } = action.castIndex;
   const newState = getNewState(prevState);
   // update is loading
   newState.isLoading = false;
-  // update charity data
-  const charity = newState.charities[charityIndex];
-  charity.totalScores = charityTotalScores;
-  charity.totalVotes = charityTotalVotes;
+  // update cause data
+  const cause = newState.causes[causeIndex];
+  cause.totalScores = causeTotalScores;
+  cause.totalVotes = causeTotalVotes;
   // update average score
-  charity.averageScore = charityTotalVotes.isGreaterThan(0)
-    ? charityTotalScores.div(charityTotalVotes)
+  cause.averageScore = causeTotalVotes.isGreaterThan(0)
+    ? causeTotalScores.div(causeTotalVotes)
     : zero();
   // add our votes to our votes
   if (caster === newState.account) {
     newState.caster.totalVotes = totalVotes;
-    // delete existing vote if we did not cast the charity (name)
-    if ((score === 0) && (charity.caster !== newState.account)) {
-      delete newState.votes[charityIndex];
+    // delete existing vote if we did not cast the cause (name)
+    if ((score === 0) && (cause.caster !== newState.account)) {
+      delete newState.votes[causeIndex];
     } else {
-      newState.votes[charityIndex] = score;
+      newState.votes[causeIndex] = score;
     }
   }
 
@@ -67,11 +67,11 @@ const handleCastName = (prevState, action) => {
 
   const newState = getNewState(prevState);
   newState.isLoading = false;
-  const { caster, charityIndex, charityName, score } = action.castName;
-  // add new charity
-  newState.charities[charityIndex] = {
-    index: charityIndex,
-    name: charityName,
+  const { caster, causeIndex, causeName, score } = action.castName;
+  // add new cause
+  newState.causes[causeIndex] = {
+    index: causeIndex,
+    name: causeName,
     caster,
     totalScores: score,
     totalVotes: 1,
@@ -80,7 +80,7 @@ const handleCastName = (prevState, action) => {
 
   // add our votes to our votes
   if (caster === newState.account) {
-    newState.votes[charityIndex] = score;
+    newState.votes[causeIndex] = score;
     newState.caster.totalVotes = newState.caster.totalVotes.plus(1);
   }
 
@@ -101,15 +101,15 @@ const pollingReducer = (prevState = {}, action) => {
   switch (action.type) {
     case 'POLLING_CASTER':
       return handleCaster(prevState, action);
-    case 'POLLING_CHARITIES':
-      return handleCharities(prevState, action);
+    case 'POLLING_CAUSES':
+      return handleCauses(prevState, action);
     case 'POLLING_VOTES':
       return handleVotes(prevState, action);
     case 'POLLING_CASTINDEX':
       return handleCastIndex(prevState, action);
     case 'POLLING_CASTNAME':
       return handleCastName(prevState, action);
-    case 'SEEDOM_PARTICIPATION':
+    case 'FUNDRAISER_PARTICIPATION':
       return handleSeedomParticipation(prevState, action);
     default:
       return prevState;

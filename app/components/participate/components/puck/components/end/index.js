@@ -23,7 +23,7 @@ class End extends Content {
             <div className="seedom-logo" />
           </div>
           <div className="division text bottom small-pad narrow">
-            <span>to end the raiser</span>
+            <span>to end the fundraiser</span>
           </div>
         </div>
       </div>

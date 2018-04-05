@@ -29,19 +29,19 @@ class Vote extends Component {
   render() {
     const {
       caster,
-      charities,
+      causes,
       votes,
       raiser,
       account,
       isLoading
     } = this.props.ethereum;
 
-    if (!caster || !charities || !votes || !raiser) {
+    if (!caster || !causes || !votes || !raiser) {
       return null;
     }
 
-    // sort charities by average score
-    const sortedCharities = [...charities].sort((a, b) => {
+    // sort causes by average score
+    const sortedCauses = [...causes].sort((a, b) => {
       return b.averageScore.comparedTo(a.averageScore);
     });
 
@@ -63,13 +63,13 @@ class Vote extends Component {
             onVoteName={this.handleVoteName}
           />
 
-          {sortedCharities.map((charity) => (
+          {sortedCauses.map((cause) => (
             <Index
-              key={charity.index}
+              key={cause.index}
               caster={caster}
               ended={ended}
-              charity={charity}
-              vote={votes[charity.index]}
+              cause={cause}
+              vote={votes[cause.index]}
               account={account}
               onVoteIndex={this.handleVoteIndex}
             />

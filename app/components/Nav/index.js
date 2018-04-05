@@ -63,7 +63,7 @@ class Nav extends React.Component {
                     <i className="fab fa-lg fa-medium" />
                   </span>
                 </a>
-                <a className="navbar-item" href="http://reddit.com/r/seedom_io">
+                <a className="navbar-item" href="http://reddit.com/r/FUNDRAISER_io">
                   <span className="icon">
                     <i className="fab fa-lg fa-reddit" />
                   </span>
@@ -74,7 +74,7 @@ class Nav extends React.Component {
                   </span>
                 </a>
 
-                <a className="navbar-item" href="https://twitter.com/seedom_io">
+                <a className="navbar-item" href="https://twitter.com/FUNDRAISER_io">
                   <span className="icon">
                     <i className="fab fa-lg fa-twitter" />
                   </span>

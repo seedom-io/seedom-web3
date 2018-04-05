@@ -49,7 +49,7 @@ class Name extends Component {
         const score = this.score.value();
         this.props.onVoteName({ name, score });
       } else {
-        toastr.warning('VOTE', 'new charity form invalid');
+        toastr.warning('VOTE', 'new cause form invalid');
       }
     });
   };
@@ -70,7 +70,7 @@ class Name extends Component {
             <Field
               format="textbox"
               type="text"
-              placeholder="enter new charity or vote below"
+              placeholder="enter new cause or vote below"
               value={name.toString()}
               maxLength={10}
               disabled={isLoading}

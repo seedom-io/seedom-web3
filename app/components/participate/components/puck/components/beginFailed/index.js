@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
 
-class SeedFailed extends Content {
+class BeginFailed extends Content {
   static propTypes = {
     isShown: PropTypes.bool.isRequired
   };
@@ -16,10 +16,10 @@ class SeedFailed extends Content {
         <Indicator type={isShown ? 'error' : null} />
         <div className="seedom-overlay layout">
           <div className="division top">
-            <div className="charity-logo" />
+            <div className="cause-logo" />
           </div>
           <div className="division text bottom giant-pad narrow">
-            <span>charity failed to seed their secret message</span>
+            <span>cause failed to begin their fundraiser</span>
           </div>
         </div>
       </div>
@@ -27,4 +27,4 @@ class SeedFailed extends Content {
   }
 }
 
-export default SeedFailed;
+export default BeginFailed;

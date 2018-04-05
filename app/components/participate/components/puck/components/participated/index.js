@@ -30,7 +30,7 @@ class Participate extends Content {
         <div className="seedom-overlay">
           <div className="text entries">{localeEntries}</div>
           <div className="text obtained">{Number(localeEntries) === 1 ? 'entry' : 'entries'} obtained</div>
-          <div className="charity-logo small" />
+          <div className="cause-logo small" />
           <div className="field">
             <div className="control">
               <a className="button is-dark" onClick={onRaising}>get more entries</a>
@@ -38,7 +38,7 @@ class Participate extends Content {
           </div>
           <div className="field">
             <div className="control">
-              <Link className="button is-white is-outlined" to={`${ETH_PATH}vote`}>vote on next charity</Link>
+              <Link className="button is-white is-outlined" to={`${ETH_PATH}vote`}>vote on next cause</Link>
             </div>
           </div>
           <div className="field">
