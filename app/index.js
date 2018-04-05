@@ -10,10 +10,10 @@ import ReduxToastr from 'react-redux-toastr'
 import createHistory from 'history/createBrowserHistory';
 import reduceReducers from './utils/reduceReducers';
 import pollingReducer from './reducers/polling';
-import seedomReducer from './reducers/seedom';
+import fundraiserReducer from './reducers/fundraiser';
 import ethereumReducer from './reducers/ethereum';
 import pollingMiddleware from './middleware/polling';
-import seedomMiddleware from './middleware/seedom';
+import fundraiserMiddleware from './middleware/fundraiser';
 import ethereumMiddleware from './middleware/ethereum';
 
 import './sass/bulma.scss';
@@ -33,7 +33,7 @@ const store = createStore(
   combineReducers({
     ethereum: reduceReducers(
       ethereumReducer,
-      seedomReducer,
+      fundraiserReducer,
       pollingReducer
     ),
     toastr: toastrReducer,
@@ -42,7 +42,7 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(
     routerMiddleware(history),
     ethereumMiddleware,
-    seedomMiddleware,
+    fundraiserMiddleware,
     pollingMiddleware
   ))
 );

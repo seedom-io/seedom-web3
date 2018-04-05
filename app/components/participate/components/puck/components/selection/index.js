@@ -5,7 +5,7 @@ import Indicator from '../indicator';
 import * as etherscan from '../../../../../../utils/etherscan';
 import './index.scss';
 
-class Select extends Content {
+class Selection extends Content {
   static propTypes = {
     isShown: PropTypes.bool.isRequired,
     state: PropTypes.shape(),
@@ -55,4 +55,4 @@ class Select extends Content {
   }
 }
 
-export default Select;
+export default Selection;
