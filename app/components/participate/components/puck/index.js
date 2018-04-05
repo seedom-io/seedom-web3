@@ -68,7 +68,7 @@ const getComponent = ({
   }
 
   // network check
-  if (!network.supported) {
+  if (!network.supported || !network.deployed) {
     return 'network';
   }
 

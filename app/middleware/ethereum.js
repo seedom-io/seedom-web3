@@ -44,18 +44,16 @@ const ethereumMiddleware = (store) => {
   const contracts = {};
   const primaryContractAddresses = {};
 
-  const getRelease = (contractName, contractAddress) => {
-    return contractAddress
-      ? contracts[contractName][contractAddress]
-      : contracts[contractName][primaryContractAddresses[contractName]];
+  const getContract = (name) => {
+    return contracts[name];
   };
 
-  const getClientMethod = (contractName, contractAddress, method, args) => {
-    return getRelease(contractName, contractAddress).client.methods[method].apply(null, args);
+  const getClientMethod = (release, method, args) => {
+    return release.client.methods[method].apply(null, args);
   };
 
-  const getServerMethod = (contractName, contractAddress, method, args) => {
-    return getRelease(contractName, contractAddress).server.methods[method].apply(null, args);
+  const getServerMethod = (release, method, args) => {
+    return release.server.methods[method].apply(null, args);
   };
 
   const handleCallError = (error, action) => {
@@ -65,37 +63,50 @@ const ethereumMiddleware = (store) => {
 
   const handleCall = (next, action) => {
     const { contractName, contractAddress, method, args } = action;
-    getServerMethod(contractName, contractAddress, method, args).call({ from: account })
-      .then(
-        data => {
-          store.dispatch({ ...action, type: 'ETHEREUM_CALL_DATA', data });
-        },
-        error => {
-          handleCallError(error, action);
-        }
-      );
+    const contract = getContract(contractName);
+    if (contract) {
+      const release = contract[contractAddress || primaryContractAddresses[contractName]];
+      if (release) {
+        const serverMethod = getServerMethod(release, method, args);
+        serverMethod.call({ from: account })
+          .then(
+            data => {
+              store.dispatch({ ...action, type: 'ETHEREUM_CALL_DATA', data });
+            },
+            error => {
+              handleCallError(error, action);
+            }
+          );
+      }
+    }
+
     return next(action);
   };
 
   const handleAllCall = (next, action) => {
     const { contractName, method, args } = action;
     const promises = [];
-    // get contract addresses (an order)
-    const contractAddresses = Object.keys(contracts[contractName]);
-    // loop over last 6 contracts to execute call
-    for (const contractAddress of contractAddresses) {
-      promises
-        .push(getServerMethod(contractName, contractAddress, method, args)
-          .call({ from: account }));
-    }
-
-    Promise.all(promises).then((datas) => {
-      const data = {};
-      for (let i = 0; i < datas.length; i += 1) {
-        data[contractAddresses[i]] = datas[i];
+    const contract = getContract(contractName);
+    if (contract) {
+      // get contract addresses (an order)
+      const contractAddresses = Object.keys(contracts[contractName]);
+      // loop over last 6 contracts to execute call
+      for (const contractAddress of contractAddresses) {
+        const release = contract[contractAddress || primaryContractAddresses[contractName]];
+        if (release) {
+          const serverMethod = getServerMethod(release, method, args);
+          promises.push(serverMethod.call({ from: account }));
+        }
       }
-      store.dispatch({ ...action, type: 'ETHEREUM_ALLCALL_DATA', data });
-    });
+
+      Promise.all(promises).then((datas) => {
+        const data = {};
+        for (let i = 0; i < datas.length; i += 1) {
+          data[contractAddresses[i]] = datas[i];
+        }
+        store.dispatch({ ...action, type: 'ETHEREUM_ALLCALL_DATA', data });
+      });
+    }
 
     return next(action);
   };
@@ -120,7 +131,7 @@ const ethereumMiddleware = (store) => {
     store.dispatch({ ...action, type: 'ETHEREUM_SEND_SUCCESS' });
   };
 
-  const handleSendCall = (options, next, action) => {
+  const handleSendCall = (options, release, next, action) => {
     return (callError) => {
       if (callError) {
         handleSendError(callError, action);
@@ -132,8 +143,9 @@ const ethereumMiddleware = (store) => {
       if (!method) {
         transaction = clientWeb3.eth.sendTransaction(options);
       } else {
-        const { contractName, contractAddress, args } = action;
-        transaction = getClientMethod(contractName, contractAddress, method, args).send(options);
+        const { args } = action;
+        const clientMethod = getClientMethod(release, method, args);
+        transaction = clientMethod.send(options);
       }
 
       transaction
@@ -157,15 +169,19 @@ const ethereumMiddleware = (store) => {
       gasPrice: GAS_PRICE,
     };
 
-    options.to = !contractAddress
-      ? primaryContractAddresses[contractName]
-      : contractAddress;
-
-    const handler = handleSendCall(options, next, action);
-    if (!method) {
-      clientWeb3.eth.call(options, handler);
-    } else {
-      getServerMethod(contractName, contractAddress, method, args).call(options, handler);
+    const contract = getContract(contractName);
+    if (contract) {
+      const release = contract[contractAddress || primaryContractAddresses[contractName]];
+      if (release) {
+        options.to = release.address;
+        const handler = handleSendCall(options, release, next, action);
+        if (!method) {
+          clientWeb3.eth.call(options, handler);
+        } else {
+          const serverMethod = getServerMethod(release, method, args);
+          serverMethod.call(options, handler);
+        }
+      }
     }
 
     return next(action);
@@ -189,15 +205,20 @@ const ethereumMiddleware = (store) => {
       serverWeb3 = new Web3(ethNetwork.url);
       return true;
     }
+
     serverWeb3 = null;
     return false;
   };
 
   const setupContracts = (networkName) => {
-    const deployments = ETH_DEPLOYMENTS[networkName];
+    const ethDeployments = ETH_DEPLOYMENTS[networkName];
+    if (!ethDeployments) {
+      return false;
+    }
+
     // set all contracts (last six)
-    for (const contractName in deployments) {
-      const releases = deployments[contractName];
+    for (const contractName in ethDeployments) {
+      const releases = ethDeployments[contractName];
       for (const release of releases) {
         // save first address (primary contract)
         if (!(contractName in primaryContractAddresses)) {
@@ -210,6 +231,7 @@ const ethereumMiddleware = (store) => {
 
         // add to map of contracts
         contracts[contractName][release.address] = {
+          name: contractName,
           address: release.address,
           server: new serverWeb3.eth.Contract(release.abi, release.address),
           client: new clientWeb3.eth.Contract(release.abi, release.address)
@@ -222,6 +244,8 @@ const ethereumMiddleware = (store) => {
       type: 'ETHEREUM_PRIMARY_CONTRACT_ADDRESSES',
       primaryContractAddresses
     });
+
+    return true;
   };
 
   const setupContractEventHandler = (
@@ -276,10 +300,12 @@ const ethereumMiddleware = (store) => {
     // setup server web3
     const name = getNetworkName(id);
     const supported = setupServerWeb3(name);
+
+    let deployed = false;
     // continue if supported
     if (supported) {
       // setup contracts
-      setupContracts(name);
+      deployed = setupContracts(name);
       // setup event handlers
       setupContractEventHandlers();
     }
@@ -288,7 +314,8 @@ const ethereumMiddleware = (store) => {
     network = {
       id,
       name,
-      supported
+      supported,
+      deployed
     };
 
     // dispatch new network
@@ -298,14 +325,20 @@ const ethereumMiddleware = (store) => {
     });
   };
 
+  const ready = () => {
+    return network && network.supported && network.deployed && account;
+  };
+
   const checkUser = () => {
-    if (network && network.supported && account) {
-      store.dispatch({
-        type: 'ETHEREUM_USER',
-        network,
-        account
-      });
+    if (!ready()) {
+      return;
     }
+
+    store.dispatch({
+      type: 'ETHEREUM_USER',
+      network,
+      account
+    });
   };
 
   const checkNetwork = () => {
@@ -334,6 +367,10 @@ const ethereumMiddleware = (store) => {
   };
 
   const checkRefresh = () => {
+    if (!ready()) {
+      return;
+    }
+
     const now = (new Date()).getTime();
     const contractAddresses = [];
 
