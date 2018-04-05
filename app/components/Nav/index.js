@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
-import logo from '../../../../seedom-assets/logo/full/seedom-full-white-transparent@4x.png';
+import seedomLogo from '../../../../seedom-assets/logo/full/seedom-full-white-transparent@4x.png';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './index.scss';
 
 const NavToggle = ({ onClick }) => (
   <span className="navbar-burger burger" onClick={onClick}>
@@ -17,6 +19,10 @@ NavToggle.propTypes = {
 };
 
 class Nav extends React.Component {
+  static propTypes = {
+    ethereum: PropTypes.shape().isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -38,14 +44,15 @@ class Nav extends React.Component {
 
   render() {
     const { isNavBurgerActive } = this.state;
+    const { isLoading } = this.props.ethereum;
 
     return (
       <div className="hero-head">
         <nav className="navbar">
           <div className="container">
-            <div className="navbar-brand">
+            <div className={`navbar-brand ${isLoading && 'loading'}`}>
               <a className="navbar-item" href="/">
-                <img src={logo} alt="Seedom - Seeding the future of philanthropy" />
+                <img src={seedomLogo} alt="Seedom - Seeding the future of philanthropy" />
               </a>
               <NavToggle onClick={this.handleNavToggle} />
             </div>
@@ -100,4 +107,8 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+const mapStateToProps = state => {
+  return { ethereum: state.ethereum };
+};
+
+export default connect(mapStateToProps)(Nav);

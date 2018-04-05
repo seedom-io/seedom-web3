@@ -1,0 +1,5 @@
+@import '../../sass/theme.scss';
+
+.navbar-brand.loading {
+  animation: ghost $loading-duration ease-in-out 0s infinite;
+}

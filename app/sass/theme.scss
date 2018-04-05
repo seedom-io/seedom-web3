@@ -42,8 +42,9 @@ $revelation-phase-duration: 1s;
 $progress-phase-delay: $revelation-phase-delay + $revelation-phase-duration - $stagger-duration;
 $progress-phase-duration: 1s;
 
-$loading-spin-duration: 8s;
-$loading-fade-duration: 0.5s;
+$loading-duration: 2s;
+$loading-spin-duration: $loading-duration * 4;
+$loading-fade-duration: $loading-duration / 4;
 
 $input-focus-box-shadow-size: 0;
 $input-focus-box-shadow-color: transparent;
@@ -52,3 +53,57 @@ $input-color: white;
 $input-border-color: transparent;
 $input-shadow: 0;
 $input-radius: 0;
+
+@keyframes ring-in {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes ghost {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+@keyframes zoom-in {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+@keyframes win {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes wow {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}

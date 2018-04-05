@@ -31,12 +31,12 @@
     transform-origin: 50% 50%;
 
     &.show {
-      animation: spin $loading-spin-duration ease-in-out 0s infinite, fadeIn $loading-fade-duration ease-in-out 0s 1;
+      animation: spin $loading-spin-duration ease-in-out 0s infinite, fade-in $loading-fade-duration ease-in-out 0s 1;
       animation-fill-mode: forwards;
     }
 
     &.hide {
-      animation: spin $loading-spin-duration ease-in-out 0s infinite, fadeOut $loading-fade-duration ease-in-out 0s 1;
+      animation: spin $loading-spin-duration ease-in-out 0s infinite, fade-out $loading-fade-duration ease-in-out 0s 1;
       animation-fill-mode: forwards;
     }
 
@@ -77,7 +77,7 @@
       transform-origin: 50% 50%;
 
       &.participation {
-        animation: ringIn $participation-phase-duration ease-out $participation-phase-delay;
+        animation: ring-in $participation-phase-duration ease-out $participation-phase-delay;
         animation-fill-mode: forwards;
 
         circle {
@@ -87,7 +87,7 @@
       }
 
       &.progress {
-        animation: ringIn $progress-phase-duration ease-out $progress-phase-delay;
+        animation: ring-in $progress-phase-duration ease-out $progress-phase-delay;
         animation-fill-mode: forwards;
 
         circle {
@@ -98,7 +98,7 @@
         .phase-text {
           opacity: 0;
           fill: $background;
-          animation: fadeIn 0.5s ease-out 2.5s;
+          animation: fade-in 0.5s ease-out 2.5s;
           animation-fill-mode: forwards;
         }
 
@@ -108,24 +108,4 @@
 
   }
 
-}
-
-@keyframes ringIn {
-  0% { transform: scale(0); }
-  100% { transform: scale(1); }
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
