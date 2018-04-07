@@ -1,10 +1,22 @@
-.navbar-item,
-.navbar-link {
-  padding: 0.2rem 1rem;
+.navbar-brand {
+  &.is-loading {
+    animation: ghost $loading-duration ease-in-out 0s infinite;
+  }
+
+  .navbar-item {
+    padding: 0.2rem 1rem;
+
+    img {
+      max-height: 3.4rem;
+    }
+  }
+}
+
+.navbar-menu {
+  padding: 0;
 }
 
 .navbar-start {
-
   .navbar-item {
     color: $primary;
 
@@ -15,13 +27,15 @@
   }
 }
 
-.navbar-item img {
-  max-height: 3.6rem;
-}
-
 .navbar-end {
+  display: none;
+
   .navbar-item {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }
+
+  @include desktop {
+    display: flex;
   }
 }

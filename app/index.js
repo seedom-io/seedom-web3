@@ -19,7 +19,7 @@ import ethereumMiddleware from './middleware/ethereum';
 import './sass/bulma.scss';
 
 import Head from './components/head';
-import Nav from './components/nav';
+import NavBar from './components/navbar';
 import Participate from './components/participate';
 import Vote from './components/vote';
 import History from './components/history';
@@ -79,7 +79,7 @@ render(
           progressBar
         />
         <Head />
-        <Nav />
+        <NavBar />
         <App />
         <Footer />
       </div>
