@@ -2,70 +2,49 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Sections from '../sections';
 import Collapse from '../collapse';
-
-const accessingDesktop = 'accessing-desktop';
-const accessingMobile = 'accessing-mobile';
-const obtainingEther = 'obtaining-ether';
-const participating = 'participating';
-const voting = 'voting';
+import './index.scss';
 
 class Help extends Sections {
   render() {
     const { open } = this.state;
 
-    const accessingDesktopOpen = open.includes(accessingDesktop);
-    const accessingMobileOpen = open.includes(accessingMobile);
-    const obtainingEtherOpen = open.includes(obtainingEther);
-    const participatingOpen = open.includes(participating);
-    const votingOpen = open.includes(voting);
-
     return (
-      <div>
+      <div className="seedom-help">
 
         <Collapse
           title="accessing seedom on desktop"
-          collapsed={!accessingDesktopOpen}
-          onToggle={() => this.handleToggle(accessingDesktop)}
-        />
-        {accessingDesktopOpen && (
+          collapsed={!open.includes('accessing-desktop')}
+        >
           <div>HELLO!</div>
-        )}
+        </Collapse>
 
         <Collapse
           title="accessing seedom on mobile"
-          collapsed={!accessingMobileOpen}
-          onToggle={() => this.handleToggle(accessingMobile)}
-        />
-        {accessingMobileOpen && (
+          collapsed={!open.includes('accessing-mobile')}
+        >
           <div>HELLO!</div>
-        )}
+        </Collapse>
 
         <Collapse
           title="obtaining ether"
-          collapsed={!obtainingEtherOpen}
-          onToggle={() => this.handleToggle(obtainingEther)}
-        />
-        {obtainingEtherOpen && (
+          collapsed={!open.includes('obtaining-ether')}
+        >
           <div>HELLO!</div>
-        )}
+        </Collapse>
 
         <Collapse
           title="participating in seedom"
-          collapsed={!participatingOpen}
-          onToggle={() => this.handleToggle(participating)}
-        />
-        {participatingOpen && (
+          collapsed={!open.includes('participating')}
+        >
           <div>HELLO!</div>
-        )}
+        </Collapse>
 
         <Collapse
           title="voting for future causes"
-          collapsed={!votingOpen}
-          onToggle={() => this.handleToggle(voting)}
-        />
-        {votingOpen && (
+          collapsed={!open.includes('voting')}
+        >
           <div>HELLO!</div>
-        )}
+        </Collapse>
 
       </div>
     );

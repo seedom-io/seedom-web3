@@ -46,13 +46,6 @@ class Feed extends Component {
     feed: []
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      collapsed: false
-    };
-  }
-
   openTransaction = (transactionHash) => {
     const { network } = this.props;
     const etherscanUrl = etherscan.getTransactionUrl(network, transactionHash);
@@ -61,17 +54,11 @@ class Feed extends Component {
     }
   }
 
-  handleToggle = (collapsed) => {
-    this.setState({ collapsed });
-  }
-
   render() {
     const { feed } = this.props;
-    const { collapsed } = this.state;
     return (
-      <div className="seedom-feed">
-        <Collapse title="live activity feed" collapsed={collapsed} onToggle={this.handleToggle} />
-        {!collapsed && (
+      <Collapse title="live activity feed" collapsed={false}>
+        <div className="seedom-feed">
           <div className="list">
             {feed.map((item) => (
               <div
@@ -110,8 +97,8 @@ class Feed extends Component {
               </div>
             ))}
           </div>
-        )}
-      </div>
+        </div>
+      </Collapse>
     );
   }
 }

@@ -3,36 +3,26 @@ import { connect } from 'react-redux';
 import Sections from '../sections';
 import Collapse from '../collapse';
 
-const ourMission = 'our-mission';
-const aboutTheTeam = 'about-the-team';
-
 class About extends Sections {
   render() {
     const { open } = this.state;
-
-    const ourMissionOpen = open.includes(ourMission);
-    const aboutTheTeamOpen = open.includes(aboutTheTeam);
 
     return (
       <div>
 
         <Collapse
           title="our mission"
-          collapsed={!ourMissionOpen}
-          onToggle={() => this.handleToggle(ourMission)}
-        />
-        {ourMissionOpen && (
+          collapsed={!open.includes('our-mission')}
+        >
           <div>HELLO!</div>
-        )}
+        </Collapse>
 
         <Collapse
           title="about the team"
-          collapsed={!aboutTheTeamOpen}
-          onToggle={() => this.handleToggle(aboutTheTeam)}
-        />
-        {aboutTheTeamOpen && (
+          collapsed={!open.includes('about-the-team')}
+        >
           <div>HELLO!</div>
-        )}
+        </Collapse>
 
       </div>
     );

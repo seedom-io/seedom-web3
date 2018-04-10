@@ -35,58 +35,60 @@ class NavBar extends React.Component {
 
     return (
       <nav className="navbar">
-        <div className={classnames('navbar-brand', { 'is-loading': isLoading })}>
-          <a className="navbar-item" href="/">
-            <img src={seedomLogo} alt="Seedom - Seeding the future of philanthropy" />
-          </a>
-          <div className={classnames('navbar-burger', 'burger', { 'is-active': isBurgerActive })} onClick={this.handleNavToggle}>
-            <span />
-            <span />
-            <span />
+        <div className="container">
+          <div className={classnames('navbar-brand', { 'is-loading': isLoading })}>
+            <a className="navbar-item" href="/">
+              <img src={seedomLogo} alt="Seedom - Seeding the future of philanthropy" />
+            </a>
+            <div className={classnames('navbar-burger', 'burger', { 'is-active': isBurgerActive })} onClick={this.handleNavToggle}>
+              <span />
+              <span />
+              <span />
+            </div>
           </div>
-        </div>
-        <div className={classnames('navbar-menu', { 'is-active': isBurgerActive })}>
-          <div className="navbar-start">
-            <NavLink className="navbar-item" activeClassName="is-active" to={ETH_PATH} onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
-            <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}vote`} onClick={this.handleNavLink} exact>VOTE</NavLink>
-            <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}history`} onClick={this.handleNavLink} exact>HISTORY</NavLink>
-            <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}help`} onClick={this.handleNavLink} exact>HELP</NavLink>
-            <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}about`} onClick={this.handleNavLink} exact>ABOUT</NavLink>
-          </div>
-          <div className="navbar-end">
-            <a className="navbar-item" href="https://medium.com/@seedom.io">
-              <span className="icon">
-                <i className="fab fa-lg fa-medium" />
-              </span>
-            </a>
-            <a className="navbar-item" href="http://reddit.com/r/FUNDRAISER_io">
-              <span className="icon">
-                <i className="fab fa-lg fa-reddit" />
-              </span>
-            </a>
-            <a className="navbar-item" href="https://www.facebook.com/seedom.io">
-              <span className="icon">
-                <i className="fab fa-lg fa-facebook" />
-              </span>
-            </a>
+          <div className={classnames('navbar-menu', { 'is-active': isBurgerActive })}>
+            <div className="navbar-start">
+              <NavLink className="navbar-item" activeClassName="is-active" to={ETH_PATH} onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}vote`} onClick={this.handleNavLink} exact>VOTE</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}history`} onClick={this.handleNavLink} exact>HISTORY</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}help`} onClick={this.handleNavLink} exact>HELP</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}about`} onClick={this.handleNavLink} exact>ABOUT</NavLink>
+            </div>
+            <div className="navbar-end">
+              <a className="navbar-item" href="https://medium.com/@seedom.io">
+                <span className="icon">
+                  <i className="fab fa-lg fa-medium" />
+                </span>
+              </a>
+              <a className="navbar-item" href="http://reddit.com/r/FUNDRAISER_io">
+                <span className="icon">
+                  <i className="fab fa-lg fa-reddit" />
+                </span>
+              </a>
+              <a className="navbar-item" href="https://www.facebook.com/seedom.io">
+                <span className="icon">
+                  <i className="fab fa-lg fa-facebook" />
+                </span>
+              </a>
 
-            <a className="navbar-item" href="https://twitter.com/FUNDRAISER_io">
-              <span className="icon">
-                <i className="fab fa-lg fa-twitter" />
-              </span>
-            </a>
+              <a className="navbar-item" href="https://twitter.com/FUNDRAISER_io">
+                <span className="icon">
+                  <i className="fab fa-lg fa-twitter" />
+                </span>
+              </a>
 
-            <a className="navbar-item" href="https://www.instagram.com/seedom.io/">
-              <span className="icon">
-                <i className="fab fa-lg fa-instagram" />
-              </span>
-            </a>
+              <a className="navbar-item" href="https://www.instagram.com/seedom.io/">
+                <span className="icon">
+                  <i className="fab fa-lg fa-instagram" />
+                </span>
+              </a>
 
-            <a className="navbar-item" href="https://t.me/seedomio">
-              <span className="icon">
-                <i className="fab fa-lg fa-telegram" />
-              </span>
-            </a>
+              <a className="navbar-item" href="https://t.me/seedomio">
+                <span className="icon">
+                  <i className="fab fa-lg fa-telegram" />
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </nav>
