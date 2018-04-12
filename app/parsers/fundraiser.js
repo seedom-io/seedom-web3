@@ -33,8 +33,8 @@ const parseState = state => {
     ownerMessage: String(bytes.stringBytes(state._ownerMessage)),
     ownerWithdrawn: Boolean(state._participantWithdrawn),
     cancelled: Boolean(state._cancelled),
-    totalParticipants: new BigNumber(state._totalParticipants),
-    totalEntries: new BigNumber(state._totalEntries)
+    participants: new BigNumber(state._participants),
+    entries: new BigNumber(state._entries)
   };
 };
 

@@ -6,7 +6,7 @@ const parseCaster = caster => {
   return {
     maxScore: new BigNumber(caster._maxScore),
     maxVotes: new BigNumber(caster._maxVotes),
-    totalVotes: new BigNumber(caster._totalVotes)
+    votes: new BigNumber(caster._votes)
   };
 };
 
@@ -17,12 +17,12 @@ const parseCauses = causes => {
       index: causeIndex,
       name: String(bytes.stringBytes(causes._names[causeIndex])),
       caster: String(causes._casters[causeIndex]),
-      totalScores: new BigNumber(causes._totalScores[causeIndex]),
-      totalVotes: new BigNumber(causes._totalVotes[causeIndex]),
+      scores: new BigNumber(causes._scores[causeIndex]),
+      votes: new BigNumber(causes._votes[causeIndex]),
     };
     // calculate average score
-    parsedCause.averageScore = parsedCause.totalVotes.isGreaterThan(0)
-      ? parsedCause.totalScores.div(parsedCause.totalVotes)
+    parsedCause.averageScore = parsedCause.votes.isGreaterThan(0)
+      ? parsedCause.scores.div(parsedCause.votes)
       : zero();
     parsedCauses[causeIndex] = parsedCause;
   }
@@ -42,10 +42,10 @@ const parseCastIndex = castIndex => {
   return {
     caster: String(castIndex._caster),
     score: new BigNumber(castIndex._score),
-    totalVotes: new BigNumber(castIndex._totalVotes),
+    votes: new BigNumber(castIndex._votes),
     causeIndex: new BigNumber(castIndex._causeIndex),
-    causeTotalScores: new BigNumber(castIndex._causeTotalScores),
-    causeTotalVotes: new BigNumber(castIndex._causeTotalVotes)
+    causescores: new BigNumber(castIndex._causescores),
+    causevotes: new BigNumber(castIndex._causevotes)
   };
 };
 

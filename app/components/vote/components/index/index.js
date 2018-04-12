@@ -90,7 +90,7 @@ class Index extends Component {
       !ended && (
         vote
         || (cause.caster === account)
-        || !caster.totalVotes.isEqualTo(caster.maxVotes)
+        || !caster.votes.isEqualTo(caster.maxVotes)
       );
 
     const voted = vote && vote.isGreaterThan(0);
@@ -117,7 +117,7 @@ class Index extends Component {
           </div>
 
           <div className="bit">
-            {cause.totalVotes.toString()}
+            {cause.votes.toString()}
           </div>
 
         </div>

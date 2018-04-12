@@ -49,8 +49,8 @@ const handleParticipation = (prevState, action) => {
   if (action.old) {
     newState.feed = updateFeed(newState.feed, action);
   } else {
-    newState.state.totalParticipants = newState.state.totalParticipants.plus(1);
-    newState.state.totalEntries = newState.state.totalEntries.plus(action.participation.entries);
+    newState.state.participants = newState.state.participants.plus(1);
+    newState.state.entries = newState.state.entries.plus(action.participation.entries);
     newState.feed = updateFeed(newState.feed, action);
 
     if (action.participation.participant === newState.account) {
@@ -68,7 +68,7 @@ const handleRaise = (prevState, action) => {
   if (action.old) {
     newState.feed = updateFeed(newState.feed, action);
   } else {
-    newState.state.totalEntries = newState.state.totalEntries.plus(action.raise.entries);
+    newState.state.entries = newState.state.entries.plus(action.raise.entries);
     newState.feed = updateFeed(newState.feed, action);
 
     if (action.raise.participant === newState.account) {
@@ -105,7 +105,7 @@ const handleSelection = (prevState, action) => {
   if (action.selection.participant === newState.account) {
     const { deployment, state, primaryContractAddresses } = newState;
     newState.balances[primaryContractAddresses.fundraiser] =
-      state.totalEntries.times(deployment.participantSplit).dividedBy(1000).times(deployment.valuePerEntry);
+      state.entries.times(deployment.participantSplit).dividedBy(1000).times(deployment.valuePerEntry);
   }
 
   return newState;

@@ -7,7 +7,7 @@ const getStatus = ({ caster, ended }) => {
     return 'ended';
   } else if (caster.maxVotes.isEqualTo(0)) {
     return 'participate';
-  } else if (caster.totalVotes.isEqualTo(0)) {
+  } else if (caster.votes.isEqualTo(0)) {
     return 'decide';
   }
   return 'thanks';
@@ -59,7 +59,7 @@ class Caster extends Component {
           </div>
 
           <div className="bit">
-            {caster.totalVotes.toString()} / {caster.maxVotes.toString()}
+            {caster.votes.toString()} / {caster.maxVotes.toString()}
           </div>
 
         </div>

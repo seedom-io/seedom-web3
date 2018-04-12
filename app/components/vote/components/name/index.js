@@ -58,7 +58,7 @@ class Name extends Component {
     const { caster, ended, isLoading } = this.props;
     const { name, isNameValid } = this.state;
 
-    if (ended || caster.totalVotes.isEqualTo(caster.maxVotes)) {
+    if (ended || caster.votes.isEqualTo(caster.maxVotes)) {
       return null;
     }
 

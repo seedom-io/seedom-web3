@@ -56,16 +56,16 @@ class Stats extends Component {
 
     let causeReward;
     let participantReward;
-    let totalParticipants;
-    let totalEntries;
+    let participants;
+    let entries;
     if (deployment && state) {
-      const received = state.totalEntries.times(deployment.valuePerEntry);
+      const received = state.entries.times(deployment.valuePerEntry);
       causeReward
         = localeDecimal(getEtherFromWei(received.times(deployment.causeSplit).dividedBy(1000)));
       participantReward
         = localeDecimal(getEtherFromWei(received.times(deployment.participantSplit).dividedBy(1000)));
-      totalParticipants = localeNumber(state.totalParticipants);
-      totalEntries = localeNumber(state.totalEntries);
+      participants = localeNumber(state.participants);
+      entries = localeNumber(state.entries);
     }
 
     return (
@@ -73,15 +73,15 @@ class Stats extends Component {
         {((side === 'top') || (side === 'left')) &&
           <div className="panel">
             <div className="background" />
-            <Stat title="cause will get" value={causeReward} ether />
-            <Stat title="one participant will get" value={participantReward} ether />
+            <Stat title="cause reward" value={causeReward} ether />
+            <Stat title="participant reward" value={participantReward} ether />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&
           <div className="panel">
             <div className="background" />
-            <Stat title="total participants" value={totalParticipants} />
-            <Stat title="total entries" value={totalEntries} />
+            <Stat title="participants" value={participants} />
+            <Stat title="entries" value={entries} />
           </div>
         }
       </div>

@@ -30,25 +30,25 @@ const handleCastIndex = (prevState, action) => {
   const {
     caster,
     score,
-    totalVotes,
+    votes,
     causeIndex,
-    causeTotalScores,
-    causeTotalVotes
+    causescores,
+    causevotes
   } = action.castIndex;
   const newState = getNewState(prevState);
   // update is loading
   newState.isLoading = false;
   // update cause data
   const cause = newState.causes[causeIndex];
-  cause.totalScores = causeTotalScores;
-  cause.totalVotes = causeTotalVotes;
+  cause.scores = causescores;
+  cause.votes = causevotes;
   // update average score
-  cause.averageScore = causeTotalVotes.isGreaterThan(0)
-    ? causeTotalScores.div(causeTotalVotes)
+  cause.averageScore = causevotes.isGreaterThan(0)
+    ? causescores.div(causevotes)
     : zero();
   // add our votes to our votes
   if (caster === newState.account) {
-    newState.caster.totalVotes = totalVotes;
+    newState.caster.votes = votes;
     // delete existing vote if we did not cast the cause (name)
     if ((score === 0) && (cause.caster !== newState.account)) {
       delete newState.votes[causeIndex];
@@ -73,15 +73,15 @@ const handleCastName = (prevState, action) => {
     index: causeIndex,
     name: causeName,
     caster,
-    totalScores: score,
-    totalVotes: 1,
+    scores: score,
+    votes: 1,
     averageScore: score
   };
 
   // add our votes to our votes
   if (caster === newState.account) {
     newState.votes[causeIndex] = score;
-    newState.caster.totalVotes = newState.caster.totalVotes.plus(1);
+    newState.caster.votes = newState.caster.votes.plus(1);
   }
 
   return newState;
