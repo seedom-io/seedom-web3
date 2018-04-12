@@ -38,11 +38,11 @@ class Collapse extends Component {
       >
         <div className="header">
           <span className="toggle left">
-            { collapsed ? '+' : '-' }
+            <i className="fas fa-plus" />
           </span>
-          {title}
+          <span className="text">{title}</span>
           <span className="toggle right">
-            { collapsed ? '+' : '-' }
+            <i className="fas fa-plus" />
           </span>
         </div>
         { !collapsed && (

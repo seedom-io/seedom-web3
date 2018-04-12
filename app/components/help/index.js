@@ -7,22 +7,25 @@ import './index.scss';
 class Help extends Sections {
   render() {
     const { open } = this.state;
-
     return (
       <div className="seedom-help">
-
-        <Collapse
-          title="accessing seedom on desktop"
-          collapsed={!open.includes('accessing-desktop')}
-        >
-          <div>HELLO!</div>
-        </Collapse>
 
         <Collapse
           title="accessing seedom on mobile"
           collapsed={!open.includes('accessing-mobile')}
         >
-          <div>HELLO!</div>
+          <div className="section">
+            Hello crazy mobile section!
+          </div>
+        </Collapse>
+
+        <Collapse
+          title="accessing seedom on desktop"
+          collapsed={!open.includes('accessing-desktop')}
+        >
+          <div className="section">
+
+          </div>
         </Collapse>
 
         <Collapse
