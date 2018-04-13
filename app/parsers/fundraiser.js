@@ -17,8 +17,7 @@ const parseDeployment = deployment => {
     deployTime: epochToDate(deployment._deployTime),
     endTime: epochToDate(deployment._endTime),
     expireTime: epochToDate(deployment._expireTime),
-    destructTime: epochToDate(deployment._destructTime),
-    maxParticipants: new BigNumber(deployment._maxParticipants)
+    destructTime: epochToDate(deployment._destructTime)
   };
 };
 

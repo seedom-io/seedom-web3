@@ -44,8 +44,8 @@ const parseCastIndex = castIndex => {
     score: new BigNumber(castIndex._score),
     votes: new BigNumber(castIndex._votes),
     causeIndex: new BigNumber(castIndex._causeIndex),
-    causescores: new BigNumber(castIndex._causescores),
-    causevotes: new BigNumber(castIndex._causevotes)
+    causeScores: new BigNumber(castIndex._causeScores),
+    causeVotes: new BigNumber(castIndex._causeVotes)
   };
 };
 

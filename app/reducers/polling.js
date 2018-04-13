@@ -32,19 +32,19 @@ const handleCastIndex = (prevState, action) => {
     score,
     votes,
     causeIndex,
-    causescores,
-    causevotes
+    causeScores,
+    causeVotes
   } = action.castIndex;
   const newState = getNewState(prevState);
   // update is loading
   newState.isLoading = false;
   // update cause data
   const cause = newState.causes[causeIndex];
-  cause.scores = causescores;
-  cause.votes = causevotes;
+  cause.scores = causeScores;
+  cause.votes = causeVotes;
   // update average score
-  cause.averageScore = causevotes.isGreaterThan(0)
-    ? causescores.div(causevotes)
+  cause.averageScore = causeVotes.isGreaterThan(0)
+    ? causeScores.div(causeVotes)
     : zero();
   // add our votes to our votes
   if (caster === newState.account) {
