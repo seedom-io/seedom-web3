@@ -60,9 +60,14 @@ class NavBar extends React.Component {
                   <i className="fab fa-lg fa-medium" />
                 </span>
               </a>
-              <a className="navbar-item" href="http://reddit.com/r/seedom_io">
+              <a className="navbar-item" href="https://reddit.com/r/seedom_io">
                 <span className="icon">
                   <i className="fab fa-lg fa-reddit" />
+                </span>
+              </a>
+              <a className="navbar-item" href="https://github.com/seedom-io">
+                <span className="icon">
+                  <i className="fab fa-lg fa-github" />
                 </span>
               </a>
               <a className="navbar-item" href="https://www.facebook.com/seedom.io">
@@ -80,12 +85,6 @@ class NavBar extends React.Component {
               <a className="navbar-item" href="https://www.instagram.com/seedom.io/">
                 <span className="icon">
                   <i className="fab fa-lg fa-instagram" />
-                </span>
-              </a>
-
-              <a className="navbar-item" href="https://t.me/seedomio">
-                <span className="icon">
-                  <i className="fab fa-lg fa-telegram" />
                 </span>
               </a>
             </div>
