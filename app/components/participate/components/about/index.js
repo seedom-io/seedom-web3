@@ -4,7 +4,7 @@ import Collapse from '../../../collapse';
 class About extends Component {
   render() {
     return (
-      <Collapse title="about slave free trade">
+      <Collapse title="about cause">
         <span>ABOUT</span>
       </Collapse>
     );

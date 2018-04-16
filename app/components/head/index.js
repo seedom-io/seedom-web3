@@ -11,7 +11,7 @@ const url = 'https://www.seedom.io';
 class Head extends Component {
   componentDidMount() {
     ((window.gitter = {}).chat = {}).options = {
-      room: 'FUNDRAISER_io/Lobby'
+      room: 'seedom_io/Lobby'
     };
   }
 
