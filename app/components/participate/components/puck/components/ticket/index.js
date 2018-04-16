@@ -8,16 +8,6 @@ import seedomTicket from '../../../../../../../../seedom-assets/ticket/seedom-ti
 import * as saveSvgAsPng from 'save-svg-as-png';
 import * as dates from '../../../../../../utils/dates';
 import * as bytes from '../../../../../../utils/bytes';
-import * as AWS from 'aws-sdk';
-
-const spacesEndpoint = new AWS.Endpoint('nyc3.digitaloceanspaces.com');
-const s3 = new AWS.S3({
-  endpoint: spacesEndpoint,
-  credentials: new AWS.Credentials({
-    accessKeyId: 'NHCRAFCNCHQR4VYNWH2M',
-    secretAccessKey: 'VozzA8vTkHuDVuudOpzMqxgnIKjcNJJSR9guL1CUbTM'
-  })
-});
 
 const MAX_X = 600;
 const MAX_Y = 300;
@@ -40,60 +30,7 @@ class Ticket extends Content {
   saveTicket = (address) => {
     // set ticket to seen
     saveSvgAsPng.svgAsPngUri(this.svg, { encoderOptions: 1.0, scale: 1.0 }, (uri) => {
-      const buf = new Buffer(uri.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-      // Add a file to a Space
-      const params = {
-        Body: buf,
-        Bucket: 'seedom-badges',
-        Key: 'test.png',
-        ACL: 'public-read',
-        ContentEncoding: 'base64',
-        ContentType: 'image/png'
-      };
-
-      s3.putObject(params, (err, data) => {
-        if (err) {
-          console.log(err, err.stack);
-        } else {
-          console.log(data);
-        }
-      });
-
-      /*let params = {
-        Bucket: 'seedom-badges',
-        CORSConfiguration: {
-          CORSRules: [
-            {
-              AllowedHeaders: [
-                '*'
-              ],
-              AllowedMethods: [
-                'GET',
-                'PUT',
-                'POST',
-                'DELETE',
-                'OPTIONS',
-                'HEAD'
-              ],
-              AllowedOrigins: [
-                '*'
-              ],
-              ExposeHeaders: [],
-              MaxAgeSeconds: 0
-            }
-          ]
-        }
-      };
-
-      s3.putBucketCors(params, (err, data) => {
-        if (err) {
-          console.log(err, err.stack);
-        } else {
-          console.log(data);
-        }
-      });*/
-
-      //saveSvgAsPng.download(`seedom-ticket-${address}.png`, uri);
+      saveSvgAsPng.download(`seedom-ticket-${address}.png`, uri);
       this.props.onTicketingOver();
     });
   }
