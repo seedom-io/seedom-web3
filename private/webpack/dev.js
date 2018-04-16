@@ -8,7 +8,8 @@ const cwd = process.cwd();
 module.exports = merge(base, {
   devtool: 'source-map',
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    disableHostCheck: true
   },
   plugins: [
     new webpack.DefinePlugin({
