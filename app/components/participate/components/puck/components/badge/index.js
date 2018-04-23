@@ -6,7 +6,7 @@ import * as badges from '../../../../../../utils/badges';
 import './index.scss';
 
 const getSeedomShareUrl = (params) => {
-  return `${SEEDOM_URL}${SEEDOM_PATH}?c=${params.contract}&p=${params.participant}`;
+  return `${SEEDOM_URL}?c=${params.contract}&p=${params.participant}`;
 };
 
 const getFacebookShareUrl = (params) => {

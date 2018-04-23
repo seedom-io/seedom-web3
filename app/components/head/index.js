@@ -19,7 +19,7 @@ class Head extends Component {
   render() {
     const { router } = this.props;
 
-    let finalUrl = `${SEEDOM_URL}${SEEDOM_PATH}`;
+    let finalUrl = SEEDOM_URL;
     let finalImage = seedomShare;
     // check for badge
     if (router.location.search !== '') {

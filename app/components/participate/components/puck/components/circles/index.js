@@ -21,7 +21,7 @@ const getProgressPercentage = (deployment, now) => {
   return progressTime > deploymentTime ? 100 : 100 * (progressTime / deploymentTime);
 };
 
-const getProgressText = (deployment, now) => {
+const getProgressText = (starter, deployment, now) => {
   const { endTime } = deployment;
   let timeUntilEnd = endTime - now;
 
@@ -42,7 +42,7 @@ const getProgressText = (deployment, now) => {
   // what's left is seconds
   const seconds = Math.floor(timeUntilEnd % 60);
 
-  return `ENDS IN - ${days}D ${hours}H ${minutes}M ${seconds}S`;
+  return `${starter.toUpperCase()} IN - ${days}D ${hours}H ${minutes}M ${seconds}S`;
 };
 
 const getProgressRadius = () => {
@@ -90,11 +90,13 @@ const getProgressTextShown = (percentage) => {
 
 class Circles extends React.Component {
   static propTypes = {
+    starter: PropTypes.string,
     deployment: PropTypes.shape(),
     isLoading: PropTypes.bool
   };
 
   static defaultProps = {
+    starter: 'ends',
     deployment: null,
     isLoading: false
   };
@@ -115,14 +117,14 @@ class Circles extends React.Component {
   }
 
   render() {
-    const { deployment, isLoading } = this.props;
+    const { starter, deployment, isLoading } = this.props;
     const { now } = this.state;
 
     let progressPercentage;
     let progressText;
     if (deployment) {
       progressPercentage = getProgressPercentage(deployment, now);
-      progressText = getProgressText(deployment, now);
+      progressText = getProgressText(starter, deployment, now);
     }
 
     const progressRadius = getProgressRadius();

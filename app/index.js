@@ -20,6 +20,7 @@ import './sass/bulma.scss';
 
 import Head from './components/head';
 import NavBar from './components/navbar';
+import Hype from './components/hype';
 import Participate from './components/participate';
 import Vote from './components/vote';
 import History from './components/history';
@@ -51,13 +52,15 @@ const ConnectedSwitch = connect(state => ({
   location: state.location
 }))(Switch);
 
+// <Route exact path="/"" component={Participate} />
 const AppContainer = () => (
   <ConnectedSwitch>
-    <Route exact path={SEEDOM_PATH} component={Participate} />
-    <Route path={`${SEEDOM_PATH}vote`} component={Vote} />
-    <Route path={`${SEEDOM_PATH}history`} component={History} />
-    <Route path={`${SEEDOM_PATH}help`} component={Help} />
-    <Route path={`${SEEDOM_PATH}about`} component={About} />
+    <Route exact path="/" component={Hype} />
+    <Route path="/participate" component={Participate} />
+    <Route path="/vote" component={Vote} />
+    <Route path="/history" component={History} />
+    <Route path="/help" component={Help} />
+    <Route path="/about" component={About} />
   </ConnectedSwitch>
 );
 

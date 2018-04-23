@@ -38,7 +38,7 @@ class Participation extends Content {
           </div>
           <div className="field">
             <div className="control">
-              <Link className="button is-white is-outlined" to={`${SEEDOM_PATH}vote`}>vote on next cause</Link>
+              <Link className="button is-white is-outlined" to="/vote">vote on next cause</Link>
             </div>
           </div>
           <div className="field">

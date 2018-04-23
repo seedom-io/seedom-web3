@@ -30,7 +30,7 @@ class Network extends Content {
           <div className="division bottom large-pad">
             <div className="field">
               <div className="control">
-                <Link className="button is-white is-outlined" to={`${SEEDOM_PATH}help`}>how to access seedom</Link>
+                <Link className="button is-white is-outlined" to="/help">how to access seedom</Link>
               </div>
             </div>
           </div>

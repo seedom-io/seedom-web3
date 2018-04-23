@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 
 class NavBar extends React.Component {
   static propTypes = {
-    ethereum: PropTypes.shape().isRequired
+    ethereum: PropTypes.shape().isRequired,
+    router: PropTypes.shape().isRequired
   };
 
   constructor(props) {
@@ -32,6 +33,7 @@ class NavBar extends React.Component {
   render() {
     const { isBurgerActive } = this.state;
     const { isLoading } = this.props.ethereum;
+    const { pathname } = this.props.router.location;
 
     return (
       <nav className="navbar">
@@ -47,13 +49,15 @@ class NavBar extends React.Component {
             </div>
           </div>
           <div className={classnames('navbar-menu', { 'is-active': isBurgerActive })}>
-            <div className="navbar-start">
-              <NavLink className="navbar-item" activeClassName="is-active" to={SEEDOM_PATH} onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
-              <NavLink className="navbar-item" activeClassName="is-active" to={`${SEEDOM_PATH}vote`} onClick={this.handleNavLink} exact>VOTE</NavLink>
-              <NavLink className="navbar-item" activeClassName="is-active" to={`${SEEDOM_PATH}history`} onClick={this.handleNavLink} exact>HISTORY</NavLink>
-              <NavLink className="navbar-item" activeClassName="is-active" to={`${SEEDOM_PATH}help`} onClick={this.handleNavLink} exact>HELP</NavLink>
-              <NavLink className="navbar-item" activeClassName="is-active" to={`${SEEDOM_PATH}about`} onClick={this.handleNavLink} exact>ABOUT</NavLink>
-            </div>
+            {pathname !== '/' && (
+              <div className="navbar-start">
+                <NavLink className="navbar-item" activeClassName="is-active" to="/" onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to="/vote" onClick={this.handleNavLink} exact>VOTE</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to="/history" onClick={this.handleNavLink} exact>HISTORY</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to="/help" onClick={this.handleNavLink} exact>HELP</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to="/about" onClick={this.handleNavLink} exact>ABOUT</NavLink>
+              </div>
+            )}
             <div className="navbar-end">
               <a className="navbar-item" href="https://medium.com/@seedom.io">
                 <span className="icon">

@@ -50,7 +50,7 @@ class Participate extends Content {
     return (
       <div className={`seedom-content participate ${className}`}>
         <Indicator type={isLoading ? 'waiting' : null} />
-        <div className="seedom-overlay layout">
+        <div className="seedom-overlay">
 
           <div className="cause-logo small" />
 

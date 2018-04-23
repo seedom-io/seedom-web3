@@ -15,7 +15,6 @@ module.exports = merge(base, {
     new webpack.DefinePlugin({
       ETH_NETWORKS: JSON.stringify(loader.getNetworks()),
       ETH_DEPLOYMENTS: JSON.stringify(loader.getDeployments()),
-      SEEDOM_PATH: JSON.stringify('/internal/'),
       SEEDOM_URL: JSON.stringify('https://seedom.io'),
       BADGER_URL: JSON.stringify('https://seedom.io')
     })

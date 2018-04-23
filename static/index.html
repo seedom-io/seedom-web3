@@ -2,40 +2,49 @@
 <html>
 <head>
 	<meta name="generator" content="Hugo 0.36" />
-  
+
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-WKJND5D');</script>
-  
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Seedom</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw=" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./css/site.css">
-  <link rel="stylesheet" type="text/css" href="./css/bulma-pricing-table.css">
-  <link rel="stylesheet" type="text/css" href="./css/bulma-pricing-table-custom.css">
+  <link rel="stylesheet" type="text/css" href="./css/demo.css">
   <link rel="icon" type="image/png" href="./images/seedom-o-black@2x.png">
 
-  <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="./js/jquery.final-countdown.min.js"></script>
+  <script src="./js/site.js"></script>
 
-  <meta property="og:url"                content="http://www.seedom.io" />
-  <meta property="og:type"               content="website" />
-  <meta property="og:title"              content="Seedom" />
-  <meta property="og:description"        content="Seeding the future of philanthropy" />
-  <meta property="og:image"              content="http://seedom.io/images/seedom-facebook.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@seedom_io" />
+  <meta name="twitter:title" content="Seedom | Seeding the future of philanthropy" />
+  <meta name="twitter:description" content="Raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support. Seed the future of philanthropy!" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/seedom-io/seedom-assets/master/share/seedom-share.png" />
+  <meta name="twitter:url" content="https://seedom.io" />
+
+  <meta name="og:type" content="website" />
+  <meta name="og:site_name" content="Seedom" />
+  <meta name="og:title" content="Seedom | Seeding the future of philanthropy" />
+  <meta name="og:description" content="Raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support. Seed the future of philanthropy!" />
+  <meta name="og:image" content="https://raw.githubusercontent.com/seedom-io/seedom-assets/master/share/seedom-share.png" />
+  <meta name="og:url" content="https://seedom.io" />
 </head>
 <body>
-  
+
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKJND5D"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  
+
 
   <section class="hero is-info is-fullheight">
     <div class="hero-head">
@@ -113,13 +122,13 @@
                   <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
                   </span>
-                  
+
                   <div style="position: absolute; left: -5000px;" aria-hidden="true">
                     <input type="text" name="b_d218737a0dfcda96f8cf3adf1_92467afeb2" tabindex="-1" value="">
                   </div>
                 </p>
                 <p class="control">
-                  <input type="submit" value="Get updates" name="subscribe" id="mc-embedded-subscribe" class="button is-success">
+                  <input type="submit" value="Get a reminder!" name="subscribe" id="mc-embedded-subscribe" class="button is-success">
                 </p>
               </div>
             </form>
@@ -130,254 +139,70 @@
           <div class="card">
             <div class="card-content">
               <p class="title">
-                Seedom is an Ethereum decentralized application for raising awareness and ether for charities in need while rewarding a single participant for their contribution and support.
-              </p>
-              <p class="subtitle">
-                Come change the world with us!<br />
+                Raising awareness and Ether for altruistic causes twice a month while rewarding a single participant for their contribution and support.
               </p>
             </div>
           </div>
         </div>
+
+        <div class="countdown countdown-container container">
+          <div class="clock row">
+              <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
+                  <div class="wrap">
+                      <div class="inner">
+                          <div id="canvas-days" class="clock-canvas"></div>
+
+                          <div class="text">
+                              <p class="val">0</p>
+                              <p class="type-days type-time">DAYS</p>
+                          </div><!-- /.text -->
+                      </div><!-- /.inner -->
+                  </div><!-- /.wrap -->
+              </div><!-- /.clock-item -->
+
+              <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
+                  <div class="wrap">
+                      <div class="inner">
+                          <div id="canvas-hours" class="clock-canvas"></div>
+
+                          <div class="text">
+                              <p class="val">0</p>
+                              <p class="type-hours type-time">HOURS</p>
+                          </div><!-- /.text -->
+                      </div><!-- /.inner -->
+                  </div><!-- /.wrap -->
+              </div><!-- /.clock-item -->
+
+              <div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
+                  <div class="wrap">
+                      <div class="inner">
+                          <div id="canvas-minutes" class="clock-canvas"></div>
+
+                          <div class="text">
+                              <p class="val">0</p>
+                              <p class="type-minutes type-time">MINUTES</p>
+                          </div><!-- /.text -->
+                      </div><!-- /.inner -->
+                  </div><!-- /.wrap -->
+              </div><!-- /.clock-item -->
+
+              <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
+                  <div class="wrap">
+                      <div class="inner">
+                          <div id="canvas-seconds" class="clock-canvas"></div>
+
+                          <div class="text">
+                              <p class="val">0</p>
+                              <p class="type-seconds type-time">SECONDS</p>
+                          </div><!-- /.text -->
+                      </div><!-- /.inner -->
+                  </div><!-- /.wrap -->
+              </div><!-- /.clock-item -->
+          </div><!-- /.clock -->
+      </div><!-- /.countdown-wrapper -->
+
       </div>
     </div>
   </section>
-
-  <section class='team'>
-  <div class="container has-text-centered">
-    <h1 class='title'>Meet the team</h1>
-
-    <div class="columns">
-      <div class="column">
-        <div class="level-item has-text-centered">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-128x128">
-        <img src="./images/alex.jpg" alt="Image">
-      </figure>
-    </div>
-
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>Alex Groleau</strong>
-          <br> Founder, CTO
-        </p>
-      </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a href="https://www.linkedin.com/in/awgneo/" class="level-item">
-            <span class="icon is-small"><i class="fab fa-linkedin"></i></span>
-          </a>
-          
-            <a href="https://github.com/awgneo" class="level-item">
-              <span class="icon is-small"><i class="fab fa-github"></i></span>
-            </a>
-          
-
-          
-        </div>
-      </nav>
-    </div>
-  </article>
-</div>
-      </div>
-      <div class="column">
-        <div class="level-item has-text-centered">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-128x128">
-        <img src="./images/jesse.jpg" alt="Image">
-      </figure>
-    </div>
-
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>Jesse Kuiper</strong>
-          <br> Founder, President
-        </p>
-      </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a href="https://www.linkedin.com/in/jesse-kuiper-771a2111/" class="level-item">
-            <span class="icon is-small"><i class="fab fa-linkedin"></i></span>
-          </a>
-          
-
-          
-        </div>
-      </nav>
-    </div>
-  </article>
-</div>
-      </div>
-      <div class="column">
-        <div class="level-item has-text-centered">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-128x128">
-        <img src="./images/kyle.jpg" alt="Image">
-      </figure>
-    </div>
-
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>Kyle Graden</strong>
-          <br> Charity Relations
-        </p>
-      </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a href="https://www.linkedin.com/in/kylegraden/" class="level-item">
-            <span class="icon is-small"><i class="fab fa-linkedin"></i></span>
-          </a>
-          
-
-          
-            <a href="https://twitter.com/KyleGraden" class="level-item">
-              <span class="icon is-small"><i class="fab fa-twitter"></i></span>
-            </a>
-          
-        </div>
-      </nav>
-    </div>
-  </article>
-</div>
-      </div>
-      <div class="column">
-        <div class="level-item has-text-centered">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-128x128">
-        <img src="./images/eric.jpg" alt="Image">
-      </figure>
-    </div>
-
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>Eric Thomas</strong>
-          <br> Software Developer
-        </p>
-      </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a href="https://www.linkedin.com/in/eric-l-m-thomas/" class="level-item">
-            <span class="icon is-small"><i class="fab fa-linkedin"></i></span>
-          </a>
-          
-            <a href="https://github.com/et" class="level-item">
-              <span class="icon is-small"><i class="fab fa-github"></i></span>
-            </a>
-          
-
-          
-        </div>
-      </nav>
-    </div>
-  </article>
-</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <section class='advantages'>
-    <div class="container has-text-centered">
-      <h1 class='title'>The most powerful platform that benefits the world’s leading charities and their supporters.</h1>
-      <div class="columns">
-
-        <div class="column feature">
-          <span class="icon is-large has-text-success">
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-square fa-stack-2x"></i>
-              <i class="fa fa-globe fa-stack-1x fa-inverse"></i>
-            </span>
-          </span>
-          <h2 class='subtitle'>Purposeful</h2>
-          <p>Seedom chooses charities that are</p>
-          <p>legitimate, active, and relevant</p>
-          <p>
-            <span class="icon has-text-danger">
-              <i class="fas fa-heart"></i>
-            </span>
-          </p>
-        </div>
-
-        <div class="column feature">
-          <span class="icon is-large has-text-success">
-            <span class="fa-stack fa-lg">
-              <i class="fas fa-square fa-stack-2x"></i>
-              <i class="fas fa-eye fa-stack-1x fa-inverse"></i>
-            </span>
-          </span>
-          <h2 class='subtitle has-text-weight-light'>Transparent</h2>
-          <p>100% open source</p>
-          <p>All transactions are public</p>
-          <p>The team behind Seedom is known</p>
-        </div>
-
-        <div class="column feature">
-          <span class="icon is-large has-text-success">
-            <span class="fa-stack fa-lg">
-              <i class="fas fa-square fa-stack-2x"></i>
-              <i class="fas fa-life-ring fa-stack-1x fa-inverse"></i>
-            </span>
-          </span>
-          <h2 class='subtitle has-text-weight-light'>Safe</h2>
-          <p>The charity has full control</p>
-          <p>Guaranteed winner</p>
-          <p>No backdoors and no loopholes</p>
-        </div>
-
-        <div class="column feature">
-          <span class="icon is-large has-text-success">
-            <span class="fa-stack fa-lg">
-              <i class="fas fa-square fa-stack-2x"></i>
-              <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-            </span>
-          </span>
-          <h2 class='subtitle'>Secure</h2>
-          <p>Backed by native Ethereum security</p>
-          <p>Protected against miner manipulation</p>
-        </div>
-      </div>
-
-      <div class="columns">
-        <div class="column is-offset-one-quarter"></div>
-        <div class="column">
-          <a class="button is-success is-outlined" href="https://seedom-io.github.io/seedom-whitepaper/seedom-whitepaper.pdf">
-            <span>Read Whitepaper</span>
-          </a>
-        </div>
-
-        <div class="column">
-          <a class="button is-success is-outlined" href="https://github.com/seedom/seedom-solidity/blob/master/contract/seedom.sol">
-            <span>View Smart Contract</span>
-          </a>
-        </div>
-        <div class="column is-offset-one-quarter"></div>
-      </div>
-    </div>
-  </section>
-  <section class="process">
-    <div class="container">
-      <div class="content has-text-centered">
-        <h1 class='title'>How it works</h1>
-        <img width="70%" height="70%" src="./images/process-vertical@4x.png" />
-      </div>
-    </div>
-  </section>
-  <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          <strong>Seedom</strong> by the <a class="is-green" href="mailto:team@seedom.io">Seedom Team</a>.
-        </p>
-      </div>
-    </div>
-  </footer>
-  <script src="./js/site.js"></script>
 </body>
 </html>
