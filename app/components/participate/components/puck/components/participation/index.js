@@ -43,7 +43,7 @@ class Participation extends Content {
           </div>
           <div className="field">
             <div className="control">
-              <a className="button is-white is-outlined" onClick={onTicketing}>view ticket</a>
+              <a className="button is-white is-outlined" onClick={onTicketing}>view badge</a>
             </div>
           </div>
         </div>

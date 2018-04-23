@@ -68,7 +68,8 @@ class Badge extends Content {
         <Indicator type={isShown ? 'success' : null} />
         <div className="seedom-overlay layout">
           <div className="division text top huge-pad narrow">
-            <span>thank you!<br />share your badge?</span>
+            <div className="thank-you">thank you!</div>
+            <div>here is your badge</div>
           </div>
           <div className="division center">
             <img className="seedom-badge" src={badgeImageUrl} />
@@ -93,7 +94,7 @@ class Badge extends Content {
             </div>
             <div className="field">
               <div className="control">
-                <a className="button is-white is-outlined" onClick={onTicketingOver}>skip saving</a>
+                <a className="button is-white is-outlined" onClick={onTicketingOver}>skip sharing</a>
               </div>
             </div>
           </div>
