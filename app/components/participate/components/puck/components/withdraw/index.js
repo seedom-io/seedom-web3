@@ -5,12 +5,26 @@ import Indicator from '../indicator';
 import { zero, localeDecimal, getEtherFromWei } from '../../../../../../utils/numbers';
 import './index.scss';
 
-class Withdraw extends Content {
-  static propTypes = {
-    isLoading: PropTypes.bool.isRequired
+const getMaxBalance = (balances) => {
+  let maxBalance = zero();
+  let maxContractAddress = null;
+  for (const contractAddress in balances) {
+    const balance = balances[contractAddress];
+    if (balance.isGreaterThan(maxBalance)) {
+      maxBalance = balance;
+      maxContractAddress = contractAddress;
+    }
   }
 
+  return {
+    contractAddress: maxContractAddress,
+    balance: maxBalance
+  };
+};
+
+class Withdraw extends Content {
   static propTypes = {
+    balances: PropTypes.shape(),
     isShown: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool,
     onWithdrawSkipped: PropTypes.func.isRequired,
@@ -18,27 +32,9 @@ class Withdraw extends Content {
   };
 
   static defaultProps = {
+    balances: null,
     isLoading: false
   };
-
-  getMaxBalance() {
-    const { balances } = this.props;
-
-    let maxBalance = zero();
-    let maxContractAddress = null;
-    for (const contractAddress in balances) {
-      const balance = balances[contractAddress];
-      if (balance.isGreaterThan(maxBalance)) {
-        maxBalance = balance;
-        maxContractAddress = contractAddress;
-      }
-    }
-
-    return {
-      contractAddress: maxContractAddress,
-      balance: maxBalance
-    };
-  }
 
   handleWithdraw = (contractAddress) => {
     const { onWithdraw } = this.props;
@@ -46,9 +42,14 @@ class Withdraw extends Content {
   }
 
   render() {
+    const { balances } = this.props;
+    if (!balances) {
+      return null;
+    }
+
     const { className } = this.state;
     const { isShown, onWithdrawSkipped, isLoading } = this.props;
-    const maxBalance = this.getMaxBalance();
+    const maxBalance = getMaxBalance(balances);
 
     return (
       <div className={`seedom-content withdraw ${className}`}>

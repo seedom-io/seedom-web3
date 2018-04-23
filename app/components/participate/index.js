@@ -54,7 +54,8 @@ class Participate extends Component {
       participant,
       balances,
       feed,
-      isLoading
+      isLoading,
+      primaryContractAddresses
     } = this.props.ethereum;
 
     return (
@@ -75,6 +76,7 @@ class Participate extends Component {
               participant={participant}
               balances={balances}
               isLoading={isLoading}
+              primaryContractAddresses={primaryContractAddresses}
               onParticipate={this.handleParticipate}
               onRaise={this.handleRaise}
               onWithdraw={this.handleWithdraw}

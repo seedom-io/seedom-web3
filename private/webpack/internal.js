@@ -2,8 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const base = require('./base');
-const h = require('./helper');
-
+const loader = require('../../../seedom-solidity/chronicle/loader');
 
 const cwd = process.cwd();
 
@@ -15,8 +14,9 @@ module.exports = merge(base, {
   plugins: [
     new webpack.DefinePlugin({
       ETH_PATH: JSON.stringify('/internal/'),
-      ETH_NETWORKS: JSON.stringify(h.getNetworks(cwd)),
-      ETH_DEPLOYMENTS: JSON.stringify(h.getDeployments(cwd))
+      ETH_NETWORKS: JSON.stringify(loader.getNetworks()),
+      ETH_DEPLOYMENTS: JSON.stringify(loader.getDeployments()),
+      BADGER_URL: JSON.stringify('https://manager3.seedom.io')
     })
   ]
 });

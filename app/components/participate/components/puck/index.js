@@ -18,7 +18,7 @@ import Ethereum from './components/ethereum';
 import Network from './components/network';
 import Account from './components/account';
 import ParticipationFailed from './components/participationFailed';
-import Ticket from './components/ticket';
+import Badge from './components/badge';
 import seedomLogo from '../../../../../../seedom-assets/logo/o/seedom-o-white-transparent.svg';
 import './index.scss';
 
@@ -78,7 +78,7 @@ const getComponent = ({
   }
 
   // balances?
-  if ((Object.keys(balances).length > 0) && isWithdrawing) {
+  if (balances && (Object.keys(balances).length > 0) && isWithdrawing) {
     return 'withdraw';
   }
 
@@ -158,6 +158,7 @@ class Puck extends Component {
     participant: PropTypes.shape(),
     balances: PropTypes.shape(),
     isLoading: PropTypes.bool,
+    primaryContractAddresses: PropTypes.shape(),
     onParticipate: PropTypes.func.isRequired,
     onRaise: PropTypes.func.isRequired,
     onWithdraw: PropTypes.func.isRequired,
@@ -170,8 +171,9 @@ class Puck extends Component {
     deployment: null,
     state: null,
     participant: null,
-    balances: {},
-    isLoading: false
+    balances: null,
+    isLoading: false,
+    primaryContractAddresses: null
   };
 
   constructor(props) {
@@ -259,7 +261,8 @@ class Puck extends Component {
       state,
       participant,
       balances,
-      isLoading
+      isLoading,
+      primaryContractAddresses
     } = this.props;
 
     const component = getComponent({
@@ -291,7 +294,7 @@ class Puck extends Component {
           <Begin isShown={component === 'begin'} />
           <BeginningFailed isShown={component === 'beginningFailed'} />
           <Participate isShown={component === 'participate'} deployment={deployment} isLoading={isLoading} onParticipate={this.handleParticipate} />
-          <Ticket isShown={component === 'ticket'} account={account} deployment={deployment} participant={participant} onTicketingOver={this.handleTicketingOver} />
+          <Badge isShown={component === 'ticket'} primaryContractAddresses={primaryContractAddresses} account={account} participant={participant} onTicketingOver={this.handleTicketingOver} />
           <Participation isShown={component === 'participation'} participant={participant} onRaising={this.handleRaising} onTicketing={this.handleTicketing} />
           <ParticipationFailed isShown={component === 'participationFailed'} />
           <Raise isShown={component === 'raise'} deployment={deployment} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
