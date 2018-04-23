@@ -10,12 +10,6 @@ const title = 'Seedom | Seeding the future of philanthropy';
 const description = 'Raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support. Seed the future of philanthropy!';
 
 class Head extends Component {
-  componentDidMount() {
-    ((window.gitter = {}).chat = {}).options = {
-      room: 'seedom_io/Lobby'
-    };
-  }
-
   render() {
     const { router } = this.props;
 
@@ -57,8 +51,6 @@ class Head extends Component {
         <meta name="og:description" content={description} />
         <meta name="og:image" content={finalImage} />
         <meta name="og:url" content={finalUrl} />
-        {/* sidecar */}
-        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer />
       </Helmet>
     );
   }

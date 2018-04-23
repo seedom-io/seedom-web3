@@ -5,8 +5,8 @@ import './index.scss';
 class Hype extends Component {
   render() {
     const deployment = {
-      deployTime: new Date('4-22-2018 00:00:00'),
-      endTime: new Date('5-1-2018 00:00:00')
+      deployTime: new Date(1524369600 * 1000),
+      endTime: new Date(1525147200 * 1000)
     };
 
     return (
