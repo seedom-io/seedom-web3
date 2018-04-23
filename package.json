@@ -60,6 +60,6 @@
     "lint": "eslint app",
     "test": "jest",
     "dev": "webpack-dev-server --mode development --open --config private/webpack/dev.js",
-    "dist": "webpack --mode production --config private/webpack/internal.js"
+    "dist": "webpack --mode production --config private/webpack/production.js"
   }
 }

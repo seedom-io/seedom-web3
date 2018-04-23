@@ -9,7 +9,7 @@ const cwd = process.cwd();
 module.exports = merge(base, {
   output: {
     filename: 'index.js',
-    path: path.resolve(cwd, 'dist/internal')
+    path: path.resolve(cwd, 'dist')
   },
   plugins: [
     new webpack.DefinePlugin({
