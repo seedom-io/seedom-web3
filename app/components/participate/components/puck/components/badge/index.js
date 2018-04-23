@@ -33,7 +33,7 @@ class Badge extends Content {
       return null;
     }
 
-    // make sure user has participated
+    // make sure user has participated (prevents early caching)
     if (participant.entries.isEqualTo(0)) {
       return null;
     }
@@ -55,7 +55,7 @@ class Badge extends Content {
           <div className="division bottom small-pad">
             <div className="field">
               <div className="control">
-                <a className="button is-dark" onClick={() => this.saveTicket(address)}>save your ticket</a>
+                <a className="button is-dark" href={badgeImageUrl}>save your ticket</a>
               </div>
             </div>
             <div className="field">
