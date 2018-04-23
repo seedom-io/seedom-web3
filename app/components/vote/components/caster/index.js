@@ -37,7 +37,9 @@ class Caster extends Component {
               <div className="bit begin stretch">
                 <div className="field">
                   <div className="control">
-                    <Link className="button is-white is-outlined" to={`${ETH_PATH}`}>participate first to vote</Link>
+                    <Link className="button is-white is-outlined" to={`${SEEDOM_PATH}`}>
+                      <i className="fas fa-arrow-alt-circle-left" />&nbsp;participate first
+                    </Link>
                   </div>
                 </div>
               </div>

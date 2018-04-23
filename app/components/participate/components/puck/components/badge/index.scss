@@ -5,4 +5,20 @@
     border: 1px solid white;
   }
 
+  .button {
+
+    &.twitter {
+      background-color: #1DA1F2;
+      border-color: #1DA1F2;
+      color: white;
+    }
+
+    &.facebook {
+      background-color: #3B5998;
+      border-color: #3B5998;
+      color: white;
+    }
+
+  }
+
 }

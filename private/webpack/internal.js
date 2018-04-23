@@ -13,10 +13,11 @@ module.exports = merge(base, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      ETH_PATH: JSON.stringify('/internal/'),
       ETH_NETWORKS: JSON.stringify(loader.getNetworks()),
       ETH_DEPLOYMENTS: JSON.stringify(loader.getDeployments()),
-      BADGER_URL: JSON.stringify('https://manager3.seedom.io')
+      SEEDOM_PATH: JSON.stringify('/internal/'),
+      SEEDOM_URL: JSON.stringify('https://seedom.io'),
+      BADGER_URL: JSON.stringify('https://seedom.io')
     })
   ]
 });

@@ -48,11 +48,11 @@ class NavBar extends React.Component {
           </div>
           <div className={classnames('navbar-menu', { 'is-active': isBurgerActive })}>
             <div className="navbar-start">
-              <NavLink className="navbar-item" activeClassName="is-active" to={ETH_PATH} onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
-              <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}vote`} onClick={this.handleNavLink} exact>VOTE</NavLink>
-              <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}history`} onClick={this.handleNavLink} exact>HISTORY</NavLink>
-              <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}help`} onClick={this.handleNavLink} exact>HELP</NavLink>
-              <NavLink className="navbar-item" activeClassName="is-active" to={`${ETH_PATH}about`} onClick={this.handleNavLink} exact>ABOUT</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to={SEEDOM_PATH} onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to={`${SEEDOM_PATH}vote`} onClick={this.handleNavLink} exact>VOTE</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to={`${SEEDOM_PATH}history`} onClick={this.handleNavLink} exact>HISTORY</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to={`${SEEDOM_PATH}help`} onClick={this.handleNavLink} exact>HELP</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to={`${SEEDOM_PATH}about`} onClick={this.handleNavLink} exact>ABOUT</NavLink>
             </div>
             <div className="navbar-end">
               <a className="navbar-item" href="https://medium.com/@seedom.io">

@@ -53,11 +53,11 @@ const ConnectedSwitch = connect(state => ({
 
 const AppContainer = () => (
   <ConnectedSwitch>
-    <Route exact path={ETH_PATH} component={Participate} />
-    <Route path={`${ETH_PATH}vote`} component={Vote} />
-    <Route path={`${ETH_PATH}history`} component={History} />
-    <Route path={`${ETH_PATH}help`} component={Help} />
-    <Route path={`${ETH_PATH}about`} component={About} />
+    <Route exact path={SEEDOM_PATH} component={Participate} />
+    <Route path={`${SEEDOM_PATH}vote`} component={Vote} />
+    <Route path={`${SEEDOM_PATH}history`} component={History} />
+    <Route path={`${SEEDOM_PATH}help`} component={Help} />
+    <Route path={`${SEEDOM_PATH}about`} component={About} />
   </ConnectedSwitch>
 );
 

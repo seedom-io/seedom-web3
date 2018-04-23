@@ -42,7 +42,7 @@ class Welcome extends Content {
           <div className="division bottom medium-pad">
             <div className="field">
               <div className="control">
-                <Link className="button is-white is-outlined" to={`${ETH_PATH}help`}>how does this work?</Link>
+                <Link className="button is-white is-outlined" to={`${SEEDOM_PATH}help`}>how does this work?</Link>
               </div>
             </div>
             <div className="field">
