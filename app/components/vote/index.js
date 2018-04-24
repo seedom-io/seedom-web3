@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as bytes from '../../utils/bytes';
+import * as messages from '../../../../seedom-crypter/messages';
 import * as ethereumActions from '../../actions/ethereum';
 import Caster from './components/caster';
 import Name from './components/name';
@@ -14,9 +15,9 @@ class Vote extends Component {
   };
 
   handleVoteName = ({ name, score }) => {
-    const nameBytes = bytes.bytesString(name);
+    const nameHex = bytes.m.hex((name);
     this.props.dispatch(ethereumActions.send({
-      contractName: 'polling', method: 'voteName', args: [nameBytes, score]
+      contractName: 'polling', method: 'voteName', args: [nameHex, score]
     }));
   };
 

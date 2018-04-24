@@ -7,6 +7,7 @@ import Stats from './components/stats';
 import Feed from './components/feed';
 import About from './components/about';
 import * as bytes from '../../utils/bytes';
+import * as messages from '../../../../seedom-crypter/messages';
 import * as etherscan from '../../utils/etherscan';
 import * as ethereumActions from '../../actions/ethereum';
 import './index.scss';
@@ -18,10 +19,10 @@ class Participate extends Component {
 
   handleParticipate = ({ message, entries }) => {
     const { deployment } = this.props.ethereum;
-    const messageBytes = bytes.bytesString(message);
+    const messageHex = bytes.m.hex((message);
     const value = entries.times(deployment.valuePerEntry);
     this.props.dispatch(ethereumActions.send({
-      contractName: 'fundraiser', method: 'participate', args: [messageBytes], value
+      contractName: 'fundraiser', method: 'participate', args: [messageHex], value
     }));
   };
 

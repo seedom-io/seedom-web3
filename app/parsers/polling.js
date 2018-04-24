@@ -1,6 +1,7 @@
 import { BigNumber } from 'bignumber.js';
 import * as bytes from '../utils/bytes';
 import { zero } from '../utils/numbers';
+import * as messages from '../../../seedom-crypter/messages';
 
 const parseCaster = caster => {
   return {
@@ -15,7 +16,7 @@ const parseCauses = causes => {
   for (let causeIndex = 0; causeIndex < causes._names.length; causeIndex += 1) {
     const parsedCause = {
       index: causeIndex,
-      name: String(bytes.stringBytes(causes._names[causeIndex])),
+      name: String(messages.message(causes._names[causeIndex])),
       caster: String(causes._casters[causeIndex]),
       scores: new BigNumber(causes._scores[causeIndex]),
       votes: new BigNumber(causes._votes[causeIndex]),
@@ -54,7 +55,7 @@ const parseCastName = castName => {
     caster: String(castName._caster),
     score: new BigNumber(castName._score),
     causeIndex: new BigNumber(castName._causeIndex),
-    causeName: String(bytes.stringBytes(castName._causeName))
+    causeName: String(messages.message(castName._causeName))
   };
 };
 

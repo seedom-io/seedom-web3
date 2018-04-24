@@ -1,5 +1,6 @@
 import { BigNumber } from 'bignumber.js';
 import * as bytes from '../utils/bytes';
+import * as messages from '../../../seedom-crypter/messages';
 
 const epochToDate = seconds => {
   return new Date(seconds * 1000);
@@ -24,12 +25,12 @@ const parseDeployment = deployment => {
 const parseState = state => {
   return {
     causeSecret: String(state._causeSecret),
-    causeMessage: String(bytes.stringBytes(state._causeMessage)),
+    causeMessage: String(messages.message(state._causeMessage)),
     causeWithdrawn: Boolean(state._causeWithdrawn),
     participant: String(state._participant),
-    participantMessage: String(bytes.stringBytes(state._participantMessage)),
+    participantMessage: String(messages.message(state._participantMessage)),
     participantWithdrawn: Boolean(state._participantWithdrawn),
-    ownerMessage: String(bytes.stringBytes(state._ownerMessage)),
+    ownerMessage: String(messages.message(state._ownerMessage)),
     ownerWithdrawn: Boolean(state._participantWithdrawn),
     cancelled: Boolean(state._cancelled),
     participants: new BigNumber(state._participants),
@@ -46,14 +47,14 @@ const parseBeginning = beginning => {
 const parseParticipant = participant => {
   return {
     entries: new BigNumber(participant._entries),
-    message: String(bytes.stringBytes(participant._message))
+    message: String(messages.message(participant._message))
   };
 };
 
 const parseParticipation = participation => {
   return {
     participant: String(participation._participant),
-    message: String(bytes.stringBytes(participation._message)),
+    message: String(messages.message(participation._message)),
     entries: new BigNumber(participation._entries),
     refund: new BigNumber(participation._refund),
   };
@@ -69,16 +70,16 @@ const parseRaise = raise => {
 
 const parseRevelation = revelation => {
   return {
-    causeMessage: String(bytes.stringBytes(revelation._causeMessage)),
+    causeMessage: String(messages.message(revelation._causeMessage)),
   };
 };
 
 const parseSelection = selection => {
   return {
     participant: String(selection._participant),
-    participantMessage: String(bytes.stringBytes(selection._participantMessage)),
-    causeMessage: String(bytes.stringBytes(selection._causeMessage)),
-    ownerMessage: String(bytes.stringBytes(selection._ownerMessage))
+    participantMessage: String(messages.message(selection._participantMessage)),
+    causeMessage: String(messages.message(selection._causeMessage)),
+    ownerMessage: String(messages.message(selection._ownerMessage))
   };
 };
 
