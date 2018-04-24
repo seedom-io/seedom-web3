@@ -30,6 +30,7 @@ class NavBar extends React.Component {
     });
   }
 
+  // <NavLink className="navbar-item" activeClassName="is-active" to="/history" onClick={this.handleNavLink} exact>HISTORY</NavLink>
   render() {
     const { isBurgerActive } = this.state;
     const { isLoading } = this.props.ethereum;
@@ -51,9 +52,8 @@ class NavBar extends React.Component {
           <div className={classnames('navbar-menu', { 'is-active': isBurgerActive })}>
             {pathname !== '/' && (
               <div className="navbar-start">
-                <NavLink className="navbar-item" activeClassName="is-active" to="/" onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to="/participate" onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
                 <NavLink className="navbar-item" activeClassName="is-active" to="/vote" onClick={this.handleNavLink} exact>VOTE</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to="/history" onClick={this.handleNavLink} exact>HISTORY</NavLink>
                 <NavLink className="navbar-item" activeClassName="is-active" to="/help" onClick={this.handleNavLink} exact>HELP</NavLink>
                 <NavLink className="navbar-item" activeClassName="is-active" to="/about" onClick={this.handleNavLink} exact>ABOUT</NavLink>
               </div>

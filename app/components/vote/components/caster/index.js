@@ -37,7 +37,7 @@ class Caster extends Component {
               <div className="bit begin stretch">
                 <div className="field">
                   <div className="control">
-                    <Link className="button is-white is-outlined" to="/">
+                    <Link className="button is-white is-outlined" to="/participate">
                       <i className="fas fa-arrow-alt-circle-left" />&nbsp;participate first
                     </Link>
                   </div>
