@@ -19,7 +19,7 @@ class Participate extends Component {
 
   handleParticipate = ({ message, entries }) => {
     const { deployment } = this.props.ethereum;
-    const messageHex = bytes.m.hex((message);
+    const messageHex = messages.hex((message);
     const value = entries.times(deployment.valuePerEntry);
     this.props.dispatch(ethereumActions.send({
       contractName: 'fundraiser', method: 'participate', args: [messageHex], value

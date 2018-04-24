@@ -15,7 +15,7 @@ class Vote extends Component {
   };
 
   handleVoteName = ({ name, score }) => {
-    const nameHex = bytes.m.hex((name);
+    const nameHex = messages.hex((name);
     this.props.dispatch(ethereumActions.send({
       contractName: 'polling', method: 'voteName', args: [nameHex, score]
     }));
