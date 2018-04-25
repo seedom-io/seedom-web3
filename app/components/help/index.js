@@ -23,7 +23,7 @@ class Help extends Sections {
               title="Accessing on desktop"
               collapsed={!open.includes('accessing-desktop')}
             >
-              To use Seedom on the desktop, you will need to install <a target="_blank" href="https://metamask.io/">>MetaMask</a> or use the <a target="_blank" href="https://brave.com/">Brave browser</a>. You will need to put Ether into your MetaMask wallet in order to participate.
+              To use Seedom on the desktop, you will need to install <a target="_blank" href="https://metamask.io/">MetaMask</a> or use the <a target="_blank" href="https://brave.com/">Brave browser</a>. You will need to put Ether into your MetaMask wallet in order to participate.
             </Toggle>
           </div>
         </div>
