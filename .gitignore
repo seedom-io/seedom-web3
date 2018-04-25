@@ -1,3 +1,4 @@
+.wwp-cache/
 .DS_Store
 dist/localhost
 node_modules
