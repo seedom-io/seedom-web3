@@ -1,7 +1,7 @@
 import { BigNumber } from 'bignumber.js';
 import * as bytes from '../utils/bytes';
 import { zero } from '../utils/numbers';
-import * as messages from '../../../seedom-crypter/messages';
+import * as messages from '@seedom-io/seedom-crypter/messages';
 
 const parseCaster = caster => {
   return {

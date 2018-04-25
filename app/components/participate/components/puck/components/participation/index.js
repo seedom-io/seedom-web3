@@ -11,7 +11,7 @@ class Participation extends Content {
     isShown: PropTypes.bool.isRequired,
     participant: PropTypes.shape(),
     onRaising: PropTypes.func.isRequired,
-    onTicketing: PropTypes.func.isRequired
+    onBadging: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -20,7 +20,7 @@ class Participation extends Content {
 
   render() {
     const { className } = this.state;
-    const { isShown, participant, onRaising, onTicketing } = this.props;
+    const { isShown, participant, onRaising, onBadging } = this.props;
     const entries = participant ? participant.entries : zero();
     const localeEntries = localeNumber(entries);
 
@@ -43,7 +43,7 @@ class Participation extends Content {
           </div>
           <div className="field">
             <div className="control">
-              <a className="button is-white is-outlined" onClick={onTicketing}>view badge</a>
+              <a className="button is-white is-outlined" onClick={onBadging}>view badge</a>
             </div>
           </div>
         </div>

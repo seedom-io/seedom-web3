@@ -34,7 +34,7 @@ const getTwitterShareUrl = ({
 class Badge extends Content {
   static propTypes = {
     isShown: PropTypes.bool.isRequired,
-    onTicketingOver: PropTypes.func.isRequired,
+    onBadgingOver: PropTypes.func.isRequired,
     primaryContractAddresses: PropTypes.shape(),
     account: PropTypes.string,
     participant: PropTypes.shape(),
@@ -52,7 +52,7 @@ class Badge extends Content {
     const { className } = this.state;
     const {
       isShown,
-      onTicketingOver,
+      onBadgingOver,
       primaryContractAddresses,
       account,
       participant,
@@ -110,7 +110,7 @@ class Badge extends Content {
             </div>
             <div className="field">
               <div className="control">
-                <a className="button is-white is-outlined" onClick={onTicketingOver}>skip sharing</a>
+                <a className="button is-white is-outlined" onClick={onBadgingOver}>skip sharing</a>
               </div>
             </div>
           </div>

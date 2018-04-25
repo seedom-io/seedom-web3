@@ -1,6 +1,6 @@
 import { BigNumber } from 'bignumber.js';
 import * as bytes from '../utils/bytes';
-import * as messages from '../../../seedom-crypter/messages';
+import * as messages from '@seedom-io/seedom-crypter/messages';
 
 const epochToDate = seconds => {
   return new Date(seconds * 1000);

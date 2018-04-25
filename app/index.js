@@ -12,9 +12,11 @@ import reduceReducers from './utils/reduceReducers';
 import pollingReducer from './reducers/polling';
 import fundraiserReducer from './reducers/fundraiser';
 import ethereumReducer from './reducers/ethereum';
+import causeReducer from './reducers/cause';
 import pollingMiddleware from './middleware/polling';
 import fundraiserMiddleware from './middleware/fundraiser';
 import ethereumMiddleware from './middleware/ethereum';
+import causeMiddleware from './middleware/cause';
 
 import './sass/bulma.scss';
 
@@ -35,7 +37,8 @@ const store = createStore(
     ethereum: reduceReducers(
       ethereumReducer,
       fundraiserReducer,
-      pollingReducer
+      pollingReducer,
+      causeReducer
     ),
     toastr: toastrReducer,
     router: routerReducer
@@ -44,7 +47,8 @@ const store = createStore(
     routerMiddleware(history),
     ethereumMiddleware,
     fundraiserMiddleware,
-    pollingMiddleware
+    pollingMiddleware,
+    causeMiddleware
   ))
 );
 

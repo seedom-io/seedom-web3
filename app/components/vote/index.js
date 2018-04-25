@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as bytes from '../../utils/bytes';
-import * as messages from '../../../../seedom-crypter/messages';
+import * as messages from '@seedom-io/seedom-crypter/messages';
 import * as ethereumActions from '../../actions/ethereum';
 import Caster from './components/caster';
 import Name from './components/name';

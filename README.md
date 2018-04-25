@@ -1,20 +1,19 @@
-## General dependencies
+## General Dependencies
 - NodeJS v8.6.0+
 
-## Seedom dependencies
+## Seedom Dependencies
 - seedom-assets
-- seedom-crypter
 - seedom-badger
 - seedom-solidity
 
-# Start dev server
+# Start Dev Server
 - start seedom-badger
 - `npm run dev`
 
-# Prepare distribution
+# Prepare Distribution
 - `npm run dist`
 
-# Start prod build
+# Start Prod Build
 - prepare distribution
 - `docker build -t seedom-test .`
 - `docker run -p 80:80 seedom-test:latest`

@@ -7,7 +7,7 @@ import Stats from './components/stats';
 import Feed from './components/feed';
 import About from './components/about';
 import * as bytes from '../../utils/bytes';
-import * as messages from '../../../../seedom-crypter/messages';
+import * as messages from '@seedom-io/seedom-crypter/messages';
 import * as etherscan from '../../utils/etherscan';
 import * as ethereumActions from '../../actions/ethereum';
 import './index.scss';
