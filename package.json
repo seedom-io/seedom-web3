@@ -60,7 +60,7 @@
   "scripts": {
     "lint": "eslint app",
     "test": "jest",
-    "dev": "webpack-dev-server --mode development --config private/webpack/dev.js",
+    "dev": "webpack-dev-server --mode development --host 0.0.0.0 --config private/webpack/dev.js",
     "dist": "webpack --mode production --config private/webpack/production.js"
   }
 }
