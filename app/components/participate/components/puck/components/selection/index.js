@@ -45,7 +45,7 @@ class Selection extends Content {
               <div className="value">{ownerMessage}</div>
             </div>
           </div>
-          <div className="division text bottom small-pad slim">
+          <div className="division text bottom large-pad slim">
             <div className="header">participant message</div>
             <div className="value">{participantMessage}</div>
           </div>
