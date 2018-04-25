@@ -1,4 +1,8 @@
-const getImageUrl = (params) => `${BADGER_URL}/badges/${params.contract}/${params.participant}.png`;
+const getImageUrl = ({
+  network,
+  contract,
+  participant
+}) => `${BADGER_URL}/badges/${network}/${contract}/${participant}.png`;
 
 export {
   getImageUrl

@@ -2,30 +2,34 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import * as badges from '../../utils/badges';
-import seedomShare from '../../../../seedom-assets/share/seedom-share.png';
 
 const name = 'Seedom';
 const author = 'Team Palm Tree';
 const title = 'Seedom | Seeding the future of philanthropy';
 const description = 'Raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support. Seed the future of philanthropy!';
+const image = 'https://raw.githubusercontent.com/seedom-io/seedom-assets/master/share/seedom-share.png';
 
 class Head extends Component {
   render() {
     const { router } = this.props;
 
     let finalUrl = SEEDOM_URL;
-    let finalImage = seedomShare;
+    let finalImage = image;
     // check for badge
-    if (router.location.search !== '') {
-      const query = new URLSearchParams(router.location.search);
-      const contract = query.get('c');
-      const participant = query.get('p');
-      if (contract && participant) {
-        finalUrl += router.location.search;
-        finalImage = badges.getImageUrl({
-          contract,
-          participant
-        });
+    if (router && router.location) {
+      if (router.location.search !== '') {
+        const query = new URLSearchParams(router.location.search.substr(1));
+        const network = query.get('n');
+        const contract = query.get('c');
+        const participant = query.get('p');
+        if (network && contract && participant) {
+          finalUrl += router.location.search;
+          finalImage = badges.getImageUrl({
+            network,
+            contract,
+            participant
+          });
+        }
       }
     }
 

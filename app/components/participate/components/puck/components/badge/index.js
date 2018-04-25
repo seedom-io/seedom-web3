@@ -5,17 +5,29 @@ import Indicator from '../indicator';
 import * as badges from '../../../../../../utils/badges';
 import './index.scss';
 
-const getSeedomShareUrl = (params) => {
-  return `${SEEDOM_URL}?c=${params.contract}&p=${params.participant}`;
+const getSeedomShareUrl = ({
+  network,
+  contract,
+  participant
+}) => {
+  return `${SEEDOM_URL}?n=${network}&c=${contract}&p=${participant}`;
 };
 
-const getFacebookShareUrl = (params) => {
-  const seedomShareUrl = getSeedomShareUrl(params);
+const getFacebookShareUrl = ({
+  network,
+  contract,
+  participant
+}) => {
+  const seedomShareUrl = getSeedomShareUrl({ network, contract, participant });
   return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(seedomShareUrl)}`;
 };
 
-const getTwitterShareUrl = (params) => {
-  const seedomShareUrl = getSeedomShareUrl(params);
+const getTwitterShareUrl = ({
+  network,
+  contract,
+  participant
+}) => {
+  const seedomShareUrl = getSeedomShareUrl({ network, contract, participant });
   return `https://twitter.com/share?url=${encodeURIComponent(seedomShareUrl)}`;
 };
 
@@ -25,13 +37,15 @@ class Badge extends Content {
     onTicketingOver: PropTypes.func.isRequired,
     primaryContractAddresses: PropTypes.shape(),
     account: PropTypes.string,
-    participant: PropTypes.shape()
+    participant: PropTypes.shape(),
+    network: PropTypes.shape()
   };
 
   static defaultProps = {
     primaryContractAddresses: null,
     account: null,
-    participant: null
+    participant: null,
+    network: null
   };
 
   render() {
@@ -41,10 +55,11 @@ class Badge extends Content {
       onTicketingOver,
       primaryContractAddresses,
       account,
-      participant
+      participant,
+      network
     } = this.props;
 
-    if (!primaryContractAddresses || !account || !participant) {
+    if (!primaryContractAddresses || !account || !participant || !network) {
       return null;
     }
 
@@ -54,6 +69,7 @@ class Badge extends Content {
     }
 
     const params = {
+      network: network.name,
       contract: primaryContractAddresses.fundraiser.substr(2),
       participant: account.substr(2)
     };

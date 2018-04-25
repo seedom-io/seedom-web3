@@ -294,7 +294,7 @@ class Puck extends Component {
           <Begin isShown={component === 'begin'} />
           <BeginningFailed isShown={component === 'beginningFailed'} />
           <Participate isShown={component === 'participate'} deployment={deployment} isLoading={isLoading} onParticipate={this.handleParticipate} />
-          <Badge isShown={component === 'ticket'} primaryContractAddresses={primaryContractAddresses} account={account} participant={participant} onTicketingOver={this.handleTicketingOver} />
+          <Badge isShown={component === 'ticket'} primaryContractAddresses={primaryContractAddresses} network={network} account={account} participant={participant} onTicketingOver={this.handleTicketingOver} />
           <Participation isShown={component === 'participation'} participant={participant} onRaising={this.handleRaising} onTicketing={this.handleTicketing} />
           <ParticipationFailed isShown={component === 'participationFailed'} />
           <Raise isShown={component === 'raise'} deployment={deployment} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
