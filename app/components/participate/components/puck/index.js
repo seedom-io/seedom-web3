@@ -58,7 +58,7 @@ const getComponent = ({
   balances,
   isLoading,
   isParticipating,
-  isTicketing,
+  isBadging,
   isRaising,
   isWithdrawing
 }) => {
@@ -116,8 +116,8 @@ const getComponent = ({
         return 'participate';
       }
 
-      if (isTicketing) {
-        return 'ticket';
+      if (isBadging) {
+        return 'badge';
       }
 
       if (!isRaising && !isLoading) {
@@ -181,7 +181,7 @@ class Puck extends Component {
     this.state = {
       phase: null,
       isParticipating: false,
-      isTicketing: false,
+      isBadging: false,
       isRaising: false,
       isWithdrawing: true
     };
@@ -206,17 +206,17 @@ class Puck extends Component {
   }
 
   handleParticipate = ({ message, entries }) => {
-    this.setState({ isTicketing: true }, () => {
+    this.setState({ isBadging: true }, () => {
       this.props.onParticipate({ message, entries });
     });
   }
 
-  handleTicketing = () => {
-    this.setState({ isTicketing: true });
+  handleBadging = () => {
+    this.setState({ isBadging: true });
   }
 
-  handleTicketingOver = () => {
-    this.setState({ isTicketing: false });
+  handleBadgingOver = () => {
+    this.setState({ isBadging: false });
   }
 
   handleRaising = () => {
@@ -249,7 +249,7 @@ class Puck extends Component {
     const {
       phase,
       isParticipating,
-      isTicketing,
+      isBadging,
       isRaising,
       isWithdrawing
     } = this.state;
@@ -275,7 +275,7 @@ class Puck extends Component {
       balances,
       isLoading,
       isParticipating,
-      isTicketing,
+      isBadging,
       isRaising,
       isWithdrawing
     });
@@ -294,8 +294,8 @@ class Puck extends Component {
           <Begin isShown={component === 'begin'} />
           <BeginningFailed isShown={component === 'beginningFailed'} />
           <Participate isShown={component === 'participate'} deployment={deployment} isLoading={isLoading} onParticipate={this.handleParticipate} />
-          <Badge isShown={component === 'ticket'} primaryContractAddresses={primaryContractAddresses} network={network} account={account} participant={participant} onTicketingOver={this.handleTicketingOver} />
-          <Participation isShown={component === 'participation'} participant={participant} onRaising={this.handleRaising} onTicketing={this.handleTicketing} />
+          <Badge isShown={component === 'badge'} primaryContractAddresses={primaryContractAddresses} network={network} account={account} participant={participant} onBadgingOver={this.handleBadgingOver} />
+          <Participation isShown={component === 'participation'} participant={participant} onRaising={this.handleRaising} onBadging={this.handleBadging} />
           <ParticipationFailed isShown={component === 'participationFailed'} />
           <Raise isShown={component === 'raise'} deployment={deployment} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
           <Reveal isShown={component === 'reveal'} />

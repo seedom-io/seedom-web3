@@ -17,6 +17,13 @@ class Participate extends Component {
     ethereum: PropTypes.shape().isRequired
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isPlaying: false
+    };
+  }
+
   handleParticipate = ({ message, entries }) => {
     const { deployment } = this.props.ethereum;
     const messageHex = messages.hex(message);
@@ -24,6 +31,7 @@ class Participate extends Component {
     this.props.dispatch(ethereumActions.send({
       contractName: 'fundraiser', method: 'participate', args: [messageHex], value
     }));
+    this.setState({ isPlaying: true });
   };
 
   handleRaise = (entries) => {
@@ -59,6 +67,10 @@ class Participate extends Component {
       primaryContractAddresses
     } = this.props.ethereum;
 
+    const {
+      isPlaying
+    } = this.state;
+
     return (
       <div className="seedom-seed">
         <div className="background">
@@ -90,7 +102,7 @@ class Participate extends Component {
             />
           </div>
         </div>
-        <About />
+        <About isPlaying={isPlaying} />
         <Feed feed={feed} network={network} />
       </div>
     );

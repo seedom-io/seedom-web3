@@ -22,6 +22,12 @@ class Collapse extends Component {
     };
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.state.collapsed !== newProps.collapsed) {
+      this.setState({ collapsed: newProps.collapsed });
+    }
+  }
+
   toggle = () => {
     this.setState((prevState) => ({
       collapsed: !prevState.collapsed
