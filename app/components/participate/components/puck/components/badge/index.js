@@ -99,12 +99,12 @@ class Badge extends Content {
               </div>
               <div className="control">
                 <a className="button twitter" href={twitterShareUrl} target="_blank">
-                  SHARE&nbsp;<i className="fab fa-twitter" />
+                  SHARE <i className="fab fa-twitter" />
                 </a>
               </div>
               <div className="control">
                 <a className="button facebook" href={facebookShareUrl} target="_blank">
-                  SHARE&nbsp;<i className="fab fa-facebook-f" />
+                  SHARE <i className="fab fa-facebook-f" />
                 </a>
               </div>
             </div>
