@@ -56,6 +56,7 @@ class NavBar extends React.Component {
                 <NavLink className="navbar-item" activeClassName="is-active" to="/vote" onClick={this.handleNavLink} exact>VOTE</NavLink>
                 <NavLink className="navbar-item" activeClassName="is-active" to="/help" onClick={this.handleNavLink} exact>HELP</NavLink>
                 <NavLink className="navbar-item" activeClassName="is-active" to="/about" onClick={this.handleNavLink} exact>ABOUT</NavLink>
+                <NavLink className="navbar-item" activeClassName="is-active" to="/contact" onClick={this.handleNavLink} exact>CONTACT</NavLink>
               </div>
             )}
             <div className="navbar-end">

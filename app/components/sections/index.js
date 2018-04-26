@@ -15,7 +15,7 @@ class Sections extends Component {
   }
 
   handleHash = (props) => {
-    const hash = props.router.location.hash;
+    const { hash } = props.router.location;
     if (hash !== '') {
       this.state.open = [hash.substring(1)];
     }

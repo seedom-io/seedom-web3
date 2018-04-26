@@ -28,6 +28,7 @@ import Vote from './components/vote';
 import History from './components/history';
 import Help from './components/help';
 import About from './components/about';
+import Contact from './components/contact';
 import Footer from './components/footer';
 
 const history = createHistory();
@@ -65,6 +66,7 @@ const AppContainer = () => (
     <Route path="/history" component={History} />
     <Route path="/help" component={Help} />
     <Route path="/about" component={About} />
+    <Route path="/contact" component={Contact} />
   </ConnectedSwitch>
 );
 
