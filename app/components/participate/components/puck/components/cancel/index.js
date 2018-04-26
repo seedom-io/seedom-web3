@@ -2,15 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
+import CauseLogo from '../../../../../causeLogo';
 
 class Cancel extends Content {
   static propTypes = {
     isLoading: PropTypes.bool,
-    onCancel: PropTypes.func.isRequired
+    onCancel: PropTypes.func.isRequired,
+    deployment: PropTypes.shape()
   };
 
   static defaultProps = {
-    isLoading: false
+    isLoading: false,
+    deployment: null
   };
 
   handleSubmit = () => {
@@ -20,14 +23,14 @@ class Cancel extends Content {
 
   render() {
     const { className } = this.state;
-    const { isLoading } = this.props;
+    const { isLoading, deployment } = this.props;
 
     return (
       <div className={`seedom-content cancel ${className}`}>
         <Indicator type="cancel" />
         <div className="seedom-overlay layout">
           <div className="division top medium-pad">
-            <div className="cause-logo small" />
+            <CauseLogo deployment={deployment} size="small" />
           </div>
           <div className="division text center narrow">
             fundraiser expired, please cancel for the community

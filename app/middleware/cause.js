@@ -5,11 +5,9 @@ const causeMiddleware = store => {
     fetch(causesResolver.getJsonUrl(action.deployment.cause))
       .then(results => results.json())
       .then((cause) => {
-        return next({
-          type: 'CAUSE_CAUSE',
-          cause
-        });
+        store.dispatch({ type: 'CAUSE_CAUSE', cause });
       });
+    return next(action);
   };
 
   return next => action => {

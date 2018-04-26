@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { toastr } from 'react-redux-toastr';
+import { localeDecimal, getEtherFromWei } from '../../../../../../utils/numbers';
 import Content from '../content';
 import Indicator from '../indicator';
 import Entries from '../entries';
-import { toastr } from 'react-redux-toastr';
-import { localeDecimal, getEtherFromWei } from '../../../../../../utils/numbers';
+import CauseLogo from '../../../../../causeLogo';
 import './index.scss';
 
 class Raise extends Content {
@@ -61,7 +62,7 @@ class Raise extends Content {
         <Indicator type={isLoading ? 'waiting' : null} />
         <div className="seedom-overlay">
 
-          <div className="cause-logo small" />
+          <CauseLogo deployment={deployment} size="small" />
 
           <div className="text">
             1 entry = {etherPerEntry}

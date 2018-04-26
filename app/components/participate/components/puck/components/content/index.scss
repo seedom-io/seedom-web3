@@ -9,22 +9,6 @@
   flex-direction: column;
   text-align: center;
 
-  .cause-logo {
-    background-image: url('../../../../../../img/logos/cause-logo.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    filter:
-      drop-shadow(2px 1px 0 black)
-      drop-shadow(-1px -1px 0 black);
-    height: 28%;
-    width: 100%;
-
-    &.small {
-      height: 20%;
-    }
-  }
-
   .seedom-logo {
     background-image: url('../../../../../../../../seedom-assets/logo/full/seedom-full-white-transparent@4x.png');
     background-repeat: no-repeat;

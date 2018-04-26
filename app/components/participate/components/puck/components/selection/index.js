@@ -1,25 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as etherscan from '../../../../../../utils/etherscan';
 import Content from '../content';
 import Indicator from '../indicator';
-import * as etherscan from '../../../../../../utils/etherscan';
+import CauseLogo from '../../../../../causeLogo';
 import './index.scss';
 
 class Selection extends Content {
   static propTypes = {
     isShown: PropTypes.bool.isRequired,
     state: PropTypes.shape(),
-    network: PropTypes.shape()
+    network: PropTypes.shape(),
+    deployment: PropTypes.shape()
   };
 
   static defaultProps = {
     state: null,
-    network: null
+    network: null,
+    deployment: null
   };
 
   render() {
     const { className } = this.state;
-    const { isShown, state, network } = this.props;
+    const { isShown, state, network, deployment } = this.props;
 
     let causeMessage;
     let ownerMessage;
@@ -33,7 +36,7 @@ class Selection extends Content {
         <Indicator type={isShown ? 'selection' : null} />
         <div className="seedom-overlay layout">
           <div className="division text top small-pad">
-            <div className="cause-logo small" />
+            <CauseLogo deployment={deployment} size="small" />
           </div>
           <div className="division text center narrow">
             <div className="left">

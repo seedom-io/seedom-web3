@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Content from '../content';
 import { localeDecimal, getEtherFromWei } from '../../../../../../utils/numbers';
 import { Link } from 'react-router-dom';
+import CauseLogo from '../../../../../causeLogo';
 import './index.scss';
 
 class Welcome extends Content {
@@ -37,7 +38,7 @@ class Welcome extends Content {
             <div className="supporting">now seeding</div>
           </div>
           <div className="division center">
-            <div className="cause-logo" />
+            <CauseLogo deployment={deployment} />
           </div>
           <div className="division bottom medium-pad">
             <div className="field">

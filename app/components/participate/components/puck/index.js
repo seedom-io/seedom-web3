@@ -291,19 +291,19 @@ class Puck extends Component {
           <Network isShown={component === 'network'} />
           <Account isShown={component === 'account'} />
           <Welcome isShown={component === 'welcome'} deployment={deployment} onCountMeIn={this.handleCountMeIn} />
-          <Begin isShown={component === 'begin'} />
-          <BeginningFailed isShown={component === 'beginningFailed'} />
+          <Begin isShown={component === 'begin'} deployment={deployment} />
+          <BeginningFailed isShown={component === 'beginningFailed'} deployment={deployment} />
           <Participate isShown={component === 'participate'} deployment={deployment} isLoading={isLoading} onParticipate={this.handleParticipate} />
           <Badge isShown={component === 'badge'} primaryContractAddresses={primaryContractAddresses} network={network} account={account} participant={participant} onBadgingOver={this.handleBadgingOver} />
-          <Participation isShown={component === 'participation'} participant={participant} onRaising={this.handleRaising} onBadging={this.handleBadging} />
-          <ParticipationFailed isShown={component === 'participationFailed'} />
+          <Participation isShown={component === 'participation'} participant={participant} deployment={deployment} onRaising={this.handleRaising} onBadging={this.handleBadging} />
+          <ParticipationFailed isShown={component === 'participationFailed'} deployment={deployment} />
           <Raise isShown={component === 'raise'} deployment={deployment} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
-          <Reveal isShown={component === 'reveal'} />
+          <Reveal isShown={component === 'reveal'} deployment={deployment} />
           <End isShown={component === 'end'} />
-          <Selection isShown={component === 'selection'} state={state} network={network} />
+          <Selection isShown={component === 'selection'} state={state} network={network} deployment={deployment} />
           <Withdraw isShown={component === 'withdraw'} balances={balances} isLoading={isLoading} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
-          <Cancel isShown={component === 'cancel'} isLoading={isLoading} onCancel={this.handleCancel} />
-          <Cancelled isShown={component === 'cancelled'} />
+          <Cancel isShown={component === 'cancel'} isLoading={isLoading} deployment={deployment} onCancel={this.handleCancel} />
+          <Cancelled isShown={component === 'cancelled'} deployment={deployment} />
         </div>
       </div>
     );

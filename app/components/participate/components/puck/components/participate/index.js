@@ -1,15 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { toastr } from 'react-redux-toastr';
 import Content from '../content';
 import Entries from '../entries';
 import Message from '../message';
 import Indicator from '../indicator';
-import { toastr } from 'react-redux-toastr';
+import CauseLogo from '../../../../../causeLogo';
 import './index.scss';
 
 class Participate extends Content {
   static propTypes = {
-    isLoading: PropTypes.bool
+    isLoading: PropTypes.bool,
+    deployment: PropTypes.shape()
+  };
+
+  static defaultProps = {
+    deployment: null,
+    isLoading: false
   };
 
   constructor(props) {
@@ -52,7 +59,7 @@ class Participate extends Content {
         <Indicator type={isLoading ? 'waiting' : null} />
         <div className="seedom-overlay">
 
-          <div className="cause-logo small" />
+          <CauseLogo deployment={deployment} size="small" />
 
           <Entries
             deployment={deployment}
