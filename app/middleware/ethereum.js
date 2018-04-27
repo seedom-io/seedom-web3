@@ -202,7 +202,8 @@ const ethereumMiddleware = (store) => {
   const setupServerWeb3 = (networkName) => {
     const ethNetwork = ETH_NETWORKS[networkName];
     if (ethNetwork) {
-      serverWeb3 = new Web3(ethNetwork.url);
+      // use websocket url
+      serverWeb3 = new Web3(ethNetwork.wsUrl);
       return true;
     }
 

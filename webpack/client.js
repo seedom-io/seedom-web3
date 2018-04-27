@@ -1,20 +1,23 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebappWebpackPlugin = require('webapp-webpack-plugin');
 
 const cwd = process.cwd();
 
 module.exports = {
-  entry: path.resolve(cwd, 'app/index.js'),
+  name: 'client',
+  target: 'web',
+  entry: path.resolve(cwd, 'app/client.js'),
   plugins: [
     new WebappWebpackPlugin({
       inject: true,
       logo: path.join(cwd, 'app/img/logos/seedom-dark.svg')
-    }),
-    new HtmlWebpackPlugin({
-      template: 'app/index.html'
     })
   ],
+  output: {
+    filename: 'index.js',
+    path: path.resolve(cwd, 'dist/client'),
+    publicPath: '/static/'
+  },
   module: {
     rules: [
       {
@@ -36,8 +39,5 @@ module.exports = {
         loader: ['file-loader']
       }
     ],
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
+  }
 };

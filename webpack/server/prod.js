@@ -1,20 +1,15 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const base = require('./base.js');
+const server = require('../server');
 const loader = require('../../../seedom-solidity/chronicle/loader');
 
-module.exports = merge(base, {
-  devtool: 'source-map',
-  devServer: {
-    historyApiFallback: true,
-    disableHostCheck: true
-  },
+module.exports = merge(server, {
   plugins: [
     new webpack.DefinePlugin({
       ETH_NETWORKS: JSON.stringify(loader.getNetworks()),
       ETH_DEPLOYMENTS: JSON.stringify(loader.getDeployments()),
-      SEEDOM_URL: JSON.stringify('http://localhost:8080'),
-      BADGER_URL: JSON.stringify('http://localhost:3000')
+      SEEDOM_URL: JSON.stringify('https://seedom.io'),
+      BADGER_URL: JSON.stringify('https://seedom.io')
     })
   ]
 });

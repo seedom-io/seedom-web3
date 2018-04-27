@@ -50,7 +50,7 @@ class Feed extends Component {
     const { network } = this.props;
     const etherscanUrl = etherscan.getTransactionUrl(network, transactionHash);
     if (etherscanUrl) {
-      window.open(etherscanUrl, '_blank');
+      window && window.open(etherscanUrl, '_blank');
     }
   }
 

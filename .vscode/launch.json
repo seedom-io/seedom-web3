@@ -8,7 +8,7 @@
         "type": "node",
         "request": "launch",
         "name": "Launch Program",
-        "program": "${workspaceFolder}/private/util/cors.js"
+        "program": "${workspaceFolder}/dist/server/index.js"
       },
       {
           "type": "node",

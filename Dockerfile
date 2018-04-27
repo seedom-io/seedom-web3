@@ -1,7 +1,11 @@
-FROM nginx
+FROM node:9
 
-# copy dist
-COPY dist/ /usr/share/nginx/html/
+WORKDIR /usr/src/app
 
-# set up NGINX
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY dist ./dist
+COPY package.json ./package.json
+
+RUN npm install
+
+EXPOSE 3000
+CMD [ "npm", "run", "start" ]
