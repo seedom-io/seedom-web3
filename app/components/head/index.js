@@ -41,19 +41,19 @@ class Head extends Component {
         {/* viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7" />
         {/* twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@seedom_io" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={finalImage} />
-        <meta name="twitter:url" content={finalUrl} />
+        <meta name="twitter:card" property="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" property="twitter:site" content="@seedom_io" />
+        <meta name="twitter:title" property="twitter:title" content={title} />
+        <meta name="twitter:description" property="twitter:description" content={description} />
+        <meta name="twitter:image" property="twitter:image" content={finalImage} />
+        <meta name="twitter:url" property="twitter:url" content={finalUrl} />
         {/* open graph */}
-        <meta name="og:type" content="website" />
-        <meta name="og:site_name" content={name} />
-        <meta name="og:title" content={title} />
-        <meta name="og:description" content={description} />
-        <meta name="og:image" content={finalImage} />
-        <meta name="og:url" content={finalUrl} />
+        <meta name="og:type" property="og:type" content="website" />
+        <meta name="og:site_name" property="og:site_name" content={name} />
+        <meta name="og:title" property="og:title" content={title} />
+        <meta name="og:description" property="og:description" content={description} />
+        <meta name="og:image" property="og:image" content={finalImage} />
+        <meta name="og:url" property="og:url" content={finalUrl} />
         {/* font awesome */}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossOrigin="anonymous" />
       </Helmet>
