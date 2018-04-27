@@ -29,6 +29,7 @@ import History from './components/history';
 import Help from './components/help';
 import About from './components/about';
 import Contact from './components/contact';
+import PressRelease from './components/press-release';
 import Footer from './components/footer';
 
 const history = createHistory();
@@ -67,6 +68,7 @@ const AppContainer = () => (
     <Route path="/help" component={Help} />
     <Route path="/about" component={About} />
     <Route path="/contact" component={Contact} />
+    <Route path="/announce-beta-giveth" component={PressRelease} />
   </ConnectedSwitch>
 );
 
