@@ -9,6 +9,8 @@ const author = 'Team Palm Tree';
 const title = 'Seedom | Seeding the future of philanthropy';
 const description = 'Raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support. Seed the future of philanthropy!';
 const image = 'https://raw.githubusercontent.com/seedom-io/seedom-assets/master/share/seedom-share.png';
+const imageWidth = 1200;
+const imageHeight = 628;
 
 class Head extends Component {
   render() {
@@ -53,6 +55,8 @@ class Head extends Component {
         <meta name="og:title" property="og:title" content={title} />
         <meta name="og:description" property="og:description" content={description} />
         <meta name="og:image" property="og:image" content={finalImage} />
+        <meta name="og:image:width" property="og:image:width" content={imageWidth} />
+        <meta name="og:image:height" property="og:image:height" content={imageHeight} />
         <meta name="og:url" property="og:url" content={finalUrl} />
         {/* font awesome */}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossOrigin="anonymous" />
