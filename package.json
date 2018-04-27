@@ -77,7 +77,7 @@
     "buildServerProd": "webpack --mode production --config webpack/server/prod.js",
     "buildDev": "npm run buildClientDev && npm run buildServerDev",
     "buildProd": "npm run buildClientProd && npm run buildServerProd",
-    "run": "node ./dist/server/index.js",
+    "start": "node ./dist/server/index.js",
     "dev": "npm run buildDev && node ./dist/server/index.js",
     "prod": "npm run buildProd",
     "docker": "docker build -t seedom-web3 . && docker run -p 3000:3000 seedom-web3:latest"
