@@ -16,6 +16,7 @@
     "history": "^4.7.2",
     "js-sha3": "^0.7.0",
     "prop-types": "^15.6.1",
+    "query-string": "^6.0.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-helmet": "^5.2.0",

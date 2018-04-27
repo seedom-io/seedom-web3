@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import queryString from 'query-string';
 import * as badges from '../../utils/badges';
-import { URLSearchParams } from 'url';
 
 const name = 'Seedom';
 const author = 'Team Palm Tree';
@@ -19,16 +19,14 @@ class Head extends Component {
     // check for badge
     if (router && router.location) {
       if (router.location.search !== '') {
-        const query = new URLSearchParams(router.location.search.substr(1));
-        const network = query.get('n');
-        const contract = query.get('c');
-        const participant = query.get('p');
-        if (network && contract && participant) {
+        const query = queryString.parse(router.location.search.substr(1));
+        const { n, c, p } = query;
+        if (n && c && p) {
           finalUrl += router.location.search;
           finalImage = badges.getImageUrl({
-            network,
-            contract,
-            participant
+            network: n,
+            contract: c,
+            participant: p
           });
         }
       }
