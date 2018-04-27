@@ -9226,6 +9226,10 @@ var _reactHelmet = __webpack_require__(/*! react-helmet */ "react-helmet");
 
 var _server = __webpack_require__(/*! react-dom/server */ "react-dom/server");
 
+var _expressCacheController = __webpack_require__(/*! express-cache-controller */ "express-cache-controller");
+
+var _expressCacheController2 = _interopRequireDefault(_expressCacheController);
+
 var _client = __webpack_require__(/*! ../webpack/client */ "./webpack/client.js");
 
 var _client2 = _interopRequireDefault(_client);
@@ -9242,7 +9246,7 @@ var _clientConfig$output = _client2.default.output,
 
 
 var renderFullPage = function renderFullPage(helmet, state) {
-  return '\n    <!doctype html>\n    <html ' + helmet.htmlAttributes.toString() + '>\n      <head>\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n        ' + helmet.link.toString() + '\n      </head>\n      <body ' + helmet.bodyAttributes.toString() + '>\n        <div id="root"></div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/recipes/ServerRendering.html#security-considerations\n          window.__STATE__ = ' + JSON.stringify(state).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="' + publicPath + 'index.js"></script>\n      </body>\n    </html>\n  ';
+  return '\n    <!doctype html>\n    <html ' + helmet.htmlAttributes.toString() + '>\n      <head>\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n        ' + helmet.link.toString() + '\n      </head>\n      <body ' + helmet.bodyAttributes.toString() + '>\n        <div id="root"></div>\n        <script>\n          // http://redux.js.org/recipes/ServerRendering.html#security-considerations\n          window.__STATE__ = ' + JSON.stringify(state).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="' + publicPath + 'index.js"></script>\n      </body>\n    </html>\n  ';
 };
 
 var handleRender = function handleRender(request, response) {
@@ -9254,10 +9258,13 @@ var handleRender = function handleRender(request, response) {
 };
 
 var app = (0, _express2.default)();
-var port = 3001;
+app.use((0, _expressCacheController2.default)({
+  public: true,
+  maxAge: 3600 // 1h
+}));
 app.use(publicPath, _express2.default.static(path));
 app.use(handleRender);
-app.listen(port);
+app.listen(3001);
 
 /***/ }),
 
@@ -9579,6 +9586,17 @@ module.exports = require("classnames");
 /***/ (function(module, exports) {
 
 module.exports = require("express");
+
+/***/ }),
+
+/***/ "express-cache-controller":
+/*!*******************************************!*\
+  !*** external "express-cache-controller" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("express-cache-controller");
 
 /***/ }),
 

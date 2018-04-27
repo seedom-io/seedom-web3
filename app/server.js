@@ -1,6 +1,7 @@
 import express from 'express';
 import { Helmet } from 'react-helmet';
 import { renderToString } from 'react-dom/server';
+import cacheControl from 'express-cache-controller';
 import clientConfig from '../webpack/client';
 import render from './render';
 
@@ -36,7 +37,10 @@ const handleRender = (request, response) => {
 };
 
 const app = express();
-const port = 3001;
+app.use(cacheControl({
+  public: true,
+  maxAge: 3600 // 1h
+}));
 app.use(publicPath, express.static(path));
 app.use(handleRender);
-app.listen(port);
+app.listen(3001);
