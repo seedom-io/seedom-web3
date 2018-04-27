@@ -1,13 +1,13 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
-import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+import { ConnectedRouter, StaticRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { reducer as toastrReducer } from 'react-redux-toastr';
 import ReduxToastr from 'react-redux-toastr'
-import createHistory from 'history/createBrowserHistory';
+import createBrowserHistory from 'history/createBrowserHistory';
+import createMemoryHistory from 'history/createMemoryHistory';
 import reduceReducers from './utils/reduceReducers';
 import pollingReducer from './reducers/polling';
 import fundraiserReducer from './reducers/fundraiser';
@@ -22,18 +22,17 @@ import './sass/bulma.scss';
 
 import Head from './components/head';
 import NavBar from './components/navbar';
+import Footer from './components/footer';
+
 import Hype from './components/hype';
 import Participate from './components/participate';
 import Vote from './components/vote';
 import History from './components/history';
 import Help from './components/help';
 import About from './components/about';
-import Footer from './components/footer';
 
-const history = createHistory();
-
-const store = createStore(
-  combineReducers({
+const reducers = () => {
+  return combineReducers({
     ethereum: reduceReducers(
       ethereumReducer,
       fundraiserReducer,
@@ -42,55 +41,83 @@ const store = createStore(
     ),
     toastr: toastrReducer,
     router: routerReducer
-  }),
-  composeWithDevTools(applyMiddleware(
-    routerMiddleware(history),
+  });
+};
+
+const middlewares = (history) => {
+  const values = [
     ethereumMiddleware,
     fundraiserMiddleware,
     pollingMiddleware,
     causeMiddleware
-  ))
-);
+  ];
 
-const ConnectedSwitch = connect(state => ({
-  location: state.location
-}))(Switch);
+  if (history) {
+    values.push(routerMiddleware(history));
+  }
 
-// <Route exact path="/"" component={Participate} />
-const AppContainer = () => (
-  <ConnectedSwitch>
+  return composeWithDevTools(applyMiddleware(...values));
+};
+
+const Routes = () => (
+  <div>
     <Route exact path="/" component={Hype} />
     <Route path="/participate" component={Participate} />
     <Route path="/vote" component={Vote} />
     <Route path="/history" component={History} />
     <Route path="/help" component={Help} />
     <Route path="/about" component={About} />
-  </ConnectedSwitch>
+  </div>
 );
 
-const App = connect(state => ({
-  location: state.router.location,
-}))(AppContainer);
+const Body = () => (
+  <div>
+    <ReduxToastr
+      timeOut={4000}
+      newestOnTop={false}
+      preventDuplicates
+      position="top-center"
+      transitionIn="fadeIn"
+      transitionOut="fadeOut"
+      progressBar
+    />
+    <Head />
+    <NavBar />
+    <Routes />
+    <Footer />
+  </div>
+);
 
-render(
+const App = (store, history) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
-        <ReduxToastr
-          timeOut={4000}
-          newestOnTop={false}
-          preventDuplicates
-          position="top-center"
-          transitionIn="fadeIn"
-          transitionOut="fadeOut"
-          progressBar
-        />
-        <Head />
-        <NavBar />
-        <App />
-        <Footer />
-      </div>
+      <Body />
     </ConnectedRouter>
-  </Provider>,
-  document.getElementById('root'),
+  </Provider>
 );
+
+const render = (request, state) => {
+  const history = request
+    ? createMemoryHistory({ initialEntries: [request.path] })
+    : createBrowserHistory();
+
+  const store = state ?
+    createStore(
+      reducers(),
+      state,
+      middlewares(history)
+    ) :
+    createStore(
+      reducers(),
+      middlewares()
+    );
+
+  const component = App(store, history);
+
+  return {
+    component,
+    store
+  };
+};
+
+export default render;

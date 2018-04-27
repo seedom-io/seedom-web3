@@ -17,13 +17,20 @@ class About extends Component {
     return (
       <Collapse collapsed={!isPlaying} title="about cause">
         <div className="centered">
-          <iframe
-            id="video"
-            title="video"
-            src={`//www.youtube.com/embed/i8kjxGxGSkA?rel=0${isPlaying ? '&autoplay=1' : ''}`}
-            frameBorder="0"
-            allowFullScreen
-          />
+          <div className="field">
+            <div className="control">
+              <a className="button is-primary" href="https://giveth.io" target="_blank">LEARN MORE AT GIVETH.IO</a>
+            </div>
+          </div>
+          <div className="video">
+            <iframe
+              id="video"
+              title="video"
+              src={`//www.youtube.com/embed/i8kjxGxGSkA?rel=0${isPlaying ? '&autoplay=1' : ''}`}
+              frameBorder="0"
+              allowFullScreen
+            />
+          </div>
         </div>
       </Collapse>
     );

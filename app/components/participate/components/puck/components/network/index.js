@@ -11,7 +11,7 @@ class Network extends Content {
   };
 
   openMetamask = () => {
-    window.open(METAMASK_URL, '_blank');
+    window && window.open(METAMASK_URL, '_blank');
   }
 
   render() {
