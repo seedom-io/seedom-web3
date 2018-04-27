@@ -85,17 +85,30 @@ const Body = () => (
       transitionOut="fadeOut"
       progressBar
     />
-    <Head />
     <NavBar />
     <Routes />
     <Footer />
   </div>
 );
 
-const App = (store, history) => (
+const Client = (store, history) => (
+  <Provider store={store} suppressHydrationWarning>
+    <ConnectedRouter history={history}>
+      <div>
+        <Head />
+        <Body />
+      </div>
+    </ConnectedRouter>
+  </Provider>
+);
+
+const Server = (store, history) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Body />
+      <div>
+        <Head />
+        <Route exact path="/" component={Hype} />
+      </div>
     </ConnectedRouter>
   </Provider>
 );
@@ -116,7 +129,7 @@ const render = (request, state) => {
       middlewares()
     );
 
-  const component = App(store, history);
+  const component = state ? Client(store, history) : Server(store, history);
 
   return {
     component,

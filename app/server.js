@@ -6,7 +6,7 @@ import render from './render';
 
 const { publicPath, path } = clientConfig.output;
 
-const renderFullPage = (html, helmet, state, path) => {
+const renderFullPage = (helmet, state) => {
   return `
     <!doctype html>
     <html ${helmet.htmlAttributes.toString()}>
@@ -16,13 +16,12 @@ const renderFullPage = (html, helmet, state, path) => {
         ${helmet.link.toString()}
       </head>
       <body ${helmet.bodyAttributes.toString()}>
-        <div id="root">${html}</div>
+        <div id="root"></div>
         <script>
-          // WARNING: See the following for security issues around embedding JSON in HTML:
           // http://redux.js.org/recipes/ServerRendering.html#security-considerations
           window.__STATE__ = ${JSON.stringify(state).replace(/</g, '\\u003c')}
         </script>
-        <script src="${path}index.js"></script>
+        <script src="${publicPath}index.js"></script>
       </body>
     </html>
   `;
@@ -30,10 +29,10 @@ const renderFullPage = (html, helmet, state, path) => {
 
 const handleRender = (request, response) => {
   const rendered = render(request, null);
-  const html = renderToString(rendered.component);
+  renderToString(rendered.component);
   const helmet = Helmet.renderStatic();
   const state = rendered.store.getState();
-  response.send(renderFullPage(html, helmet, state, publicPath));
+  response.send(renderFullPage(helmet, state));
 };
 
 const app = express();

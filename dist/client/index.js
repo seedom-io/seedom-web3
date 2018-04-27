@@ -550,6 +550,146 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./app/components/contact/index.js":
+/*!*****************************************!*\
+  !*** ./app/components/contact/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _sections = __webpack_require__(/*! ../sections */ "./app/components/sections/index.js");
+
+var _sections2 = _interopRequireDefault(_sections);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/contact/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Contact = function (_Sections) {
+  _inherits(Contact, _Sections);
+
+  function Contact() {
+    _classCallCheck(this, Contact);
+
+    return _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).apply(this, arguments));
+  }
+
+  _createClass(Contact, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'container seedom-contact' },
+        _react2.default.createElement(
+          'div',
+          { className: 'columns' },
+          _react2.default.createElement(
+            'div',
+            { className: 'column is-offset-2 has-text-white' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'title has-text-white' },
+              'Are you leading a cause that needs funding?'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Want to learn more about accepting donations in cryptocurrencies?'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Then you are at the right place!'
+            ),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'p',
+              null,
+              'For press and media inquires, email us directly at ',
+              _react2.default.createElement(
+                'a',
+                { href: 'mailto:team@seedom.io' },
+                'team@seedom.io'
+              ),
+              '.'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'column' },
+            _react2.default.createElement('iframe', {
+              src: 'https://landing.mailerlite.com/webforms/landing/t6i1i0',
+              style: { border: 'none', width: '350px', height: '472px' }
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Contact;
+}(_sections2.default);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Contact);
+
+/***/ }),
+
+/***/ "./app/components/contact/index.scss":
+/*!*******************************************!*\
+  !*** ./app/components/contact/index.scss ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./app/components/contact/index.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./app/components/field/index.js":
 /*!***************************************!*\
   !*** ./app/components/field/index.js ***!
@@ -1455,6 +1595,11 @@ var NavBar = function (_React$Component) {
                 _reactRouterDom.NavLink,
                 { className: 'navbar-item', activeClassName: 'is-active', to: '/about', onClick: this.handleNavLink, exact: true },
                 'ABOUT'
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { className: 'navbar-item', activeClassName: 'is-active', to: '/contact', onClick: this.handleNavLink, exact: true },
+                'CONTACT'
               )
             ),
             _react2.default.createElement(
@@ -6422,6 +6567,253 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./app/components/press-release/index.js":
+/*!***********************************************!*\
+  !*** ./app/components/press-release/index.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _sections = __webpack_require__(/*! ../sections */ "./app/components/sections/index.js");
+
+var _sections2 = _interopRequireDefault(_sections);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/press-release/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PressRelease = function (_Sections) {
+  _inherits(PressRelease, _Sections);
+
+  function PressRelease() {
+    _classCallCheck(this, PressRelease);
+
+    return _possibleConstructorReturn(this, (PressRelease.__proto__ || Object.getPrototypeOf(PressRelease)).apply(this, arguments));
+  }
+
+  _createClass(PressRelease, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'container press-release has-text-white' },
+        _react2.default.createElement(
+          'p',
+          { className: 'has-text-right' },
+          'FOR IMMEDIATE RELEASE: (April 27th, 2018)'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Kyle Graden, Seedom, team@seedom.io'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Kris Decoodt, Giveth, kris@giveth.io'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          { className: 'has-text-centered' },
+          'Seedom Announces Giveth as Beta Launch Partner For Fundraise DApp'
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'has-text-centered' },
+          _react2.default.createElement(
+            'i',
+            null,
+            'Raising Awareness & Ether for Decentralized Altruistic Communities Together'
+          )
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            'Earth:'
+          ),
+          ' Seedom is launching an official beta test, a first of its kind, fundraising Ethereum decentralized application (DApp) raising awareness and ether for altruistic causes while rewarding a single participant for their contribution and support. ',
+          _react2.default.createElement(
+            'a',
+            { target: '_blank', rel: 'noopener noreferrer', href: 'https://giveth.io/' },
+            'Giveth'
+          ),
+          ' has been selected to be the first cause to benefit from the Seedom DApp.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Giveth was chosen because its platform is a r\u039Evolution in the world of charitable donation, building and empowering communities and enabling new ways for people to make a difference. Giveth meets all Seedom requirements, including:'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'ul',
+          null,
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              'strong',
+              null,
+              'Decentralizing'
+            ),
+            ' - believes in the decentralization of power in all forms'
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              'strong',
+              null,
+              'Legitimate'
+            ),
+            ' - has a capable team with a clear and effective plan of action'
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              'strong',
+              null,
+              'Active'
+            ),
+            ' - is actively working on solving an urgent need'
+          )
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'The fundraising round will run from May 1st to May 14th of this year. During this beta test, anyone can visit ',
+          _react2.default.createElement(
+            'a',
+            { href: 'http://seedom.io' },
+            'www.seedom.io'
+          ),
+          ' and contribute ether to be entered to win 35% of the total amount raised for Giveth.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'i',
+            null,
+            '"We are honored to be picked by Seedom for their first test run of their awesome DApp. We are always looking to support projects focused on using #blockchain4good, it\u2019s sooooo cool to have a project support us!!! Seedom is experimenting with a very cool method to raise funds for charity, aligning incentives between all the participants in a fun way! Our social coding team dove into some of the code and it looks really nice. It has been a pleasure to work with the Seedom team!"'
+          ),
+          ' - Griff Green, co-founder Giveth'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'This marks the start of a new era of incentivized routine giving on the blockchain and the Ethereum network.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            'About Giveth:'
+          ),
+          ' Giveth is re-engineering charitable giving, by creating an entirely free, open-source platform, built on the Ethereum Blockchain. Our system cuts out bureaucracy and enables nonprofits to create a high level of transparency and accountability towards Givers. Through the Giveth DApp (Donation Application) you will be able to see how the project is laid out and how much money is required for each part. By reducing the costs and decentralizing the giving process we are putting the power back into the hands of the people.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            'About Seedom:'
+          ),
+          ' Seedom takes the efficiency, security, and transparency of the traditional single-room raffle and re-invents it with trustlessness and crowd-sourced selection into an entirely new type of fundraiser that scales to the entire world.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Visit ',
+          _react2.default.createElement(
+            'a',
+            { href: 'http://seedom.io/' },
+            'www.seedom.io'
+          ),
+          ' to participate and sign up for email reminders.'
+        )
+      );
+    }
+  }]);
+
+  return PressRelease;
+}(_sections2.default);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(PressRelease);
+
+/***/ }),
+
+/***/ "./app/components/press-release/index.scss":
+/*!*************************************************!*\
+  !*** ./app/components/press-release/index.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./app/components/press-release/index.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./app/components/sections/index.js":
 /*!******************************************!*\
   !*** ./app/components/sections/index.js ***!
@@ -6483,6 +6875,7 @@ var _initialiseProps = function _initialiseProps() {
 
   this.handleHash = function (props) {
     var hash = props.router.location.hash;
+
     if (hash !== '') {
       _this2.state.open = [hash.substring(1)];
     }
@@ -9327,6 +9720,14 @@ var _about = __webpack_require__(/*! ./components/about */ "./app/components/abo
 
 var _about2 = _interopRequireDefault(_about);
 
+var _contact = __webpack_require__(/*! ./components/contact */ "./app/components/contact/index.js");
+
+var _contact2 = _interopRequireDefault(_contact);
+
+var _pressRelease = __webpack_require__(/*! ./components/press-release */ "./app/components/press-release/index.js");
+
+var _pressRelease2 = _interopRequireDefault(_pressRelease);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var reducers = function reducers() {
@@ -9356,7 +9757,9 @@ var Routes = function Routes() {
     _react2.default.createElement(_reactRouterDom.Route, { path: '/vote', component: _vote2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { path: '/history', component: _history2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { path: '/help', component: _help2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { path: '/about', component: _about2.default })
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/about', component: _about2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/contact', component: _contact2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/announce-beta-giveth', component: _pressRelease2.default })
   );
 };
 
@@ -9373,21 +9776,42 @@ var Body = function Body() {
       transitionOut: 'fadeOut',
       progressBar: true
     }),
-    _react2.default.createElement(_head2.default, null),
     _react2.default.createElement(_navbar2.default, null),
     _react2.default.createElement(Routes, null),
     _react2.default.createElement(_footer2.default, null)
   );
 };
 
-var App = function App(store, history) {
+var Client = function Client(store, history) {
+  return _react2.default.createElement(
+    _reactRedux.Provider,
+    { store: store, suppressHydrationWarning: true },
+    _react2.default.createElement(
+      _reactRouterRedux.ConnectedRouter,
+      { history: history },
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_head2.default, null),
+        _react2.default.createElement(Body, null)
+      )
+    )
+  );
+};
+
+var Server = function Server(store, history) {
   return _react2.default.createElement(
     _reactRedux.Provider,
     { store: store },
     _react2.default.createElement(
       _reactRouterRedux.ConnectedRouter,
       { history: history },
-      _react2.default.createElement(Body, null)
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_head2.default, null),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _hype2.default })
+      )
     )
   );
 };
@@ -9397,7 +9821,7 @@ var render = function render(request, state) {
 
   var store = state ? (0, _redux.createStore)(reducers(), state, middlewares(history)) : (0, _redux.createStore)(reducers(), middlewares());
 
-  var component = App(store, history);
+  var component = state ? Client(store, history) : Server(store, history);
 
   return {
     component: component,
@@ -25623,6 +26047,25 @@ exports.push([module.i, "@keyframes ring-in {\n  0% {\n    transform: scale(0); 
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./app/components/contact/index.scss":
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./app/components/contact/index.scss ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".seedom-contact {\n  padding: 3rem; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./app/components/field/index.scss":
 /*!************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./app/components/field/index.scss ***!
@@ -26040,6 +26483,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "@keyframes ring-in {\n  0% {\n    transform: scale(0); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes fade-in {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes fade-out {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@keyframes ghost {\n  0% {\n    opacity: 1; }\n  50% {\n    opacity: 0.6; }\n  100% {\n    opacity: 1; } }\n\n@keyframes zoom-in {\n  0% {\n    transform: scale(0); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes pulse {\n  0% {\n    transform: scale(1); }\n  50% {\n    transform: scale(0.96); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes win {\n  0% {\n    transform: scale(0);\n    opacity: 1; }\n  100% {\n    transform: scale(1);\n    opacity: 0; } }\n\n@keyframes wow {\n  0% {\n    opacity: 0; }\n  50% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n\n.seedom-seed {\n  display: flex;\n  flex-direction: column; }\n  .seedom-seed > .background {\n    display: flex;\n    flex-direction: column;\n    background-image: url(" + escape(__webpack_require__(/*! ../../img/background.jpg */ "./app/img/background.jpg")) + ");\n    background-repeat: no-repeat;\n    background-size: cover;\n    background-attachment: fixed; }\n    .seedom-seed > .background .central {\n      display: flex;\n      flex-direction: column;\n      align-items: center; }\n      .seedom-seed > .background .central .seedom-stats {\n        flex: none; }\n      .seedom-seed > .background .central .seedom-puck {\n        width: 100%;\n        margin-top: 20px;\n        margin-bottom: 20px; }\n      @media screen and (min-width: 769px), print {\n        .seedom-seed > .background .central {\n          flex-direction: column; }\n          .seedom-seed > .background .central .seedom-puck {\n            width: 70%;\n            margin-top: 50px;\n            margin-bottom: 50px; } }\n      @media screen and (min-width: 1024px) {\n        .seedom-seed > .background .central {\n          flex-direction: row; }\n          .seedom-seed > .background .central .seedom-stats {\n            flex: 0.2; }\n          .seedom-seed > .background .central .seedom-puck {\n            flex: 0.6; } }\n      @media screen and (min-width: 1408px) {\n        .seedom-seed > .background .central {\n          flex-direction: row; }\n          .seedom-seed > .background .central .seedom-stats {\n            flex: 0.3; }\n          .seedom-seed > .background .central .seedom-puck {\n            flex: 0.4; } }\n  .seedom-seed .accessory {\n    margin-top: 50px;\n    color: white;\n    text-shadow: black 0px 0 10px;\n    margin-bottom: 50px; }\n    .seedom-seed .accessory strong {\n      color: white; }\n    .seedom-seed .accessory a {\n      font-weight: bold; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./app/components/press-release/index.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./app/components/press-release/index.scss ***!
+  \********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".press-release {\n  padding: 3rem; }\n  .press-release strong {\n    color: white; }\n", ""]);
 
 // exports
 
