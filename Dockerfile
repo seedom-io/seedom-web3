@@ -7,5 +7,5 @@ COPY package.json ./package.json
 
 RUN npm install
 
-EXPOSE 3001
+EXPOSE 3000
 CMD [ "node", "./dist/server/index.js" ]

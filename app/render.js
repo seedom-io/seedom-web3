@@ -115,7 +115,7 @@ const Server = (store, history) => (
 
 const render = (request, state) => {
   const history = request
-    ? createMemoryHistory({ initialEntries: [request.path] })
+    ? createMemoryHistory({ initialEntries: [request.url] })
     : createBrowserHistory();
 
   const store = state ?

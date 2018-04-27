@@ -1,10 +1,9 @@
-const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const client = require('./client');
+const server = require('../server');
 const loader = require('../../../seedom-solidity/chronicle/loader');
 
-module.exports = merge(client, {
+module.exports = merge(server, {
   plugins: [
     new webpack.DefinePlugin({
       ETH_NETWORKS: JSON.stringify(loader.getNetworks()),

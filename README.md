@@ -10,10 +10,8 @@
 - start seedom-badger
 - `npm run dev`
 
-# Prepare Distribution
-- `npm run dist`
+# Prepare Production
+- `npm run prod`
 
-# Start Prod Build
-- prepare distribution
-- `docker build -t seedom-test .`
-- `docker run -p 80:80 seedom-test:latest`
+# Test Out Docker
+- `npm run docker`
