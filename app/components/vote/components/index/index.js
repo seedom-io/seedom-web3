@@ -64,8 +64,8 @@ class Index extends Component {
     });
   };
 
-  getHeatmapColor = () => {
-    return heatmap.color(0);
+  getHeatmapColor = (causeVoteCount, causesVoteCount) => {
+    return heatmap.color(causeVoteCount.div(causesVoteCount));
   };
 
   render() {
@@ -83,13 +83,17 @@ class Index extends Component {
 
     const available = !ended && voteCount.isLessThan(maxVoteCount);
 
+    const heatmapColor = this.getHeatmapColor(cause.voteCount, causesVoteCount);
+
     return (
-      <div className={rowClass(available)} style={{ backgroundColor: this.getHeatmapColor() }}>
+      <div className={rowClass(available)} style={{ backgroundColor: heatmapColor }}>
 
         <div className="bit begin header-normal stretch shadow">{cause.name}</div>
 
         {vote && (
-          <div className="bit">VOTED!</div>
+          <div className="bit header shadow">
+            voted!
+          </div>
         )}
 
         {(!available || !editing) && (

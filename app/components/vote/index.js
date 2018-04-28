@@ -55,6 +55,7 @@ class Vote extends Component {
         <div className="list">
 
           <Caster
+            isLoading={isLoading}
             voteCount={voteCount}
             maxVoteCount={maxVoteCount}
             ended={ended}
@@ -71,6 +72,7 @@ class Vote extends Component {
           {sortedCauses.map((cause) => (
             <Index
               key={cause.index}
+              isLoading={isLoading}
               voteCount={voteCount}
               maxVoteCount={maxVoteCount}
               causesVoteCount={causesVoteCount}

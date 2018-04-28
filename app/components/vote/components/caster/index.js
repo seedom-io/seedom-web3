@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import spinner from '../../../../img/spinner.svg';
 
 const getStatus = ({ voteCount, maxVoteCount, ended }) => {
   if (ended) {
@@ -15,13 +16,18 @@ const getStatus = ({ voteCount, maxVoteCount, ended }) => {
 
 class Caster extends Component {
   static propTypes = {
+    isLoading: PropTypes.bool,
     voteCount: PropTypes.shape().isRequired,
     maxVoteCount: PropTypes.shape().isRequired,
     ended: PropTypes.bool.isRequired
   };
 
+  static defaultProps = {
+    isLoading: false
+  };
+
   render() {
-    const { voteCount, maxVoteCount, ended } = this.props;
+    const { voteCount, maxVoteCount, ended, isLoading } = this.props;
     const status = getStatus({ voteCount, maxVoteCount, ended });
 
     return (
@@ -54,6 +60,14 @@ class Caster extends Component {
             </div>
           )
         }[status]}
+
+        {isLoading && (
+          <div className="bit">
+            <object data={spinner} type="image/svg+xml">
+              <img src={spinner} alt="loading" />
+            </object>
+          </div>
+        )}
 
         <div className="bit header">
           <span className="header">votes cast</span>
