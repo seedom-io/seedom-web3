@@ -38,11 +38,8 @@ class Collapse extends Component {
     const { title } = this.props;
     const { collapsed } = this.state;
     return (
-      <div
-        className={classnames('seedom-collapse', { collapsed })}
-        onClick={this.toggle}
-      >
-        <div className="header">
+      <div className={classnames('seedom-collapse', { collapsed })}>
+        <div className="header" onClick={this.toggle}>
           <span className="toggle left">
             <i className="fas fa-plus" />
           </span>
@@ -51,7 +48,7 @@ class Collapse extends Component {
             <i className="fas fa-plus" />
           </span>
         </div>
-        { !collapsed && (
+        {!collapsed && (
           <div className="content">
             {this.props.children}
           </div>

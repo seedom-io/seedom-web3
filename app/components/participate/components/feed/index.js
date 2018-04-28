@@ -48,7 +48,7 @@ class Feed extends Component {
 
   openTransaction = (transactionHash) => {
     const { network } = this.props;
-    const etherscanUrl = etherscan.getTransactionUrl(network, transactionHash);
+    const etherscanUrl = etherscan.getTransactionUrl(network.name, transactionHash);
     if (etherscanUrl) {
       window && window.open(etherscanUrl, '_blank');
     }

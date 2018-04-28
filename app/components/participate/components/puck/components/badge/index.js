@@ -110,7 +110,7 @@ class Badge extends Content {
             </div>
             <div className="field">
               <div className="control">
-                <a className="button is-white is-outlined" onClick={onBadgingOver}>skip sharing</a>
+                <a className="button is-white is-outlined" onClick={onBadgingOver}>continue</a>
               </div>
             </div>
           </div>

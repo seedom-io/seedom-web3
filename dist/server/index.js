@@ -428,13 +428,10 @@ var Collapse = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        {
-          className: (0, _classnames2.default)('seedom-collapse', { collapsed: collapsed }),
-          onClick: this.toggle
-        },
+        { className: (0, _classnames2.default)('seedom-collapse', { collapsed: collapsed }) },
         _react2.default.createElement(
           'div',
-          { className: 'header' },
+          { className: 'header', onClick: this.toggle },
           _react2.default.createElement(
             'span',
             { className: 'toggle left' },
@@ -1765,7 +1762,7 @@ var Feed = function (_Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Feed.__proto__ || Object.getPrototypeOf(Feed)).call.apply(_ref, [this].concat(args))), _this), _this.openTransaction = function (transactionHash) {
       var network = _this.props.network;
 
-      var etherscanUrl = etherscan.getTransactionUrl(network, transactionHash);
+      var etherscanUrl = etherscan.getTransactionUrl(network.name, transactionHash);
       if (etherscanUrl) {
         window && window.open(etherscanUrl, '_blank');
       }
@@ -2351,7 +2348,7 @@ var Badge = function (_Content) {
                 _react2.default.createElement(
                   'a',
                   { className: 'button is-white is-outlined', onClick: onBadgingOver },
-                  'skip sharing'
+                  'continue'
                 )
               )
             )
