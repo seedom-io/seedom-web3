@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toastr } from 'react-redux-toastr';
-import Score from '../score';
+import Count from '../count';
 import * as heatmap from '../../../../utils/heatmap';
 import { localeDecimal } from '../../../../utils/numbers';
 import classNames from 'classnames';
@@ -16,11 +16,12 @@ const rowClass = (available) => {
 
 class Index extends Component {
   static propTypes = {
-    caster: PropTypes.shape().isRequired,
+    voteCount: PropTypes.shape().isRequired,
+    maxVoteCount: PropTypes.shape().isRequired,
+    causesVoteCount: PropTypes.shape().isRequired,
     ended: PropTypes.bool.isRequired,
     cause: PropTypes.shape().isRequired,
     vote: PropTypes.shape(),
-    account: PropTypes.string.isRequired,
     isLoading: PropTypes.bool,
     onVoteIndex: PropTypes.func.isRequired
   };
@@ -39,7 +40,7 @@ class Index extends Component {
   }
 
   validateForm = (done) => {
-    const isFormValid = this.score.validate();
+    const isFormValid = this.count.validate();
     this.setState({ isFormValid }, done);
   };
 
@@ -47,7 +48,7 @@ class Index extends Component {
     this.setState({ editing: true });
   };
 
-  handleDone = () => {
+  handleCancel = () => {
     this.setState({ editing: false });
   };
 
@@ -55,85 +56,70 @@ class Index extends Component {
     this.validateForm(() => {
       if (this.state.isFormValid) {
         const { cause, onVoteIndex } = this.props;
-        const score = this.score.value();
-        onVoteIndex({ index: cause.index, score });
+        const count = this.count.value();
+        onVoteIndex({ index: cause.index, count });
       } else {
         toastr.warning('VOTE', 'score update form invalid');
       }
     });
   };
 
-  handleRemove = () => {
-    const { cause, onVoteIndex } = this.props;
-    onVoteIndex({ index: cause.index, score: 0 });
-  };
-
   getHeatmapColor = () => {
-    const { cause, caster } = this.props;
-    const value = cause.averageScore.div(caster.maxScore);
-    return heatmap.color(value);
+    return heatmap.color(0);
   };
 
   render() {
     const {
-      caster,
+      voteCount,
+      maxVoteCount,
+      causesVoteCount,
       ended,
       cause,
       vote,
-      account,
       isLoading
     } = this.props;
 
     const { editing } = this.state;
 
-    const available =
-      !ended && (
-        vote
-        || (cause.caster === account)
-        || !caster.votes.isEqualTo(caster.maxVotes)
-      );
-
-    const voted = vote && vote.isGreaterThan(0);
+    const available = !ended && voteCount.isLessThan(maxVoteCount);
 
     return (
       <div className={rowClass(available)} style={{ backgroundColor: this.getHeatmapColor() }}>
 
-        <div className="area stretch">
+        <div className="bit begin header-normal stretch shadow">{cause.name}</div>
 
-          <div className="bit begin header-normal stretch">{cause.name}</div>
+        {vote && (
+          <div className="bit">VOTED!</div>
+        )}
 
-          <div className="bit header">
-            score
+        {(!available || !editing) && (
+
+          <div className="bit shadow">
+
+            <div className="bit header">
+              votes
+            </div>
+
+            <div className="bit">
+              {cause.voteCount.toString()}
+            </div>
+
           </div>
 
-          <div className="bit">
-            {localeDecimal(cause.averageScore)}
-          </div>
-
-          <div className="bit">|</div>
-
-          <div className="bit header">
-            votes
-          </div>
-
-          <div className="bit">
-            {cause.votes.toString()}
-          </div>
-
-        </div>
+        )}
 
         {available && (
-          <div className="area right">
+          <div className="bit">
 
             {editing && (
-              <div className="tools">
+
+              <div className="bit shadow">
 
                 <div className="bit">
-                  <Score
-                    value={vote}
-                    maxScore={caster.maxScore}
+                  <Count
+                    remainingVoteCount={maxVoteCount.minus(voteCount)}
                     disabled={isLoading}
-                    ref={(component) => { this.score = component; }}
+                    ref={(component) => { this.count = component; }}
                   />
                 </div>
 
@@ -150,46 +136,31 @@ class Index extends Component {
                 <div className="bit">
                   <div className="field">
                     <div className="control">
-                      <a className="button is-white" disabled={isLoading} onClick={this.handleDone}>
-                        done
+                      <a className="button is-white" disabled={isLoading} onClick={this.handleCancel}>
+                        cancel
                       </a>
                     </div>
                   </div>
                 </div>
 
               </div>
+
             )}
 
             {!editing && (
-              <div className="tools">
-
-                <div className="bit">
-                  <div className="field">
-                    <div className="control">
-                      <a className="button is-white" disabled={isLoading} onClick={this.handleEdit}>
-                        vote
-                      </a>
-                    </div>
+              <div className="bit shadow">
+                <div className="field">
+                  <div className="control">
+                    <a className="button is-white" disabled={isLoading} onClick={this.handleEdit}>
+                      vote
+                    </a>
                   </div>
                 </div>
-
-                {voted && (
-                  <div className="bit">
-                    <div className="field">
-                      <div className="control">
-                        <a className="button is-white" disabled={isLoading} onClick={this.handleRemove}>
-                          unvote
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
               </div>
             )}
-
           </div>
         )}
+
       </div>
     );
   }

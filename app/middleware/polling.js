@@ -2,24 +2,28 @@ import * as ethereumActions from '../actions/ethereum';
 import * as pollingParser from '../parsers/polling';
 
 const pollingMiddleware = store => {
-  const handleCaster = (next, action) => {
+  const handleMaxVoteCount = (next, action) => {
     return next({
-      type: 'POLLING_CASTER',
-      caster: pollingParser.parseCaster(action.data)
+      type: 'POLLING_MAX_VOTE_COUNT',
+      maxVoteCount: pollingParser.parseMaxVoteCount(action.data)
     });
   };
 
   const handleCauses = (next, action) => {
+    const { causes, causesVoteCount } = pollingParser.parseCauses(action.data);
     return next({
       type: 'POLLING_CAUSES',
-      causes: pollingParser.parseCauses(action.data)
+      causes,
+      causesVoteCount
     });
   };
 
   const handleVotes = (next, action) => {
+    const { votes, voteCount } = pollingParser.parseVotes(action.data);
     return next({
       type: 'POLLING_VOTES',
-      votes: pollingParser.parseVotes(action.data)
+      votes,
+      voteCount
     });
   };
 
@@ -32,8 +36,8 @@ const pollingMiddleware = store => {
 
     const { method } = action;
     switch (method) {
-      case 'caster':
-        return handleCaster(next, action);
+      case 'maxVoteCount':
+        return handleMaxVoteCount(next, action);
       case 'causes':
         return handleCauses(next, action);
       case 'votes':
@@ -44,7 +48,7 @@ const pollingMiddleware = store => {
   };
 
   const handleEthereumUser = (next, action) => {
-    store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'caster' }));
+    store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'maxVoteCount' }));
     store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'votes' }));
     return next(action);
   };

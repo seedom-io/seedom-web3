@@ -3,66 +3,70 @@ import * as bytes from '../utils/bytes';
 import { zero } from '../utils/numbers';
 import * as messages from '@seedom-io/seedom-crypter/messages';
 
-const parseCaster = caster => {
-  return {
-    maxScore: new BigNumber(caster._maxScore),
-    maxVotes: new BigNumber(caster._maxVotes),
-    votes: new BigNumber(caster._votes)
-  };
+const parseMaxVoteCount = maxVoteCount => {
+  return new BigNumber(maxVoteCount);
 };
 
 const parseCauses = causes => {
+  let causesVoteCount = zero();
   const parsedCauses = [];
   for (let causeIndex = 0; causeIndex < causes._names.length; causeIndex += 1) {
+    const voteCount = new BigNumber(causes._voteCounts[causeIndex]);
     const parsedCause = {
       index: causeIndex,
       name: String(messages.message(causes._names[causeIndex])),
       caster: String(causes._casters[causeIndex]),
-      scores: new BigNumber(causes._scores[causeIndex]),
-      votes: new BigNumber(causes._votes[causeIndex]),
+      voteCount
     };
-    // calculate average score
-    parsedCause.averageScore = parsedCause.votes.isGreaterThan(0)
-      ? parsedCause.scores.div(parsedCause.votes)
-      : zero();
+    causesVoteCount = causesVoteCount.plus(voteCount);
     parsedCauses[causeIndex] = parsedCause;
   }
-
-  return parsedCauses;
+  return {
+    causes: parsedCauses,
+    causesVoteCount
+  };
 };
 
 const parseVotes = votes => {
+  let voteCount = zero();
   const parsedVotes = {};
   for (let voteIndex = 0; voteIndex < votes._causeIndexes.length; voteIndex += 1) {
-    parsedVotes[votes._causeIndexes[voteIndex]] = new BigNumber(votes._scores[voteIndex]);
+    const causeIndex = votes._causeIndexes[voteIndex];
+    const count = votes._counts[voteIndex];
+    voteCount = voteCount.plus(count);
+    if (causeIndex in parsedVotes) {
+      parsedVotes[causeIndex] = parsedVotes[causeIndex].plus(count);
+    } else {
+      parsedVotes[causeIndex] = new BigNumber(count);
+    }
   }
-  return parsedVotes;
-};
-
-const parseCastIndex = castIndex => {
   return {
-    caster: String(castIndex._caster),
-    score: new BigNumber(castIndex._score),
-    votes: new BigNumber(castIndex._votes),
-    causeIndex: new BigNumber(castIndex._causeIndex),
-    causeScores: new BigNumber(castIndex._causeScores),
-    causeVotes: new BigNumber(castIndex._causeVotes)
+    votes: parsedVotes,
+    voteCount
   };
 };
 
 const parseCastName = castName => {
   return {
     caster: String(castName._caster),
-    score: new BigNumber(castName._score),
     causeIndex: new BigNumber(castName._causeIndex),
-    causeName: String(messages.message(castName._causeName))
+    causeName: String(messages.message(castName._causeName)),
+    voteCount: new BigNumber(castName._voteCount)
+  };
+};
+
+const parseCastIndex = castIndex => {
+  return {
+    caster: String(castIndex._caster),
+    causeIndex: new BigNumber(castIndex._causeIndex),
+    voteCount: new BigNumber(castIndex._voteCount)
   };
 };
 
 export {
-  parseCaster,
+  parseMaxVoteCount,
   parseCauses,
   parseVotes,
-  parseCastIndex,
-  parseCastName
+  parseCastName,
+  parseCastIndex
 };

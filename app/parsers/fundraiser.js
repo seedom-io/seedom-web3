@@ -9,9 +9,11 @@ const epochToDate = seconds => {
 const parseDeployment = deployment => {
   return {
     cause: String(deployment._cause),
+    causeWallet: String(deployment._causeWallet),
     causeSplit: new BigNumber(deployment._causeSplit),
     participantSplit: new BigNumber(deployment._participantSplit),
     owner: String(deployment._owner),
+    ownerWallet: String(deployment._ownerWallet),
     ownerSplit: new BigNumber(deployment._ownerSplit),
     ownerSecret: String(deployment._ownerSecret),
     valuePerEntry: new BigNumber(deployment._valuePerEntry),

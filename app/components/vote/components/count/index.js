@@ -5,11 +5,11 @@ import { BigNumber } from 'bignumber.js';
 import { zero } from '../../../../utils/numbers';
 import './index.scss';
 
-class Score extends Component {
+class Count extends Component {
   static propTypes = {
     value: PropTypes.shape(),
     disabled: PropTypes.bool.isRequired,
-    maxScore: PropTypes.shape().isRequired
+    remainingVoteCount: PropTypes.shape().isRequired
   };
 
   static defaultProps = {
@@ -19,7 +19,7 @@ class Score extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value ? props.value : props.maxScore,
+      value: props.value ? props.value : props.remainingVoteCount,
       isValid: true
     };
   }
@@ -31,14 +31,14 @@ class Score extends Component {
   }
 
   focus = () => {
-    this.score.focus();
+    this.count.focus();
   }
 
   validate = () => {
     const { value } = this.state;
     const isValid =
       value.isGreaterThanOrEqualTo(1)
-      && value.isLessThanOrEqualTo(this.props.maxScore);
+      && value.isLessThanOrEqualTo(this.props.remainingVoteCount);
     this.setState({ isValid });
     return isValid;
   };
@@ -60,33 +60,33 @@ class Score extends Component {
   };
 
   render() {
-    const { disabled, maxScore } = this.props;
+    const { disabled, remainingVoteCount } = this.props;
     const { value, isValid } = this.state;
 
     return (
-      <div className="seedom-score">
+      <div className="seedom-count">
 
         <Field
           format="textbox"
           type="number"
           min={new BigNumber(1)}
-          max={maxScore}
+          max={remainingVoteCount}
           value={value.toString()}
-          maxLength={maxScore.toString().length}
+          maxLength={remainingVoteCount.toString().length}
           placeholder=""
           disabled={disabled}
           isValid={isValid}
           onChange={this.handleChange}
-          ref={(component) => { this.score = component; }}
+          ref={(component) => { this.count = component; }}
         />
 
         <div className="divider">/</div>
 
-        <div className="score">{maxScore.toString()}</div>
+        <div className="remainingVoteCount">{remainingVoteCount.toString()}</div>
 
       </div>
     );
   }
 }
 
-export default Score;
+export default Count;

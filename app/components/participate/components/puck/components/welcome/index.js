@@ -28,7 +28,7 @@ class Welcome extends Content {
     return (
       <div className={`seedom-content welcome ${className}`}>
         <div className="seedom-overlay layout">
-          <div className="division text top small-pad">
+          <div className="division text top">
             <div>
               <span>1 entry = {etherPerEntry}</span>
               <span className="ether">
@@ -40,7 +40,7 @@ class Welcome extends Content {
           <div className="division center">
             <CauseLogo deployment={deployment} />
           </div>
-          <div className="division bottom medium-pad">
+          <div className="division bottom">
             <div className="field">
               <div className="control">
                 <Link className="button is-white is-outlined" to="/help">how does this work?</Link>

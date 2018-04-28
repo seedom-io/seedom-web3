@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toastr } from 'react-redux-toastr';
-import { Link } from 'react-router-dom';
-import Score from '../score';
+import Count from '../count';
 import Field from '../../../field';
 
 const MAX_NAME_LENGTH = 32;
 
 class Name extends Component {
   static propTypes = {
-    caster: PropTypes.shape().isRequired,
+    voteCount: PropTypes.shape().isRequired,
+    maxVoteCount: PropTypes.shape().isRequired,
     ended: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool,
     onVoteName: PropTypes.func.isRequired
@@ -31,10 +31,10 @@ class Name extends Component {
   validateForm = (done) => {
     const { name } = this.state;
     const isNameValid = (name.length > 1) && (name.length <= MAX_NAME_LENGTH);
-    const isScoreValid = this.score.validate();
+    const isCountValid = this.count.validate();
     this.setState({
       isNameValid,
-      isFormValid: isNameValid && isScoreValid
+      isFormValid: isNameValid && isCountValid
     }, done);
   };
 
@@ -46,8 +46,8 @@ class Name extends Component {
     this.validateForm(() => {
       const { isFormValid, name } = this.state;
       if (isFormValid) {
-        const score = this.score.value();
-        this.props.onVoteName({ name, score });
+        const count = this.count.value();
+        this.props.onVoteName({ name, count });
       } else {
         toastr.warning('VOTE', 'new cause form invalid');
       }
@@ -55,60 +55,60 @@ class Name extends Component {
   };
 
   render() {
-    const { caster, ended, isLoading } = this.props;
+    const { voteCount, maxVoteCount, ended, isLoading } = this.props;
     const { name, isNameValid } = this.state;
 
-    if (ended || caster.votes.isEqualTo(caster.maxVotes)) {
+    if (ended || voteCount.isEqualTo(maxVoteCount)) {
       return null;
     }
 
     return (
       <div className="row name">
-        <div className="area stretch">
 
-          <div className="bit begin stretch">
-            <Field
-              format="textbox"
-              type="text"
-              placeholder="enter new cause or vote below"
-              value={name.toString()}
-              maxLength={10}
-              disabled={isLoading}
-              isValid={isNameValid}
-              onChange={this.handleNameChange}
-              ref={(component) => { this.name = component; }}
-            />
-          </div>
+        <div className="bit begin stretch">
+          <Field
+            format="textbox"
+            type="text"
+            placeholder="enter new cause or vote below"
+            value={name.toString()}
+            maxLength={10}
+            disabled={isLoading}
+            isValid={isNameValid}
+            onChange={this.handleNameChange}
+            ref={(component) => { this.name = component; }}
+          />
+        </div>
 
-          {name.length > 0 && (
-            <div className="tools">
+        {name.length > 0 && (
 
-              <div className="bit header">
-                score
-              </div>
+          <div className="bit">
 
-              <div className="bit">
-                <Score
-                  maxScore={caster.maxScore}
-                  disabled={isLoading}
-                  ref={(component) => { this.score = component; }}
-                />
-              </div>
+            <div className="bit header">
+              votes
+            </div>
 
-              <div className="bit">
-                <div className="field">
-                  <div className="control">
-                    <a className="button is-white" disabled={isLoading} onClick={this.handleSubmit}>
-                      <i className="fas fa-plus-circle"></i>
-                    </a>
-                  </div>
+            <div className="bit">
+              <Count
+                remainingVoteCount={maxVoteCount.minus(voteCount)}
+                disabled={isLoading}
+                ref={(component) => { this.count = component; }}
+              />
+            </div>
+
+            <div className="bit">
+              <div className="field">
+                <div className="control">
+                  <a className="button is-white" disabled={isLoading} onClick={this.handleSubmit}>
+                    <i className="fas fa-plus-circle"></i>
+                  </a>
                 </div>
               </div>
-
             </div>
-          )}
 
-        </div>
+          </div>
+
+        )}
+
       </div>
     );
   }

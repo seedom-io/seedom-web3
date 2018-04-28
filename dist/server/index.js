@@ -1,1 +1,9797 @@
-module.exports=function(e){var t={};function n(a){if(t[a])return t[a].exports;var i=t[a]={i:a,l:!1,exports:{}};return e[a].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=e,n.c=t,n.d=function(e,t,a){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:a})},n.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/static/",n.w={},n(n.s=122)}([function(e,t){e.exports=require("react")},function(e,t){e.exports=require("prop-types")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=(s(i),s(n(1)));function s(e){return e&&e.__esModule?e:{default:e}}n(81);var o=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={className:null},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentDidMount",value:function(){this.props.isShown&&this.show()}},{key:"componentWillReceiveProps",value:function(e){this.props.isShown!==e.isShown&&(e.isShown?this.show():this.hide())}},{key:"show",value:function(){var e=this;setTimeout(function(){e.setState({className:"show"})},0)}},{key:"hide",value:function(){var e=this;setTimeout(function(){e.setState({className:null})},0)}}]),t}();o.propTypes={isShown:r.default.bool.isRequired},t.default=o},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=o(i),s=o(n(1));function o(e){return e&&e.__esModule?e:{default:e}}n(80);var u=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props.type;return r.default.createElement("div",{className:"seedom-overlay"},r.default.createElement("svg",{className:"indicator "+(e?"show":null),xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 52 52"},r.default.createElement("circle",{className:"circle "+e,cx:"26",cy:"26",r:"25"})))}}]),t}();u.propTypes={type:s.default.string},u.defaultProps={type:null},t.default=u},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=u(i),s=u(n(1)),o=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(22));function u(e){return e&&e.__esModule?e:{default:e}}n(79);var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.deployment,n=e.size;if(!t)return null;var a=o.getImageUrl(t.cause);return r.default.createElement("div",{className:"cause-logo "+n,style:{backgroundImage:"url("+a+")"}})}}]),t}();l.propTypes={deployment:s.default.shape(),size:s.default.string},l.defaultProps={deployment:null,size:null},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.zero=t.localeDecimal=t.localeNumber=t.getEtherFromWei=void 0;var a=n(9),i=new a.BigNumber(1e18);t.getEtherFromWei=function(e){return e.dividedBy(i)},t.localeNumber=function(e){return e.toFormat(0)},t.localeDecimal=function(e){return e.toFormat(3)},t.zero=function(){return new a.BigNumber(0)}},function(e,t){e.exports=require("react-router-dom")},function(e,t){e.exports=require("react-redux")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a="0x0000000000000000000000000000000000000000000000000000000000000000",i="0x0000000000000000000000000000000000000000";t.zero32=a,t.zero20=i,t.isZero32=function(e){return e===a},t.isZero20=function(e){return e===i},t.shorten=function(e){return e.substring(0,10)+"..."+e.substring(e.length-4)}},function(e,t){e.exports=require("bignumber.js")},function(e,t){e.exports=require("react-redux-toastr")},function(e,t){e.exports=require("classnames")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0);var r=function(e){function t(e){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[];!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var a=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return s.call(a),a.state={open:[].concat(function(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}(n))},a.handleHash(e),a}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentWillReceiveProps",value:function(e){this.handleHash(e)}}]),t}(),s=function(){var e=this;this.handleHash=function(t){var n=t.router.location.hash;""!==n&&(e.state.open=[n.substring(1)])}};t.default=r},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=u(i),s=u(n(1)),o=u(n(11));function u(e){return e&&e.__esModule?e:{default:e}}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(74);var p=function(e){return(0,o.default)({input:!0,"is-primary":e,"is-danger":!e})},c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,r=Array(i),s=0;s<i;s++)r[s]=arguments[s];return n=a=l(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(r))),a.focus=function(){a.input.focus()},a.handleChange=function(e){a.props.onChange(e.target.value)},l(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props,n=t.format,a=t.type,i=t.placeholder,s=t.disabled,u=t.value,l=t.maxLength,c=t.children,d=t.isValid,y=t.min,m=t.max;return r.default.createElement("div",{className:"seedom-field field"},r.default.createElement("div",{className:"control "+n},{textbox:r.default.createElement("input",{className:p(d),type:a,min:y,max:m,placeholder:i.toUpperCase(),disabled:s,value:u,onChange:this.handleChange,ref:function(t){e.input=t}}),textblock:r.default.createElement("textarea",{rows:"2",className:function(e){return(0,o.default)({textarea:!0,"is-primary":e,"is-danger":!e})}(d),type:a,placeholder:i.toUpperCase(),disabled:s,value:u,maxLength:l,onChange:this.handleChange,ref:function(t){e.input=t}}),addonbox:r.default.createElement("div",null,r.default.createElement("input",{className:p(d),type:a,min:y,max:m,placeholder:i.toUpperCase(),disabled:s,onChange:this.handleChange,ref:function(t){e.input=t}}),r.default.createElement("div",{className:"addon"},c))}[n]))}}]),t}();c.propTypes={format:s.default.string.isRequired,type:s.default.string.isRequired,value:s.default.string,maxLength:s.default.number,min:s.default.shape(),max:s.default.shape(),placeholder:s.default.string.isRequired,disabled:s.default.bool.isRequired,isValid:s.default.bool,onChange:s.default.func.isRequired,children:s.default.element},c.defaultProps={value:"",maxLength:0,min:null,max:null,isValid:!0,children:null},t.default=c},function(e,t){e.exports=require("@seedom-io/seedom-crypter/messages")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});t.call=function(e){return{type:"ETHEREUM_CALL",contractName:e.contractName,contractAddress:e.contractAddress,method:e.method,args:e.args}},t.allCall=function(e){return{type:"ETHEREUM_ALLCALL",contractName:e.contractName,method:e.method,args:e.args}},t.send=function(e){return{type:"ETHEREUM_SEND",contractName:e.contractName,contractAddress:e.contractAddress,method:e.method,args:e.args,value:e.value}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=u(i),s=u(n(1)),o=u(n(11));function u(e){return e&&e.__esModule?e:{default:e}}n(45);var l=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.toggle=function(){n.setState(function(e){return{collapsed:!e.collapsed}})},n.state={collapsed:e.collapsed},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentWillReceiveProps",value:function(e){this.state.collapsed!==e.collapsed&&this.setState({collapsed:e.collapsed})}},{key:"render",value:function(){var e=this.props.title,t=this.state.collapsed;return r.default.createElement("div",{className:(0,o.default)("seedom-collapse",{collapsed:t}),onClick:this.toggle},r.default.createElement("div",{className:"header"},r.default.createElement("span",{className:"toggle left"},r.default.createElement("i",{className:"fas fa-plus"})),r.default.createElement("span",{className:"text"},e),r.default.createElement("span",{className:"toggle right"},r.default.createElement("i",{className:"fas fa-plus"}))),!t&&r.default.createElement("div",{className:"content"},this.props.children))}}]),t}();l.propTypes={title:s.default.string.isRequired,collapsed:s.default.bool,children:s.default.element},l.defaultProps={collapsed:!0,children:null},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){return"mainnet"===e?"www":e};t.getAddressUrl=function(e,t){return"localhost"===e?"":"https://"+a(e)+".etherscan.io/address/"+t},t.getTransactionUrl=function(e,t){return"localhost"===e?"":"https://"+a(e)+".etherscan.io/tx/"+t}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=p(i),s=p(n(1)),o=p(n(13)),u=n(9),l=n(5);function p(e){return e&&e.__esModule?e:{default:e}}n(37);var c=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.focus=function(){n.score.focus()},n.validate=function(){var e=n.state.value,t=e.isGreaterThanOrEqualTo(1)&&e.isLessThanOrEqualTo(n.props.maxScore);return n.setState({isValid:t}),t},n.value=function(){return n.state.value},n.handleChange=function(e){var t=void 0;try{t=new u.BigNumber(e)}catch(e){t=(0,l.zero)()}n.setState({value:t})},n.state={value:e.value?e.value:e.maxScore,isValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentWillReceiveProps",value:function(e){e.value&&this.props.value&&!this.props.value.isEqualTo(e.value)&&this.setState({value:e.value})}},{key:"render",value:function(){var e=this,t=this.props,n=t.disabled,a=t.maxScore,i=this.state,s=i.value,l=i.isValid;return r.default.createElement("div",{className:"seedom-score"},r.default.createElement(o.default,{format:"textbox",type:"number",min:new u.BigNumber(1),max:a,value:s.toString(),maxLength:a.toString().length,placeholder:"",disabled:n,isValid:l,onChange:this.handleChange,ref:function(t){e.score=t}}),r.default.createElement("div",{className:"divider"},"/"),r.default.createElement("div",{className:"score"},a.toString()))}}]),t}();c.propTypes={value:s.default.shape(),disabled:s.default.bool.isRequired,maxScore:s.default.shape().isRequired},c.defaultProps={value:null},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=p(i),s=p(n(1)),o=p(n(13)),u=n(5),l=n(9);function p(e){return e&&e.__esModule?e:{default:e}}var c=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.focus=function(){n.field.focus()},n.validate=function(){var e=n.state.value,t=e.isGreaterThanOrEqualTo(1)&&0===e.decimalPlaces();return n.setState({isValid:t}),t},n.value=function(){return n.state.value},n.handleChange=function(e){var t=void 0;try{t=new l.BigNumber(e)}catch(e){t=(0,u.zero)()}n.setState({value:t})},n.state={value:(0,u.zero)(),isValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props,n=t.deployment,a=t.disabled,i=this.state,s=i.value,p=i.isValid,c=void 0;if(n){var d=s.times(n.valuePerEntry);c=(0,u.localeDecimal)((0,u.getEtherFromWei)(d))}return r.default.createElement(o.default,{format:"addonbox",type:"number",min:new l.BigNumber(1),placeholder:"entries",value:s.toString(),disabled:a,isValid:p,onChange:this.handleChange,ref:function(t){e.field=t}},r.default.createElement("span",null,""+c,r.default.createElement("span",{className:"ether is-dark"},r.default.createElement("i",{className:"fas fa-bars"}))))}}]),t}();c.propTypes={deployment:s.default.shape(),disabled:s.default.bool},c.defaultProps={deployment:null,disabled:!1},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=s(n(0)),r=s(n(1));function s(e){return e&&e.__esModule?e:{default:e}}n(89);var o=function(e,t){var n=2*Math.PI*e;return{strokeDasharray:n+"px "+n+"px",strokeDashoffset:(100-t)/100*n+"px"}},u=function(e,t){return"\n      M 500,500\n      m 0,-"+e+"\n      a "+e+","+e+" 0 1 "+(t?0:1)+" 0,"+2*e+"\n      a "+e+","+e+" 0 1 "+(t?0:1)+" 0,-"+2*e+"\n  "},l=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={now:new Date},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.default.Component),a(t,[{key:"componentDidMount",value:function(){var e=this;this.interval=setInterval(function(){e.setState({now:new Date})},1e3)}},{key:"render",value:function(){var e=this.props,t=e.starter,n=e.deployment,a=e.isLoading,r=this.state.now,s=void 0,l=void 0;n&&(s=function(e,t){var n=e.deployTime,a=e.endTime-n,i=t-n;return i>a?100:i/a*100}(n,r),l=function(e,t,n){var a=t.endTime-n;if(a<=0)return"FINISHED";a/=1e3;var i=Math.floor(a/86400);a-=86400*i;var r=Math.floor(a/3600)%24;a-=3600*r;var s=Math.floor(a/60)%60;a-=60*s;var o=Math.floor(a%60);return e.toUpperCase()+" IN - "+i+"D "+r+"H "+s+"M "+o+"S"}(t,n,r));var p,c=o(435,s),d=o(435,100),y=o(485,20),m=(p=s)>30&&p<70,f=u(435),b=u(435,!0),_=u(485),v=function(e){return e>=15}(s),h=function(e,t){return e?101-t:t-1}(m,s);return i.default.createElement("svg",{className:"seedom-circles",viewBox:"0 0 1000 1000"},i.default.createElement("circle",{className:"background",cx:500,cy:500,r:500,opacity:.9}),i.default.createElement("g",{className:"loaders-container "+(a?"show":"hide")},i.default.createElement("circle",{className:"loaders-arc",cx:500,cy:500,r:485,strokeWidth:30,fillOpacity:0,style:y}),i.default.createElement("circle",{className:"loaders-arc bottom",cx:500,cy:500,r:485,strokeWidth:30,fillOpacity:0,style:y}),i.default.createElement("path",{id:"seedom-circles-loaders-path",className:"loaders-path",d:_,strokeWidth:0,fillOpacity:0}),i.default.createElement("text",null,i.default.createElement("textPath",{className:"loaders-text",xlinkHref:"#seedom-circles-loaders-path",startOffset:"10%"},"COMMUNICATING WITH ETHEREUM")),i.default.createElement("text",null,i.default.createElement("textPath",{className:"loaders-text",xlinkHref:"#seedom-circles-loaders-path",startOffset:"60%"},"COMMUNICATING WITH ETHEREUM"))),i.default.createElement("g",{className:"phase-container"},i.default.createElement("path",{id:"seedom-circles-progress-path",className:"phase-path",d:f,strokeWidth:0,fillOpacity:0}),i.default.createElement("path",{id:"seedom-circles-progress-path-flipped",className:"phase-path",d:b,strokeWidth:0,fillOpacity:0}),i.default.createElement("g",{className:"phase participation"},i.default.createElement("circle",{cx:500,cy:500,r:435,strokeWidth:50,fillOpacity:0,style:d})),i.default.createElement("g",{className:"phase progress"},i.default.createElement("circle",{cx:500,cy:500,r:435,strokeWidth:30,fillOpacity:0,style:c}),v&&i.default.createElement("text",null,i.default.createElement("textPath",{className:"phase-text "+(m?"flipped":null),xlinkHref:m?"#seedom-circles-progress-path-flipped":"#seedom-circles-progress-path",startOffset:h+"%"},l)))))}}]),t}();l.propTypes={starter:r.default.string,deployment:r.default.shape(),isLoading:r.default.bool},l.defaultProps={starter:"ends",deployment:null,isLoading:!1},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});t.getImageUrl=function(e){return"https://seedom.io/badges/"+e.network+"/"+e.contract+"/"+e.participant+".png"}},function(e,t){e.exports=require("@seedom-io/seedom-resolver/causes")},function(e,t){e.exports=require("react-helmet")},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=o(n(0)),r=n(7),s=o(n(12));function o(e){return e&&e.__esModule?e:{default:e}}n(24);var u=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){return i.default.createElement("div",{className:"container press-release has-text-white"},i.default.createElement("p",{className:"has-text-right"},"FOR IMMEDIATE RELEASE: (April 27th, 2018)"),i.default.createElement("p",null,"Kyle Graden, Seedom, team@seedom.io"),i.default.createElement("p",null,"Kris Decoodt, Giveth, kris@giveth.io"),i.default.createElement("br",null),i.default.createElement("p",{className:"has-text-centered"},"Seedom Announces Giveth as Beta Launch Partner For Fundraise DApp"),i.default.createElement("p",{className:"has-text-centered"},i.default.createElement("i",null,"Raising Awareness & Ether for Decentralized Altruistic Communities Together")),i.default.createElement("br",null),i.default.createElement("p",null,i.default.createElement("strong",null,"Earth:")," Seedom is launching an official beta test, a first of its kind, fundraising Ethereum decentralized application (DApp) raising awareness and ether for altruistic causes while rewarding a single participant for their contribution and support. ",i.default.createElement("a",{target:"_blank",rel:"noopener noreferrer",href:"https://giveth.io/"},"Giveth")," has been selected to be the first cause to benefit from the Seedom DApp."),i.default.createElement("br",null),i.default.createElement("p",null,"Giveth was chosen because its platform is a rΞvolution in the world of charitable donation, building and empowering communities and enabling new ways for people to make a difference. Giveth meets all Seedom requirements, including:"),i.default.createElement("br",null),i.default.createElement("ul",null,i.default.createElement("li",null,i.default.createElement("strong",null,"Decentralizing")," - believes in the decentralization of power in all forms"),i.default.createElement("li",null,i.default.createElement("strong",null,"Legitimate")," - has a capable team with a clear and effective plan of action"),i.default.createElement("li",null,i.default.createElement("strong",null,"Active")," - is actively working on solving an urgent need")),i.default.createElement("br",null),i.default.createElement("p",null,"The fundraising round will run from May 1st to May 14th of this year. During this beta test, anyone can visit ",i.default.createElement("a",{href:"http://seedom.io"},"www.seedom.io")," and contribute ether to be entered to win 35% of the total amount raised for Giveth."),i.default.createElement("br",null),i.default.createElement("p",null,i.default.createElement("i",null,'"We are honored to be picked by Seedom for their first test run of their awesome DApp. We are always looking to support projects focused on using #blockchain4good, it’s sooooo cool to have a project support us!!! Seedom is experimenting with a very cool method to raise funds for charity, aligning incentives between all the participants in a fun way! Our social coding team dove into some of the code and it looks really nice. It has been a pleasure to work with the Seedom team!"')," - Griff Green, co-founder Giveth"),i.default.createElement("br",null),i.default.createElement("p",null,"This marks the start of a new era of incentivized routine giving on the blockchain and the Ethereum network."),i.default.createElement("br",null),i.default.createElement("p",null,i.default.createElement("strong",null,"About Giveth:")," Giveth is re-engineering charitable giving, by creating an entirely free, open-source platform, built on the Ethereum Blockchain. Our system cuts out bureaucracy and enables nonprofits to create a high level of transparency and accountability towards Givers. Through the Giveth DApp (Donation Application) you will be able to see how the project is laid out and how much money is required for each part. By reducing the costs and decentralizing the giving process we are putting the power back into the hands of the people."),i.default.createElement("br",null),i.default.createElement("p",null,i.default.createElement("strong",null,"About Seedom:")," Seedom takes the efficiency, security, and transparency of the traditional single-room raffle and re-invents it with trustlessness and crowd-sourced selection into an entirely new type of fundraiser that scales to the entire world."),i.default.createElement("br",null),i.default.createElement("p",null,"Visit ",i.default.createElement("a",{href:"http://seedom.io/"},"www.seedom.io")," to participate and sign up for email reminders."))}}]),t}();t.default=(0,r.connect)(function(e){return{router:e.router}})(u)},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=o(n(0)),r=n(7),s=o(n(12));function o(e){return e&&e.__esModule?e:{default:e}}n(26);var u=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){return i.default.createElement("div",{className:"container seedom-contact"},i.default.createElement("div",{className:"columns"},i.default.createElement("div",{className:"column is-offset-2 has-text-white"},i.default.createElement("h3",{className:"title has-text-white"},"Are you leading a cause that needs funding?"),i.default.createElement("p",null,"Want to learn more about accepting donations in cryptocurrencies?"),i.default.createElement("p",null,"Then you are at the right place!"),i.default.createElement("br",null),i.default.createElement("br",null),i.default.createElement("p",null,"For press and media inquires, email us directly at ",i.default.createElement("a",{href:"mailto:team@seedom.io"},"team@seedom.io"),".")),i.default.createElement("div",{className:"column"},i.default.createElement("iframe",{src:"https://landing.mailerlite.com/webforms/landing/t6i1i0",style:{border:"none",width:"350px",height:"472px"}}))))}}]),t}();t.default=(0,r.connect)(function(e){return{router:e.router}})(u)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=u(n(0)),r=n(7),s=u(n(12)),o=u(n(16));function u(e){return e&&e.__esModule?e:{default:e}}var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.open;return i.default.createElement("div",null,i.default.createElement(o.default,{title:"our mission",collapsed:!e.includes("our-mission")},i.default.createElement("div",null,"HELLO!")),i.default.createElement(o.default,{title:"about the team",collapsed:!e.includes("about-the-team")},i.default.createElement("div",null,"HELLO!")))}}]),t}();t.default=(0,r.connect)(function(e){return{router:e.router}})(l)},function(e,t){},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=u(i),s=u(n(1)),o=u(n(11));function u(e){return e&&e.__esModule?e:{default:e}}n(30);var l=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.toggle=function(){n.setState(function(e){return{collapsed:!e.collapsed}})},n.state={collapsed:e.collapsed},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props.title,t=this.state.collapsed;return r.default.createElement("div",{className:(0,o.default)("seedom-toggle",{collapsed:t}),onClick:this.toggle},r.default.createElement("div",{className:"header"},r.default.createElement("span",{className:"toggle left"},r.default.createElement("i",{className:"fas fa-plus"})),r.default.createElement("span",{className:"text"},e)),!t&&r.default.createElement("div",{className:"content has-text-white"},this.props.children))}}]),t}();l.propTypes={title:s.default.string.isRequired,collapsed:s.default.bool,children:s.default.element},l.defaultProps={collapsed:!0,children:null},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=u(n(0)),r=n(7),s=u(n(12)),o=u(n(31));function u(e){return e&&e.__esModule?e:{default:e}}n(29);var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.open;return i.default.createElement("div",{className:"seedom-help"},i.default.createElement("div",{className:"container"},i.default.createElement("div",{className:"column is-three-fifths is-offset-one-fifth"},i.default.createElement("h3",{className:"title has-text-white"},"Accessing Seedom"),i.default.createElement(o.default,{title:"Accessing on mobile",collapsed:!e.includes("accessing-mobile")},"To use Seedom on mobile, we recommend the ",i.default.createElement("a",{target:"_blank",href:"https://www.cipherbrowser.com/"},"Cipher app"),". You will need to put Ether into your Cipher wallet in order to participate."),i.default.createElement(o.default,{title:"Accessing on desktop",collapsed:!e.includes("accessing-desktop")},"To use Seedom on the desktop, you will need to install ",i.default.createElement("a",{target:"_blank",href:"https://metamask.io/"},"MetaMask")," or use the ",i.default.createElement("a",{target:"_blank",href:"https://brave.com/"},"Brave browser"),". You will need to put Ether into your MetaMask wallet in order to participate."))))}}]),t}();t.default=(0,r.connect)(function(e){return{router:e.router}})(l)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,i=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),r=n(0),s=(a=r)&&a.__esModule?a:{default:a};var o=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.Component),i(t,[{key:"render",value:function(){return s.default.createElement("div",null,"History")}}]),t}();t.default=o},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.color=void 0;var a=n(9);t.color=function(e){return"hsl("+new a.BigNumber(1).minus(e).times(240).toFixed(5)+", 100%, 50%)"}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=d(i),s=d(n(1)),o=n(10),u=d(n(18)),l=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(35)),p=n(5),c=d(n(11));function d(e){return e&&e.__esModule?e:{default:e}}var y=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.validateForm=function(e){var t=n.score.validate();n.setState({isFormValid:t},e)},n.handleEdit=function(){n.setState({editing:!0})},n.handleDone=function(){n.setState({editing:!1})},n.handleSubmit=function(){n.validateForm(function(){if(n.state.isFormValid){var e=n.props,t=e.cause,a=e.onVoteIndex,i=n.score.value();a({index:t.index,score:i})}else o.toastr.warning("VOTE","score update form invalid")})},n.handleRemove=function(){var e=n.props,t=e.cause;(0,e.onVoteIndex)({index:t.index,score:0})},n.getHeatmapColor=function(){var e=n.props,t=e.cause,a=e.caster,i=t.averageScore.div(a.maxScore);return l.color(i)},n.state={editing:!1,isFormValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props,n=t.caster,a=t.ended,i=t.cause,s=t.vote,o=t.account,l=t.isLoading,d=this.state.editing,y=!a&&(s||i.caster===o||!n.votes.isEqualTo(n.maxVotes)),m=s&&s.isGreaterThan(0);return r.default.createElement("div",{className:function(e){return(0,c.default)({row:!0,index:!0,static:!e})}(y),style:{backgroundColor:this.getHeatmapColor()}},r.default.createElement("div",{className:"area stretch"},r.default.createElement("div",{className:"bit begin header-normal stretch"},i.name),r.default.createElement("div",{className:"bit header"},"score"),r.default.createElement("div",{className:"bit"},(0,p.localeDecimal)(i.averageScore)),r.default.createElement("div",{className:"bit"},"|"),r.default.createElement("div",{className:"bit header"},"votes"),r.default.createElement("div",{className:"bit"},i.votes.toString())),y&&r.default.createElement("div",{className:"area right"},d&&r.default.createElement("div",{className:"tools"},r.default.createElement("div",{className:"bit"},r.default.createElement(u.default,{value:s,maxScore:n.maxScore,disabled:l,ref:function(t){e.score=t}})),r.default.createElement("div",{className:"bit"},r.default.createElement("div",{className:"field"},r.default.createElement("div",{className:"control"},r.default.createElement("a",{className:"button is-white",disabled:l,onClick:this.handleSubmit},"vote")))),r.default.createElement("div",{className:"bit"},r.default.createElement("div",{className:"field"},r.default.createElement("div",{className:"control"},r.default.createElement("a",{className:"button is-white",disabled:l,onClick:this.handleDone},"done"))))),!d&&r.default.createElement("div",{className:"tools"},r.default.createElement("div",{className:"bit"},r.default.createElement("div",{className:"field"},r.default.createElement("div",{className:"control"},r.default.createElement("a",{className:"button is-white",disabled:l,onClick:this.handleEdit},"vote")))),m&&r.default.createElement("div",{className:"bit"},r.default.createElement("div",{className:"field"},r.default.createElement("div",{className:"control"},r.default.createElement("a",{className:"button is-white",disabled:l,onClick:this.handleRemove},"unvote")))))))}}]),t}();y.propTypes={caster:s.default.shape().isRequired,ended:s.default.bool.isRequired,cause:s.default.shape().isRequired,vote:s.default.shape(),account:s.default.string.isRequired,isLoading:s.default.bool,onVoteIndex:s.default.func.isRequired},y.defaultProps={isLoading:!1,vote:null},t.default=y},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=p(i),s=p(n(1)),o=n(10),u=(n(6),p(n(18))),l=p(n(13));function p(e){return e&&e.__esModule?e:{default:e}}var c=32,d=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.validateForm=function(e){var t=n.state.name,a=t.length>1&&t.length<=c,i=n.score.validate();n.setState({isNameValid:a,isFormValid:a&&i},e)},n.handleNameChange=function(e){n.setState({name:e})},n.handleSubmit=function(){n.validateForm(function(){var e=n.state,t=e.isFormValid,a=e.name;if(t){var i=n.score.value();n.props.onVoteName({name:a,score:i})}else o.toastr.warning("VOTE","new cause form invalid")})},n.state={name:"",isNameValid:!0,isFormValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props,n=t.caster,a=t.ended,i=t.isLoading,s=this.state,o=s.name,p=s.isNameValid;return a||n.votes.isEqualTo(n.maxVotes)?null:r.default.createElement("div",{className:"row name"},r.default.createElement("div",{className:"area stretch"},r.default.createElement("div",{className:"bit begin stretch"},r.default.createElement(l.default,{format:"textbox",type:"text",placeholder:"enter new cause or vote below",value:o.toString(),maxLength:10,disabled:i,isValid:p,onChange:this.handleNameChange,ref:function(t){e.name=t}})),o.length>0&&r.default.createElement("div",{className:"tools"},r.default.createElement("div",{className:"bit header"},"score"),r.default.createElement("div",{className:"bit"},r.default.createElement(u.default,{maxScore:n.maxScore,disabled:i,ref:function(t){e.score=t}})),r.default.createElement("div",{className:"bit"},r.default.createElement("div",{className:"field"},r.default.createElement("div",{className:"control"},r.default.createElement("a",{className:"button is-white",disabled:i,onClick:this.handleSubmit},r.default.createElement("i",{className:"fas fa-plus-circle"}))))))))}}]),t}();d.propTypes={caster:s.default.shape().isRequired,ended:s.default.bool.isRequired,isLoading:s.default.bool,onVoteName:s.default.func.isRequired},d.defaultProps={isLoading:!1},t.default=d},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=u(i),s=u(n(1)),o=n(6);function u(e){return e&&e.__esModule?e:{default:e}}var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.caster,n=function(e){var t=e.caster;return e.ended?"ended":t.maxVotes.isEqualTo(0)?"participate":t.votes.isEqualTo(0)?"decide":"thanks"}({caster:t,ended:e.ended});return r.default.createElement("div",{className:"row caster"},r.default.createElement("div",{className:"area stretch"},{ended:r.default.createElement("div",{className:"bit begin stretch"},"fundraiser ended"),participate:r.default.createElement("div",{className:"bit begin stretch"},r.default.createElement("div",{className:"field"},r.default.createElement("div",{className:"control"},r.default.createElement(o.Link,{className:"button is-white is-outlined",to:"/participate"},r.default.createElement("i",{className:"fas fa-arrow-alt-circle-left"})," participate first")))),decide:r.default.createElement("div",{className:"bit begin stretch"},"help us decide our future!"),thanks:r.default.createElement("div",{className:"bit begin stretch"},"thank you for voting!")}[n],r.default.createElement("div",{className:"bit header"},r.default.createElement("span",{className:"header"},"votes cast")),r.default.createElement("div",{className:"bit"},t.votes.toString()," / ",t.maxVotes.toString())))}}]),t}();l.propTypes={caster:s.default.shape().isRequired,ended:s.default.bool.isRequired},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=m(i),s=n(7),o=m(n(1)),u=(y(n(8)),y(n(14))),l=y(n(15)),p=m(n(39)),c=m(n(38)),d=m(n(36));function y(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}function m(e){return e&&e.__esModule?e:{default:e}}function f(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(34);var b=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,r=Array(i),s=0;s<i;s++)r[s]=arguments[s];return n=a=f(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(r))),a.handleVoteName=function(e){var t=e.name,n=e.score,i=u.hex(t);a.props.dispatch(l.send({contractName:"polling",method:"voteName",args:[i,n]}))},a.handleVoteIndex=function(e){var t=e.index,n=e.score;a.props.dispatch(l.send({contractName:"polling",method:"voteIndex",args:[t,n]}))},f(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props.ethereum,n=t.caster,a=t.causes,i=t.votes,s=t.deployment,o=t.account,u=t.isLoading;if(!(n&&a&&i&&s))return null;var l=[].concat(function(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}(a)).sort(function(e,t){return t.averageScore.comparedTo(e.averageScore)}),y=new Date>=s.endTime;return r.default.createElement("div",{className:"seedom-vote"},r.default.createElement("div",{className:"list"},r.default.createElement(p.default,{caster:n,ended:y}),r.default.createElement(c.default,{caster:n,ended:y,isLoading:u,onVoteName:this.handleVoteName}),l.map(function(t){return r.default.createElement(d.default,{key:t.index,caster:n,ended:y,cause:t,vote:i[t.index],account:o,onVoteIndex:e.handleVoteIndex})})))}}]),t}();b.propTypes={ethereum:o.default.shape().isRequired};t.default=(0,s.connect)(function(e){return{ethereum:e.ethereum}},function(e){return{dispatch:e}})(b)},function(e,t){},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=u(i),s=u(n(1)),o=u(n(16));function u(e){return e&&e.__esModule?e:{default:e}}n(42);var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props.isPlaying;return r.default.createElement(o.default,{collapsed:!e,title:"about cause"},r.default.createElement("div",{className:"centered"},r.default.createElement("div",{className:"field"},r.default.createElement("div",{className:"control"},r.default.createElement("a",{className:"button is-primary",href:"https://giveth.io",target:"_blank"},"LEARN MORE AT GIVETH.IO"))),r.default.createElement("div",{className:"video"},r.default.createElement("iframe",{id:"video",title:"video",src:"//www.youtube.com/embed/i8kjxGxGSkA?rel=0"+(e?"&autoplay=1":""),frameBorder:"0",allowFullScreen:!0}))))}}]),t}();l.propTypes={isPlaying:s.default.bool},l.defaultProps={isPlaying:!1},t.default=l},function(e,t){},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=d(i),s=d(n(1)),o=c(n(8)),u=c(n(5)),l=c(n(17)),p=d(n(16));function c(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}function d(e){return e&&e.__esModule?e:{default:e}}function y(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(44);var m=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,r=Array(i),s=0;s<i;s++)r[s]=arguments[s];return n=a=y(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(r))),a.openTransaction=function(e){var t=a.props.network,n=l.getTransactionUrl(t,e);n&&window&&window.open(n,"_blank")},y(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props.feed;return r.default.createElement(p.default,{title:"live activity feed",collapsed:!1},r.default.createElement("div",{className:"seedom-feed"},r.default.createElement("div",{className:"list"},t.map(function(t){return r.default.createElement("div",{className:"row",key:t.transactionHash+"-"+t.transactionIndex,onClick:function(){e.openTransaction(t.transactionHash)}},r.default.createElement("div",{className:"icon"},{FUNDRAISER_PARTICIPATION:r.default.createElement("i",{className:"fas fa-arrow-alt-circle-right"}),FUNDRAISER_RAISE:r.default.createElement("i",{className:"far fa-arrow-alt-circle-up"})}[t.type]),r.default.createElement("div",{className:"contents"},r.default.createElement("div",{className:"side left"},r.default.createElement("div",{className:"blocknum"},r.default.createElement("i",{className:"fas fa-cube"})," ",t.blockNumber),r.default.createElement("div",{className:"address"},o.shorten(function(e){switch(e.type){case"FUNDRAISER_PARTICIPATION":return e.participation.participant;case"FUNDRAISER_RAISE":return e.raise.participant;default:return null}}(t)))),r.default.createElement("div",{className:"side right"},r.default.createElement("div",{className:"entries"},u.localeNumber(function(e){switch(e.type){case"FUNDRAISER_PARTICIPATION":return e.participation.entries;case"FUNDRAISER_RAISE":return e.raise.entries;default:return null}}(t))," entries"),r.default.createElement("div",{className:"messages"},function(e){return"FUNDRAISER_PARTICIPATION"===e.type?e.participation.message:null}(t)))))}))))}}]),t}();m.propTypes={network:s.default.shape(),feed:s.default.arrayOf(s.default.shape())},m.defaultProps={network:null,feed:[]},t.default=m},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=u(i),s=u(n(1)),o=n(5);function u(e){return e&&e.__esModule?e:{default:e}}function l(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function p(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function c(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}n(47);var d=function(e){function t(){return l(this,t),p(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return c(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.title,n=e.value,a=e.ether;return r.default.createElement("div",{className:"stat"},r.default.createElement("div",{className:"stat-title"},t),r.default.createElement("div",{className:"stat-value"},n,a&&r.default.createElement("span",{className:"ether"},r.default.createElement("i",{className:"fas fa-bars"}))))}}]),t}();d.propTypes={title:s.default.string.isRequired,value:s.default.string,ether:s.default.bool},d.defaultProps={value:null,ether:!1};var y=function(e){function t(){return l(this,t),p(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return c(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.side,n=e.deployment,a=e.state,i=void 0,s=void 0,u=void 0,l=void 0;if(n&&a){var p=a.entries.times(n.valuePerEntry);i=(0,o.localeDecimal)((0,o.getEtherFromWei)(p.times(n.causeSplit).dividedBy(1e3))),s=(0,o.localeDecimal)((0,o.getEtherFromWei)(p.times(n.participantSplit).dividedBy(1e3))),u=(0,o.localeNumber)(a.participants),l=(0,o.localeNumber)(a.entries)}return r.default.createElement("div",{className:"seedom-stats "+t},("top"===t||"left"===t)&&r.default.createElement("div",{className:"panel"},r.default.createElement("div",{className:"background"}),r.default.createElement(d,{title:"cause reward",value:i,ether:!0}),r.default.createElement(d,{title:"participant reward",value:s,ether:!0})),("top"===t||"right"===t)&&r.default.createElement("div",{className:"panel"},r.default.createElement("div",{className:"background"}),r.default.createElement(d,{title:"participants",value:u}),r.default.createElement(d,{title:"entries",value:l})))}}]),t}();y.propTypes={side:s.default.string.isRequired,deployment:s.default.shape(),state:s.default.shape()},y.defaultProps={deployment:null,state:null},t.default=y},function(e,t){},function(e,t,n){e.exports=n.p+"0b624dd33fb9366ac2ca93ef9c6c45bb.svg"},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=l(n(2)),o=l(n(3)),u=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(21));function l(e){return e&&e.__esModule?e:{default:e}}n(51);var p=function(e){return"https://seedom.io?n="+e.network+"&c="+e.contract+"&p="+e.participant},c=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.onBadgingOver,r=t.primaryContractAddresses,s=t.account,l=t.participant,c=t.network;if(!(r&&s&&l&&c))return null;if(l.entries.isEqualTo(0))return null;var d={network:c.name,contract:r.fundraiser.substr(2),participant:s.substr(2)},y=u.getImageUrl(d),m=function(e){var t=e.network,n=e.contract,a=e.participant,i=p({network:t,contract:n,participant:a});return"https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(i)}(d),f=function(e){var t=e.network,n=e.contract,a=e.participant,i=p({network:t,contract:n,participant:a});return"https://twitter.com/share?url="+encodeURIComponent(i)}(d);return i.default.createElement("div",{className:"seedom-content badge "+e},i.default.createElement(o.default,{type:n?"success":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top huge-pad narrow"},i.default.createElement("div",{className:"thank-you"},"thank you!"),i.default.createElement("div",null,"here is your badge")),i.default.createElement("div",{className:"division center"},i.default.createElement("img",{className:"seedom-badge",src:y})),i.default.createElement("div",{className:"division bottom small-pad"},i.default.createElement("div",{className:"field is-grouped"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",href:y},i.default.createElement("i",{className:"fas fa-download"}))),i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button twitter",href:f,target:"_blank"},"SHARE ",i.default.createElement("i",{className:"fab fa-twitter"}))),i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button facebook",href:m,target:"_blank"},"SHARE ",i.default.createElement("i",{className:"fab fa-facebook-f"})))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-white is-outlined",onClick:a},"skip sharing"))))))}}]),t}();c.propTypes={isShown:r.default.bool.isRequired,onBadgingOver:r.default.func.isRequired,primaryContractAddresses:r.default.shape(),account:r.default.string,participant:r.default.shape(),network:r.default.shape()},c.defaultProps={primaryContractAddresses:null,account:null,participant:null,network:null},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=l(n(2)),o=l(n(3)),u=l(n(4));function l(e){return e&&e.__esModule?e:{default:e}}var p=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.deployment;return i.default.createElement("div",{className:"seedom-content seed-failed "+e},i.default.createElement(o.default,{type:n?"error":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top"},i.default.createElement(u.default,{deployment:a,size:"small"})),i.default.createElement("div",{className:"division text bottom giant-pad narrow"},i.default.createElement("span",null,"participation closed, stay tuned for selection"))))}}]),t}();p.propTypes={isShown:r.default.bool.isRequired,deployment:r.default.shape()},p.defaultProps={deployment:null},t.default=p},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=l(n(2)),o=l(n(3)),u=n(6);function l(e){return e&&e.__esModule?e:{default:e}}function p(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(54);var c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,r=Array(i),s=0;s<i;s++)r[s]=arguments[s];return n=a=p(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(r))),a.openMetamask=function(){window&&window.open(METAMASK_URL,"_blank")},p(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props.isShown;return i.default.createElement("div",{className:"seedom-content ethereum "+e},i.default.createElement(o.default,{type:t?"error":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top medium-pad"},i.default.createElement("div",{className:"ethereum-logo"})),i.default.createElement("div",{className:"division text center narrow"},i.default.createElement("span",null,"account not available, please confirm")),i.default.createElement("div",{className:"division bottom large-pad"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement(u.Link,{className:"button is-white is-outlined",to:"/help"},"how to access seedom"))))))}}]),t}();c.propTypes={isShown:r.default.bool},c.defaultProps={isShown:!1},t.default=c},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=l(n(2)),o=l(n(3)),u=n(6);function l(e){return e&&e.__esModule?e:{default:e}}function p(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(56);var c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,r=Array(i),s=0;s<i;s++)r[s]=arguments[s];return n=a=p(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(r))),a.openMetamask=function(){window&&window.open(METAMASK_URL,"_blank")},p(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props.isShown;return i.default.createElement("div",{className:"seedom-content ethereum "+e},i.default.createElement(o.default,{type:t?"error":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top medium-pad"},i.default.createElement("div",{className:"ethereum-logo"})),i.default.createElement("div",{className:"division text center narrow"},i.default.createElement("span",null,"current network not supported, please change")),i.default.createElement("div",{className:"division bottom large-pad"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement(u.Link,{className:"button is-white is-outlined",to:"/help"},"how to access seedom"))))))}}]),t}();c.propTypes={isShown:r.default.bool.isRequired},t.default=c},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=l(n(2)),o=l(n(3)),u=n(6);function l(e){return e&&e.__esModule?e:{default:e}}function p(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(58);var c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,r=Array(i),s=0;s<i;s++)r[s]=arguments[s];return n=a=p(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(r))),a.openMetamask=function(){window&&window.open(METAMASK_URL,"_blank")},p(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props.isShown;return i.default.createElement("div",{className:"seedom-content ethereum "+e},i.default.createElement(o.default,{type:t?"error":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top medium-pad"},i.default.createElement("div",{className:"ethereum-logo"})),i.default.createElement("div",{className:"division text center narrow"},i.default.createElement("span",null,"plugin or browser not detected")),i.default.createElement("div",{className:"division bottom large-pad"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement(u.Link,{className:"button is-white is-outlined",to:"/help"},"how to access seedom"))))))}}]),t}();c.propTypes={isShown:r.default.bool.isRequired},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=l(n(2)),o=l(n(3)),u=l(n(4));function l(e){return e&&e.__esModule?e:{default:e}}var p=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props.deployment;return i.default.createElement("div",{className:"seedom-content cancelled "+e},i.default.createElement(o.default,{type:"error"}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top medium-pad"},i.default.createElement(u.default,{deployment:t,size:"small"})),i.default.createElement("div",{className:"division text bottom medium-pad narrow"},i.default.createElement("span",null,"fundraiser cancelled, please check back later"))))}}]),t}();p.propTypes={deployment:r.default.shape()},p.defaultProps={deployment:null},t.default=p},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=l(n(2)),o=l(n(3)),u=l(n(4));function l(e){return e&&e.__esModule?e:{default:e}}function p(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}var c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,r=Array(i),s=0;s<i;s++)r[s]=arguments[s];return n=a=p(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(r))),a.handleSubmit=function(){(0,a.props.onCancel)()},p(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isLoading,a=t.deployment;return i.default.createElement("div",{className:"seedom-content cancel "+e},i.default.createElement(o.default,{type:"cancel"}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top medium-pad"},i.default.createElement(u.default,{deployment:a,size:"small"})),i.default.createElement("div",{className:"division text center narrow"},"fundraiser expired, please cancel for the community"),i.default.createElement("div",{className:"division bottom huge-pad"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",disabled:n,onClick:this.handleSubmit},"cancel"))))))}}]),t}();c.propTypes={isLoading:r.default.bool,onCancel:r.default.func.isRequired,deployment:r.default.shape()},c.defaultProps={isLoading:!1,deployment:null},t.default=c},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=l(n(2)),o=l(n(3)),u=n(5);function l(e){return e&&e.__esModule?e:{default:e}}function p(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(62);var c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,r=Array(i),s=0;s<i;s++)r[s]=arguments[s];return n=a=p(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(r))),a.handleWithdraw=function(e){(0,a.props.onWithdraw)(e)},p(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this,t=this.props.balances;if(!t)return null;var n=this.state.className,a=this.props,r=a.isShown,s=a.onWithdrawSkipped,l=a.isLoading,p=function(e){var t=(0,u.zero)(),n=null;for(var a in e){var i=e[a];i.isGreaterThan(t)&&(t=i,n=a)}return{contractAddress:n,balance:t}}(t);return i.default.createElement("div",{className:"seedom-content withdraw "+n},i.default.createElement(o.default,{type:r?"success":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top medium-pad"},i.default.createElement("div",null,"you have"),i.default.createElement("div",{className:"balance"},(0,u.localeDecimal)((0,u.getEtherFromWei)(p.balance)),i.default.createElement("span",{className:"ether is-dark"},i.default.createElement("i",{className:"fas fa-bars"}))),i.default.createElement("div",null,"to withdraw!")),i.default.createElement("div",{className:"division bottom large-pad"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",disabled:l,onClick:function(){return e.handleWithdraw(p.contractAddress)}},"withdraw ether"))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-white is-outlined",disabled:l,onClick:s},"skip for now"))))))}}]),t}();c.propTypes={balances:r.default.shape(),isShown:r.default.bool.isRequired,isLoading:r.default.bool,onWithdrawSkipped:r.default.func.isRequired,onWithdraw:r.default.func.isRequired},c.defaultProps={balances:null,isLoading:!1},t.default=c},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=(function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);t.default=e}(n(17)),l(n(2))),o=l(n(3)),u=l(n(4));function l(e){return e&&e.__esModule?e:{default:e}}n(64);var p=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.state,r=(t.network,t.deployment),s=void 0,l=void 0,p=void 0;return a&&(s=a.causeMessage,l=a.ownerMessage,p=a.participantMessage),i.default.createElement("div",{className:"seedom-content selection "+e},i.default.createElement(o.default,{type:n?"selection":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top small-pad"},i.default.createElement(u.default,{deployment:r,size:"small"})),i.default.createElement("div",{className:"division text center narrow"},i.default.createElement("div",{className:"left"},i.default.createElement("div",{className:"header"},"cause message"),i.default.createElement("div",{className:"value"},s)),i.default.createElement("div",{className:"right"},i.default.createElement("div",{className:"header"},"owner message"),i.default.createElement("div",{className:"value"},l))),i.default.createElement("div",{className:"division text bottom large-pad slim"},i.default.createElement("div",{className:"header"},"participant message"),i.default.createElement("div",{className:"value"},p))))}}]),t}();p.propTypes={isShown:r.default.bool.isRequired,state:r.default.shape(),network:r.default.shape(),deployment:r.default.shape()},p.defaultProps={state:null,network:null,deployment:null},t.default=p},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=u(n(0)),r=u(n(1)),s=u(n(2)),o=u(n(3));function u(e){return e&&e.__esModule?e:{default:e}}var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props.isShown;return i.default.createElement("div",{className:"seedom-content end "+e},i.default.createElement(o.default,{type:t?"waiting":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top small-pad narrow"},i.default.createElement("span",null,"please wait for")),i.default.createElement("div",{className:"division text center"},i.default.createElement("div",{className:"seedom-logo"})),i.default.createElement("div",{className:"division text bottom small-pad narrow"},i.default.createElement("span",null,"to end the fundraiser"))))}}]),t}();l.propTypes={isShown:r.default.bool.isRequired},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=l(n(2)),o=l(n(3)),u=l(n(4));function l(e){return e&&e.__esModule?e:{default:e}}var p=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.deployment;return i.default.createElement("div",{className:"seedom-content end "+e},i.default.createElement(o.default,{type:n?"waiting":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top small-pad narrow"},i.default.createElement("span",null,"please wait for")),i.default.createElement("div",{className:"division text center"},i.default.createElement(u.default,{deployment:a})),i.default.createElement("div",{className:"division text bottom small-pad narrow"},i.default.createElement("span",null,"to reveal their message"))))}}]),t}();p.propTypes={isShown:r.default.bool.isRequired,deployment:r.default.shape()},p.defaultProps={deployment:null},t.default=p},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=d(n(0)),r=d(n(1)),s=n(10),o=n(5),u=d(n(2)),l=d(n(3)),p=d(n(19)),c=d(n(4));function d(e){return e&&e.__esModule?e:{default:e}}n(68);var y=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.validateForm=function(e){var t=n.entries.validate();n.setState({isFormValid:t},e)},n.handleSubmit=function(){n.validateForm(function(){if(n.state.isFormValid){var e=n.entries.value();n.props.onRaise(e)}else s.toastr.warning("RAISE","form invalid")})},n.state={isFormValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,u.default),a(t,[{key:"show",value:function(){(function e(t,n,a){null===t&&(t=Function.prototype);var i=Object.getOwnPropertyDescriptor(t,n);if(void 0===i){var r=Object.getPrototypeOf(t);return null===r?void 0:e(r,n,a)}if("value"in i)return i.value;var s=i.get;return void 0!==s?s.call(a):void 0})(t.prototype.__proto__||Object.getPrototypeOf(t.prototype),"show",this).call(this),this.entries.focus()}},{key:"render",value:function(){var e=this,t=this.state.className,n=this.props,a=n.deployment,r=n.isLoading,s=n.onRaisingCancelled,u=void 0;return a&&(u=(0,o.localeDecimal)((0,o.getEtherFromWei)(a.valuePerEntry))),i.default.createElement("div",{className:"seedom-content raise "+t},i.default.createElement(l.default,{type:r?"waiting":null}),i.default.createElement("div",{className:"seedom-overlay"},i.default.createElement(c.default,{deployment:a,size:"small"}),i.default.createElement("div",{className:"text"},"1 entry = ",u,i.default.createElement("span",{className:"ether"},i.default.createElement("i",{className:"fas fa-bars"}))),i.default.createElement(p.default,{deployment:a,disabled:r,ref:function(t){e.entries=t}}),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",disabled:r,onClick:this.handleSubmit},"get more entries"))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-white is-outlined",onClick:s},"cancel")))))}}]),t}();y.propTypes={deployment:r.default.shape(),isLoading:r.default.bool,onRaisingCancelled:r.default.func.isRequired},y.defaultProps={deployment:null,isLoading:!1},t.default=y},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=c(n(0)),r=c(n(1)),s=n(5),o=n(6),u=c(n(2)),l=c(n(3)),p=c(n(4));function c(e){return e&&e.__esModule?e:{default:e}}n(70);var d=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,u.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.participant,r=t.onRaising,u=t.onBadging,c=t.deployment,d=a?a.entries:(0,s.zero)(),y=(0,s.localeNumber)(d);return i.default.createElement("div",{className:"seedom-content participated "+e},i.default.createElement(l.default,{type:n?"success":null}),i.default.createElement("div",{className:"seedom-overlay"},i.default.createElement("div",{className:"text entries"},y),i.default.createElement("div",{className:"text obtained"},1===Number(y)?"entry":"entries"," obtained"),i.default.createElement(p.default,{deployment:c,size:"small"}),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",onClick:r},"get more entries"))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement(o.Link,{className:"button is-white is-outlined",to:"/vote"},"vote on next cause"))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-white is-outlined",onClick:u},"view badge")))))}}]),t}();d.propTypes={isShown:r.default.bool.isRequired,participant:r.default.shape(),onRaising:r.default.func.isRequired,onBadging:r.default.func.isRequired,deployment:r.default.shape()},d.defaultProps={participant:null,deployment:null},t.default=d},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=u(i),s=u(n(1)),o=u(n(13));function u(e){return e&&e.__esModule?e:{default:e}}var l=32,p=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.focus=function(){n.message.focus()},n.validate=function(){var e=n.state.value,t=e.length>0&&e.length<=l;return n.setState({isValid:t}),t},n.value=function(){return n.state.value},n.handleChange=function(e){n.setState({value:e})},n.state={value:"",isValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props.disabled,n=this.state,a=n.value,i=n.isValid;return r.default.createElement(o.default,{format:"textblock",type:"text",placeholder:"your message\nto the world",value:a,maxLength:l,disabled:t,isValid:i,onChange:this.handleChange,ref:function(t){e.message=t}})}}]),t}();p.propTypes={disabled:s.default.bool.isRequired},t.default=p},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=d(n(0)),r=d(n(1)),s=n(10),o=d(n(2)),u=d(n(19)),l=d(n(73)),p=d(n(3)),c=d(n(4));function d(e){return e&&e.__esModule?e:{default:e}}n(72);var y=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.validateForm=function(e){var t=n.entries.validate(),a=n.message.validate();n.setState({isFormValid:t&&a},e)},n.handleSubmit=function(){n.validateForm(function(){if(n.state.isFormValid){var e=n.entries.value(),t=n.message.value();n.props.onParticipate({message:t,entries:e})}else s.toastr.warning("PARTICIPATE","form invalid")})},n.state={isFormValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default),a(t,[{key:"show",value:function(){(function e(t,n,a){null===t&&(t=Function.prototype);var i=Object.getOwnPropertyDescriptor(t,n);if(void 0===i){var r=Object.getPrototypeOf(t);return null===r?void 0:e(r,n,a)}if("value"in i)return i.value;var s=i.get;return void 0!==s?s.call(a):void 0})(t.prototype.__proto__||Object.getPrototypeOf(t.prototype),"show",this).call(this),this.entries.focus()}},{key:"render",value:function(){var e=this,t=this.props,n=t.deployment,a=t.isLoading,r=this.state.className;return i.default.createElement("div",{className:"seedom-content participate "+r},i.default.createElement(p.default,{type:a?"waiting":null}),i.default.createElement("div",{className:"seedom-overlay"},i.default.createElement(c.default,{deployment:n,size:"small"}),i.default.createElement(u.default,{deployment:n,disabled:a,ref:function(t){e.entries=t}}),i.default.createElement(l.default,{disabled:a,ref:function(t){e.message=t}}),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",disabled:a,onClick:this.handleSubmit},"PARTICIPATE")))))}}]),t}();y.propTypes={isLoading:r.default.bool,deployment:r.default.shape()},y.defaultProps={deployment:null,isLoading:!1},t.default=y},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),r=p(n(1)),s=p(n(2)),o=n(5),u=n(6),l=p(n(4));function p(e){return e&&e.__esModule?e:{default:e}}n(76);var c=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.deployment,a=t.onCountMeIn,r=void 0;return n&&(r=(0,o.localeDecimal)((0,o.getEtherFromWei)(n.valuePerEntry))),i.default.createElement("div",{className:"seedom-content welcome "+e},i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top small-pad"},i.default.createElement("div",null,i.default.createElement("span",null,"1 entry = ",r),i.default.createElement("span",{className:"ether"},i.default.createElement("i",{className:"fas fa-bars"}))),i.default.createElement("div",{className:"supporting"},"now seeding")),i.default.createElement("div",{className:"division center"},i.default.createElement(l.default,{deployment:n})),i.default.createElement("div",{className:"division bottom medium-pad"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement(u.Link,{className:"button is-white is-outlined",to:"/help"},"how does this work?"))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",onClick:a},"count me in!"))))))}}]),t}();c.propTypes={deployment:r.default.shape(),onCountMeIn:r.default.func.isRequired},c.defaultProps={deployment:null},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=l(n(2)),o=l(n(3)),u=l(n(4));function l(e){return e&&e.__esModule?e:{default:e}}var p=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.deployment;return i.default.createElement("div",{className:"seedom-content seed-failed "+e},i.default.createElement(o.default,{type:n?"error":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top"},i.default.createElement(u.default,{deployment:a})),i.default.createElement("div",{className:"division text bottom giant-pad narrow"},i.default.createElement("span",null,"cause failed to begin their fundraiser"))))}}]),t}();p.propTypes={isShown:r.default.bool.isRequired,deployment:r.default.shape()},p.defaultProps={deployment:null},t.default=p},function(e,t){},function(e,t){},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),r=l(n(1)),s=l(n(2)),o=l(n(3)),u=l(n(4));function l(e){return e&&e.__esModule?e:{default:e}}var p=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.deployment;return i.default.createElement("div",{className:"seedom-content seed "+e},i.default.createElement(o.default,{type:n?"waiting":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top small-pad narrow"},i.default.createElement("span",null,"please wait for")),i.default.createElement("div",{className:"division text center"},i.default.createElement(u.default,{deployment:a})),i.default.createElement("div",{className:"division text bottom small-pad narrow"},i.default.createElement("span",null,"to begin their fundraiser"))))}}]),t}();p.propTypes={isShown:r.default.bool.isRequired,deployment:r.default.shape()},p.defaultProps={deployment:null},t.default=p},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=S(i),s=S(n(1)),o=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(8)),u=S(n(20)),l=S(n(82)),p=S(n(78)),c=S(n(77)),d=S(n(75)),y=S(n(71)),m=S(n(69)),f=S(n(67)),b=S(n(66)),_=S(n(65)),v=S(n(63)),h=S(n(61)),w=S(n(60)),g=S(n(59)),E=S(n(57)),x=S(n(55)),M=S(n(53)),N=S(n(52)),O=S(n(50));function S(e){return e&&e.__esModule?e:{default:e}}n(49);var P=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.handleCountMeIn=function(){n.setState({isParticipating:!0})},n.handleParticipate=function(e){var t=e.message,a=e.entries;n.setState({isBadging:!0},function(){n.props.onParticipate({message:t,entries:a})})},n.handleBadging=function(){n.setState({isBadging:!0})},n.handleBadgingOver=function(){n.setState({isBadging:!1})},n.handleRaising=function(){n.setState({isRaising:!0})},n.handleRaisingCancelled=function(){n.setState({isRaising:!1})},n.handleRaise=function(e){n.setState({isRaising:!1},function(){n.props.onRaise(e)})},n.handleWithdraw=function(e){n.props.onWithdraw(e)},n.handleWithdrawSkipped=function(){n.setState({isWithdrawing:!1})},n.handleCancel=function(){n.props.onCancel()},n.state={phase:null,isParticipating:!1,isBadging:!1,isRaising:!1,isWithdrawing:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentDidMount",value:function(){var e=this;this.interval=setInterval(function(){var t=function(e){if(!e)return null;var t=Date.now();return t<e.endTime?"participation":t>=e.endTime&&t<e.expireTime?"end":t>=e.expireTime&&t<e.destructTime?"expiration":"destruction"}(e.props.deployment);t!==e.state.phase&&e.setState({phase:t})},1e3)}},{key:"componentWillUnmount",value:function(){clearInterval(this.interval)}},{key:"render",value:function(){var e=this.state,t=e.phase,n=e.isParticipating,a=e.isBadging,i=e.isRaising,s=e.isWithdrawing,S=this.props,P=S.network,T=S.account,R=S.deployment,j=S.state,C=S.participant,k=S.balances,A=S.isLoading,I=S.primaryContractAddresses,L=function(e){var t=e.network,n=e.account,a=e.phase,i=e.state,r=e.participant,s=e.balances,u=e.isLoading,l=e.isParticipating,p=e.isBadging,c=e.isRaising,d=e.isWithdrawing;if(!t)return"ethereum";if(!t.supported||!t.deployed)return"network";if(!n)return"account";if(s&&Object.keys(s).length>0&&d)return"withdraw";if(!i)return null;if(!o.isZero20(i.participant))return"selection";if(i.cancelled)return"cancelled";if(!r)return null;switch(a){case"participation":return o.isZero32(i.causeSecret)?"begin":""===r.message?l?"participate":"welcome":p?"badge":c||u?"raise":"participation";case"end":return o.isZero32(i.causeSecret)?"beginningFailed":""===r.message?"participationFailed":""===i.causeMessage?"reveal":"end";case"expiration":return"cancel";default:return null}}({network:P,account:T,phase:t,deployment:R,state:j,participant:C,balances:k,isLoading:A,isParticipating:n,isBadging:a,isRaising:i,isWithdrawing:s});return r.default.createElement("div",{className:"seedom-puck"},r.default.createElement("div",{className:"intro"},r.default.createElement("img",{alt:"seedom",src:O.default})),r.default.createElement("div",{className:"interface"},r.default.createElement(u.default,{isLoading:A,deployment:R}),r.default.createElement(g.default,{isShown:"ethereum"===L}),r.default.createElement(E.default,{isShown:"network"===L}),r.default.createElement(x.default,{isShown:"account"===L}),r.default.createElement(c.default,{isShown:"welcome"===L,deployment:R,onCountMeIn:this.handleCountMeIn}),r.default.createElement(l.default,{isShown:"begin"===L,deployment:R}),r.default.createElement(p.default,{isShown:"beginningFailed"===L,deployment:R}),r.default.createElement(d.default,{isShown:"participate"===L,deployment:R,isLoading:A,onParticipate:this.handleParticipate}),r.default.createElement(N.default,{isShown:"badge"===L,primaryContractAddresses:I,network:P,account:T,participant:C,onBadgingOver:this.handleBadgingOver}),r.default.createElement(y.default,{isShown:"participation"===L,participant:C,deployment:R,onRaising:this.handleRaising,onBadging:this.handleBadging}),r.default.createElement(M.default,{isShown:"participationFailed"===L,deployment:R}),r.default.createElement(m.default,{isShown:"raise"===L,deployment:R,isLoading:A,onRaise:this.handleRaise,onRaisingCancelled:this.handleRaisingCancelled}),r.default.createElement(f.default,{isShown:"reveal"===L,deployment:R}),r.default.createElement(b.default,{isShown:"end"===L}),r.default.createElement(_.default,{isShown:"selection"===L,state:j,network:P,deployment:R}),r.default.createElement(v.default,{isShown:"withdraw"===L,balances:k,isLoading:A,onWithdraw:this.handleWithdraw,onWithdrawSkipped:this.handleWithdrawSkipped}),r.default.createElement(h.default,{isShown:"cancel"===L,isLoading:A,deployment:R,onCancel:this.handleCancel}),r.default.createElement(w.default,{isShown:"cancelled"===L,deployment:R})))}}]),t}();P.propTypes={network:s.default.shape(),account:s.default.string,deployment:s.default.shape(),state:s.default.shape(),participant:s.default.shape(),balances:s.default.shape(),isLoading:s.default.bool,primaryContractAddresses:s.default.shape(),onParticipate:s.default.func.isRequired,onRaise:s.default.func.isRequired,onWithdraw:s.default.func.isRequired,onCancel:s.default.func.isRequired},P.defaultProps={network:null,account:null,deployment:null,state:null,participant:null,balances:null,isLoading:!1,primaryContractAddresses:null},t.default=P},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});t.localeDate=function(e){return e.toLocaleString(void 0,{timeZoneName:"short",month:"numeric",day:"numeric",hour:"numeric"})},t.localeDateTime=function(e){return e.toLocaleString(void 0,{timeZoneName:"short",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric"})}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=u(i),s=u(n(1)),o=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(85));function u(e){return e&&e.__esModule?e:{default:e}}function l(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function p(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function c(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}n(84);var d=function(e){function t(){return l(this,t),p(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return c(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.type,n=e.title,a=e.value;return r.default.createElement("div",{className:"item "+t},r.default.createElement("div",{className:"item-title"},n),r.default.createElement("div",{className:"item-value"},a))}}]),t}();d.propTypes={type:s.default.string.isRequired,title:s.default.string.isRequired,value:s.default.string},d.defaultProps={value:null};var y=function(e){function t(){return l(this,t),p(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return c(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.deployment,n=e.network,a=void 0,i=void 0;t&&(a=o.localeDate(t.deployTime),i=o.localeDate(t.endTime));var s=void 0;return n&&(s=n.name),r.default.createElement("div",{className:"seedom-header"},r.default.createElement("div",{className:"background"}),r.default.createElement(d,{type:"side",title:"start date",value:a}),r.default.createElement(d,{type:"center",title:"network",value:s}),r.default.createElement(d,{type:"side",title:"end date",value:i}))}}]),t}();y.propTypes={deployment:s.default.shape(),network:s.default.shape()},y.defaultProps={deployment:null,network:null},t.default=y},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=b(i),s=n(7),o=b(n(1)),u=b(n(86)),l=b(n(83)),p=b(n(48)),c=b(n(46)),d=b(n(43)),y=(f(n(8)),f(n(14))),m=(f(n(17)),f(n(15)));function f(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}function b(e){return e&&e.__esModule?e:{default:e}}n(41);var _=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.handleParticipate=function(e){var t=e.message,a=e.entries,i=n.props.ethereum.deployment,r=y.hex(t),s=a.times(i.valuePerEntry);n.props.dispatch(m.send({contractName:"fundraiser",method:"participate",args:[r],value:s})),n.setState({isPlaying:!0})},n.handleRaise=function(e){var t=n.props.ethereum.deployment,a=e.times(t.valuePerEntry);n.props.dispatch(m.send({contractName:"fundraiser",value:a}))},n.handleWithdraw=function(e){n.props.dispatch(m.send({contractName:"fundraiser",contractAddress:e,method:"withdraw"}))},n.handleCancel=function(){n.props.dispatch(m.send({contractName:"fundraiser",method:"cancel"}))},n.state={isPlaying:!1},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props.ethereum,t=e.network,n=e.account,a=e.deployment,i=e.state,s=e.participant,o=e.balances,y=e.feed,m=e.isLoading,f=e.primaryContractAddresses,b=this.state.isPlaying;return r.default.createElement("div",{className:"seedom-seed"},r.default.createElement("div",{className:"background"},r.default.createElement(u.default,{deployment:a,network:t}),r.default.createElement("div",{className:"central"},r.default.createElement(p.default,{side:"left",deployment:a,state:i}),r.default.createElement(l.default,{network:t,account:n,deployment:a,state:i,participant:s,balances:o,isLoading:m,primaryContractAddresses:f,onParticipate:this.handleParticipate,onRaise:this.handleRaise,onWithdraw:this.handleWithdraw,onCancel:this.handleCancel}),r.default.createElement(p.default,{side:"right",deployment:a,state:i}))),r.default.createElement(d.default,{isPlaying:b}),r.default.createElement(c.default,{feed:y,network:t}))}}]),t}();_.propTypes={ethereum:o.default.shape().isRequired};t.default=(0,s.connect)(function(e){return{ethereum:e.ethereum}},function(e){return{dispatch:e}})(_)},function(e,t){},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=o(i),s=o(n(20));function o(e){return e&&e.__esModule?e:{default:e}}n(88);var u=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e={deployTime:new Date(15243696e5),endTime:new Date(15251472e5)};return r.default.createElement("div",{className:"seedom-hype"},r.default.createElement("div",{className:"countdown"},r.default.createElement(s.default,{starter:"launches",isLoading:!1,deployment:e}),r.default.createElement("div",{className:"seedom-content show"},r.default.createElement("div",{className:"seedom-overlay layout"},r.default.createElement("div",{className:"division text top large-pad narrow"},r.default.createElement("div",{className:"coming-soon"},"Launches May 1"),r.default.createElement("div",{className:"field"},r.default.createElement("div",{className:"control"},r.default.createElement("a",{className:"button is-success",type:"submit",href:"https://seedom-io.github.io/seedom-whitepaper/seedom-whitepaper.pdf"},"READ THE WHITEPAPER")))),r.default.createElement("div",{className:"division text center"},r.default.createElement("div",{className:"seedom-logo"})),r.default.createElement("div",{className:"division text bottom"},r.default.createElement("form",{action:"https://landing.mailerlite.com/webforms/submit/z2z8h3",method:"POST",target:"_blank"},r.default.createElement("input",{type:"hidden",name:"ml-submit",value:"1"}),r.default.createElement("div",{className:"field email"},r.default.createElement("div",{className:"control textbox"},r.default.createElement("input",{className:"input is-primary",type:"email",placeholder:"email@example.com",name:"fields[email]"}))),r.default.createElement("div",{className:"field"},r.default.createElement("div",{className:"control"},r.default.createElement("button",{className:"button is-success",type:"submit"},"SEND ME A REMINDER")))))))))}}]),t}();t.default=u},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,i=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),r=n(0),s=(a=r)&&a.__esModule?a:{default:a};var o=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.Component),i(t,[{key:"render",value:function(){return s.default.createElement("footer",{className:"footer"},s.default.createElement("div",{className:"container"},s.default.createElement("div",{className:"content has-text-centered"},s.default.createElement("p",null,s.default.createElement("strong",null,"Seedom")," by the ",s.default.createElement("a",{className:"is-green",href:"mailto:team@seedom.io"},"Seedom Team")))))}}]),t}();t.default=o},function(e,t,n){e.exports=n.p+"25c2c8dd141c93f986a13359f7f6c721.png"},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),r=n(7),s=p(n(11)),o=p(n(92)),u=n(6),l=p(n(1));function p(e){return e&&e.__esModule?e:{default:e}}var c=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.handleNavToggle=function(){n.setState({isBurgerActive:!n.state.isBurgerActive})},n.handleNavLink=function(){n.setState({isBurgerActive:!1})},n.state={isBurgerActive:!1},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.default.Component),a(t,[{key:"render",value:function(){var e=this.state.isBurgerActive,t=this.props.ethereum.isLoading,n=this.props.router.location.pathname;return i.default.createElement("nav",{className:"navbar"},i.default.createElement("div",{className:"container"},i.default.createElement("div",{className:(0,s.default)("navbar-brand",{"is-loading":t})},i.default.createElement("a",{className:"navbar-item",href:"/"},i.default.createElement("img",{src:o.default,alt:"Seedom - Seeding the future of philanthropy"})),i.default.createElement("div",{className:(0,s.default)("navbar-burger","burger",{"is-active":e}),onClick:this.handleNavToggle},i.default.createElement("span",null),i.default.createElement("span",null),i.default.createElement("span",null))),i.default.createElement("div",{className:(0,s.default)("navbar-menu",{"is-active":e})},"/"!==n&&i.default.createElement("div",{className:"navbar-start"},i.default.createElement(u.NavLink,{className:"navbar-item",activeClassName:"is-active",to:"/participate",onClick:this.handleNavLink,exact:!0},"PARTICIPATE"),i.default.createElement(u.NavLink,{className:"navbar-item",activeClassName:"is-active",to:"/vote",onClick:this.handleNavLink,exact:!0},"VOTE"),i.default.createElement(u.NavLink,{className:"navbar-item",activeClassName:"is-active",to:"/help",onClick:this.handleNavLink,exact:!0},"HELP"),i.default.createElement(u.NavLink,{className:"navbar-item",activeClassName:"is-active",to:"/about",onClick:this.handleNavLink,exact:!0},"ABOUT"),i.default.createElement(u.NavLink,{className:"navbar-item",activeClassName:"is-active",to:"/contact",onClick:this.handleNavLink,exact:!0},"CONTACT")),i.default.createElement("div",{className:"navbar-end"},i.default.createElement("a",{className:"navbar-item",href:"https://medium.com/@seedom.io"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-medium"}))),i.default.createElement("a",{className:"navbar-item",href:"https://reddit.com/r/seedom_io"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-reddit"}))),i.default.createElement("a",{className:"navbar-item",href:"https://github.com/seedom-io"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-github"}))),i.default.createElement("a",{className:"navbar-item",href:"https://www.facebook.com/seedom.io"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-facebook"}))),i.default.createElement("a",{className:"navbar-item",href:"https://twitter.com/seedom_io"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-twitter"}))),i.default.createElement("a",{className:"navbar-item",href:"https://www.instagram.com/seedom.io/"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-instagram"})))))))}}]),t}();c.propTypes={ethereum:l.default.shape().isRequired,router:l.default.shape().isRequired};t.default=(0,r.connect)(function(e){return{router:e.router,ethereum:e.ethereum}})(c)},function(e,t){e.exports=require("query-string")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),r=p(i),s=n(7),o=n(23),u=p(n(94)),l=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(21));function p(e){return e&&e.__esModule?e:{default:e}}var c="Seedom | Seeding the future of philanthropy",d="Raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support. Seed the future of philanthropy!",y=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props.router,t="https://seedom.io",n="https://raw.githubusercontent.com/seedom-io/seedom-assets/master/share/seedom-share.png";if(e&&e.location&&""!==e.location.search){var a=u.default.parse(e.location.search.substr(1)),i=a.n,s=a.c,p=a.p;i&&s&&p&&(t+=e.location.search,n=l.getImageUrl({network:i,contract:s,participant:p}))}return r.default.createElement(o.Helmet,null,r.default.createElement("title",null,c),r.default.createElement("meta",{name:"description",content:d}),r.default.createElement("meta",{name:"author",content:"Team Palm Tree"}),r.default.createElement("meta",{name:"viewport",content:"width=device-width, initial-scale=0.7, maximum-scale=0.7"}),r.default.createElement("meta",{name:"twitter:card",property:"twitter:card",content:"summary_large_image"}),r.default.createElement("meta",{name:"twitter:site",property:"twitter:site",content:"@seedom_io"}),r.default.createElement("meta",{name:"twitter:title",property:"twitter:title",content:c}),r.default.createElement("meta",{name:"twitter:description",property:"twitter:description",content:d}),r.default.createElement("meta",{name:"twitter:image",property:"twitter:image",content:n}),r.default.createElement("meta",{name:"twitter:url",property:"twitter:url",content:t}),r.default.createElement("meta",{name:"og:type",property:"og:type",content:"website"}),r.default.createElement("meta",{name:"og:site_name",property:"og:site_name",content:"Seedom"}),r.default.createElement("meta",{name:"og:title",property:"og:title",content:c}),r.default.createElement("meta",{name:"og:description",property:"og:description",content:d}),r.default.createElement("meta",{name:"og:image",property:"og:image",content:n}),r.default.createElement("meta",{name:"og:image:width",property:"og:image:width",content:1200}),r.default.createElement("meta",{name:"og:image:height",property:"og:image:height",content:628}),r.default.createElement("meta",{name:"og:url",property:"og:url",content:t}),r.default.createElement("link",{rel:"stylesheet",href:"https://use.fontawesome.com/releases/v5.0.10/css/all.css",integrity:"sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg",crossOrigin:"anonymous"}))}}]),t}();t.default=(0,s.connect)(function(e){return{router:e.router}})(y)},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(22));t.default=function(e){return function(t){return function(n){switch(n.type){case"FUNDRAISER_DEPLOYMENT":return function(t,n){return fetch(a.getJsonUrl(n.deployment.cause)).then(function(e){return e.json()}).then(function(t){e.dispatch({type:"CAUSE_CAUSE",cause:t})}),t(n)}(t,n);default:return t(n)}}}}},function(e,t){e.exports=require("web3")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,i=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],a=!0,i=!1,r=void 0;try{for(var s,o=e[Symbol.iterator]();!(a=(s=o.next()).done)&&(n.push(s.value),!t||n.length!==t);a=!0);}catch(e){i=!0,r=e}finally{try{!a&&o.return&&o.return()}finally{if(i)throw r}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),r=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},s=n(98),o=(a=s)&&a.__esModule?a:{default:a},u=n(10);t.default=function(e){var t="undefined"!=typeof window&&void 0!==window.web3&&void 0!==window.web3.currentProvider?new o.default(window.web3.currentProvider):null,n=void 0,a=void 0,s=void 0,l={},p={},c=function(e){return l[e]},d=function(e,t,n){return e.server.methods[t].apply(null,n)},y=function(t,n){var i=n.contractName,s=n.contractAddress,o=n.method,u=n.args,l=c(i);if(l){var y=l[s||p[i]];y&&d(y,o,u).call({from:a}).then(function(t){e.dispatch(r({},n,{type:"ETHEREUM_CALL_DATA",data:t}))},function(t){!function(t,n){console.error(t.message),e.dispatch(r({},n,{type:"ETHEREUM_CALL_ERROR",error:t}))}(t,n)})}return t(n)},m=function(t,n){var a=void 0,i=t.message;a=i.includes("User denied")?"USER CANCELLED TRANSACTION":i.includes("Insufficient funds")?"INSUFFICIENT FUNDS":"UNKNOWN ERROR",e.dispatch(r({},n,{type:"ETHEREUM_SEND_ERROR",error:a})),u.toastr.error("ETHEREUM ERROR",a)},f=function(n,a,i,s){return function(i){if(i)m(i,s);else{var o=void 0,u=s.method;if(u){var l=s.args;o=function(e,t,n){return e.client.methods[t].apply(null,n)}(a,u,l).send(n)}else o=t.eth.sendTransaction(n);o.on("error",function(e){m(e,s)}).on("confirmation",function(t){0===t&&function(t){e.dispatch(r({},t,{type:"ETHEREUM_SEND_SUCCESS"}))}(s)})}}},b=function(t,n,a,i){n.server.events.allEvents({fromBlock:a},function(n,a){e.dispatch({type:"ETHEREUM_EVENT",eventName:a.event.toUpperCase(),contractName:t,values:a.returnValues,contractAddress:a.address,blockNumber:a.blockNumber,transactionHash:a.transactionHash,transactionIndex:a.transactionIndex,old:a.blockNumber<=i})})},_=function(a){!function(){for(var e in l){var t=l[e];for(var n in t)t[n].server.currentProvider.connection.close();delete l[e],delete p[e]}}();var i,r=function(e){switch(e){case 1:return"mainnet";case 2:return"morden";case 3:return"ropsten";case 4:return"rinkeby";case 42:return"kovan";default:return"localhost"}}(a),u=(i={localhost:{rpcUrl:"http://localhost:8545",wsUrl:"ws://localhost:8546"},mainnet:{rpcUrl:"https://manager1.seedom.io:8549",wsUrl:"wss://manager1.seedom.io:8550"},ropsten:{rpcUrl:"https://manager1.seedom.io:8547",wsUrl:"wss://manager1.seedom.io:8548"}}[r])?(n=new o.default(i.wsUrl),!0):(n=null,!1),c=!1;u&&(c=function(a){var i={localhost:{fundraiser:[{address:"0x7074250D6cf2f7cda75F5795B4B9e6A27BAA12Bc",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0xC590297F6177822722084Bc702a2fbF0C22794d8",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x40e08213aE1F64013F6e2aCC0E4B5417DF8B959a",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x41cfE217F3078ba360d2dd620194248Cd6bBeb51",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x1B91b2dF42cc8750f906966202C9CFECc1849AB9",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0xED5aB761bcfEc1D89F7Fb5404b085158a557930E",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]}],polling:[{address:"0x2441A4d2bfF1C2a5d7F49382c4Df117f959e73d6",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0xe45521ACd7C3BEFaa34F915155A417253c98dC35",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0xd44cDE545043505Ca24A3f7a38fDF6367e69D837",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0x6A0639F3A6b435E0abCAe6d65990000d75e74d16",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0x830B3409e231b6449fa8CCaaf1a3E6d8bab9F5fd",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0xe3B5E7F1202291bc39a21bd835E7d2ce65FED806",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]}]},mainnet:{seedom:[{address:"0xa7bc8Cd45eEDe68e8AD6d282E522f2B9e7d57942",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_charityRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_winner",type:"address"},{indexed:!1,name:"_winnerRandom",type:"bytes32"},{indexed:!1,name:"_charityRandom",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x2F8c8FCB351520A3B28971a017E1231Baa6bAf01",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_charityRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_winner",type:"address"},{indexed:!1,name:"_winnerRandom",type:"bytes32"},{indexed:!1,name:"_charityRandom",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]}]},ropsten:{seedom:[{address:"0x4C70C9c44213c54C8b590Fa3A63a56DF40348ca6",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_entries",type:"uint256"},{name:"_message",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participantAddresses",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"select",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_selectedSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charitySecret",type:"bytes32"},{name:"_charityMessage",type:"bytes32"},{name:"_charityWithdrawn",type:"bool"},{name:"_selected",type:"address"},{name:"_selectedMessage",type:"bytes32"},{name:"_selectedWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_selectedSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charitySecret",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_selected",type:"address"},{indexed:!1,name:"_selectedMessage",type:"bytes32"},{indexed:!1,name:"_charityMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x0D74c068a1141e8aC60a30e6b6e5dF5A518c4210",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_entries",type:"uint256"},{name:"_message",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participantAddresses",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"select",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_selectedSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charitySecret",type:"bytes32"},{name:"_charityMessage",type:"bytes32"},{name:"_charityWithdrawn",type:"bool"},{name:"_selected",type:"address"},{name:"_selectedMessage",type:"bytes32"},{name:"_selectedWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_selectedSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charitySecret",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_selected",type:"address"},{indexed:!1,name:"_selectedMessage",type:"bytes32"},{indexed:!1,name:"_charityMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0xBD18f290D6cC51dBEE083A2a4b493e7278AC2B38",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_charityRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_winner",type:"address"},{indexed:!1,name:"_winnerRandom",type:"bytes32"},{indexed:!1,name:"_charityRandom",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0xae6504caFc09bFbDbF751C4292371D114d2b459e",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_charityRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_winner",type:"address"},{indexed:!1,name:"_winnerRandom",type:"bytes32"},{indexed:!1,name:"_charityRandom",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x7542eA016832c2B30395a93E7e2c4EbA4284d734",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_charityRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_winner",type:"address"},{indexed:!1,name:"_winnerRandom",type:"bytes32"},{indexed:!1,name:"_charityRandom",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0xBC8AE73A0D0b7158dd0C3B2dFCd6ae908271929b",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]}],suggest:[{address:"0x8B54B2118CB2D695977B007Aa76337a06038c0e9",abi:[{constant:!0,inputs:[],name:"getVotes",outputs:[{name:"",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"destructTime",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"endTime",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"getCharities",outputs:[{name:"",type:"bytes32[]"},{name:"",type:"uint256[]"},{name:"",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"_forCharityIndex",type:"uint256"},{name:"_forCharityName",type:"bytes32"}],name:"hasRight",outputs:[{name:"",type:"bool"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_charityIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"vote",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"addCharity",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_seedomAddress",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_address",type:"address"},{indexed:!0,name:"_charityIndex",type:"uint256"},{indexed:!1,name:"_score",type:"uint256"}],name:"Vote",type:"event"}]}],polling:[{address:"0x45deF51afcEF10Be10BEfcfCF170a231C5971be4",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0x78c57792d19feB45509CB9C014d03727aa742685",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0x527304AF146C3920b91cd25e02EDCa2D5535BF72",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0xc73be3eE43EcD67971f8C0b9190E1240b3A104C6",abi:[{constant:!1,inputs:[{name:"_charityIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"charities",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_totalScores",type:"uint256[]"},{name:"_totalVotes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_totalVotes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_charityIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_seedomAddress",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_charityIndex",type:"uint256"},{indexed:!1,name:"_charityName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_totalVotes",type:"uint256"},{indexed:!0,name:"_charityIndex",type:"uint256"},{indexed:!1,name:"_charityTotalScores",type:"uint256"},{indexed:!1,name:"_charityTotalVotes",type:"uint256"}],name:"CastIndex",type:"event"}]}],fundraiser:[{address:"0xF2C1a608104427EC3399ff74381E87ed9E7c8144",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x41bA433632168bBf6F176D3c7cF3E260c5A2aE3b",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x154Dd4fA554E09C6C421Fe0ae54eF6569A4a20Bf",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]}]}}[a];if(!i)return!1;for(var r in i){var s=i[r],o=!0,u=!1,c=void 0;try{for(var d,y=s[Symbol.iterator]();!(o=(d=y.next()).done);o=!0){var m=d.value;r in p||(p[r]=m.address),r in l||(l[r]={}),l[r][m.address]={name:r,address:m.address,server:new n.eth.Contract(m.abi,m.address),client:new t.eth.Contract(m.abi,m.address)}}}catch(e){u=!0,c=e}finally{try{!o&&y.return&&y.return()}finally{if(u)throw c}}}return e.dispatch({type:"ETHEREUM_PRIMARY_CONTRACT_ADDRESSES",primaryContractAddresses:p}),!0}(r),n.eth.getBlockNumber(function(e,t){var n=t-1e4;for(var a in n<0&&(n=0),l){var i=l[a],r=p[a];for(var s in i){var o=i[s],u=o.address===r?n:t;b(a,o,u,t)}}})),s={id:a,name:r,supported:u,deployed:c},e.dispatch({type:"ETHEREUM_NETWORK",network:s})},v=function(){return s&&s.supported&&s.deployed&&a},h=function(){v()&&e.dispatch({type:"ETHEREUM_USER",network:s,account:a})};return t&&setInterval(function(){t.eth.net.getId(function(e,t){s&&t===s.id||(_(t),h())}),t.eth.getAccounts(function(t,n){var r=i(n,1)[0];r!==a&&(a=r,e.dispatch({type:"ETHEREUM_ACCOUNT",account:a}),h())}),function(){if(v()){var t=(new Date).getTime(),n=[];for(var a in l){var i=l[a];for(var r in i){var s=i[r];(!s.lastBlockTime||t-s.lastBlockTime.getTime()>6e4)&&(s.lastBlockTime=new Date,n.push(s.address))}}n.length>0&&e.dispatch({type:"ETHEREUM_REFRESH",contractAddresses:n})}}()},1e3),function(n){return function(i){switch(i.type){case"ETHEREUM_CALL":return y(n,i);case"ETHEREUM_SEND":return function(e,n){var i=n.contractName,r=n.contractAddress,s=n.method,o=n.args,u={value:n.value,from:a,gas:2e5,gasPrice:4e9},l=c(i);if(l){var y=l[r||p[i]];if(y){u.to=y.address;var m=f(u,y,0,n);s?d(y,s,o).call(u,m):t.eth.call(u,m)}}return e(n)}(n,i);case"ETHEREUM_ALLCALL":return function(t,n){var i=n.contractName,s=n.method,o=n.args,u=[],y=c(i);if(y){var m=Object.keys(l[i]),f=!0,b=!1,_=void 0;try{for(var v,h=m[Symbol.iterator]();!(f=(v=h.next()).done);f=!0){var w=y[v.value||p[i]];if(w){var g=d(w,s,o);u.push(g.call({from:a}))}}}catch(e){b=!0,_=e}finally{try{!f&&h.return&&h.return()}finally{if(b)throw _}}Promise.all(u).then(function(t){for(var a={},i=0;i<t.length;i+=1)a[m[i]]=t[i];e.dispatch(r({},n,{type:"ETHEREUM_ALLCALL_DATA",data:a}))})}return t(n)}(n,i);default:return n(i)}}}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.parseBalances=t.parseWithdrawal=t.parseSelection=t.parseRevelation=t.parseRaise=t.parseParticipation=t.parseParticipant=t.parseBeginning=t.parseState=t.parseDeployment=void 0;var a=n(9),i=(r(n(8)),r(n(14)));function r(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}var s=function(e){return new Date(1e3*e)};t.parseDeployment=function(e){return{cause:String(e._cause),causeSplit:new a.BigNumber(e._causeSplit),participantSplit:new a.BigNumber(e._participantSplit),owner:String(e._owner),ownerSplit:new a.BigNumber(e._ownerSplit),ownerSecret:String(e._ownerSecret),valuePerEntry:new a.BigNumber(e._valuePerEntry),deployTime:s(e._deployTime),endTime:s(e._endTime),expireTime:s(e._expireTime),destructTime:s(e._destructTime)}},t.parseState=function(e){return{causeSecret:String(e._causeSecret),causeMessage:String(i.message(e._causeMessage)),causeWithdrawn:Boolean(e._causeWithdrawn),participant:String(e._participant),participantMessage:String(i.message(e._participantMessage)),participantWithdrawn:Boolean(e._participantWithdrawn),ownerMessage:String(i.message(e._ownerMessage)),ownerWithdrawn:Boolean(e._participantWithdrawn),cancelled:Boolean(e._cancelled),participants:new a.BigNumber(e._participants),entries:new a.BigNumber(e._entries)}},t.parseBeginning=function(e){return{causeSecret:String(e._causeSecret)}},t.parseParticipant=function(e){return{entries:new a.BigNumber(e._entries),message:String(i.message(e._message))}},t.parseParticipation=function(e){return{participant:String(e._participant),message:String(i.message(e._message)),entries:new a.BigNumber(e._entries),refund:new a.BigNumber(e._refund)}},t.parseRaise=function(e){return{participant:String(e._participant),entries:new a.BigNumber(e._entries),refund:new a.BigNumber(e._refund)}},t.parseRevelation=function(e){return{causeMessage:String(i.message(e._causeMessage))}},t.parseSelection=function(e){return{participant:String(e._participant),participantMessage:String(i.message(e._participantMessage)),causeMessage:String(i.message(e._causeMessage)),ownerMessage:String(i.message(e._ownerMessage))}},t.parseWithdrawal=function(e){return{address:String(e._address)}},t.parseBalances=function(e){var t={};for(var n in e){var i=e[n];"0"!==i&&(t[n]=new a.BigNumber(i))}return t}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},i=s(n(15)),r=s(n(100));function s(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}t.default=function(e){var t=function(e,t){if("fundraiser"!==t.contractName)return e(t);switch(t.method){case"deployment":return function(e,t){return e({type:"FUNDRAISER_DEPLOYMENT",deployment:r.parseDeployment(t.data)})}(e,t);case"state":return function(e,t){return e({type:"FUNDRAISER_STATE",state:r.parseState(t.data)})}(e,t);case"participants":return function(e,t){return e({type:"FUNDRAISER_PARTICIPANT",participant:r.parseParticipant(t.data)})}(e,t);default:return e(t)}},n=function(e,t){if("fundraiser"!==t.contractName)return e(t);switch(t.method){case"balance":return function(e,t){return e({type:"FUNDRAISER_BALANCES",balances:r.parseBalances(t.data)})}(e,t);default:return e(t)}};return function(s){return function(o){switch(o.type){case"ETHEREUM_EVENT":return function(e,t){if("fundraiser"!==t.contractName)return e(t);var n=t.eventName,i="FUNDRAISER_"+n;switch(n){case"BEGINNING":return e(a({},t,{type:i,beginning:r.parseBeginning(t.values)}));case"PARTICIPATION":return e(a({},t,{type:i,participation:r.parseParticipation(t.values)}));case"RAISE":return e(a({},t,{type:i,raise:r.parseRaise(t.values)}));case"REVELATION":return e(a({},t,{type:i,revelation:r.parseRevelation(t.values)}));case"SELECTION":return e(a({},t,{type:i,selection:r.parseSelection(t.values)}));case"WITHDRAWAL":return e(a({},t,{type:i,withdrawal:r.parseWithdrawal(t.values)}));case"CANCELLATION":return e(a({},t,{type:i}));default:return e(t)}}(s,o);case"ETHEREUM_CALL_DATA":return t(s,o);case"ETHEREUM_ALLCALL_DATA":return n(s,o);case"ETHEREUM_USER":return function(t,n){var a=n.account;return e.dispatch(i.call({contractName:"fundraiser",method:"participants",args:[a]})),e.dispatch(i.allCall({contractName:"fundraiser",method:"balance"})),t(n)}(s,o);case"ETHEREUM_REFRESH":return function(t,n){var a=e.getState().ethereum.primaryContractAddresses;return n.contractAddresses.indexOf(a.fundraiser)>-1&&(e.dispatch(i.call({contractName:"fundraiser",method:"deployment"})),e.dispatch(i.call({contractName:"fundraiser",method:"state"}))),t(n)}(s,o);default:return s(o)}}}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.parseCastName=t.parseCastIndex=t.parseVotes=t.parseCauses=t.parseCaster=void 0;var a=n(9),i=(s(n(8)),n(5)),r=s(n(14));function s(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}t.parseCaster=function(e){return{maxScore:new a.BigNumber(e._maxScore),maxVotes:new a.BigNumber(e._maxVotes),votes:new a.BigNumber(e._votes)}},t.parseCauses=function(e){for(var t=[],n=0;n<e._names.length;n+=1){var s={index:n,name:String(r.message(e._names[n])),caster:String(e._casters[n]),scores:new a.BigNumber(e._scores[n]),votes:new a.BigNumber(e._votes[n])};s.averageScore=s.votes.isGreaterThan(0)?s.scores.div(s.votes):(0,i.zero)(),t[n]=s}return t},t.parseVotes=function(e){for(var t={},n=0;n<e._causeIndexes.length;n+=1)t[e._causeIndexes[n]]=new a.BigNumber(e._scores[n]);return t},t.parseCastIndex=function(e){return{caster:String(e._caster),score:new a.BigNumber(e._score),votes:new a.BigNumber(e._votes),causeIndex:new a.BigNumber(e._causeIndex),causeScores:new a.BigNumber(e._causeScores),causeVotes:new a.BigNumber(e._causeVotes)}},t.parseCastName=function(e){return{caster:String(e._caster),score:new a.BigNumber(e._score),causeIndex:new a.BigNumber(e._causeIndex),causeName:String(r.message(e._causeName))}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},i=s(n(15)),r=s(n(102));function s(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}t.default=function(e){var t=function(e,t){if("polling"!==t.contractName)return e(t);switch(t.method){case"caster":return function(e,t){return e({type:"POLLING_CASTER",caster:r.parseCaster(t.data)})}(e,t);case"causes":return function(e,t){return e({type:"POLLING_CAUSES",causes:r.parseCauses(t.data)})}(e,t);case"votes":return function(e,t){return e({type:"POLLING_VOTES",votes:r.parseVotes(t.data)})}(e,t);default:return e(t)}};return function(n){return function(s){switch(s.type){case"ETHEREUM_EVENT":return function(e,t){if("polling"!==t.contractName)return e(t);var n=t.eventName,i="POLLING_"+n;switch(n){case"CASTINDEX":return e(a({},t,{type:i,castIndex:r.parseCastIndex(t.values)}));case"CASTNAME":return e(a({},t,{type:i,castName:r.parseCastName(t.values)}));default:return e(t)}}(n,s);case"ETHEREUM_CALL_DATA":return t(n,s);case"ETHEREUM_REFRESH":return function(t,n){var a=e.getState().ethereum.primaryContractAddresses;return n.contractAddresses.indexOf(a.polling)>-1&&e.dispatch(i.call({contractName:"polling",method:"causes"})),t(n)}(n,s);case"ETHEREUM_USER":return function(t,n){return e.dispatch(i.call({contractName:"polling",method:"caster"})),e.dispatch(i.call({contractName:"polling",method:"votes"})),t(n)}(n,s);default:return n(s)}}}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},i=function(e,t){var n=function(e){return a({},e)}(e);return n.cause=t.cause,n};t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=arguments[1];switch(t.type){case"CAUSE_CAUSE":return i(e,t);default:return e}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},i=function(e){return a({},e)};t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=arguments[1];switch(t.type){case"ETHEREUM_NETWORK":return a({},e,{network:t.network});case"ETHEREUM_ACCOUNT":return a({},e,{account:t.account});case"ETHEREUM_PRIMARY_CONTRACT_ADDRESSES":return a({},e,{primaryContractAddresses:t.primaryContractAddresses});case"ETHEREUM_SEND":return function(e){var t=i(e);return t.isLoading=!0,t}(e);case"ETHEREUM_SEND_ERROR":return function(e){var t=i(e);return t.isLoading=!1,t}(e);default:return e}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},i=function(e){return a({},e)},r=function(e,t){var n=e?e.slice(0,20):[];return n.unshift(t),n};t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=arguments[1];switch(t.type){case"FUNDRAISER_DEPLOYMENT":return function(e,t){var n=i(e);return n.deployment=t.deployment,n}(e,t);case"FUNDRAISER_STATE":return function(e,t){var n=i(e);return n.state=t.state,n}(e,t);case"FUNDRAISER_PARTICIPANT":return function(e,t){var n=i(e);return n.participant=t.participant,n}(e,t);case"FUNDRAISER_BALANCES":return function(e,t){var n=i(e);return n.balances=t.balances,n}(e,t);case"FUNDRAISER_BEGINNING":return function(e,t){if(t.old)return e;var n=i(e);return n.state.causeSecret=t.beginning.causeSecret,n}(e,t);case"FUNDRAISER_PARTICIPATION":return function(e,t){var n=i(e);return t.old?n.feed=r(n.feed,t):(n.state.participants=n.state.participants.plus(1),n.state.entries=n.state.entries.plus(t.participation.entries),n.feed=r(n.feed,t),t.participation.participant===n.account&&(n.isLoading=!1,n.participant.entries=t.participation.entries,n.participant.message=t.participation.message)),n}(e,t);case"FUNDRAISER_RAISE":return function(e,t){var n=i(e);return t.old?n.feed=r(n.feed,t):(n.state.entries=n.state.entries.plus(t.raise.entries),n.feed=r(n.feed,t),t.raise.participant===n.account&&(n.isLoading=!1,n.participant.entries=n.participant.entries.plus(t.raise.entries))),n}(e,t);case"FUNDRAISER_REVELATION":return function(e,t){if(t.old)return e;var n=i(e);return n.state.causeMessage=t.revelation.causeMessage,n}(e,t);case"FUNDRAISER_SELECTION":return function(e,t){if(t.old)return e;var n=i(e);if(n.state.participant=t.selection.participant,n.state.participantMessage=t.selection.participantMessage,n.state.causeMessage=t.selection.causeMessage,n.state.ownerMessage=t.selection.ownerMessage,t.selection.participant===n.account){var a=n.deployment,r=n.state,s=n.primaryContractAddresses;n.balances[s.fundraiser]=r.entries.times(a.participantSplit).dividedBy(1e3).times(a.valuePerEntry)}return n}(e,t);case"FUNDRAISER_CANCELLATION":return function(e,t){if(t.old)return e;var n=i(e);n.isLoading=!1,n.state.cancelled=!0;var a=n.deployment,r=n.participant,s=n.primaryContractAddresses;return n.balances[s.fundraiser]=r.entries.times(a.valuePerEntry),n}(e);case"FUNDRAISER_WITHDRAWAL":return function(e,t){if(t.old)return e;var n=i(e);return t.withdrawal.address===n.account&&(n.isLoading=!1,delete n.balances[t.contractAddress]),n}(e,t);default:return e}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},i=n(5),r=function(e){return a({},e)};t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=arguments[1];switch(t.type){case"POLLING_CASTER":return function(e,t){var n=r(e);return n.caster=t.caster,n}(e,t);case"POLLING_CAUSES":return function(e,t){var n=r(e);return n.causes=t.causes,n}(e,t);case"POLLING_VOTES":return function(e,t){var n=r(e);return n.votes=t.votes,n}(e,t);case"POLLING_CASTINDEX":return function(e,t){if(t.old)return e;var n=t.castIndex,a=n.caster,s=n.score,o=n.votes,u=n.causeIndex,l=n.causeScores,p=n.causeVotes,c=r(e);c.isLoading=!1;var d=c.causes[u];return d.scores=l,d.votes=p,d.averageScore=p.isGreaterThan(0)?l.div(p):(0,i.zero)(),a===c.account&&(c.caster.votes=o,0===s&&d.caster!==c.account?delete c.votes[u]:c.votes[u]=s),c}(e,t);case"POLLING_CASTNAME":return function(e,t){if(t.old)return e;var n=r(e);n.isLoading=!1;var a=t.castName,i=a.caster,s=a.causeIndex,o=a.causeName,u=a.score;return n.causes[s]={index:s,name:o,caster:i,scores:u,votes:1,averageScore:u},i===n.account&&(n.votes[s]=u,n.caster.votes=n.caster.votes.plus(1)),n}(e,t);case"FUNDRAISER_PARTICIPATION":return function(e,t){if(t.old||t.participation.participant!==e.account)return e;var n=r(e);return n.caster.maxVotes=n.caster.maxVotes.plus(1),n}(e,t);default:return e}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(){for(var e=arguments.length,t=Array(e),n=0;n<e;n++)t[n]=arguments[n];return function(e,n){return t.reduce(function(e,t){return t(e,n)},e)}}},function(e,t){e.exports=require("history/createMemoryHistory")},function(e,t){e.exports=require("history/createBrowserHistory")},function(e,t){e.exports=require("redux")},function(e,t){e.exports=require("redux-devtools-extension")},function(e,t){e.exports=require("react-router-redux")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=k(n(0)),i=n(7),r=n(113),s=n(112),o=n(6),u=n(111),l=n(10),p=k(l),c=k(n(110)),d=k(n(109)),y=k(n(108)),m=k(n(107)),f=k(n(106)),b=k(n(105)),_=k(n(104)),v=k(n(103)),h=k(n(101)),w=k(n(99)),g=k(n(97));n(96);var E=k(n(95)),x=k(n(93)),M=k(n(91)),N=k(n(90)),O=k(n(87)),S=k(n(40)),P=k(n(33)),T=k(n(32)),R=k(n(28)),j=k(n(27)),C=k(n(25));function k(e){return e&&e.__esModule?e:{default:e}}var A=function(){return(0,u.combineReducers)({ethereum:(0,y.default)(b.default,f.default,m.default,_.default),toastr:l.reducer,router:r.routerReducer})},I=function(e){var t=[w.default,h.default,v.default,g.default];return e&&t.push((0,r.routerMiddleware)(e)),(0,s.composeWithDevTools)(u.applyMiddleware.apply(void 0,t))},L=function(){return a.default.createElement("div",null,a.default.createElement(o.Route,{exact:!0,path:"/",component:N.default}),a.default.createElement(o.Route,{path:"/participate",component:O.default}),a.default.createElement(o.Route,{path:"/vote",component:S.default}),a.default.createElement(o.Route,{path:"/history",component:P.default}),a.default.createElement(o.Route,{path:"/help",component:T.default}),a.default.createElement(o.Route,{path:"/about",component:R.default}),a.default.createElement(o.Route,{path:"/contact",component:j.default}),a.default.createElement(o.Route,{path:"/announce-beta-giveth",component:C.default}))},B=function(){return a.default.createElement("div",null,a.default.createElement(p.default,{timeOut:4e3,newestOnTop:!1,preventDuplicates:!0,position:"top-center",transitionIn:"fadeIn",transitionOut:"fadeOut",progressBar:!0}),a.default.createElement(x.default,null),a.default.createElement(L,null),a.default.createElement(M.default,null))};t.default=function(e,t){var n=e?(0,d.default)({initialEntries:[e.url]}):(0,c.default)(),s=t?(0,u.createStore)(A(),t,I(n)):(0,u.createStore)(A(),I());return{component:t?function(e,t){return a.default.createElement(i.Provider,{store:e,suppressHydrationWarning:!0},a.default.createElement(r.ConnectedRouter,{history:t},a.default.createElement("div",null,a.default.createElement(E.default,null),a.default.createElement(B,null))))}(s,n):function(e,t){return a.default.createElement(i.Provider,{store:e},a.default.createElement(r.ConnectedRouter,{history:t},a.default.createElement("div",null,a.default.createElement(E.default,null),a.default.createElement(o.Route,{exact:!0,path:"/",component:N.default}))))}(s,n),store:s}}},function(e,t,n){"use strict";e.exports={resolve:{extensions:[".js",".jsx",".scss",".png",".jpg",".gif",".svg",".woff",".woff2",".eot",".ttf",".otf"]}}},function(e,t){e.exports=require("webpack-merge")},function(e,t){e.exports=require("path")},function(e,t,n){"use strict";var a=n(117),i=n(116),r=n(115),s=process.cwd(),o=a.resolve(s,"node_modules");e.exports=i(r,{name:"client",target:"web",entry:a.resolve(s,"app/client.js"),output:{filename:"index.js",path:a.resolve(s,"dist/client"),publicPath:"/static/"},module:{rules:[{test:/\.(js|jsx)$/,exclude:o,use:["babel-loader"]},{test:/\.scss$/,exclude:o,use:["style-loader","css-loader","sass-loader"]},{test:/\.(png|jpg|gif|svg)$/,exclude:o,use:["file-loader"]},{test:/\.(woff|woff2|eot|ttf|otf)$/,exclude:o,loader:["file-loader"]}]}})},function(e,t){e.exports=require("express-cache-controller")},function(e,t){e.exports=require("react-dom/server")},function(e,t){e.exports=require("express")},function(e,t,n){"use strict";var a=l(n(121)),i=n(23),r=n(120),s=l(n(119)),o=l(n(118)),u=l(n(114));function l(e){return e&&e.__esModule?e:{default:e}}var p=o.default.output,c=p.publicPath,d=p.path,y=(0,a.default)();y.use((0,s.default)({public:!0,maxAge:3600})),y.use(c,a.default.static(d)),y.use(function(e,t){var n=(0,u.default)(e,null);(0,r.renderToString)(n.component);var a=i.Helmet.renderStatic(),s=n.store.getState();t.send(function(e,t){return"\n    <!doctype html>\n    <html "+e.htmlAttributes.toString()+">\n      <head>\n        "+e.title.toString()+"\n        "+e.meta.toString()+"\n        "+e.link.toString()+"\n      </head>\n      <body "+e.bodyAttributes.toString()+'>\n        <div id="root"></div>\n        <script>\n          // http://redux.js.org/recipes/ServerRendering.html#security-considerations\n          window.__STATE__ = '+JSON.stringify(t).replace(/</g,"\\u003c")+'\n        <\/script>\n        <script src="'+c+'index.js"><\/script>\n      </body>\n    </html>\n  '}(a,s))}),y.listen(3e3)}]);
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading wasm modules
+/******/ 	var installedWasmModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/static/";
+/******/
+/******/ 	// object with all compiled WebAssembly.Modules
+/******/ 	__webpack_require__.w = {};
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./app/server.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "../seedom-assets/logo/full/seedom-full-white-transparent@4x.png":
+/*!***********************************************************************!*\
+  !*** ../seedom-assets/logo/full/seedom-full-white-transparent@4x.png ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "25c2c8dd141c93f986a13359f7f6c721.png";
+
+/***/ }),
+
+/***/ "../seedom-assets/logo/o/seedom-o-white-transparent.svg":
+/*!**************************************************************!*\
+  !*** ../seedom-assets/logo/o/seedom-o-white-transparent.svg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "0b624dd33fb9366ac2ca93ef9c6c45bb.svg";
+
+/***/ }),
+
+/***/ "./app/actions/ethereum.js":
+/*!*********************************!*\
+  !*** ./app/actions/ethereum.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var call = function call(_ref) {
+  var contractName = _ref.contractName,
+      contractAddress = _ref.contractAddress,
+      method = _ref.method,
+      args = _ref.args;
+  return {
+    type: 'ETHEREUM_CALL',
+    contractName: contractName,
+    contractAddress: contractAddress,
+    method: method,
+    args: args
+  };
+};
+
+var allCall = function allCall(_ref2) {
+  var contractName = _ref2.contractName,
+      method = _ref2.method,
+      args = _ref2.args;
+  return {
+    type: 'ETHEREUM_ALLCALL',
+    contractName: contractName,
+    method: method,
+    args: args
+  };
+};
+
+var send = function send(_ref3) {
+  var contractName = _ref3.contractName,
+      contractAddress = _ref3.contractAddress,
+      method = _ref3.method,
+      args = _ref3.args,
+      value = _ref3.value;
+  return {
+    type: 'ETHEREUM_SEND',
+    contractName: contractName,
+    contractAddress: contractAddress,
+    method: method,
+    args: args,
+    value: value
+  };
+};
+
+exports.call = call;
+exports.allCall = allCall;
+exports.send = send;
+
+/***/ }),
+
+/***/ "./app/components/about/index.js":
+/*!***************************************!*\
+  !*** ./app/components/about/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _sections = __webpack_require__(/*! ../sections */ "./app/components/sections/index.js");
+
+var _sections2 = _interopRequireDefault(_sections);
+
+var _collapse = __webpack_require__(/*! ../collapse */ "./app/components/collapse/index.js");
+
+var _collapse2 = _interopRequireDefault(_collapse);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var About = function (_Sections) {
+  _inherits(About, _Sections);
+
+  function About() {
+    _classCallCheck(this, About);
+
+    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).apply(this, arguments));
+  }
+
+  _createClass(About, [{
+    key: 'render',
+    value: function render() {
+      var open = this.state.open;
+
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          _collapse2.default,
+          {
+            title: 'our mission',
+            collapsed: !open.includes('our-mission')
+          },
+          _react2.default.createElement(
+            'div',
+            null,
+            'HELLO!'
+          )
+        ),
+        _react2.default.createElement(
+          _collapse2.default,
+          {
+            title: 'about the team',
+            collapsed: !open.includes('about-the-team')
+          },
+          _react2.default.createElement(
+            'div',
+            null,
+            'HELLO!'
+          )
+        )
+      );
+    }
+  }]);
+
+  return About;
+}(_sections2.default);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(About);
+
+/***/ }),
+
+/***/ "./app/components/causeLogo/index.js":
+/*!*******************************************!*\
+  !*** ./app/components/causeLogo/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _causes = __webpack_require__(/*! @seedom-io/seedom-resolver/causes */ "@seedom-io/seedom-resolver/causes");
+
+var causesResolver = _interopRequireWildcard(_causes);
+
+var _causeLogo = __webpack_require__(/*! ../../img/logos/cause-logo.png */ "./app/img/logos/cause-logo.png");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/causeLogo/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CauseLogo = function (_Component) {
+  _inherits(CauseLogo, _Component);
+
+  function CauseLogo() {
+    _classCallCheck(this, CauseLogo);
+
+    return _possibleConstructorReturn(this, (CauseLogo.__proto__ || Object.getPrototypeOf(CauseLogo)).apply(this, arguments));
+  }
+
+  _createClass(CauseLogo, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          deployment = _props.deployment,
+          size = _props.size;
+      // make sure we have a deployment
+
+      if (!deployment) {
+        return null;
+      }
+
+      var imageUrl = causesResolver.getImageUrl(deployment.cause);
+      var finalImageUrl =  false ? undefined : _causeLogo2.default;
+      return _react2.default.createElement('div', { className: 'cause-logo ' + size, style: { backgroundImage: 'url(' + finalImageUrl + ')' } });
+    }
+  }]);
+
+  return CauseLogo;
+}(_react.Component);
+
+CauseLogo.propTypes = {
+  deployment: _propTypes2.default.shape(),
+  size: _propTypes2.default.string
+};
+CauseLogo.defaultProps = {
+  deployment: null,
+  size: null
+};
+exports.default = CauseLogo;
+
+/***/ }),
+
+/***/ "./app/components/causeLogo/index.scss":
+/*!*********************************************!*\
+  !*** ./app/components/causeLogo/index.scss ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/collapse/index.js":
+/*!******************************************!*\
+  !*** ./app/components/collapse/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(/*! classnames */ "classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/collapse/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Collapse = function (_Component) {
+  _inherits(Collapse, _Component);
+
+  function Collapse(props) {
+    _classCallCheck(this, Collapse);
+
+    var _this = _possibleConstructorReturn(this, (Collapse.__proto__ || Object.getPrototypeOf(Collapse)).call(this, props));
+
+    _this.toggle = function () {
+      _this.setState(function (prevState) {
+        return {
+          collapsed: !prevState.collapsed
+        };
+      });
+    };
+
+    _this.state = {
+      collapsed: props.collapsed
+    };
+    return _this;
+  }
+
+  _createClass(Collapse, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(newProps) {
+      if (this.state.collapsed !== newProps.collapsed) {
+        this.setState({ collapsed: newProps.collapsed });
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var title = this.props.title;
+      var collapsed = this.state.collapsed;
+
+      return _react2.default.createElement(
+        'div',
+        {
+          className: (0, _classnames2.default)('seedom-collapse', { collapsed: collapsed }),
+          onClick: this.toggle
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'header' },
+          _react2.default.createElement(
+            'span',
+            { className: 'toggle left' },
+            _react2.default.createElement('i', { className: 'fas fa-plus' })
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'text' },
+            title
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'toggle right' },
+            _react2.default.createElement('i', { className: 'fas fa-plus' })
+          )
+        ),
+        !collapsed && _react2.default.createElement(
+          'div',
+          { className: 'content' },
+          this.props.children
+        )
+      );
+    }
+  }]);
+
+  return Collapse;
+}(_react.Component);
+
+Collapse.propTypes = {
+  title: _propTypes2.default.string.isRequired,
+  collapsed: _propTypes2.default.bool,
+  children: _propTypes2.default.element
+};
+Collapse.defaultProps = {
+  collapsed: true,
+  children: null
+};
+exports.default = Collapse;
+
+/***/ }),
+
+/***/ "./app/components/collapse/index.scss":
+/*!********************************************!*\
+  !*** ./app/components/collapse/index.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/contact/index.js":
+/*!*****************************************!*\
+  !*** ./app/components/contact/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _sections = __webpack_require__(/*! ../sections */ "./app/components/sections/index.js");
+
+var _sections2 = _interopRequireDefault(_sections);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/contact/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Contact = function (_Sections) {
+  _inherits(Contact, _Sections);
+
+  function Contact() {
+    _classCallCheck(this, Contact);
+
+    return _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).apply(this, arguments));
+  }
+
+  _createClass(Contact, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'container seedom-contact' },
+        _react2.default.createElement(
+          'div',
+          { className: 'columns' },
+          _react2.default.createElement(
+            'div',
+            { className: 'column is-offset-2 has-text-white' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'title has-text-white' },
+              'Are you leading a cause that needs funding?'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Want to learn more about accepting donations in cryptocurrencies?'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Then you are at the right place!'
+            ),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'p',
+              null,
+              'For press and media inquires, email us directly at ',
+              _react2.default.createElement(
+                'a',
+                { href: 'mailto:team@seedom.io' },
+                'team@seedom.io'
+              ),
+              '.'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'column' },
+            _react2.default.createElement('iframe', {
+              src: 'https://landing.mailerlite.com/webforms/landing/t6i1i0',
+              style: { border: 'none', width: '350px', height: '472px' }
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Contact;
+}(_sections2.default);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Contact);
+
+/***/ }),
+
+/***/ "./app/components/contact/index.scss":
+/*!*******************************************!*\
+  !*** ./app/components/contact/index.scss ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/field/index.js":
+/*!***************************************!*\
+  !*** ./app/components/field/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(/*! classnames */ "classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/field/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var inputClass = function inputClass(isValid) {
+  return (0, _classnames2.default)({
+    input: true,
+    'is-primary': isValid,
+    'is-danger': !isValid
+  });
+};
+
+var textareaClass = function textareaClass(isValid) {
+  return (0, _classnames2.default)({
+    textarea: true,
+    'is-primary': isValid,
+    'is-danger': !isValid
+  });
+};
+
+var Field = function (_Component) {
+  _inherits(Field, _Component);
+
+  function Field() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Field);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Field.__proto__ || Object.getPrototypeOf(Field)).call.apply(_ref, [this].concat(args))), _this), _this.focus = function () {
+      _this.input.focus();
+    }, _this.handleChange = function (event) {
+      _this.props.onChange(event.target.value);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Field, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          format = _props.format,
+          type = _props.type,
+          placeholder = _props.placeholder,
+          disabled = _props.disabled,
+          value = _props.value,
+          maxLength = _props.maxLength,
+          children = _props.children,
+          isValid = _props.isValid,
+          min = _props.min,
+          max = _props.max;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-field field' },
+        _react2.default.createElement(
+          'div',
+          { className: 'control ' + format },
+          {
+            textbox: _react2.default.createElement('input', {
+              className: inputClass(isValid),
+              type: type,
+              min: min,
+              max: max,
+              placeholder: placeholder.toUpperCase(),
+              disabled: disabled,
+              value: value,
+              onChange: this.handleChange,
+              ref: function ref(input) {
+                _this2.input = input;
+              }
+            }),
+            textblock: _react2.default.createElement('textarea', {
+              rows: '2',
+              className: textareaClass(isValid),
+              type: type,
+              placeholder: placeholder.toUpperCase(),
+              disabled: disabled,
+              value: value,
+              maxLength: maxLength,
+              onChange: this.handleChange,
+              ref: function ref(input) {
+                _this2.input = input;
+              }
+            }),
+            addonbox: _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement('input', {
+                className: inputClass(isValid),
+                type: type,
+                min: min,
+                max: max,
+                placeholder: placeholder.toUpperCase(),
+                disabled: disabled,
+                onChange: this.handleChange,
+                ref: function ref(input) {
+                  _this2.input = input;
+                }
+              }),
+              _react2.default.createElement(
+                'div',
+                { className: 'addon' },
+                children
+              )
+            )
+          }[format]
+        )
+      );
+    }
+  }]);
+
+  return Field;
+}(_react.Component);
+
+Field.propTypes = {
+  format: _propTypes2.default.string.isRequired,
+  type: _propTypes2.default.string.isRequired,
+  value: _propTypes2.default.string,
+  maxLength: _propTypes2.default.number,
+  min: _propTypes2.default.shape(),
+  max: _propTypes2.default.shape(),
+  placeholder: _propTypes2.default.string.isRequired,
+  disabled: _propTypes2.default.bool.isRequired,
+  isValid: _propTypes2.default.bool,
+  onChange: _propTypes2.default.func.isRequired,
+  children: _propTypes2.default.element
+};
+Field.defaultProps = {
+  value: '',
+  maxLength: 0,
+  min: null,
+  max: null,
+  isValid: true,
+  children: null
+};
+exports.default = Field;
+
+/***/ }),
+
+/***/ "./app/components/field/index.scss":
+/*!*****************************************!*\
+  !*** ./app/components/field/index.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/footer/index.js":
+/*!****************************************!*\
+  !*** ./app/components/footer/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Footer = function (_Component) {
+  _inherits(Footer, _Component);
+
+  function Footer() {
+    _classCallCheck(this, Footer);
+
+    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+  }
+
+  _createClass(Footer, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "footer",
+        { className: "footer" },
+        _react2.default.createElement(
+          "div",
+          { className: "container" },
+          _react2.default.createElement(
+            "div",
+            { className: "content has-text-centered" },
+            _react2.default.createElement(
+              "p",
+              null,
+              _react2.default.createElement(
+                "strong",
+                null,
+                "Seedom"
+              ),
+              " by the ",
+              _react2.default.createElement(
+                "a",
+                { className: "is-green", href: "mailto:team@seedom.io" },
+                "Seedom Team"
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Footer;
+}(_react.Component);
+
+exports.default = Footer;
+
+/***/ }),
+
+/***/ "./app/components/head/index.js":
+/*!**************************************!*\
+  !*** ./app/components/head/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _reactHelmet = __webpack_require__(/*! react-helmet */ "react-helmet");
+
+var _queryString = __webpack_require__(/*! query-string */ "query-string");
+
+var _queryString2 = _interopRequireDefault(_queryString);
+
+var _badges = __webpack_require__(/*! ../../utils/badges */ "./app/utils/badges.js");
+
+var badges = _interopRequireWildcard(_badges);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var name = 'Seedom';
+var author = 'Team Palm Tree';
+var title = 'Seedom | Seeding the future of philanthropy';
+var description = 'Raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support. Seed the future of philanthropy!';
+var image = 'https://raw.githubusercontent.com/seedom-io/seedom-assets/master/share/seedom-share.png';
+var imageWidth = 1200;
+var imageHeight = 628;
+
+var Head = function (_Component) {
+  _inherits(Head, _Component);
+
+  function Head() {
+    _classCallCheck(this, Head);
+
+    return _possibleConstructorReturn(this, (Head.__proto__ || Object.getPrototypeOf(Head)).apply(this, arguments));
+  }
+
+  _createClass(Head, [{
+    key: 'render',
+    value: function render() {
+      var router = this.props.router;
+
+
+      var finalUrl = "http://localhost:8080";
+      var finalImage = image;
+      // check for badge
+      if (router && router.location) {
+        if (router.location.search !== '') {
+          var query = _queryString2.default.parse(router.location.search.substr(1));
+          var n = query.n,
+              c = query.c,
+              p = query.p;
+
+          if (n && c && p) {
+            finalUrl += router.location.search;
+            finalImage = badges.getImageUrl({
+              network: n,
+              contract: c,
+              participant: p
+            });
+          }
+        }
+      }
+
+      return _react2.default.createElement(
+        _reactHelmet.Helmet,
+        null,
+        _react2.default.createElement(
+          'title',
+          null,
+          title
+        ),
+        _react2.default.createElement('meta', { name: 'description', content: description }),
+        _react2.default.createElement('meta', { name: 'author', content: author }),
+        _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=0.7, maximum-scale=0.7' }),
+        _react2.default.createElement('meta', { name: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' }),
+        _react2.default.createElement('meta', { name: 'twitter:site', property: 'twitter:site', content: '@seedom_io' }),
+        _react2.default.createElement('meta', { name: 'twitter:title', property: 'twitter:title', content: title }),
+        _react2.default.createElement('meta', { name: 'twitter:description', property: 'twitter:description', content: description }),
+        _react2.default.createElement('meta', { name: 'twitter:image', property: 'twitter:image', content: finalImage }),
+        _react2.default.createElement('meta', { name: 'twitter:url', property: 'twitter:url', content: finalUrl }),
+        _react2.default.createElement('meta', { name: 'og:type', property: 'og:type', content: 'website' }),
+        _react2.default.createElement('meta', { name: 'og:site_name', property: 'og:site_name', content: name }),
+        _react2.default.createElement('meta', { name: 'og:title', property: 'og:title', content: title }),
+        _react2.default.createElement('meta', { name: 'og:description', property: 'og:description', content: description }),
+        _react2.default.createElement('meta', { name: 'og:image', property: 'og:image', content: finalImage }),
+        _react2.default.createElement('meta', { name: 'og:image:width', property: 'og:image:width', content: imageWidth }),
+        _react2.default.createElement('meta', { name: 'og:image:height', property: 'og:image:height', content: imageHeight }),
+        _react2.default.createElement('meta', { name: 'og:url', property: 'og:url', content: finalUrl }),
+        _react2.default.createElement('link', { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.10/css/all.css', integrity: 'sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg', crossOrigin: 'anonymous' })
+      );
+    }
+  }]);
+
+  return Head;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Head);
+
+/***/ }),
+
+/***/ "./app/components/help/index.js":
+/*!**************************************!*\
+  !*** ./app/components/help/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _sections = __webpack_require__(/*! ../sections */ "./app/components/sections/index.js");
+
+var _sections2 = _interopRequireDefault(_sections);
+
+var _toggle = __webpack_require__(/*! ../toggle */ "./app/components/toggle/index.js");
+
+var _toggle2 = _interopRequireDefault(_toggle);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/help/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Help = function (_Sections) {
+  _inherits(Help, _Sections);
+
+  function Help() {
+    _classCallCheck(this, Help);
+
+    return _possibleConstructorReturn(this, (Help.__proto__ || Object.getPrototypeOf(Help)).apply(this, arguments));
+  }
+
+  _createClass(Help, [{
+    key: 'render',
+    value: function render() {
+      var open = this.state.open;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-help' },
+        _react2.default.createElement(
+          'div',
+          { className: 'container' },
+          _react2.default.createElement(
+            'div',
+            { className: 'column is-three-fifths is-offset-one-fifth' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'title has-text-white' },
+              'Accessing Seedom'
+            ),
+            _react2.default.createElement(
+              _toggle2.default,
+              {
+                title: 'Accessing on mobile',
+                collapsed: !open.includes('accessing-mobile')
+              },
+              'To use Seedom on mobile, we recommend the ',
+              _react2.default.createElement(
+                'a',
+                { target: '_blank', href: 'https://www.cipherbrowser.com/' },
+                'Cipher app'
+              ),
+              '. You will need to put Ether into your Cipher wallet in order to participate.'
+            ),
+            _react2.default.createElement(
+              _toggle2.default,
+              {
+                title: 'Accessing on desktop',
+                collapsed: !open.includes('accessing-desktop')
+              },
+              'To use Seedom on the desktop, you will need to install ',
+              _react2.default.createElement(
+                'a',
+                { target: '_blank', href: 'https://metamask.io/' },
+                'MetaMask'
+              ),
+              ' or use the ',
+              _react2.default.createElement(
+                'a',
+                { target: '_blank', href: 'https://brave.com/' },
+                'Brave browser'
+              ),
+              '. You will need to put Ether into your MetaMask wallet in order to participate.'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Help;
+}(_sections2.default);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Help);
+
+/***/ }),
+
+/***/ "./app/components/help/index.scss":
+/*!****************************************!*\
+  !*** ./app/components/help/index.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/history/index.js":
+/*!*****************************************!*\
+  !*** ./app/components/history/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var History = function (_Component) {
+  _inherits(History, _Component);
+
+  function History() {
+    _classCallCheck(this, History);
+
+    return _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).apply(this, arguments));
+  }
+
+  _createClass(History, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        'History'
+      );
+    }
+  }]);
+
+  return History;
+}(_react.Component);
+
+exports.default = History;
+
+/***/ }),
+
+/***/ "./app/components/hype/index.js":
+/*!**************************************!*\
+  !*** ./app/components/hype/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _circles = __webpack_require__(/*! ../participate/components/puck/components/circles */ "./app/components/participate/components/puck/components/circles/index.js");
+
+var _circles2 = _interopRequireDefault(_circles);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/hype/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Hype = function (_Component) {
+  _inherits(Hype, _Component);
+
+  function Hype() {
+    _classCallCheck(this, Hype);
+
+    return _possibleConstructorReturn(this, (Hype.__proto__ || Object.getPrototypeOf(Hype)).apply(this, arguments));
+  }
+
+  _createClass(Hype, [{
+    key: 'render',
+    value: function render() {
+      var deployment = {
+        deployTime: new Date(1524369600 * 1000),
+        endTime: new Date(1525147200 * 1000)
+      };
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-hype' },
+        _react2.default.createElement(
+          'div',
+          { className: 'countdown' },
+          _react2.default.createElement(_circles2.default, { starter: 'launches', isLoading: false, deployment: deployment }),
+          _react2.default.createElement(
+            'div',
+            { className: 'seedom-content show' },
+            _react2.default.createElement(
+              'div',
+              { className: 'seedom-overlay layout' },
+              _react2.default.createElement(
+                'div',
+                { className: 'division text top large-pad narrow' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'coming-soon' },
+                  'Launches May 1'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'field' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'control' },
+                    _react2.default.createElement(
+                      'a',
+                      { className: 'button is-success', type: 'submit', href: 'https://seedom-io.github.io/seedom-whitepaper/seedom-whitepaper.pdf' },
+                      'READ THE WHITEPAPER'
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'division text center' },
+                _react2.default.createElement('div', { className: 'seedom-logo' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'division text bottom' },
+                _react2.default.createElement(
+                  'form',
+                  { action: 'https://landing.mailerlite.com/webforms/submit/z2z8h3', method: 'POST', target: '_blank' },
+                  _react2.default.createElement('input', { type: 'hidden', name: 'ml-submit', value: '1' }),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'field email' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'control textbox' },
+                      _react2.default.createElement('input', { className: 'input is-primary', type: 'email', placeholder: 'email@example.com', name: 'fields[email]' })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'field' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'control' },
+                      _react2.default.createElement(
+                        'button',
+                        { className: 'button is-success', type: 'submit' },
+                        'SEND ME A REMINDER'
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Hype;
+}(_react.Component);
+
+exports.default = Hype;
+
+/***/ }),
+
+/***/ "./app/components/hype/index.scss":
+/*!****************************************!*\
+  !*** ./app/components/hype/index.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/navbar/index.js":
+/*!****************************************!*\
+  !*** ./app/components/navbar/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _classnames = __webpack_require__(/*! classnames */ "classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _seedomFullWhiteTransparent4x = __webpack_require__(/*! ../../../../seedom-assets/logo/full/seedom-full-white-transparent@4x.png */ "../seedom-assets/logo/full/seedom-full-white-transparent@4x.png");
+
+var _seedomFullWhiteTransparent4x2 = _interopRequireDefault(_seedomFullWhiteTransparent4x);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NavBar = function (_React$Component) {
+  _inherits(NavBar, _React$Component);
+
+  function NavBar(props) {
+    _classCallCheck(this, NavBar);
+
+    var _this = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+
+    _this.handleNavToggle = function () {
+      _this.setState({
+        isBurgerActive: !_this.state.isBurgerActive
+      });
+    };
+
+    _this.handleNavLink = function () {
+      _this.setState({
+        isBurgerActive: false
+      });
+    };
+
+    _this.state = {
+      isBurgerActive: false
+    };
+    return _this;
+  }
+
+  _createClass(NavBar, [{
+    key: 'render',
+
+
+    // <NavLink className="navbar-item" activeClassName="is-active" to="/history" onClick={this.handleNavLink} exact>HISTORY</NavLink>
+    value: function render() {
+      var isBurgerActive = this.state.isBurgerActive;
+      var isLoading = this.props.ethereum.isLoading;
+      var pathname = this.props.router.location.pathname;
+
+
+      return _react2.default.createElement(
+        'nav',
+        { className: 'navbar' },
+        _react2.default.createElement(
+          'div',
+          { className: 'container' },
+          _react2.default.createElement(
+            'div',
+            { className: (0, _classnames2.default)('navbar-brand', { 'is-loading': isLoading }) },
+            _react2.default.createElement(
+              'a',
+              { className: 'navbar-item', href: '/' },
+              _react2.default.createElement('img', { src: _seedomFullWhiteTransparent4x2.default, alt: 'Seedom - Seeding the future of philanthropy' })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: (0, _classnames2.default)('navbar-burger', 'burger', { 'is-active': isBurgerActive }), onClick: this.handleNavToggle },
+              _react2.default.createElement('span', null),
+              _react2.default.createElement('span', null),
+              _react2.default.createElement('span', null)
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: (0, _classnames2.default)('navbar-menu', { 'is-active': isBurgerActive }) },
+            pathname !== '/' && _react2.default.createElement(
+              'div',
+              { className: 'navbar-start' },
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { className: 'navbar-item', activeClassName: 'is-active', to: '/participate', onClick: this.handleNavLink, exact: true },
+                'PARTICIPATE'
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { className: 'navbar-item', activeClassName: 'is-active', to: '/vote', onClick: this.handleNavLink, exact: true },
+                'VOTE'
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { className: 'navbar-item', activeClassName: 'is-active', to: '/help', onClick: this.handleNavLink, exact: true },
+                'HELP'
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { className: 'navbar-item', activeClassName: 'is-active', to: '/about', onClick: this.handleNavLink, exact: true },
+                'ABOUT'
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { className: 'navbar-item', activeClassName: 'is-active', to: '/contact', onClick: this.handleNavLink, exact: true },
+                'CONTACT'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'navbar-end' },
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://medium.com/@seedom.io' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-medium' })
+                )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://reddit.com/r/seedom_io' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-reddit' })
+                )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://github.com/seedom-io' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-github' })
+                )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://www.facebook.com/seedom.io' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-facebook' })
+                )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://twitter.com/seedom_io' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-twitter' })
+                )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://www.instagram.com/seedom.io/' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-instagram' })
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return NavBar;
+}(_react2.default.Component);
+
+NavBar.propTypes = {
+  ethereum: _propTypes2.default.shape().isRequired,
+  router: _propTypes2.default.shape().isRequired
+};
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    router: state.router,
+    ethereum: state.ethereum
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(NavBar);
+
+/***/ }),
+
+/***/ "./app/components/participate/components/about/index.js":
+/*!**************************************************************!*\
+  !*** ./app/components/participate/components/about/index.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _collapse = __webpack_require__(/*! ../../../collapse */ "./app/components/collapse/index.js");
+
+var _collapse2 = _interopRequireDefault(_collapse);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/about/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var About = function (_Component) {
+  _inherits(About, _Component);
+
+  function About() {
+    _classCallCheck(this, About);
+
+    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).apply(this, arguments));
+  }
+
+  _createClass(About, [{
+    key: 'render',
+    value: function render() {
+      var isPlaying = this.props.isPlaying;
+
+      return _react2.default.createElement(
+        _collapse2.default,
+        { collapsed: !isPlaying, title: 'about cause' },
+        _react2.default.createElement(
+          'div',
+          { className: 'centered' },
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-primary', href: 'https://giveth.io', target: '_blank' },
+                'LEARN MORE AT GIVETH.IO'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'video' },
+            _react2.default.createElement('iframe', {
+              id: 'video',
+              title: 'video',
+              src: '//www.youtube.com/embed/i8kjxGxGSkA?rel=0' + (isPlaying ? '&autoplay=1' : ''),
+              frameBorder: '0',
+              allowFullScreen: true
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return About;
+}(_react.Component);
+
+About.propTypes = {
+  isPlaying: _propTypes2.default.bool
+};
+About.defaultProps = {
+  isPlaying: false
+};
+exports.default = About;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/about/index.scss":
+/*!****************************************************************!*\
+  !*** ./app/components/participate/components/about/index.scss ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/feed/index.js":
+/*!*************************************************************!*\
+  !*** ./app/components/participate/components/feed/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _bytes = __webpack_require__(/*! ../../../../utils/bytes */ "./app/utils/bytes.js");
+
+var bytes = _interopRequireWildcard(_bytes);
+
+var _numbers = __webpack_require__(/*! ../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var numbers = _interopRequireWildcard(_numbers);
+
+var _etherscan = __webpack_require__(/*! ../../../../utils/etherscan */ "./app/utils/etherscan.js");
+
+var etherscan = _interopRequireWildcard(_etherscan);
+
+var _collapse = __webpack_require__(/*! ../../../collapse */ "./app/components/collapse/index.js");
+
+var _collapse2 = _interopRequireDefault(_collapse);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/feed/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var getAddress = function getAddress(item) {
+  switch (item.type) {
+    case 'FUNDRAISER_PARTICIPATION':
+      return item.participation.participant;
+    case 'FUNDRAISER_RAISE':
+      return item.raise.participant;
+    default:
+      return null;
+  }
+};
+
+var getEntries = function getEntries(item) {
+  switch (item.type) {
+    case 'FUNDRAISER_PARTICIPATION':
+      return item.participation.entries;
+    case 'FUNDRAISER_RAISE':
+      return item.raise.entries;
+    default:
+      return null;
+  }
+};
+
+var getMessage = function getMessage(item) {
+  if (item.type === 'FUNDRAISER_PARTICIPATION') {
+    return item.participation.message;
+  }
+  return null;
+};
+
+var Feed = function (_Component) {
+  _inherits(Feed, _Component);
+
+  function Feed() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Feed);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Feed.__proto__ || Object.getPrototypeOf(Feed)).call.apply(_ref, [this].concat(args))), _this), _this.openTransaction = function (transactionHash) {
+      var network = _this.props.network;
+
+      var etherscanUrl = etherscan.getTransactionUrl(network, transactionHash);
+      if (etherscanUrl) {
+        window && window.open(etherscanUrl, '_blank');
+      }
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Feed, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var feed = this.props.feed;
+
+      return _react2.default.createElement(
+        _collapse2.default,
+        { title: 'live activity feed', collapsed: false },
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-feed' },
+          _react2.default.createElement(
+            'div',
+            { className: 'list' },
+            feed.map(function (item) {
+              return _react2.default.createElement(
+                'div',
+                {
+                  className: 'row',
+                  key: item.transactionHash + '-' + item.transactionIndex,
+                  onClick: function onClick() {
+                    _this2.openTransaction(item.transactionHash);
+                  }
+                },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'icon' },
+                  {
+                    FUNDRAISER_PARTICIPATION: _react2.default.createElement('i', { className: 'fas fa-arrow-alt-circle-right' }),
+                    FUNDRAISER_RAISE: _react2.default.createElement('i', { className: 'far fa-arrow-alt-circle-up' })
+                  }[item.type]
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'contents' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'side left' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'blocknum' },
+                      _react2.default.createElement('i', { className: 'fas fa-cube' }),
+                      ' ',
+                      item.blockNumber
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'address' },
+                      bytes.shorten(getAddress(item))
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'side right' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'entries' },
+                      numbers.localeNumber(getEntries(item)),
+                      ' entries'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'messages' },
+                      getMessage(item)
+                    )
+                  )
+                )
+              );
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Feed;
+}(_react.Component);
+
+Feed.propTypes = {
+  network: _propTypes2.default.shape(),
+  feed: _propTypes2.default.arrayOf(_propTypes2.default.shape())
+};
+Feed.defaultProps = {
+  network: null,
+  feed: []
+};
+exports.default = Feed;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/feed/index.scss":
+/*!***************************************************************!*\
+  !*** ./app/components/participate/components/feed/index.scss ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/header/index.js":
+/*!***************************************************************!*\
+  !*** ./app/components/participate/components/header/index.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _dates = __webpack_require__(/*! ../../../../utils/dates */ "./app/utils/dates.js");
+
+var dates = _interopRequireWildcard(_dates);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/header/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Item = function (_Component) {
+  _inherits(Item, _Component);
+
+  function Item() {
+    _classCallCheck(this, Item);
+
+    return _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).apply(this, arguments));
+  }
+
+  _createClass(Item, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          type = _props.type,
+          title = _props.title,
+          value = _props.value;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'item ' + type },
+        _react2.default.createElement(
+          'div',
+          { className: 'item-title' },
+          title
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'item-value' },
+          value
+        )
+      );
+    }
+  }]);
+
+  return Item;
+}(_react.Component);
+
+Item.propTypes = {
+  type: _propTypes2.default.string.isRequired,
+  title: _propTypes2.default.string.isRequired,
+  value: _propTypes2.default.string
+};
+Item.defaultProps = {
+  value: null
+};
+
+var Header = function (_Component2) {
+  _inherits(Header, _Component2);
+
+  function Header() {
+    _classCallCheck(this, Header);
+
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+  }
+
+  _createClass(Header, [{
+    key: 'render',
+    value: function render() {
+      var _props2 = this.props,
+          deployment = _props2.deployment,
+          network = _props2.network;
+
+
+      var deployTime = void 0;
+      var endTime = void 0;
+      if (deployment) {
+        deployTime = dates.localeDate(deployment.deployTime);
+        endTime = dates.localeDate(deployment.endTime);
+      }
+
+      var networkName = void 0;
+      if (network) {
+        networkName = network.name;
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-header' },
+        _react2.default.createElement('div', { className: 'background' }),
+        _react2.default.createElement(Item, { type: 'side', title: 'start date', value: deployTime }),
+        _react2.default.createElement(Item, { type: 'center', title: 'network', value: networkName }),
+        _react2.default.createElement(Item, { type: 'side', title: 'end date', value: endTime })
+      );
+    }
+  }]);
+
+  return Header;
+}(_react.Component);
+
+Header.propTypes = {
+  deployment: _propTypes2.default.shape(),
+  network: _propTypes2.default.shape()
+};
+Header.defaultProps = {
+  deployment: null,
+  network: null
+};
+exports.default = Header;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/header/index.scss":
+/*!*****************************************************************!*\
+  !*** ./app/components/participate/components/header/index.scss ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/account/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/account/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/account/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Account = function (_Content) {
+  _inherits(Account, _Content);
+
+  function Account() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Account);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Account.__proto__ || Object.getPrototypeOf(Account)).call.apply(_ref, [this].concat(args))), _this), _this.openMetamask = function () {
+      window && window.open(METAMASK_URL, '_blank');
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Account, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var isShown = this.props.isShown;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content ethereum ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'error' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top medium-pad' },
+            _react2.default.createElement('div', { className: 'ethereum-logo' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'account not available, please confirm'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom large-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'button is-white is-outlined', to: '/help' },
+                  'how to access seedom'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Account;
+}(_content2.default);
+
+Account.propTypes = {
+  isShown: _propTypes2.default.bool
+};
+Account.defaultProps = {
+  isShown: false
+};
+exports.default = Account;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/account/index.scss":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/account/index.scss ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/badge/index.js":
+/*!******************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/badge/index.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _badges = __webpack_require__(/*! ../../../../../../utils/badges */ "./app/utils/badges.js");
+
+var badges = _interopRequireWildcard(_badges);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/badge/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var getSeedomShareUrl = function getSeedomShareUrl(_ref) {
+  var network = _ref.network,
+      contract = _ref.contract,
+      participant = _ref.participant;
+
+  return "http://localhost:8080" + '?n=' + network + '&c=' + contract + '&p=' + participant;
+};
+
+var getFacebookShareUrl = function getFacebookShareUrl(_ref2) {
+  var network = _ref2.network,
+      contract = _ref2.contract,
+      participant = _ref2.participant;
+
+  var seedomShareUrl = getSeedomShareUrl({ network: network, contract: contract, participant: participant });
+  return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(seedomShareUrl);
+};
+
+var getTwitterShareUrl = function getTwitterShareUrl(_ref3) {
+  var network = _ref3.network,
+      contract = _ref3.contract,
+      participant = _ref3.participant;
+
+  var seedomShareUrl = getSeedomShareUrl({ network: network, contract: contract, participant: participant });
+  return 'https://twitter.com/share?url=' + encodeURIComponent(seedomShareUrl);
+};
+
+var Badge = function (_Content) {
+  _inherits(Badge, _Content);
+
+  function Badge() {
+    _classCallCheck(this, Badge);
+
+    return _possibleConstructorReturn(this, (Badge.__proto__ || Object.getPrototypeOf(Badge)).apply(this, arguments));
+  }
+
+  _createClass(Badge, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          onBadgingOver = _props.onBadgingOver,
+          primaryContractAddresses = _props.primaryContractAddresses,
+          account = _props.account,
+          participant = _props.participant,
+          network = _props.network;
+
+
+      if (!primaryContractAddresses || !account || !participant || !network) {
+        return null;
+      }
+
+      // make sure user has participated (prevents early caching)
+      if (participant.entries.isEqualTo(0)) {
+        return null;
+      }
+
+      var params = {
+        network: network.name,
+        contract: primaryContractAddresses.fundraiser.substr(2),
+        participant: account.substr(2)
+      };
+
+      // get badge url
+      var badgeImageUrl = badges.getImageUrl(params);
+      var facebookShareUrl = getFacebookShareUrl(params);
+      var twitterShareUrl = getTwitterShareUrl(params);
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content badge ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'success' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top huge-pad narrow' },
+            _react2.default.createElement(
+              'div',
+              { className: 'thank-you' },
+              'thank you!'
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              'here is your badge'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division center' },
+            _react2.default.createElement('img', { className: 'seedom-badge', src: badgeImageUrl })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom small-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field is-grouped' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-dark', href: badgeImageUrl },
+                  _react2.default.createElement('i', { className: 'fas fa-download' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button twitter', href: twitterShareUrl, target: '_blank' },
+                  'SHARE ',
+                  _react2.default.createElement('i', { className: 'fab fa-twitter' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button facebook', href: facebookShareUrl, target: '_blank' },
+                  'SHARE ',
+                  _react2.default.createElement('i', { className: 'fab fa-facebook-f' })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-white is-outlined', onClick: onBadgingOver },
+                  'skip sharing'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Badge;
+}(_content2.default);
+
+Badge.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  onBadgingOver: _propTypes2.default.func.isRequired,
+  primaryContractAddresses: _propTypes2.default.shape(),
+  account: _propTypes2.default.string,
+  participant: _propTypes2.default.shape(),
+  network: _propTypes2.default.shape()
+};
+Badge.defaultProps = {
+  primaryContractAddresses: null,
+  account: null,
+  participant: null,
+  network: null
+};
+exports.default = Badge;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/badge/index.scss":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/badge/index.scss ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/begin/index.js":
+/*!******************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/begin/index.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Begin = function (_Content) {
+  _inherits(Begin, _Content);
+
+  function Begin() {
+    _classCallCheck(this, Begin);
+
+    return _possibleConstructorReturn(this, (Begin.__proto__ || Object.getPrototypeOf(Begin)).apply(this, arguments));
+  }
+
+  _createClass(Begin, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          deployment = _props.deployment;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content seed ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'waiting' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'please wait for'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center' },
+            _react2.default.createElement(_causeLogo2.default, { deployment: deployment })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'to begin their fundraiser'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Begin;
+}(_content2.default);
+
+Begin.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  deployment: _propTypes2.default.shape()
+};
+Begin.defaultProps = {
+  deployment: null
+};
+exports.default = Begin;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/beginningFailed/index.js":
+/*!****************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/beginningFailed/index.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BeginningFailed = function (_Content) {
+  _inherits(BeginningFailed, _Content);
+
+  function BeginningFailed() {
+    _classCallCheck(this, BeginningFailed);
+
+    return _possibleConstructorReturn(this, (BeginningFailed.__proto__ || Object.getPrototypeOf(BeginningFailed)).apply(this, arguments));
+  }
+
+  _createClass(BeginningFailed, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          deployment = _props.deployment;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content seed-failed ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'error' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top' },
+            _react2.default.createElement(_causeLogo2.default, { deployment: deployment })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom giant-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'cause failed to begin their fundraiser'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return BeginningFailed;
+}(_content2.default);
+
+BeginningFailed.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  deployment: _propTypes2.default.shape()
+};
+BeginningFailed.defaultProps = {
+  deployment: null
+};
+exports.default = BeginningFailed;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/cancel/index.js":
+/*!*******************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/cancel/index.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Cancel = function (_Content) {
+  _inherits(Cancel, _Content);
+
+  function Cancel() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Cancel);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Cancel.__proto__ || Object.getPrototypeOf(Cancel)).call.apply(_ref, [this].concat(args))), _this), _this.handleSubmit = function () {
+      var onCancel = _this.props.onCancel;
+
+      onCancel();
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Cancel, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isLoading = _props.isLoading,
+          deployment = _props.deployment;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content cancel ' + className },
+        _react2.default.createElement(_indicator2.default, { type: 'cancel' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top medium-pad' },
+            _react2.default.createElement(_causeLogo2.default, { deployment: deployment, size: 'small' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center narrow' },
+            'fundraiser expired, please cancel for the community'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom huge-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-dark', disabled: isLoading, onClick: this.handleSubmit },
+                  'cancel'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Cancel;
+}(_content2.default);
+
+Cancel.propTypes = {
+  isLoading: _propTypes2.default.bool,
+  onCancel: _propTypes2.default.func.isRequired,
+  deployment: _propTypes2.default.shape()
+};
+Cancel.defaultProps = {
+  isLoading: false,
+  deployment: null
+};
+exports.default = Cancel;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/cancelled/index.js":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/cancelled/index.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Cancelled = function (_Content) {
+  _inherits(Cancelled, _Content);
+
+  function Cancelled() {
+    _classCallCheck(this, Cancelled);
+
+    return _possibleConstructorReturn(this, (Cancelled.__proto__ || Object.getPrototypeOf(Cancelled)).apply(this, arguments));
+  }
+
+  _createClass(Cancelled, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var deployment = this.props.deployment;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content cancelled ' + className },
+        _react2.default.createElement(_indicator2.default, { type: 'error' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top medium-pad' },
+            _react2.default.createElement(_causeLogo2.default, { deployment: deployment, size: 'small' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom medium-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'fundraiser cancelled, please check back later'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Cancelled;
+}(_content2.default);
+
+Cancelled.propTypes = {
+  deployment: _propTypes2.default.shape()
+};
+Cancelled.defaultProps = {
+  deployment: null
+};
+exports.default = Cancelled;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/circles/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/circles/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/circles/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MAX_X = 1000;
+var MAX_Y = 1000;
+var FULL_RADIUS = 500;
+var CENTER_X = 500;
+var CENTER_Y = 500;
+var LOADERS_STROKE_WIDTH = 30;
+var PROGRESS_STROKE_WIDTH = 30;
+var PHASE_STROKE_WIDTH = 50;
+var BACKGROUND_PADDING = 50;
+var LOADERS_PERCENTAGE = 20;
+var LOADERS_TEXT = 'COMMUNICATING WITH ETHEREUM';
+
+var getProgressPercentage = function getProgressPercentage(deployment, now) {
+  var deployTime = deployment.deployTime,
+      endTime = deployment.endTime;
+
+  var deploymentTime = endTime - deployTime;
+  var progressTime = now - deployTime;
+  return progressTime > deploymentTime ? 100 : 100 * (progressTime / deploymentTime);
+};
+
+var getProgressText = function getProgressText(starter, deployment, now) {
+  var endTime = deployment.endTime;
+
+  var timeUntilEnd = endTime - now;
+
+  if (timeUntilEnd <= 0) {
+    return 'FINISHED';
+  }
+
+  timeUntilEnd /= 1000;
+  // calculate (and subtract) whole days
+  var days = Math.floor(timeUntilEnd / 86400);
+  timeUntilEnd -= days * 86400;
+  // calculate (and subtract) whole hours
+  var hours = Math.floor(timeUntilEnd / 3600) % 24;
+  timeUntilEnd -= hours * 3600;
+  // calculate (and subtract) whole minutes
+  var minutes = Math.floor(timeUntilEnd / 60) % 60;
+  timeUntilEnd -= minutes * 60;
+  // what's left is seconds
+  var seconds = Math.floor(timeUntilEnd % 60);
+
+  return starter.toUpperCase() + ' IN - ' + days + 'D ' + hours + 'H ' + minutes + 'M ' + seconds + 'S';
+};
+
+var getProgressRadius = function getProgressRadius() {
+  return FULL_RADIUS - PROGRESS_STROKE_WIDTH / 2 - BACKGROUND_PADDING;
+};
+
+var getLoadersRadius = function getLoadersRadius() {
+  return FULL_RADIUS - LOADERS_STROKE_WIDTH / 2;
+};
+
+var getPathFlipped = function getPathFlipped(percentage) {
+  return percentage > 30 && percentage < 70;
+};
+
+var getPathStyle = function getPathStyle(radius, percentage) {
+  var diameter = Math.PI * 2 * radius;
+  var dashoffset = (100 - percentage) / 100 * diameter;
+
+  return {
+    strokeDasharray: diameter + 'px ' + diameter + 'px',
+    strokeDashoffset: dashoffset + 'px'
+  };
+};
+
+var getTextOffset = function getTextOffset(flipped, percentage) {
+  return flipped ? 101 - percentage : percentage - 1;
+};
+
+var getPathDescription = function getPathDescription(radius, flipped) {
+  // Move to center of canvas
+  // Relative move to top canvas
+  // Relative arc to bottom of canvas
+  // Relative arc to top of canvas
+  return '\n      M ' + CENTER_X + ',' + CENTER_Y + '\n      m 0,-' + radius + '\n      a ' + radius + ',' + radius + ' 0 1 ' + (flipped ? 0 : 1) + ' 0,' + 2 * radius + '\n      a ' + radius + ',' + radius + ' 0 1 ' + (flipped ? 0 : 1) + ' 0,-' + 2 * radius + '\n  ';
+};
+
+var getProgressTextShown = function getProgressTextShown(percentage) {
+  return percentage >= 15;
+};
+
+var Circles = function (_React$Component) {
+  _inherits(Circles, _React$Component);
+
+  function Circles(props) {
+    _classCallCheck(this, Circles);
+
+    var _this = _possibleConstructorReturn(this, (Circles.__proto__ || Object.getPrototypeOf(Circles)).call(this, props));
+
+    _this.state = {
+      now: new Date()
+    };
+    return _this;
+  }
+
+  _createClass(Circles, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.interval = setInterval(function () {
+        _this2.setState({
+          now: new Date()
+        });
+      }, 1000);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          starter = _props.starter,
+          deployment = _props.deployment,
+          isLoading = _props.isLoading;
+      var now = this.state.now;
+
+
+      var progressPercentage = void 0;
+      var progressText = void 0;
+      if (deployment) {
+        progressPercentage = getProgressPercentage(deployment, now);
+        progressText = getProgressText(starter, deployment, now);
+      }
+
+      var progressRadius = getProgressRadius();
+      var loadersRadius = getLoadersRadius();
+
+      var progressPathStyle = getPathStyle(progressRadius, progressPercentage);
+      var participationPathStyle = getPathStyle(progressRadius, 100);
+      var loadersPathStyle = getPathStyle(loadersRadius, LOADERS_PERCENTAGE);
+
+      var progressPathFlipped = getPathFlipped(progressPercentage);
+
+      var progressPathDescription = getPathDescription(progressRadius);
+      var flippedProgressPathDescription = getPathDescription(progressRadius, true);
+      var loadersPathDescription = getPathDescription(loadersRadius);
+
+      var progressTextShown = getProgressTextShown(progressPercentage);
+
+      var progressTextOffset = getTextOffset(progressPathFlipped, progressPercentage);
+
+      return _react2.default.createElement(
+        'svg',
+        {
+          className: 'seedom-circles',
+          viewBox: '0 0 ' + MAX_X + ' ' + MAX_Y
+        },
+        _react2.default.createElement('circle', {
+          className: 'background',
+          cx: CENTER_X,
+          cy: CENTER_Y,
+          r: FULL_RADIUS,
+          opacity: 0.9
+        }),
+        _react2.default.createElement(
+          'g',
+          { className: 'loaders-container ' + (isLoading ? 'show' : 'hide') },
+          _react2.default.createElement('circle', {
+            className: 'loaders-arc',
+            cx: CENTER_X,
+            cy: CENTER_Y,
+            r: loadersRadius,
+            strokeWidth: LOADERS_STROKE_WIDTH,
+            fillOpacity: 0,
+            style: loadersPathStyle
+          }),
+          _react2.default.createElement('circle', {
+            className: 'loaders-arc bottom',
+            cx: CENTER_X,
+            cy: CENTER_Y,
+            r: loadersRadius,
+            strokeWidth: LOADERS_STROKE_WIDTH,
+            fillOpacity: 0,
+            style: loadersPathStyle
+          }),
+          _react2.default.createElement('path', {
+            id: 'seedom-circles-loaders-path',
+            className: 'loaders-path',
+            d: loadersPathDescription,
+            strokeWidth: 0,
+            fillOpacity: 0
+          }),
+          _react2.default.createElement(
+            'text',
+            null,
+            _react2.default.createElement(
+              'textPath',
+              { className: 'loaders-text', xlinkHref: '#seedom-circles-loaders-path', startOffset: LOADERS_PERCENTAGE / 2 + '%' },
+              LOADERS_TEXT
+            )
+          ),
+          _react2.default.createElement(
+            'text',
+            null,
+            _react2.default.createElement(
+              'textPath',
+              { className: 'loaders-text', xlinkHref: '#seedom-circles-loaders-path', startOffset: LOADERS_PERCENTAGE / 2 + 50 + '%' },
+              LOADERS_TEXT
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'g',
+          { className: 'phase-container' },
+          _react2.default.createElement('path', {
+            id: 'seedom-circles-progress-path',
+            className: 'phase-path',
+            d: progressPathDescription,
+            strokeWidth: 0,
+            fillOpacity: 0
+          }),
+          _react2.default.createElement('path', {
+            id: 'seedom-circles-progress-path-flipped',
+            className: 'phase-path',
+            d: flippedProgressPathDescription,
+            strokeWidth: 0,
+            fillOpacity: 0
+          }),
+          _react2.default.createElement(
+            'g',
+            { className: 'phase participation' },
+            _react2.default.createElement('circle', {
+              cx: CENTER_X,
+              cy: CENTER_Y,
+              r: progressRadius,
+              strokeWidth: PHASE_STROKE_WIDTH,
+              fillOpacity: 0,
+              style: participationPathStyle
+            })
+          ),
+          _react2.default.createElement(
+            'g',
+            { className: 'phase progress' },
+            _react2.default.createElement('circle', {
+              cx: CENTER_X,
+              cy: CENTER_Y,
+              r: progressRadius,
+              strokeWidth: PROGRESS_STROKE_WIDTH,
+              fillOpacity: 0,
+              style: progressPathStyle
+            }),
+            progressTextShown && _react2.default.createElement(
+              'text',
+              null,
+              _react2.default.createElement(
+                'textPath',
+                { className: 'phase-text ' + (progressPathFlipped ? "flipped" : null), xlinkHref: '' + (progressPathFlipped ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"), startOffset: progressTextOffset + '%' },
+                progressText
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Circles;
+}(_react2.default.Component);
+
+Circles.propTypes = {
+  starter: _propTypes2.default.string,
+  deployment: _propTypes2.default.shape(),
+  isLoading: _propTypes2.default.bool
+};
+Circles.defaultProps = {
+  starter: 'ends',
+  deployment: null,
+  isLoading: false
+};
+exports.default = Circles;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/circles/index.scss":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/circles/index.scss ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/content/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/content/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/content/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Content = function (_Component) {
+  _inherits(Content, _Component);
+
+  function Content(props) {
+    _classCallCheck(this, Content);
+
+    var _this = _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).call(this, props));
+
+    _this.state = {
+      className: null
+    };
+    return _this;
+  }
+
+  _createClass(Content, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (this.props.isShown) {
+        this.show();
+      }
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(newProps) {
+      if (this.props.isShown === newProps.isShown) {
+        return;
+      }
+
+      if (!newProps.isShown) {
+        this.hide();
+      } else {
+        this.show();
+      }
+    }
+  }, {
+    key: 'show',
+    value: function show() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.setState({
+          className: 'show'
+        });
+      }, 0);
+    }
+  }, {
+    key: 'hide',
+    value: function hide() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        _this3.setState({
+          className: null
+        });
+      }, 0);
+    }
+  }]);
+
+  return Content;
+}(_react.Component);
+
+Content.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired
+};
+exports.default = Content;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/content/index.scss":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/content/index.scss ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/end/index.js":
+/*!****************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/end/index.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var End = function (_Content) {
+  _inherits(End, _Content);
+
+  function End() {
+    _classCallCheck(this, End);
+
+    return _possibleConstructorReturn(this, (End.__proto__ || Object.getPrototypeOf(End)).apply(this, arguments));
+  }
+
+  _createClass(End, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var isShown = this.props.isShown;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content end ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'waiting' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'please wait for'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center' },
+            _react2.default.createElement('div', { className: 'seedom-logo' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'to end the fundraiser'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return End;
+}(_content2.default);
+
+End.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired
+};
+exports.default = End;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/entries/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/entries/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _field = __webpack_require__(/*! ../../../../../field */ "./app/components/field/index.js");
+
+var _field2 = _interopRequireDefault(_field);
+
+var _numbers = __webpack_require__(/*! ../../../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Entries = function (_Component) {
+  _inherits(Entries, _Component);
+
+  function Entries(props) {
+    _classCallCheck(this, Entries);
+
+    var _this = _possibleConstructorReturn(this, (Entries.__proto__ || Object.getPrototypeOf(Entries)).call(this, props));
+
+    _this.focus = function () {
+      _this.field.focus();
+    };
+
+    _this.validate = function () {
+      var value = _this.state.value;
+
+      var isValid = value.isGreaterThanOrEqualTo(1) && value.decimalPlaces() === 0;
+      _this.setState({ isValid: isValid });
+      return isValid;
+    };
+
+    _this.value = function () {
+      return _this.state.value;
+    };
+
+    _this.handleChange = function (value) {
+      var parsedValue = void 0;
+
+      try {
+        parsedValue = new _bignumber.BigNumber(value);
+      } catch (error) {
+        parsedValue = (0, _numbers.zero)();
+      }
+
+      _this.setState({ value: parsedValue });
+    };
+
+    _this.state = {
+      value: (0, _numbers.zero)(),
+      isValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Entries, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          deployment = _props.deployment,
+          disabled = _props.disabled;
+      var _state = this.state,
+          value = _state.value,
+          isValid = _state.isValid;
+
+
+      var etherForEntries = void 0;
+      if (deployment) {
+        var weiForEntries = value.times(deployment.valuePerEntry);
+        etherForEntries = (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(weiForEntries));
+      }
+
+      return _react2.default.createElement(
+        _field2.default,
+        {
+          format: 'addonbox',
+          type: 'number',
+          min: new _bignumber.BigNumber(1),
+          placeholder: 'entries',
+          value: value.toString(),
+          disabled: disabled,
+          isValid: isValid,
+          onChange: this.handleChange,
+          ref: function ref(component) {
+            _this2.field = component;
+          }
+        },
+        _react2.default.createElement(
+          'span',
+          null,
+          '' + etherForEntries,
+          _react2.default.createElement(
+            'span',
+            { className: 'ether is-dark' },
+            _react2.default.createElement('i', { className: 'fas fa-bars' })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Entries;
+}(_react.Component);
+
+Entries.propTypes = {
+  deployment: _propTypes2.default.shape(),
+  disabled: _propTypes2.default.bool
+};
+Entries.defaultProps = {
+  deployment: null,
+  disabled: false
+};
+exports.default = Entries;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/ethereum/index.js":
+/*!*********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/ethereum/index.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/ethereum/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Ethereum = function (_Content) {
+  _inherits(Ethereum, _Content);
+
+  function Ethereum() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Ethereum);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Ethereum.__proto__ || Object.getPrototypeOf(Ethereum)).call.apply(_ref, [this].concat(args))), _this), _this.openMetamask = function () {
+      window && window.open(METAMASK_URL, '_blank');
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Ethereum, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var isShown = this.props.isShown;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content ethereum ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'error' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top medium-pad' },
+            _react2.default.createElement('div', { className: 'ethereum-logo' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'plugin or browser not detected'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom large-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'button is-white is-outlined', to: '/help' },
+                  'how to access seedom'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Ethereum;
+}(_content2.default);
+
+Ethereum.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired
+};
+exports.default = Ethereum;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/ethereum/index.scss":
+/*!***********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/ethereum/index.scss ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/indicator/index.js":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/indicator/index.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/indicator/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Indicator = function (_Component) {
+  _inherits(Indicator, _Component);
+
+  function Indicator() {
+    _classCallCheck(this, Indicator);
+
+    return _possibleConstructorReturn(this, (Indicator.__proto__ || Object.getPrototypeOf(Indicator)).apply(this, arguments));
+  }
+
+  _createClass(Indicator, [{
+    key: 'render',
+    value: function render() {
+      var type = this.props.type;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-overlay' },
+        _react2.default.createElement(
+          'svg',
+          { className: 'indicator ' + (type ? 'show' : null), xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 52 52' },
+          _react2.default.createElement('circle', { className: 'circle ' + type, cx: '26', cy: '26', r: '25' })
+        )
+      );
+    }
+  }]);
+
+  return Indicator;
+}(_react.Component);
+
+Indicator.propTypes = {
+  type: _propTypes2.default.string
+};
+Indicator.defaultProps = {
+  type: null
+};
+exports.default = Indicator;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/indicator/index.scss":
+/*!************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/indicator/index.scss ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/message/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/message/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _field = __webpack_require__(/*! ../../../../../field */ "./app/components/field/index.js");
+
+var _field2 = _interopRequireDefault(_field);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MAX_LENGTH = 32;
+
+var Message = function (_Component) {
+  _inherits(Message, _Component);
+
+  function Message(props) {
+    _classCallCheck(this, Message);
+
+    var _this = _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).call(this, props));
+
+    _this.focus = function () {
+      _this.message.focus();
+    };
+
+    _this.validate = function () {
+      var value = _this.state.value;
+
+      var isValid = value.length > 0 && value.length <= MAX_LENGTH;
+      _this.setState({ isValid: isValid });
+      return isValid;
+    };
+
+    _this.value = function () {
+      return _this.state.value;
+    };
+
+    _this.handleChange = function (value) {
+      _this.setState({ value: value });
+    };
+
+    _this.state = {
+      value: '',
+      isValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Message, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var disabled = this.props.disabled;
+      var _state = this.state,
+          value = _state.value,
+          isValid = _state.isValid;
+
+
+      return _react2.default.createElement(_field2.default, {
+        format: 'textblock',
+        type: 'text',
+        placeholder: 'your message\nto the world',
+        value: value,
+        maxLength: MAX_LENGTH,
+        disabled: disabled,
+        isValid: isValid,
+        onChange: this.handleChange,
+        ref: function ref(component) {
+          _this2.message = component;
+        }
+      });
+    }
+  }]);
+
+  return Message;
+}(_react.Component);
+
+Message.propTypes = {
+  disabled: _propTypes2.default.bool.isRequired
+};
+exports.default = Message;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/network/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/network/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/network/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Network = function (_Content) {
+  _inherits(Network, _Content);
+
+  function Network() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Network);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Network.__proto__ || Object.getPrototypeOf(Network)).call.apply(_ref, [this].concat(args))), _this), _this.openMetamask = function () {
+      window && window.open(METAMASK_URL, '_blank');
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Network, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var isShown = this.props.isShown;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content ethereum ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'error' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top medium-pad' },
+            _react2.default.createElement('div', { className: 'ethereum-logo' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'current network not supported, please change'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom large-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'button is-white is-outlined', to: '/help' },
+                  'how to access seedom'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Network;
+}(_content2.default);
+
+Network.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired
+};
+exports.default = Network;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/network/index.scss":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/network/index.scss ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/participate/index.js":
+/*!************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/participate/index.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _entries = __webpack_require__(/*! ../entries */ "./app/components/participate/components/puck/components/entries/index.js");
+
+var _entries2 = _interopRequireDefault(_entries);
+
+var _message = __webpack_require__(/*! ../message */ "./app/components/participate/components/puck/components/message/index.js");
+
+var _message2 = _interopRequireDefault(_message);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/participate/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Participate = function (_Content) {
+  _inherits(Participate, _Content);
+
+  function Participate(props) {
+    _classCallCheck(this, Participate);
+
+    var _this = _possibleConstructorReturn(this, (Participate.__proto__ || Object.getPrototypeOf(Participate)).call(this, props));
+
+    _this.validateForm = function (done) {
+      var isEntriesValid = _this.entries.validate();
+      var isMessageValid = _this.message.validate();
+      _this.setState({
+        isFormValid: isEntriesValid && isMessageValid
+      }, done);
+    };
+
+    _this.handleSubmit = function () {
+      _this.validateForm(function () {
+        if (_this.state.isFormValid) {
+          var entries = _this.entries.value();
+          var message = _this.message.value();
+          _this.props.onParticipate({ message: message, entries: entries });
+        } else {
+          _reactReduxToastr.toastr.warning('PARTICIPATE', 'form invalid');
+        }
+      });
+    };
+
+    _this.state = {
+      isFormValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Participate, [{
+    key: 'show',
+    value: function show() {
+      _get(Participate.prototype.__proto__ || Object.getPrototypeOf(Participate.prototype), 'show', this).call(this);
+      this.entries.focus();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          deployment = _props.deployment,
+          isLoading = _props.isLoading;
+      var className = this.state.className;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content participate ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isLoading ? 'waiting' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay' },
+          _react2.default.createElement(_causeLogo2.default, { deployment: deployment, size: 'small' }),
+          _react2.default.createElement(_entries2.default, {
+            deployment: deployment,
+            disabled: isLoading,
+            ref: function ref(component) {
+              _this2.entries = component;
+            }
+          }),
+          _react2.default.createElement(_message2.default, {
+            disabled: isLoading,
+            ref: function ref(component) {
+              _this2.message = component;
+            }
+          }),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-dark', disabled: isLoading, onClick: this.handleSubmit },
+                'PARTICIPATE'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Participate;
+}(_content2.default);
+
+Participate.propTypes = {
+  isLoading: _propTypes2.default.bool,
+  deployment: _propTypes2.default.shape()
+};
+Participate.defaultProps = {
+  deployment: null,
+  isLoading: false
+};
+exports.default = Participate;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/participate/index.scss":
+/*!**************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/participate/index.scss ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/participation/index.js":
+/*!**************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/participation/index.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _numbers = __webpack_require__(/*! ../../../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/participation/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Participation = function (_Content) {
+  _inherits(Participation, _Content);
+
+  function Participation() {
+    _classCallCheck(this, Participation);
+
+    return _possibleConstructorReturn(this, (Participation.__proto__ || Object.getPrototypeOf(Participation)).apply(this, arguments));
+  }
+
+  _createClass(Participation, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          participant = _props.participant,
+          onRaising = _props.onRaising,
+          onBadging = _props.onBadging,
+          deployment = _props.deployment;
+
+      var entries = participant ? participant.entries : (0, _numbers.zero)();
+      var localeEntries = (0, _numbers.localeNumber)(entries);
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content participated ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'success' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay' },
+          _react2.default.createElement(
+            'div',
+            { className: 'text entries' },
+            localeEntries
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'text obtained' },
+            Number(localeEntries) === 1 ? 'entry' : 'entries',
+            ' obtained'
+          ),
+          _react2.default.createElement(_causeLogo2.default, { deployment: deployment, size: 'small' }),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-dark', onClick: onRaising },
+                'get more entries'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { className: 'button is-white is-outlined', to: '/vote' },
+                'vote on next cause'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-white is-outlined', onClick: onBadging },
+                'view badge'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Participation;
+}(_content2.default);
+
+Participation.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  participant: _propTypes2.default.shape(),
+  onRaising: _propTypes2.default.func.isRequired,
+  onBadging: _propTypes2.default.func.isRequired,
+  deployment: _propTypes2.default.shape()
+};
+Participation.defaultProps = {
+  participant: null,
+  deployment: null
+};
+exports.default = Participation;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/participation/index.scss":
+/*!****************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/participation/index.scss ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/participationFailed/index.js":
+/*!********************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/participationFailed/index.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ParticipationFailed = function (_Content) {
+  _inherits(ParticipationFailed, _Content);
+
+  function ParticipationFailed() {
+    _classCallCheck(this, ParticipationFailed);
+
+    return _possibleConstructorReturn(this, (ParticipationFailed.__proto__ || Object.getPrototypeOf(ParticipationFailed)).apply(this, arguments));
+  }
+
+  _createClass(ParticipationFailed, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          deployment = _props.deployment;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content seed-failed ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'error' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top' },
+            _react2.default.createElement(_causeLogo2.default, { deployment: deployment, size: 'small' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom giant-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'participation closed, stay tuned for selection'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return ParticipationFailed;
+}(_content2.default);
+
+ParticipationFailed.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  deployment: _propTypes2.default.shape()
+};
+ParticipationFailed.defaultProps = {
+  deployment: null
+};
+exports.default = ParticipationFailed;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/raise/index.js":
+/*!******************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/raise/index.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+var _numbers = __webpack_require__(/*! ../../../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _entries = __webpack_require__(/*! ../entries */ "./app/components/participate/components/puck/components/entries/index.js");
+
+var _entries2 = _interopRequireDefault(_entries);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/raise/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Raise = function (_Content) {
+  _inherits(Raise, _Content);
+
+  function Raise(props) {
+    _classCallCheck(this, Raise);
+
+    var _this = _possibleConstructorReturn(this, (Raise.__proto__ || Object.getPrototypeOf(Raise)).call(this, props));
+
+    _this.validateForm = function (done) {
+      var isFormValid = _this.entries.validate();
+      _this.setState({ isFormValid: isFormValid }, done);
+    };
+
+    _this.handleSubmit = function () {
+      _this.validateForm(function () {
+        if (_this.state.isFormValid) {
+          var entries = _this.entries.value();
+          _this.props.onRaise(entries);
+        } else {
+          _reactReduxToastr.toastr.warning('RAISE', 'form invalid');
+        }
+      });
+    };
+
+    _this.state = {
+      isFormValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Raise, [{
+    key: 'show',
+    value: function show() {
+      _get(Raise.prototype.__proto__ || Object.getPrototypeOf(Raise.prototype), 'show', this).call(this);
+      this.entries.focus();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var className = this.state.className;
+      var _props = this.props,
+          deployment = _props.deployment,
+          isLoading = _props.isLoading,
+          onRaisingCancelled = _props.onRaisingCancelled;
+
+
+      var etherPerEntry = void 0;
+      if (deployment) {
+        etherPerEntry = (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(deployment.valuePerEntry));
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content raise ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isLoading ? 'waiting' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay' },
+          _react2.default.createElement(_causeLogo2.default, { deployment: deployment, size: 'small' }),
+          _react2.default.createElement(
+            'div',
+            { className: 'text' },
+            '1 entry = ',
+            etherPerEntry,
+            _react2.default.createElement(
+              'span',
+              { className: 'ether' },
+              _react2.default.createElement('i', { className: 'fas fa-bars' })
+            )
+          ),
+          _react2.default.createElement(_entries2.default, {
+            deployment: deployment,
+            disabled: isLoading,
+            ref: function ref(component) {
+              _this2.entries = component;
+            }
+          }),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-dark', disabled: isLoading, onClick: this.handleSubmit },
+                'get more entries'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-white is-outlined', onClick: onRaisingCancelled },
+                'cancel'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Raise;
+}(_content2.default);
+
+Raise.propTypes = {
+  deployment: _propTypes2.default.shape(),
+  isLoading: _propTypes2.default.bool,
+  onRaisingCancelled: _propTypes2.default.func.isRequired
+};
+Raise.defaultProps = {
+  deployment: null,
+  isLoading: false
+};
+exports.default = Raise;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/raise/index.scss":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/raise/index.scss ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/reveal/index.js":
+/*!*******************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/reveal/index.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Reveal = function (_Content) {
+  _inherits(Reveal, _Content);
+
+  function Reveal() {
+    _classCallCheck(this, Reveal);
+
+    return _possibleConstructorReturn(this, (Reveal.__proto__ || Object.getPrototypeOf(Reveal)).apply(this, arguments));
+  }
+
+  _createClass(Reveal, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          deployment = _props.deployment;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content end ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'waiting' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'please wait for'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center' },
+            _react2.default.createElement(_causeLogo2.default, { deployment: deployment })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'to reveal their message'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Reveal;
+}(_content2.default);
+
+Reveal.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  deployment: _propTypes2.default.shape()
+};
+Reveal.defaultProps = {
+  deployment: null
+};
+exports.default = Reveal;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/selection/index.js":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/selection/index.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _etherscan = __webpack_require__(/*! ../../../../../../utils/etherscan */ "./app/utils/etherscan.js");
+
+var etherscan = _interopRequireWildcard(_etherscan);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/selection/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Selection = function (_Content) {
+  _inherits(Selection, _Content);
+
+  function Selection() {
+    _classCallCheck(this, Selection);
+
+    return _possibleConstructorReturn(this, (Selection.__proto__ || Object.getPrototypeOf(Selection)).apply(this, arguments));
+  }
+
+  _createClass(Selection, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          state = _props.state,
+          network = _props.network,
+          deployment = _props.deployment;
+
+
+      var causeMessage = void 0;
+      var ownerMessage = void 0;
+      var participantMessage = void 0;
+      if (state) {
+        causeMessage = state.causeMessage;
+        ownerMessage = state.ownerMessage;
+        participantMessage = state.participantMessage;
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content selection ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'selection' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top small-pad' },
+            _react2.default.createElement(_causeLogo2.default, { deployment: deployment, size: 'small' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center narrow' },
+            _react2.default.createElement(
+              'div',
+              { className: 'left' },
+              _react2.default.createElement(
+                'div',
+                { className: 'header' },
+                'cause message'
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'value' },
+                causeMessage
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'right' },
+              _react2.default.createElement(
+                'div',
+                { className: 'header' },
+                'owner message'
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'value' },
+                ownerMessage
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom large-pad slim' },
+            _react2.default.createElement(
+              'div',
+              { className: 'header' },
+              'participant message'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'value' },
+              participantMessage
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Selection;
+}(_content2.default);
+
+Selection.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  state: _propTypes2.default.shape(),
+  network: _propTypes2.default.shape(),
+  deployment: _propTypes2.default.shape()
+};
+Selection.defaultProps = {
+  state: null,
+  network: null,
+  deployment: null
+};
+exports.default = Selection;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/selection/index.scss":
+/*!************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/selection/index.scss ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/welcome/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/welcome/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _numbers = __webpack_require__(/*! ../../../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/welcome/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Welcome = function (_Content) {
+  _inherits(Welcome, _Content);
+
+  function Welcome() {
+    _classCallCheck(this, Welcome);
+
+    return _possibleConstructorReturn(this, (Welcome.__proto__ || Object.getPrototypeOf(Welcome)).apply(this, arguments));
+  }
+
+  _createClass(Welcome, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          deployment = _props.deployment,
+          onCountMeIn = _props.onCountMeIn;
+
+
+      var etherPerEntry = void 0;
+      if (deployment) {
+        etherPerEntry = (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(deployment.valuePerEntry));
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content welcome ' + className },
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top' },
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(
+                'span',
+                null,
+                '1 entry = ',
+                etherPerEntry
+              ),
+              _react2.default.createElement(
+                'span',
+                { className: 'ether' },
+                _react2.default.createElement('i', { className: 'fas fa-bars' })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'supporting' },
+              'now seeding'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division center' },
+            _react2.default.createElement(_causeLogo2.default, { deployment: deployment })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'button is-white is-outlined', to: '/help' },
+                  'how does this work?'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-dark', onClick: onCountMeIn },
+                  'count me in!'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Welcome;
+}(_content2.default);
+
+Welcome.propTypes = {
+  deployment: _propTypes2.default.shape(),
+  onCountMeIn: _propTypes2.default.func.isRequired
+};
+Welcome.defaultProps = {
+  deployment: null
+};
+exports.default = Welcome;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/welcome/index.scss":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/welcome/index.scss ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/withdraw/index.js":
+/*!*********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/withdraw/index.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _numbers = __webpack_require__(/*! ../../../../../../utils/numbers */ "./app/utils/numbers.js");
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/withdraw/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var getMaxBalance = function getMaxBalance(balances) {
+  var maxBalance = (0, _numbers.zero)();
+  var maxContractAddress = null;
+  for (var contractAddress in balances) {
+    var balance = balances[contractAddress];
+    if (balance.isGreaterThan(maxBalance)) {
+      maxBalance = balance;
+      maxContractAddress = contractAddress;
+    }
+  }
+
+  return {
+    contractAddress: maxContractAddress,
+    balance: maxBalance
+  };
+};
+
+var Withdraw = function (_Content) {
+  _inherits(Withdraw, _Content);
+
+  function Withdraw() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Withdraw);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Withdraw.__proto__ || Object.getPrototypeOf(Withdraw)).call.apply(_ref, [this].concat(args))), _this), _this.handleWithdraw = function (contractAddress) {
+      var onWithdraw = _this.props.onWithdraw;
+
+      onWithdraw(contractAddress);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Withdraw, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var balances = this.props.balances;
+
+      if (!balances) {
+        return null;
+      }
+
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          onWithdrawSkipped = _props.onWithdrawSkipped,
+          isLoading = _props.isLoading;
+
+      var maxBalance = getMaxBalance(balances);
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content withdraw ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'success' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top medium-pad' },
+            _react2.default.createElement(
+              'div',
+              null,
+              'you have'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'balance' },
+              (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(maxBalance.balance)),
+              _react2.default.createElement(
+                'span',
+                { className: 'ether is-dark' },
+                _react2.default.createElement('i', { className: 'fas fa-bars' })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              'to withdraw!'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom large-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-dark', disabled: isLoading, onClick: function onClick() {
+                      return _this2.handleWithdraw(maxBalance.contractAddress);
+                    } },
+                  'withdraw ether'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-white is-outlined', disabled: isLoading, onClick: onWithdrawSkipped },
+                  'skip for now'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Withdraw;
+}(_content2.default);
+
+Withdraw.propTypes = {
+  balances: _propTypes2.default.shape(),
+  isShown: _propTypes2.default.bool.isRequired,
+  isLoading: _propTypes2.default.bool,
+  onWithdrawSkipped: _propTypes2.default.func.isRequired,
+  onWithdraw: _propTypes2.default.func.isRequired
+};
+Withdraw.defaultProps = {
+  balances: null,
+  isLoading: false
+};
+exports.default = Withdraw;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/withdraw/index.scss":
+/*!***********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/withdraw/index.scss ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/index.js":
+/*!*************************************************************!*\
+  !*** ./app/components/participate/components/puck/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _bytes = __webpack_require__(/*! ../../../../utils/bytes */ "./app/utils/bytes.js");
+
+var bytes = _interopRequireWildcard(_bytes);
+
+var _circles = __webpack_require__(/*! ./components/circles */ "./app/components/participate/components/puck/components/circles/index.js");
+
+var _circles2 = _interopRequireDefault(_circles);
+
+var _begin = __webpack_require__(/*! ./components/begin */ "./app/components/participate/components/puck/components/begin/index.js");
+
+var _begin2 = _interopRequireDefault(_begin);
+
+var _beginningFailed = __webpack_require__(/*! ./components/beginningFailed */ "./app/components/participate/components/puck/components/beginningFailed/index.js");
+
+var _beginningFailed2 = _interopRequireDefault(_beginningFailed);
+
+var _welcome = __webpack_require__(/*! ./components/welcome */ "./app/components/participate/components/puck/components/welcome/index.js");
+
+var _welcome2 = _interopRequireDefault(_welcome);
+
+var _participate = __webpack_require__(/*! ./components/participate */ "./app/components/participate/components/puck/components/participate/index.js");
+
+var _participate2 = _interopRequireDefault(_participate);
+
+var _participation = __webpack_require__(/*! ./components/participation */ "./app/components/participate/components/puck/components/participation/index.js");
+
+var _participation2 = _interopRequireDefault(_participation);
+
+var _raise = __webpack_require__(/*! ./components/raise */ "./app/components/participate/components/puck/components/raise/index.js");
+
+var _raise2 = _interopRequireDefault(_raise);
+
+var _reveal = __webpack_require__(/*! ./components/reveal */ "./app/components/participate/components/puck/components/reveal/index.js");
+
+var _reveal2 = _interopRequireDefault(_reveal);
+
+var _end = __webpack_require__(/*! ./components/end */ "./app/components/participate/components/puck/components/end/index.js");
+
+var _end2 = _interopRequireDefault(_end);
+
+var _selection = __webpack_require__(/*! ./components/selection */ "./app/components/participate/components/puck/components/selection/index.js");
+
+var _selection2 = _interopRequireDefault(_selection);
+
+var _withdraw = __webpack_require__(/*! ./components/withdraw */ "./app/components/participate/components/puck/components/withdraw/index.js");
+
+var _withdraw2 = _interopRequireDefault(_withdraw);
+
+var _cancel = __webpack_require__(/*! ./components/cancel */ "./app/components/participate/components/puck/components/cancel/index.js");
+
+var _cancel2 = _interopRequireDefault(_cancel);
+
+var _cancelled = __webpack_require__(/*! ./components/cancelled */ "./app/components/participate/components/puck/components/cancelled/index.js");
+
+var _cancelled2 = _interopRequireDefault(_cancelled);
+
+var _ethereum = __webpack_require__(/*! ./components/ethereum */ "./app/components/participate/components/puck/components/ethereum/index.js");
+
+var _ethereum2 = _interopRequireDefault(_ethereum);
+
+var _network = __webpack_require__(/*! ./components/network */ "./app/components/participate/components/puck/components/network/index.js");
+
+var _network2 = _interopRequireDefault(_network);
+
+var _account = __webpack_require__(/*! ./components/account */ "./app/components/participate/components/puck/components/account/index.js");
+
+var _account2 = _interopRequireDefault(_account);
+
+var _participationFailed = __webpack_require__(/*! ./components/participationFailed */ "./app/components/participate/components/puck/components/participationFailed/index.js");
+
+var _participationFailed2 = _interopRequireDefault(_participationFailed);
+
+var _badge = __webpack_require__(/*! ./components/badge */ "./app/components/participate/components/puck/components/badge/index.js");
+
+var _badge2 = _interopRequireDefault(_badge);
+
+var _seedomOWhiteTransparent = __webpack_require__(/*! ../../../../../../seedom-assets/logo/o/seedom-o-white-transparent.svg */ "../seedom-assets/logo/o/seedom-o-white-transparent.svg");
+
+var _seedomOWhiteTransparent2 = _interopRequireDefault(_seedomOWhiteTransparent);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PHASE_REFRESH = 1000;
+
+var getPhase = function getPhase(deployment) {
+  if (!deployment) {
+    return null;
+  }
+
+  var now = Date.now();
+  // participation phase
+  if (now < deployment.endTime) {
+    return 'participation';
+  }
+
+  // end phase
+  if (now >= deployment.endTime && now < deployment.expireTime) {
+    return 'end';
+  }
+
+  // expiration phase
+  if (now >= deployment.expireTime && now < deployment.destructTime) {
+    return 'expiration';
+  }
+
+  // destruction phase
+  return 'destruction';
+};
+
+var getComponent = function getComponent(_ref) {
+  var network = _ref.network,
+      account = _ref.account,
+      phase = _ref.phase,
+      state = _ref.state,
+      participant = _ref.participant,
+      balances = _ref.balances,
+      isLoading = _ref.isLoading,
+      isParticipating = _ref.isParticipating,
+      isBadging = _ref.isBadging,
+      isRaising = _ref.isRaising,
+      isWithdrawing = _ref.isWithdrawing;
+
+  // ethereum check
+  if (!network) {
+    return 'ethereum';
+  }
+
+  // network check
+  if (!network.supported || !network.deployed) {
+    return 'network';
+  }
+
+  // account check
+  if (!account) {
+    return 'account';
+  }
+
+  // balances?
+  if (balances && Object.keys(balances).length > 0 && isWithdrawing) {
+    return 'withdraw';
+  }
+
+  // wait for state
+  if (!state) {
+    return null;
+  }
+
+  // selection?
+  if (!bytes.isZero20(state.participant)) {
+    return 'selection';
+  }
+
+  // cancelled?
+  if (state.cancelled) {
+    return 'cancelled';
+  }
+
+  // wait for a participant
+  if (!participant) {
+    return null;
+  }
+
+  // switch on phase
+  switch (phase) {
+    case 'participation':
+      if (bytes.isZero32(state.causeSecret)) {
+        return 'begin';
+      }
+
+      if (participant.message === '') {
+        if (!isParticipating) {
+          return 'welcome';
+        }
+        return 'participate';
+      }
+
+      if (isBadging) {
+        return 'badge';
+      }
+
+      if (!isRaising && !isLoading) {
+        return 'participation';
+      }
+
+      return 'raise';
+
+    case 'end':
+      if (bytes.isZero32(state.causeSecret)) {
+        return 'beginningFailed';
+      }
+
+      if (participant.message === '') {
+        return 'participationFailed';
+      }
+
+      if (state.causeMessage === '') {
+        return 'reveal';
+      }
+
+      return 'end';
+
+    case 'expiration':
+      return 'cancel';
+
+    default:
+      return null;
+  }
+};
+
+var Puck = function (_Component) {
+  _inherits(Puck, _Component);
+
+  function Puck(props) {
+    _classCallCheck(this, Puck);
+
+    var _this = _possibleConstructorReturn(this, (Puck.__proto__ || Object.getPrototypeOf(Puck)).call(this, props));
+
+    _this.handleCountMeIn = function () {
+      _this.setState({ isParticipating: true });
+    };
+
+    _this.handleParticipate = function (_ref2) {
+      var message = _ref2.message,
+          entries = _ref2.entries;
+
+      _this.setState({ isBadging: true }, function () {
+        _this.props.onParticipate({ message: message, entries: entries });
+      });
+    };
+
+    _this.handleBadging = function () {
+      _this.setState({ isBadging: true });
+    };
+
+    _this.handleBadgingOver = function () {
+      _this.setState({ isBadging: false });
+    };
+
+    _this.handleRaising = function () {
+      _this.setState({ isRaising: true });
+    };
+
+    _this.handleRaisingCancelled = function () {
+      _this.setState({ isRaising: false });
+    };
+
+    _this.handleRaise = function (entries) {
+      _this.setState({ isRaising: false }, function () {
+        _this.props.onRaise(entries);
+      });
+    };
+
+    _this.handleWithdraw = function (contractAddress) {
+      _this.props.onWithdraw(contractAddress);
+    };
+
+    _this.handleWithdrawSkipped = function () {
+      _this.setState({ isWithdrawing: false });
+    };
+
+    _this.handleCancel = function () {
+      _this.props.onCancel();
+    };
+
+    _this.state = {
+      phase: null,
+      isParticipating: false,
+      isBadging: false,
+      isRaising: false,
+      isWithdrawing: true
+    };
+    return _this;
+  }
+
+  _createClass(Puck, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.interval = setInterval(function () {
+        var newPhase = getPhase(_this2.props.deployment);
+        // if the phase changed, update state
+        if (newPhase !== _this2.state.phase) {
+          _this2.setState({ phase: newPhase });
+        }
+      }, PHASE_REFRESH);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearInterval(this.interval);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _state = this.state,
+          phase = _state.phase,
+          isParticipating = _state.isParticipating,
+          isBadging = _state.isBadging,
+          isRaising = _state.isRaising,
+          isWithdrawing = _state.isWithdrawing;
+      var _props = this.props,
+          network = _props.network,
+          account = _props.account,
+          deployment = _props.deployment,
+          state = _props.state,
+          participant = _props.participant,
+          balances = _props.balances,
+          isLoading = _props.isLoading,
+          primaryContractAddresses = _props.primaryContractAddresses;
+
+
+      var component = getComponent({
+        network: network,
+        account: account,
+        phase: phase,
+        deployment: deployment,
+        state: state,
+        participant: participant,
+        balances: balances,
+        isLoading: isLoading,
+        isParticipating: isParticipating,
+        isBadging: isBadging,
+        isRaising: isRaising,
+        isWithdrawing: isWithdrawing
+      });
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-puck' },
+        _react2.default.createElement(
+          'div',
+          { className: 'intro' },
+          _react2.default.createElement('img', { alt: 'seedom', src: _seedomOWhiteTransparent2.default })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'interface' },
+          _react2.default.createElement(_circles2.default, { isLoading: isLoading, deployment: deployment }),
+          _react2.default.createElement(_ethereum2.default, { isShown: component === 'ethereum' }),
+          _react2.default.createElement(_network2.default, { isShown: component === 'network' }),
+          _react2.default.createElement(_account2.default, { isShown: component === 'account' }),
+          _react2.default.createElement(_welcome2.default, { isShown: component === 'welcome', deployment: deployment, onCountMeIn: this.handleCountMeIn }),
+          _react2.default.createElement(_begin2.default, { isShown: component === 'begin', deployment: deployment }),
+          _react2.default.createElement(_beginningFailed2.default, { isShown: component === 'beginningFailed', deployment: deployment }),
+          _react2.default.createElement(_participate2.default, { isShown: component === 'participate', deployment: deployment, isLoading: isLoading, onParticipate: this.handleParticipate }),
+          _react2.default.createElement(_badge2.default, { isShown: component === 'badge', primaryContractAddresses: primaryContractAddresses, network: network, account: account, participant: participant, onBadgingOver: this.handleBadgingOver }),
+          _react2.default.createElement(_participation2.default, { isShown: component === 'participation', participant: participant, deployment: deployment, onRaising: this.handleRaising, onBadging: this.handleBadging }),
+          _react2.default.createElement(_participationFailed2.default, { isShown: component === 'participationFailed', deployment: deployment }),
+          _react2.default.createElement(_raise2.default, { isShown: component === 'raise', deployment: deployment, isLoading: isLoading, onRaise: this.handleRaise, onRaisingCancelled: this.handleRaisingCancelled }),
+          _react2.default.createElement(_reveal2.default, { isShown: component === 'reveal', deployment: deployment }),
+          _react2.default.createElement(_end2.default, { isShown: component === 'end' }),
+          _react2.default.createElement(_selection2.default, { isShown: component === 'selection', state: state, network: network, deployment: deployment }),
+          _react2.default.createElement(_withdraw2.default, { isShown: component === 'withdraw', balances: balances, isLoading: isLoading, onWithdraw: this.handleWithdraw, onWithdrawSkipped: this.handleWithdrawSkipped }),
+          _react2.default.createElement(_cancel2.default, { isShown: component === 'cancel', isLoading: isLoading, deployment: deployment, onCancel: this.handleCancel }),
+          _react2.default.createElement(_cancelled2.default, { isShown: component === 'cancelled', deployment: deployment })
+        )
+      );
+    }
+  }]);
+
+  return Puck;
+}(_react.Component);
+
+Puck.propTypes = {
+  network: _propTypes2.default.shape(),
+  account: _propTypes2.default.string,
+  deployment: _propTypes2.default.shape(),
+  state: _propTypes2.default.shape(),
+  participant: _propTypes2.default.shape(),
+  balances: _propTypes2.default.shape(),
+  isLoading: _propTypes2.default.bool,
+  primaryContractAddresses: _propTypes2.default.shape(),
+  onParticipate: _propTypes2.default.func.isRequired,
+  onRaise: _propTypes2.default.func.isRequired,
+  onWithdraw: _propTypes2.default.func.isRequired,
+  onCancel: _propTypes2.default.func.isRequired
+};
+Puck.defaultProps = {
+  network: null,
+  account: null,
+  deployment: null,
+  state: null,
+  participant: null,
+  balances: null,
+  isLoading: false,
+  primaryContractAddresses: null
+};
+exports.default = Puck;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/index.scss":
+/*!***************************************************************!*\
+  !*** ./app/components/participate/components/puck/index.scss ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/stats/index.js":
+/*!**************************************************************!*\
+  !*** ./app/components/participate/components/stats/index.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _numbers = __webpack_require__(/*! ../../../../utils/numbers */ "./app/utils/numbers.js");
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/stats/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Stat = function (_Component) {
+  _inherits(Stat, _Component);
+
+  function Stat() {
+    _classCallCheck(this, Stat);
+
+    return _possibleConstructorReturn(this, (Stat.__proto__ || Object.getPrototypeOf(Stat)).apply(this, arguments));
+  }
+
+  _createClass(Stat, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          title = _props.title,
+          value = _props.value,
+          ether = _props.ether;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'stat' },
+        _react2.default.createElement(
+          'div',
+          { className: 'stat-title' },
+          title
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'stat-value' },
+          value,
+          ether && _react2.default.createElement(
+            'span',
+            { className: 'ether' },
+            _react2.default.createElement('i', { className: 'fas fa-bars' })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Stat;
+}(_react.Component);
+
+Stat.propTypes = {
+  title: _propTypes2.default.string.isRequired,
+  value: _propTypes2.default.string,
+  ether: _propTypes2.default.bool
+};
+Stat.defaultProps = {
+  value: null,
+  ether: false
+};
+
+var Stats = function (_Component2) {
+  _inherits(Stats, _Component2);
+
+  function Stats() {
+    _classCallCheck(this, Stats);
+
+    return _possibleConstructorReturn(this, (Stats.__proto__ || Object.getPrototypeOf(Stats)).apply(this, arguments));
+  }
+
+  _createClass(Stats, [{
+    key: 'render',
+    value: function render() {
+      var _props2 = this.props,
+          side = _props2.side,
+          deployment = _props2.deployment,
+          state = _props2.state;
+
+
+      var causeReward = void 0;
+      var participantReward = void 0;
+      var participants = void 0;
+      var entries = void 0;
+      if (deployment && state) {
+        var received = state.entries.times(deployment.valuePerEntry);
+        causeReward = (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(received.times(deployment.causeSplit).dividedBy(1000)));
+        participantReward = (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(received.times(deployment.participantSplit).dividedBy(1000)));
+        participants = (0, _numbers.localeNumber)(state.participants);
+        entries = (0, _numbers.localeNumber)(state.entries);
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-stats ' + side },
+        (side === 'top' || side === 'left') && _react2.default.createElement(
+          'div',
+          { className: 'panel' },
+          _react2.default.createElement('div', { className: 'background' }),
+          _react2.default.createElement(Stat, { title: 'cause reward', value: causeReward, ether: true }),
+          _react2.default.createElement(Stat, { title: 'participant reward', value: participantReward, ether: true })
+        ),
+        (side === 'top' || side === 'right') && _react2.default.createElement(
+          'div',
+          { className: 'panel' },
+          _react2.default.createElement('div', { className: 'background' }),
+          _react2.default.createElement(Stat, { title: 'participants', value: participants }),
+          _react2.default.createElement(Stat, { title: 'entries', value: entries })
+        )
+      );
+    }
+  }]);
+
+  return Stats;
+}(_react.Component);
+
+Stats.propTypes = {
+  side: _propTypes2.default.string.isRequired,
+  deployment: _propTypes2.default.shape(),
+  state: _propTypes2.default.shape()
+};
+Stats.defaultProps = {
+  deployment: null,
+  state: null
+};
+exports.default = Stats;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/stats/index.scss":
+/*!****************************************************************!*\
+  !*** ./app/components/participate/components/stats/index.scss ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/index.js":
+/*!*********************************************!*\
+  !*** ./app/components/participate/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _header = __webpack_require__(/*! ./components/header */ "./app/components/participate/components/header/index.js");
+
+var _header2 = _interopRequireDefault(_header);
+
+var _puck = __webpack_require__(/*! ./components/puck */ "./app/components/participate/components/puck/index.js");
+
+var _puck2 = _interopRequireDefault(_puck);
+
+var _stats = __webpack_require__(/*! ./components/stats */ "./app/components/participate/components/stats/index.js");
+
+var _stats2 = _interopRequireDefault(_stats);
+
+var _feed = __webpack_require__(/*! ./components/feed */ "./app/components/participate/components/feed/index.js");
+
+var _feed2 = _interopRequireDefault(_feed);
+
+var _about = __webpack_require__(/*! ./components/about */ "./app/components/participate/components/about/index.js");
+
+var _about2 = _interopRequireDefault(_about);
+
+var _bytes = __webpack_require__(/*! ../../utils/bytes */ "./app/utils/bytes.js");
+
+var bytes = _interopRequireWildcard(_bytes);
+
+var _messages = __webpack_require__(/*! @seedom-io/seedom-crypter/messages */ "@seedom-io/seedom-crypter/messages");
+
+var messages = _interopRequireWildcard(_messages);
+
+var _etherscan = __webpack_require__(/*! ../../utils/etherscan */ "./app/utils/etherscan.js");
+
+var etherscan = _interopRequireWildcard(_etherscan);
+
+var _ethereum = __webpack_require__(/*! ../../actions/ethereum */ "./app/actions/ethereum.js");
+
+var ethereumActions = _interopRequireWildcard(_ethereum);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Participate = function (_Component) {
+  _inherits(Participate, _Component);
+
+  function Participate(props) {
+    _classCallCheck(this, Participate);
+
+    var _this = _possibleConstructorReturn(this, (Participate.__proto__ || Object.getPrototypeOf(Participate)).call(this, props));
+
+    _this.handleParticipate = function (_ref) {
+      var message = _ref.message,
+          entries = _ref.entries;
+      var deployment = _this.props.ethereum.deployment;
+
+      var messageHex = messages.hex(message);
+      var value = entries.times(deployment.valuePerEntry);
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'fundraiser', method: 'participate', args: [messageHex], value: value
+      }));
+      _this.setState({ isPlaying: true });
+    };
+
+    _this.handleRaise = function (entries) {
+      var deployment = _this.props.ethereum.deployment;
+
+      var value = entries.times(deployment.valuePerEntry);
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'fundraiser', value: value
+      }));
+    };
+
+    _this.handleWithdraw = function (contractAddress) {
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'fundraiser', contractAddress: contractAddress, method: 'withdraw'
+      }));
+    };
+
+    _this.handleCancel = function () {
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'fundraiser', method: 'cancel'
+      }));
+    };
+
+    _this.state = {
+      isPlaying: false
+    };
+    return _this;
+  }
+
+  _createClass(Participate, [{
+    key: 'render',
+    value: function render() {
+      var _props$ethereum = this.props.ethereum,
+          network = _props$ethereum.network,
+          account = _props$ethereum.account,
+          deployment = _props$ethereum.deployment,
+          state = _props$ethereum.state,
+          participant = _props$ethereum.participant,
+          balances = _props$ethereum.balances,
+          feed = _props$ethereum.feed,
+          isLoading = _props$ethereum.isLoading,
+          primaryContractAddresses = _props$ethereum.primaryContractAddresses;
+      var isPlaying = this.state.isPlaying;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-seed' },
+        _react2.default.createElement(
+          'div',
+          { className: 'background' },
+          _react2.default.createElement(_header2.default, { deployment: deployment, network: network }),
+          _react2.default.createElement(
+            'div',
+            { className: 'central' },
+            _react2.default.createElement(_stats2.default, {
+              side: 'left',
+              deployment: deployment,
+              state: state
+            }),
+            _react2.default.createElement(_puck2.default, {
+              network: network,
+              account: account,
+              deployment: deployment,
+              state: state,
+              participant: participant,
+              balances: balances,
+              isLoading: isLoading,
+              primaryContractAddresses: primaryContractAddresses,
+              onParticipate: this.handleParticipate,
+              onRaise: this.handleRaise,
+              onWithdraw: this.handleWithdraw,
+              onCancel: this.handleCancel
+            }),
+            _react2.default.createElement(_stats2.default, {
+              side: 'right',
+              deployment: deployment,
+              state: state
+            })
+          )
+        ),
+        _react2.default.createElement(_about2.default, { isPlaying: isPlaying }),
+        _react2.default.createElement(_feed2.default, { feed: feed, network: network })
+      );
+    }
+  }]);
+
+  return Participate;
+}(_react.Component);
+
+/*
+<div className="accessory">
+          <div className="content has-text-centered">
+            <p>
+              View more live <strong>Seedom</strong> data on&nbsp;
+              <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network, primaryContractAddresses.fundraiser)}>Etherscan</a>.
+            </p>
+          </div>
+        </div>
+<div className="accessory">
+          <div className="content has-text-centered">
+            <Feed feed={feed} network={network} />
+          </div>
+        </div>
+        */
+
+Participate.propTypes = {
+  ethereum: _propTypes2.default.shape().isRequired
+};
+var mapStateToProps = function mapStateToProps(state) {
+  return { ethereum: state.ethereum };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return { dispatch: dispatch };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Participate);
+
+/***/ }),
+
+/***/ "./app/components/participate/index.scss":
+/*!***********************************************!*\
+  !*** ./app/components/participate/index.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/press-release/index.js":
+/*!***********************************************!*\
+  !*** ./app/components/press-release/index.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _sections = __webpack_require__(/*! ../sections */ "./app/components/sections/index.js");
+
+var _sections2 = _interopRequireDefault(_sections);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/press-release/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PressRelease = function (_Sections) {
+  _inherits(PressRelease, _Sections);
+
+  function PressRelease() {
+    _classCallCheck(this, PressRelease);
+
+    return _possibleConstructorReturn(this, (PressRelease.__proto__ || Object.getPrototypeOf(PressRelease)).apply(this, arguments));
+  }
+
+  _createClass(PressRelease, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'container press-release has-text-white' },
+        _react2.default.createElement(
+          'p',
+          { className: 'has-text-right' },
+          'FOR IMMEDIATE RELEASE: (April 27th, 2018)'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Kyle Graden, Seedom, team@seedom.io'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Kris Decoodt, Giveth, kris@giveth.io'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          { className: 'has-text-centered' },
+          'Seedom Announces Giveth as Beta Launch Partner For Fundraise DApp'
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'has-text-centered' },
+          _react2.default.createElement(
+            'i',
+            null,
+            'Raising Awareness & Ether for Decentralized Altruistic Communities Together'
+          )
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            'Earth:'
+          ),
+          ' Seedom is launching an official beta test, a first of its kind, fundraising Ethereum decentralized application (DApp) raising awareness and ether for altruistic causes while rewarding a single participant for their contribution and support. ',
+          _react2.default.createElement(
+            'a',
+            { target: '_blank', rel: 'noopener noreferrer', href: 'https://giveth.io/' },
+            'Giveth'
+          ),
+          ' has been selected to be the first cause to benefit from the Seedom DApp.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Giveth was chosen because its platform is a r\u039Evolution in the world of charitable donation, building and empowering communities and enabling new ways for people to make a difference. Giveth meets all Seedom requirements, including:'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'ul',
+          null,
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              'strong',
+              null,
+              'Decentralizing'
+            ),
+            ' - believes in the decentralization of power in all forms'
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              'strong',
+              null,
+              'Legitimate'
+            ),
+            ' - has a capable team with a clear and effective plan of action'
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              'strong',
+              null,
+              'Active'
+            ),
+            ' - is actively working on solving an urgent need'
+          )
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'The fundraising round will run from May 1st to May 14th of this year. During this beta test, anyone can visit ',
+          _react2.default.createElement(
+            'a',
+            { href: 'http://seedom.io' },
+            'www.seedom.io'
+          ),
+          ' and contribute ether to be entered to win 35% of the total amount raised for Giveth.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'i',
+            null,
+            '"We are honored to be picked by Seedom for their first test run of their awesome DApp. We are always looking to support projects focused on using #blockchain4good, it\u2019s sooooo cool to have a project support us!!! Seedom is experimenting with a very cool method to raise funds for charity, aligning incentives between all the participants in a fun way! Our social coding team dove into some of the code and it looks really nice. It has been a pleasure to work with the Seedom team!"'
+          ),
+          ' - Griff Green, co-founder Giveth'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'This marks the start of a new era of incentivized routine giving on the blockchain and the Ethereum network.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            'About Giveth:'
+          ),
+          ' Giveth is re-engineering charitable giving, by creating an entirely free, open-source platform, built on the Ethereum Blockchain. Our system cuts out bureaucracy and enables nonprofits to create a high level of transparency and accountability towards Givers. Through the Giveth DApp (Donation Application) you will be able to see how the project is laid out and how much money is required for each part. By reducing the costs and decentralizing the giving process we are putting the power back into the hands of the people.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            'About Seedom:'
+          ),
+          ' Seedom takes the efficiency, security, and transparency of the traditional single-room raffle and re-invents it with trustlessness and crowd-sourced selection into an entirely new type of fundraiser that scales to the entire world.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Visit ',
+          _react2.default.createElement(
+            'a',
+            { href: 'http://seedom.io/' },
+            'www.seedom.io'
+          ),
+          ' to participate and sign up for email reminders.'
+        )
+      );
+    }
+  }]);
+
+  return PressRelease;
+}(_sections2.default);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(PressRelease);
+
+/***/ }),
+
+/***/ "./app/components/press-release/index.scss":
+/*!*************************************************!*\
+  !*** ./app/components/press-release/index.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/sections/index.js":
+/*!******************************************!*\
+  !*** ./app/components/sections/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Sections = function (_Component) {
+  _inherits(Sections, _Component);
+
+  function Sections(props) {
+    var opened = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+    _classCallCheck(this, Sections);
+
+    var _this = _possibleConstructorReturn(this, (Sections.__proto__ || Object.getPrototypeOf(Sections)).call(this, props));
+
+    _initialiseProps.call(_this);
+
+    _this.state = {
+      open: [].concat(_toConsumableArray(opened))
+    };
+    // handle #toggles
+    _this.handleHash(props);
+    return _this;
+  }
+
+  _createClass(Sections, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(newProps) {
+      this.handleHash(newProps);
+    }
+  }]);
+
+  return Sections;
+}(_react.Component);
+
+var _initialiseProps = function _initialiseProps() {
+  var _this2 = this;
+
+  this.handleHash = function (props) {
+    var hash = props.router.location.hash;
+
+    if (hash !== '') {
+      _this2.state.open = [hash.substring(1)];
+    }
+  };
+};
+
+exports.default = Sections;
+
+/***/ }),
+
+/***/ "./app/components/toggle/index.js":
+/*!****************************************!*\
+  !*** ./app/components/toggle/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(/*! classnames */ "classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/toggle/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Toggle = function (_Component) {
+  _inherits(Toggle, _Component);
+
+  function Toggle(props) {
+    _classCallCheck(this, Toggle);
+
+    var _this = _possibleConstructorReturn(this, (Toggle.__proto__ || Object.getPrototypeOf(Toggle)).call(this, props));
+
+    _this.toggle = function () {
+      _this.setState(function (prevState) {
+        return {
+          collapsed: !prevState.collapsed
+        };
+      });
+    };
+
+    _this.state = {
+      collapsed: props.collapsed
+    };
+    return _this;
+  }
+
+  _createClass(Toggle, [{
+    key: 'render',
+    value: function render() {
+      var title = this.props.title;
+      var collapsed = this.state.collapsed;
+
+      return _react2.default.createElement(
+        'div',
+        {
+          className: (0, _classnames2.default)('seedom-toggle', { collapsed: collapsed }),
+          onClick: this.toggle
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'header' },
+          _react2.default.createElement(
+            'span',
+            { className: 'toggle left' },
+            _react2.default.createElement('i', { className: 'fas fa-plus' })
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'text' },
+            title
+          )
+        ),
+        !collapsed && _react2.default.createElement(
+          'div',
+          { className: 'content has-text-white' },
+          this.props.children
+        )
+      );
+    }
+  }]);
+
+  return Toggle;
+}(_react.Component);
+
+Toggle.propTypes = {
+  title: _propTypes2.default.string.isRequired,
+  collapsed: _propTypes2.default.bool,
+  children: _propTypes2.default.element
+};
+Toggle.defaultProps = {
+  collapsed: true,
+  children: null
+};
+exports.default = Toggle;
+
+/***/ }),
+
+/***/ "./app/components/toggle/index.scss":
+/*!******************************************!*\
+  !*** ./app/components/toggle/index.scss ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/vote/components/caster/index.js":
+/*!********************************************************!*\
+  !*** ./app/components/vote/components/caster/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var getStatus = function getStatus(_ref) {
+  var voteCount = _ref.voteCount,
+      maxVoteCount = _ref.maxVoteCount,
+      ended = _ref.ended;
+
+  if (ended) {
+    return 'ended';
+  } else if (maxVoteCount.isEqualTo(0)) {
+    return 'participate';
+  } else if (voteCount.isLessThan(maxVoteCount)) {
+    return 'decide';
+  }
+  return 'thanks';
+};
+
+var Caster = function (_Component) {
+  _inherits(Caster, _Component);
+
+  function Caster() {
+    _classCallCheck(this, Caster);
+
+    return _possibleConstructorReturn(this, (Caster.__proto__ || Object.getPrototypeOf(Caster)).apply(this, arguments));
+  }
+
+  _createClass(Caster, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          voteCount = _props.voteCount,
+          maxVoteCount = _props.maxVoteCount,
+          ended = _props.ended;
+
+      var status = getStatus({ voteCount: voteCount, maxVoteCount: maxVoteCount, ended: ended });
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'row caster' },
+        {
+          ended: _react2.default.createElement(
+            'div',
+            { className: 'bit begin stretch' },
+            'fundraiser ended'
+          ),
+          participate: _react2.default.createElement(
+            'div',
+            { className: 'bit begin stretch' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'button is-white is-outlined', to: '/participate' },
+                  _react2.default.createElement('i', { className: 'fas fa-arrow-alt-circle-left' }),
+                  ' participate first'
+                )
+              )
+            )
+          ),
+          decide: _react2.default.createElement(
+            'div',
+            { className: 'bit begin stretch' },
+            'help us decide our future!'
+          ),
+          thanks: _react2.default.createElement(
+            'div',
+            { className: 'bit begin stretch' },
+            'thank you for voting!'
+          )
+        }[status],
+        _react2.default.createElement(
+          'div',
+          { className: 'bit header' },
+          _react2.default.createElement(
+            'span',
+            { className: 'header' },
+            'votes cast'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'bit' },
+          voteCount.toString(),
+          ' / ',
+          maxVoteCount.toString()
+        )
+      );
+    }
+  }]);
+
+  return Caster;
+}(_react.Component);
+
+Caster.propTypes = {
+  voteCount: _propTypes2.default.shape().isRequired,
+  maxVoteCount: _propTypes2.default.shape().isRequired,
+  ended: _propTypes2.default.bool.isRequired
+};
+exports.default = Caster;
+
+/***/ }),
+
+/***/ "./app/components/vote/components/count/index.js":
+/*!*******************************************************!*\
+  !*** ./app/components/vote/components/count/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _field = __webpack_require__(/*! ../../../field */ "./app/components/field/index.js");
+
+var _field2 = _interopRequireDefault(_field);
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var _numbers = __webpack_require__(/*! ../../../../utils/numbers */ "./app/utils/numbers.js");
+
+__webpack_require__(/*! ./index.scss */ "./app/components/vote/components/count/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Count = function (_Component) {
+  _inherits(Count, _Component);
+
+  function Count(props) {
+    _classCallCheck(this, Count);
+
+    var _this = _possibleConstructorReturn(this, (Count.__proto__ || Object.getPrototypeOf(Count)).call(this, props));
+
+    _this.focus = function () {
+      _this.count.focus();
+    };
+
+    _this.validate = function () {
+      var value = _this.state.value;
+
+      var isValid = value.isGreaterThanOrEqualTo(1) && value.isLessThanOrEqualTo(_this.props.remainingVoteCount);
+      _this.setState({ isValid: isValid });
+      return isValid;
+    };
+
+    _this.value = function () {
+      return _this.state.value;
+    };
+
+    _this.handleChange = function (value) {
+      var parsedValue = void 0;
+
+      try {
+        parsedValue = new _bignumber.BigNumber(value);
+      } catch (error) {
+        parsedValue = (0, _numbers.zero)();
+      }
+
+      _this.setState({ value: parsedValue });
+    };
+
+    _this.state = {
+      value: props.value ? props.value : props.remainingVoteCount,
+      isValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Count, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.value && this.props.value && !this.props.value.isEqualTo(nextProps.value)) {
+        this.setState({ value: nextProps.value });
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          disabled = _props.disabled,
+          remainingVoteCount = _props.remainingVoteCount;
+      var _state = this.state,
+          value = _state.value,
+          isValid = _state.isValid;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-count' },
+        _react2.default.createElement(_field2.default, {
+          format: 'textbox',
+          type: 'number',
+          min: new _bignumber.BigNumber(1),
+          max: remainingVoteCount,
+          value: value.toString(),
+          maxLength: remainingVoteCount.toString().length,
+          placeholder: '',
+          disabled: disabled,
+          isValid: isValid,
+          onChange: this.handleChange,
+          ref: function ref(component) {
+            _this2.count = component;
+          }
+        }),
+        _react2.default.createElement(
+          'div',
+          { className: 'divider' },
+          '/'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'remainingVoteCount' },
+          remainingVoteCount.toString()
+        )
+      );
+    }
+  }]);
+
+  return Count;
+}(_react.Component);
+
+Count.propTypes = {
+  value: _propTypes2.default.shape(),
+  disabled: _propTypes2.default.bool.isRequired,
+  remainingVoteCount: _propTypes2.default.shape().isRequired
+};
+Count.defaultProps = {
+  value: null
+};
+exports.default = Count;
+
+/***/ }),
+
+/***/ "./app/components/vote/components/count/index.scss":
+/*!*********************************************************!*\
+  !*** ./app/components/vote/components/count/index.scss ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/vote/components/index/index.js":
+/*!*******************************************************!*\
+  !*** ./app/components/vote/components/index/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+var _count = __webpack_require__(/*! ../count */ "./app/components/vote/components/count/index.js");
+
+var _count2 = _interopRequireDefault(_count);
+
+var _heatmap = __webpack_require__(/*! ../../../../utils/heatmap */ "./app/utils/heatmap.js");
+
+var heatmap = _interopRequireWildcard(_heatmap);
+
+var _numbers = __webpack_require__(/*! ../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var _classnames = __webpack_require__(/*! classnames */ "classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var rowClass = function rowClass(available) {
+  return (0, _classnames2.default)({
+    row: true,
+    index: true,
+    static: !available
+  });
+};
+
+var Index = function (_Component) {
+  _inherits(Index, _Component);
+
+  function Index(props) {
+    _classCallCheck(this, Index);
+
+    var _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
+
+    _this.validateForm = function (done) {
+      var isFormValid = _this.count.validate();
+      _this.setState({ isFormValid: isFormValid }, done);
+    };
+
+    _this.handleEdit = function () {
+      _this.setState({ editing: true });
+    };
+
+    _this.handleCancel = function () {
+      _this.setState({ editing: false });
+    };
+
+    _this.handleSubmit = function () {
+      _this.validateForm(function () {
+        if (_this.state.isFormValid) {
+          var _this$props = _this.props,
+              cause = _this$props.cause,
+              onVoteIndex = _this$props.onVoteIndex;
+
+          var count = _this.count.value();
+          onVoteIndex({ index: cause.index, count: count });
+        } else {
+          _reactReduxToastr.toastr.warning('VOTE', 'score update form invalid');
+        }
+      });
+    };
+
+    _this.getHeatmapColor = function () {
+      return heatmap.color(0);
+    };
+
+    _this.state = {
+      editing: false,
+      isFormValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Index, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          voteCount = _props.voteCount,
+          maxVoteCount = _props.maxVoteCount,
+          causesVoteCount = _props.causesVoteCount,
+          ended = _props.ended,
+          cause = _props.cause,
+          vote = _props.vote,
+          isLoading = _props.isLoading;
+      var editing = this.state.editing;
+
+
+      var available = !ended && voteCount.isLessThan(maxVoteCount);
+
+      return _react2.default.createElement(
+        'div',
+        { className: rowClass(available), style: { backgroundColor: this.getHeatmapColor() } },
+        _react2.default.createElement(
+          'div',
+          { className: 'bit begin header-normal stretch shadow' },
+          cause.name
+        ),
+        vote && _react2.default.createElement(
+          'div',
+          { className: 'bit' },
+          'VOTED!'
+        ),
+        (!available || !editing) && _react2.default.createElement(
+          'div',
+          { className: 'bit shadow' },
+          _react2.default.createElement(
+            'div',
+            { className: 'bit header' },
+            'votes'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'bit' },
+            cause.voteCount.toString()
+          )
+        ),
+        available && _react2.default.createElement(
+          'div',
+          { className: 'bit' },
+          editing && _react2.default.createElement(
+            'div',
+            { className: 'bit shadow' },
+            _react2.default.createElement(
+              'div',
+              { className: 'bit' },
+              _react2.default.createElement(_count2.default, {
+                remainingVoteCount: maxVoteCount.minus(voteCount),
+                disabled: isLoading,
+                ref: function ref(component) {
+                  _this2.count = component;
+                }
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'bit' },
+              _react2.default.createElement(
+                'div',
+                { className: 'field' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'control' },
+                  _react2.default.createElement(
+                    'a',
+                    { className: 'button is-white', disabled: isLoading, onClick: this.handleSubmit },
+                    'vote'
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'bit' },
+              _react2.default.createElement(
+                'div',
+                { className: 'field' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'control' },
+                  _react2.default.createElement(
+                    'a',
+                    { className: 'button is-white', disabled: isLoading, onClick: this.handleCancel },
+                    'cancel'
+                  )
+                )
+              )
+            )
+          ),
+          !editing && _react2.default.createElement(
+            'div',
+            { className: 'bit shadow' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-white', disabled: isLoading, onClick: this.handleEdit },
+                  'vote'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Index;
+}(_react.Component);
+
+Index.propTypes = {
+  voteCount: _propTypes2.default.shape().isRequired,
+  maxVoteCount: _propTypes2.default.shape().isRequired,
+  causesVoteCount: _propTypes2.default.shape().isRequired,
+  ended: _propTypes2.default.bool.isRequired,
+  cause: _propTypes2.default.shape().isRequired,
+  vote: _propTypes2.default.shape(),
+  isLoading: _propTypes2.default.bool,
+  onVoteIndex: _propTypes2.default.func.isRequired
+};
+Index.defaultProps = {
+  isLoading: false,
+  vote: null
+};
+exports.default = Index;
+
+/***/ }),
+
+/***/ "./app/components/vote/components/name/index.js":
+/*!******************************************************!*\
+  !*** ./app/components/vote/components/name/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+var _count = __webpack_require__(/*! ../count */ "./app/components/vote/components/count/index.js");
+
+var _count2 = _interopRequireDefault(_count);
+
+var _field = __webpack_require__(/*! ../../../field */ "./app/components/field/index.js");
+
+var _field2 = _interopRequireDefault(_field);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MAX_NAME_LENGTH = 32;
+
+var Name = function (_Component) {
+  _inherits(Name, _Component);
+
+  function Name(props) {
+    _classCallCheck(this, Name);
+
+    var _this = _possibleConstructorReturn(this, (Name.__proto__ || Object.getPrototypeOf(Name)).call(this, props));
+
+    _this.validateForm = function (done) {
+      var name = _this.state.name;
+
+      var isNameValid = name.length > 1 && name.length <= MAX_NAME_LENGTH;
+      var isCountValid = _this.count.validate();
+      _this.setState({
+        isNameValid: isNameValid,
+        isFormValid: isNameValid && isCountValid
+      }, done);
+    };
+
+    _this.handleNameChange = function (name) {
+      _this.setState({ name: name });
+    };
+
+    _this.handleSubmit = function () {
+      _this.validateForm(function () {
+        var _this$state = _this.state,
+            isFormValid = _this$state.isFormValid,
+            name = _this$state.name;
+
+        if (isFormValid) {
+          var count = _this.count.value();
+          _this.props.onVoteName({ name: name, count: count });
+        } else {
+          _reactReduxToastr.toastr.warning('VOTE', 'new cause form invalid');
+        }
+      });
+    };
+
+    _this.state = {
+      name: '',
+      isNameValid: true,
+      isFormValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Name, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          voteCount = _props.voteCount,
+          maxVoteCount = _props.maxVoteCount,
+          ended = _props.ended,
+          isLoading = _props.isLoading;
+      var _state = this.state,
+          name = _state.name,
+          isNameValid = _state.isNameValid;
+
+
+      if (ended || voteCount.isEqualTo(maxVoteCount)) {
+        return null;
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'row name' },
+        _react2.default.createElement(
+          'div',
+          { className: 'bit begin stretch' },
+          _react2.default.createElement(_field2.default, {
+            format: 'textbox',
+            type: 'text',
+            placeholder: 'enter new cause or vote below',
+            value: name.toString(),
+            maxLength: 10,
+            disabled: isLoading,
+            isValid: isNameValid,
+            onChange: this.handleNameChange,
+            ref: function ref(component) {
+              _this2.name = component;
+            }
+          })
+        ),
+        name.length > 0 && _react2.default.createElement(
+          'div',
+          { className: 'bit' },
+          _react2.default.createElement(
+            'div',
+            { className: 'bit header' },
+            'votes'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'bit' },
+            _react2.default.createElement(_count2.default, {
+              remainingVoteCount: maxVoteCount.minus(voteCount),
+              disabled: isLoading,
+              ref: function ref(component) {
+                _this2.count = component;
+              }
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'bit' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-white', disabled: isLoading, onClick: this.handleSubmit },
+                  _react2.default.createElement('i', { className: 'fas fa-plus-circle' })
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Name;
+}(_react.Component);
+
+Name.propTypes = {
+  voteCount: _propTypes2.default.shape().isRequired,
+  maxVoteCount: _propTypes2.default.shape().isRequired,
+  ended: _propTypes2.default.bool.isRequired,
+  isLoading: _propTypes2.default.bool,
+  onVoteName: _propTypes2.default.func.isRequired
+};
+Name.defaultProps = {
+  isLoading: false
+};
+exports.default = Name;
+
+/***/ }),
+
+/***/ "./app/components/vote/index.js":
+/*!**************************************!*\
+  !*** ./app/components/vote/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _bytes = __webpack_require__(/*! ../../utils/bytes */ "./app/utils/bytes.js");
+
+var bytes = _interopRequireWildcard(_bytes);
+
+var _messages = __webpack_require__(/*! @seedom-io/seedom-crypter/messages */ "@seedom-io/seedom-crypter/messages");
+
+var messages = _interopRequireWildcard(_messages);
+
+var _ethereum = __webpack_require__(/*! ../../actions/ethereum */ "./app/actions/ethereum.js");
+
+var ethereumActions = _interopRequireWildcard(_ethereum);
+
+var _caster = __webpack_require__(/*! ./components/caster */ "./app/components/vote/components/caster/index.js");
+
+var _caster2 = _interopRequireDefault(_caster);
+
+var _name = __webpack_require__(/*! ./components/name */ "./app/components/vote/components/name/index.js");
+
+var _name2 = _interopRequireDefault(_name);
+
+var _index = __webpack_require__(/*! ./components/index */ "./app/components/vote/components/index/index.js");
+
+var _index2 = _interopRequireDefault(_index);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/vote/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Vote = function (_Component) {
+  _inherits(Vote, _Component);
+
+  function Vote() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Vote);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Vote.__proto__ || Object.getPrototypeOf(Vote)).call.apply(_ref, [this].concat(args))), _this), _this.handleVoteName = function (_ref2) {
+      var name = _ref2.name,
+          count = _ref2.count;
+
+      var nameHex = messages.hex(name);
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'polling', method: 'voteName', args: [nameHex, count]
+      }));
+    }, _this.handleVoteIndex = function (_ref3) {
+      var index = _ref3.index,
+          count = _ref3.count;
+
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'polling', method: 'voteIndex', args: [index, count]
+      }));
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Vote, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props$ethereum = this.props.ethereum,
+          maxVoteCount = _props$ethereum.maxVoteCount,
+          causes = _props$ethereum.causes,
+          causesVoteCount = _props$ethereum.causesVoteCount,
+          votes = _props$ethereum.votes,
+          voteCount = _props$ethereum.voteCount,
+          deployment = _props$ethereum.deployment,
+          account = _props$ethereum.account,
+          isLoading = _props$ethereum.isLoading;
+
+
+      if (!maxVoteCount || !causes || !votes || !deployment) {
+        return null;
+      }
+
+      // sort causes by vote count
+      var sortedCauses = [].concat(_toConsumableArray(causes)).sort(function (a, b) {
+        return b.voteCount.comparedTo(a.voteCount);
+      });
+
+      var ended = new Date() >= deployment.endTime;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-vote' },
+        _react2.default.createElement(
+          'div',
+          { className: 'list' },
+          _react2.default.createElement(_caster2.default, {
+            voteCount: voteCount,
+            maxVoteCount: maxVoteCount,
+            ended: ended
+          }),
+          _react2.default.createElement(_name2.default, {
+            voteCount: voteCount,
+            maxVoteCount: maxVoteCount,
+            ended: ended,
+            isLoading: isLoading,
+            onVoteName: this.handleVoteName
+          }),
+          sortedCauses.map(function (cause) {
+            return _react2.default.createElement(_index2.default, {
+              key: cause.index,
+              voteCount: voteCount,
+              maxVoteCount: maxVoteCount,
+              causesVoteCount: causesVoteCount,
+              ended: ended,
+              cause: cause,
+              vote: votes[cause.index],
+              account: account,
+              onVoteIndex: _this2.handleVoteIndex
+            });
+          })
+        )
+      );
+    }
+  }]);
+
+  return Vote;
+}(_react.Component);
+
+Vote.propTypes = {
+  ethereum: _propTypes2.default.shape().isRequired
+};
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { ethereum: state.ethereum };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return { dispatch: dispatch };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Vote);
+
+/***/ }),
+
+/***/ "./app/components/vote/index.scss":
+/*!****************************************!*\
+  !*** ./app/components/vote/index.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/img/logos/cause-logo.png":
+/*!**************************************!*\
+  !*** ./app/img/logos/cause-logo.png ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "f0e79c237eba7629393f31a151ac7ca0.png";
+
+/***/ }),
+
+/***/ "./app/middleware/cause.js":
+/*!*********************************!*\
+  !*** ./app/middleware/cause.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _causes = __webpack_require__(/*! @seedom-io/seedom-resolver/causes */ "@seedom-io/seedom-resolver/causes");
+
+var causesResolver = _interopRequireWildcard(_causes);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var causeMiddleware = function causeMiddleware(store) {
+  var handleFundraiserDeployment = function handleFundraiserDeployment(next, action) {
+    fetch(causesResolver.getJsonUrl(action.deployment.cause)).then(function (results) {
+      return results.json();
+    }).then(function (cause) {
+      store.dispatch({ type: 'CAUSE_CAUSE', cause: cause });
+    });
+    return next(action);
+  };
+
+  return function (next) {
+    return function (action) {
+      var type = action.type;
+
+      switch (type) {
+        case 'FUNDRAISER_DEPLOYMENT':
+          return handleFundraiserDeployment(next, action);
+        default:
+          return next(action);
+      }
+    };
+  };
+};
+
+exports.default = causeMiddleware;
+
+/***/ }),
+
+/***/ "./app/middleware/ethereum.js":
+/*!************************************!*\
+  !*** ./app/middleware/ethereum.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _web = __webpack_require__(/*! web3 */ "web3");
+
+var _web2 = _interopRequireDefault(_web);
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PAST_BLOCKS_BACK = 10000;
+var MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
+var GAS = 200000;
+var GAS_PRICE = 4000000000;
+
+var getNetworkName = function getNetworkName(id) {
+  switch (id) {
+    case 1:
+      return 'mainnet';
+    case 2:
+      return 'morden';
+    case 3:
+      return 'ropsten';
+    case 4:
+      return 'rinkeby';
+    case 42:
+      return 'kovan';
+    default:
+      return 'localhost';
+  }
+};
+
+var getRpcWeb3 = function getRpcWeb3() {
+  // setup rpc web3
+  if (typeof window !== 'undefined') {
+    // set MetaMask web3 at v1.0
+    if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
+      return new _web2.default(window.web3.currentProvider);
+    }
+  }
+  return null;
+};
+
+var ethereumMiddleware = function ethereumMiddleware(store) {
+  // client web3 is source of truth
+  var clientWeb3 = getRpcWeb3();
+  // middleware state
+  var serverWeb3 = void 0;
+  var account = void 0;
+  var network = void 0;
+  var contracts = {};
+  var primaryContractAddresses = {};
+
+  var getContract = function getContract(name) {
+    return contracts[name];
+  };
+
+  var getClientMethod = function getClientMethod(release, method, args) {
+    return release.client.methods[method].apply(null, args);
+  };
+
+  var getServerMethod = function getServerMethod(release, method, args) {
+    return release.server.methods[method].apply(null, args);
+  };
+
+  var handleCallError = function handleCallError(error, action) {
+    console.error(error.message);
+    store.dispatch(_extends({}, action, { type: 'ETHEREUM_CALL_ERROR', error: error }));
+  };
+
+  var handleCall = function handleCall(next, action) {
+    var contractName = action.contractName,
+        contractAddress = action.contractAddress,
+        method = action.method,
+        args = action.args;
+
+    var contract = getContract(contractName);
+    if (contract) {
+      var release = contract[contractAddress || primaryContractAddresses[contractName]];
+      if (release) {
+        var serverMethod = getServerMethod(release, method, args);
+        serverMethod.call({ from: account }).then(function (data) {
+          store.dispatch(_extends({}, action, { type: 'ETHEREUM_CALL_DATA', data: data }));
+        }, function (error) {
+          handleCallError(error, action);
+        });
+      }
+    }
+
+    return next(action);
+  };
+
+  var handleAllCall = function handleAllCall(next, action) {
+    var contractName = action.contractName,
+        method = action.method,
+        args = action.args;
+
+    var promises = [];
+    var contract = getContract(contractName);
+    if (contract) {
+      // get contract addresses (an order)
+      var contractAddresses = Object.keys(contracts[contractName]);
+      // loop over last 6 contracts to execute call
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = contractAddresses[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var contractAddress = _step.value;
+
+          var release = contract[contractAddress || primaryContractAddresses[contractName]];
+          if (release) {
+            var serverMethod = getServerMethod(release, method, args);
+            promises.push(serverMethod.call({ from: account }));
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      Promise.all(promises).then(function (datas) {
+        var data = {};
+        for (var i = 0; i < datas.length; i += 1) {
+          data[contractAddresses[i]] = datas[i];
+        }
+        store.dispatch(_extends({}, action, { type: 'ETHEREUM_ALLCALL_DATA', data: data }));
+      });
+    }
+
+    return next(action);
+  };
+
+  var handleSendError = function handleSendError(error, action) {
+    var finalMessage = void 0;
+    var message = error.message;
+
+    if (message.includes('User denied')) {
+      finalMessage = 'USER CANCELLED TRANSACTION';
+    } else if (message.includes('Insufficient funds')) {
+      finalMessage = 'INSUFFICIENT FUNDS';
+    } else {
+      finalMessage = 'UNKNOWN ERROR';
+    }
+
+    // send out send error & toastr notification
+    store.dispatch(_extends({}, action, { type: 'ETHEREUM_SEND_ERROR', error: finalMessage }));
+    _reactReduxToastr.toastr.error('ETHEREUM ERROR', finalMessage);
+  };
+
+  var handleSendSuccess = function handleSendSuccess(action) {
+    store.dispatch(_extends({}, action, { type: 'ETHEREUM_SEND_SUCCESS' }));
+  };
+
+  var handleSendCall = function handleSendCall(options, release, next, action) {
+    return function (callError) {
+      if (callError) {
+        handleSendError(callError, action);
+        return;
+      }
+
+      var transaction = void 0;
+      var method = action.method;
+
+      if (!method) {
+        transaction = clientWeb3.eth.sendTransaction(options);
+      } else {
+        var args = action.args;
+
+        var clientMethod = getClientMethod(release, method, args);
+        transaction = clientMethod.send(options);
+      }
+
+      transaction.on('error', function (sendError) {
+        handleSendError(sendError, action);
+      }).on('confirmation', function (confirmationNumber) {
+        if (confirmationNumber === 0) {
+          handleSendSuccess(action);
+        }
+      });
+    };
+  };
+
+  var handleSend = function handleSend(next, action) {
+    var contractName = action.contractName,
+        contractAddress = action.contractAddress,
+        method = action.method,
+        args = action.args,
+        value = action.value;
+
+    var options = {
+      value: value,
+      from: account,
+      gas: GAS,
+      gasPrice: GAS_PRICE
+    };
+
+    var contract = getContract(contractName);
+    if (contract) {
+      var release = contract[contractAddress || primaryContractAddresses[contractName]];
+      if (release) {
+        options.to = release.address;
+        var handler = handleSendCall(options, release, next, action);
+        if (!method) {
+          clientWeb3.eth.call(options, handler);
+        } else {
+          var serverMethod = getServerMethod(release, method, args);
+          serverMethod.call(options, handler);
+        }
+      }
+    }
+
+    return next(action);
+  };
+
+  var destroyCurrentNetwork = function destroyCurrentNetwork() {
+    for (var contractName in contracts) {
+      var releases = contracts[contractName];
+      for (var contractAddress in releases) {
+        var release = releases[contractAddress];
+        release.server.currentProvider.connection.close();
+      }
+      delete contracts[contractName];
+      delete primaryContractAddresses[contractName];
+    }
+  };
+
+  var setupServerWeb3 = function setupServerWeb3(networkName) {
+    var ethNetwork = {"localhost":{"rpcUrl":"http://localhost:8545","wsUrl":"ws://localhost:8546"},"mainnet":{"rpcUrl":"https://manager1.seedom.io:8549","wsUrl":"wss://manager1.seedom.io:8550"},"ropsten":{"rpcUrl":"https://manager1.seedom.io:8547","wsUrl":"wss://manager1.seedom.io:8548"}}[networkName];
+    if (ethNetwork) {
+      // use websocket url
+      serverWeb3 = new _web2.default(ethNetwork.wsUrl);
+      return true;
+    }
+
+    serverWeb3 = null;
+    return false;
+  };
+
+  var setupContracts = function setupContracts(networkName) {
+    var ethDeployments = {"localhost":{"fundraiser":[{"address":"0x4faCe5aE5c82Ca12d1A8aDDB9dC0341440A5e871","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_message","type":"bytes32"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_token","type":"address"}],"name":"recover","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"deployment","outputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"begin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_causeSecret","type":"bytes32"},{"name":"_causeMessage","type":"bytes32"},{"name":"_causeWithdrawn","type":"bool"},{"name":"_participant","type":"address"},{"name":"_participantMessage","type":"bytes32"},{"name":"_participantWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_participants","type":"uint256"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeSecret","type":"bytes32"}],"name":"Beginning","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_participantMessage","type":"bytes32"},{"indexed":false,"name":"_causeMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0xd55e7eBd8C36026278d2e3FB21C5B07b55A810C6","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_message","type":"bytes32"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_token","type":"address"}],"name":"recover","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"deployment","outputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"begin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_causeSecret","type":"bytes32"},{"name":"_causeMessage","type":"bytes32"},{"name":"_causeWithdrawn","type":"bool"},{"name":"_participant","type":"address"},{"name":"_participantMessage","type":"bytes32"},{"name":"_participantWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_participants","type":"uint256"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeSecret","type":"bytes32"}],"name":"Beginning","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_participantMessage","type":"bytes32"},{"indexed":false,"name":"_causeMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0x2691f5a0c8b2c05A9D22D3568701618f88130B08","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_message","type":"bytes32"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_token","type":"address"}],"name":"recover","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"deployment","outputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"begin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_causeSecret","type":"bytes32"},{"name":"_causeMessage","type":"bytes32"},{"name":"_causeWithdrawn","type":"bool"},{"name":"_participant","type":"address"},{"name":"_participantMessage","type":"bytes32"},{"name":"_participantWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_participants","type":"uint256"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeSecret","type":"bytes32"}],"name":"Beginning","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_participantMessage","type":"bytes32"},{"indexed":false,"name":"_causeMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0xe68f03f77771351e8093111B1815C651D0673D9b","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_message","type":"bytes32"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_token","type":"address"}],"name":"recover","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"deployment","outputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"begin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_causeSecret","type":"bytes32"},{"name":"_causeMessage","type":"bytes32"},{"name":"_causeWithdrawn","type":"bool"},{"name":"_participant","type":"address"},{"name":"_participantMessage","type":"bytes32"},{"name":"_participantWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_participants","type":"uint256"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeSecret","type":"bytes32"}],"name":"Beginning","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_participantMessage","type":"bytes32"},{"indexed":false,"name":"_causeMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0xD3AD091534Faf8dcd24CF027FbFcddF07c0D2aEd","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_message","type":"bytes32"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_token","type":"address"}],"name":"recover","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"deployment","outputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"begin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_causeSecret","type":"bytes32"},{"name":"_causeMessage","type":"bytes32"},{"name":"_causeWithdrawn","type":"bool"},{"name":"_participant","type":"address"},{"name":"_participantMessage","type":"bytes32"},{"name":"_participantWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_participants","type":"uint256"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeSecret","type":"bytes32"}],"name":"Beginning","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_participantMessage","type":"bytes32"},{"indexed":false,"name":"_causeMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0xAB78318B3c1097A8e44Bed031Bd79925b972d02d","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_message","type":"bytes32"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_token","type":"address"}],"name":"recover","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"deployment","outputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"begin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_causeSecret","type":"bytes32"},{"name":"_causeMessage","type":"bytes32"},{"name":"_causeWithdrawn","type":"bool"},{"name":"_participant","type":"address"},{"name":"_participantMessage","type":"bytes32"},{"name":"_participantWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_participants","type":"uint256"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_cause","type":"address"},{"name":"_causeWallet","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_ownerWallet","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeSecret","type":"bytes32"}],"name":"Beginning","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_participantMessage","type":"bytes32"},{"indexed":false,"name":"_causeMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]}],"polling":[{"address":"0x8C96ab371f945EbF570B036Ee8f132551858f393","abi":[{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"_voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeName","type":"bytes32"},{"name":"_count","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"_participants","outputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"maxVoteCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"causes","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_voteCounts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_causeIndexes","type":"uint256[]"},{"name":"_counts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_fundraiser","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeName","type":"bytes32"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastIndex","type":"event"}]},{"address":"0x29997EC920C545B00D38F859Bba4b09421B052B5","abi":[{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"_voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeName","type":"bytes32"},{"name":"_count","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"_participants","outputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"maxVoteCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"causes","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_voteCounts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_causeIndexes","type":"uint256[]"},{"name":"_counts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_fundraiser","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeName","type":"bytes32"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastIndex","type":"event"}]},{"address":"0x7d0dF13e3AfCB4395d18a38Ef9089a504d0Ef405","abi":[{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"_voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeName","type":"bytes32"},{"name":"_count","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"_participants","outputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"maxVoteCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"causes","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_voteCounts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_causeIndexes","type":"uint256[]"},{"name":"_counts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_fundraiser","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeName","type":"bytes32"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastIndex","type":"event"}]},{"address":"0x77483c879ff916e6d013F807CFaC02F81Da895dD","abi":[{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"_voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeName","type":"bytes32"},{"name":"_count","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"_participants","outputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"maxVoteCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"causes","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_voteCounts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_causeIndexes","type":"uint256[]"},{"name":"_counts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_fundraiser","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeName","type":"bytes32"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastIndex","type":"event"}]},{"address":"0x9168a081ceeADb919A3BAac3ee42be56074C55c6","abi":[{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"_voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeName","type":"bytes32"},{"name":"_count","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"_participants","outputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"maxVoteCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"causes","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_voteCounts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_causeIndexes","type":"uint256[]"},{"name":"_counts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_fundraiser","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeName","type":"bytes32"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastIndex","type":"event"}]},{"address":"0x6cD7F46c07f03c2CaD2a73dFd933Ae637A65d262","abi":[{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"name":"_voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeName","type":"bytes32"},{"name":"_count","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"_participants","outputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_count","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"maxVoteCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"causes","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_voteCounts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_causeIndexes","type":"uint256[]"},{"name":"_counts","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_fundraiser","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeName","type":"bytes32"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_voteCount","type":"uint256"}],"name":"CastIndex","type":"event"}]}]},"mainnet":{"seedom":[{"address":"0xa7bc8Cd45eEDe68e8AD6d282E522f2B9e7d57942","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_charityRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_winner","type":"address"},{"indexed":false,"name":"_winnerRandom","type":"bytes32"},{"indexed":false,"name":"_charityRandom","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0x2F8c8FCB351520A3B28971a017E1231Baa6bAf01","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_charityRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_winner","type":"address"},{"indexed":false,"name":"_winnerRandom","type":"bytes32"},{"indexed":false,"name":"_charityRandom","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]}]},"ropsten":{"seedom":[{"address":"0x4C70C9c44213c54C8b590Fa3A63a56DF40348ca6","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_entries","type":"uint256"},{"name":"_message","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participantAddresses","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"select","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_selectedSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charitySecret","type":"bytes32"},{"name":"_charityMessage","type":"bytes32"},{"name":"_charityWithdrawn","type":"bool"},{"name":"_selected","type":"address"},{"name":"_selectedMessage","type":"bytes32"},{"name":"_selectedWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_selectedSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charitySecret","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_selected","type":"address"},{"indexed":false,"name":"_selectedMessage","type":"bytes32"},{"indexed":false,"name":"_charityMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0x0D74c068a1141e8aC60a30e6b6e5dF5A518c4210","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_entries","type":"uint256"},{"name":"_message","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participantAddresses","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"select","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_selectedSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charitySecret","type":"bytes32"},{"name":"_charityMessage","type":"bytes32"},{"name":"_charityWithdrawn","type":"bool"},{"name":"_selected","type":"address"},{"name":"_selectedMessage","type":"bytes32"},{"name":"_selectedWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_selectedSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charitySecret","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_selected","type":"address"},{"indexed":false,"name":"_selectedMessage","type":"bytes32"},{"indexed":false,"name":"_charityMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0xBD18f290D6cC51dBEE083A2a4b493e7278AC2B38","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_charityRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_winner","type":"address"},{"indexed":false,"name":"_winnerRandom","type":"bytes32"},{"indexed":false,"name":"_charityRandom","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0xae6504caFc09bFbDbF751C4292371D114d2b459e","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_charityRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_winner","type":"address"},{"indexed":false,"name":"_winnerRandom","type":"bytes32"},{"indexed":false,"name":"_charityRandom","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0x7542eA016832c2B30395a93E7e2c4EbA4284d734","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_charityRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_winner","type":"address"},{"indexed":false,"name":"_winnerRandom","type":"bytes32"},{"indexed":false,"name":"_charityRandom","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0xBC8AE73A0D0b7158dd0C3B2dFCd6ae908271929b","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]}],"suggest":[{"address":"0x8B54B2118CB2D695977B007Aa76337a06038c0e9","abi":[{"constant":true,"inputs":[],"name":"getVotes","outputs":[{"name":"","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"destructTime","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"endTime","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getCharities","outputs":[{"name":"","type":"bytes32[]"},{"name":"","type":"uint256[]"},{"name":"","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_forCharityIndex","type":"uint256"},{"name":"_forCharityName","type":"bytes32"}],"name":"hasRight","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_charityIndex","type":"uint256"},{"name":"_score","type":"uint256"}],"name":"vote","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityName","type":"bytes32"},{"name":"_score","type":"uint256"}],"name":"addCharity","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_seedomAddress","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_address","type":"address"},{"indexed":true,"name":"_charityIndex","type":"uint256"},{"indexed":false,"name":"_score","type":"uint256"}],"name":"Vote","type":"event"}]}],"polling":[{"address":"0x45deF51afcEF10Be10BEfcfCF170a231C5971be4","abi":[{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_score","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeName","type":"bytes32"},{"name":"_score","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"maxVotes","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"caster","outputs":[{"name":"_maxScore","type":"uint256"},{"name":"_maxVotes","type":"uint256"},{"name":"_votes","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"causes","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_scores","type":"uint256[]"},{"name":"_votes","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_causeIndexes","type":"uint256[]"},{"name":"_scores","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_maxScore","type":"uint256"},{"name":"_fundraiser","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":false,"name":"_score","type":"uint256"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeName","type":"bytes32"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":false,"name":"_score","type":"uint256"},{"indexed":false,"name":"_votes","type":"uint256"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeScores","type":"uint256"},{"indexed":false,"name":"_causeVotes","type":"uint256"}],"name":"CastIndex","type":"event"}]},{"address":"0x78c57792d19feB45509CB9C014d03727aa742685","abi":[{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_score","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeName","type":"bytes32"},{"name":"_score","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"maxVotes","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"caster","outputs":[{"name":"_maxScore","type":"uint256"},{"name":"_maxVotes","type":"uint256"},{"name":"_votes","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"causes","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_scores","type":"uint256[]"},{"name":"_votes","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_causeIndexes","type":"uint256[]"},{"name":"_scores","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_maxScore","type":"uint256"},{"name":"_fundraiser","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":false,"name":"_score","type":"uint256"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeName","type":"bytes32"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":false,"name":"_score","type":"uint256"},{"indexed":false,"name":"_votes","type":"uint256"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeScores","type":"uint256"},{"indexed":false,"name":"_causeVotes","type":"uint256"}],"name":"CastIndex","type":"event"}]},{"address":"0x527304AF146C3920b91cd25e02EDCa2D5535BF72","abi":[{"constant":false,"inputs":[{"name":"_causeIndex","type":"uint256"},{"name":"_score","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_causeName","type":"bytes32"},{"name":"_score","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"maxVotes","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"caster","outputs":[{"name":"_maxScore","type":"uint256"},{"name":"_maxVotes","type":"uint256"},{"name":"_votes","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"causes","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_scores","type":"uint256[]"},{"name":"_votes","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_causeIndexes","type":"uint256[]"},{"name":"_scores","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_maxScore","type":"uint256"},{"name":"_fundraiser","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":false,"name":"_score","type":"uint256"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeName","type":"bytes32"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":false,"name":"_score","type":"uint256"},{"indexed":false,"name":"_votes","type":"uint256"},{"indexed":true,"name":"_causeIndex","type":"uint256"},{"indexed":false,"name":"_causeScores","type":"uint256"},{"indexed":false,"name":"_causeVotes","type":"uint256"}],"name":"CastIndex","type":"event"}]},{"address":"0xc73be3eE43EcD67971f8C0b9190E1240b3A104C6","abi":[{"constant":false,"inputs":[{"name":"_charityIndex","type":"uint256"},{"name":"_score","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityName","type":"bytes32"},{"name":"_score","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"maxVotes","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"charities","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_totalScores","type":"uint256[]"},{"name":"_totalVotes","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"caster","outputs":[{"name":"_maxScore","type":"uint256"},{"name":"_maxVotes","type":"uint256"},{"name":"_totalVotes","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_charityIndexes","type":"uint256[]"},{"name":"_scores","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_maxScore","type":"uint256"},{"name":"_seedomAddress","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":false,"name":"_score","type":"uint256"},{"indexed":true,"name":"_charityIndex","type":"uint256"},{"indexed":false,"name":"_charityName","type":"bytes32"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":false,"name":"_score","type":"uint256"},{"indexed":false,"name":"_totalVotes","type":"uint256"},{"indexed":true,"name":"_charityIndex","type":"uint256"},{"indexed":false,"name":"_charityTotalScores","type":"uint256"},{"indexed":false,"name":"_charityTotalVotes","type":"uint256"}],"name":"CastIndex","type":"event"}]}],"fundraiser":[{"address":"0xF2C1a608104427EC3399ff74381E87ed9E7c8144","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_message","type":"bytes32"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_token","type":"address"}],"name":"recover","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"deployment","outputs":[{"name":"_cause","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"begin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_causeSecret","type":"bytes32"},{"name":"_causeMessage","type":"bytes32"},{"name":"_causeWithdrawn","type":"bool"},{"name":"_participant","type":"address"},{"name":"_participantMessage","type":"bytes32"},{"name":"_participantWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_participants","type":"uint256"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_cause","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeSecret","type":"bytes32"}],"name":"Beginning","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_participantMessage","type":"bytes32"},{"indexed":false,"name":"_causeMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0x41bA433632168bBf6F176D3c7cF3E260c5A2aE3b","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_message","type":"bytes32"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_token","type":"address"}],"name":"recover","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"deployment","outputs":[{"name":"_cause","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"begin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_causeSecret","type":"bytes32"},{"name":"_causeMessage","type":"bytes32"},{"name":"_causeWithdrawn","type":"bool"},{"name":"_participant","type":"address"},{"name":"_participantMessage","type":"bytes32"},{"name":"_participantWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_participants","type":"uint256"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_cause","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeSecret","type":"bytes32"}],"name":"Beginning","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_participantMessage","type":"bytes32"},{"indexed":false,"name":"_causeMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0x154Dd4fA554E09C6C421Fe0ae54eF6569A4a20Bf","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_message","type":"bytes32"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_token","type":"address"}],"name":"recover","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"deployment","outputs":[{"name":"_cause","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"begin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_causeSecret","type":"bytes32"},{"name":"_causeMessage","type":"bytes32"},{"name":"_causeWithdrawn","type":"bool"},{"name":"_participant","type":"address"},{"name":"_participantMessage","type":"bytes32"},{"name":"_participantWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_participants","type":"uint256"},{"name":"_entries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_cause","type":"address"},{"name":"_causeSplit","type":"uint256"},{"name":"_participantSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_entropy","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeSecret","type":"bytes32"}],"name":"Beginning","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_causeMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_participantMessage","type":"bytes32"},{"indexed":false,"name":"_causeMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]}]}}[networkName];
+    if (!ethDeployments) {
+      return false;
+    }
+
+    // set all contracts (last six)
+    for (var contractName in ethDeployments) {
+      var releases = ethDeployments[contractName];
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = releases[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var release = _step2.value;
+
+          // save first address (primary contract)
+          if (!(contractName in primaryContractAddresses)) {
+            primaryContractAddresses[contractName] = release.address;
+          }
+
+          if (!(contractName in contracts)) {
+            contracts[contractName] = {};
+          }
+
+          // add to map of contracts
+          contracts[contractName][release.address] = {
+            name: contractName,
+            address: release.address,
+            server: new serverWeb3.eth.Contract(release.abi, release.address),
+            client: new clientWeb3.eth.Contract(release.abi, release.address)
+          };
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+    }
+
+    // dispatch primary contract addresses
+    store.dispatch({
+      type: 'ETHEREUM_PRIMARY_CONTRACT_ADDRESSES',
+      primaryContractAddresses: primaryContractAddresses
+    });
+
+    return true;
+  };
+
+  var setupContractEventHandler = function setupContractEventHandler(contractName, release, fromBlockNumber, startingBlockNumber) {
+    release.server.events.allEvents({
+      fromBlock: fromBlockNumber
+    }, function (error, result) {
+      store.dispatch({
+        type: 'ETHEREUM_EVENT',
+        eventName: result.event.toUpperCase(),
+        contractName: contractName,
+        values: result.returnValues,
+        contractAddress: result.address,
+        blockNumber: result.blockNumber,
+        transactionHash: result.transactionHash,
+        transactionIndex: result.transactionIndex,
+        old: result.blockNumber <= startingBlockNumber
+      });
+    });
+  };
+
+  var setupContractEventHandlers = function setupContractEventHandlers() {
+    // get starting block and setup event handlers
+    serverWeb3.eth.getBlockNumber(function (error, startingBlockNumber) {
+      // get the feed block number (what block to start at for feed)
+      var pastBlockNumber = startingBlockNumber - PAST_BLOCKS_BACK;
+      if (pastBlockNumber < 0) {
+        pastBlockNumber = 0;
+      }
+
+      // set up event handlers for each contract
+      for (var contractName in contracts) {
+        var releases = contracts[contractName];
+        var primaryContractAddress = primaryContractAddresses[contractName];
+        for (var contractAddress in releases) {
+          var release = releases[contractAddress];
+          var fromBlockNumber = release.address === primaryContractAddress ? pastBlockNumber : startingBlockNumber;
+          setupContractEventHandler(contractName, release, fromBlockNumber, startingBlockNumber);
+        }
+      }
+    });
+  };
+
+  var setupNetwork = function setupNetwork(id) {
+    // destroy old network
+    destroyCurrentNetwork();
+    // setup server web3
+    var name = getNetworkName(id);
+    var supported = setupServerWeb3(name);
+
+    var deployed = false;
+    // continue if supported
+    if (supported) {
+      // setup contracts
+      deployed = setupContracts(name);
+      // setup event handlers
+      setupContractEventHandlers();
+    }
+
+    // save network object
+    network = {
+      id: id,
+      name: name,
+      supported: supported,
+      deployed: deployed
+    };
+
+    // dispatch new network
+    store.dispatch({
+      type: 'ETHEREUM_NETWORK',
+      network: network
+    });
+  };
+
+  var ready = function ready() {
+    return network && network.supported && network.deployed && account;
+  };
+
+  var checkUser = function checkUser() {
+    if (!ready()) {
+      return;
+    }
+
+    store.dispatch({
+      type: 'ETHEREUM_USER',
+      network: network,
+      account: account
+    });
+  };
+
+  var checkNetwork = function checkNetwork() {
+    clientWeb3.eth.net.getId(function (error, id) {
+      if (!network || id !== network.id) {
+        setupNetwork(id);
+        // see if user established
+        checkUser();
+      }
+    });
+  };
+
+  var checkAccount = function checkAccount() {
+    clientWeb3.eth.getAccounts(function (error, newAccounts) {
+      var _newAccounts = _slicedToArray(newAccounts, 1),
+          newAccount = _newAccounts[0];
+
+      if (newAccount !== account) {
+        account = newAccount;
+        store.dispatch({
+          type: 'ETHEREUM_ACCOUNT',
+          account: account
+        });
+        // see if user established
+        checkUser();
+      }
+    });
+  };
+
+  var checkRefresh = function checkRefresh() {
+    if (!ready()) {
+      return;
+    }
+
+    var now = new Date().getTime();
+    var contractAddresses = [];
+
+    for (var contractName in contracts) {
+      var releases = contracts[contractName];
+      for (var contractAddress in releases) {
+        var release = releases[contractAddress];
+        if (!release.lastBlockTime || now - release.lastBlockTime.getTime() > MAX_LAST_BLOCK_AGE) {
+          // last block time to now
+          release.lastBlockTime = new Date();
+          contractAddresses.push(release.address);
+        }
+      }
+    }
+
+    if (contractAddresses.length > 0) {
+      store.dispatch({ type: 'ETHEREUM_REFRESH', contractAddresses: contractAddresses });
+    }
+  };
+
+  // set up client web3 change detection polling
+  if (clientWeb3) {
+    setInterval(function () {
+      checkNetwork();
+      checkAccount();
+      checkRefresh();
+    }, 1000);
+  }
+
+  return function (next) {
+    return function (action) {
+      var type = action.type;
+
+      switch (type) {
+        case 'ETHEREUM_CALL':
+          return handleCall(next, action);
+        case 'ETHEREUM_SEND':
+          return handleSend(next, action);
+        case 'ETHEREUM_ALLCALL':
+          return handleAllCall(next, action);
+        default:
+          return next(action);
+      }
+    };
+  };
+};
+
+exports.default = ethereumMiddleware;
+
+/***/ }),
+
+/***/ "./app/middleware/fundraiser.js":
+/*!**************************************!*\
+  !*** ./app/middleware/fundraiser.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _ethereum = __webpack_require__(/*! ../actions/ethereum */ "./app/actions/ethereum.js");
+
+var ethereumActions = _interopRequireWildcard(_ethereum);
+
+var _fundraiser = __webpack_require__(/*! ../parsers/fundraiser */ "./app/parsers/fundraiser.js");
+
+var fundraiserParser = _interopRequireWildcard(_fundraiser);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var fundraiserMiddleware = function fundraiserMiddleware(store) {
+  var handleDeployment = function handleDeployment(next, action) {
+    return next({
+      type: 'FUNDRAISER_DEPLOYMENT',
+      deployment: fundraiserParser.parseDeployment(action.data)
+    });
+  };
+
+  var handleState = function handleState(next, action) {
+    return next({
+      type: 'FUNDRAISER_STATE',
+      state: fundraiserParser.parseState(action.data)
+    });
+  };
+
+  var handleParticipant = function handleParticipant(next, action) {
+    return next({
+      type: 'FUNDRAISER_PARTICIPANT',
+      participant: fundraiserParser.parseParticipant(action.data)
+    });
+  };
+
+  var handleEthereumCallData = function handleEthereumCallData(next, action) {
+    var contractName = action.contractName;
+    // only check for fundraiser data
+
+    if (contractName !== 'fundraiser') {
+      return next(action);
+    }
+
+    var method = action.method;
+
+    switch (method) {
+      case 'deployment':
+        return handleDeployment(next, action);
+      case 'state':
+        return handleState(next, action);
+      case 'participants':
+        return handleParticipant(next, action);
+      default:
+        return next(action);
+    }
+  };
+
+  var handleBalances = function handleBalances(next, action) {
+    return next({
+      type: 'FUNDRAISER_BALANCES',
+      balances: fundraiserParser.parseBalances(action.data)
+    });
+  };
+
+  var handleEthereumAllCallData = function handleEthereumAllCallData(next, action) {
+    var contractName = action.contractName;
+    // only check for fundraiser data
+
+    if (contractName !== 'fundraiser') {
+      return next(action);
+    }
+
+    var method = action.method;
+
+    switch (method) {
+      case 'balance':
+        return handleBalances(next, action);
+      default:
+        return next(action);
+    }
+  };
+
+  var handleEthereumUser = function handleEthereumUser(next, action) {
+    var account = action.account;
+
+    store.dispatch(ethereumActions.call({ contractName: 'fundraiser', method: 'participants', args: [account] }));
+    store.dispatch(ethereumActions.allCall({ contractName: 'fundraiser', method: 'balance' }));
+    return next(action);
+  };
+
+  var handleEthereumRefresh = function handleEthereumRefresh(next, action) {
+    var state = store.getState();
+    var primaryContractAddresses = state.ethereum.primaryContractAddresses;
+    var contractAddresses = action.contractAddresses;
+
+    if (contractAddresses.indexOf(primaryContractAddresses.fundraiser) > -1) {
+      store.dispatch(ethereumActions.call({ contractName: 'fundraiser', method: 'deployment' }));
+      store.dispatch(ethereumActions.call({ contractName: 'fundraiser', method: 'state' }));
+    }
+    return next(action);
+  };
+
+  var handleEthereumEvent = function handleEthereumEvent(next, action) {
+    var contractName = action.contractName;
+    // only check for fundraiser data
+
+    if (contractName !== 'fundraiser') {
+      return next(action);
+    }
+
+    var eventName = action.eventName;
+
+    var type = 'FUNDRAISER_' + eventName;
+    switch (eventName) {
+      case 'BEGINNING':
+        return next(_extends({}, action, { type: type, beginning: fundraiserParser.parseBeginning(action.values) }));
+      case 'PARTICIPATION':
+        return next(_extends({}, action, { type: type, participation: fundraiserParser.parseParticipation(action.values) }));
+      case 'RAISE':
+        return next(_extends({}, action, { type: type, raise: fundraiserParser.parseRaise(action.values) }));
+      case 'REVELATION':
+        return next(_extends({}, action, { type: type, revelation: fundraiserParser.parseRevelation(action.values) }));
+      case 'SELECTION':
+        return next(_extends({}, action, { type: type, selection: fundraiserParser.parseSelection(action.values) }));
+      case 'WITHDRAWAL':
+        return next(_extends({}, action, { type: type, withdrawal: fundraiserParser.parseWithdrawal(action.values) }));
+      case 'CANCELLATION':
+        return next(_extends({}, action, { type: type }));
+      default:
+        return next(action);
+    }
+  };
+
+  return function (next) {
+    return function (action) {
+      var type = action.type;
+
+      switch (type) {
+        case 'ETHEREUM_EVENT':
+          return handleEthereumEvent(next, action);
+        case 'ETHEREUM_CALL_DATA':
+          return handleEthereumCallData(next, action);
+        case 'ETHEREUM_ALLCALL_DATA':
+          return handleEthereumAllCallData(next, action);
+        case 'ETHEREUM_USER':
+          return handleEthereumUser(next, action);
+        case 'ETHEREUM_REFRESH':
+          return handleEthereumRefresh(next, action);
+        default:
+          return next(action);
+      }
+    };
+  };
+};
+
+exports.default = fundraiserMiddleware;
+
+/***/ }),
+
+/***/ "./app/middleware/polling.js":
+/*!***********************************!*\
+  !*** ./app/middleware/polling.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _ethereum = __webpack_require__(/*! ../actions/ethereum */ "./app/actions/ethereum.js");
+
+var ethereumActions = _interopRequireWildcard(_ethereum);
+
+var _polling = __webpack_require__(/*! ../parsers/polling */ "./app/parsers/polling.js");
+
+var pollingParser = _interopRequireWildcard(_polling);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var pollingMiddleware = function pollingMiddleware(store) {
+  var handleMaxVoteCount = function handleMaxVoteCount(next, action) {
+    return next({
+      type: 'POLLING_MAX_VOTE_COUNT',
+      maxVoteCount: pollingParser.parseMaxVoteCount(action.data)
+    });
+  };
+
+  var handleCauses = function handleCauses(next, action) {
+    var _pollingParser$parseC = pollingParser.parseCauses(action.data),
+        causes = _pollingParser$parseC.causes,
+        causesVoteCount = _pollingParser$parseC.causesVoteCount;
+
+    return next({
+      type: 'POLLING_CAUSES',
+      causes: causes,
+      causesVoteCount: causesVoteCount
+    });
+  };
+
+  var handleVotes = function handleVotes(next, action) {
+    var _pollingParser$parseV = pollingParser.parseVotes(action.data),
+        votes = _pollingParser$parseV.votes,
+        voteCount = _pollingParser$parseV.voteCount;
+
+    return next({
+      type: 'POLLING_VOTES',
+      votes: votes,
+      voteCount: voteCount
+    });
+  };
+
+  var handleEthereumCallData = function handleEthereumCallData(next, action) {
+    var contractName = action.contractName;
+    // only check for polling data
+
+    if (contractName !== 'polling') {
+      return next(action);
+    }
+
+    var method = action.method;
+
+    switch (method) {
+      case 'maxVoteCount':
+        return handleMaxVoteCount(next, action);
+      case 'causes':
+        return handleCauses(next, action);
+      case 'votes':
+        return handleVotes(next, action);
+      default:
+        return next(action);
+    }
+  };
+
+  var handleEthereumUser = function handleEthereumUser(next, action) {
+    store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'maxVoteCount' }));
+    store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'votes' }));
+    return next(action);
+  };
+
+  var handleEthereumRefresh = function handleEthereumRefresh(next, action) {
+    var state = store.getState();
+    var primaryContractAddresses = state.ethereum.primaryContractAddresses;
+    var contractAddresses = action.contractAddresses;
+
+    if (contractAddresses.indexOf(primaryContractAddresses.polling) > -1) {
+      store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'causes' }));
+    }
+    return next(action);
+  };
+
+  var handleEthereumEvent = function handleEthereumEvent(next, action) {
+    var contractName = action.contractName;
+    // only check for polling data
+
+    if (contractName !== 'polling') {
+      return next(action);
+    }
+
+    var eventName = action.eventName;
+
+    var type = 'POLLING_' + eventName;
+    switch (eventName) {
+      case 'CASTINDEX':
+        return next(_extends({}, action, { type: type, castIndex: pollingParser.parseCastIndex(action.values) }));
+      case 'CASTNAME':
+        return next(_extends({}, action, { type: type, castName: pollingParser.parseCastName(action.values) }));
+      default:
+        return next(action);
+    }
+  };
+
+  return function (next) {
+    return function (action) {
+      var type = action.type;
+
+      switch (type) {
+        case 'ETHEREUM_EVENT':
+          return handleEthereumEvent(next, action);
+        case 'ETHEREUM_CALL_DATA':
+          return handleEthereumCallData(next, action);
+        case 'ETHEREUM_REFRESH':
+          return handleEthereumRefresh(next, action);
+        case 'ETHEREUM_USER':
+          return handleEthereumUser(next, action);
+        default:
+          return next(action);
+      }
+    };
+  };
+};
+
+exports.default = pollingMiddleware;
+
+/***/ }),
+
+/***/ "./app/parsers/fundraiser.js":
+/*!***********************************!*\
+  !*** ./app/parsers/fundraiser.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseBalances = exports.parseWithdrawal = exports.parseSelection = exports.parseRevelation = exports.parseRaise = exports.parseParticipation = exports.parseParticipant = exports.parseBeginning = exports.parseState = exports.parseDeployment = undefined;
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var _bytes = __webpack_require__(/*! ../utils/bytes */ "./app/utils/bytes.js");
+
+var bytes = _interopRequireWildcard(_bytes);
+
+var _messages = __webpack_require__(/*! @seedom-io/seedom-crypter/messages */ "@seedom-io/seedom-crypter/messages");
+
+var messages = _interopRequireWildcard(_messages);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var epochToDate = function epochToDate(seconds) {
+  return new Date(seconds * 1000);
+};
+
+var parseDeployment = function parseDeployment(deployment) {
+  return {
+    cause: String(deployment._cause),
+    causeWallet: String(deployment._causeWallet),
+    causeSplit: new _bignumber.BigNumber(deployment._causeSplit),
+    participantSplit: new _bignumber.BigNumber(deployment._participantSplit),
+    owner: String(deployment._owner),
+    ownerWallet: String(deployment._ownerWallet),
+    ownerSplit: new _bignumber.BigNumber(deployment._ownerSplit),
+    ownerSecret: String(deployment._ownerSecret),
+    valuePerEntry: new _bignumber.BigNumber(deployment._valuePerEntry),
+    deployTime: epochToDate(deployment._deployTime),
+    endTime: epochToDate(deployment._endTime),
+    expireTime: epochToDate(deployment._expireTime),
+    destructTime: epochToDate(deployment._destructTime)
+  };
+};
+
+var parseState = function parseState(state) {
+  return {
+    causeSecret: String(state._causeSecret),
+    causeMessage: String(messages.message(state._causeMessage)),
+    causeWithdrawn: Boolean(state._causeWithdrawn),
+    participant: String(state._participant),
+    participantMessage: String(messages.message(state._participantMessage)),
+    participantWithdrawn: Boolean(state._participantWithdrawn),
+    ownerMessage: String(messages.message(state._ownerMessage)),
+    ownerWithdrawn: Boolean(state._participantWithdrawn),
+    cancelled: Boolean(state._cancelled),
+    participants: new _bignumber.BigNumber(state._participants),
+    entries: new _bignumber.BigNumber(state._entries)
+  };
+};
+
+var parseBeginning = function parseBeginning(beginning) {
+  return {
+    causeSecret: String(beginning._causeSecret)
+  };
+};
+
+var parseParticipant = function parseParticipant(participant) {
+  return {
+    entries: new _bignumber.BigNumber(participant._entries),
+    message: String(messages.message(participant._message))
+  };
+};
+
+var parseParticipation = function parseParticipation(participation) {
+  return {
+    participant: String(participation._participant),
+    message: String(messages.message(participation._message)),
+    entries: new _bignumber.BigNumber(participation._entries),
+    refund: new _bignumber.BigNumber(participation._refund)
+  };
+};
+
+var parseRaise = function parseRaise(raise) {
+  return {
+    participant: String(raise._participant),
+    entries: new _bignumber.BigNumber(raise._entries),
+    refund: new _bignumber.BigNumber(raise._refund)
+  };
+};
+
+var parseRevelation = function parseRevelation(revelation) {
+  return {
+    causeMessage: String(messages.message(revelation._causeMessage))
+  };
+};
+
+var parseSelection = function parseSelection(selection) {
+  return {
+    participant: String(selection._participant),
+    participantMessage: String(messages.message(selection._participantMessage)),
+    causeMessage: String(messages.message(selection._causeMessage)),
+    ownerMessage: String(messages.message(selection._ownerMessage))
+  };
+};
+
+var parseWithdrawal = function parseWithdrawal(withdrawal) {
+  return {
+    address: String(withdrawal._address)
+  };
+};
+
+var parseBalances = function parseBalances(balances) {
+  var finalBalances = {};
+  for (var contractAddress in balances) {
+    var balance = balances[contractAddress];
+    // add balance entries of non-zero
+    if (balance !== '0') {
+      finalBalances[contractAddress] = new _bignumber.BigNumber(balance);
+    }
+  }
+  return finalBalances;
+};
+
+exports.parseDeployment = parseDeployment;
+exports.parseState = parseState;
+exports.parseBeginning = parseBeginning;
+exports.parseParticipant = parseParticipant;
+exports.parseParticipation = parseParticipation;
+exports.parseRaise = parseRaise;
+exports.parseRevelation = parseRevelation;
+exports.parseSelection = parseSelection;
+exports.parseWithdrawal = parseWithdrawal;
+exports.parseBalances = parseBalances;
+
+/***/ }),
+
+/***/ "./app/parsers/polling.js":
+/*!********************************!*\
+  !*** ./app/parsers/polling.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseCastIndex = exports.parseCastName = exports.parseVotes = exports.parseCauses = exports.parseMaxVoteCount = undefined;
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var _bytes = __webpack_require__(/*! ../utils/bytes */ "./app/utils/bytes.js");
+
+var bytes = _interopRequireWildcard(_bytes);
+
+var _numbers = __webpack_require__(/*! ../utils/numbers */ "./app/utils/numbers.js");
+
+var _messages = __webpack_require__(/*! @seedom-io/seedom-crypter/messages */ "@seedom-io/seedom-crypter/messages");
+
+var messages = _interopRequireWildcard(_messages);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var parseMaxVoteCount = function parseMaxVoteCount(maxVoteCount) {
+  return new _bignumber.BigNumber(maxVoteCount);
+};
+
+var parseCauses = function parseCauses(causes) {
+  var causesVoteCount = (0, _numbers.zero)();
+  var parsedCauses = [];
+  for (var causeIndex = 0; causeIndex < causes._names.length; causeIndex += 1) {
+    var voteCount = new _bignumber.BigNumber(causes._voteCounts[causeIndex]);
+    var parsedCause = {
+      index: causeIndex,
+      name: String(messages.message(causes._names[causeIndex])),
+      caster: String(causes._casters[causeIndex]),
+      voteCount: voteCount
+    };
+    causesVoteCount = causesVoteCount.plus(voteCount);
+    parsedCauses[causeIndex] = parsedCause;
+  }
+  return {
+    causes: parsedCauses,
+    causesVoteCount: causesVoteCount
+  };
+};
+
+var parseVotes = function parseVotes(votes) {
+  var voteCount = (0, _numbers.zero)();
+  var parsedVotes = {};
+  for (var voteIndex = 0; voteIndex < votes._causeIndexes.length; voteIndex += 1) {
+    var causeIndex = votes._causeIndexes[voteIndex];
+    var count = votes._counts[voteIndex];
+    voteCount = voteCount.plus(count);
+    if (causeIndex in parsedVotes) {
+      parsedVotes[causeIndex] = parsedVotes[causeIndex].plus(count);
+    } else {
+      parsedVotes[causeIndex] = new _bignumber.BigNumber(count);
+    }
+  }
+  return {
+    votes: parsedVotes,
+    voteCount: voteCount
+  };
+};
+
+var parseCastName = function parseCastName(castName) {
+  return {
+    caster: String(castName._caster),
+    causeIndex: new _bignumber.BigNumber(castName._causeIndex),
+    causeName: String(messages.message(castName._causeName)),
+    voteCount: new _bignumber.BigNumber(castName._voteCount)
+  };
+};
+
+var parseCastIndex = function parseCastIndex(castIndex) {
+  return {
+    caster: String(castIndex._caster),
+    causeIndex: new _bignumber.BigNumber(castIndex._causeIndex),
+    voteCount: new _bignumber.BigNumber(castIndex._voteCount)
+  };
+};
+
+exports.parseMaxVoteCount = parseMaxVoteCount;
+exports.parseCauses = parseCauses;
+exports.parseVotes = parseVotes;
+exports.parseCastName = parseCastName;
+exports.parseCastIndex = parseCastIndex;
+
+/***/ }),
+
+/***/ "./app/reducers/cause.js":
+/*!*******************************!*\
+  !*** ./app/reducers/cause.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getNewState = function getNewState(prevState) {
+  return _extends({}, prevState);
+};
+
+var handleCause = function handleCause(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.cause = action.cause;
+  return newState;
+};
+
+var causeReducer = function causeReducer() {
+  var prevState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'CAUSE_CAUSE':
+      return handleCause(prevState, action);
+    default:
+      return prevState;
+  }
+};
+
+exports.default = causeReducer;
+
+/***/ }),
+
+/***/ "./app/reducers/ethereum.js":
+/*!**********************************!*\
+  !*** ./app/reducers/ethereum.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getNewState = function getNewState(prevState) {
+  return _extends({}, prevState);
+};
+
+var handleEthereumSend = function handleEthereumSend(prevState) {
+  var newState = getNewState(prevState);
+  newState.isLoading = true;
+  return newState;
+};
+
+var handleEthereumSendError = function handleEthereumSendError(prevState) {
+  var newState = getNewState(prevState);
+  newState.isLoading = false;
+  return newState;
+};
+
+var ethereumReducer = function ethereumReducer() {
+  var prevState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'ETHEREUM_NETWORK':
+      return _extends({}, prevState, { network: action.network });
+    case 'ETHEREUM_ACCOUNT':
+      return _extends({}, prevState, { account: action.account });
+    case 'ETHEREUM_PRIMARY_CONTRACT_ADDRESSES':
+      return _extends({}, prevState, { primaryContractAddresses: action.primaryContractAddresses });
+    case 'ETHEREUM_SEND':
+      return handleEthereumSend(prevState, action);
+    case 'ETHEREUM_SEND_ERROR':
+      return handleEthereumSendError(prevState);
+    default:
+      return prevState;
+  }
+};
+
+exports.default = ethereumReducer;
+
+/***/ }),
+
+/***/ "./app/reducers/fundraiser.js":
+/*!************************************!*\
+  !*** ./app/reducers/fundraiser.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var MAX_FEED_ITEMS = 20;
+
+var getNewState = function getNewState(prevState) {
+  return _extends({}, prevState);
+};
+
+var updateFeed = function updateFeed(feed, action) {
+  var newFeed = feed ? feed.slice(0, MAX_FEED_ITEMS) : [];
+  newFeed.unshift(action);
+  return newFeed;
+};
+
+var handleDeployment = function handleDeployment(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.deployment = action.deployment;
+  return newState;
+};
+
+var handleState = function handleState(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.state = action.state;
+  return newState;
+};
+
+var handleParticipant = function handleParticipant(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.participant = action.participant;
+  return newState;
+};
+
+var handleBalances = function handleBalances(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.balances = action.balances;
+  return newState;
+};
+
+var handleBeginning = function handleBeginning(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  newState.state.causeSecret = action.beginning.causeSecret;
+  return newState;
+};
+
+var handleParticipation = function handleParticipation(prevState, action) {
+  var newState = getNewState(prevState);
+  if (action.old) {
+    newState.feed = updateFeed(newState.feed, action);
+  } else {
+    newState.state.participants = newState.state.participants.plus(1);
+    newState.state.entries = newState.state.entries.plus(action.participation.entries);
+    newState.feed = updateFeed(newState.feed, action);
+
+    if (action.participation.participant === newState.account) {
+      newState.isLoading = false;
+      newState.participant.entries = action.participation.entries;
+      newState.participant.message = action.participation.message;
+    }
+  }
+
+  return newState;
+};
+
+var handleRaise = function handleRaise(prevState, action) {
+  var newState = getNewState(prevState);
+  if (action.old) {
+    newState.feed = updateFeed(newState.feed, action);
+  } else {
+    newState.state.entries = newState.state.entries.plus(action.raise.entries);
+    newState.feed = updateFeed(newState.feed, action);
+
+    if (action.raise.participant === newState.account) {
+      newState.isLoading = false;
+      newState.participant.entries = newState.participant.entries.plus(action.raise.entries);
+    }
+  }
+
+  return newState;
+};
+
+var handleRevelation = function handleRevelation(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  newState.state.causeMessage = action.revelation.causeMessage;
+  return newState;
+};
+
+var handleSelection = function handleSelection(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  newState.state.participant = action.selection.participant;
+  newState.state.participantMessage = action.selection.participantMessage;
+  newState.state.causeMessage = action.selection.causeMessage;
+  newState.state.ownerMessage = action.selection.ownerMessage;
+
+  // update participant balance
+  if (action.selection.participant === newState.account) {
+    var deployment = newState.deployment,
+        state = newState.state,
+        primaryContractAddresses = newState.primaryContractAddresses;
+
+    newState.balances[primaryContractAddresses.fundraiser] = state.entries.times(deployment.participantSplit).dividedBy(1000).times(deployment.valuePerEntry);
+  }
+
+  return newState;
+};
+
+var handleCancellation = function handleCancellation(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  newState.isLoading = false;
+  newState.state.cancelled = true;
+
+  // update our cancellation balance
+  var deployment = newState.deployment,
+      participant = newState.participant,
+      primaryContractAddresses = newState.primaryContractAddresses;
+
+  newState.balances[primaryContractAddresses.fundraiser] = participant.entries.times(deployment.valuePerEntry);
+
+  return newState;
+};
+
+var handleWithdrawal = function handleWithdrawal(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  // set our balance to zero if we withdrew
+  if (action.withdrawal.address === newState.account) {
+    newState.isLoading = false;
+    delete newState.balances[action.contractAddress];
+  }
+  return newState;
+};
+
+var fundraiserReducer = function fundraiserReducer() {
+  var prevState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'FUNDRAISER_DEPLOYMENT':
+      return handleDeployment(prevState, action);
+    case 'FUNDRAISER_STATE':
+      return handleState(prevState, action);
+    case 'FUNDRAISER_PARTICIPANT':
+      return handleParticipant(prevState, action);
+    case 'FUNDRAISER_BALANCES':
+      return handleBalances(prevState, action);
+    case 'FUNDRAISER_BEGINNING':
+      return handleBeginning(prevState, action);
+    case 'FUNDRAISER_PARTICIPATION':
+      return handleParticipation(prevState, action);
+    case 'FUNDRAISER_RAISE':
+      return handleRaise(prevState, action);
+    case 'FUNDRAISER_REVELATION':
+      return handleRevelation(prevState, action);
+    case 'FUNDRAISER_SELECTION':
+      return handleSelection(prevState, action);
+    case 'FUNDRAISER_CANCELLATION':
+      return handleCancellation(prevState);
+    case 'FUNDRAISER_WITHDRAWAL':
+      return handleWithdrawal(prevState, action);
+    default:
+      return prevState;
+  }
+};
+
+exports.default = fundraiserReducer;
+
+/***/ }),
+
+/***/ "./app/reducers/polling.js":
+/*!*********************************!*\
+  !*** ./app/reducers/polling.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var getNewState = function getNewState(prevState) {
+  return _extends({}, prevState);
+};
+
+var handleMaxVoteCount = function handleMaxVoteCount(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.maxVoteCount = action.maxVoteCount;
+  return newState;
+};
+
+var handleCauses = function handleCauses(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.causes = action.causes;
+  newState.causesVoteCount = action.causesVoteCount;
+  return newState;
+};
+
+var handleVotes = function handleVotes(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.votes = action.votes;
+  newState.voteCount = action.voteCount;
+  return newState;
+};
+
+var handleCastName = function handleCastName(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var _action$castName = action.castName,
+      caster = _action$castName.caster,
+      causeIndex = _action$castName.causeIndex,
+      causeName = _action$castName.causeName,
+      voteCount = _action$castName.voteCount;
+
+
+  var newState = getNewState(prevState);
+  // update is loading
+  newState.isLoading = false;
+  // update total votes across all causes
+  newState.causesVoteCount = newState.causesVoteCount.plus(voteCount);
+  // add new cause
+  newState.causes[causeIndex] = {
+    index: causeIndex,
+    name: causeName,
+    caster: caster,
+    voteCount: voteCount
+  };
+
+  // add our votes to our votes
+  if (caster === newState.account) {
+    newState.voteCount = newState.voteCount.plus(voteCount);
+    newState.votes[causeIndex] = voteCount;
+  }
+
+  return newState;
+};
+
+var handleCastIndex = function handleCastIndex(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var _action$castIndex = action.castIndex,
+      caster = _action$castIndex.caster,
+      causeIndex = _action$castIndex.causeIndex,
+      voteCount = _action$castIndex.voteCount;
+
+
+  var newState = getNewState(prevState);
+  // update is loading
+  newState.isLoading = false;
+  // update total votes across all causes
+  newState.causesVoteCount = newState.causesVoteCount.plus(voteCount);
+  // update cause
+  var cause = newState.causes[causeIndex];
+  cause.voteCount = cause.voteCount.plus(voteCount);
+  // update our vote
+  if (caster === newState.account) {
+    newState.voteCount = newState.voteCount.plus(voteCount);
+    if (causeIndex in newState.votes) {
+      newState.votes[causeIndex] = newState.votes[causeIndex].plus(voteCount);
+    } else {
+      newState.votes[causeIndex] = voteCount;
+    }
+  }
+
+  return newState;
+};
+
+var handleFundraiserParticipation = function handleFundraiserParticipation(prevState, action) {
+  if (action.old || action.participation.participant !== prevState.account) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  newState.maxVoteCount = new _bignumber.BigNumber(1);
+  return newState;
+};
+
+var pollingReducer = function pollingReducer() {
+  var prevState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'POLLING_MAX_VOTE_COUNT':
+      return handleMaxVoteCount(prevState, action);
+    case 'POLLING_CAUSES':
+      return handleCauses(prevState, action);
+    case 'POLLING_VOTES':
+      return handleVotes(prevState, action);
+    case 'POLLING_CASTINDEX':
+      return handleCastIndex(prevState, action);
+    case 'POLLING_CASTNAME':
+      return handleCastName(prevState, action);
+    case 'FUNDRAISER_PARTICIPATION':
+      return handleFundraiserParticipation(prevState, action);
+    default:
+      return prevState;
+  }
+};
+
+exports.default = pollingReducer;
+
+/***/ }),
+
+/***/ "./app/render.js":
+/*!***********************!*\
+  !*** ./app/render.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _reactRouterRedux = __webpack_require__(/*! react-router-redux */ "react-router-redux");
+
+var _reduxDevtoolsExtension = __webpack_require__(/*! redux-devtools-extension */ "redux-devtools-extension");
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _redux = __webpack_require__(/*! redux */ "redux");
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+var _reactReduxToastr2 = _interopRequireDefault(_reactReduxToastr);
+
+var _createBrowserHistory = __webpack_require__(/*! history/createBrowserHistory */ "history/createBrowserHistory");
+
+var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
+
+var _createMemoryHistory = __webpack_require__(/*! history/createMemoryHistory */ "history/createMemoryHistory");
+
+var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
+
+var _reduceReducers = __webpack_require__(/*! ./utils/reduceReducers */ "./app/utils/reduceReducers.js");
+
+var _reduceReducers2 = _interopRequireDefault(_reduceReducers);
+
+var _polling = __webpack_require__(/*! ./reducers/polling */ "./app/reducers/polling.js");
+
+var _polling2 = _interopRequireDefault(_polling);
+
+var _fundraiser = __webpack_require__(/*! ./reducers/fundraiser */ "./app/reducers/fundraiser.js");
+
+var _fundraiser2 = _interopRequireDefault(_fundraiser);
+
+var _ethereum = __webpack_require__(/*! ./reducers/ethereum */ "./app/reducers/ethereum.js");
+
+var _ethereum2 = _interopRequireDefault(_ethereum);
+
+var _cause = __webpack_require__(/*! ./reducers/cause */ "./app/reducers/cause.js");
+
+var _cause2 = _interopRequireDefault(_cause);
+
+var _polling3 = __webpack_require__(/*! ./middleware/polling */ "./app/middleware/polling.js");
+
+var _polling4 = _interopRequireDefault(_polling3);
+
+var _fundraiser3 = __webpack_require__(/*! ./middleware/fundraiser */ "./app/middleware/fundraiser.js");
+
+var _fundraiser4 = _interopRequireDefault(_fundraiser3);
+
+var _ethereum3 = __webpack_require__(/*! ./middleware/ethereum */ "./app/middleware/ethereum.js");
+
+var _ethereum4 = _interopRequireDefault(_ethereum3);
+
+var _cause3 = __webpack_require__(/*! ./middleware/cause */ "./app/middleware/cause.js");
+
+var _cause4 = _interopRequireDefault(_cause3);
+
+__webpack_require__(/*! ./sass/bulma.scss */ "./app/sass/bulma.scss");
+
+var _head = __webpack_require__(/*! ./components/head */ "./app/components/head/index.js");
+
+var _head2 = _interopRequireDefault(_head);
+
+var _navbar = __webpack_require__(/*! ./components/navbar */ "./app/components/navbar/index.js");
+
+var _navbar2 = _interopRequireDefault(_navbar);
+
+var _footer = __webpack_require__(/*! ./components/footer */ "./app/components/footer/index.js");
+
+var _footer2 = _interopRequireDefault(_footer);
+
+var _hype = __webpack_require__(/*! ./components/hype */ "./app/components/hype/index.js");
+
+var _hype2 = _interopRequireDefault(_hype);
+
+var _participate = __webpack_require__(/*! ./components/participate */ "./app/components/participate/index.js");
+
+var _participate2 = _interopRequireDefault(_participate);
+
+var _vote = __webpack_require__(/*! ./components/vote */ "./app/components/vote/index.js");
+
+var _vote2 = _interopRequireDefault(_vote);
+
+var _history = __webpack_require__(/*! ./components/history */ "./app/components/history/index.js");
+
+var _history2 = _interopRequireDefault(_history);
+
+var _help = __webpack_require__(/*! ./components/help */ "./app/components/help/index.js");
+
+var _help2 = _interopRequireDefault(_help);
+
+var _about = __webpack_require__(/*! ./components/about */ "./app/components/about/index.js");
+
+var _about2 = _interopRequireDefault(_about);
+
+var _contact = __webpack_require__(/*! ./components/contact */ "./app/components/contact/index.js");
+
+var _contact2 = _interopRequireDefault(_contact);
+
+var _pressRelease = __webpack_require__(/*! ./components/press-release */ "./app/components/press-release/index.js");
+
+var _pressRelease2 = _interopRequireDefault(_pressRelease);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var reducers = function reducers() {
+  return (0, _redux.combineReducers)({
+    ethereum: (0, _reduceReducers2.default)(_ethereum2.default, _fundraiser2.default, _polling2.default, _cause2.default),
+    toastr: _reactReduxToastr.reducer,
+    router: _reactRouterRedux.routerReducer
+  });
+};
+
+var middlewares = function middlewares(history) {
+  var values = [_ethereum4.default, _fundraiser4.default, _polling4.default, _cause4.default];
+
+  if (history) {
+    values.push((0, _reactRouterRedux.routerMiddleware)(history));
+  }
+
+  return (0, _reduxDevtoolsExtension.composeWithDevTools)(_redux.applyMiddleware.apply(undefined, values));
+};
+
+var Routes = function Routes() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _hype2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/participate', component: _participate2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/vote', component: _vote2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/history', component: _history2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/help', component: _help2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/about', component: _about2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/contact', component: _contact2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/announce-beta-giveth', component: _pressRelease2.default })
+  );
+};
+
+var Body = function Body() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_reactReduxToastr2.default, {
+      timeOut: 4000,
+      newestOnTop: false,
+      preventDuplicates: true,
+      position: 'top-center',
+      transitionIn: 'fadeIn',
+      transitionOut: 'fadeOut',
+      progressBar: true
+    }),
+    _react2.default.createElement(_navbar2.default, null),
+    _react2.default.createElement(Routes, null),
+    _react2.default.createElement(_footer2.default, null)
+  );
+};
+
+var Client = function Client(store, history) {
+  return _react2.default.createElement(
+    _reactRedux.Provider,
+    { store: store, suppressHydrationWarning: true },
+    _react2.default.createElement(
+      _reactRouterRedux.ConnectedRouter,
+      { history: history },
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_head2.default, null),
+        _react2.default.createElement(Body, null)
+      )
+    )
+  );
+};
+
+var Server = function Server(store, history) {
+  return _react2.default.createElement(
+    _reactRedux.Provider,
+    { store: store },
+    _react2.default.createElement(
+      _reactRouterRedux.ConnectedRouter,
+      { history: history },
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_head2.default, null),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _hype2.default })
+      )
+    )
+  );
+};
+
+var render = function render(request, state) {
+  var history = request ? (0, _createMemoryHistory2.default)({ initialEntries: [request.url] }) : (0, _createBrowserHistory2.default)();
+
+  var store = state ? (0, _redux.createStore)(reducers(), state, middlewares(history)) : (0, _redux.createStore)(reducers(), middlewares());
+
+  var component = state ? Client(store, history) : Server(store, history);
+
+  return {
+    component: component,
+    store: store
+  };
+};
+
+exports.default = render;
+
+/***/ }),
+
+/***/ "./app/sass/bulma.scss":
+/*!*****************************!*\
+  !*** ./app/sass/bulma.scss ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/server.js":
+/*!***********************!*\
+  !*** ./app/server.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _express = __webpack_require__(/*! express */ "express");
+
+var _express2 = _interopRequireDefault(_express);
+
+var _reactHelmet = __webpack_require__(/*! react-helmet */ "react-helmet");
+
+var _server = __webpack_require__(/*! react-dom/server */ "react-dom/server");
+
+var _expressCacheController = __webpack_require__(/*! express-cache-controller */ "express-cache-controller");
+
+var _expressCacheController2 = _interopRequireDefault(_expressCacheController);
+
+var _client = __webpack_require__(/*! ../webpack/client */ "./webpack/client.js");
+
+var _client2 = _interopRequireDefault(_client);
+
+var _render = __webpack_require__(/*! ./render */ "./app/render.js");
+
+var _render2 = _interopRequireDefault(_render);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _clientConfig$output = _client2.default.output,
+    publicPath = _clientConfig$output.publicPath,
+    path = _clientConfig$output.path;
+
+
+var renderFullPage = function renderFullPage(helmet, state) {
+  return '\n    <!doctype html>\n    <html ' + helmet.htmlAttributes.toString() + '>\n      <head>\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n        ' + helmet.link.toString() + '\n      </head>\n      <body ' + helmet.bodyAttributes.toString() + '>\n        <div id="root"></div>\n        <script>\n          // http://redux.js.org/recipes/ServerRendering.html#security-considerations\n          window.__STATE__ = ' + JSON.stringify(state).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="' + publicPath + 'index.js"></script>\n      </body>\n    </html>\n  ';
+};
+
+var handleRender = function handleRender(request, response) {
+  var rendered = (0, _render2.default)(request, null);
+  (0, _server.renderToString)(rendered.component);
+  var helmet = _reactHelmet.Helmet.renderStatic();
+  var state = rendered.store.getState();
+  response.send(renderFullPage(helmet, state));
+};
+
+var app = (0, _express2.default)();
+app.use((0, _expressCacheController2.default)({
+  public: true,
+  maxAge: 3600 // 1h
+}));
+app.use(publicPath, _express2.default.static(path));
+app.use(handleRender);
+app.listen(3000);
+
+/***/ }),
+
+/***/ "./app/utils/badges.js":
+/*!*****************************!*\
+  !*** ./app/utils/badges.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var getImageUrl = function getImageUrl(_ref) {
+  var network = _ref.network,
+      contract = _ref.contract,
+      participant = _ref.participant;
+  return "http://localhost:3000" + "/badges/" + network + "/" + contract + "/" + participant + ".png";
+};
+
+exports.getImageUrl = getImageUrl;
+
+/***/ }),
+
+/***/ "./app/utils/bytes.js":
+/*!****************************!*\
+  !*** ./app/utils/bytes.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var zero32 = '0x0000000000000000000000000000000000000000000000000000000000000000';
+var zero20 = '0x0000000000000000000000000000000000000000';
+
+var isZero32 = function isZero32(bytes) {
+  return bytes === zero32;
+};
+var isZero20 = function isZero20(bytes) {
+  return bytes === zero20;
+};
+
+var shorten = function shorten(bytes) {
+  return bytes.substring(0, 10) + '...' + bytes.substring(bytes.length - 4);
+};
+
+exports.zero32 = zero32;
+exports.zero20 = zero20;
+exports.isZero32 = isZero32;
+exports.isZero20 = isZero20;
+exports.shorten = shorten;
+
+/***/ }),
+
+/***/ "./app/utils/dates.js":
+/*!****************************!*\
+  !*** ./app/utils/dates.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var localeDate = function localeDate(date) {
+  return date.toLocaleString(undefined, { timeZoneName: 'short', month: 'numeric', day: 'numeric', hour: 'numeric' });
+};
+
+var localeDateTime = function localeDateTime(date) {
+  return date.toLocaleString(undefined, { timeZoneName: 'short', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' });
+};
+
+exports.localeDate = localeDate;
+exports.localeDateTime = localeDateTime;
+
+/***/ }),
+
+/***/ "./app/utils/etherscan.js":
+/*!********************************!*\
+  !*** ./app/utils/etherscan.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var getSubdomain = function getSubdomain(network) {
+  return network === 'mainnet' ? 'www' : network;
+};
+
+var getAddressUrl = function getAddressUrl(network, address) {
+  if (network === 'localhost') {
+    return '';
+  }
+  return 'https://' + getSubdomain(network) + '.etherscan.io/address/' + address;
+};
+
+var getTransactionUrl = function getTransactionUrl(network, transactionHash) {
+  if (network === 'localhost') {
+    return '';
+  }
+  return 'https://' + getSubdomain(network) + '.etherscan.io/tx/' + transactionHash;
+};
+
+exports.getAddressUrl = getAddressUrl;
+exports.getTransactionUrl = getTransactionUrl;
+
+/***/ }),
+
+/***/ "./app/utils/heatmap.js":
+/*!******************************!*\
+  !*** ./app/utils/heatmap.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.color = undefined;
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var color = function color(value) {
+  var h = new _bignumber.BigNumber(1.0).minus(value).times(240);
+  return 'hsl(' + h.toFixed(5) + ', 100%, 50%)';
+};
+
+exports.color = color;
+
+/***/ }),
+
+/***/ "./app/utils/numbers.js":
+/*!******************************!*\
+  !*** ./app/utils/numbers.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.zero = exports.localeDecimal = exports.localeNumber = exports.getEtherFromWei = undefined;
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var weiInEther = new _bignumber.BigNumber(1000000000000000000);
+
+var getEtherFromWei = function getEtherFromWei(bigNumber) {
+  return bigNumber.dividedBy(weiInEther);
+};
+
+var localeDecimal = function localeDecimal(bigNumber) {
+  return bigNumber.toFormat(3);
+};
+
+var localeNumber = function localeNumber(bigNumber) {
+  return bigNumber.toFormat(0);
+};
+
+var zero = function zero() {
+  return new _bignumber.BigNumber(0);
+};
+
+exports.getEtherFromWei = getEtherFromWei;
+exports.localeNumber = localeNumber;
+exports.localeDecimal = localeDecimal;
+exports.zero = zero;
+
+/***/ }),
+
+/***/ "./app/utils/reduceReducers.js":
+/*!*************************************!*\
+  !*** ./app/utils/reduceReducers.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = reduceReducers;
+function reduceReducers() {
+  for (var _len = arguments.length, reducers = Array(_len), _key = 0; _key < _len; _key++) {
+    reducers[_key] = arguments[_key];
+  }
+
+  return function (previous, current) {
+    return reducers.reduce(function (p, r) {
+      return r(p, current);
+    }, previous);
+  };
+}
+
+/***/ }),
+
+/***/ "./webpack/base.js":
+/*!*************************!*\
+  !*** ./webpack/base.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss', '.png', '.jpg', '.gif', '.svg', '.woff', '.woff2', '.eot', '.ttf', '.otf']
+  }
+};
+
+/***/ }),
+
+/***/ "./webpack/client.js":
+/*!***************************!*\
+  !*** ./webpack/client.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var path = __webpack_require__(/*! path */ "path");
+var merge = __webpack_require__(/*! webpack-merge */ "webpack-merge");
+var base = __webpack_require__(/*! ./base.js */ "./webpack/base.js");
+
+var cwd = process.cwd();
+var nodeModules = path.resolve(cwd, 'node_modules');
+
+module.exports = merge(base, {
+  name: 'client',
+  target: 'web',
+  entry: path.resolve(cwd, 'app/client.js'),
+  output: {
+    filename: 'index.js',
+    path: path.resolve(cwd, 'dist/client'),
+    publicPath: '/static/'
+  },
+  module: {
+    rules: [{
+      test: /\.(js|jsx)$/,
+      exclude: nodeModules,
+      use: ['babel-loader']
+    }, {
+      test: /\.scss$/,
+      exclude: nodeModules,
+      use: ['style-loader', 'css-loader', 'sass-loader']
+    }, {
+      test: /\.(png|jpg|gif|svg)$/,
+      exclude: nodeModules,
+      use: ['file-loader']
+    }, {
+      test: /\.(woff|woff2|eot|ttf|otf)$/,
+      exclude: nodeModules,
+      loader: ['file-loader']
+    }]
+  }
+});
+
+/***/ }),
+
+/***/ "@seedom-io/seedom-crypter/messages":
+/*!*****************************************************!*\
+  !*** external "@seedom-io/seedom-crypter/messages" ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@seedom-io/seedom-crypter/messages");
+
+/***/ }),
+
+/***/ "@seedom-io/seedom-resolver/causes":
+/*!****************************************************!*\
+  !*** external "@seedom-io/seedom-resolver/causes" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@seedom-io/seedom-resolver/causes");
+
+/***/ }),
+
+/***/ "bignumber.js":
+/*!*******************************!*\
+  !*** external "bignumber.js" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("bignumber.js");
+
+/***/ }),
+
+/***/ "classnames":
+/*!*****************************!*\
+  !*** external "classnames" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("classnames");
+
+/***/ }),
+
+/***/ "express":
+/*!**************************!*\
+  !*** external "express" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+
+/***/ "express-cache-controller":
+/*!*******************************************!*\
+  !*** external "express-cache-controller" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("express-cache-controller");
+
+/***/ }),
+
+/***/ "history/createBrowserHistory":
+/*!***********************************************!*\
+  !*** external "history/createBrowserHistory" ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("history/createBrowserHistory");
+
+/***/ }),
+
+/***/ "history/createMemoryHistory":
+/*!**********************************************!*\
+  !*** external "history/createMemoryHistory" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("history/createMemoryHistory");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+
+/***/ "prop-types":
+/*!*****************************!*\
+  !*** external "prop-types" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types");
+
+/***/ }),
+
+/***/ "query-string":
+/*!*******************************!*\
+  !*** external "query-string" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("query-string");
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-dom/server":
+/*!***********************************!*\
+  !*** external "react-dom/server" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-dom/server");
+
+/***/ }),
+
+/***/ "react-helmet":
+/*!*******************************!*\
+  !*** external "react-helmet" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-helmet");
+
+/***/ }),
+
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+
+/***/ "react-redux-toastr":
+/*!*************************************!*\
+  !*** external "react-redux-toastr" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux-toastr");
+
+/***/ }),
+
+/***/ "react-router-dom":
+/*!***********************************!*\
+  !*** external "react-router-dom" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+
+/***/ "react-router-redux":
+/*!*************************************!*\
+  !*** external "react-router-redux" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-redux");
+
+/***/ }),
+
+/***/ "redux":
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux");
+
+/***/ }),
+
+/***/ "redux-devtools-extension":
+/*!*******************************************!*\
+  !*** external "redux-devtools-extension" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-devtools-extension");
+
+/***/ }),
+
+/***/ "web3":
+/*!***********************!*\
+  !*** external "web3" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("web3");
+
+/***/ }),
+
+/***/ "webpack-merge":
+/*!********************************!*\
+  !*** external "webpack-merge" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("webpack-merge");
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=index.js.map

@@ -1,62 +1,26 @@
-import { zero } from '../utils/numbers';
+import { BigNumber } from 'bignumber.js';
 
 const getNewState = (prevState) => {
   return { ...prevState };
 };
 
-const handleCaster = (prevState, action) => {
+const handleMaxVoteCount = (prevState, action) => {
   const newState = getNewState(prevState);
-  newState.caster = action.caster;
+  newState.maxVoteCount = action.maxVoteCount;
   return newState;
 };
 
 const handleCauses = (prevState, action) => {
   const newState = getNewState(prevState);
   newState.causes = action.causes;
+  newState.causesVoteCount = action.causesVoteCount;
   return newState;
 };
 
 const handleVotes = (prevState, action) => {
   const newState = getNewState(prevState);
   newState.votes = action.votes;
-  return newState;
-};
-
-const handleCastIndex = (prevState, action) => {
-  if (action.old) {
-    return prevState;
-  }
-
-  const {
-    caster,
-    score,
-    votes,
-    causeIndex,
-    causeScores,
-    causeVotes
-  } = action.castIndex;
-  const newState = getNewState(prevState);
-  // update is loading
-  newState.isLoading = false;
-  // update cause data
-  const cause = newState.causes[causeIndex];
-  cause.scores = causeScores;
-  cause.votes = causeVotes;
-  // update average score
-  cause.averageScore = causeVotes.isGreaterThan(0)
-    ? causeScores.div(causeVotes)
-    : zero();
-  // add our votes to our votes
-  if (caster === newState.account) {
-    newState.caster.votes = votes;
-    // delete existing vote if we did not cast the cause (name)
-    if ((score === 0) && (cause.caster !== newState.account)) {
-      delete newState.votes[causeIndex];
-    } else {
-      newState.votes[causeIndex] = score;
-    }
-  }
-
+  newState.voteCount = action.voteCount;
   return newState;
 };
 
@@ -65,23 +29,63 @@ const handleCastName = (prevState, action) => {
     return prevState;
   }
 
+  const {
+    caster,
+    causeIndex,
+    causeName,
+    voteCount
+  } = action.castName;
+
   const newState = getNewState(prevState);
+  // update is loading
   newState.isLoading = false;
-  const { caster, causeIndex, causeName, score } = action.castName;
+  // update total votes across all causes
+  newState.causesVoteCount = newState.causesVoteCount.plus(voteCount);
   // add new cause
   newState.causes[causeIndex] = {
     index: causeIndex,
     name: causeName,
     caster,
-    scores: score,
-    votes: 1,
-    averageScore: score
+    voteCount
   };
 
   // add our votes to our votes
   if (caster === newState.account) {
-    newState.votes[causeIndex] = score;
-    newState.caster.votes = newState.caster.votes.plus(1);
+    newState.voteCount = newState.voteCount.plus(voteCount);
+    newState.votes[causeIndex] = voteCount;
+  }
+
+  return newState;
+};
+
+
+const handleCastIndex = (prevState, action) => {
+  if (action.old) {
+    return prevState;
+  }
+
+  const {
+    caster,
+    causeIndex,
+    voteCount
+  } = action.castIndex;
+
+  const newState = getNewState(prevState);
+  // update is loading
+  newState.isLoading = false;
+  // update total votes across all causes
+  newState.causesVoteCount = newState.causesVoteCount.plus(voteCount);
+  // update cause
+  const cause = newState.causes[causeIndex];
+  cause.voteCount = cause.voteCount.plus(voteCount);
+  // update our vote
+  if (caster === newState.account) {
+    newState.voteCount = newState.voteCount.plus(voteCount);
+    if (causeIndex in newState.votes) {
+      newState.votes[causeIndex] = newState.votes[causeIndex].plus(voteCount);
+    } else {
+      newState.votes[causeIndex] = voteCount;
+    }
   }
 
   return newState;
@@ -93,14 +97,14 @@ const handleFundraiserParticipation = (prevState, action) => {
   }
 
   const newState = getNewState(prevState);
-  newState.caster.maxVotes = newState.caster.maxVotes.plus(1);
+  newState.maxVoteCount = new BigNumber(1);
   return newState;
 };
 
 const pollingReducer = (prevState = {}, action) => {
   switch (action.type) {
-    case 'POLLING_CASTER':
-      return handleCaster(prevState, action);
+    case 'POLLING_MAX_VOTE_COUNT':
+      return handleMaxVoteCount(prevState, action);
     case 'POLLING_CAUSES':
       return handleCauses(prevState, action);
     case 'POLLING_VOTES':

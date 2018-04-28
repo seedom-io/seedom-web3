@@ -8,35 +8,25 @@
       background-color: $puck-background;
       color: white;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       padding: $small-padding;
       height: $navbar-height;
-      justify-content: center;
+      align-items: center;
       font-size: 20px;
-
-      @include desktop {
-        flex-direction: row;
-        height: $navbar-height;
-      }
 
       &.caster {
         text-transform: uppercase;
       }
 
       &.index {
-        height: $navbar-height * 1.8;
         border-top: 1px solid black;
-
-        @include desktop {
-          height: $navbar-height;
-        }
 
         &.static {
           height: $navbar-height;
         }
 
-        .bit {
-          filter: drop-shadow(2px 2px 4px black);
+        .button {
+          text-transform: uppercase;
         }
       }
 
@@ -44,57 +34,44 @@
         border-top: 1px solid $participation-phase;
 
         .seedom-field {
+          flex: 1;
           input {
             font-size: 20px;
           }
         }
+
+        .button {
+          text-transform: uppercase;
+        }
       }
 
-      .area {
+      .bit {
         display: flex;
         flex-direction: row;
         align-items: center;
-        flex: 1;
+        padding-left: $small-padding;
 
-        @include desktop {
-          flex: none;
-
-          &.stretch {
-            flex: 1;
-          }
+        &.begin {
+          padding-left: 0;
         }
 
-        &.right {
-          justify-content: flex-end;
-        }
-
-        .bit {
-          padding-left: $small-padding;
-
-          &.begin {
-            padding-left: 0;
-          }
-
-          &.header {
-            font-weight: bold;
-            text-transform: uppercase;
-          }
-
-          &.header-normal {
-            font-weight: bold;
-          }
-
-          &.stretch {
-            flex: 1;
-          }
-        }
-
-        .tools {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          flex: none;
+        &.header {
+          font-weight: bold;
           text-transform: uppercase;
+        }
+
+        &.header-normal {
+          font-weight: bold;
+        }
+
+        &.stretch {
+          flex: 1;
+        }
+
+        &.shadow {
+          filter:
+            drop-shadow(2px 1px 0 black)
+            drop-shadow(-1px -1px 0 black);
         }
       }
     }

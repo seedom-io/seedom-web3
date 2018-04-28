@@ -14,36 +14,38 @@ class Vote extends Component {
     ethereum: PropTypes.shape().isRequired
   };
 
-  handleVoteName = ({ name, score }) => {
+  handleVoteName = ({ name, count }) => {
     const nameHex = messages.hex(name);
     this.props.dispatch(ethereumActions.send({
-      contractName: 'polling', method: 'voteName', args: [nameHex, score]
+      contractName: 'polling', method: 'voteName', args: [nameHex, count]
     }));
   };
 
-  handleVoteIndex = ({ index, score }) => {
+  handleVoteIndex = ({ index, count }) => {
     this.props.dispatch(ethereumActions.send({
-      contractName: 'polling', method: 'voteIndex', args: [index, score]
+      contractName: 'polling', method: 'voteIndex', args: [index, count]
     }));
   };
 
   render() {
     const {
-      caster,
+      maxVoteCount,
       causes,
+      causesVoteCount,
       votes,
+      voteCount,
       deployment,
       account,
       isLoading
     } = this.props.ethereum;
 
-    if (!caster || !causes || !votes || !deployment) {
+    if (!maxVoteCount || !causes || !votes || !deployment) {
       return null;
     }
 
-    // sort causes by average score
+    // sort causes by vote count
     const sortedCauses = [...causes].sort((a, b) => {
-      return b.averageScore.comparedTo(a.averageScore);
+      return b.voteCount.comparedTo(a.voteCount);
     });
 
     const ended = (new Date()) >= deployment.endTime;
@@ -53,12 +55,14 @@ class Vote extends Component {
         <div className="list">
 
           <Caster
-            caster={caster}
+            voteCount={voteCount}
+            maxVoteCount={maxVoteCount}
             ended={ended}
           />
 
           <Name
-            caster={caster}
+            voteCount={voteCount}
+            maxVoteCount={maxVoteCount}
             ended={ended}
             isLoading={isLoading}
             onVoteName={this.handleVoteName}
@@ -67,7 +71,9 @@ class Vote extends Component {
           {sortedCauses.map((cause) => (
             <Index
               key={cause.index}
-              caster={caster}
+              voteCount={voteCount}
+              maxVoteCount={maxVoteCount}
+              causesVoteCount={causesVoteCount}
               ended={ended}
               cause={cause}
               vote={votes[cause.index]}
