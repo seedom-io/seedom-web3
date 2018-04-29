@@ -6,9 +6,9 @@ import Puck from './components/puck';
 import Stats from './components/stats';
 import Feed from './components/feed';
 import About from './components/about';
+import Footer from './components/footer';
 import * as bytes from '../../utils/bytes';
 import * as messages from '@seedom-io/seedom-crypter/messages';
-import * as etherscan from '../../utils/etherscan';
 import * as ethereumActions from '../../actions/ethereum';
 import './index.scss';
 
@@ -113,26 +113,11 @@ class Participate extends Component {
           ref={(component) => { this.about = component; }}
         />
         <Feed feed={feed} network={network} />
+        <Footer network={network} primaryContractAddresses={primaryContractAddresses} />
       </div>
     );
   }
 }
-
-/*
-<div className="accessory">
-          <div className="content has-text-centered">
-            <p>
-              View more live <strong>Seedom</strong> data on&nbsp;
-              <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network, primaryContractAddresses.fundraiser)}>Etherscan</a>.
-            </p>
-          </div>
-        </div>
-<div className="accessory">
-          <div className="content has-text-centered">
-            <Feed feed={feed} network={network} />
-          </div>
-        </div>
-        */
 
 const mapStateToProps = state => {
   return { ethereum: state.ethereum };

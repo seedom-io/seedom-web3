@@ -1897,6 +1897,124 @@ exports.default = Feed;
 
 /***/ }),
 
+/***/ "./app/components/participate/components/footer/index.js":
+/*!***************************************************************!*\
+  !*** ./app/components/participate/components/footer/index.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _etherscan = __webpack_require__(/*! ../../../../utils/etherscan */ "./app/utils/etherscan.js");
+
+var etherscan = _interopRequireWildcard(_etherscan);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/footer/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Footer = function (_Component) {
+  _inherits(Footer, _Component);
+
+  function Footer() {
+    _classCallCheck(this, Footer);
+
+    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+  }
+
+  _createClass(Footer, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          network = _props.network,
+          primaryContractAddresses = _props.primaryContractAddresses;
+
+      if (!network || !primaryContractAddresses) {
+        return null;
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-participate-footer' },
+        _react2.default.createElement(
+          'div',
+          { className: 'container' },
+          _react2.default.createElement(
+            'div',
+            { className: 'content has-text-centered' },
+            _react2.default.createElement(
+              'p',
+              null,
+              'View more live ',
+              _react2.default.createElement(
+                'strong',
+                null,
+                'Seedom'
+              ),
+              ' data on ',
+              _react2.default.createElement(
+                'a',
+                { className: 'is-green', target: '_blank', href: etherscan.getAddressUrl(network.name, primaryContractAddresses.fundraiser) },
+                'Etherscan'
+              ),
+              '.'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Footer;
+}(_react.Component);
+
+Footer.propTypes = {
+  network: _propTypes2.default.shape(),
+  primaryContractAddresses: _propTypes2.default.shape()
+};
+Footer.defaultProps = {
+  network: null,
+  primaryContractAddresses: null
+};
+exports.default = Footer;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/footer/index.scss":
+/*!*****************************************************************!*\
+  !*** ./app/components/participate/components/footer/index.scss ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./app/components/participate/components/header/index.js":
 /*!***************************************************************!*\
   !*** ./app/components/participate/components/header/index.js ***!
@@ -5939,6 +6057,10 @@ var _about = __webpack_require__(/*! ./components/about */ "./app/components/par
 
 var _about2 = _interopRequireDefault(_about);
 
+var _footer = __webpack_require__(/*! ./components/footer */ "./app/components/participate/components/footer/index.js");
+
+var _footer2 = _interopRequireDefault(_footer);
+
 var _bytes = __webpack_require__(/*! ../../utils/bytes */ "./app/utils/bytes.js");
 
 var bytes = _interopRequireWildcard(_bytes);
@@ -5946,10 +6068,6 @@ var bytes = _interopRequireWildcard(_bytes);
 var _messages = __webpack_require__(/*! @seedom-io/seedom-crypter/messages */ "@seedom-io/seedom-crypter/messages");
 
 var messages = _interopRequireWildcard(_messages);
-
-var _etherscan = __webpack_require__(/*! ../../utils/etherscan */ "./app/utils/etherscan.js");
-
-var etherscan = _interopRequireWildcard(_etherscan);
 
 var _ethereum = __webpack_require__(/*! ../../actions/ethereum */ "./app/actions/ethereum.js");
 
@@ -6080,7 +6198,8 @@ var Participate = function (_Component) {
             _this2.about = component;
           }
         }),
-        _react2.default.createElement(_feed2.default, { feed: feed, network: network })
+        _react2.default.createElement(_feed2.default, { feed: feed, network: network }),
+        _react2.default.createElement(_footer2.default, { network: network, primaryContractAddresses: primaryContractAddresses })
       );
     }
   }]);
@@ -6088,26 +6207,12 @@ var Participate = function (_Component) {
   return Participate;
 }(_react.Component);
 
-/*
-<div className="accessory">
-          <div className="content has-text-centered">
-            <p>
-              View more live <strong>Seedom</strong> data on&nbsp;
-              <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network, primaryContractAddresses.fundraiser)}>Etherscan</a>.
-            </p>
-          </div>
-        </div>
-<div className="accessory">
-          <div className="content has-text-centered">
-            <Feed feed={feed} network={network} />
-          </div>
-        </div>
-        */
-
 Participate.propTypes = {
   ethereum: _propTypes2.default.shape().isRequired,
   dispatch: _propTypes2.default.func.isRequired
 };
+
+
 var mapStateToProps = function mapStateToProps(state) {
   return { ethereum: state.ethereum };
 };
