@@ -1,4 +1,4 @@
-.centered {
+.seedom-participate-about {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -6,6 +6,12 @@
   padding-bottom: 56.25%; /* 16:9 */
   padding-top: 25px;
   height: 0;
+
+  .field {
+    position: absolute;
+    font-family: 'CamphorPro Heavy';
+    text-transform: uppercase;
+  }
 
   iframe {
     position: absolute;

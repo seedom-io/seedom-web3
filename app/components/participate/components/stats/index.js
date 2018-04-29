@@ -74,7 +74,7 @@ class Stats extends Component {
           <div className="panel">
             <div className="background" />
             <Stat title="cause reward" value={causeReward} ether />
-            <Stat title="participant reward" value={participantReward} ether />
+            <Stat title="winner reward" value={participantReward} ether />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&

@@ -5,12 +5,14 @@ import './index.scss';
 
 class Collapse extends Component {
   static propTypes = {
+    id: PropTypes.string,
     title: PropTypes.string.isRequired,
     collapsed: PropTypes.bool,
     children: PropTypes.element
   };
 
   static defaultProps = {
+    id: null,
     collapsed: true,
     children: null
   };
@@ -35,10 +37,10 @@ class Collapse extends Component {
   };
 
   render() {
-    const { title } = this.props;
+    const { id, title } = this.props;
     const { collapsed } = this.state;
     return (
-      <div className={classnames('seedom-collapse', { collapsed })}>
+      <div id={id} className={classnames('seedom-collapse', { collapsed })}>
         <div className="header" onClick={this.toggle}>
           <span className="toggle left">
             <i className="fas fa-plus" />

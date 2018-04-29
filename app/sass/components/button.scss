@@ -1,5 +1,13 @@
-a.button {
-  svg {
+.button {
+  i {
     margin-top: -4px;
+
+    &.left {
+      padding-right: 4px;
+    }
+
+    &.right {
+      padding-left: 4px;
+    }
   }
 }

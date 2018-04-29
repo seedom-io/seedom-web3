@@ -44,7 +44,7 @@ class Content extends Component {
     setTimeout(() => {
       this.setState({
         className: null
-      })
+      });
     }, 0);
   }
 

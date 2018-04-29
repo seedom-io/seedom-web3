@@ -14,7 +14,8 @@ import './index.scss';
 
 class Participate extends Component {
   static propTypes = {
-    ethereum: PropTypes.shape().isRequired
+    ethereum: PropTypes.shape().isRequired,
+    dispatch: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -31,7 +32,9 @@ class Participate extends Component {
     this.props.dispatch(ethereumActions.send({
       contractName: 'fundraiser', method: 'participate', args: [messageHex], value
     }));
-    this.setState({ isPlaying: true });
+    this.setState({ isPlaying: true }, () => {
+      this.about.scrollTo();
+    });
   };
 
   handleRaise = (entries) => {
@@ -64,7 +67,8 @@ class Participate extends Component {
       balances,
       feed,
       isLoading,
-      primaryContractAddresses
+      primaryContractAddresses,
+      cause
     } = this.props.ethereum;
 
     const {
@@ -102,7 +106,11 @@ class Participate extends Component {
             />
           </div>
         </div>
-        <About isPlaying={isPlaying} />
+        <About
+          isPlaying={isPlaying}
+          cause={cause}
+          ref={(component) => { this.about = component; }}
+        />
         <Feed feed={feed} network={network} />
       </div>
     );
