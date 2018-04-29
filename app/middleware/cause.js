@@ -2,6 +2,7 @@ import * as causesResolver from '@seedom-io/seedom-resolver/causes';
 
 const sampleCause = {
   name: 'Seedom',
+  image: 'seedom',
   url: 'seedom.io',
   video: 'nj2QNP9gEKA',
   tagline: 'seeding the future of philanthropy'

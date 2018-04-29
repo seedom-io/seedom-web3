@@ -6,26 +6,25 @@ import './index.scss';
 
 class CauseLogo extends Component {
   static propTypes = {
-    deployment: PropTypes.shape(),
+    cause: PropTypes.shape(),
     size: PropTypes.string
   };
 
   static defaultProps = {
-    deployment: null,
+    cause: null,
     size: null
   };
 
   render() {
-    const { deployment, size } = this.props;
-    // make sure we have a deployment
-    if (!deployment) {
+    const { cause, size } = this.props;
+    // make sure we have a cause
+    if (!cause) {
       return null;
     }
 
-    const imageUrl = causesResolver.getImageUrl(deployment.cause);
-    const finalImageUrl = ENV === 'production' ? imageUrl : causeLogo;
+    const logoUrl = causesResolver.getLogoUrl(cause.image);
     return (
-      <div className={`cause-logo ${size}`} style={{ backgroundImage: `url(${finalImageUrl})` }} />
+      <div className={`cause-logo ${size}`} style={{ backgroundImage: `url(${logoUrl})` }} />
     );
   }
 }
