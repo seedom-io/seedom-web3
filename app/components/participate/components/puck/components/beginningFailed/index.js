@@ -7,22 +7,22 @@ import CauseLogo from '../../../../../causeLogo';
 class BeginningFailed extends Content {
   static propTypes = {
     isShown: PropTypes.bool.isRequired,
-    deployment: PropTypes.shape()
+    cause: PropTypes.shape()
   };
 
   static defaultProps = {
-    deployment: null
+    cause: null
   };
 
   render() {
     const { className } = this.state;
-    const { isShown, deployment } = this.props;
+    const { isShown, cause } = this.props;
     return (
       <div className={`seedom-content seed-failed ${className}`}>
         <Indicator type={isShown ? 'error' : null} />
         <div className="seedom-overlay layout">
           <div className="division top">
-            <CauseLogo deployment={deployment} />
+            <CauseLogo cause={cause} />
           </div>
           <div className="division text bottom giant-pad narrow">
             <span>cause failed to begin their fundraiser</span>

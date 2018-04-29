@@ -154,6 +154,7 @@ class Puck extends Component {
     network: PropTypes.shape(),
     account: PropTypes.string,
     deployment: PropTypes.shape(),
+    cause: PropTypes.shape(),
     state: PropTypes.shape(),
     participant: PropTypes.shape(),
     balances: PropTypes.shape(),
@@ -169,6 +170,7 @@ class Puck extends Component {
     network: null,
     account: null,
     deployment: null,
+    cause: null,
     state: null,
     participant: null,
     balances: null,
@@ -258,6 +260,7 @@ class Puck extends Component {
       network,
       account,
       deployment,
+      cause,
       state,
       participant,
       balances,
@@ -290,20 +293,20 @@ class Puck extends Component {
           <Ethereum isShown={component === 'ethereum'} />
           <Network isShown={component === 'network'} />
           <Account isShown={component === 'account'} />
-          <Welcome isShown={component === 'welcome'} deployment={deployment} onCountMeIn={this.handleCountMeIn} />
-          <Begin isShown={component === 'begin'} deployment={deployment} />
-          <BeginningFailed isShown={component === 'beginningFailed'} deployment={deployment} />
-          <Participate isShown={component === 'participate'} deployment={deployment} isLoading={isLoading} onParticipate={this.handleParticipate} />
+          <Welcome isShown={component === 'welcome'} deployment={deployment} cause={cause} onCountMeIn={this.handleCountMeIn} />
+          <Begin isShown={component === 'begin'} cause={cause} />
+          <BeginningFailed isShown={component === 'beginningFailed'} cause={cause} />
+          <Participate isShown={component === 'participate'} deployment={deployment} cause={cause} isLoading={isLoading} onParticipate={this.handleParticipate} />
           <Badge isShown={component === 'badge'} primaryContractAddresses={primaryContractAddresses} network={network} account={account} participant={participant} onBadgingOver={this.handleBadgingOver} />
-          <Participation isShown={component === 'participation'} participant={participant} deployment={deployment} onRaising={this.handleRaising} onBadging={this.handleBadging} />
-          <ParticipationFailed isShown={component === 'participationFailed'} deployment={deployment} />
-          <Raise isShown={component === 'raise'} deployment={deployment} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
-          <Reveal isShown={component === 'reveal'} deployment={deployment} />
+          <Participation isShown={component === 'participation'} participant={participant} cause={cause} onRaising={this.handleRaising} onBadging={this.handleBadging} />
+          <ParticipationFailed isShown={component === 'participationFailed'} cause={cause} />
+          <Raise isShown={component === 'raise'} deployment={deployment} cause={cause} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
+          <Reveal isShown={component === 'reveal'} cause={cause} />
           <End isShown={component === 'end'} />
-          <Selection isShown={component === 'selection'} state={state} network={network} deployment={deployment} />
+          <Selection isShown={component === 'selection'} state={state} network={network} cause={cause} />
           <Withdraw isShown={component === 'withdraw'} balances={balances} isLoading={isLoading} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
-          <Cancel isShown={component === 'cancel'} isLoading={isLoading} deployment={deployment} onCancel={this.handleCancel} />
-          <Cancelled isShown={component === 'cancelled'} deployment={deployment} />
+          <Cancel isShown={component === 'cancel'} isLoading={isLoading} cause={cause} onCancel={this.handleCancel} />
+          <Cancelled isShown={component === 'cancelled'} cause={cause} />
         </div>
       </div>
     );

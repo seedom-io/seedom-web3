@@ -11,11 +11,13 @@ import './index.scss';
 class Participate extends Content {
   static propTypes = {
     isLoading: PropTypes.bool,
-    deployment: PropTypes.shape()
+    deployment: PropTypes.shape(),
+    cause: PropTypes.shape()
   };
 
   static defaultProps = {
     deployment: null,
+    cause: null,
     isLoading: false
   };
 
@@ -52,14 +54,14 @@ class Participate extends Content {
   }
 
   render() {
-    const { deployment, isLoading } = this.props;
+    const { deployment, cause, isLoading } = this.props;
     const { className } = this.state;
     return (
       <div className={`seedom-content participate ${className}`}>
         <Indicator type={isLoading ? 'waiting' : null} />
         <div className="seedom-overlay">
 
-          <CauseLogo deployment={deployment} size="small" />
+          <CauseLogo cause={cause} size="small" />
 
           <Entries
             deployment={deployment}

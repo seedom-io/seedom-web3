@@ -89,6 +89,7 @@ class Participate extends Component {
               network={network}
               account={account}
               deployment={deployment}
+              cause={cause}
               state={state}
               participant={participant}
               balances={balances}

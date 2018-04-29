@@ -12,7 +12,7 @@ module.exports = merge(server, {
       ETH_NETWORKS: JSON.stringify(loader.getNetworks()),
       ETH_DEPLOYMENTS: JSON.stringify(loader.getDeployments()),
       SEEDOM_URL: JSON.stringify('http://localhost:8080'),
-      BADGER_URL: JSON.stringify('http://localhost:3000')
+      BADGER_URL: JSON.stringify('http://localhost:3001')
     })
   ]
 });

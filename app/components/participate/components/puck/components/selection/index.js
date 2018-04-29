@@ -11,18 +11,18 @@ class Selection extends Content {
     isShown: PropTypes.bool.isRequired,
     state: PropTypes.shape(),
     network: PropTypes.shape(),
-    deployment: PropTypes.shape()
+    cause: PropTypes.shape()
   };
 
   static defaultProps = {
     state: null,
     network: null,
-    deployment: null
+    cause: null
   };
 
   render() {
     const { className } = this.state;
-    const { isShown, state, network, deployment } = this.props;
+    const { isShown, state, network, cause } = this.props;
 
     let causeMessage;
     let ownerMessage;
@@ -36,7 +36,7 @@ class Selection extends Content {
         <Indicator type={isShown ? 'selection' : null} />
         <div className="seedom-overlay layout">
           <div className="division text top small-pad">
-            <CauseLogo deployment={deployment} size="small" />
+            <CauseLogo cause={cause} size="small" />
           </div>
           <div className="division text center narrow">
             <div className="left">

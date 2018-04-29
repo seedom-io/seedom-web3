@@ -7,16 +7,16 @@ import CauseLogo from '../../../../../causeLogo';
 class Reveal extends Content {
   static propTypes = {
     isShown: PropTypes.bool.isRequired,
-    deployment: PropTypes.shape()
+    cause: PropTypes.shape()
   };
 
   static defaultProps = {
-    deployment: null
+    cause: null
   };
 
   render() {
     const { className } = this.state;
-    const { isShown, deployment } = this.props;
+    const { isShown, cause } = this.props;
     return (
       <div className={`seedom-content end ${className}`}>
         <Indicator type={isShown ? 'waiting' : null} />
@@ -25,7 +25,7 @@ class Reveal extends Content {
             <span>please wait for</span>
           </div>
           <div className="division text center">
-            <CauseLogo deployment={deployment} />
+            <CauseLogo cause={cause} />
           </div>
           <div className="division text bottom small-pad narrow">
             <span>to reveal their message</span>

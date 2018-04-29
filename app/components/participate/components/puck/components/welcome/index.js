@@ -9,16 +9,18 @@ import './index.scss';
 class Welcome extends Content {
   static propTypes = {
     deployment: PropTypes.shape(),
+    cause: PropTypes.shape(),
     onCountMeIn: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    deployment: null
+    deployment: null,
+    cause: null
   };
 
   render() {
     const { className } = this.state;
-    const { deployment, onCountMeIn } = this.props;
+    const { deployment, cause, onCountMeIn } = this.props;
 
     let etherPerEntry;
     if (deployment) {
@@ -38,7 +40,7 @@ class Welcome extends Content {
             <div className="supporting">now seeding</div>
           </div>
           <div className="division center">
-            <CauseLogo deployment={deployment} />
+            <CauseLogo cause={cause} />
           </div>
           <div className="division bottom">
             <div className="field">

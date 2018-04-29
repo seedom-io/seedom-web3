@@ -11,12 +11,14 @@ import './index.scss';
 class Raise extends Content {
   static propTypes = {
     deployment: PropTypes.shape(),
+    cause: PropTypes.shape(),
     isLoading: PropTypes.bool,
     onRaisingCancelled: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     deployment: null,
+    cause: null,
     isLoading: false
   };
 
@@ -50,7 +52,7 @@ class Raise extends Content {
 
   render() {
     const { className } = this.state;
-    const { deployment, isLoading, onRaisingCancelled } = this.props;
+    const { deployment, cause, isLoading, onRaisingCancelled } = this.props;
 
     let etherPerEntry;
     if (deployment) {
@@ -62,7 +64,7 @@ class Raise extends Content {
         <Indicator type={isLoading ? 'waiting' : null} />
         <div className="seedom-overlay">
 
-          <CauseLogo deployment={deployment} size="small" />
+          <CauseLogo cause={cause} size="small" />
 
           <div className="text">
             1 entry = {etherPerEntry}

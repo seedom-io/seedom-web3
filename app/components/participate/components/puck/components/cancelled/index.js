@@ -6,22 +6,22 @@ import CauseLogo from '../../../../../causeLogo';
 
 class Cancelled extends Content {
   static propTypes = {
-    deployment: PropTypes.shape()
+    cause: PropTypes.shape()
   };
 
   static defaultProps = {
-    deployment: null
+    cause: null
   };
 
   render() {
     const { className } = this.state;
-    const { deployment } = this.props;
+    const { cause } = this.props;
     return (
       <div className={`seedom-content cancelled ${className}`}>
         <Indicator type="error" />
         <div className="seedom-overlay layout">
           <div className="division top medium-pad">
-            <CauseLogo deployment={deployment} size="small" />
+            <CauseLogo cause={cause} size="small" />
           </div>
           <div className="division text bottom medium-pad narrow">
             <span>fundraiser cancelled, please check back later</span>

@@ -13,17 +13,17 @@ class Participation extends Content {
     participant: PropTypes.shape(),
     onRaising: PropTypes.func.isRequired,
     onBadging: PropTypes.func.isRequired,
-    deployment: PropTypes.shape()
+    cause: PropTypes.shape()
   };
 
   static defaultProps = {
     participant: null,
-    deployment: null
+    cause: null
   };
 
   render() {
     const { className } = this.state;
-    const { isShown, participant, onRaising, onBadging, deployment } = this.props;
+    const { isShown, participant, onRaising, onBadging, cause } = this.props;
     const entries = participant ? participant.entries : zero();
     const localeEntries = localeNumber(entries);
 
@@ -33,7 +33,7 @@ class Participation extends Content {
         <div className="seedom-overlay">
           <div className="text entries">{localeEntries}</div>
           <div className="text obtained">{Number(localeEntries) === 1 ? 'entry' : 'entries'} obtained</div>
-          <CauseLogo deployment={deployment} size="small" />
+          <CauseLogo cause={cause} size="small" />
           <div className="field">
             <div className="control">
               <a className="button is-dark" onClick={onRaising}>get more entries</a>
