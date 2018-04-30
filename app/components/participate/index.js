@@ -18,13 +18,6 @@ class Participate extends Component {
     dispatch: PropTypes.func.isRequired
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isPlaying: false
-    };
-  }
-
   handleParticipate = ({ message, entries, email }) => {
     const { deployment, account, cause } = this.props.ethereum;
     const messageHex = messages.hex(message);
@@ -43,9 +36,7 @@ class Participate extends Component {
       });
     }
     // play the video!
-    this.setState({ isPlaying: true }, () => {
-      this.about.scrollTo();
-    });
+    this.about.play();
   };
 
   handleRaise = (entries) => {
@@ -82,10 +73,6 @@ class Participate extends Component {
       cause
     } = this.props.ethereum;
 
-    const {
-      isPlaying
-    } = this.state;
-
     return (
       <div className="seedom-seed">
         <div className="background">
@@ -119,7 +106,6 @@ class Participate extends Component {
           </div>
         </div>
         <About
-          isPlaying={isPlaying}
           cause={cause}
           ref={(component) => { this.about = component; }}
         />

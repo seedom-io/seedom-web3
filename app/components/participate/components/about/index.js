@@ -5,41 +5,49 @@ import './index.scss';
 
 class About extends Component {
   static propTypes = {
-    isPlaying: PropTypes.bool,
     cause: PropTypes.shape()
   };
 
   static defaultProps = {
-    isPlaying: false,
     cause: null
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      collapsed: true
+    };
+  }
 
   componentDidMount() {
     this.scrollToElement = require('scroll-to-element');
   }
 
-  scrollTo() {
-    this.scrollToElement('#seedom-participate-about', {
-      offset: 0,
-      ease: 'outCirc',
-      duration: 3000
+  play() {
+    this.setState({ collapsed: false }, () => {
+      this.scrollToElement('#seedom-participate-about', {
+        offset: 0,
+        ease: 'outCirc',
+        duration: 3000
+      });
     });
   }
 
   render() {
-    const { isPlaying, cause } = this.props;
+    const { cause } = this.props;
     if (!cause) {
       return null;
     }
 
+    const { collapsed } = this.state;
     return (
-      <Collapse id="seedom-participate-about" collapsed={!isPlaying} title={`about ${cause.name}`}>
+      <Collapse id="seedom-participate-about" collapsed={collapsed} title={`about ${cause.name}`}>
         <div className="seedom-participate-about">
           <div className="video">
             <iframe
               id="video"
               title="video"
-              src={`//www.youtube.com/embed/${cause.video}?rel=0${isPlaying ? '&autoplay=1' : ''}`}
+              src={`//www.youtube.com/embed/${cause.video}?rel=0${!collapsed ? '&autoplay=1' : ''}`}
               frameBorder="0"
               allowFullScreen
             />
