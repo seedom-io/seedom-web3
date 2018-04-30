@@ -34,10 +34,12 @@ class Participate extends Component {
       contractName: 'fundraiser', method: 'participate', args: [messageHex], value
     }));
     // send to mailerlite
-    axios.post('/mailerlite/addParticipant', {
-      email,
-      participant: account
-    });
+    if (email !== '') {
+      axios.post('/mailerlite/addParticipant', {
+        email,
+        participant: account
+      });
+    }
     // play the video!
     this.setState({ isPlaying: true }, () => {
       this.about.scrollTo();

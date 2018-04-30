@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as causesResolver from '@seedom-io/seedom-resolver/causes';
-import causeLogo from '../../img/logos/cause-logo.png';
 import './index.scss';
 
 class CauseLogo extends Component {

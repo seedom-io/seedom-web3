@@ -71,6 +71,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../seedom-assets/logo/full/seedom-full-white-transparent.png":
+/*!********************************************************************!*\
+  !*** ../seedom-assets/logo/full/seedom-full-white-transparent.png ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "675f54f2e7b62546c91f1a4c8d468259.png";
+
+/***/ }),
+
 /***/ "../seedom-assets/logo/full/seedom-full-white-transparent@4x.png":
 /*!***********************************************************************!*\
   !*** ../seedom-assets/logo/full/seedom-full-white-transparent@4x.png ***!
@@ -79,6 +90,17 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "25c2c8dd141c93f986a13359f7f6c721.png";
+
+/***/ }),
+
+/***/ "../seedom-assets/logo/o/seedom-o-black-transparent.png":
+/*!**************************************************************!*\
+  !*** ../seedom-assets/logo/o/seedom-o-black-transparent.png ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "f7dd7bbe891a7e584e06fe34a510dc3d.png";
 
 /***/ }),
 
@@ -313,10 +335,6 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 var _causes = __webpack_require__(/*! @seedom-io/seedom-resolver/causes */ "./node_modules/@seedom-io/seedom-resolver/causes.js");
 
 var causesResolver = _interopRequireWildcard(_causes);
-
-var _causeLogo = __webpack_require__(/*! ../../img/logos/cause-logo.png */ "./app/img/logos/cause-logo.png");
-
-var _causeLogo2 = _interopRequireDefault(_causeLogo);
 
 __webpack_require__(/*! ./index.scss */ "./app/components/causeLogo/index.scss");
 
@@ -1015,6 +1033,10 @@ var _badges = __webpack_require__(/*! ../../utils/badges */ "./app/utils/badges.
 
 var badges = _interopRequireWildcard(_badges);
 
+var _seedomOBlackTransparent = __webpack_require__(/*! ../../../../seedom-assets/logo/o/seedom-o-black-transparent.png */ "../seedom-assets/logo/o/seedom-o-black-transparent.png");
+
+var _seedomOBlackTransparent2 = _interopRequireDefault(_seedomOBlackTransparent);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -1079,6 +1101,7 @@ var Head = function (_Component) {
         ),
         _react2.default.createElement('meta', { name: 'description', content: description }),
         _react2.default.createElement('meta', { name: 'author', content: author }),
+        _react2.default.createElement('link', { rel: 'icon', type: 'image/png', href: _seedomOBlackTransparent2.default }),
         _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=0.7, maximum-scale=0.7' }),
         _react2.default.createElement('meta', { name: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' }),
         _react2.default.createElement('meta', { name: 'twitter:site', property: 'twitter:site', content: '@seedom_io' }),
@@ -1507,9 +1530,9 @@ var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _seedomFullWhiteTransparent4x = __webpack_require__(/*! ../../../../seedom-assets/logo/full/seedom-full-white-transparent@4x.png */ "../seedom-assets/logo/full/seedom-full-white-transparent@4x.png");
+var _seedomFullWhiteTransparent = __webpack_require__(/*! ../../../../seedom-assets/logo/full/seedom-full-white-transparent.png */ "../seedom-assets/logo/full/seedom-full-white-transparent.png");
 
-var _seedomFullWhiteTransparent4x2 = _interopRequireDefault(_seedomFullWhiteTransparent4x);
+var _seedomFullWhiteTransparent2 = _interopRequireDefault(_seedomFullWhiteTransparent);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
@@ -1574,7 +1597,7 @@ var NavBar = function (_React$Component) {
             _react2.default.createElement(
               'a',
               { className: 'navbar-item', href: '/' },
-              _react2.default.createElement('img', { src: _seedomFullWhiteTransparent4x2.default, alt: 'Seedom - Seeding the future of philanthropy' })
+              _react2.default.createElement('img', { src: _seedomFullWhiteTransparent2.default, alt: 'Seedom - Seeding the future of philanthropy' })
             ),
             _react2.default.createElement(
               'div',
@@ -6716,10 +6739,12 @@ var Participate = function (_Component) {
         contractName: 'fundraiser', method: 'participate', args: [messageHex], value: value
       }));
       // send to mailerlite
-      _axios2.default.post('/mailerlite/addParticipant', {
-        email: email,
-        participant: account
-      });
+      if (email !== '') {
+        _axios2.default.post('/mailerlite/addParticipant', {
+          email: email,
+          participant: account
+        });
+      }
       // play the video!
       _this.setState({ isPlaying: true }, function () {
         _this.about.scrollTo();
@@ -8361,17 +8386,6 @@ module.exports = __webpack_require__.p + "0d314bf2727653da23efb1eda4023cdb.woff"
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "67af05e12311bac06327b43ca31e166b.jpg";
-
-/***/ }),
-
-/***/ "./app/img/logos/cause-logo.png":
-/*!**************************************!*\
-  !*** ./app/img/logos/cause-logo.png ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "f0e79c237eba7629393f31a151ac7ca0.png";
 
 /***/ }),
 

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import queryString from 'query-string';
 import * as badges from '../../utils/badges';
+import favicon from '../../../../seedom-assets/logo/o/seedom-o-black-transparent.png';
 
 const name = 'Seedom';
 const author = 'Team Palm Tree';
@@ -40,6 +41,8 @@ class Head extends Component {
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="author" content={author} />
+        {/* favicon */}
+        <link rel="icon" type="image/png" href={favicon} />
         {/* viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7" />
         {/* twitter */}

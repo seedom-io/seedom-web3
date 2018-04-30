@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import seedomLogo from '../../../../seedom-assets/logo/full/seedom-full-white-transparent@4x.png';
+import seedomLogo from '../../../../seedom-assets/logo/full/seedom-full-white-transparent.png';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
