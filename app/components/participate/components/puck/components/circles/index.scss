@@ -35,11 +35,6 @@
       animation-fill-mode: forwards;
     }
 
-    &.hide {
-      animation: spin $loading-spin-duration ease-in-out 0s infinite, fade-out $loading-fade-duration ease-in-out 0s 1;
-      animation-fill-mode: forwards;
-    }
-
     .loaders-arc {
       stroke: $primary;
       transform-origin: 50% 50%;

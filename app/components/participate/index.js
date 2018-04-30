@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import * as messages from '@seedom-io/seedom-crypter/messages';
+import * as ethereumActions from '../../actions/ethereum';
 import Header from './components/header';
 import Puck from './components/puck';
 import Stats from './components/stats';
 import Feed from './components/feed';
 import About from './components/about';
 import Footer from './components/footer';
-import * as bytes from '../../utils/bytes';
-import * as messages from '@seedom-io/seedom-crypter/messages';
-import * as ethereumActions from '../../actions/ethereum';
 import './index.scss';
 
 class Participate extends Component {
@@ -25,13 +25,20 @@ class Participate extends Component {
     };
   }
 
-  handleParticipate = ({ message, entries }) => {
-    const { deployment } = this.props.ethereum;
+  handleParticipate = ({ message, entries, email }) => {
+    const { deployment, account } = this.props.ethereum;
     const messageHex = messages.hex(message);
     const value = entries.times(deployment.valuePerEntry);
+    // dispatch to ethereum
     this.props.dispatch(ethereumActions.send({
       contractName: 'fundraiser', method: 'participate', args: [messageHex], value
     }));
+    // send to mailerlite
+    axios.post('/mailerlite/addParticipant', {
+      email,
+      participant: account
+    });
+    // play the video!
     this.setState({ isPlaying: true }, () => {
       this.about.scrollTo();
     });

@@ -4,6 +4,7 @@ import { toastr } from 'react-redux-toastr';
 import Content from '../content';
 import Entries from '../entries';
 import Message from '../message';
+import Email from '../email';
 import Indicator from '../indicator';
 import CauseLogo from '../../../../../causeLogo';
 import './index.scss';
@@ -36,8 +37,9 @@ class Participate extends Content {
   validateForm = (done) => {
     const isEntriesValid = this.entries.validate();
     const isMessageValid = this.message.validate();
+    const isEmailValid = this.email.validate();
     this.setState({
-      isFormValid: isEntriesValid && isMessageValid
+      isFormValid: isEntriesValid && isMessageValid && isEmailValid
     }, done);
   }
 
@@ -46,7 +48,8 @@ class Participate extends Content {
       if (this.state.isFormValid) {
         const entries = this.entries.value();
         const message = this.message.value();
-        this.props.onParticipate({ message, entries });
+        const email = this.email.value();
+        this.props.onParticipate({ message, entries, email });
       } else {
         toastr.warning('PARTICIPATE', 'form invalid');
       }
@@ -72,6 +75,11 @@ class Participate extends Content {
           <Message
             disabled={isLoading}
             ref={(component) => { this.message = component; }}
+          />
+
+          <Email
+            disabled={isLoading}
+            ref={(component) => { this.email = component; }}
           />
 
           <div className="field">

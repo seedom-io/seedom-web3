@@ -12,7 +12,6 @@ const PROGRESS_STROKE_WIDTH = 30;
 const PHASE_STROKE_WIDTH = 50;
 const BACKGROUND_PADDING = 50;
 const LOADERS_PERCENTAGE = 20;
-const LOADERS_TEXT = 'COMMUNICATING WITH ETHEREUM';
 
 const getProgressPercentage = (deployment, now) => {
   const { deployTime, endTime } = deployment;
@@ -187,18 +186,6 @@ class Circles extends React.Component {
             strokeWidth={0}
             fillOpacity={0}
           />
-
-          <text>
-            <textPath className="loaders-text" xlinkHref="#seedom-circles-loaders-path" startOffset={`${LOADERS_PERCENTAGE / 2}%`}>
-              {LOADERS_TEXT}
-            </textPath>
-          </text>
-
-          <text>
-            <textPath className="loaders-text" xlinkHref="#seedom-circles-loaders-path" startOffset={`${(LOADERS_PERCENTAGE / 2) + 50}%`}>
-              {LOADERS_TEXT}
-            </textPath>
-          </text>
 
         </g>
 

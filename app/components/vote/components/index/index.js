@@ -131,7 +131,7 @@ class Index extends Component {
                   <div className="field">
                     <div className="control">
                       <a className="button is-white" disabled={isLoading} onClick={this.handleSubmit}>
-                        vote
+                        cast
                       </a>
                     </div>
                   </div>

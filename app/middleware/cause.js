@@ -10,7 +10,7 @@ const sampleCause = {
 
 const causeMiddleware = store => {
   const handleFundraiserDeployment = (next, action) => {
-    if (ENV === 'production') {
+    if (process.env.NODE_ENV === 'production') {
       fetch(causesResolver.getJsonUrl(action.deployment.cause))
         .then(results => results.json())
         .then((cause) => {

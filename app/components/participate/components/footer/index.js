@@ -25,7 +25,7 @@ class Footer extends Component {
         <div className="container">
           <div className="content has-text-centered">
             <p>
-              View more live <strong>Seedom</strong> data on <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network.name, primaryContractAddresses.fundraiser)}>Etherscan</a>.
+              View live <strong>Seedom</strong> data on <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network.name, primaryContractAddresses.fundraiser)}>Etherscan</a>.
             </p>
           </div>
         </div>

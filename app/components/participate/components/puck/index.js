@@ -207,9 +207,9 @@ class Puck extends Component {
     this.setState({ isParticipating: true });
   }
 
-  handleParticipate = ({ message, entries }) => {
+  handleParticipate = ({ message, entries, email }) => {
     this.setState({ isBadging: true }, () => {
-      this.props.onParticipate({ message, entries });
+      this.props.onParticipate({ message, entries, email });
     });
   }
 
