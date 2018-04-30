@@ -34,7 +34,6 @@ class NavBar extends React.Component {
   render() {
     const { isBurgerActive } = this.state;
     const { isLoading } = this.props.ethereum;
-    const { pathname } = this.props.router.location;
 
     return (
       <nav className="navbar">
@@ -50,15 +49,13 @@ class NavBar extends React.Component {
             </div>
           </div>
           <div className={classnames('navbar-menu', { 'is-active': isBurgerActive })}>
-            {pathname !== '/' && (
-              <div className="navbar-start">
-                <NavLink className="navbar-item" activeClassName="is-active" to="/" onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to="/vote" onClick={this.handleNavLink} exact>VOTE</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to="/help" onClick={this.handleNavLink} exact>HELP</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to="/about" onClick={this.handleNavLink} exact>ABOUT</NavLink>
-                <NavLink className="navbar-item" activeClassName="is-active" to="/contact" onClick={this.handleNavLink} exact>CONTACT</NavLink>
-              </div>
-            )}
+            <div className="navbar-start">
+              <NavLink className="navbar-item" activeClassName="is-active" to="/" onClick={this.handleNavLink} exact>PARTICIPATE</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to="/vote" onClick={this.handleNavLink} exact>VOTE</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to="/help" onClick={this.handleNavLink} exact>HELP</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to="/about" onClick={this.handleNavLink} exact>ABOUT</NavLink>
+              <NavLink className="navbar-item" activeClassName="is-active" to="/contact" onClick={this.handleNavLink} exact>CONTACT</NavLink>
+            </div>
             <div className="navbar-end">
               <a className="navbar-item" href="https://t.me/seedomio">
                 <span className="icon">
