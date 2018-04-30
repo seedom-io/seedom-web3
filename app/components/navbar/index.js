@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
-import seedomLogo from '../../../../seedom-assets/logo/full/seedom-full-white-transparent.png';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import seedomLogo from '../../../../seedom-assets/logo/full/seedom-full-white-transparent.png';
 
 class NavBar extends React.Component {
   static propTypes = {
@@ -60,6 +60,11 @@ class NavBar extends React.Component {
               </div>
             )}
             <div className="navbar-end">
+              <a className="navbar-item" href="https://t.me/seedomio">
+                <span className="icon">
+                  <i className="fab fa-lg fa-telegram" />
+                </span>
+              </a>
               <a className="navbar-item" href="https://medium.com/@seedom.io">
                 <span className="icon">
                   <i className="fab fa-lg fa-medium" />
