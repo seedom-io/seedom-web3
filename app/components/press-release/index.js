@@ -7,7 +7,7 @@ class PressRelease extends Sections {
   render() {
     return (
       <div className="container press-release has-text-white">
-        <p className="has-text-right">FOR IMMEDIATE RELEASE: (April 27th, 2018)</p>
+        <p className="has-text-right">FOR IMMEDIATE RELEASE: (April 30th, 2018)</p>
 
         <p>Kyle Graden, Seedom, team@seedom.io</p>
         <p>Kris Decoodt, Giveth, kris@giveth.io</p>
@@ -22,13 +22,13 @@ class PressRelease extends Sections {
         <br />
 
         <p>
-          <strong>Earth:</strong> Seedom is launching an official beta test, a first of its kind, fundraising Ethereum decentralized application (DApp) raising awareness and ether for altruistic causes while rewarding a single participant for their contribution and support. <a target="_blank" rel="noopener noreferrer" href="https://giveth.io/">Giveth</a> has been selected to be the first cause to benefit from the Seedom DApp.
+          <strong>Earth:</strong> Seedom is launching a fundraising Ethereum decentralized application (DAPP) that raises awareness and ether for altruistic causes while rewarding a single participant for their contribution and support. <a target="_blank" rel="noopener noreferrer" href="https://giveth.io/">Giveth</a> has been selected to be the first cause to benefit from the Seedom DAPP!
         </p>
 
         <br />
 
         <p>
-          Giveth was chosen because its platform is a rΞvolution in the world of charitable donation, building and empowering communities and enabling new ways for people to make a difference. Giveth meets all Seedom requirements, including:
+          Giveth was chosen because its platform is a rΞvolution in the world of charitable donations, building and empowering communities and enabling new ways for people to make a difference. Giveth meets all Seedom requirements, including:
         </p>
 
         <br />
@@ -42,13 +42,13 @@ class PressRelease extends Sections {
         <br />
 
         <p>
-          The fundraising round will run from May 1st to May 14th of this year. During this beta test, anyone can visit <a href="http://seedom.io">www.seedom.io</a> and contribute ether to be entered to win 35% of the total amount raised for Giveth.
+          Their fundraising round will run from May 1st to May 10th of this year. During this period, anyone can visit <a href="http://seedom.io">www.seedom.io</a> and contribute ether to be entered to win 30% of the total amount raised for Giveth! Seedom fundraisers now run on the 1st and 15th of every month for various altruistic causes.
         </p>
 
         <br />
 
         <p>
-          <i>"We are honored to be picked by Seedom for their first test run of their awesome DApp. We are always looking to support projects focused on using #blockchain4good, it’s sooooo cool to have a project support us!!! Seedom is experimenting with a very cool method to raise funds for charity, aligning incentives between all the participants in a fun way! Our social coding team dove into some of the code and it looks really nice. It has been a pleasure to work with the Seedom team!"</i> - Griff Green, co-founder Giveth
+          <i>"We are honored to be picked by Seedom for their first test run of their awesome DAPP. We are always looking to support projects focused on using #blockchain4good, it’s sooooo cool to have a project support us!!! Seedom is experimenting with a very cool method to raise funds for charity, aligning incentives between all the participants in a fun way! Our social coding team dove into some of the code and it looks really nice. It has been a pleasure to work with the Seedom team!"</i> - Griff Green, co-founder Giveth
         </p>
 
         <br />
@@ -63,7 +63,7 @@ class PressRelease extends Sections {
 
         <br />
 
-        <p><strong>About Seedom:</strong> Seedom takes the efficiency, security, and transparency of the traditional single-room raffle and re-invents it with trustlessness and crowd-sourced selection into an entirely new type of fundraiser that scales to the entire world.</p>
+        <p><strong>About Seedom:</strong> Seedom takes the efficiency, security, and transparency of the traditional single-room raffle and re-invents it with trustlessness and crowd-sourced random selection into an entirely new type of fundraiser that scales to the entire world.</p>
 
         <br />
 
