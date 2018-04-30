@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Content from '../content';
 import Indicator from '../indicator';
-import { Link } from 'react-router-dom';
-import './index.scss';
 
 class Ethereum extends Content {
   static propTypes = {
@@ -24,7 +23,7 @@ class Ethereum extends Content {
           <div className="division top medium-pad">
             <div className="ethereum-logo" />
           </div>
-          <div className="division text center narrow">
+          <div className="division text center squish narrow">
             <span>plugin or browser not detected</span>
           </div>
           <div className="division bottom large-pad">

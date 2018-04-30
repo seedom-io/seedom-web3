@@ -35,8 +35,8 @@ class Selection extends Content {
       <div className={`seedom-content selection ${className}`}>
         <Indicator type={isShown ? 'selection' : null} />
         <div className="seedom-overlay layout">
-          <div className="division text top small-pad">
-            <CauseLogo cause={cause} size="small" />
+          <div className="division text top">
+            <CauseLogo cause={cause} size="medium" />
           </div>
           <div className="division text center narrow">
             <div className="left">
@@ -48,7 +48,7 @@ class Selection extends Content {
               <div className="value">{ownerMessage}</div>
             </div>
           </div>
-          <div className="division text bottom large-pad slim">
+          <div className="division text bottom slim">
             <div className="header">participant message</div>
             <div className="value">{participantMessage}</div>
           </div>

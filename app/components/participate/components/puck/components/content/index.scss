@@ -17,12 +17,20 @@
     filter:
       drop-shadow(2px 1px 0 black)
       drop-shadow(-1px -1px 0 black);
-    height: 28%;
+    height: 70%;
     width: 100%;
+  }
 
-    &.small {
-      height: 20%;
-    }
+  .ethereum-logo {
+    background-image: url('../../../../../../img/logos/ethereum-logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 22%;
+    width: 100%;
+    filter:
+      drop-shadow(2px 1px 0 black)
+      drop-shadow(-1px -1px 0 black);
   }
 
   .seedom-field {
@@ -99,6 +107,10 @@
 
       &.center {
         flex: 1;
+
+        &.squish {
+          flex: none;
+        }
       }
 
       &.bottom {

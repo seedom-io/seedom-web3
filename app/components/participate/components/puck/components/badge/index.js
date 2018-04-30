@@ -83,11 +83,11 @@ class Badge extends Content {
       <div className={`seedom-content badge ${className}`}>
         <Indicator type={isShown ? 'success' : null} />
         <div className="seedom-overlay layout">
-          <div className="division text top huge-pad narrow">
+          <div className="division text top large-pad narrow">
             <div className="thank-you">thank you!</div>
             <div>here is your badge</div>
           </div>
-          <div className="division center">
+          <div className="division center squish">
             <img className="seedom-badge" src={badgeImageUrl} />
           </div>
           <div className="division bottom small-pad">

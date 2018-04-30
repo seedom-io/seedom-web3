@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Content from '../content';
 import Indicator from '../indicator';
-import { Link } from 'react-router-dom';
-import './index.scss';
 
 class Account extends Content {
   static propTypes = {
@@ -22,13 +21,13 @@ class Account extends Content {
     const { className } = this.state;
     const { isShown } = this.props;
     return (
-      <div className={`seedom-content ethereum ${className}`}>
+      <div className={`seedom-content account ${className}`}>
         <Indicator type={isShown ? 'error' : null} />
         <div className="seedom-overlay layout">
           <div className="division top medium-pad">
             <div className="ethereum-logo" />
           </div>
-          <div className="division text center narrow">
+          <div className="division text center squish narrow">
             <span>account not available, please confirm</span>
           </div>
           <div className="division bottom large-pad">

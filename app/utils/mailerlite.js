@@ -105,7 +105,9 @@ const addParticipant = (body) => {
   return post(`/groups/${participantGroupId}/subscribers`, {
     email: body.email,
     fields: {
-      participant: body.participant
+      participant: body.participant,
+      cause: body.cause,
+      message: body.message
     },
     resubscribe: 1
   });

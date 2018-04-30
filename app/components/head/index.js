@@ -14,6 +14,15 @@ const imageWidth = 1200;
 const imageHeight = 628;
 
 class Head extends Component {
+  componentDidMount() {
+    if (window) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'UA-110677302-1');
+    }
+  }
+
   render() {
     const { router } = this.props;
 
@@ -63,6 +72,8 @@ class Head extends Component {
         <meta name="og:url" property="og:url" content={finalUrl} />
         {/* font awesome */}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossOrigin="anonymous" />
+        {/* google */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110677302-1" />
       </Helmet>
     );
   }

@@ -22,9 +22,9 @@ class ParticipationFailed extends Content {
         <Indicator type={isShown ? 'error' : null} />
         <div className="seedom-overlay layout">
           <div className="division top">
-            <CauseLogo cause={cause} size="small" />
+            <CauseLogo cause={cause} size="medium" />
           </div>
-          <div className="division text bottom giant-pad narrow">
+          <div className="division text bottom huge-pad narrow">
             <span>participation closed, stay tuned for selection</span>
           </div>
         </div>

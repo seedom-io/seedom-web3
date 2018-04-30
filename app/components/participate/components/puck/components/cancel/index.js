@@ -29,10 +29,10 @@ class Cancel extends Content {
       <div className={`seedom-content cancel ${className}`}>
         <Indicator type="cancel" />
         <div className="seedom-overlay layout">
-          <div className="division top medium-pad">
-            <CauseLogo cause={cause} size="small" />
+          <div className="division top small-pad">
+            <CauseLogo cause={cause} size="medium" />
           </div>
-          <div className="division text center narrow">
+          <div className="division text center squish narrow">
             fundraiser expired, please cancel for the community
           </div>
           <div className="division bottom huge-pad">

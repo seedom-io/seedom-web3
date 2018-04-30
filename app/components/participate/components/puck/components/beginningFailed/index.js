@@ -22,9 +22,9 @@ class BeginningFailed extends Content {
         <Indicator type={isShown ? 'error' : null} />
         <div className="seedom-overlay layout">
           <div className="division top">
-            <CauseLogo cause={cause} />
+            <CauseLogo cause={cause} size="medium" />
           </div>
-          <div className="division text bottom giant-pad narrow">
+          <div className="division text bottom huge-pad narrow">
             <span>cause failed to begin their fundraiser</span>
           </div>
         </div>

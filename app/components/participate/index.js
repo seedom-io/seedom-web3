@@ -26,7 +26,7 @@ class Participate extends Component {
   }
 
   handleParticipate = ({ message, entries, email }) => {
-    const { deployment, account } = this.props.ethereum;
+    const { deployment, account, cause } = this.props.ethereum;
     const messageHex = messages.hex(message);
     const value = entries.times(deployment.valuePerEntry);
     // dispatch to ethereum
@@ -37,7 +37,9 @@ class Participate extends Component {
     if (email !== '') {
       axios.post('/mailerlite/addParticipant', {
         email,
-        participant: account
+        participant: account,
+        cause: cause.name,
+        message
       });
     }
     // play the video!
