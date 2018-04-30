@@ -63,8 +63,7 @@ const middlewares = (history) => {
 
 const Routes = () => (
   <div>
-    <Route exact path="/" component={Hype} />
-    <Route path="/participate" component={Participate} />
+    <Route exact path="/" component={Participate} />
     <Route path="/vote" component={Vote} />
     <Route path="/history" component={History} />
     <Route path="/help" component={Help} />
