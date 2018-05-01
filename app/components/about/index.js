@@ -60,6 +60,12 @@ class About extends Sections {
         <br />
         <br />
 
+        <div className="columns is-mobile is-centered">
+          <a className="button is-primary" href="https://seedom-io.github.io/seedom-whitepaper/seedom-whitepaper.pdf" target="_blank">READ THE WHITEPAPER</a>
+        </div>
+        <br />
+        <br />
+
         <div className="columns">
           {memberItems}
         </div>
