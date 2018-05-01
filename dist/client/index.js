@@ -1403,7 +1403,38 @@ var Help = function (_Sections) {
             _react2.default.createElement(
               'h3',
               { className: 'title has-text-white' },
-              'Accessing Seedom'
+              'Understanding Seedom'
+            ),
+            _react2.default.createElement(
+              _toggle2.default,
+              {
+                title: 'What is Seedom?',
+                collapsed: !open.includes('what-is-seedom')
+              },
+              'Seedom is a innovative way of donating to charities in the form of a game. Similar to a raffle, there is ',
+              _react2.default.createElement(
+                'strong',
+                null,
+                'always'
+              ),
+              ' a randomly selected winner which could be anyone that participates. An added incentive is that a portion of the winnings goes towards an altruistic charity.'
+            ),
+            _react2.default.createElement(
+              _toggle2.default,
+              {
+                title: 'Why is Seedom different?',
+                collapsed: !open.includes('why-is-seedom-different')
+              },
+              'Unlike standard raffles (and lotteries, etc.), Seedom is a decentralized open source application built on the Ethereum network. Because of the public transparency of Seedom, it is protected from malicious use.'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'column is-three-fifths is-offset-one-fifth' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'title has-text-white' },
+              'Getting Started'
             ),
             _react2.default.createElement(
               _toggle2.default,
@@ -1414,7 +1445,7 @@ var Help = function (_Sections) {
               'To use Seedom on mobile, we recommend the ',
               _react2.default.createElement(
                 'a',
-                { target: '_blank', href: 'https://www.cipherbrowser.com/' },
+                { target: '_blank', rel: 'noopener noreferrer', href: 'https://www.cipherbrowser.com/' },
                 'Cipher app'
               ),
               '. You will need to put Ether into your Cipher wallet in order to participate.'
@@ -1428,16 +1459,93 @@ var Help = function (_Sections) {
               'To use Seedom on the desktop, you will need to install ',
               _react2.default.createElement(
                 'a',
-                { target: '_blank', href: 'https://metamask.io/' },
+                { target: '_blank', rel: 'noopener noreferrer', href: 'https://metamask.io/' },
                 'MetaMask'
               ),
               ' or use the ',
               _react2.default.createElement(
                 'a',
-                { target: '_blank', href: 'https://brave.com/' },
+                { target: '_blank', rel: 'noopener noreferrer', href: 'https://brave.com/' },
                 'Brave browser'
               ),
               '. You will need to put Ether into your MetaMask wallet in order to participate.'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'column is-three-fifths is-offset-one-fifth' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'title has-text-white' },
+              'Playing Seedom'
+            ),
+            _react2.default.createElement(
+              _toggle2.default,
+              {
+                title: 'Participating',
+                collapsed: !open.includes('playing-participating')
+              },
+              'The first phase of Seedom is the participation phase. In this stage, anyone is welcome to participate in Seedom by selecting a number of entries, entering a message, and sending.',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
+              'The number of entries you choose increases your likelihood of being chosen the random winner.',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
+              'The message can be anything you want. It could be your name. It could be your favorite catchphrase. Anything at all. The beauty about Seedom is that there is no censorship and since Seedom runs on the blockchain, your message is publicly visible and permanent. Even better is that your message will actually affect how the random selection works (see below: ',
+              _react2.default.createElement(
+                'i',
+                null,
+                'Why is Seedom better?'
+              ),
+              ').'
+            ),
+            _react2.default.createElement(
+              _toggle2.default,
+              {
+                title: 'Revelation',
+                collapsed: !open.includes('playing-revelation')
+              },
+              'After two weeks, the reveal phase happens. The charity reveals their secret message which kicks off the selection process. The game ends and a randomly selected participant takes home a portion of the pool. The remainder of that pool goes to Seedom\u2019s bi-weekly charity. The following day the game starts again.'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'column is-three-fifths is-offset-one-fifth' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'title has-text-white' },
+              'Other'
+            ),
+            _react2.default.createElement(
+              _toggle2.default,
+              {
+                title: 'Why is Seedom better?',
+                collapsed: !open.includes('why-is-seedom-better')
+              },
+              'There exists an abundance of chance games in the Ethereum network. The problem with all of them is that they use an algorithm that can be defeated by ',
+              _react2.default.createElement(
+                'a',
+                { target: '_blank', rel: 'noopener noreferrer', href: 'https://blog.keep.network/miners-arent-your-friends-cde9b6e0e9ac' },
+                'miner manipulation'
+              ),
+              ' or they rely on a a centralized third party random number supplier.',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
+              'Seedom\u2019s algorithm takes a secret message from Seedom, a secret message from the charity, and eight randomly selected participant messages to determine the winner. This makes Seedom close to impossible to tamper with. The ',
+              _react2.default.createElement(
+                'a',
+                { target: '_blank', rel: 'noopener noreferrer', href: 'https://github.com/seedom-io/seedom-whitepaper/raw/master/seedom-whitepaper.pdf' },
+                'whitepaper'
+              ),
+              ' goes into more technical detail of how this works.'
+            ),
+            _react2.default.createElement(
+              _toggle2.default,
+              {
+                title: 'How does Seedom make money?',
+                collapsed: !open.includes('how-does-seedom-make-money')
+              },
+              'Seedom does incur operating costs and as a result does take a nominal 5% cut on each fundraiser.'
             )
           )
         )
@@ -26301,7 +26409,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "@keyframes ring-in {\n  0% {\n    transform: scale(0); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes fade-in {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes fade-out {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@keyframes ghost {\n  0% {\n    opacity: 1; }\n  50% {\n    opacity: 0.6; }\n  100% {\n    opacity: 1; } }\n\n@keyframes zoom-in {\n  0% {\n    transform: scale(0); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes pulse {\n  0% {\n    transform: scale(1); }\n  50% {\n    transform: scale(0.96); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes win {\n  0% {\n    transform: scale(0);\n    opacity: 1; }\n  100% {\n    transform: scale(1);\n    opacity: 0; } }\n\n@keyframes wow {\n  0% {\n    opacity: 0; }\n  50% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n\n.seedom-help {\n  margin-top: 10px; }\n  .seedom-help h3 {\n    padding-bottom: 10px;\n    border-bottom: 1px solid #4a4a4a; }\n", ""]);
+exports.push([module.i, "@keyframes ring-in {\n  0% {\n    transform: scale(0); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes fade-in {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes fade-out {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@keyframes ghost {\n  0% {\n    opacity: 1; }\n  50% {\n    opacity: 0.6; }\n  100% {\n    opacity: 1; } }\n\n@keyframes zoom-in {\n  0% {\n    transform: scale(0); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes pulse {\n  0% {\n    transform: scale(1); }\n  50% {\n    transform: scale(0.96); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes win {\n  0% {\n    transform: scale(0);\n    opacity: 1; }\n  100% {\n    transform: scale(1);\n    opacity: 0; } }\n\n@keyframes wow {\n  0% {\n    opacity: 0; }\n  50% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n\n.seedom-help {\n  margin-top: 10px; }\n  .seedom-help h3 {\n    padding-bottom: 10px;\n    border-bottom: 1px solid #4a4a4a; }\n  .seedom-help strong {\n    color: white; }\n", ""]);
 
 // exports
 
