@@ -1,1 +1,10539 @@
-module.exports=function(e){var t={};function n(a){if(t[a])return t[a].exports;var i=t[a]={i:a,l:!1,exports:{}};return e[a].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=e,n.c=t,n.d=function(e,t,a){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:a})},n.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/static/",n.w={},n(n.s=129)}([function(e,t){e.exports=require("react")},function(e,t){e.exports=require("prop-types")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=(r(i),r(n(1)));function r(e){return e&&e.__esModule?e:{default:e}}n(83);var u=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={className:null},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentDidMount",value:function(){this.props.isShown&&this.show()}},{key:"componentWillReceiveProps",value:function(e){this.props.isShown!==e.isShown&&(e.isShown?this.show():this.hide())}},{key:"show",value:function(){var e=this;setTimeout(function(){e.setState({className:"show"})},0)}},{key:"hide",value:function(){var e=this;setTimeout(function(){e.setState({className:null})},0)}}]),t}();u.propTypes={isShown:s.default.bool.isRequired},t.default=u},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=u(i),r=u(n(1));function u(e){return e&&e.__esModule?e:{default:e}}n(82);var o=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props.type;return s.default.createElement("div",{className:"seedom-overlay"},s.default.createElement("svg",{className:"indicator "+(e?"show":null),xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 52 52"},s.default.createElement("circle",{className:"circle "+e,cx:"26",cy:"26",r:"25"})))}}]),t}();o.propTypes={type:r.default.string},o.defaultProps={type:null},t.default=o},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=o(i),r=o(n(1)),u=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(22));function o(e){return e&&e.__esModule?e:{default:e}}n(81);var p=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.cause,n=e.size;if(!t)return null;var a=u.getLogoUrl(t.image);return s.default.createElement("div",{className:"cause-logo "+n,style:{backgroundImage:"url("+a+")"}})}}]),t}();p.propTypes={cause:r.default.shape(),size:r.default.string},p.defaultProps={cause:null,size:null},t.default=p},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.zero=t.localeDecimal=t.localeNumber=t.getEtherFromWei=void 0;var a=n(8),i=new a.BigNumber(1e18);t.getEtherFromWei=function(e){return e.dividedBy(i)},t.localeNumber=function(e){return e.toFormat(0)},t.localeDecimal=function(e){return e.toFormat(3)},t.zero=function(){return new a.BigNumber(0)}},function(e,t){e.exports=require("react-redux")},function(e,t){e.exports=require("react-router-dom")},function(e,t){e.exports=require("bignumber.js")},function(e,t){e.exports=require("react-redux-toastr")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=o(i),r=o(n(1)),u=o(n(11));function o(e){return e&&e.__esModule?e:{default:e}}function p(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(76);var l=function(e){return(0,u.default)({input:!0,"is-primary":e,"is-danger":!e})},c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,s=Array(i),r=0;r<i;r++)s[r]=arguments[r];return n=a=p(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),a.focus=function(){a.input.focus()},a.handleChange=function(e){a.props.onChange(e.target.value)},p(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props,n=t.format,a=t.type,i=t.placeholder,r=t.disabled,o=t.value,p=t.maxLength,c=t.children,d=t.isValid,y=t.min,m=t.max;return s.default.createElement("div",{className:"seedom-field field"},s.default.createElement("div",{className:"control "+n},{textbox:s.default.createElement("input",{className:l(d),type:a,min:y,max:m,placeholder:i.toUpperCase(),disabled:r,value:o,onChange:this.handleChange,ref:function(t){e.input=t}}),textblock:s.default.createElement("textarea",{rows:"2",className:function(e){return(0,u.default)({textarea:!0,"is-primary":e,"is-danger":!e})}(d),type:a,placeholder:i.toUpperCase(),disabled:r,value:o,maxLength:p,onChange:this.handleChange,ref:function(t){e.input=t}}),addonbox:s.default.createElement("div",null,s.default.createElement("input",{className:l(d),type:a,min:y,max:m,placeholder:i.toUpperCase(),disabled:r,onChange:this.handleChange,ref:function(t){e.input=t}}),s.default.createElement("div",{className:"addon"},c))}[n]))}}]),t}();c.propTypes={format:r.default.string.isRequired,type:r.default.string.isRequired,value:r.default.string,maxLength:r.default.number,min:r.default.shape(),max:r.default.shape(),placeholder:r.default.string.isRequired,disabled:r.default.bool.isRequired,isValid:r.default.bool,onChange:r.default.func.isRequired,children:r.default.element},c.defaultProps={value:"",maxLength:0,min:null,max:null,isValid:!0,children:null},t.default=c},function(e,t){e.exports=require("classnames")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a="0x0000000000000000000000000000000000000000000000000000000000000000",i="0x0000000000000000000000000000000000000000";t.zero32=a,t.zero20=i,t.isZero32=function(e){return e===a},t.isZero20=function(e){return e===i},t.shorten=function(e){return e.substring(0,10)+"..."+e.substring(e.length-4)}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=function(e){function t(e){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[];!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var a=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return r.call(a),a.state={open:[].concat(function(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}(n))},a.handleHash(e),a}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentWillReceiveProps",value:function(e){this.handleHash(e)}}]),t}(),r=function(){var e=this;this.handleHash=function(t){var n=t.router.location.hash;""!==n&&(e.state.open=[n.substring(1)])}};t.default=s},function(e,t){e.exports=require("@seedom-io/seedom-crypter/messages")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.call=function(e){return{type:"ETHEREUM_CALL",contractName:e.contractName,contractAddress:e.contractAddress,method:e.method,args:e.args}},t.allCall=function(e){return{type:"ETHEREUM_ALLCALL",contractName:e.contractName,method:e.method,args:e.args}},t.send=function(e){return{type:"ETHEREUM_SEND",contractName:e.contractName,contractAddress:e.contractAddress,method:e.method,args:e.args,value:e.value}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=o(i),r=o(n(1)),u=o(n(11));function o(e){return e&&e.__esModule?e:{default:e}}n(49);var p=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.toggle=function(){n.setState(function(e){return{collapsed:!e.collapsed}})},n.state={collapsed:e.collapsed},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentWillReceiveProps",value:function(e){this.state.collapsed!==e.collapsed&&this.setState({collapsed:e.collapsed})}},{key:"render",value:function(){var e=this.props,t=e.id,n=e.title,a=this.state.collapsed;return s.default.createElement("div",{id:t,className:(0,u.default)("seedom-collapse",{collapsed:a})},s.default.createElement("div",{className:"header",onClick:this.toggle},s.default.createElement("span",{className:"toggle left"},s.default.createElement("i",{className:"fas fa-plus"})),s.default.createElement("span",{className:"text"},n),s.default.createElement("span",{className:"toggle right"},s.default.createElement("i",{className:"fas fa-plus"}))),!a&&s.default.createElement("div",{className:"content"},this.props.children))}}]),t}();p.propTypes={id:r.default.string,title:r.default.string.isRequired,collapsed:r.default.bool,children:r.default.element},p.defaultProps={id:null,collapsed:!0,children:null},t.default=p},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){return"mainnet"===e?"www":e};t.getAddressUrl=function(e,t){return"localhost"===e?"":"https://"+a(e)+".etherscan.io/address/"+t},t.getTransactionUrl=function(e,t){return"localhost"===e?"":"https://"+a(e)+".etherscan.io/tx/"+t}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=l(i),r=l(n(1)),u=l(n(10)),o=n(8),p=n(5);function l(e){return e&&e.__esModule?e:{default:e}}n(37);var c=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.focus=function(){n.count.focus()},n.validate=function(){var e=n.state.value,t=e.isGreaterThanOrEqualTo(1)&&e.isLessThanOrEqualTo(n.props.remainingVoteCount);return n.setState({isValid:t}),t},n.value=function(){return n.state.value},n.handleChange=function(e){var t=void 0;try{t=new o.BigNumber(e)}catch(e){t=(0,p.zero)()}n.setState({value:t})},n.state={value:e.value?e.value:e.remainingVoteCount,isValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentWillReceiveProps",value:function(e){e.value&&this.props.value&&!this.props.value.isEqualTo(e.value)&&this.setState({value:e.value})}},{key:"render",value:function(){var e=this,t=this.props,n=t.disabled,a=t.remainingVoteCount,i=this.state,r=i.value,p=i.isValid;return s.default.createElement("div",{className:"seedom-count"},s.default.createElement(u.default,{format:"textbox",type:"number",min:new o.BigNumber(1),max:a,value:r.toString(),maxLength:a.toString().length,placeholder:"",disabled:n,isValid:p,onChange:this.handleChange,ref:function(t){e.count=t}}),s.default.createElement("div",{className:"divider"},"/"),s.default.createElement("div",{className:"remainingVoteCount"},a.toString()))}}]),t}();c.propTypes={value:r.default.shape(),disabled:r.default.bool.isRequired,remainingVoteCount:r.default.shape().isRequired},c.defaultProps={value:null},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=l(i),r=l(n(1)),u=l(n(10)),o=n(5),p=n(8);function l(e){return e&&e.__esModule?e:{default:e}}var c=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.focus=function(){n.field.focus()},n.validate=function(){var e=n.state.value,t=e.isGreaterThanOrEqualTo(1)&&0===e.decimalPlaces();return n.setState({isValid:t}),t},n.value=function(){return n.state.value},n.handleChange=function(e){var t=void 0;try{t=new p.BigNumber(e)}catch(e){t=(0,o.zero)()}n.setState({value:t})},n.state={value:(0,o.zero)(),isValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props,n=t.deployment,a=t.disabled,i=this.state,r=i.value,l=i.isValid,c=void 0;if(n){var d=r.times(n.valuePerEntry);c=(0,o.localeDecimal)((0,o.getEtherFromWei)(d))}return s.default.createElement(u.default,{format:"addonbox",type:"number",min:new p.BigNumber(1),placeholder:"entries",value:r.toString(),disabled:a,isValid:l,onChange:this.handleChange,ref:function(t){e.field=t}},s.default.createElement("span",null,""+c,s.default.createElement("span",{className:"ether is-dark"},s.default.createElement("i",{className:"fas fa-bars"}))))}}]),t}();c.propTypes={deployment:r.default.shape(),disabled:r.default.bool},c.defaultProps={deployment:null,disabled:!1},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=r(n(0)),s=r(n(1));function r(e){return e&&e.__esModule?e:{default:e}}n(92);var u=function(e,t){var n=2*Math.PI*e;return{strokeDasharray:n+"px "+n+"px",strokeDashoffset:(100-t)/100*n+"px"}},o=function(e,t){return"\n      M 500,500\n      m 0,-"+e+"\n      a "+e+","+e+" 0 1 "+(t?0:1)+" 0,"+2*e+"\n      a "+e+","+e+" 0 1 "+(t?0:1)+" 0,-"+2*e+"\n  "},p=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={now:new Date},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.default.Component),a(t,[{key:"componentDidMount",value:function(){var e=this;this.interval=setInterval(function(){e.setState({now:new Date})},1e3)}},{key:"render",value:function(){var e=this.props,t=e.starter,n=e.deployment,a=e.isLoading,s=this.state.now,r=void 0,p=void 0;n&&(r=function(e,t){var n=e.deployTime,a=e.endTime-n,i=t-n;return i>a?100:i/a*100}(n,s),p=function(e,t,n){var a=t.endTime-n;if(a<=0)return"FINISHED";a/=1e3;var i=Math.floor(a/86400);a-=86400*i;var s=Math.floor(a/3600)%24;a-=3600*s;var r=Math.floor(a/60)%60;a-=60*r;var u=Math.floor(a%60);return e.toUpperCase()+" IN - "+i+"D "+s+"H "+r+"M "+u+"S"}(t,n,s));var l,c=u(435,r),d=u(435,100),y=u(485,20),m=(l=r)>30&&l<70,f=o(435),b=o(435,!0),_=o(485),v=r>=15,h=m?101-r:r-1;return i.default.createElement("svg",{className:"seedom-circles",viewBox:"0 0 1000 1000"},i.default.createElement("circle",{className:"background",cx:500,cy:500,r:500,opacity:.9}),i.default.createElement("g",{className:"loaders-container "+(a?"show":"hide")},i.default.createElement("circle",{className:"loaders-arc",cx:500,cy:500,r:485,strokeWidth:30,fillOpacity:0,style:y}),i.default.createElement("circle",{className:"loaders-arc bottom",cx:500,cy:500,r:485,strokeWidth:30,fillOpacity:0,style:y}),i.default.createElement("path",{id:"seedom-circles-loaders-path",className:"loaders-path",d:_,strokeWidth:0,fillOpacity:0})),i.default.createElement("g",{className:"phase-container"},i.default.createElement("path",{id:"seedom-circles-progress-path",className:"phase-path",d:f,strokeWidth:0,fillOpacity:0}),i.default.createElement("path",{id:"seedom-circles-progress-path-flipped",className:"phase-path",d:b,strokeWidth:0,fillOpacity:0}),i.default.createElement("g",{className:"phase participation"},i.default.createElement("circle",{cx:500,cy:500,r:435,strokeWidth:50,fillOpacity:0,style:d})),i.default.createElement("g",{className:"phase progress"},i.default.createElement("circle",{cx:500,cy:500,r:435,strokeWidth:30,fillOpacity:0,style:c}),v&&i.default.createElement("text",null,i.default.createElement("textPath",{className:"phase-text "+(m?"flipped":null),xlinkHref:m?"#seedom-circles-progress-path-flipped":"#seedom-circles-progress-path",startOffset:h+"%"},p)))))}}]),t}();p.propTypes={starter:s.default.string,deployment:s.default.shape(),isLoading:s.default.bool},p.defaultProps={starter:"ends",deployment:null,isLoading:!1},t.default=p},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.getImageUrl=function(e){return"https://seedom.io/badges/"+e.network+"/"+e.contract+"/"+e.participant+".png"}},function(e,t){e.exports=require("@seedom-io/seedom-resolver/causes")},function(e,t){e.exports=require("react-helmet")},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=u(n(0)),s=n(6),r=u(n(13));function u(e){return e&&e.__esModule?e:{default:e}}n(24);var o=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){return i.default.createElement("div",{className:"container press-release has-text-white"},i.default.createElement("p",{className:"has-text-right"},"FOR IMMEDIATE RELEASE: (April 30th, 2018)"),i.default.createElement("p",null,"Kyle Graden, Seedom, team@seedom.io"),i.default.createElement("p",null,"Kris Decoodt, Giveth, kris@giveth.io"),i.default.createElement("br",null),i.default.createElement("p",{className:"has-text-centered"},"Seedom Announces Giveth as Beta Launch Partner For Fundraise DApp"),i.default.createElement("p",{className:"has-text-centered"},i.default.createElement("i",null,"Raising Awareness & Ether for Decentralized Altruistic Communities Together")),i.default.createElement("br",null),i.default.createElement("p",null,i.default.createElement("strong",null,"Earth:")," Seedom is launching a fundraising Ethereum decentralized application (DAPP) that raises awareness and ether for altruistic causes while rewarding a single participant for their contribution and support. ",i.default.createElement("a",{target:"_blank",rel:"noopener noreferrer",href:"https://giveth.io/"},"Giveth")," has been selected to be the first cause to benefit from the Seedom DAPP!"),i.default.createElement("br",null),i.default.createElement("p",null,"Giveth was chosen because its platform is a rΞvolution in the world of charitable donations, building and empowering communities and enabling new ways for people to make a difference. Giveth meets all Seedom requirements, including:"),i.default.createElement("br",null),i.default.createElement("ul",null,i.default.createElement("li",null,i.default.createElement("strong",null,"Decentralizing")," - believes in the decentralization of power in all forms"),i.default.createElement("li",null,i.default.createElement("strong",null,"Legitimate")," - has a capable team with a clear and effective plan of action"),i.default.createElement("li",null,i.default.createElement("strong",null,"Active")," - is actively working on solving an urgent need")),i.default.createElement("br",null),i.default.createElement("p",null,"Their fundraising round will run from May 1st to May 10th of this year. During this period, anyone can visit ",i.default.createElement("a",{href:"http://seedom.io"},"www.seedom.io")," and contribute ether to be entered to win 30% of the total amount raised for Giveth! Seedom fundraisers now run on the 1st and 15th of every month for various altruistic causes."),i.default.createElement("br",null),i.default.createElement("p",null,i.default.createElement("i",null,'"We are honored to be picked by Seedom for their first test run of their awesome DAPP. We are always looking to support projects focused on using #blockchain4good, it’s sooooo cool to have a project support us!!! Seedom is experimenting with a very cool method to raise funds for charity, aligning incentives between all the participants in a fun way! Our social coding team dove into some of the code and it looks really nice. It has been a pleasure to work with the Seedom team!"')," - Griff Green, co-founder Giveth"),i.default.createElement("br",null),i.default.createElement("p",null,"This marks the start of a new era of incentivized routine giving on the blockchain and the Ethereum network."),i.default.createElement("br",null),i.default.createElement("p",null,i.default.createElement("strong",null,"About Giveth:")," Giveth is re-engineering charitable giving, by creating an entirely free, open-source platform, built on the Ethereum Blockchain. Our system cuts out bureaucracy and enables nonprofits to create a high level of transparency and accountability towards Givers. Through the Giveth DApp (Donation Application) you will be able to see how the project is laid out and how much money is required for each part. By reducing the costs and decentralizing the giving process we are putting the power back into the hands of the people."),i.default.createElement("br",null),i.default.createElement("p",null,i.default.createElement("strong",null,"About Seedom:")," Seedom takes the efficiency, security, and transparency of the traditional single-room raffle and re-invents it with trustlessness and crowd-sourced random selection into an entirely new type of fundraiser that scales to the entire world."),i.default.createElement("br",null),i.default.createElement("p",null,"Visit ",i.default.createElement("a",{href:"http://seedom.io/"},"www.seedom.io")," to participate and sign up for email reminders."))}}]),t}();t.default=(0,s.connect)(function(e){return{router:e.router}})(o)},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=u(n(0)),s=n(6),r=u(n(13));function u(e){return e&&e.__esModule?e:{default:e}}n(26);var o=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){return i.default.createElement("div",{className:"container seedom-contact"},i.default.createElement("div",{className:"columns"},i.default.createElement("div",{className:"column is-offset-2 has-text-white"},i.default.createElement("h3",{className:"title has-text-white"},"Are you leading a cause that needs funding?"),i.default.createElement("p",null,"Want to learn more about accepting donations in cryptocurrencies?"),i.default.createElement("p",null,"Then you are at the right place!"),i.default.createElement("br",null),i.default.createElement("br",null),i.default.createElement("p",null,"For press and media inquires, email us directly at ",i.default.createElement("a",{href:"mailto:team@seedom.io"},"team@seedom.io"),".")),i.default.createElement("div",{className:"column"},i.default.createElement("iframe",{src:"https://landing.mailerlite.com/webforms/landing/t6i1i0",style:{border:"none",width:"350px",height:"472px"}}))))}}]),t}();t.default=(0,s.connect)(function(e){return{router:e.router}})(o)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=o(n(0)),s=n(6),r=o(n(13)),u=o(n(16));function o(e){return e&&e.__esModule?e:{default:e}}var p=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.open;return i.default.createElement("div",null,i.default.createElement(u.default,{title:"our mission",collapsed:!e.includes("our-mission")},i.default.createElement("div",null,"HELLO!")),i.default.createElement(u.default,{title:"about the team",collapsed:!e.includes("about-the-team")},i.default.createElement("div",null,"HELLO!")))}}]),t}();t.default=(0,s.connect)(function(e){return{router:e.router}})(p)},function(e,t){},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=o(i),r=o(n(1)),u=o(n(11));function o(e){return e&&e.__esModule?e:{default:e}}n(30);var p=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.toggle=function(){n.setState(function(e){return{collapsed:!e.collapsed}})},n.state={collapsed:e.collapsed},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props.title,t=this.state.collapsed;return s.default.createElement("div",{className:(0,u.default)("seedom-toggle",{collapsed:t}),onClick:this.toggle},s.default.createElement("div",{className:"header"},s.default.createElement("span",{className:"toggle left"},s.default.createElement("i",{className:"fas fa-plus"})),s.default.createElement("span",{className:"text"},e)),!t&&s.default.createElement("div",{className:"content has-text-white"},this.props.children))}}]),t}();p.propTypes={title:r.default.string.isRequired,collapsed:r.default.bool,children:r.default.element},p.defaultProps={collapsed:!0,children:null},t.default=p},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=o(n(0)),s=n(6),r=o(n(13)),u=o(n(31));function o(e){return e&&e.__esModule?e:{default:e}}n(29);var p=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.open;return i.default.createElement("div",{className:"seedom-help"},i.default.createElement("div",{className:"container"},i.default.createElement("div",{className:"column is-three-fifths is-offset-one-fifth"},i.default.createElement("h3",{className:"title has-text-white"},"Accessing Seedom"),i.default.createElement(u.default,{title:"Accessing on mobile",collapsed:!e.includes("accessing-mobile")},"To use Seedom on mobile, we recommend the ",i.default.createElement("a",{target:"_blank",href:"https://www.cipherbrowser.com/"},"Cipher app"),". You will need to put Ether into your Cipher wallet in order to participate."),i.default.createElement(u.default,{title:"Accessing on desktop",collapsed:!e.includes("accessing-desktop")},"To use Seedom on the desktop, you will need to install ",i.default.createElement("a",{target:"_blank",href:"https://metamask.io/"},"MetaMask")," or use the ",i.default.createElement("a",{target:"_blank",href:"https://brave.com/"},"Brave browser"),". You will need to put Ether into your MetaMask wallet in order to participate."))))}}]),t}();t.default=(0,s.connect)(function(e){return{router:e.router}})(p)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,i=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),s=n(0),r=(a=s)&&a.__esModule?a:{default:a},u=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.Component),i(t,[{key:"render",value:function(){return r.default.createElement("div",null,"History")}}]),t}();t.default=u},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.color=void 0;var a=n(8);t.color=function(e){return"hsl("+new a.BigNumber(1).minus(e).times(240).toFixed(5)+", 100%, 50%)"}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=c(i),r=c(n(1)),u=n(9),o=c(n(18)),p=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(35)),l=(n(5),c(n(11)));function c(e){return e&&e.__esModule?e:{default:e}}var d=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.validateForm=function(e){var t=n.count.validate();n.setState({isFormValid:t},e)},n.handleEdit=function(){n.setState({editing:!0})},n.handleCancel=function(){n.setState({editing:!1})},n.handleSubmit=function(){n.validateForm(function(){if(n.state.isFormValid){var e=n.props,t=e.cause,a=e.onVoteIndex,i=n.count.value();a({index:t.index,count:i})}else u.toastr.warning("VOTE","score update form invalid")})},n.getHeatmapColor=function(e,t){return p.color(e.div(t))},n.state={editing:!1,isFormValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props,n=t.voteCount,a=t.maxVoteCount,i=t.causesVoteCount,r=t.ended,u=t.cause,p=t.vote,c=t.isLoading,d=this.state.editing,y=!r&&n.isLessThan(a),m=this.getHeatmapColor(u.voteCount,i);return s.default.createElement("div",{className:function(e){return(0,l.default)({row:!0,index:!0,static:!e})}(y),style:{backgroundColor:m}},s.default.createElement("div",{className:"bit begin header-normal stretch shadow"},u.name),p&&s.default.createElement("div",{className:"bit header shadow"},"voted!"),(!y||!d)&&s.default.createElement("div",{className:"bit shadow"},s.default.createElement("div",{className:"bit header"},"votes"),s.default.createElement("div",{className:"bit"},u.voteCount.toString())),y&&s.default.createElement("div",{className:"bit"},d&&s.default.createElement("div",{className:"bit shadow"},s.default.createElement("div",{className:"bit"},s.default.createElement(o.default,{remainingVoteCount:a.minus(n),disabled:c,ref:function(t){e.count=t}})),s.default.createElement("div",{className:"bit"},s.default.createElement("div",{className:"field"},s.default.createElement("div",{className:"control"},s.default.createElement("a",{className:"button is-white",disabled:c,onClick:this.handleSubmit},"cast")))),s.default.createElement("div",{className:"bit"},s.default.createElement("div",{className:"field"},s.default.createElement("div",{className:"control"},s.default.createElement("a",{className:"button is-white",disabled:c,onClick:this.handleCancel},"cancel"))))),!d&&s.default.createElement("div",{className:"bit shadow"},s.default.createElement("div",{className:"field"},s.default.createElement("div",{className:"control"},s.default.createElement("a",{className:"button is-white",disabled:c,onClick:this.handleEdit},"vote"))))))}}]),t}();d.propTypes={voteCount:r.default.shape().isRequired,maxVoteCount:r.default.shape().isRequired,causesVoteCount:r.default.shape().isRequired,ended:r.default.bool.isRequired,cause:r.default.shape().isRequired,vote:r.default.shape(),isLoading:r.default.bool,onVoteIndex:r.default.func.isRequired},d.defaultProps={isLoading:!1,vote:null},t.default=d},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=l(i),r=l(n(1)),u=n(9),o=l(n(18)),p=l(n(10));function l(e){return e&&e.__esModule?e:{default:e}}var c=32,d=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.validateForm=function(e){var t=n.state.name,a=t.length>1&&t.length<=c,i=n.count.validate();n.setState({isNameValid:a,isFormValid:a&&i},e)},n.handleNameChange=function(e){n.setState({name:e})},n.handleSubmit=function(){n.validateForm(function(){var e=n.state,t=e.isFormValid,a=e.name;if(t){var i=n.count.value();n.props.onVoteName({name:a,count:i})}else u.toastr.warning("VOTE","new cause form invalid")})},n.state={name:"",isNameValid:!0,isFormValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props,n=t.voteCount,a=t.maxVoteCount,i=t.ended,r=t.isLoading,u=this.state,l=u.name,c=u.isNameValid;return i||n.isEqualTo(a)?null:s.default.createElement("div",{className:"row name"},s.default.createElement("div",{className:"bit begin stretch"},s.default.createElement(p.default,{format:"textbox",type:"text",placeholder:"enter new cause or vote below",value:l.toString(),maxLength:10,disabled:r,isValid:c,onChange:this.handleNameChange,ref:function(t){e.name=t}})),l.length>0&&s.default.createElement("div",{className:"bit"},s.default.createElement("div",{className:"bit header"},"votes"),s.default.createElement("div",{className:"bit"},s.default.createElement(o.default,{remainingVoteCount:a.minus(n),disabled:r,ref:function(t){e.count=t}})),s.default.createElement("div",{className:"bit"},s.default.createElement("div",{className:"field"},s.default.createElement("div",{className:"control"},s.default.createElement("a",{className:"button is-white",disabled:r,onClick:this.handleSubmit},s.default.createElement("i",{className:"fas fa-plus-circle"})))))))}}]),t}();d.propTypes={voteCount:r.default.shape().isRequired,maxVoteCount:r.default.shape().isRequired,ended:r.default.bool.isRequired,isLoading:r.default.bool,onVoteName:r.default.func.isRequired},d.defaultProps={isLoading:!1},t.default=d},function(e,t,n){e.exports=n.p+"a98583bd825d0cb2dddabef564c356e3.svg"},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=p(i),r=p(n(1)),u=n(7),o=p(n(39));function p(e){return e&&e.__esModule?e:{default:e}}var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.voteCount,n=e.maxVoteCount,a=e.ended,i=e.isLoading,r=function(e){var t=e.voteCount,n=e.maxVoteCount;return e.ended?"ended":n.isEqualTo(0)?"participate":t.isLessThan(n)?"decide":"thanks"}({voteCount:t,maxVoteCount:n,ended:a});return s.default.createElement("div",{className:"row caster"},{ended:s.default.createElement("div",{className:"bit begin stretch"},"fundraiser ended"),participate:s.default.createElement("div",{className:"bit begin stretch"},s.default.createElement("div",{className:"field"},s.default.createElement("div",{className:"control"},s.default.createElement(u.Link,{className:"button is-white is-outlined",to:"/"},s.default.createElement("i",{className:"fas fa-arrow-alt-circle-left left"}),s.default.createElement("span",null,"participate first"))))),decide:s.default.createElement("div",{className:"bit begin stretch"},"help us decide our future!"),thanks:s.default.createElement("div",{className:"bit begin stretch"},"thank you for voting!")}[r],i&&s.default.createElement("div",{className:"bit"},s.default.createElement("object",{data:o.default,type:"image/svg+xml"},s.default.createElement("img",{src:o.default,alt:"loading"}))),s.default.createElement("div",{className:"bit header"},s.default.createElement("span",{className:"header"},"votes cast")),s.default.createElement("div",{className:"bit"},t.toString()," / ",n.toString()))}}]),t}();l.propTypes={isLoading:r.default.bool,voteCount:r.default.shape().isRequired,maxVoteCount:r.default.shape().isRequired,ended:r.default.bool.isRequired},l.defaultProps={isLoading:!1},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=m(i),r=n(6),u=m(n(1)),o=(y(n(12)),y(n(14))),p=y(n(15)),l=m(n(40)),c=m(n(38)),d=m(n(36));function y(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}function m(e){return e&&e.__esModule?e:{default:e}}function f(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(34);var b=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,s=Array(i),r=0;r<i;r++)s[r]=arguments[r];return n=a=f(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),a.handleVoteName=function(e){var t=e.name,n=e.count,i=o.hex(t);a.props.dispatch(p.send({contractName:"polling",method:"voteName",args:[i,n]}))},a.handleVoteIndex=function(e){var t=e.index,n=e.count;a.props.dispatch(p.send({contractName:"polling",method:"voteIndex",args:[t,n]}))},f(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props.ethereum,n=t.maxVoteCount,a=t.causes,i=t.causesVoteCount,r=t.votes,u=t.voteCount,o=t.deployment,p=t.account,y=t.isLoading;if(!(n&&a&&r&&o))return null;var m=[].concat(function(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}(a)).sort(function(e,t){return t.voteCount.comparedTo(e.voteCount)}),f=new Date>=o.endTime;return s.default.createElement("div",{className:"seedom-vote"},s.default.createElement("div",{className:"list"},s.default.createElement(l.default,{isLoading:y,voteCount:u,maxVoteCount:n,ended:f}),s.default.createElement(c.default,{voteCount:u,maxVoteCount:n,ended:f,isLoading:y,onVoteName:this.handleVoteName}),m.map(function(t){return s.default.createElement(d.default,{key:t.index,isLoading:y,voteCount:u,maxVoteCount:n,causesVoteCount:i,ended:f,cause:t,vote:r[t.index],account:p,onVoteIndex:e.handleVoteIndex})})))}}]),t}();b.propTypes={ethereum:u.default.shape().isRequired},t.default=(0,r.connect)(function(e){return{ethereum:e.ethereum}},function(e){return{dispatch:e}})(b)},function(e,t){},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=o(i),r=o(n(1)),u=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(17));function o(e){return e&&e.__esModule?e:{default:e}}n(43);var p=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.network,n=e.primaryContractAddresses;return t&&n?s.default.createElement("div",{className:"seedom-participate-footer"},s.default.createElement("div",{className:"container"},s.default.createElement("div",{className:"content has-text-centered"},s.default.createElement("p",null,"View live ",s.default.createElement("strong",null,"Seedom")," data on ",s.default.createElement("a",{className:"is-green",target:"_blank",href:u.getAddressUrl(t.name,n.fundraiser)},"Etherscan"),".")))):null}}]),t}();p.propTypes={network:r.default.shape(),primaryContractAddresses:r.default.shape()},p.defaultProps={network:null,primaryContractAddresses:null},t.default=p},function(e,t){e.exports=require("scroll-to-element")},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=o(i),r=o(n(1)),u=o(n(16));function o(e){return e&&e.__esModule?e:{default:e}}n(46);var p=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={collapsed:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentDidMount",value:function(){this.scrollToElement=n(45)}},{key:"play",value:function(){var e=this;this.setState({collapsed:!1},function(){e.scrollToElement("#seedom-participate-about",{offset:0,ease:"outCirc",duration:3e3})})}},{key:"render",value:function(){var e=this.props.cause;if(!e)return null;var t=this.state.collapsed;return s.default.createElement(u.default,{id:"seedom-participate-about",collapsed:t,title:"about "+e.name},s.default.createElement("div",{className:"seedom-participate-about"},s.default.createElement("div",{className:"video"},s.default.createElement("iframe",{id:"video",title:"video",src:"//www.youtube.com/embed/"+e.video+"?rel=0"+(t?"":"&autoplay=1"),frameBorder:"0",allowFullScreen:!0})),s.default.createElement("div",{className:"field"},s.default.createElement("div",{className:"control"},s.default.createElement("a",{className:"button is-dark",href:"https://"+e.url,target:"_blank"},"learn more at "+e.url)))))}}]),t}();p.propTypes={cause:r.default.shape()},p.defaultProps={cause:null},t.default=p},function(e,t){},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=d(i),r=d(n(1)),u=c(n(12)),o=c(n(5)),p=c(n(17)),l=d(n(16));function c(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}function d(e){return e&&e.__esModule?e:{default:e}}function y(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(48);var m=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,s=Array(i),r=0;r<i;r++)s[r]=arguments[r];return n=a=y(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),a.openTransaction=function(e){var t=a.props.network,n=p.getTransactionUrl(t.name,e);n&&window&&window.open(n,"_blank")},y(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props.feed;return s.default.createElement(l.default,{title:"live activity feed",collapsed:!1},s.default.createElement("div",{className:"seedom-feed"},s.default.createElement("div",{className:"list"},t.map(function(t){return s.default.createElement("div",{className:"row",key:t.transactionHash+"-"+t.transactionIndex,onClick:function(){e.openTransaction(t.transactionHash)}},s.default.createElement("div",{className:"icon"},{FUNDRAISER_PARTICIPATION:s.default.createElement("i",{className:"fas fa-arrow-alt-circle-right"}),FUNDRAISER_RAISE:s.default.createElement("i",{className:"far fa-arrow-alt-circle-up"})}[t.type]),s.default.createElement("div",{className:"contents"},s.default.createElement("div",{className:"side left"},s.default.createElement("div",{className:"blocknum"},s.default.createElement("i",{className:"fas fa-cube"})," ",t.blockNumber),s.default.createElement("div",{className:"address"},u.shorten(function(e){switch(e.type){case"FUNDRAISER_PARTICIPATION":return e.participation.participant;case"FUNDRAISER_RAISE":return e.raise.participant;default:return null}}(t)))),s.default.createElement("div",{className:"side right"},s.default.createElement("div",{className:"entries"},o.localeNumber(function(e){switch(e.type){case"FUNDRAISER_PARTICIPATION":return e.participation.entries;case"FUNDRAISER_RAISE":return e.raise.entries;default:return null}}(t))," entries"),s.default.createElement("div",{className:"messages"},function(e){return"FUNDRAISER_PARTICIPATION"===e.type?e.participation.message:null}(t)))))}))))}}]),t}();m.propTypes={network:r.default.shape(),feed:r.default.arrayOf(r.default.shape())},m.defaultProps={network:null,feed:[]},t.default=m},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=o(i),r=o(n(1)),u=n(5);function o(e){return e&&e.__esModule?e:{default:e}}function p(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function c(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}n(51);var d=function(e){function t(){return p(this,t),l(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return c(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.title,n=e.value,a=e.ether;return s.default.createElement("div",{className:"stat"},s.default.createElement("div",{className:"stat-title"},t),s.default.createElement("div",{className:"stat-value"},n,a&&s.default.createElement("span",{className:"ether"},s.default.createElement("i",{className:"fas fa-bars"}))))}}]),t}();d.propTypes={title:r.default.string.isRequired,value:r.default.string,ether:r.default.bool},d.defaultProps={value:null,ether:!1};var y=function(e){function t(){return p(this,t),l(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return c(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.side,n=e.deployment,a=e.state,i=void 0,r=void 0,o=void 0,p=void 0;if(n&&a){var l=a.entries.times(n.valuePerEntry);i=(0,u.localeDecimal)((0,u.getEtherFromWei)(l.times(n.causeSplit).dividedBy(1e3))),r=(0,u.localeDecimal)((0,u.getEtherFromWei)(l.times(n.participantSplit).dividedBy(1e3))),o=(0,u.localeNumber)(a.participants),p=(0,u.localeNumber)(a.entries)}return s.default.createElement("div",{className:"seedom-stats "+t},("top"===t||"left"===t)&&s.default.createElement("div",{className:"panel"},s.default.createElement("div",{className:"background"}),s.default.createElement(d,{title:"cause reward",value:i,ether:!0}),s.default.createElement(d,{title:"winner reward",value:r,ether:!0})),("top"===t||"right"===t)&&s.default.createElement("div",{className:"panel"},s.default.createElement("div",{className:"background"}),s.default.createElement(d,{title:"participants",value:o}),s.default.createElement(d,{title:"entries",value:p})))}}]),t}();y.propTypes={side:r.default.string.isRequired,deployment:r.default.shape(),state:r.default.shape()},y.defaultProps={deployment:null,state:null},t.default=y},function(e,t){},function(e,t,n){e.exports=n.p+"0b624dd33fb9366ac2ca93ef9c6c45bb.svg"},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=p(n(2)),u=p(n(3)),o=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(21));function p(e){return e&&e.__esModule?e:{default:e}}n(55);var l=function(e){return"https://seedom.io?n="+e.network+"&c="+e.contract+"&p="+e.participant},c=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.onBadgingOver,s=t.primaryContractAddresses,r=t.account,p=t.participant,c=t.network;if(!(s&&r&&p&&c))return null;if(p.entries.isEqualTo(0))return null;var d={network:c.name,contract:s.fundraiser.substr(2),participant:r.substr(2)},y=o.getImageUrl(d),m=function(e){var t=l({network:d.network,contract:d.contract,participant:d.participant});return"https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(t)}(),f=function(e){var t=l({network:d.network,contract:d.contract,participant:d.participant});return"https://twitter.com/share?url="+encodeURIComponent(t)}();return i.default.createElement("div",{className:"seedom-content badge "+e},i.default.createElement(u.default,{type:n?"success":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top large-pad narrow"},i.default.createElement("div",{className:"thank-you"},"thank you!"),i.default.createElement("div",null,"here is your badge")),i.default.createElement("div",{className:"division center squish"},i.default.createElement("img",{className:"seedom-badge",src:y})),i.default.createElement("div",{className:"division bottom small-pad"},i.default.createElement("div",{className:"field is-grouped"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",href:y},i.default.createElement("i",{className:"fas fa-download"}))),i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button twitter",href:f,target:"_blank"},i.default.createElement("span",null,"share"),i.default.createElement("i",{className:"fab fa-twitter right"}))),i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button facebook",href:m,target:"_blank"},i.default.createElement("span",null,"share"),i.default.createElement("i",{className:"fab fa-facebook-f right"})))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-white is-outlined",onClick:a},"continue"))))))}}]),t}();c.propTypes={isShown:s.default.bool.isRequired,onBadgingOver:s.default.func.isRequired,primaryContractAddresses:s.default.shape(),account:s.default.string,participant:s.default.shape(),network:s.default.shape()},c.defaultProps={primaryContractAddresses:null,account:null,participant:null,network:null},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=p(n(2)),u=p(n(3)),o=p(n(4));function p(e){return e&&e.__esModule?e:{default:e}}var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.cause;return i.default.createElement("div",{className:"seedom-content seed-failed "+e},i.default.createElement(u.default,{type:n?"error":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top"},i.default.createElement(o.default,{cause:a,size:"medium"})),i.default.createElement("div",{className:"division text bottom huge-pad narrow"},i.default.createElement("span",null,"participation closed, stay tuned for selection"))))}}]),t}();l.propTypes={isShown:s.default.bool.isRequired,cause:s.default.shape()},l.defaultProps={cause:null},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=n(7),u=p(n(2)),o=p(n(3));function p(e){return e&&e.__esModule?e:{default:e}}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}var c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,s=Array(i),r=0;r<i;r++)s[r]=arguments[r];return n=a=l(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),a.openMetamask=function(){window&&window.open(METAMASK_URL,"_blank")},l(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,u.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props.isShown;return i.default.createElement("div",{className:"seedom-content account "+e},i.default.createElement(o.default,{type:t?"error":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top medium-pad"},i.default.createElement("div",{className:"ethereum-logo"})),i.default.createElement("div",{className:"division text center squish narrow"},i.default.createElement("span",null,"account not available, please confirm")),i.default.createElement("div",{className:"division bottom large-pad"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement(r.Link,{className:"button is-white is-outlined",to:"/help"},"how to access seedom"))))))}}]),t}();c.propTypes={isShown:s.default.bool},c.defaultProps={isShown:!1},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=n(7),u=p(n(2)),o=p(n(3));function p(e){return e&&e.__esModule?e:{default:e}}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}var c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,s=Array(i),r=0;r<i;r++)s[r]=arguments[r];return n=a=l(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),a.openMetamask=function(){window&&window.open(METAMASK_URL,"_blank")},l(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,u.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props.isShown;return i.default.createElement("div",{className:"seedom-content ethereum "+e},i.default.createElement(o.default,{type:t?"error":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top medium-pad"},i.default.createElement("div",{className:"ethereum-logo"})),i.default.createElement("div",{className:"division text center squish narrow"},i.default.createElement("span",null,"current network not supported, please change")),i.default.createElement("div",{className:"division bottom large-pad"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement(r.Link,{className:"button is-white is-outlined",to:"/help"},"how to access seedom"))))))}}]),t}();c.propTypes={isShown:s.default.bool.isRequired},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=n(7),u=p(n(2)),o=p(n(3));function p(e){return e&&e.__esModule?e:{default:e}}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}var c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,s=Array(i),r=0;r<i;r++)s[r]=arguments[r];return n=a=l(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),a.openMetamask=function(){window&&window.open(METAMASK_URL,"_blank")},l(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,u.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props.isShown;return i.default.createElement("div",{className:"seedom-content ethereum "+e},i.default.createElement(o.default,{type:t?"error":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top medium-pad"},i.default.createElement("div",{className:"ethereum-logo"})),i.default.createElement("div",{className:"division text center squish narrow"},i.default.createElement("span",null,"plugin or browser not detected")),i.default.createElement("div",{className:"division bottom large-pad"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement(r.Link,{className:"button is-white is-outlined",to:"/help"},"how to access seedom"))))))}}]),t}();c.propTypes={isShown:s.default.bool.isRequired},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=p(n(2)),u=p(n(3)),o=p(n(4));function p(e){return e&&e.__esModule?e:{default:e}}var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props.cause;return i.default.createElement("div",{className:"seedom-content cancelled "+e},i.default.createElement(u.default,{type:"error"}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top small-pad"},i.default.createElement(o.default,{cause:t,size:"medium"})),i.default.createElement("div",{className:"division text bottom small-pad narrow"},i.default.createElement("span",null,"fundraiser cancelled, please check back later"))))}}]),t}();l.propTypes={cause:s.default.shape()},l.defaultProps={cause:null},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=p(n(2)),u=p(n(3)),o=p(n(4));function p(e){return e&&e.__esModule?e:{default:e}}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}var c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,s=Array(i),r=0;r<i;r++)s[r]=arguments[r];return n=a=l(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),a.handleSubmit=function(){(0,a.props.onCancel)()},l(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isLoading,a=t.cause;return i.default.createElement("div",{className:"seedom-content cancel "+e},i.default.createElement(u.default,{type:"cancel"}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top small-pad"},i.default.createElement(o.default,{cause:a,size:"medium"})),i.default.createElement("div",{className:"division text center squish narrow"},"fundraiser expired, please cancel for the community"),i.default.createElement("div",{className:"division bottom huge-pad"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",disabled:n,onClick:this.handleSubmit},"cancel"))))))}}]),t}();c.propTypes={isLoading:s.default.bool,onCancel:s.default.func.isRequired,cause:s.default.shape()},c.defaultProps={isLoading:!1,cause:null},t.default=c},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=p(n(2)),u=p(n(3)),o=n(5);function p(e){return e&&e.__esModule?e:{default:e}}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(63);var c=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,s=Array(i),r=0;r<i;r++)s[r]=arguments[r];return n=a=l(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),a.handleWithdraw=function(e){(0,a.props.onWithdraw)(e)},l(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this,t=this.props.balances;if(!t)return null;var n=this.state.className,a=this.props,s=a.isShown,r=a.onWithdrawSkipped,p=a.isLoading,l=function(e){var t=(0,o.zero)(),n=null;for(var a in e){var i=e[a];i.isGreaterThan(t)&&(t=i,n=a)}return{contractAddress:n,balance:t}}(t);return i.default.createElement("div",{className:"seedom-content withdraw "+n},i.default.createElement(u.default,{type:s?"success":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top medium-pad"},i.default.createElement("div",null,"you have"),i.default.createElement("div",{className:"balance"},(0,o.localeDecimal)((0,o.getEtherFromWei)(l.balance)),i.default.createElement("span",{className:"ether is-dark"},i.default.createElement("i",{className:"fas fa-bars"}))),i.default.createElement("div",null,"to withdraw!")),i.default.createElement("div",{className:"division bottom large-pad"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",disabled:p,onClick:function(){return e.handleWithdraw(l.contractAddress)}},"withdraw ether"))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-white is-outlined",disabled:p,onClick:r},"skip for now"))))))}}]),t}();c.propTypes={balances:s.default.shape(),isShown:s.default.bool.isRequired,isLoading:s.default.bool,onWithdrawSkipped:s.default.func.isRequired,onWithdraw:s.default.func.isRequired},c.defaultProps={balances:null,isLoading:!1},t.default=c},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=(function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);t.default=e}(n(17)),p(n(2))),u=p(n(3)),o=p(n(4));function p(e){return e&&e.__esModule?e:{default:e}}n(65);var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.state,s=(t.network,t.cause),r=void 0,p=void 0,l=void 0;return a&&(r=a.causeMessage,p=a.ownerMessage,l=a.participantMessage),i.default.createElement("div",{className:"seedom-content selection "+e},i.default.createElement(u.default,{type:n?"selection":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top"},i.default.createElement(o.default,{cause:s,size:"medium"})),i.default.createElement("div",{className:"division text center narrow"},i.default.createElement("div",{className:"left"},i.default.createElement("div",{className:"header"},"cause message"),i.default.createElement("div",{className:"value"},r)),i.default.createElement("div",{className:"right"},i.default.createElement("div",{className:"header"},"owner message"),i.default.createElement("div",{className:"value"},p))),i.default.createElement("div",{className:"division text bottom slim"},i.default.createElement("div",{className:"header"},"participant message"),i.default.createElement("div",{className:"value"},l))))}}]),t}();l.propTypes={isShown:s.default.bool.isRequired,state:s.default.shape(),network:s.default.shape(),cause:s.default.shape()},l.defaultProps={state:null,network:null,cause:null},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=o(n(0)),s=o(n(1)),r=o(n(2)),u=o(n(3));function o(e){return e&&e.__esModule?e:{default:e}}var p=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props.isShown;return i.default.createElement("div",{className:"seedom-content end "+e},i.default.createElement(u.default,{type:t?"waiting":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top small-pad narrow"},i.default.createElement("span",null,"please wait for")),i.default.createElement("div",{className:"division text center"},i.default.createElement("div",{className:"seedom-logo"})),i.default.createElement("div",{className:"division text bottom small-pad narrow"},i.default.createElement("span",null,"to end the fundraiser"))))}}]),t}();p.propTypes={isShown:s.default.bool.isRequired},t.default=p},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=p(n(2)),u=p(n(3)),o=p(n(4));function p(e){return e&&e.__esModule?e:{default:e}}var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.cause;return i.default.createElement("div",{className:"seedom-content end "+e},i.default.createElement(u.default,{type:n?"waiting":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top small-pad narrow"},i.default.createElement("span",null,"please wait for")),i.default.createElement("div",{className:"division text center"},i.default.createElement(o.default,{cause:a})),i.default.createElement("div",{className:"division text bottom small-pad narrow"},i.default.createElement("span",null,"to reveal their message"))))}}]),t}();l.propTypes={isShown:s.default.bool.isRequired,cause:s.default.shape()},l.defaultProps={cause:null},t.default=l},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=d(n(0)),s=d(n(1)),r=n(9),u=n(5),o=d(n(2)),p=d(n(3)),l=d(n(19)),c=d(n(4));function d(e){return e&&e.__esModule?e:{default:e}}n(69);var y=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.validateForm=function(e){var t=n.entries.validate();n.setState({isFormValid:t},e)},n.handleSubmit=function(){n.validateForm(function(){if(n.state.isFormValid){var e=n.entries.value();n.props.onRaise(e)}else r.toastr.warning("RAISE","form invalid")})},n.state={isFormValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default),a(t,[{key:"show",value:function(){(function e(t,n,a){null===t&&(t=Function.prototype);var i=Object.getOwnPropertyDescriptor(t,n);if(void 0===i){var s=Object.getPrototypeOf(t);return null===s?void 0:e(s,n,a)}if("value"in i)return i.value;var r=i.get;return void 0!==r?r.call(a):void 0})(t.prototype.__proto__||Object.getPrototypeOf(t.prototype),"show",this).call(this),this.entries.focus()}},{key:"render",value:function(){var e=this,t=this.state.className,n=this.props,a=n.deployment,s=n.cause,r=n.isLoading,o=n.onRaisingCancelled,d=void 0;return a&&(d=(0,u.localeDecimal)((0,u.getEtherFromWei)(a.valuePerEntry))),i.default.createElement("div",{className:"seedom-content raise "+t},i.default.createElement(p.default,{type:r?"waiting":null}),i.default.createElement("div",{className:"seedom-overlay"},i.default.createElement(c.default,{cause:s,size:"small"}),i.default.createElement("div",{className:"text"},"1 entry = ",d,i.default.createElement("span",{className:"ether"},i.default.createElement("i",{className:"fas fa-bars"}))),i.default.createElement(l.default,{deployment:a,disabled:r,ref:function(t){e.entries=t}}),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",disabled:r,onClick:this.handleSubmit},"get more entries"))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-white is-outlined",onClick:o},"cancel")))))}}]),t}();y.propTypes={deployment:s.default.shape(),cause:s.default.shape(),isLoading:s.default.bool,onRaisingCancelled:s.default.func.isRequired},y.defaultProps={deployment:null,cause:null,isLoading:!1},t.default=y},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=c(n(0)),s=c(n(1)),r=n(5),u=n(7),o=c(n(2)),p=c(n(3)),l=c(n(4));function c(e){return e&&e.__esModule?e:{default:e}}n(71);var d=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.participant,s=t.onRaising,o=t.onBadging,c=t.cause,d=a?a.entries:(0,r.zero)(),y=(0,r.localeNumber)(d);return i.default.createElement("div",{className:"seedom-content participated "+e},i.default.createElement(p.default,{type:n?"success":null}),i.default.createElement("div",{className:"seedom-overlay"},i.default.createElement("div",{className:"text entries"},y),i.default.createElement("div",{className:"text obtained"},1===Number(y)?"entry":"entries"," obtained"),i.default.createElement(l.default,{cause:c,size:"small"}),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",onClick:s},"get more entries"))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement(u.Link,{className:"button is-white is-outlined",to:"/vote"},"vote on next cause"))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-white is-outlined",onClick:o},"view badge")))))}}]),t}();d.propTypes={isShown:s.default.bool.isRequired,participant:s.default.shape(),onRaising:s.default.func.isRequired,onBadging:s.default.func.isRequired,cause:s.default.shape()},d.defaultProps={participant:null,cause:null},t.default=d},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=o(i),r=o(n(1)),u=o(n(10));function o(e){return e&&e.__esModule?e:{default:e}}var p=/\S+@\S+\.\S+/,l=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.focus=function(){n.email.focus()},n.validate=function(){var e=n.state.value,t=""===e||p.test(e);return n.setState({isValid:t}),t},n.value=function(){return n.state.value},n.handleChange=function(e){n.setState({value:e})},n.state={value:"",isValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props.disabled,n=this.state,a=n.value,i=n.isValid;return s.default.createElement(u.default,{format:"textbox",type:"text",placeholder:"email (optional)",value:a,disabled:t,isValid:i,onChange:this.handleChange,ref:function(t){e.email=t}})}}]),t}();l.propTypes={disabled:r.default.bool.isRequired},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=o(i),r=o(n(1)),u=o(n(10));function o(e){return e&&e.__esModule?e:{default:e}}var p=32,l=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.focus=function(){n.message.focus()},n.validate=function(){var e=n.state.value,t=e.length>0&&e.length<=p;return n.setState({isValid:t}),t},n.value=function(){return n.state.value},n.handleChange=function(e){n.setState({value:e})},n.state={value:"",isValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props.disabled,n=this.state,a=n.value,i=n.isValid;return s.default.createElement(u.default,{format:"textblock",type:"text",placeholder:"your message\nto the world",value:a,maxLength:p,disabled:t,isValid:i,onChange:this.handleChange,ref:function(t){e.message=t}})}}]),t}();l.propTypes={disabled:r.default.bool.isRequired},t.default=l},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=y(n(0)),s=y(n(1)),r=n(9),u=y(n(2)),o=y(n(19)),p=y(n(75)),l=y(n(74)),c=y(n(3)),d=y(n(4));function y(e){return e&&e.__esModule?e:{default:e}}n(73);var m=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.validateForm=function(e){var t=n.entries.validate(),a=n.message.validate(),i=n.email.validate();n.setState({isFormValid:t&&a&&i},e)},n.handleSubmit=function(){n.validateForm(function(){if(n.state.isFormValid){var e=n.entries.value(),t=n.message.value(),a=n.email.value();n.props.onParticipate({message:t,entries:e,email:a})}else r.toastr.warning("PARTICIPATE","form invalid")})},n.state={isFormValid:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,u.default),a(t,[{key:"show",value:function(){(function e(t,n,a){null===t&&(t=Function.prototype);var i=Object.getOwnPropertyDescriptor(t,n);if(void 0===i){var s=Object.getPrototypeOf(t);return null===s?void 0:e(s,n,a)}if("value"in i)return i.value;var r=i.get;return void 0!==r?r.call(a):void 0})(t.prototype.__proto__||Object.getPrototypeOf(t.prototype),"show",this).call(this),this.entries.focus()}},{key:"render",value:function(){var e=this,t=this.props,n=t.deployment,a=t.cause,s=t.isLoading,r=this.state.className;return i.default.createElement("div",{className:"seedom-content participate "+r},i.default.createElement(c.default,{type:s?"waiting":null}),i.default.createElement("div",{className:"seedom-overlay"},i.default.createElement(d.default,{cause:a,size:"small"}),i.default.createElement(o.default,{deployment:n,disabled:s,ref:function(t){e.entries=t}}),i.default.createElement(p.default,{disabled:s,ref:function(t){e.message=t}}),i.default.createElement(l.default,{disabled:s,ref:function(t){e.email=t}}),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",disabled:s,onClick:this.handleSubmit},"PARTICIPATE")))))}}]),t}();m.propTypes={isLoading:s.default.bool,deployment:s.default.shape(),cause:s.default.shape()},m.defaultProps={deployment:null,cause:null,isLoading:!1},t.default=m},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),s=l(n(1)),r=l(n(2)),u=n(5),o=n(7),p=l(n(4));function l(e){return e&&e.__esModule?e:{default:e}}n(78);var c=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.deployment,a=t.cause,s=t.onCountMeIn,r=void 0;return n&&(r=(0,u.localeDecimal)((0,u.getEtherFromWei)(n.valuePerEntry))),i.default.createElement("div",{className:"seedom-content welcome "+e},i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top"},i.default.createElement("div",null,i.default.createElement("span",null,"1 entry = ",r),i.default.createElement("span",{className:"ether"},i.default.createElement("i",{className:"fas fa-bars"}))),i.default.createElement("div",{className:"supporting"},"now seeding")),i.default.createElement("div",{className:"division center"},i.default.createElement(p.default,{cause:a})),i.default.createElement("div",{className:"division bottom"},i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement(o.Link,{className:"button is-white is-outlined",to:"/help"},"how does this work?"))),i.default.createElement("div",{className:"field"},i.default.createElement("div",{className:"control"},i.default.createElement("a",{className:"button is-dark",onClick:s},"count me in!"))))))}}]),t}();c.propTypes={deployment:s.default.shape(),cause:s.default.shape(),onCountMeIn:s.default.func.isRequired},c.defaultProps={deployment:null,cause:null},t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=p(n(2)),u=p(n(3)),o=p(n(4));function p(e){return e&&e.__esModule?e:{default:e}}var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.cause;return i.default.createElement("div",{className:"seedom-content seed-failed "+e},i.default.createElement(u.default,{type:n?"error":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division top"},i.default.createElement(o.default,{cause:a,size:"medium"})),i.default.createElement("div",{className:"division text bottom huge-pad narrow"},i.default.createElement("span",null,"cause failed to begin their fundraiser"))))}}]),t}();l.propTypes={isShown:s.default.bool.isRequired,cause:s.default.shape()},l.defaultProps={cause:null},t.default=l},function(e,t){},function(e,t){},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=p(n(0)),s=p(n(1)),r=p(n(2)),u=p(n(3)),o=p(n(4));function p(e){return e&&e.__esModule?e:{default:e}}var l=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,r.default),a(t,[{key:"render",value:function(){var e=this.state.className,t=this.props,n=t.isShown,a=t.cause;return i.default.createElement("div",{className:"seedom-content seed "+e},i.default.createElement(u.default,{type:n?"waiting":null}),i.default.createElement("div",{className:"seedom-overlay layout"},i.default.createElement("div",{className:"division text top small-pad narrow"},i.default.createElement("span",null,"please wait for")),i.default.createElement("div",{className:"division text center"},i.default.createElement(o.default,{cause:a})),i.default.createElement("div",{className:"division text bottom small-pad narrow"},i.default.createElement("span",null,"to begin their fundraiser"))))}}]),t}();l.propTypes={isShown:s.default.bool.isRequired,cause:s.default.shape()},l.defaultProps={cause:null},t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=S(i),r=S(n(1)),u=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(12)),o=S(n(20)),p=S(n(84)),l=S(n(80)),c=S(n(79)),d=S(n(77)),y=S(n(72)),m=S(n(70)),f=S(n(68)),b=S(n(67)),_=S(n(66)),v=S(n(64)),h=S(n(62)),w=S(n(61)),g=S(n(60)),E=S(n(59)),x=S(n(58)),M=S(n(57)),N=S(n(56)),O=S(n(54));function S(e){return e&&e.__esModule?e:{default:e}}n(53);var P=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.handleCountMeIn=function(){n.setState({isParticipating:!0})},n.handleParticipate=function(e){var t=e.message,a=e.entries,i=e.email;n.setState({isBadging:!0},function(){n.props.onParticipate({message:t,entries:a,email:i})})},n.handleBadging=function(){n.setState({isBadging:!0})},n.handleBadgingOver=function(){n.setState({isBadging:!1})},n.handleRaising=function(){n.setState({isRaising:!0})},n.handleRaisingCancelled=function(){n.setState({isRaising:!1})},n.handleRaise=function(e){n.setState({isRaising:!1},function(){n.props.onRaise(e)})},n.handleWithdraw=function(e){n.props.onWithdraw(e)},n.handleWithdrawSkipped=function(){n.setState({isWithdrawing:!1})},n.handleCancel=function(){n.props.onCancel()},n.state={phase:null,isParticipating:!1,isBadging:!1,isRaising:!1,isWithdrawing:!0},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentDidMount",value:function(){var e=this;this.interval=setInterval(function(){var t=function(e){if(!e)return null;var t=Date.now();return t<e.endTime?"participation":t>=e.endTime&&t<e.expireTime?"end":t>=e.expireTime&&t<e.destructTime?"expiration":"destruction"}(e.props.deployment);t!==e.state.phase&&e.setState({phase:t})},1e3)}},{key:"componentWillUnmount",value:function(){clearInterval(this.interval)}},{key:"render",value:function(){var e=this.state,t=e.phase,n=e.isParticipating,a=e.isBadging,i=e.isRaising,r=e.isWithdrawing,S=this.props,P=S.network,T=S.account,C=S.deployment,j=S.cause,R=S.state,k=S.participant,A=S.balances,I=S.isLoading,W=S.primaryContractAddresses,L=function(e){var t=e.network,n=e.account,a=e.phase,i=e.state,s=e.participant,r=e.balances,o=e.isLoading,p=e.isParticipating,l=e.isBadging,c=e.isRaising,d=e.isWithdrawing;if(!t)return"ethereum";if(!t.supported||!t.deployed)return"network";if(!n)return"account";if(r&&Object.keys(r).length>0&&d)return"withdraw";if(!i)return null;if(!u.isZero20(i.participant))return"selection";if(i.cancelled)return"cancelled";if(!s)return null;switch(a){case"participation":return u.isZero32(i.causeSecret)?"begin":""===s.message?p?"participate":"welcome":l?"badge":c||o?"raise":"participation";case"end":return u.isZero32(i.causeSecret)?"beginningFailed":""===s.message?"participationFailed":""===i.causeMessage?"reveal":"end";case"expiration":return"cancel";default:return null}}({network:P,account:T,phase:t,deployment:C,state:R,participant:k,balances:A,isLoading:I,isParticipating:n,isBadging:a,isRaising:i,isWithdrawing:r});return s.default.createElement("div",{className:"seedom-puck"},s.default.createElement("div",{className:"intro"},s.default.createElement("img",{alt:"seedom",src:O.default})),s.default.createElement("div",{className:"interface"},s.default.createElement(o.default,{isLoading:I,deployment:C}),s.default.createElement(g.default,{isShown:"ethereum"===L}),s.default.createElement(E.default,{isShown:"network"===L}),s.default.createElement(x.default,{isShown:"account"===L}),s.default.createElement(c.default,{isShown:"welcome"===L,deployment:C,cause:j,onCountMeIn:this.handleCountMeIn}),s.default.createElement(p.default,{isShown:"begin"===L,cause:j}),s.default.createElement(l.default,{isShown:"beginningFailed"===L,cause:j}),s.default.createElement(d.default,{isShown:"participate"===L,deployment:C,cause:j,isLoading:I,onParticipate:this.handleParticipate}),s.default.createElement(N.default,{isShown:"badge"===L,primaryContractAddresses:W,network:P,account:T,participant:k,onBadgingOver:this.handleBadgingOver}),s.default.createElement(y.default,{isShown:"participation"===L,participant:k,cause:j,onRaising:this.handleRaising,onBadging:this.handleBadging}),s.default.createElement(M.default,{isShown:"participationFailed"===L,cause:j}),s.default.createElement(m.default,{isShown:"raise"===L,deployment:C,cause:j,isLoading:I,onRaise:this.handleRaise,onRaisingCancelled:this.handleRaisingCancelled}),s.default.createElement(f.default,{isShown:"reveal"===L,cause:j}),s.default.createElement(b.default,{isShown:"end"===L}),s.default.createElement(_.default,{isShown:"selection"===L,state:R,network:P,cause:j}),s.default.createElement(v.default,{isShown:"withdraw"===L,balances:A,isLoading:I,onWithdraw:this.handleWithdraw,onWithdrawSkipped:this.handleWithdrawSkipped}),s.default.createElement(h.default,{isShown:"cancel"===L,isLoading:I,cause:j,onCancel:this.handleCancel}),s.default.createElement(w.default,{isShown:"cancelled"===L,cause:j})))}}]),t}();P.propTypes={network:r.default.shape(),account:r.default.string,deployment:r.default.shape(),cause:r.default.shape(),state:r.default.shape(),participant:r.default.shape(),balances:r.default.shape(),isLoading:r.default.bool,primaryContractAddresses:r.default.shape(),onParticipate:r.default.func.isRequired,onRaise:r.default.func.isRequired,onWithdraw:r.default.func.isRequired,onCancel:r.default.func.isRequired},P.defaultProps={network:null,account:null,deployment:null,cause:null,state:null,participant:null,balances:null,isLoading:!1,primaryContractAddresses:null},t.default=P},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.localeDate=function(e){return e.toLocaleString(void 0,{timeZoneName:"short",month:"numeric",day:"numeric",hour:"numeric"})},t.localeDateTime=function(e){return e.toLocaleString(void 0,{timeZoneName:"short",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric"})}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=o(i),r=o(n(1)),u=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(87));function o(e){return e&&e.__esModule?e:{default:e}}function p(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function c(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}n(86);var d=function(e){function t(){return p(this,t),l(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return c(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.type,n=e.title,a=e.value;return s.default.createElement("div",{className:"item "+t},s.default.createElement("div",{className:"item-title"},n),s.default.createElement("div",{className:"item-value"},a))}}]),t}();d.propTypes={type:r.default.string.isRequired,title:r.default.string.isRequired,value:r.default.string},d.defaultProps={value:null};var y=function(e){function t(){return p(this,t),l(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return c(t,i.Component),a(t,[{key:"render",value:function(){var e=this.props,t=e.deployment,n=e.network,a=void 0,i=void 0;t&&(a=u.localeDate(t.deployTime),i=u.localeDate(t.endTime));var r=void 0;return n&&(r=n.name),s.default.createElement("div",{className:"seedom-header"},s.default.createElement("div",{className:"background"}),s.default.createElement(d,{type:"side",title:"start date",value:a}),s.default.createElement(d,{type:"center",title:"network",value:r}),s.default.createElement(d,{type:"side",title:"end date",value:i}))}}]),t}();y.propTypes={deployment:r.default.shape(),network:r.default.shape()},y.defaultProps={deployment:null,network:null},t.default=y},function(e,t){e.exports=require("axios")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=v(i),r=n(6),u=v(n(1)),o=v(n(89)),p=_(n(14)),l=_(n(15)),c=v(n(88)),d=v(n(85)),y=v(n(52)),m=v(n(50)),f=v(n(47)),b=v(n(44));function _(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}function v(e){return e&&e.__esModule?e:{default:e}}function h(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}n(42);var w=function(e){function t(){var e,n,a;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var i=arguments.length,s=Array(i),r=0;r<i;r++)s[r]=arguments[r];return n=a=h(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),a.handleParticipate=function(e){var t=e.message,n=e.entries,i=e.email,s=a.props.ethereum,r=s.deployment,u=s.account,c=s.cause,d=p.hex(t),y=n.times(r.valuePerEntry);a.props.dispatch(l.send({contractName:"fundraiser",method:"participate",args:[d],value:y})),""!==i&&o.default.post("/mailerlite/addParticipant",{email:i,participant:u,cause:c.name,message:t}),a.about.play()},a.handleRaise=function(e){var t=a.props.ethereum.deployment,n=e.times(t.valuePerEntry);a.props.dispatch(l.send({contractName:"fundraiser",value:n}))},a.handleWithdraw=function(e){a.props.dispatch(l.send({contractName:"fundraiser",contractAddress:e,method:"withdraw"}))},a.handleCancel=function(){a.props.dispatch(l.send({contractName:"fundraiser",method:"cancel"}))},h(a,n)}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e=this,t=this.props.ethereum,n=t.network,a=t.account,i=t.deployment,r=t.state,u=t.participant,o=t.balances,p=t.feed,l=t.isLoading,_=t.primaryContractAddresses,v=t.cause;return s.default.createElement("div",{className:"seedom-seed"},s.default.createElement("div",{className:"background"},s.default.createElement(c.default,{deployment:i,network:n}),s.default.createElement("div",{className:"central"},s.default.createElement(y.default,{side:"left",deployment:i,state:r}),s.default.createElement(d.default,{network:n,account:a,deployment:i,cause:v,state:r,participant:u,balances:o,isLoading:l,primaryContractAddresses:_,onParticipate:this.handleParticipate,onRaise:this.handleRaise,onWithdraw:this.handleWithdraw,onCancel:this.handleCancel}),s.default.createElement(y.default,{side:"right",deployment:i,state:r}))),s.default.createElement(f.default,{cause:v,ref:function(t){e.about=t}}),s.default.createElement(m.default,{feed:p,network:n}),s.default.createElement(b.default,{network:n,primaryContractAddresses:_}))}}]),t}();w.propTypes={ethereum:u.default.shape().isRequired,dispatch:u.default.func.isRequired},t.default=(0,r.connect)(function(e){return{ethereum:e.ethereum}},function(e){return{dispatch:e}})(w)},function(e,t){},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=u(i),r=u(n(20));function u(e){return e&&e.__esModule?e:{default:e}}n(91);var o=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"render",value:function(){var e={deployTime:new Date(15243696e5),endTime:new Date(15251472e5)};return s.default.createElement("div",{className:"seedom-hype"},s.default.createElement("div",{className:"countdown"},s.default.createElement(r.default,{starter:"launches",isLoading:!1,deployment:e}),s.default.createElement("div",{className:"seedom-content show"},s.default.createElement("div",{className:"seedom-overlay layout"},s.default.createElement("div",{className:"division text top large-pad narrow"},s.default.createElement("div",{className:"coming-soon"},"Launches May 1"),s.default.createElement("div",{className:"field"},s.default.createElement("div",{className:"control"},s.default.createElement("a",{className:"button is-success",type:"submit",href:"https://seedom-io.github.io/seedom-whitepaper/seedom-whitepaper.pdf"},"READ THE WHITEPAPER")))),s.default.createElement("div",{className:"division text center"},s.default.createElement("div",{className:"seedom-logo"})),s.default.createElement("div",{className:"division text bottom"},s.default.createElement("form",{action:"https://landing.mailerlite.com/webforms/submit/z2z8h3",method:"POST",target:"_blank"},s.default.createElement("input",{type:"hidden",name:"ml-submit",value:"1"}),s.default.createElement("div",{className:"field email"},s.default.createElement("div",{className:"control textbox"},s.default.createElement("input",{className:"input is-primary",type:"email",placeholder:"email@example.com",name:"fields[email]"}))),s.default.createElement("div",{className:"field"},s.default.createElement("div",{className:"control"},s.default.createElement("button",{className:"button is-success",type:"submit"},"SEND ME A REMINDER")))))))))}}]),t}();t.default=o},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,i=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),s=n(0),r=(a=s)&&a.__esModule?a:{default:a},u=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.Component),i(t,[{key:"render",value:function(){return r.default.createElement("footer",{className:"footer"},r.default.createElement("div",{className:"container"},r.default.createElement("div",{className:"content has-text-centered"},r.default.createElement("p",null,r.default.createElement("strong",null,"Seedom")," by the ",r.default.createElement("a",{className:"is-green",href:"mailto:team@seedom.io"},"Seedom Team")))))}}]),t}();t.default=u},function(e,t,n){e.exports=n.p+"675f54f2e7b62546c91f1a4c8d468259.png"},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=l(n(0)),s=n(6),r=n(7),u=l(n(1)),o=l(n(11)),p=l(n(95));function l(e){return e&&e.__esModule?e:{default:e}}var c=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.handleNavToggle=function(){n.setState({isBurgerActive:!n.state.isBurgerActive})},n.handleNavLink=function(){n.setState({isBurgerActive:!1})},n.state={isBurgerActive:!1},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.default.Component),a(t,[{key:"render",value:function(){var e=this.state.isBurgerActive,t=this.props.ethereum.isLoading;return i.default.createElement("nav",{className:"navbar"},i.default.createElement("div",{className:"container"},i.default.createElement("div",{className:(0,o.default)("navbar-brand",{"is-loading":t})},i.default.createElement("a",{className:"navbar-item",href:"/"},i.default.createElement("img",{src:p.default,alt:"Seedom - Seeding the future of philanthropy"})),i.default.createElement("div",{className:(0,o.default)("navbar-burger","burger",{"is-active":e}),onClick:this.handleNavToggle},i.default.createElement("span",null),i.default.createElement("span",null),i.default.createElement("span",null))),i.default.createElement("div",{className:(0,o.default)("navbar-menu",{"is-active":e})},i.default.createElement("div",{className:"navbar-start"},i.default.createElement(r.NavLink,{className:"navbar-item",activeClassName:"is-active",to:"/",onClick:this.handleNavLink,exact:!0},"PARTICIPATE"),i.default.createElement(r.NavLink,{className:"navbar-item",activeClassName:"is-active",to:"/vote",onClick:this.handleNavLink,exact:!0},"VOTE"),i.default.createElement(r.NavLink,{className:"navbar-item",activeClassName:"is-active",to:"/help",onClick:this.handleNavLink,exact:!0},"HELP"),i.default.createElement(r.NavLink,{className:"navbar-item",activeClassName:"is-active",to:"/about",onClick:this.handleNavLink,exact:!0},"ABOUT"),i.default.createElement(r.NavLink,{className:"navbar-item",activeClassName:"is-active",to:"/contact",onClick:this.handleNavLink,exact:!0},"CONTACT")),i.default.createElement("div",{className:"navbar-end"},i.default.createElement("a",{className:"navbar-item",href:"https://t.me/seedomio"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-telegram"}))),i.default.createElement("a",{className:"navbar-item",href:"https://medium.com/@seedom.io"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-medium"}))),i.default.createElement("a",{className:"navbar-item",href:"https://reddit.com/r/seedom_io"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-reddit"}))),i.default.createElement("a",{className:"navbar-item",href:"https://github.com/seedom-io"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-github"}))),i.default.createElement("a",{className:"navbar-item",href:"https://www.facebook.com/seedom.io"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-facebook"}))),i.default.createElement("a",{className:"navbar-item",href:"https://twitter.com/seedom_io"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-twitter"}))),i.default.createElement("a",{className:"navbar-item",href:"https://www.instagram.com/seedom.io/"},i.default.createElement("span",{className:"icon"},i.default.createElement("i",{className:"fab fa-lg fa-instagram"})))))))}}]),t}();c.propTypes={ethereum:u.default.shape().isRequired,router:u.default.shape().isRequired},t.default=(0,s.connect)(function(e){return{router:e.router,ethereum:e.ethereum}})(c)},function(e,t,n){e.exports=n.p+"f7dd7bbe891a7e584e06fe34a510dc3d.png"},function(e,t){e.exports=require("query-string")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(0),s=c(i),r=n(6),u=n(23),o=c(n(98)),p=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(21)),l=c(n(97));function c(e){return e&&e.__esModule?e:{default:e}}var d="Seedom | Seeding the future of philanthropy",y="Raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support. Seed the future of philanthropy!",m=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.Component),a(t,[{key:"componentDidMount",value:function(){if(window){var e=function(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","UA-110677302-1")}}},{key:"render",value:function(){var e=this.props.router,t="https://seedom.io",n="https://raw.githubusercontent.com/seedom-io/seedom-assets/master/share/seedom-share.png";if(e&&e.location&&""!==e.location.search){var a=o.default.parse(e.location.search.substr(1)),i=a.n,r=a.c,c=a.p;i&&r&&c&&(t+=e.location.search,n=p.getImageUrl({network:i,contract:r,participant:c}))}return s.default.createElement(u.Helmet,null,s.default.createElement("title",null,d),s.default.createElement("meta",{name:"description",content:y}),s.default.createElement("meta",{name:"author",content:"Team Palm Tree"}),s.default.createElement("link",{rel:"icon",type:"image/png",href:l.default}),s.default.createElement("meta",{name:"viewport",content:"width=device-width, initial-scale=0.7, maximum-scale=0.7"}),s.default.createElement("meta",{name:"twitter:card",property:"twitter:card",content:"summary_large_image"}),s.default.createElement("meta",{name:"twitter:site",property:"twitter:site",content:"@seedom_io"}),s.default.createElement("meta",{name:"twitter:title",property:"twitter:title",content:d}),s.default.createElement("meta",{name:"twitter:description",property:"twitter:description",content:y}),s.default.createElement("meta",{name:"twitter:image",property:"twitter:image",content:n}),s.default.createElement("meta",{name:"twitter:url",property:"twitter:url",content:t}),s.default.createElement("meta",{name:"og:type",property:"og:type",content:"website"}),s.default.createElement("meta",{name:"og:site_name",property:"og:site_name",content:"Seedom"}),s.default.createElement("meta",{name:"og:title",property:"og:title",content:d}),s.default.createElement("meta",{name:"og:description",property:"og:description",content:y}),s.default.createElement("meta",{name:"og:image",property:"og:image",content:n}),s.default.createElement("meta",{name:"og:image:width",property:"og:image:width",content:1200}),s.default.createElement("meta",{name:"og:image:height",property:"og:image:height",content:628}),s.default.createElement("meta",{name:"og:url",property:"og:url",content:t}),s.default.createElement("link",{rel:"stylesheet",href:"https://use.fontawesome.com/releases/v5.0.10/css/all.css",integrity:"sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg",crossOrigin:"anonymous"}),s.default.createElement("script",{async:!0,src:"https://www.googletagmanager.com/gtag/js?id=UA-110677302-1"}))}}]),t}();t.default=(0,r.connect)(function(e){return{router:e.router}})(m)},function(e,t){},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(22));t.default=function(e){return function(t){return function(n){switch(n.type){case"FUNDRAISER_DEPLOYMENT":return function(t,n){return fetch(a.getJsonUrl(n.deployment.cause)).then(function(e){return e.json()}).then(function(t){e.dispatch({type:"CAUSE_CAUSE",cause:t})}),t(n)}(t,n);default:return t(n)}}}}},function(e,t){e.exports=require("web3")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,i=function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],a=!0,i=!1,s=void 0;try{for(var r,u=e[Symbol.iterator]();!(a=(r=u.next()).done)&&(n.push(r.value),!t||n.length!==t);a=!0);}catch(e){i=!0,s=e}finally{try{!a&&u.return&&u.return()}finally{if(i)throw s}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")},s=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},r=(a=n(102))&&a.__esModule?a:{default:a},u=n(9);t.default=function(e){var t="undefined"!=typeof window&&void 0!==window.web3&&void 0!==window.web3.currentProvider?new r.default(window.web3.currentProvider):null,n=void 0,a=void 0,o=void 0,p={},l={},c=function(e){return p[e]},d=function(e,t,n){return e.server.methods[t].apply(null,n)},y=function(t,n){var a,i=t.message;a=i.includes("User denied")?"USER CANCELLED TRANSACTION":i.includes("Insufficient funds")?"INSUFFICIENT FUNDS":"UNKNOWN ERROR",e.dispatch(s({},n,{type:"ETHEREUM_SEND_ERROR",error:a})),u.toastr.error("ETHEREUM ERROR",a)},m=function(n,a,i,r){return function(i){if(i)y(i,r);else{var u=void 0,o=r.method;if(o)u=function(e,t,n){return a.client.methods[t].apply(null,n)}(0,o,r.args).send(n);else u=t.eth.sendTransaction(n);u.on("error",function(e){y(e,r)}).on("confirmation",function(t){0===t&&function(t){e.dispatch(s({},t,{type:"ETHEREUM_SEND_SUCCESS"}))}(r)})}}},f=function(t,n,a,i){n.server.events.allEvents({fromBlock:a},function(n,a){e.dispatch({type:"ETHEREUM_EVENT",eventName:a.event.toUpperCase(),contractName:t,values:a.returnValues,contractAddress:a.address,blockNumber:a.blockNumber,transactionHash:a.transactionHash,transactionIndex:a.transactionIndex,old:a.blockNumber<=i})})},b=function(a){!function(){for(var e in p){var t=p[e];for(var n in t)t[n].server.currentProvider.connection.close();delete p[e],delete l[e]}}();var i,s=function(e){switch(a){case 1:return"mainnet";case 2:return"morden";case 3:return"ropsten";case 4:return"rinkeby";case 42:return"kovan";default:return"localhost"}}(),u=(i={localhost:{rpcUrl:"http://localhost:8545",wsUrl:"ws://localhost:8546"},mainnet:{rpcUrl:"https://manager1.seedom.io:8549",wsUrl:"wss://manager1.seedom.io:8550"},ropsten:{rpcUrl:"https://manager1.seedom.io:8547",wsUrl:"wss://manager1.seedom.io:8548"}}[s])?(n=new r.default(i.wsUrl),!0):(n=null,!1),c=!1;u&&(c=function(a){var i={localhost:{fundraiser:[{address:"0xA06da54f4c693A5ADDD7B9A895FE78441Ddb136B",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x4d62B82309f8CD3CbeFC008437f6197873098f3D",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0xA8A27014CF97F846aCc5ae90CfF06b04A50c74d4",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x5ccCc3c0C693AFC3cC52506459E662A44E663ad7",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x91Aa77a7923d55858a3B70eC2102A9e73486bd50",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x4855d471DdF409f62317D52782677500fe20D0bF",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]}],polling:[{address:"0x6EA4f994328Ee6fBEbD38aa83898879ff6e413DB",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"_voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_count",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"},{name:"",type:"uint256"}],name:"_participants",outputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVoteCount",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_voteCounts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_counts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0xA8E1Ca221caa694e51fC3539bbE95f0f2EA70156",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"_voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_count",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"},{name:"",type:"uint256"}],name:"_participants",outputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVoteCount",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_voteCounts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_counts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0x664F67158046ADdd500d79EBAa0FC9b6d414995B",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"_voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_count",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"},{name:"",type:"uint256"}],name:"_participants",outputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVoteCount",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_voteCounts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_counts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0xC9F2406C4eF477d970D2fEbA196E812FE1aD0BeA",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"_voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_count",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"},{name:"",type:"uint256"}],name:"_participants",outputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVoteCount",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_voteCounts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_counts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0xCab7709F56AE694375dE2BFbb5F28853617d33Fa",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"_voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_count",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"},{name:"",type:"uint256"}],name:"_participants",outputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVoteCount",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_voteCounts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_counts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0x702FF61041785510bBaE04c695Df7ba1B6F0AFa9",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"_voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_count",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"},{name:"",type:"uint256"}],name:"_participants",outputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVoteCount",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_voteCounts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_counts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastIndex",type:"event"}]}]},mainnet:{seedom:[{address:"0xa7bc8Cd45eEDe68e8AD6d282E522f2B9e7d57942",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_charityRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_winner",type:"address"},{indexed:!1,name:"_winnerRandom",type:"bytes32"},{indexed:!1,name:"_charityRandom",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x2F8c8FCB351520A3B28971a017E1231Baa6bAf01",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_charityRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_winner",type:"address"},{indexed:!1,name:"_winnerRandom",type:"bytes32"},{indexed:!1,name:"_charityRandom",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]}],fundraiser:[{address:"0x5f78a0BB08C7679729bA1816BA1A050E3907b348",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]}],polling:[{address:"0xd665978a287bd8Cd929993E5602e161bA3dD181a",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"_voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_count",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"},{name:"",type:"uint256"}],name:"_participants",outputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVoteCount",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_voteCounts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_counts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastIndex",type:"event"}]}]},ropsten:{seedom:[{address:"0x4C70C9c44213c54C8b590Fa3A63a56DF40348ca6",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_entries",type:"uint256"},{name:"_message",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participantAddresses",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"select",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_selectedSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charitySecret",type:"bytes32"},{name:"_charityMessage",type:"bytes32"},{name:"_charityWithdrawn",type:"bool"},{name:"_selected",type:"address"},{name:"_selectedMessage",type:"bytes32"},{name:"_selectedWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_selectedSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charitySecret",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_selected",type:"address"},{indexed:!1,name:"_selectedMessage",type:"bytes32"},{indexed:!1,name:"_charityMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x0D74c068a1141e8aC60a30e6b6e5dF5A518c4210",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_entries",type:"uint256"},{name:"_message",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participantAddresses",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"select",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_selectedSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charitySecret",type:"bytes32"},{name:"_charityMessage",type:"bytes32"},{name:"_charityWithdrawn",type:"bool"},{name:"_selected",type:"address"},{name:"_selectedMessage",type:"bytes32"},{name:"_selectedWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_selectedSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charitySecret",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_selected",type:"address"},{indexed:!1,name:"_selectedMessage",type:"bytes32"},{indexed:!1,name:"_charityMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0xBD18f290D6cC51dBEE083A2a4b493e7278AC2B38",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_charityRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_winner",type:"address"},{indexed:!1,name:"_winnerRandom",type:"bytes32"},{indexed:!1,name:"_charityRandom",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0xae6504caFc09bFbDbF751C4292371D114d2b459e",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_charityRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_winner",type:"address"},{indexed:!1,name:"_winnerRandom",type:"bytes32"},{indexed:!1,name:"_charityRandom",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x7542eA016832c2B30395a93E7e2c4EbA4284d734",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_charityRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_winner",type:"address"},{indexed:!1,name:"_winnerRandom",type:"bytes32"},{indexed:!1,name:"_charityRandom",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0xBC8AE73A0D0b7158dd0C3B2dFCd6ae908271929b",abi:[{constant:!1,inputs:[{name:"_hashedRandom",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"participants",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityHashedRandom",type:"bytes32"}],name:"seed",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityRandom",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_random",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"uint256"}],name:"revealers",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"raiser",outputs:[{name:"_owner",type:"address"},{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_charityHashedRandom",type:"bytes32"},{name:"_winner",type:"address"},{name:"_winnerRandom",type:"bytes32"},{name:"_cancelled",type:"bool"},{name:"_totalParticipants",type:"uint256"},{name:"_totalEntries",type:"uint256"},{name:"_totalRevealers",type:"uint256"},{name:"_totalRevealed",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"}],name:"participantsMapping",outputs:[{name:"_entries",type:"uint256"},{name:"_hashedRandom",type:"bytes32"},{name:"_random",type:"bytes32"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_charity",type:"address"},{name:"_charitySplit",type:"uint256"},{name:"_winnerSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_valuePerEntry",type:"uint256"},{name:"_revealTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_maxParticipants",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_charityHashedRandom",type:"bytes32"}],name:"Seed",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_hashedRandom",type:"bytes32"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_random",type:"bytes32"}],name:"Win",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]}],suggest:[{address:"0x8B54B2118CB2D695977B007Aa76337a06038c0e9",abi:[{constant:!0,inputs:[],name:"getVotes",outputs:[{name:"",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"destructTime",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"endTime",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"getCharities",outputs:[{name:"",type:"bytes32[]"},{name:"",type:"uint256[]"},{name:"",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"_forCharityIndex",type:"uint256"},{name:"_forCharityName",type:"bytes32"}],name:"hasRight",outputs:[{name:"",type:"bool"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_charityIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"vote",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"addCharity",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_seedomAddress",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_address",type:"address"},{indexed:!0,name:"_charityIndex",type:"uint256"},{indexed:!1,name:"_score",type:"uint256"}],name:"Vote",type:"event"}]}],polling:[{address:"0xC3c1b693cDf3a0aD1c0c81F509016BE60625D36D",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"_voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_count",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"},{name:"",type:"uint256"}],name:"_participants",outputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVoteCount",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_voteCounts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_counts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0xC6822c09498c2c14b6e7ad10E93F9C5555A733d0",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],name:"_voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_count",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"",type:"address"},{name:"",type:"uint256"}],name:"_participants",outputs:[{name:"_causeIndex",type:"uint256"},{name:"_count",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVoteCount",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_voteCounts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_counts",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_voteCount",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0x45deF51afcEF10Be10BEfcfCF170a231C5971be4",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0x78c57792d19feB45509CB9C014d03727aa742685",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0x527304AF146C3920b91cd25e02EDCa2D5535BF72",abi:[{constant:!1,inputs:[{name:"_causeIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_causeName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_votes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"causes",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_scores",type:"uint256[]"},{name:"_votes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_causeIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_fundraiser",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_votes",type:"uint256"},{indexed:!0,name:"_causeIndex",type:"uint256"},{indexed:!1,name:"_causeScores",type:"uint256"},{indexed:!1,name:"_causeVotes",type:"uint256"}],name:"CastIndex",type:"event"}]},{address:"0xc73be3eE43EcD67971f8C0b9190E1240b3A104C6",abi:[{constant:!1,inputs:[{name:"_charityIndex",type:"uint256"},{name:"_score",type:"uint256"}],name:"voteIndex",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_charityName",type:"bytes32"},{name:"_score",type:"uint256"}],name:"voteName",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"maxVotes",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"charities",outputs:[{name:"_names",type:"bytes32[]"},{name:"_casters",type:"address[]"},{name:"_totalScores",type:"uint256[]"},{name:"_totalVotes",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"caster",outputs:[{name:"_maxScore",type:"uint256"},{name:"_maxVotes",type:"uint256"},{name:"_totalVotes",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"votes",outputs:[{name:"_charityIndexes",type:"uint256[]"},{name:"_scores",type:"uint256[]"}],payable:!1,stateMutability:"view",type:"function"},{inputs:[{name:"_maxScore",type:"uint256"},{name:"_seedomAddress",type:"address"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!0,name:"_charityIndex",type:"uint256"},{indexed:!1,name:"_charityName",type:"bytes32"}],name:"CastName",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_caster",type:"address"},{indexed:!1,name:"_score",type:"uint256"},{indexed:!1,name:"_totalVotes",type:"uint256"},{indexed:!0,name:"_charityIndex",type:"uint256"},{indexed:!1,name:"_charityTotalScores",type:"uint256"},{indexed:!1,name:"_charityTotalVotes",type:"uint256"}],name:"CastIndex",type:"event"}]}],fundraiser:[{address:"0xBfac3Fc17E3cd0c67d6916c1E788E16f0E736c83",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x8004eF30224CD2Bee0BDBd16a7cdDc64A8888357",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeWallet",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerWallet",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0xF2C1a608104427EC3399ff74381E87ed9E7c8144",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x41bA433632168bBf6F176D3c7cF3E260c5A2aE3b",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]},{address:"0x154Dd4fA554E09C6C421Fe0ae54eF6569A4a20Bf",abi:[{constant:!0,inputs:[{name:"",type:"address"}],name:"participants",outputs:[{name:"_message",type:"bytes32"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"participate",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_token",type:"address"}],name:"recover",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"deployment",outputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_owner",type:"address"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_deployTime",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"withdraw",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"end",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_message",type:"bytes32"}],name:"reveal",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_secret",type:"bytes32"}],name:"begin",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"destroy",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"balance",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"state",outputs:[{name:"_causeSecret",type:"bytes32"},{name:"_causeMessage",type:"bytes32"},{name:"_causeWithdrawn",type:"bool"},{name:"_participant",type:"address"},{name:"_participantMessage",type:"bytes32"},{name:"_participantWithdrawn",type:"bool"},{name:"_ownerMessage",type:"bytes32"},{name:"_ownerWithdrawn",type:"bool"},{name:"_cancelled",type:"bool"},{name:"_participants",type:"uint256"},{name:"_entries",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"cancel",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[{name:"_cause",type:"address"},{name:"_causeSplit",type:"uint256"},{name:"_participantSplit",type:"uint256"},{name:"_ownerSplit",type:"uint256"},{name:"_ownerSecret",type:"bytes32"},{name:"_valuePerEntry",type:"uint256"},{name:"_endTime",type:"uint256"},{name:"_expireTime",type:"uint256"},{name:"_destructTime",type:"uint256"},{name:"_entropy",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeSecret",type:"bytes32"}],name:"Beginning",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_message",type:"bytes32"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Participation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_entries",type:"uint256"},{indexed:!1,name:"_refund",type:"uint256"}],name:"Raise",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_causeMessage",type:"bytes32"}],name:"Revelation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_participant",type:"address"},{indexed:!1,name:"_participantMessage",type:"bytes32"},{indexed:!1,name:"_causeMessage",type:"bytes32"},{indexed:!1,name:"_ownerMessage",type:"bytes32"}],name:"Selection",type:"event"},{anonymous:!1,inputs:[],name:"Cancellation",type:"event"},{anonymous:!1,inputs:[{indexed:!1,name:"_address",type:"address"}],name:"Withdrawal",type:"event"}]}]}}[a];if(!i)return!1;for(var s in i){var r=i[s],u=!0,o=!1,c=void 0;try{for(var d,y=r[Symbol.iterator]();!(u=(d=y.next()).done);u=!0){var m=d.value;s in l||(l[s]=m.address),s in p||(p[s]={}),p[s][m.address]={name:s,address:m.address,server:new n.eth.Contract(m.abi,m.address),client:new t.eth.Contract(m.abi,m.address)}}}catch(e){o=!0,c=e}finally{try{!u&&y.return&&y.return()}finally{if(o)throw c}}}return e.dispatch({type:"ETHEREUM_PRIMARY_CONTRACT_ADDRESSES",primaryContractAddresses:l}),!0}(s),n.eth.getBlockNumber(function(e,t){var n=t-1e4;for(var a in n<0&&(n=0),p){var i=p[a],s=l[a];for(var r in i){var u=i[r],o=u.address===s?n:t;f(a,u,o,t)}}})),o={id:a,name:s,supported:u,deployed:c},e.dispatch({type:"ETHEREUM_NETWORK",network:o})},_=function(){return o&&o.supported&&o.deployed&&a},v=function(){_()&&e.dispatch({type:"ETHEREUM_USER",network:o,account:a})};return t&&setInterval(function(){t.eth.net.getId(function(e,t){o&&t===o.id||(b(t),v())}),t.eth.getAccounts(function(t,n){var s=i(n,1)[0];s!==a&&(a=s,e.dispatch({type:"ETHEREUM_ACCOUNT",account:a}),v())}),function(){if(_()){var t=(new Date).getTime(),n=[];for(var a in p){var i=p[a];for(var s in i){var r=i[s];(!r.lastBlockTime||t-r.lastBlockTime.getTime()>6e4)&&(r.lastBlockTime=new Date,n.push(r.address))}}n.length>0&&e.dispatch({type:"ETHEREUM_REFRESH",contractAddresses:n})}}()},1e3),function(n){return function(i){switch(i.type){case"ETHEREUM_CALL":return function(t,n){var i=n.contractName,r=n.contractAddress,u=n.method,o=n.args,p=c(i);if(p){var y=p[r||l[i]];y&&d(y,u,o).call({from:a}).then(function(t){e.dispatch(s({},n,{type:"ETHEREUM_CALL_DATA",data:t}))},function(t){!function(t,n){console.error(t.message),e.dispatch(s({},n,{type:"ETHEREUM_CALL_ERROR",error:t}))}(t,n)})}return t(n)}(n,i);case"ETHEREUM_SEND":return function(e,n){var i=n.contractName,s=n.contractAddress,r=n.method,u=n.args,o={value:n.value,from:a,gas:2e5,gasPrice:4e9},p=c(i);if(p){var y=p[s||l[i]];if(y){o.to=y.address;var f=m(o,y,0,n);r?d(y,r,u).call(o,f):t.eth.call(o,f)}}return e(n)}(n,i);case"ETHEREUM_ALLCALL":return function(t,n){var i=n.contractName,r=n.method,u=n.args,o=[],y=c(i);if(y){var m=Object.keys(p[i]),f=!0,b=!1,_=void 0;try{for(var v,h=m[Symbol.iterator]();!(f=(v=h.next()).done);f=!0){var w=y[v.value||l[i]];if(w){var g=d(w,r,u);o.push(g.call({from:a}))}}}catch(e){b=!0,_=e}finally{try{!f&&h.return&&h.return()}finally{if(b)throw _}}Promise.all(o).then(function(t){for(var a={},i=0;i<t.length;i+=1)a[m[i]]=t[i];e.dispatch(s({},n,{type:"ETHEREUM_ALLCALL_DATA",data:a}))})}return t(n)}(n,i);default:return n(i)}}}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.parseBalances=t.parseWithdrawal=t.parseSelection=t.parseRevelation=t.parseRaise=t.parseParticipation=t.parseParticipant=t.parseBeginning=t.parseState=t.parseDeployment=void 0;var a=n(8),i=(s(n(12)),s(n(14)));function s(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}var r=function(e){return new Date(1e3*e)};t.parseDeployment=function(e){return{cause:String(e._cause),causeWallet:String(e._causeWallet),causeSplit:new a.BigNumber(e._causeSplit),participantSplit:new a.BigNumber(e._participantSplit),owner:String(e._owner),ownerWallet:String(e._ownerWallet),ownerSplit:new a.BigNumber(e._ownerSplit),ownerSecret:String(e._ownerSecret),valuePerEntry:new a.BigNumber(e._valuePerEntry),deployTime:r(e._deployTime),endTime:r(e._endTime),expireTime:r(e._expireTime),destructTime:r(e._destructTime)}},t.parseState=function(e){return{causeSecret:String(e._causeSecret),causeMessage:String(i.message(e._causeMessage)),causeWithdrawn:Boolean(e._causeWithdrawn),participant:String(e._participant),participantMessage:String(i.message(e._participantMessage)),participantWithdrawn:Boolean(e._participantWithdrawn),ownerMessage:String(i.message(e._ownerMessage)),ownerWithdrawn:Boolean(e._participantWithdrawn),cancelled:Boolean(e._cancelled),participants:new a.BigNumber(e._participants),entries:new a.BigNumber(e._entries)}},t.parseBeginning=function(e){return{causeSecret:String(e._causeSecret)}},t.parseParticipant=function(e){return{entries:new a.BigNumber(e._entries),message:String(i.message(e._message))}},t.parseParticipation=function(e){return{participant:String(e._participant),message:String(i.message(e._message)),entries:new a.BigNumber(e._entries),refund:new a.BigNumber(e._refund)}},t.parseRaise=function(e){return{participant:String(e._participant),entries:new a.BigNumber(e._entries),refund:new a.BigNumber(e._refund)}},t.parseRevelation=function(e){return{causeMessage:String(i.message(e._causeMessage))}},t.parseSelection=function(e){return{participant:String(e._participant),participantMessage:String(i.message(e._participantMessage)),causeMessage:String(i.message(e._causeMessage)),ownerMessage:String(i.message(e._ownerMessage))}},t.parseWithdrawal=function(e){return{address:String(e._address)}},t.parseBalances=function(e){var t={};for(var n in e){var i=e[n];"0"!==i&&(t[n]=new a.BigNumber(i))}return t}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},i=r(n(15)),s=r(n(104));function r(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}t.default=function(e){return function(t){return function(n){switch(n.type){case"ETHEREUM_EVENT":return function(e,t){if("fundraiser"!==t.contractName)return e(t);var n=t.eventName,i="FUNDRAISER_"+n;switch(n){case"BEGINNING":return e(a({},t,{type:i,beginning:s.parseBeginning(t.values)}));case"PARTICIPATION":return e(a({},t,{type:i,participation:s.parseParticipation(t.values)}));case"RAISE":return e(a({},t,{type:i,raise:s.parseRaise(t.values)}));case"REVELATION":return e(a({},t,{type:i,revelation:s.parseRevelation(t.values)}));case"SELECTION":return e(a({},t,{type:i,selection:s.parseSelection(t.values)}));case"WITHDRAWAL":return e(a({},t,{type:i,withdrawal:s.parseWithdrawal(t.values)}));case"CANCELLATION":return e(a({},t,{type:i}));default:return e(t)}}(t,n);case"ETHEREUM_CALL_DATA":return function(e,t){if("fundraiser"!==t.contractName)return e(t);switch(t.method){case"deployment":return function(e,t){return e({type:"FUNDRAISER_DEPLOYMENT",deployment:s.parseDeployment(t.data)})}(e,t);case"state":return function(e,t){return e({type:"FUNDRAISER_STATE",state:s.parseState(t.data)})}(e,t);case"participants":return function(e,t){return e({type:"FUNDRAISER_PARTICIPANT",participant:s.parseParticipant(t.data)})}(e,t);default:return e(t)}}(t,n);case"ETHEREUM_ALLCALL_DATA":return function(e,t){if("fundraiser"!==t.contractName)return e(t);switch(t.method){case"balance":return function(e,t){return e({type:"FUNDRAISER_BALANCES",balances:s.parseBalances(t.data)})}(e,t);default:return e(t)}}(t,n);case"ETHEREUM_USER":return function(t,n){var a=n.account;return e.dispatch(i.call({contractName:"fundraiser",method:"participants",args:[a]})),e.dispatch(i.allCall({contractName:"fundraiser",method:"balance"})),t(n)}(t,n);case"ETHEREUM_REFRESH":return function(t,n){var a=e.getState().ethereum.primaryContractAddresses;return n.contractAddresses.indexOf(a.fundraiser)>-1&&(e.dispatch(i.call({contractName:"fundraiser",method:"deployment"})),e.dispatch(i.call({contractName:"fundraiser",method:"state"}))),t(n)}(t,n);default:return t(n)}}}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.parseCastIndex=t.parseCastName=t.parseVotes=t.parseCauses=t.parseMaxVoteCount=void 0;var a=n(8),i=(r(n(12)),n(5)),s=r(n(14));function r(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}t.parseMaxVoteCount=function(e){return new a.BigNumber(e)},t.parseCauses=function(e){for(var t=(0,i.zero)(),n=[],r=0;r<e._names.length;r+=1){var u=new a.BigNumber(e._voteCounts[r]),o={index:r,name:String(s.message(e._names[r])),caster:String(e._casters[r]),voteCount:u};t=t.plus(u),n[r]=o}return{causes:n,causesVoteCount:t}},t.parseVotes=function(e){for(var t=(0,i.zero)(),n={},s=0;s<e._causeIndexes.length;s+=1){var r=e._causeIndexes[s],u=e._counts[s];t=t.plus(u),n[r]=r in n?n[r].plus(u):new a.BigNumber(u)}return{votes:n,voteCount:t}},t.parseCastName=function(e){return{caster:String(e._caster),causeIndex:new a.BigNumber(e._causeIndex),causeName:String(s.message(e._causeName)),voteCount:new a.BigNumber(e._voteCount)}},t.parseCastIndex=function(e){return{caster:String(e._caster),causeIndex:new a.BigNumber(e._causeIndex),voteCount:new a.BigNumber(e._voteCount)}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},i=r(n(15)),s=r(n(106));function r(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}t.default=function(e){return function(t){return function(n){switch(n.type){case"ETHEREUM_EVENT":return function(e,t){if("polling"!==t.contractName)return e(t);var n=t.eventName,i="POLLING_"+n;switch(n){case"CASTINDEX":return e(a({},t,{type:i,castIndex:s.parseCastIndex(t.values)}));case"CASTNAME":return e(a({},t,{type:i,castName:s.parseCastName(t.values)}));default:return e(t)}}(t,n);case"ETHEREUM_CALL_DATA":return function(e,t){if("polling"!==t.contractName)return e(t);switch(t.method){case"maxVoteCount":return function(e,t){return e({type:"POLLING_MAX_VOTE_COUNT",maxVoteCount:s.parseMaxVoteCount(t.data)})}(e,t);case"causes":return function(e,t){var n=s.parseCauses(t.data);return e({type:"POLLING_CAUSES",causes:n.causes,causesVoteCount:n.causesVoteCount})}(e,t);case"votes":return function(e,t){var n=s.parseVotes(t.data);return e({type:"POLLING_VOTES",votes:n.votes,voteCount:n.voteCount})}(e,t);default:return e(t)}}(t,n);case"ETHEREUM_REFRESH":return function(t,n){var a=e.getState().ethereum.primaryContractAddresses;return n.contractAddresses.indexOf(a.polling)>-1&&e.dispatch(i.call({contractName:"polling",method:"causes"})),t(n)}(t,n);case"ETHEREUM_USER":return function(t,n){return e.dispatch(i.call({contractName:"polling",method:"maxVoteCount"})),e.dispatch(i.call({contractName:"polling",method:"votes"})),t(n)}(t,n);default:return t(n)}}}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e};t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=arguments[1];switch(t.type){case"CAUSE_CAUSE":return function(e,t){var n=function(e){return a({},e)}(e);return n.cause=t.cause,n}(e,t);default:return e}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},i=function(e){return a({},e)};t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=arguments[1];switch(t.type){case"ETHEREUM_NETWORK":return a({},e,{network:t.network});case"ETHEREUM_ACCOUNT":return a({},e,{account:t.account});case"ETHEREUM_PRIMARY_CONTRACT_ADDRESSES":return a({},e,{primaryContractAddresses:t.primaryContractAddresses});case"ETHEREUM_SEND":return function(e){var t=i(e);return t.isLoading=!0,t}(e);case"ETHEREUM_SEND_ERROR":return function(e){var t=i(e);return t.isLoading=!1,t}(e);default:return e}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},i=function(e){return a({},e)},s=function(e,t){var n=e?e.slice(0,20):[];return n.unshift(t),n};t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=arguments[1];switch(t.type){case"FUNDRAISER_DEPLOYMENT":return function(e,t){var n=i(e);return n.deployment=t.deployment,n}(e,t);case"FUNDRAISER_STATE":return function(e,t){var n=i(e);return n.state=t.state,n}(e,t);case"FUNDRAISER_PARTICIPANT":return function(e,t){var n=i(e);return n.participant=t.participant,n}(e,t);case"FUNDRAISER_BALANCES":return function(e,t){var n=i(e);return n.balances=t.balances,n}(e,t);case"FUNDRAISER_BEGINNING":return function(e,t){if(t.old)return e;var n=i(e);return n.state.causeSecret=t.beginning.causeSecret,n}(e,t);case"FUNDRAISER_PARTICIPATION":return function(e,t){var n=i(e);return t.old?n.feed=s(n.feed,t):(n.state.participants=n.state.participants.plus(1),n.state.entries=n.state.entries.plus(t.participation.entries),n.feed=s(n.feed,t),t.participation.participant===n.account&&(n.isLoading=!1,n.participant.entries=t.participation.entries,n.participant.message=t.participation.message)),n}(e,t);case"FUNDRAISER_RAISE":return function(e,t){var n=i(e);return t.old?n.feed=s(n.feed,t):(n.state.entries=n.state.entries.plus(t.raise.entries),n.feed=s(n.feed,t),t.raise.participant===n.account&&(n.isLoading=!1,n.participant.entries=n.participant.entries.plus(t.raise.entries))),n}(e,t);case"FUNDRAISER_REVELATION":return function(e,t){if(t.old)return e;var n=i(e);return n.state.causeMessage=t.revelation.causeMessage,n}(e,t);case"FUNDRAISER_SELECTION":return function(e,t){if(t.old)return e;var n=i(e);if(n.state.participant=t.selection.participant,n.state.participantMessage=t.selection.participantMessage,n.state.causeMessage=t.selection.causeMessage,n.state.ownerMessage=t.selection.ownerMessage,t.selection.participant===n.account){var a=n.deployment,s=n.state,r=n.primaryContractAddresses;n.balances[r.fundraiser]=s.entries.times(a.participantSplit).dividedBy(1e3).times(a.valuePerEntry)}return n}(e,t);case"FUNDRAISER_CANCELLATION":return function(e,t){if((void 0).old)return e;var n=i(e);n.isLoading=!1,n.state.cancelled=!0;var a=n.deployment,s=n.participant,r=n.primaryContractAddresses;return n.balances[r.fundraiser]=s.entries.times(a.valuePerEntry),n}(e);case"FUNDRAISER_WITHDRAWAL":return function(e,t){if(t.old)return e;var n=i(e);return t.withdrawal.address===n.account&&(n.isLoading=!1,delete n.balances[t.contractAddress]),n}(e,t);default:return e}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(e[a]=n[a])}return e},i=n(8),s=function(e){return a({},e)};t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=arguments[1];switch(t.type){case"POLLING_MAX_VOTE_COUNT":return function(e,t){var n=s(e);return n.maxVoteCount=t.maxVoteCount,n}(e,t);case"POLLING_CAUSES":return function(e,t){var n=s(e);return n.causes=t.causes,n.causesVoteCount=t.causesVoteCount,n}(e,t);case"POLLING_VOTES":return function(e,t){var n=s(e);return n.votes=t.votes,n.voteCount=t.voteCount,n}(e,t);case"POLLING_CASTINDEX":return function(e,t){if(t.old)return e;var n=t.castIndex,a=n.caster,i=n.causeIndex,r=n.voteCount,u=s(e);u.isLoading=!1,u.causesVoteCount=u.causesVoteCount.plus(r);var o=u.causes[i];return o.voteCount=o.voteCount.plus(r),a===u.account&&(u.voteCount=u.voteCount.plus(r),i in u.votes?u.votes[i]=u.votes[i].plus(r):u.votes[i]=r),u}(e,t);case"POLLING_CASTNAME":return function(e,t){if(t.old)return e;var n=t.castName,a=n.caster,i=n.causeIndex,r=n.causeName,u=n.voteCount,o=s(e);return o.isLoading=!1,o.causesVoteCount=o.causesVoteCount.plus(u),o.causes[i]={index:i,name:r,caster:a,voteCount:u},a===o.account&&(o.voteCount=o.voteCount.plus(u),o.votes[i]=u),o}(e,t);case"FUNDRAISER_PARTICIPATION":return function(e,t){if(t.old||t.participation.participant!==e.account)return e;var n=s(e);return n.maxVoteCount=new i.BigNumber(1),n}(e,t);default:return e}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(){for(var e=arguments.length,t=Array(e),n=0;n<e;n++)t[n]=arguments[n];return function(e,n){return t.reduce(function(e,t){return t(e,n)},e)}}},function(e,t){e.exports=require("history/createMemoryHistory")},function(e,t){e.exports=require("history/createBrowserHistory")},function(e,t){e.exports=require("redux")},function(e,t){e.exports=require("redux-devtools-extension")},function(e,t){e.exports=require("react-router-redux")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=k(n(0)),i=n(6),s=n(117),r=n(116),u=n(7),o=n(115),p=n(9),l=k(p),c=k(n(114)),d=k(n(113)),y=k(n(112)),m=k(n(111)),f=k(n(110)),b=k(n(109)),_=k(n(108)),v=k(n(107)),h=k(n(105)),w=k(n(103)),g=k(n(101));n(100);var E=k(n(99)),x=k(n(96)),M=k(n(94)),N=k(n(93)),O=k(n(90)),S=k(n(41)),P=k(n(33)),T=k(n(32)),C=k(n(28)),j=k(n(27)),R=k(n(25));function k(e){return e&&e.__esModule?e:{default:e}}var A=function(){return(0,o.combineReducers)({ethereum:(0,y.default)(b.default,f.default,m.default,_.default),toastr:p.reducer,router:s.routerReducer})},I=function(e){var t=[w.default,h.default,v.default,g.default];return e&&t.push((0,s.routerMiddleware)(e)),(0,r.composeWithDevTools)(o.applyMiddleware.apply(void 0,t))},W=function(){return a.default.createElement("div",null,a.default.createElement(u.Route,{exact:!0,path:"/",component:O.default}),a.default.createElement(u.Route,{path:"/vote",component:S.default}),a.default.createElement(u.Route,{path:"/history",component:P.default}),a.default.createElement(u.Route,{path:"/help",component:T.default}),a.default.createElement(u.Route,{path:"/about",component:C.default}),a.default.createElement(u.Route,{path:"/contact",component:j.default}),a.default.createElement(u.Route,{path:"/announce-beta-giveth",component:R.default}))},L=function(){return a.default.createElement("div",null,a.default.createElement(l.default,{timeOut:4e3,newestOnTop:!1,preventDuplicates:!0,position:"top-center",transitionIn:"fadeIn",transitionOut:"fadeOut",progressBar:!0}),a.default.createElement(x.default,null),a.default.createElement(W,null),a.default.createElement(M.default,null))};t.default=function(e,t){var n=e?(0,d.default)({initialEntries:[e.url]}):(0,c.default)(),r=t?(0,o.createStore)(A(),t,I(n)):(0,o.createStore)(A(),I());return{component:t?function(e,t){return a.default.createElement(i.Provider,{store:e,suppressHydrationWarning:!0},a.default.createElement(s.ConnectedRouter,{history:t},a.default.createElement("div",null,a.default.createElement(E.default,null),a.default.createElement(L,null))))}(r,n):function(e,t){return a.default.createElement(i.Provider,{store:e},a.default.createElement(s.ConnectedRouter,{history:t},a.default.createElement("div",null,a.default.createElement(E.default,null),a.default.createElement(u.Route,{exact:!0,path:"/",component:N.default}))))}(r,n),store:r}}},function(e,t){e.exports=require("request")},function(e,t){e.exports=require("fs")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.addParticipant=t.initialize=void 0;var a=s(n(120)),i=s(n(119));function s(e){return e&&e.__esModule?e:{default:e}}var r="/run/secrets/mailerlite.key",u=null;t.initialize=function(){if(process.env.MAILERLITE_KEY)return u=process.env.MAILERLITE_KEY,!0;try{a.default.accessSync(r)}catch(e){return!1}return u=a.default.readFileSync(r,"utf8"),!0},t.addParticipant=function(e){return function(e,t){return function(e){return new Promise(function(t,n){(0,i.default)(e,function(e,a,i){if(e)n(e);else{var s=JSON.parse(i);s&&s.error?n(s.error):t({response:a,body:i})}})})}(function(e,t){return{method:"POST",url:"http://api.mailerlite.com/api/v2"+e,headers:{"Content-Type":"application/json","X-MailerLite-ApiKey":u},form:t}}(e,t))}("/groups/9643116/subscribers",{email:e.email,fields:{participant:e.participant,cause:e.cause,message:e.message},resubscribe:1})}},function(e,t,n){"use strict";e.exports={resolve:{extensions:[".js",".jsx",".scss",".png",".jpg",".gif",".svg",".woff",".woff2",".eot",".ttf",".otf"]}}},function(e,t){e.exports=require("webpack-merge")},function(e,t){e.exports=require("path")},function(e,t,n){"use strict";var a=n(124),i=n(123),s=n(122),r=process.cwd(),u=a.resolve(r,"node_modules");e.exports=i(s,{name:"client",target:"web",entry:a.resolve(r,"app/client.js"),output:{filename:"index.js",path:a.resolve(r,"dist/client"),publicPath:"/static/"},module:{rules:[{test:/\.(js|jsx)$/,exclude:u,use:["babel-loader"]},{test:/\.scss$/,exclude:u,use:["style-loader","css-loader","sass-loader"]},{test:/\.(png|jpg|gif|svg)$/,exclude:u,use:["file-loader"]},{test:/\.(woff|woff2|eot|ttf|otf)$/,exclude:u,loader:["file-loader"]}]}})},function(e,t){e.exports=require("express-cache-controller")},function(e,t){e.exports=require("react-dom/server")},function(e,t){e.exports=require("express")},function(e,t,n){"use strict";var a=l(n(128)),i=n(23),s=n(127),r=l(n(126)),u=l(n(125)),o=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(n(121)),p=l(n(118));function l(e){return e&&e.__esModule?e:{default:e}}var c=u.default.output,d=c.publicPath,y=c.path,m=(0,a.default)();m.use((0,r.default)({public:!0,maxAge:3600})),m.use(d,a.default.static(y)),o.initialize()&&(m.use(a.default.json()),m.post("/mailerlite/:method",function(e,t){var n=e.params.method;n in o?o[n](e.body).then(function(e){200===e.response.statusCode?t.status(200).send():t.status(500).send("mailerlite method failed")}):t.status(404).send("mailerlite method not found")})),m.use(function(e,t){var n=(0,p.default)(e,null);(0,s.renderToString)(n.component);var a=i.Helmet.renderStatic(),r=n.store.getState();t.send(function(e,t){return"\n    <!doctype html>\n    <html "+e.htmlAttributes.toString()+">\n      <head>\n        "+e.title.toString()+"\n        "+e.meta.toString()+"\n        "+e.link.toString()+"\n      </head>\n      <body "+e.bodyAttributes.toString()+'>\n        <div id="root"></div>\n        <script>\n          // http://redux.js.org/recipes/ServerRendering.html#security-considerations\n          window.__STATE__ = '+JSON.stringify(t).replace(/</g,"\\u003c")+'\n        <\/script>\n        <script src="'+d+'index.js"><\/script>\n      </body>\n    </html>\n  '}(a,r))}),m.listen(3e3)}]);
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading wasm modules
+/******/ 	var installedWasmModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/static/";
+/******/
+/******/ 	// object with all compiled WebAssembly.Modules
+/******/ 	__webpack_require__.w = {};
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./app/server.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "../seedom-assets/logo/full/seedom-full-white-transparent.png":
+/*!********************************************************************!*\
+  !*** ../seedom-assets/logo/full/seedom-full-white-transparent.png ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "675f54f2e7b62546c91f1a4c8d468259.png";
+
+/***/ }),
+
+/***/ "../seedom-assets/logo/o/seedom-o-black-transparent.png":
+/*!**************************************************************!*\
+  !*** ../seedom-assets/logo/o/seedom-o-black-transparent.png ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "f7dd7bbe891a7e584e06fe34a510dc3d.png";
+
+/***/ }),
+
+/***/ "../seedom-assets/logo/o/seedom-o-white-transparent.svg":
+/*!**************************************************************!*\
+  !*** ../seedom-assets/logo/o/seedom-o-white-transparent.svg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "0b624dd33fb9366ac2ca93ef9c6c45bb.svg";
+
+/***/ }),
+
+/***/ "./app/actions/ethereum.js":
+/*!*********************************!*\
+  !*** ./app/actions/ethereum.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var call = function call(_ref) {
+  var contractName = _ref.contractName,
+      contractAddress = _ref.contractAddress,
+      method = _ref.method,
+      args = _ref.args;
+  return {
+    type: 'ETHEREUM_CALL',
+    contractName: contractName,
+    contractAddress: contractAddress,
+    method: method,
+    args: args
+  };
+};
+
+var allCall = function allCall(_ref2) {
+  var contractName = _ref2.contractName,
+      method = _ref2.method,
+      args = _ref2.args;
+  return {
+    type: 'ETHEREUM_ALLCALL',
+    contractName: contractName,
+    method: method,
+    args: args
+  };
+};
+
+var send = function send(_ref3) {
+  var contractName = _ref3.contractName,
+      contractAddress = _ref3.contractAddress,
+      method = _ref3.method,
+      args = _ref3.args,
+      value = _ref3.value;
+  return {
+    type: 'ETHEREUM_SEND',
+    contractName: contractName,
+    contractAddress: contractAddress,
+    method: method,
+    args: args,
+    value: value
+  };
+};
+
+exports.call = call;
+exports.allCall = allCall;
+exports.send = send;
+
+/***/ }),
+
+/***/ "./app/components/about/index.js":
+/*!***************************************!*\
+  !*** ./app/components/about/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _sections = __webpack_require__(/*! ../sections */ "./app/components/sections/index.js");
+
+var _sections2 = _interopRequireDefault(_sections);
+
+var _member = __webpack_require__(/*! ./member */ "./app/components/about/member/index.js");
+
+var _member2 = _interopRequireDefault(_member);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/about/index.scss");
+
+var _alex = __webpack_require__(/*! ../../img/team/alex.jpg */ "./app/img/team/alex.jpg");
+
+var _alex2 = _interopRequireDefault(_alex);
+
+var _eric = __webpack_require__(/*! ../../img/team/eric.jpg */ "./app/img/team/eric.jpg");
+
+var _eric2 = _interopRequireDefault(_eric);
+
+var _jesse = __webpack_require__(/*! ../../img/team/jesse.jpg */ "./app/img/team/jesse.jpg");
+
+var _jesse2 = _interopRequireDefault(_jesse);
+
+var _kyle = __webpack_require__(/*! ../../img/team/kyle.jpg */ "./app/img/team/kyle.jpg");
+
+var _kyle2 = _interopRequireDefault(_kyle);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var members = [{
+  imgSrc: _alex2.default,
+  name: 'Alex Groleau',
+  title: 'Founder, Chief Technology Officer (CTO)',
+  linkedIn: 'https://www.linkedin.com/in/awgneo',
+  github: 'https://github.com/awgneo'
+}, {
+  imgSrc: _eric2.default,
+  name: 'Eric Thomas',
+  title: 'Founder, Chief Information Officer (CIO)',
+  linkedIn: 'https://www.linkedin.com/in/eric-l-m-thomas',
+  github: 'https://github.com/et'
+}, {
+  imgSrc: _jesse2.default,
+  name: 'Jesse Kuiper',
+  title: 'Founder, Chief Executive Officer (CEO)',
+  linkedIn: 'https://www.linkedin.com/in/jesse-kuiper-cpa-771a2111'
+}, {
+  imgSrc: _kyle2.default,
+  name: 'Kyle Graden',
+  title: 'Founder, Chief Marketing Officer (CMO)',
+  linkedIn: 'https://www.linkedin.com/in/kylegraden',
+  twitter: 'https://twitter.com/KyleGraden'
+}];
+
+var About = function (_Sections) {
+  _inherits(About, _Sections);
+
+  function About() {
+    _classCallCheck(this, About);
+
+    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).apply(this, arguments));
+  }
+
+  _createClass(About, [{
+    key: 'render',
+    value: function render() {
+      var memberItems = members.map(function (member) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'column' },
+          _react2.default.createElement(_member2.default, { key: member.name, member: member })
+        );
+      });
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'container about has-text-white' },
+        _react2.default.createElement(
+          'p',
+          { className: 'is-size-4' },
+          'Seedom is a fun Ethereum decentralized application (DAPP) for raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          { className: 'is-size-5' },
+          'It takes the efficiency, security, and transparency of the traditional single-room raffle and re-invents it with trustlessness and crowd-sourced selection into an entirely new type of fundraiser that scales to the entire world.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'div',
+          { className: 'columns' },
+          memberItems
+        )
+      );
+    }
+  }]);
+
+  return About;
+}(_sections2.default);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(About);
+
+/***/ }),
+
+/***/ "./app/components/about/index.scss":
+/*!*****************************************!*\
+  !*** ./app/components/about/index.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/about/member/index.js":
+/*!**********************************************!*\
+  !*** ./app/components/about/member/index.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Member = function Member(_ref) {
+  var member = _ref.member;
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'level-item has-text-centered' },
+    _react2.default.createElement(
+      'article',
+      { className: 'media' },
+      _react2.default.createElement(
+        'div',
+        { className: 'media-left' },
+        _react2.default.createElement(
+          'figure',
+          { className: 'image is-128x128' },
+          _react2.default.createElement('img', { src: member.imgSrc, alt: 'Seedom team member' })
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'media-content' },
+        _react2.default.createElement(
+          'div',
+          { className: 'content' },
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'strong',
+              null,
+              member.name
+            ),
+            _react2.default.createElement('br', null),
+            ' ',
+            member.title
+          )
+        ),
+        _react2.default.createElement(
+          'nav',
+          { className: 'level is-mobile' },
+          _react2.default.createElement(
+            'div',
+            { className: 'level-left' },
+            _react2.default.createElement(
+              'a',
+              { href: member.linkedIn, className: 'level-item' },
+              _react2.default.createElement(
+                'span',
+                { className: 'icon is-small' },
+                _react2.default.createElement('i', { className: 'fab fa-linkedin' })
+              )
+            ),
+            member.github && _react2.default.createElement(
+              'a',
+              { href: member.github, className: 'level-item' },
+              _react2.default.createElement(
+                'span',
+                { className: 'icon is-small' },
+                _react2.default.createElement('i', { className: 'fab fa-github' })
+              )
+            ),
+            member.twitter && _react2.default.createElement(
+              'a',
+              { href: member.twitter, className: 'level-item' },
+              _react2.default.createElement(
+                'span',
+                { className: 'icon is-small' },
+                _react2.default.createElement('i', { className: 'fab fa-twitter' })
+              )
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+Member.propTypes = {
+  member: _propTypes2.default.shape({
+    imgSrc: _propTypes2.default.string.isRequired,
+    name: _propTypes2.default.string.isRequired,
+    title: _propTypes2.default.string.isRequired,
+    linkedIn: _propTypes2.default.string.isRequired,
+    github: _propTypes2.default.string,
+    twitter: _propTypes2.default.string
+  }).isRequired
+};
+
+exports.default = Member;
+
+/***/ }),
+
+/***/ "./app/components/causeLogo/index.js":
+/*!*******************************************!*\
+  !*** ./app/components/causeLogo/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _causes = __webpack_require__(/*! @seedom-io/seedom-resolver/causes */ "@seedom-io/seedom-resolver/causes");
+
+var causesResolver = _interopRequireWildcard(_causes);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/causeLogo/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CauseLogo = function (_Component) {
+  _inherits(CauseLogo, _Component);
+
+  function CauseLogo() {
+    _classCallCheck(this, CauseLogo);
+
+    return _possibleConstructorReturn(this, (CauseLogo.__proto__ || Object.getPrototypeOf(CauseLogo)).apply(this, arguments));
+  }
+
+  _createClass(CauseLogo, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          cause = _props.cause,
+          size = _props.size;
+      // make sure we have a cause
+
+      if (!cause) {
+        return null;
+      }
+
+      var logoUrl = causesResolver.getLogoUrl(cause.image);
+      return _react2.default.createElement('div', { className: 'cause-logo ' + size, style: { backgroundImage: 'url(' + logoUrl + ')' } });
+    }
+  }]);
+
+  return CauseLogo;
+}(_react.Component);
+
+CauseLogo.propTypes = {
+  cause: _propTypes2.default.shape(),
+  size: _propTypes2.default.string
+};
+CauseLogo.defaultProps = {
+  cause: null,
+  size: null
+};
+exports.default = CauseLogo;
+
+/***/ }),
+
+/***/ "./app/components/causeLogo/index.scss":
+/*!*********************************************!*\
+  !*** ./app/components/causeLogo/index.scss ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/collapse/index.js":
+/*!******************************************!*\
+  !*** ./app/components/collapse/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(/*! classnames */ "classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/collapse/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Collapse = function (_Component) {
+  _inherits(Collapse, _Component);
+
+  function Collapse(props) {
+    _classCallCheck(this, Collapse);
+
+    var _this = _possibleConstructorReturn(this, (Collapse.__proto__ || Object.getPrototypeOf(Collapse)).call(this, props));
+
+    _this.toggle = function () {
+      _this.setState(function (prevState) {
+        return {
+          collapsed: !prevState.collapsed
+        };
+      });
+    };
+
+    _this.state = {
+      collapsed: props.collapsed
+    };
+    return _this;
+  }
+
+  _createClass(Collapse, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(newProps) {
+      if (this.state.collapsed !== newProps.collapsed) {
+        this.setState({ collapsed: newProps.collapsed });
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          id = _props.id,
+          title = _props.title;
+      var collapsed = this.state.collapsed;
+
+      return _react2.default.createElement(
+        'div',
+        { id: id, className: (0, _classnames2.default)('seedom-collapse', { collapsed: collapsed }) },
+        _react2.default.createElement(
+          'div',
+          { className: 'header', onClick: this.toggle },
+          _react2.default.createElement(
+            'span',
+            { className: 'toggle left' },
+            _react2.default.createElement('i', { className: 'fas fa-plus' })
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'text' },
+            title
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'toggle right' },
+            _react2.default.createElement('i', { className: 'fas fa-plus' })
+          )
+        ),
+        !collapsed && _react2.default.createElement(
+          'div',
+          { className: 'content' },
+          this.props.children
+        )
+      );
+    }
+  }]);
+
+  return Collapse;
+}(_react.Component);
+
+Collapse.propTypes = {
+  id: _propTypes2.default.string,
+  title: _propTypes2.default.string.isRequired,
+  collapsed: _propTypes2.default.bool,
+  children: _propTypes2.default.element
+};
+Collapse.defaultProps = {
+  id: null,
+  collapsed: true,
+  children: null
+};
+exports.default = Collapse;
+
+/***/ }),
+
+/***/ "./app/components/collapse/index.scss":
+/*!********************************************!*\
+  !*** ./app/components/collapse/index.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/contact/index.js":
+/*!*****************************************!*\
+  !*** ./app/components/contact/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _sections = __webpack_require__(/*! ../sections */ "./app/components/sections/index.js");
+
+var _sections2 = _interopRequireDefault(_sections);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/contact/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Contact = function (_Sections) {
+  _inherits(Contact, _Sections);
+
+  function Contact() {
+    _classCallCheck(this, Contact);
+
+    return _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).apply(this, arguments));
+  }
+
+  _createClass(Contact, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'container seedom-contact' },
+        _react2.default.createElement(
+          'div',
+          { className: 'columns' },
+          _react2.default.createElement(
+            'div',
+            { className: 'column is-offset-2 has-text-white' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'title has-text-white' },
+              'Are you leading a cause that needs funding?'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Want to learn more about accepting donations in cryptocurrencies?'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Then you are at the right place!'
+            ),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'p',
+              null,
+              'For press and media inquires, email us directly at ',
+              _react2.default.createElement(
+                'a',
+                { href: 'mailto:team@seedom.io' },
+                'team@seedom.io'
+              ),
+              '.'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'column' },
+            _react2.default.createElement('iframe', {
+              src: 'https://landing.mailerlite.com/webforms/landing/t6i1i0',
+              style: { border: 'none', width: '350px', height: '472px' }
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Contact;
+}(_sections2.default);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Contact);
+
+/***/ }),
+
+/***/ "./app/components/contact/index.scss":
+/*!*******************************************!*\
+  !*** ./app/components/contact/index.scss ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/field/index.js":
+/*!***************************************!*\
+  !*** ./app/components/field/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(/*! classnames */ "classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/field/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var inputClass = function inputClass(isValid) {
+  return (0, _classnames2.default)({
+    input: true,
+    'is-primary': isValid,
+    'is-danger': !isValid
+  });
+};
+
+var textareaClass = function textareaClass(isValid) {
+  return (0, _classnames2.default)({
+    textarea: true,
+    'is-primary': isValid,
+    'is-danger': !isValid
+  });
+};
+
+var Field = function (_Component) {
+  _inherits(Field, _Component);
+
+  function Field() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Field);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Field.__proto__ || Object.getPrototypeOf(Field)).call.apply(_ref, [this].concat(args))), _this), _this.focus = function () {
+      _this.input.focus();
+    }, _this.handleChange = function (event) {
+      _this.props.onChange(event.target.value);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Field, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          format = _props.format,
+          type = _props.type,
+          placeholder = _props.placeholder,
+          disabled = _props.disabled,
+          value = _props.value,
+          maxLength = _props.maxLength,
+          children = _props.children,
+          isValid = _props.isValid,
+          min = _props.min,
+          max = _props.max;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-field field' },
+        _react2.default.createElement(
+          'div',
+          { className: 'control ' + format },
+          {
+            textbox: _react2.default.createElement('input', {
+              className: inputClass(isValid),
+              type: type,
+              min: min,
+              max: max,
+              placeholder: placeholder.toUpperCase(),
+              disabled: disabled,
+              value: value,
+              onChange: this.handleChange,
+              ref: function ref(input) {
+                _this2.input = input;
+              }
+            }),
+            textblock: _react2.default.createElement('textarea', {
+              rows: '2',
+              className: textareaClass(isValid),
+              type: type,
+              placeholder: placeholder.toUpperCase(),
+              disabled: disabled,
+              value: value,
+              maxLength: maxLength,
+              onChange: this.handleChange,
+              ref: function ref(input) {
+                _this2.input = input;
+              }
+            }),
+            addonbox: _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement('input', {
+                className: inputClass(isValid),
+                type: type,
+                min: min,
+                max: max,
+                placeholder: placeholder.toUpperCase(),
+                disabled: disabled,
+                onChange: this.handleChange,
+                ref: function ref(input) {
+                  _this2.input = input;
+                }
+              }),
+              _react2.default.createElement(
+                'div',
+                { className: 'addon' },
+                children
+              )
+            )
+          }[format]
+        )
+      );
+    }
+  }]);
+
+  return Field;
+}(_react.Component);
+
+Field.propTypes = {
+  format: _propTypes2.default.string.isRequired,
+  type: _propTypes2.default.string.isRequired,
+  value: _propTypes2.default.string,
+  maxLength: _propTypes2.default.number,
+  min: _propTypes2.default.shape(),
+  max: _propTypes2.default.shape(),
+  placeholder: _propTypes2.default.string.isRequired,
+  disabled: _propTypes2.default.bool.isRequired,
+  isValid: _propTypes2.default.bool,
+  onChange: _propTypes2.default.func.isRequired,
+  children: _propTypes2.default.element
+};
+Field.defaultProps = {
+  value: '',
+  maxLength: 0,
+  min: null,
+  max: null,
+  isValid: true,
+  children: null
+};
+exports.default = Field;
+
+/***/ }),
+
+/***/ "./app/components/field/index.scss":
+/*!*****************************************!*\
+  !*** ./app/components/field/index.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/footer/index.js":
+/*!****************************************!*\
+  !*** ./app/components/footer/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Footer = function (_Component) {
+  _inherits(Footer, _Component);
+
+  function Footer() {
+    _classCallCheck(this, Footer);
+
+    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+  }
+
+  _createClass(Footer, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "footer",
+        { className: "footer" },
+        _react2.default.createElement(
+          "div",
+          { className: "container" },
+          _react2.default.createElement(
+            "div",
+            { className: "content has-text-centered" },
+            _react2.default.createElement(
+              "p",
+              null,
+              _react2.default.createElement(
+                "strong",
+                null,
+                "Seedom"
+              ),
+              " by the ",
+              _react2.default.createElement(
+                "a",
+                { className: "is-green", href: "mailto:team@seedom.io" },
+                "Seedom Team"
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Footer;
+}(_react.Component);
+
+exports.default = Footer;
+
+/***/ }),
+
+/***/ "./app/components/head/index.js":
+/*!**************************************!*\
+  !*** ./app/components/head/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _reactHelmet = __webpack_require__(/*! react-helmet */ "react-helmet");
+
+var _queryString = __webpack_require__(/*! query-string */ "query-string");
+
+var _queryString2 = _interopRequireDefault(_queryString);
+
+var _badges = __webpack_require__(/*! ../../utils/badges */ "./app/utils/badges.js");
+
+var badges = _interopRequireWildcard(_badges);
+
+var _seedomOBlackTransparent = __webpack_require__(/*! ../../../../seedom-assets/logo/o/seedom-o-black-transparent.png */ "../seedom-assets/logo/o/seedom-o-black-transparent.png");
+
+var _seedomOBlackTransparent2 = _interopRequireDefault(_seedomOBlackTransparent);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var name = 'Seedom';
+var author = 'Team Palm Tree';
+var title = 'Seedom | Seeding the future of philanthropy';
+var description = 'Raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support. Seed the future of philanthropy!';
+var image = 'https://raw.githubusercontent.com/seedom-io/seedom-assets/master/share/seedom-share.png';
+var imageWidth = 1200;
+var imageHeight = 628;
+
+var Head = function (_Component) {
+  _inherits(Head, _Component);
+
+  function Head() {
+    _classCallCheck(this, Head);
+
+    return _possibleConstructorReturn(this, (Head.__proto__ || Object.getPrototypeOf(Head)).apply(this, arguments));
+  }
+
+  _createClass(Head, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (window) {
+        var gtag = function gtag() {
+          dataLayer.push(arguments);
+        };
+
+        window.dataLayer = window.dataLayer || [];
+
+        gtag('js', new Date());
+        gtag('config', 'UA-110677302-1');
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var router = this.props.router;
+
+
+      var finalUrl = "http://localhost:8080";
+      var finalImage = image;
+      // check for badge
+      if (router && router.location) {
+        if (router.location.search !== '') {
+          var query = _queryString2.default.parse(router.location.search.substr(1));
+          var n = query.n,
+              c = query.c,
+              p = query.p;
+
+          if (n && c && p) {
+            finalUrl += router.location.search;
+            finalImage = badges.getImageUrl({
+              network: n,
+              contract: c,
+              participant: p
+            });
+          }
+        }
+      }
+
+      return _react2.default.createElement(
+        _reactHelmet.Helmet,
+        null,
+        _react2.default.createElement(
+          'title',
+          null,
+          title
+        ),
+        _react2.default.createElement('meta', { name: 'description', content: description }),
+        _react2.default.createElement('meta', { name: 'author', content: author }),
+        _react2.default.createElement('link', { rel: 'icon', type: 'image/png', href: _seedomOBlackTransparent2.default }),
+        _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=0.7, maximum-scale=0.7' }),
+        _react2.default.createElement('meta', { name: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' }),
+        _react2.default.createElement('meta', { name: 'twitter:site', property: 'twitter:site', content: '@seedom_io' }),
+        _react2.default.createElement('meta', { name: 'twitter:title', property: 'twitter:title', content: title }),
+        _react2.default.createElement('meta', { name: 'twitter:description', property: 'twitter:description', content: description }),
+        _react2.default.createElement('meta', { name: 'twitter:image', property: 'twitter:image', content: finalImage }),
+        _react2.default.createElement('meta', { name: 'twitter:url', property: 'twitter:url', content: finalUrl }),
+        _react2.default.createElement('meta', { name: 'og:type', property: 'og:type', content: 'website' }),
+        _react2.default.createElement('meta', { name: 'og:site_name', property: 'og:site_name', content: name }),
+        _react2.default.createElement('meta', { name: 'og:title', property: 'og:title', content: title }),
+        _react2.default.createElement('meta', { name: 'og:description', property: 'og:description', content: description }),
+        _react2.default.createElement('meta', { name: 'og:image', property: 'og:image', content: finalImage }),
+        _react2.default.createElement('meta', { name: 'og:image:width', property: 'og:image:width', content: imageWidth }),
+        _react2.default.createElement('meta', { name: 'og:image:height', property: 'og:image:height', content: imageHeight }),
+        _react2.default.createElement('meta', { name: 'og:url', property: 'og:url', content: finalUrl }),
+        _react2.default.createElement('link', { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.10/css/all.css', integrity: 'sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg', crossOrigin: 'anonymous' }),
+        _react2.default.createElement('script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=UA-110677302-1' })
+      );
+    }
+  }]);
+
+  return Head;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Head);
+
+/***/ }),
+
+/***/ "./app/components/help/index.js":
+/*!**************************************!*\
+  !*** ./app/components/help/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _sections = __webpack_require__(/*! ../sections */ "./app/components/sections/index.js");
+
+var _sections2 = _interopRequireDefault(_sections);
+
+var _toggle = __webpack_require__(/*! ../toggle */ "./app/components/toggle/index.js");
+
+var _toggle2 = _interopRequireDefault(_toggle);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/help/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Help = function (_Sections) {
+  _inherits(Help, _Sections);
+
+  function Help() {
+    _classCallCheck(this, Help);
+
+    return _possibleConstructorReturn(this, (Help.__proto__ || Object.getPrototypeOf(Help)).apply(this, arguments));
+  }
+
+  _createClass(Help, [{
+    key: 'render',
+    value: function render() {
+      var open = this.state.open;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-help' },
+        _react2.default.createElement(
+          'div',
+          { className: 'container' },
+          _react2.default.createElement(
+            'div',
+            { className: 'column is-three-fifths is-offset-one-fifth' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'title has-text-white' },
+              'Accessing Seedom'
+            ),
+            _react2.default.createElement(
+              _toggle2.default,
+              {
+                title: 'Accessing on mobile',
+                collapsed: !open.includes('accessing-mobile')
+              },
+              'To use Seedom on mobile, we recommend the ',
+              _react2.default.createElement(
+                'a',
+                { target: '_blank', href: 'https://www.cipherbrowser.com/' },
+                'Cipher app'
+              ),
+              '. You will need to put Ether into your Cipher wallet in order to participate.'
+            ),
+            _react2.default.createElement(
+              _toggle2.default,
+              {
+                title: 'Accessing on desktop',
+                collapsed: !open.includes('accessing-desktop')
+              },
+              'To use Seedom on the desktop, you will need to install ',
+              _react2.default.createElement(
+                'a',
+                { target: '_blank', href: 'https://metamask.io/' },
+                'MetaMask'
+              ),
+              ' or use the ',
+              _react2.default.createElement(
+                'a',
+                { target: '_blank', href: 'https://brave.com/' },
+                'Brave browser'
+              ),
+              '. You will need to put Ether into your MetaMask wallet in order to participate.'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Help;
+}(_sections2.default);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Help);
+
+/***/ }),
+
+/***/ "./app/components/help/index.scss":
+/*!****************************************!*\
+  !*** ./app/components/help/index.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/history/index.js":
+/*!*****************************************!*\
+  !*** ./app/components/history/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var History = function (_Component) {
+  _inherits(History, _Component);
+
+  function History() {
+    _classCallCheck(this, History);
+
+    return _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).apply(this, arguments));
+  }
+
+  _createClass(History, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        'History'
+      );
+    }
+  }]);
+
+  return History;
+}(_react.Component);
+
+exports.default = History;
+
+/***/ }),
+
+/***/ "./app/components/hype/index.js":
+/*!**************************************!*\
+  !*** ./app/components/hype/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _circles = __webpack_require__(/*! ../participate/components/puck/components/circles */ "./app/components/participate/components/puck/components/circles/index.js");
+
+var _circles2 = _interopRequireDefault(_circles);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/hype/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Hype = function (_Component) {
+  _inherits(Hype, _Component);
+
+  function Hype() {
+    _classCallCheck(this, Hype);
+
+    return _possibleConstructorReturn(this, (Hype.__proto__ || Object.getPrototypeOf(Hype)).apply(this, arguments));
+  }
+
+  _createClass(Hype, [{
+    key: 'render',
+    value: function render() {
+      var deployment = {
+        deployTime: new Date(1524369600 * 1000),
+        endTime: new Date(1525147200 * 1000)
+      };
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-hype' },
+        _react2.default.createElement(
+          'div',
+          { className: 'countdown' },
+          _react2.default.createElement(_circles2.default, { starter: 'launches', isLoading: false, deployment: deployment }),
+          _react2.default.createElement(
+            'div',
+            { className: 'seedom-content show' },
+            _react2.default.createElement(
+              'div',
+              { className: 'seedom-overlay layout' },
+              _react2.default.createElement(
+                'div',
+                { className: 'division text top large-pad narrow' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'coming-soon' },
+                  'Launches May 1'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'field' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'control' },
+                    _react2.default.createElement(
+                      'a',
+                      { className: 'button is-success', type: 'submit', href: 'https://seedom-io.github.io/seedom-whitepaper/seedom-whitepaper.pdf' },
+                      'READ THE WHITEPAPER'
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'division text center' },
+                _react2.default.createElement('div', { className: 'seedom-logo' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'division text bottom' },
+                _react2.default.createElement(
+                  'form',
+                  { action: 'https://landing.mailerlite.com/webforms/submit/z2z8h3', method: 'POST', target: '_blank' },
+                  _react2.default.createElement('input', { type: 'hidden', name: 'ml-submit', value: '1' }),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'field email' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'control textbox' },
+                      _react2.default.createElement('input', { className: 'input is-primary', type: 'email', placeholder: 'email@example.com', name: 'fields[email]' })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'field' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'control' },
+                      _react2.default.createElement(
+                        'button',
+                        { className: 'button is-success', type: 'submit' },
+                        'SEND ME A REMINDER'
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Hype;
+}(_react.Component);
+
+exports.default = Hype;
+
+/***/ }),
+
+/***/ "./app/components/hype/index.scss":
+/*!****************************************!*\
+  !*** ./app/components/hype/index.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/navbar/index.js":
+/*!****************************************!*\
+  !*** ./app/components/navbar/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(/*! classnames */ "classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _seedomFullWhiteTransparent = __webpack_require__(/*! ../../../../seedom-assets/logo/full/seedom-full-white-transparent.png */ "../seedom-assets/logo/full/seedom-full-white-transparent.png");
+
+var _seedomFullWhiteTransparent2 = _interopRequireDefault(_seedomFullWhiteTransparent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NavBar = function (_React$Component) {
+  _inherits(NavBar, _React$Component);
+
+  function NavBar(props) {
+    _classCallCheck(this, NavBar);
+
+    var _this = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+
+    _this.handleNavToggle = function () {
+      _this.setState({
+        isBurgerActive: !_this.state.isBurgerActive
+      });
+    };
+
+    _this.handleNavLink = function () {
+      _this.setState({
+        isBurgerActive: false
+      });
+    };
+
+    _this.state = {
+      isBurgerActive: false
+    };
+    return _this;
+  }
+
+  _createClass(NavBar, [{
+    key: 'render',
+
+
+    // <NavLink className="navbar-item" activeClassName="is-active" to="/history" onClick={this.handleNavLink} exact>HISTORY</NavLink>
+    value: function render() {
+      var isBurgerActive = this.state.isBurgerActive;
+      var isLoading = this.props.ethereum.isLoading;
+
+
+      return _react2.default.createElement(
+        'nav',
+        { className: 'navbar' },
+        _react2.default.createElement(
+          'div',
+          { className: 'container' },
+          _react2.default.createElement(
+            'div',
+            { className: (0, _classnames2.default)('navbar-brand', { 'is-loading': isLoading }) },
+            _react2.default.createElement(
+              'a',
+              { className: 'navbar-item', href: '/' },
+              _react2.default.createElement('img', { src: _seedomFullWhiteTransparent2.default, alt: 'Seedom - Seeding the future of philanthropy' })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: (0, _classnames2.default)('navbar-burger', 'burger', { 'is-active': isBurgerActive }), onClick: this.handleNavToggle },
+              _react2.default.createElement('span', null),
+              _react2.default.createElement('span', null),
+              _react2.default.createElement('span', null)
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: (0, _classnames2.default)('navbar-menu', { 'is-active': isBurgerActive }) },
+            _react2.default.createElement(
+              'div',
+              { className: 'navbar-start' },
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { className: 'navbar-item', activeClassName: 'is-active', to: '/', onClick: this.handleNavLink, exact: true },
+                'PARTICIPATE'
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { className: 'navbar-item', activeClassName: 'is-active', to: '/vote', onClick: this.handleNavLink, exact: true },
+                'VOTE'
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { className: 'navbar-item', activeClassName: 'is-active', to: '/help', onClick: this.handleNavLink, exact: true },
+                'HELP'
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { className: 'navbar-item', activeClassName: 'is-active', to: '/about', onClick: this.handleNavLink, exact: true },
+                'ABOUT'
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { className: 'navbar-item', activeClassName: 'is-active', to: '/contact', onClick: this.handleNavLink, exact: true },
+                'CONTACT'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'navbar-end' },
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://t.me/seedomio' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-telegram' })
+                )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://medium.com/@seedom.io' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-medium' })
+                )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://reddit.com/r/seedom_io' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-reddit' })
+                )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://github.com/seedom-io' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-github' })
+                )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://www.facebook.com/seedom.io' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-facebook' })
+                )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://twitter.com/seedom_io' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-twitter' })
+                )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-item', href: 'https://www.instagram.com/seedom.io/' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'icon' },
+                  _react2.default.createElement('i', { className: 'fab fa-lg fa-instagram' })
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return NavBar;
+}(_react2.default.Component);
+
+NavBar.propTypes = {
+  ethereum: _propTypes2.default.shape().isRequired,
+  router: _propTypes2.default.shape().isRequired
+};
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    router: state.router,
+    ethereum: state.ethereum
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(NavBar);
+
+/***/ }),
+
+/***/ "./app/components/participate/components/about/index.js":
+/*!**************************************************************!*\
+  !*** ./app/components/participate/components/about/index.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _collapse = __webpack_require__(/*! ../../../collapse */ "./app/components/collapse/index.js");
+
+var _collapse2 = _interopRequireDefault(_collapse);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/about/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var About = function (_Component) {
+  _inherits(About, _Component);
+
+  function About(props) {
+    _classCallCheck(this, About);
+
+    var _this = _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this, props));
+
+    _this.state = {
+      collapsed: true
+    };
+    return _this;
+  }
+
+  _createClass(About, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.scrollToElement = __webpack_require__(/*! scroll-to-element */ "scroll-to-element");
+    }
+  }, {
+    key: 'play',
+    value: function play() {
+      var _this2 = this;
+
+      this.setState({ collapsed: false }, function () {
+        _this2.scrollToElement('#seedom-participate-about', {
+          offset: 0,
+          ease: 'outCirc',
+          duration: 3000
+        });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var cause = this.props.cause;
+
+      if (!cause) {
+        return null;
+      }
+
+      var collapsed = this.state.collapsed;
+
+      return _react2.default.createElement(
+        _collapse2.default,
+        { id: 'seedom-participate-about', collapsed: collapsed, title: 'about ' + cause.name },
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-participate-about' },
+          _react2.default.createElement(
+            'div',
+            { className: 'video' },
+            _react2.default.createElement('iframe', {
+              id: 'video',
+              title: 'video',
+              src: '//www.youtube.com/embed/' + cause.video + '?rel=0' + (!collapsed ? '&autoplay=1' : ''),
+              frameBorder: '0',
+              allowFullScreen: true
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-dark', href: 'https://' + cause.url, target: '_blank' },
+                'learn more at ' + cause.url
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return About;
+}(_react.Component);
+
+About.propTypes = {
+  cause: _propTypes2.default.shape()
+};
+About.defaultProps = {
+  cause: null
+};
+exports.default = About;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/about/index.scss":
+/*!****************************************************************!*\
+  !*** ./app/components/participate/components/about/index.scss ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/feed/index.js":
+/*!*************************************************************!*\
+  !*** ./app/components/participate/components/feed/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _bytes = __webpack_require__(/*! ../../../../utils/bytes */ "./app/utils/bytes.js");
+
+var bytes = _interopRequireWildcard(_bytes);
+
+var _numbers = __webpack_require__(/*! ../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var numbers = _interopRequireWildcard(_numbers);
+
+var _etherscan = __webpack_require__(/*! ../../../../utils/etherscan */ "./app/utils/etherscan.js");
+
+var etherscan = _interopRequireWildcard(_etherscan);
+
+var _collapse = __webpack_require__(/*! ../../../collapse */ "./app/components/collapse/index.js");
+
+var _collapse2 = _interopRequireDefault(_collapse);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/feed/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var getAddress = function getAddress(item) {
+  switch (item.type) {
+    case 'FUNDRAISER_PARTICIPATION':
+      return item.participation.participant;
+    case 'FUNDRAISER_RAISE':
+      return item.raise.participant;
+    default:
+      return null;
+  }
+};
+
+var getEntries = function getEntries(item) {
+  switch (item.type) {
+    case 'FUNDRAISER_PARTICIPATION':
+      return item.participation.entries;
+    case 'FUNDRAISER_RAISE':
+      return item.raise.entries;
+    default:
+      return null;
+  }
+};
+
+var getMessage = function getMessage(item) {
+  if (item.type === 'FUNDRAISER_PARTICIPATION') {
+    return item.participation.message;
+  }
+  return null;
+};
+
+var Feed = function (_Component) {
+  _inherits(Feed, _Component);
+
+  function Feed() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Feed);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Feed.__proto__ || Object.getPrototypeOf(Feed)).call.apply(_ref, [this].concat(args))), _this), _this.openTransaction = function (transactionHash) {
+      var network = _this.props.network;
+
+      var etherscanUrl = etherscan.getTransactionUrl(network.name, transactionHash);
+      if (etherscanUrl) {
+        window && window.open(etherscanUrl, '_blank');
+      }
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Feed, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var feed = this.props.feed;
+
+      return _react2.default.createElement(
+        _collapse2.default,
+        { title: 'live activity feed', collapsed: false },
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-feed' },
+          _react2.default.createElement(
+            'div',
+            { className: 'list' },
+            feed.map(function (item) {
+              return _react2.default.createElement(
+                'div',
+                {
+                  className: 'row',
+                  key: item.transactionHash + '-' + item.transactionIndex,
+                  onClick: function onClick() {
+                    _this2.openTransaction(item.transactionHash);
+                  }
+                },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'icon' },
+                  {
+                    FUNDRAISER_PARTICIPATION: _react2.default.createElement('i', { className: 'fas fa-arrow-alt-circle-right' }),
+                    FUNDRAISER_RAISE: _react2.default.createElement('i', { className: 'far fa-arrow-alt-circle-up' })
+                  }[item.type]
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'contents' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'side left' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'blocknum' },
+                      _react2.default.createElement('i', { className: 'fas fa-cube' }),
+                      ' ',
+                      item.blockNumber
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'address' },
+                      bytes.shorten(getAddress(item))
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'side right' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'entries' },
+                      numbers.localeNumber(getEntries(item)),
+                      ' entries'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'messages' },
+                      getMessage(item)
+                    )
+                  )
+                )
+              );
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Feed;
+}(_react.Component);
+
+Feed.propTypes = {
+  network: _propTypes2.default.shape(),
+  feed: _propTypes2.default.arrayOf(_propTypes2.default.shape())
+};
+Feed.defaultProps = {
+  network: null,
+  feed: []
+};
+exports.default = Feed;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/feed/index.scss":
+/*!***************************************************************!*\
+  !*** ./app/components/participate/components/feed/index.scss ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/footer/index.js":
+/*!***************************************************************!*\
+  !*** ./app/components/participate/components/footer/index.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _etherscan = __webpack_require__(/*! ../../../../utils/etherscan */ "./app/utils/etherscan.js");
+
+var etherscan = _interopRequireWildcard(_etherscan);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/footer/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Footer = function (_Component) {
+  _inherits(Footer, _Component);
+
+  function Footer() {
+    _classCallCheck(this, Footer);
+
+    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+  }
+
+  _createClass(Footer, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          network = _props.network,
+          primaryContractAddresses = _props.primaryContractAddresses;
+
+      if (!network || !primaryContractAddresses) {
+        return null;
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-participate-footer' },
+        _react2.default.createElement(
+          'div',
+          { className: 'container' },
+          _react2.default.createElement(
+            'div',
+            { className: 'content has-text-centered' },
+            _react2.default.createElement(
+              'p',
+              null,
+              'View live ',
+              _react2.default.createElement(
+                'strong',
+                null,
+                'Seedom'
+              ),
+              ' data on ',
+              _react2.default.createElement(
+                'a',
+                { className: 'is-green', target: '_blank', href: etherscan.getAddressUrl(network.name, primaryContractAddresses.fundraiser) },
+                'Etherscan'
+              ),
+              '.'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Footer;
+}(_react.Component);
+
+Footer.propTypes = {
+  network: _propTypes2.default.shape(),
+  primaryContractAddresses: _propTypes2.default.shape()
+};
+Footer.defaultProps = {
+  network: null,
+  primaryContractAddresses: null
+};
+exports.default = Footer;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/footer/index.scss":
+/*!*****************************************************************!*\
+  !*** ./app/components/participate/components/footer/index.scss ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/header/index.js":
+/*!***************************************************************!*\
+  !*** ./app/components/participate/components/header/index.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _dates = __webpack_require__(/*! ../../../../utils/dates */ "./app/utils/dates.js");
+
+var dates = _interopRequireWildcard(_dates);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/header/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Item = function (_Component) {
+  _inherits(Item, _Component);
+
+  function Item() {
+    _classCallCheck(this, Item);
+
+    return _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).apply(this, arguments));
+  }
+
+  _createClass(Item, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          type = _props.type,
+          title = _props.title,
+          value = _props.value;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'item ' + type },
+        _react2.default.createElement(
+          'div',
+          { className: 'item-title' },
+          title
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'item-value' },
+          value
+        )
+      );
+    }
+  }]);
+
+  return Item;
+}(_react.Component);
+
+Item.propTypes = {
+  type: _propTypes2.default.string.isRequired,
+  title: _propTypes2.default.string.isRequired,
+  value: _propTypes2.default.string
+};
+Item.defaultProps = {
+  value: null
+};
+
+var Header = function (_Component2) {
+  _inherits(Header, _Component2);
+
+  function Header() {
+    _classCallCheck(this, Header);
+
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+  }
+
+  _createClass(Header, [{
+    key: 'render',
+    value: function render() {
+      var _props2 = this.props,
+          deployment = _props2.deployment,
+          network = _props2.network;
+
+
+      var deployTime = void 0;
+      var endTime = void 0;
+      if (deployment) {
+        deployTime = dates.localeDate(deployment.deployTime);
+        endTime = dates.localeDate(deployment.endTime);
+      }
+
+      var networkName = void 0;
+      if (network) {
+        networkName = network.name;
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-header' },
+        _react2.default.createElement('div', { className: 'background' }),
+        _react2.default.createElement(Item, { type: 'side', title: 'start date', value: deployTime }),
+        _react2.default.createElement(Item, { type: 'center', title: 'network', value: networkName }),
+        _react2.default.createElement(Item, { type: 'side', title: 'end date', value: endTime })
+      );
+    }
+  }]);
+
+  return Header;
+}(_react.Component);
+
+Header.propTypes = {
+  deployment: _propTypes2.default.shape(),
+  network: _propTypes2.default.shape()
+};
+Header.defaultProps = {
+  deployment: null,
+  network: null
+};
+exports.default = Header;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/header/index.scss":
+/*!*****************************************************************!*\
+  !*** ./app/components/participate/components/header/index.scss ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/account/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/account/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Account = function (_Content) {
+  _inherits(Account, _Content);
+
+  function Account() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Account);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Account.__proto__ || Object.getPrototypeOf(Account)).call.apply(_ref, [this].concat(args))), _this), _this.openMetamask = function () {
+      window && window.open(METAMASK_URL, '_blank');
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Account, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var isShown = this.props.isShown;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content account ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'error' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top medium-pad' },
+            _react2.default.createElement('div', { className: 'ethereum-logo' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center squish narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'account not available, please confirm'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom large-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'button is-white is-outlined', to: '/help' },
+                  'how to access seedom'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Account;
+}(_content2.default);
+
+Account.propTypes = {
+  isShown: _propTypes2.default.bool
+};
+Account.defaultProps = {
+  isShown: false
+};
+exports.default = Account;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/badge/index.js":
+/*!******************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/badge/index.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _badges = __webpack_require__(/*! ../../../../../../utils/badges */ "./app/utils/badges.js");
+
+var badges = _interopRequireWildcard(_badges);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/badge/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var getSeedomShareUrl = function getSeedomShareUrl(_ref) {
+  var network = _ref.network,
+      contract = _ref.contract,
+      participant = _ref.participant;
+
+  return "http://localhost:8080" + '?n=' + network + '&c=' + contract + '&p=' + participant;
+};
+
+var getFacebookShareUrl = function getFacebookShareUrl(_ref2) {
+  var network = _ref2.network,
+      contract = _ref2.contract,
+      participant = _ref2.participant;
+
+  var seedomShareUrl = getSeedomShareUrl({ network: network, contract: contract, participant: participant });
+  return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(seedomShareUrl);
+};
+
+var getTwitterShareUrl = function getTwitterShareUrl(_ref3) {
+  var network = _ref3.network,
+      contract = _ref3.contract,
+      participant = _ref3.participant;
+
+  var seedomShareUrl = getSeedomShareUrl({ network: network, contract: contract, participant: participant });
+  return 'https://twitter.com/share?url=' + encodeURIComponent(seedomShareUrl);
+};
+
+var Badge = function (_Content) {
+  _inherits(Badge, _Content);
+
+  function Badge() {
+    _classCallCheck(this, Badge);
+
+    return _possibleConstructorReturn(this, (Badge.__proto__ || Object.getPrototypeOf(Badge)).apply(this, arguments));
+  }
+
+  _createClass(Badge, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          onBadgingOver = _props.onBadgingOver,
+          primaryContractAddresses = _props.primaryContractAddresses,
+          account = _props.account,
+          participant = _props.participant,
+          network = _props.network;
+
+
+      if (!primaryContractAddresses || !account || !participant || !network) {
+        return null;
+      }
+
+      // make sure user has participated (prevents early caching)
+      if (participant.entries.isEqualTo(0)) {
+        return null;
+      }
+
+      var params = {
+        network: network.name,
+        contract: primaryContractAddresses.fundraiser.substr(2),
+        participant: account.substr(2)
+      };
+
+      // get badge url
+      var badgeImageUrl = badges.getImageUrl(params);
+      var facebookShareUrl = getFacebookShareUrl(params);
+      var twitterShareUrl = getTwitterShareUrl(params);
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content badge ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'success' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top large-pad narrow' },
+            _react2.default.createElement(
+              'div',
+              { className: 'thank-you' },
+              'thank you!'
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              'here is your badge'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division center squish' },
+            _react2.default.createElement('img', { className: 'seedom-badge', src: badgeImageUrl })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom small-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field is-grouped' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-dark', href: badgeImageUrl },
+                  _react2.default.createElement('i', { className: 'fas fa-download' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button twitter', href: twitterShareUrl, target: '_blank' },
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    'share'
+                  ),
+                  _react2.default.createElement('i', { className: 'fab fa-twitter right' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button facebook', href: facebookShareUrl, target: '_blank' },
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    'share'
+                  ),
+                  _react2.default.createElement('i', { className: 'fab fa-facebook-f right' })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-white is-outlined', onClick: onBadgingOver },
+                  'continue'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Badge;
+}(_content2.default);
+
+Badge.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  onBadgingOver: _propTypes2.default.func.isRequired,
+  primaryContractAddresses: _propTypes2.default.shape(),
+  account: _propTypes2.default.string,
+  participant: _propTypes2.default.shape(),
+  network: _propTypes2.default.shape()
+};
+Badge.defaultProps = {
+  primaryContractAddresses: null,
+  account: null,
+  participant: null,
+  network: null
+};
+exports.default = Badge;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/badge/index.scss":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/badge/index.scss ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/begin/index.js":
+/*!******************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/begin/index.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Begin = function (_Content) {
+  _inherits(Begin, _Content);
+
+  function Begin() {
+    _classCallCheck(this, Begin);
+
+    return _possibleConstructorReturn(this, (Begin.__proto__ || Object.getPrototypeOf(Begin)).apply(this, arguments));
+  }
+
+  _createClass(Begin, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          cause = _props.cause;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content seed ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'waiting' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'please wait for'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center' },
+            _react2.default.createElement(_causeLogo2.default, { cause: cause })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'to begin their fundraiser'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Begin;
+}(_content2.default);
+
+Begin.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  cause: _propTypes2.default.shape()
+};
+Begin.defaultProps = {
+  cause: null
+};
+exports.default = Begin;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/beginningFailed/index.js":
+/*!****************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/beginningFailed/index.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BeginningFailed = function (_Content) {
+  _inherits(BeginningFailed, _Content);
+
+  function BeginningFailed() {
+    _classCallCheck(this, BeginningFailed);
+
+    return _possibleConstructorReturn(this, (BeginningFailed.__proto__ || Object.getPrototypeOf(BeginningFailed)).apply(this, arguments));
+  }
+
+  _createClass(BeginningFailed, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          cause = _props.cause;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content seed-failed ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'error' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top' },
+            _react2.default.createElement(_causeLogo2.default, { cause: cause, size: 'medium' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom huge-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'cause failed to begin their fundraiser'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return BeginningFailed;
+}(_content2.default);
+
+BeginningFailed.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  cause: _propTypes2.default.shape()
+};
+BeginningFailed.defaultProps = {
+  cause: null
+};
+exports.default = BeginningFailed;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/cancel/index.js":
+/*!*******************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/cancel/index.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Cancel = function (_Content) {
+  _inherits(Cancel, _Content);
+
+  function Cancel() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Cancel);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Cancel.__proto__ || Object.getPrototypeOf(Cancel)).call.apply(_ref, [this].concat(args))), _this), _this.handleSubmit = function () {
+      var onCancel = _this.props.onCancel;
+
+      onCancel();
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Cancel, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isLoading = _props.isLoading,
+          cause = _props.cause;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content cancel ' + className },
+        _react2.default.createElement(_indicator2.default, { type: 'cancel' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top small-pad' },
+            _react2.default.createElement(_causeLogo2.default, { cause: cause, size: 'medium' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center squish narrow' },
+            'fundraiser expired, please cancel for the community'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom huge-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-dark', disabled: isLoading, onClick: this.handleSubmit },
+                  'cancel'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Cancel;
+}(_content2.default);
+
+Cancel.propTypes = {
+  isLoading: _propTypes2.default.bool,
+  onCancel: _propTypes2.default.func.isRequired,
+  cause: _propTypes2.default.shape()
+};
+Cancel.defaultProps = {
+  isLoading: false,
+  cause: null
+};
+exports.default = Cancel;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/cancelled/index.js":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/cancelled/index.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Cancelled = function (_Content) {
+  _inherits(Cancelled, _Content);
+
+  function Cancelled() {
+    _classCallCheck(this, Cancelled);
+
+    return _possibleConstructorReturn(this, (Cancelled.__proto__ || Object.getPrototypeOf(Cancelled)).apply(this, arguments));
+  }
+
+  _createClass(Cancelled, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var cause = this.props.cause;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content cancelled ' + className },
+        _react2.default.createElement(_indicator2.default, { type: 'error' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top small-pad' },
+            _react2.default.createElement(_causeLogo2.default, { cause: cause, size: 'medium' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'fundraiser cancelled, please check back later'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Cancelled;
+}(_content2.default);
+
+Cancelled.propTypes = {
+  cause: _propTypes2.default.shape()
+};
+Cancelled.defaultProps = {
+  cause: null
+};
+exports.default = Cancelled;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/circles/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/circles/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/circles/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MAX_X = 1000;
+var MAX_Y = 1000;
+var FULL_RADIUS = 500;
+var CENTER_X = 500;
+var CENTER_Y = 500;
+var LOADERS_STROKE_WIDTH = 30;
+var PROGRESS_STROKE_WIDTH = 30;
+var PHASE_STROKE_WIDTH = 50;
+var BACKGROUND_PADDING = 50;
+var LOADERS_PERCENTAGE = 20;
+
+var getProgressPercentage = function getProgressPercentage(deployment, now) {
+  var deployTime = deployment.deployTime,
+      endTime = deployment.endTime;
+
+  var deploymentTime = endTime - deployTime;
+  var progressTime = now - deployTime;
+  return progressTime > deploymentTime ? 100 : 100 * (progressTime / deploymentTime);
+};
+
+var getProgressText = function getProgressText(starter, deployment, now) {
+  var endTime = deployment.endTime;
+
+  var timeUntilEnd = endTime - now;
+
+  if (timeUntilEnd <= 0) {
+    return 'FINISHED';
+  }
+
+  timeUntilEnd /= 1000;
+  // calculate (and subtract) whole days
+  var days = Math.floor(timeUntilEnd / 86400);
+  timeUntilEnd -= days * 86400;
+  // calculate (and subtract) whole hours
+  var hours = Math.floor(timeUntilEnd / 3600) % 24;
+  timeUntilEnd -= hours * 3600;
+  // calculate (and subtract) whole minutes
+  var minutes = Math.floor(timeUntilEnd / 60) % 60;
+  timeUntilEnd -= minutes * 60;
+  // what's left is seconds
+  var seconds = Math.floor(timeUntilEnd % 60);
+
+  return starter.toUpperCase() + ' IN - ' + days + 'D ' + hours + 'H ' + minutes + 'M ' + seconds + 'S';
+};
+
+var getProgressRadius = function getProgressRadius() {
+  return FULL_RADIUS - PROGRESS_STROKE_WIDTH / 2 - BACKGROUND_PADDING;
+};
+
+var getLoadersRadius = function getLoadersRadius() {
+  return FULL_RADIUS - LOADERS_STROKE_WIDTH / 2;
+};
+
+var getPathFlipped = function getPathFlipped(percentage) {
+  return percentage > 30 && percentage < 70;
+};
+
+var getPathStyle = function getPathStyle(radius, percentage) {
+  var diameter = Math.PI * 2 * radius;
+  var dashoffset = (100 - percentage) / 100 * diameter;
+
+  return {
+    strokeDasharray: diameter + 'px ' + diameter + 'px',
+    strokeDashoffset: dashoffset + 'px'
+  };
+};
+
+var getTextOffset = function getTextOffset(flipped, percentage) {
+  return flipped ? 101 - percentage : percentage - 1;
+};
+
+var getPathDescription = function getPathDescription(radius, flipped) {
+  // Move to center of canvas
+  // Relative move to top canvas
+  // Relative arc to bottom of canvas
+  // Relative arc to top of canvas
+  return '\n      M ' + CENTER_X + ',' + CENTER_Y + '\n      m 0,-' + radius + '\n      a ' + radius + ',' + radius + ' 0 1 ' + (flipped ? 0 : 1) + ' 0,' + 2 * radius + '\n      a ' + radius + ',' + radius + ' 0 1 ' + (flipped ? 0 : 1) + ' 0,-' + 2 * radius + '\n  ';
+};
+
+var getProgressTextShown = function getProgressTextShown(percentage) {
+  return percentage >= 15;
+};
+
+var Circles = function (_React$Component) {
+  _inherits(Circles, _React$Component);
+
+  function Circles(props) {
+    _classCallCheck(this, Circles);
+
+    var _this = _possibleConstructorReturn(this, (Circles.__proto__ || Object.getPrototypeOf(Circles)).call(this, props));
+
+    _this.state = {
+      now: new Date()
+    };
+    return _this;
+  }
+
+  _createClass(Circles, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.interval = setInterval(function () {
+        _this2.setState({
+          now: new Date()
+        });
+      }, 1000);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          starter = _props.starter,
+          deployment = _props.deployment,
+          isLoading = _props.isLoading;
+      var now = this.state.now;
+
+
+      var progressPercentage = void 0;
+      var progressText = void 0;
+      if (deployment) {
+        progressPercentage = getProgressPercentage(deployment, now);
+        progressText = getProgressText(starter, deployment, now);
+      }
+
+      var progressRadius = getProgressRadius();
+      var loadersRadius = getLoadersRadius();
+
+      var progressPathStyle = getPathStyle(progressRadius, progressPercentage);
+      var participationPathStyle = getPathStyle(progressRadius, 100);
+      var loadersPathStyle = getPathStyle(loadersRadius, LOADERS_PERCENTAGE);
+
+      var progressPathFlipped = getPathFlipped(progressPercentage);
+
+      var progressPathDescription = getPathDescription(progressRadius);
+      var flippedProgressPathDescription = getPathDescription(progressRadius, true);
+      var loadersPathDescription = getPathDescription(loadersRadius);
+
+      var progressTextShown = getProgressTextShown(progressPercentage);
+
+      var progressTextOffset = getTextOffset(progressPathFlipped, progressPercentage);
+
+      return _react2.default.createElement(
+        'svg',
+        {
+          className: 'seedom-circles',
+          viewBox: '0 0 ' + MAX_X + ' ' + MAX_Y
+        },
+        _react2.default.createElement('circle', {
+          className: 'background',
+          cx: CENTER_X,
+          cy: CENTER_Y,
+          r: FULL_RADIUS,
+          opacity: 0.9
+        }),
+        _react2.default.createElement(
+          'g',
+          { className: 'loaders-container ' + (isLoading ? 'show' : 'hide') },
+          _react2.default.createElement('circle', {
+            className: 'loaders-arc',
+            cx: CENTER_X,
+            cy: CENTER_Y,
+            r: loadersRadius,
+            strokeWidth: LOADERS_STROKE_WIDTH,
+            fillOpacity: 0,
+            style: loadersPathStyle
+          }),
+          _react2.default.createElement('circle', {
+            className: 'loaders-arc bottom',
+            cx: CENTER_X,
+            cy: CENTER_Y,
+            r: loadersRadius,
+            strokeWidth: LOADERS_STROKE_WIDTH,
+            fillOpacity: 0,
+            style: loadersPathStyle
+          }),
+          _react2.default.createElement('path', {
+            id: 'seedom-circles-loaders-path',
+            className: 'loaders-path',
+            d: loadersPathDescription,
+            strokeWidth: 0,
+            fillOpacity: 0
+          })
+        ),
+        _react2.default.createElement(
+          'g',
+          { className: 'phase-container' },
+          _react2.default.createElement('path', {
+            id: 'seedom-circles-progress-path',
+            className: 'phase-path',
+            d: progressPathDescription,
+            strokeWidth: 0,
+            fillOpacity: 0
+          }),
+          _react2.default.createElement('path', {
+            id: 'seedom-circles-progress-path-flipped',
+            className: 'phase-path',
+            d: flippedProgressPathDescription,
+            strokeWidth: 0,
+            fillOpacity: 0
+          }),
+          _react2.default.createElement(
+            'g',
+            { className: 'phase participation' },
+            _react2.default.createElement('circle', {
+              cx: CENTER_X,
+              cy: CENTER_Y,
+              r: progressRadius,
+              strokeWidth: PHASE_STROKE_WIDTH,
+              fillOpacity: 0,
+              style: participationPathStyle
+            })
+          ),
+          _react2.default.createElement(
+            'g',
+            { className: 'phase progress' },
+            _react2.default.createElement('circle', {
+              cx: CENTER_X,
+              cy: CENTER_Y,
+              r: progressRadius,
+              strokeWidth: PROGRESS_STROKE_WIDTH,
+              fillOpacity: 0,
+              style: progressPathStyle
+            }),
+            progressTextShown && _react2.default.createElement(
+              'text',
+              null,
+              _react2.default.createElement(
+                'textPath',
+                { className: 'phase-text ' + (progressPathFlipped ? "flipped" : null), xlinkHref: '' + (progressPathFlipped ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"), startOffset: progressTextOffset + '%' },
+                progressText
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Circles;
+}(_react2.default.Component);
+
+Circles.propTypes = {
+  starter: _propTypes2.default.string,
+  deployment: _propTypes2.default.shape(),
+  isLoading: _propTypes2.default.bool
+};
+Circles.defaultProps = {
+  starter: 'ends',
+  deployment: null,
+  isLoading: false
+};
+exports.default = Circles;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/circles/index.scss":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/circles/index.scss ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/content/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/content/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/content/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Content = function (_Component) {
+  _inherits(Content, _Component);
+
+  function Content(props) {
+    _classCallCheck(this, Content);
+
+    var _this = _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).call(this, props));
+
+    _this.state = {
+      className: null
+    };
+    return _this;
+  }
+
+  _createClass(Content, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (this.props.isShown) {
+        this.show();
+      }
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(newProps) {
+      if (this.props.isShown === newProps.isShown) {
+        return;
+      }
+
+      if (!newProps.isShown) {
+        this.hide();
+      } else {
+        this.show();
+      }
+    }
+  }, {
+    key: 'show',
+    value: function show() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.setState({
+          className: 'show'
+        });
+      }, 0);
+    }
+  }, {
+    key: 'hide',
+    value: function hide() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        _this3.setState({
+          className: null
+        });
+      }, 0);
+    }
+  }]);
+
+  return Content;
+}(_react.Component);
+
+Content.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired
+};
+exports.default = Content;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/content/index.scss":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/content/index.scss ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/email/index.js":
+/*!******************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/email/index.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _field = __webpack_require__(/*! ../../../../../field */ "./app/components/field/index.js");
+
+var _field2 = _interopRequireDefault(_field);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var emailRegex = /\S+@\S+\.\S+/;
+
+var Email = function (_Component) {
+  _inherits(Email, _Component);
+
+  function Email(props) {
+    _classCallCheck(this, Email);
+
+    var _this = _possibleConstructorReturn(this, (Email.__proto__ || Object.getPrototypeOf(Email)).call(this, props));
+
+    _this.focus = function () {
+      _this.email.focus();
+    };
+
+    _this.validate = function () {
+      var value = _this.state.value;
+
+      var isValid = value === '' || emailRegex.test(value);
+      _this.setState({ isValid: isValid });
+      return isValid;
+    };
+
+    _this.value = function () {
+      return _this.state.value;
+    };
+
+    _this.handleChange = function (value) {
+      _this.setState({ value: value });
+    };
+
+    _this.state = {
+      value: '',
+      isValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Email, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var disabled = this.props.disabled;
+      var _state = this.state,
+          value = _state.value,
+          isValid = _state.isValid;
+
+
+      return _react2.default.createElement(_field2.default, {
+        format: 'textbox',
+        type: 'text',
+        placeholder: 'email (optional)',
+        value: value,
+        disabled: disabled,
+        isValid: isValid,
+        onChange: this.handleChange,
+        ref: function ref(component) {
+          _this2.email = component;
+        }
+      });
+    }
+  }]);
+
+  return Email;
+}(_react.Component);
+
+Email.propTypes = {
+  disabled: _propTypes2.default.bool.isRequired
+};
+exports.default = Email;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/end/index.js":
+/*!****************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/end/index.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var End = function (_Content) {
+  _inherits(End, _Content);
+
+  function End() {
+    _classCallCheck(this, End);
+
+    return _possibleConstructorReturn(this, (End.__proto__ || Object.getPrototypeOf(End)).apply(this, arguments));
+  }
+
+  _createClass(End, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var isShown = this.props.isShown;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content end ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'waiting' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'please wait for'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center' },
+            _react2.default.createElement('div', { className: 'seedom-logo' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'to end the fundraiser'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return End;
+}(_content2.default);
+
+End.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired
+};
+exports.default = End;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/entries/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/entries/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _field = __webpack_require__(/*! ../../../../../field */ "./app/components/field/index.js");
+
+var _field2 = _interopRequireDefault(_field);
+
+var _numbers = __webpack_require__(/*! ../../../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Entries = function (_Component) {
+  _inherits(Entries, _Component);
+
+  function Entries(props) {
+    _classCallCheck(this, Entries);
+
+    var _this = _possibleConstructorReturn(this, (Entries.__proto__ || Object.getPrototypeOf(Entries)).call(this, props));
+
+    _this.focus = function () {
+      _this.field.focus();
+    };
+
+    _this.validate = function () {
+      var value = _this.state.value;
+
+      var isValid = value.isGreaterThanOrEqualTo(1) && value.decimalPlaces() === 0;
+      _this.setState({ isValid: isValid });
+      return isValid;
+    };
+
+    _this.value = function () {
+      return _this.state.value;
+    };
+
+    _this.handleChange = function (value) {
+      var parsedValue = void 0;
+
+      try {
+        parsedValue = new _bignumber.BigNumber(value);
+      } catch (error) {
+        parsedValue = (0, _numbers.zero)();
+      }
+
+      _this.setState({ value: parsedValue });
+    };
+
+    _this.state = {
+      value: (0, _numbers.zero)(),
+      isValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Entries, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          deployment = _props.deployment,
+          disabled = _props.disabled;
+      var _state = this.state,
+          value = _state.value,
+          isValid = _state.isValid;
+
+
+      var etherForEntries = void 0;
+      if (deployment) {
+        var weiForEntries = value.times(deployment.valuePerEntry);
+        etherForEntries = (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(weiForEntries));
+      }
+
+      return _react2.default.createElement(
+        _field2.default,
+        {
+          format: 'addonbox',
+          type: 'number',
+          min: new _bignumber.BigNumber(1),
+          placeholder: 'entries',
+          value: value.toString(),
+          disabled: disabled,
+          isValid: isValid,
+          onChange: this.handleChange,
+          ref: function ref(component) {
+            _this2.field = component;
+          }
+        },
+        _react2.default.createElement(
+          'span',
+          null,
+          '' + etherForEntries,
+          _react2.default.createElement(
+            'span',
+            { className: 'ether is-dark' },
+            _react2.default.createElement('i', { className: 'fas fa-bars' })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Entries;
+}(_react.Component);
+
+Entries.propTypes = {
+  deployment: _propTypes2.default.shape(),
+  disabled: _propTypes2.default.bool
+};
+Entries.defaultProps = {
+  deployment: null,
+  disabled: false
+};
+exports.default = Entries;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/ethereum/index.js":
+/*!*********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/ethereum/index.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Ethereum = function (_Content) {
+  _inherits(Ethereum, _Content);
+
+  function Ethereum() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Ethereum);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Ethereum.__proto__ || Object.getPrototypeOf(Ethereum)).call.apply(_ref, [this].concat(args))), _this), _this.openMetamask = function () {
+      window && window.open(METAMASK_URL, '_blank');
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Ethereum, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var isShown = this.props.isShown;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content ethereum ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'error' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top medium-pad' },
+            _react2.default.createElement('div', { className: 'ethereum-logo' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center squish narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'plugin or browser not detected'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom large-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'button is-white is-outlined', to: '/help' },
+                  'how to access seedom'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Ethereum;
+}(_content2.default);
+
+Ethereum.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired
+};
+exports.default = Ethereum;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/indicator/index.js":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/indicator/index.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/indicator/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Indicator = function (_Component) {
+  _inherits(Indicator, _Component);
+
+  function Indicator() {
+    _classCallCheck(this, Indicator);
+
+    return _possibleConstructorReturn(this, (Indicator.__proto__ || Object.getPrototypeOf(Indicator)).apply(this, arguments));
+  }
+
+  _createClass(Indicator, [{
+    key: 'render',
+    value: function render() {
+      var type = this.props.type;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-overlay' },
+        _react2.default.createElement(
+          'svg',
+          { className: 'indicator ' + (type ? 'show' : null), xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 52 52' },
+          _react2.default.createElement('circle', { className: 'circle ' + type, cx: '26', cy: '26', r: '25' })
+        )
+      );
+    }
+  }]);
+
+  return Indicator;
+}(_react.Component);
+
+Indicator.propTypes = {
+  type: _propTypes2.default.string
+};
+Indicator.defaultProps = {
+  type: null
+};
+exports.default = Indicator;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/indicator/index.scss":
+/*!************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/indicator/index.scss ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/message/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/message/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _field = __webpack_require__(/*! ../../../../../field */ "./app/components/field/index.js");
+
+var _field2 = _interopRequireDefault(_field);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MAX_LENGTH = 32;
+
+var Message = function (_Component) {
+  _inherits(Message, _Component);
+
+  function Message(props) {
+    _classCallCheck(this, Message);
+
+    var _this = _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).call(this, props));
+
+    _this.focus = function () {
+      _this.message.focus();
+    };
+
+    _this.validate = function () {
+      var value = _this.state.value;
+
+      var isValid = value.length > 0 && value.length <= MAX_LENGTH;
+      _this.setState({ isValid: isValid });
+      return isValid;
+    };
+
+    _this.value = function () {
+      return _this.state.value;
+    };
+
+    _this.handleChange = function (value) {
+      _this.setState({ value: value });
+    };
+
+    _this.state = {
+      value: '',
+      isValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Message, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var disabled = this.props.disabled;
+      var _state = this.state,
+          value = _state.value,
+          isValid = _state.isValid;
+
+
+      return _react2.default.createElement(_field2.default, {
+        format: 'textblock',
+        type: 'text',
+        placeholder: 'your message\nto the world',
+        value: value,
+        maxLength: MAX_LENGTH,
+        disabled: disabled,
+        isValid: isValid,
+        onChange: this.handleChange,
+        ref: function ref(component) {
+          _this2.message = component;
+        }
+      });
+    }
+  }]);
+
+  return Message;
+}(_react.Component);
+
+Message.propTypes = {
+  disabled: _propTypes2.default.bool.isRequired
+};
+exports.default = Message;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/network/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/network/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Network = function (_Content) {
+  _inherits(Network, _Content);
+
+  function Network() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Network);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Network.__proto__ || Object.getPrototypeOf(Network)).call.apply(_ref, [this].concat(args))), _this), _this.openMetamask = function () {
+      window && window.open(METAMASK_URL, '_blank');
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Network, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var isShown = this.props.isShown;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content ethereum ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'error' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top medium-pad' },
+            _react2.default.createElement('div', { className: 'ethereum-logo' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center squish narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'current network not supported, please change'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom large-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'button is-white is-outlined', to: '/help' },
+                  'how to access seedom'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Network;
+}(_content2.default);
+
+Network.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired
+};
+exports.default = Network;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/participate/index.js":
+/*!************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/participate/index.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _entries = __webpack_require__(/*! ../entries */ "./app/components/participate/components/puck/components/entries/index.js");
+
+var _entries2 = _interopRequireDefault(_entries);
+
+var _message = __webpack_require__(/*! ../message */ "./app/components/participate/components/puck/components/message/index.js");
+
+var _message2 = _interopRequireDefault(_message);
+
+var _email = __webpack_require__(/*! ../email */ "./app/components/participate/components/puck/components/email/index.js");
+
+var _email2 = _interopRequireDefault(_email);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/participate/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Participate = function (_Content) {
+  _inherits(Participate, _Content);
+
+  function Participate(props) {
+    _classCallCheck(this, Participate);
+
+    var _this = _possibleConstructorReturn(this, (Participate.__proto__ || Object.getPrototypeOf(Participate)).call(this, props));
+
+    _this.validateForm = function (done) {
+      var isEntriesValid = _this.entries.validate();
+      var isMessageValid = _this.message.validate();
+      var isEmailValid = _this.email.validate();
+      _this.setState({
+        isFormValid: isEntriesValid && isMessageValid && isEmailValid
+      }, done);
+    };
+
+    _this.handleSubmit = function () {
+      _this.validateForm(function () {
+        if (_this.state.isFormValid) {
+          var entries = _this.entries.value();
+          var message = _this.message.value();
+          var email = _this.email.value();
+          _this.props.onParticipate({ message: message, entries: entries, email: email });
+        } else {
+          _reactReduxToastr.toastr.warning('PARTICIPATE', 'form invalid');
+        }
+      });
+    };
+
+    _this.state = {
+      isFormValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Participate, [{
+    key: 'show',
+    value: function show() {
+      _get(Participate.prototype.__proto__ || Object.getPrototypeOf(Participate.prototype), 'show', this).call(this);
+      this.entries.focus();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          deployment = _props.deployment,
+          cause = _props.cause,
+          isLoading = _props.isLoading;
+      var className = this.state.className;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content participate ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isLoading ? 'waiting' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay' },
+          _react2.default.createElement(_causeLogo2.default, { cause: cause, size: 'small' }),
+          _react2.default.createElement(_entries2.default, {
+            deployment: deployment,
+            disabled: isLoading,
+            ref: function ref(component) {
+              _this2.entries = component;
+            }
+          }),
+          _react2.default.createElement(_message2.default, {
+            disabled: isLoading,
+            ref: function ref(component) {
+              _this2.message = component;
+            }
+          }),
+          _react2.default.createElement(_email2.default, {
+            disabled: isLoading,
+            ref: function ref(component) {
+              _this2.email = component;
+            }
+          }),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-dark', disabled: isLoading, onClick: this.handleSubmit },
+                'PARTICIPATE'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Participate;
+}(_content2.default);
+
+Participate.propTypes = {
+  isLoading: _propTypes2.default.bool,
+  deployment: _propTypes2.default.shape(),
+  cause: _propTypes2.default.shape()
+};
+Participate.defaultProps = {
+  deployment: null,
+  cause: null,
+  isLoading: false
+};
+exports.default = Participate;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/participate/index.scss":
+/*!**************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/participate/index.scss ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/participation/index.js":
+/*!**************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/participation/index.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _numbers = __webpack_require__(/*! ../../../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/participation/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Participation = function (_Content) {
+  _inherits(Participation, _Content);
+
+  function Participation() {
+    _classCallCheck(this, Participation);
+
+    return _possibleConstructorReturn(this, (Participation.__proto__ || Object.getPrototypeOf(Participation)).apply(this, arguments));
+  }
+
+  _createClass(Participation, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          participant = _props.participant,
+          onRaising = _props.onRaising,
+          onBadging = _props.onBadging,
+          cause = _props.cause;
+
+      var entries = participant ? participant.entries : (0, _numbers.zero)();
+      var localeEntries = (0, _numbers.localeNumber)(entries);
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content participated ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'success' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay' },
+          _react2.default.createElement(
+            'div',
+            { className: 'text entries' },
+            localeEntries
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'text obtained' },
+            Number(localeEntries) === 1 ? 'entry' : 'entries',
+            ' obtained'
+          ),
+          _react2.default.createElement(_causeLogo2.default, { cause: cause, size: 'small' }),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-dark', onClick: onRaising },
+                'get more entries'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { className: 'button is-white is-outlined', to: '/vote' },
+                'vote on next cause'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-white is-outlined', onClick: onBadging },
+                'view badge'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Participation;
+}(_content2.default);
+
+Participation.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  participant: _propTypes2.default.shape(),
+  onRaising: _propTypes2.default.func.isRequired,
+  onBadging: _propTypes2.default.func.isRequired,
+  cause: _propTypes2.default.shape()
+};
+Participation.defaultProps = {
+  participant: null,
+  cause: null
+};
+exports.default = Participation;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/participation/index.scss":
+/*!****************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/participation/index.scss ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/participationFailed/index.js":
+/*!********************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/participationFailed/index.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ParticipationFailed = function (_Content) {
+  _inherits(ParticipationFailed, _Content);
+
+  function ParticipationFailed() {
+    _classCallCheck(this, ParticipationFailed);
+
+    return _possibleConstructorReturn(this, (ParticipationFailed.__proto__ || Object.getPrototypeOf(ParticipationFailed)).apply(this, arguments));
+  }
+
+  _createClass(ParticipationFailed, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          cause = _props.cause;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content seed-failed ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'error' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division top' },
+            _react2.default.createElement(_causeLogo2.default, { cause: cause, size: 'medium' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom huge-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'participation closed, stay tuned for selection'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return ParticipationFailed;
+}(_content2.default);
+
+ParticipationFailed.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  cause: _propTypes2.default.shape()
+};
+ParticipationFailed.defaultProps = {
+  cause: null
+};
+exports.default = ParticipationFailed;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/raise/index.js":
+/*!******************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/raise/index.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+var _numbers = __webpack_require__(/*! ../../../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _entries = __webpack_require__(/*! ../entries */ "./app/components/participate/components/puck/components/entries/index.js");
+
+var _entries2 = _interopRequireDefault(_entries);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/raise/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Raise = function (_Content) {
+  _inherits(Raise, _Content);
+
+  function Raise(props) {
+    _classCallCheck(this, Raise);
+
+    var _this = _possibleConstructorReturn(this, (Raise.__proto__ || Object.getPrototypeOf(Raise)).call(this, props));
+
+    _this.validateForm = function (done) {
+      var isFormValid = _this.entries.validate();
+      _this.setState({ isFormValid: isFormValid }, done);
+    };
+
+    _this.handleSubmit = function () {
+      _this.validateForm(function () {
+        if (_this.state.isFormValid) {
+          var entries = _this.entries.value();
+          _this.props.onRaise(entries);
+        } else {
+          _reactReduxToastr.toastr.warning('RAISE', 'form invalid');
+        }
+      });
+    };
+
+    _this.state = {
+      isFormValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Raise, [{
+    key: 'show',
+    value: function show() {
+      _get(Raise.prototype.__proto__ || Object.getPrototypeOf(Raise.prototype), 'show', this).call(this);
+      this.entries.focus();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var className = this.state.className;
+      var _props = this.props,
+          deployment = _props.deployment,
+          cause = _props.cause,
+          isLoading = _props.isLoading,
+          onRaisingCancelled = _props.onRaisingCancelled;
+
+
+      var etherPerEntry = void 0;
+      if (deployment) {
+        etherPerEntry = (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(deployment.valuePerEntry));
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content raise ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isLoading ? 'waiting' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay' },
+          _react2.default.createElement(_causeLogo2.default, { cause: cause, size: 'small' }),
+          _react2.default.createElement(
+            'div',
+            { className: 'text' },
+            '1 entry = ',
+            etherPerEntry,
+            _react2.default.createElement(
+              'span',
+              { className: 'ether' },
+              _react2.default.createElement('i', { className: 'fas fa-bars' })
+            )
+          ),
+          _react2.default.createElement(_entries2.default, {
+            deployment: deployment,
+            disabled: isLoading,
+            ref: function ref(component) {
+              _this2.entries = component;
+            }
+          }),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-dark', disabled: isLoading, onClick: this.handleSubmit },
+                'get more entries'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'control' },
+              _react2.default.createElement(
+                'a',
+                { className: 'button is-white is-outlined', onClick: onRaisingCancelled },
+                'cancel'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Raise;
+}(_content2.default);
+
+Raise.propTypes = {
+  deployment: _propTypes2.default.shape(),
+  cause: _propTypes2.default.shape(),
+  isLoading: _propTypes2.default.bool,
+  onRaisingCancelled: _propTypes2.default.func.isRequired
+};
+Raise.defaultProps = {
+  deployment: null,
+  cause: null,
+  isLoading: false
+};
+exports.default = Raise;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/raise/index.scss":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/raise/index.scss ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/reveal/index.js":
+/*!*******************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/reveal/index.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Reveal = function (_Content) {
+  _inherits(Reveal, _Content);
+
+  function Reveal() {
+    _classCallCheck(this, Reveal);
+
+    return _possibleConstructorReturn(this, (Reveal.__proto__ || Object.getPrototypeOf(Reveal)).apply(this, arguments));
+  }
+
+  _createClass(Reveal, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          cause = _props.cause;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content end ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'waiting' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'please wait for'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center' },
+            _react2.default.createElement(_causeLogo2.default, { cause: cause })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom small-pad narrow' },
+            _react2.default.createElement(
+              'span',
+              null,
+              'to reveal their message'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Reveal;
+}(_content2.default);
+
+Reveal.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  cause: _propTypes2.default.shape()
+};
+Reveal.defaultProps = {
+  cause: null
+};
+exports.default = Reveal;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/selection/index.js":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/selection/index.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _etherscan = __webpack_require__(/*! ../../../../../../utils/etherscan */ "./app/utils/etherscan.js");
+
+var etherscan = _interopRequireWildcard(_etherscan);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/selection/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Selection = function (_Content) {
+  _inherits(Selection, _Content);
+
+  function Selection() {
+    _classCallCheck(this, Selection);
+
+    return _possibleConstructorReturn(this, (Selection.__proto__ || Object.getPrototypeOf(Selection)).apply(this, arguments));
+  }
+
+  _createClass(Selection, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          state = _props.state,
+          network = _props.network,
+          cause = _props.cause;
+
+
+      var causeMessage = void 0;
+      var ownerMessage = void 0;
+      var participantMessage = void 0;
+      if (state) {
+        causeMessage = state.causeMessage;
+        ownerMessage = state.ownerMessage;
+        participantMessage = state.participantMessage;
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content selection ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'selection' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top' },
+            _react2.default.createElement(_causeLogo2.default, { cause: cause, size: 'medium' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text center narrow' },
+            _react2.default.createElement(
+              'div',
+              { className: 'left' },
+              _react2.default.createElement(
+                'div',
+                { className: 'header' },
+                'cause message'
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'value' },
+                causeMessage
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'right' },
+              _react2.default.createElement(
+                'div',
+                { className: 'header' },
+                'owner message'
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'value' },
+                ownerMessage
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division text bottom slim' },
+            _react2.default.createElement(
+              'div',
+              { className: 'header' },
+              'participant message'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'value' },
+              participantMessage
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Selection;
+}(_content2.default);
+
+Selection.propTypes = {
+  isShown: _propTypes2.default.bool.isRequired,
+  state: _propTypes2.default.shape(),
+  network: _propTypes2.default.shape(),
+  cause: _propTypes2.default.shape()
+};
+Selection.defaultProps = {
+  state: null,
+  network: null,
+  cause: null
+};
+exports.default = Selection;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/selection/index.scss":
+/*!************************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/selection/index.scss ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/welcome/index.js":
+/*!********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/welcome/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _numbers = __webpack_require__(/*! ../../../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _causeLogo = __webpack_require__(/*! ../../../../../causeLogo */ "./app/components/causeLogo/index.js");
+
+var _causeLogo2 = _interopRequireDefault(_causeLogo);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/welcome/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Welcome = function (_Content) {
+  _inherits(Welcome, _Content);
+
+  function Welcome() {
+    _classCallCheck(this, Welcome);
+
+    return _possibleConstructorReturn(this, (Welcome.__proto__ || Object.getPrototypeOf(Welcome)).apply(this, arguments));
+  }
+
+  _createClass(Welcome, [{
+    key: 'render',
+    value: function render() {
+      var className = this.state.className;
+      var _props = this.props,
+          deployment = _props.deployment,
+          cause = _props.cause,
+          onCountMeIn = _props.onCountMeIn;
+
+
+      var etherPerEntry = void 0;
+      if (deployment) {
+        etherPerEntry = (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(deployment.valuePerEntry));
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content welcome ' + className },
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top' },
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(
+                'span',
+                null,
+                '1 entry = ',
+                etherPerEntry
+              ),
+              _react2.default.createElement(
+                'span',
+                { className: 'ether' },
+                _react2.default.createElement('i', { className: 'fas fa-bars' })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'supporting' },
+              'now seeding'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division center' },
+            _react2.default.createElement(_causeLogo2.default, { cause: cause })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'button is-white is-outlined', to: '/help' },
+                  'how does this work?'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-dark', onClick: onCountMeIn },
+                  'count me in!'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Welcome;
+}(_content2.default);
+
+Welcome.propTypes = {
+  deployment: _propTypes2.default.shape(),
+  cause: _propTypes2.default.shape(),
+  onCountMeIn: _propTypes2.default.func.isRequired
+};
+Welcome.defaultProps = {
+  deployment: null,
+  cause: null
+};
+exports.default = Welcome;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/welcome/index.scss":
+/*!**********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/welcome/index.scss ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/withdraw/index.js":
+/*!*********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/withdraw/index.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _content = __webpack_require__(/*! ../content */ "./app/components/participate/components/puck/components/content/index.js");
+
+var _content2 = _interopRequireDefault(_content);
+
+var _indicator = __webpack_require__(/*! ../indicator */ "./app/components/participate/components/puck/components/indicator/index.js");
+
+var _indicator2 = _interopRequireDefault(_indicator);
+
+var _numbers = __webpack_require__(/*! ../../../../../../utils/numbers */ "./app/utils/numbers.js");
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/components/withdraw/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var getMaxBalance = function getMaxBalance(balances) {
+  var maxBalance = (0, _numbers.zero)();
+  var maxContractAddress = null;
+  for (var contractAddress in balances) {
+    var balance = balances[contractAddress];
+    if (balance.isGreaterThan(maxBalance)) {
+      maxBalance = balance;
+      maxContractAddress = contractAddress;
+    }
+  }
+
+  return {
+    contractAddress: maxContractAddress,
+    balance: maxBalance
+  };
+};
+
+var Withdraw = function (_Content) {
+  _inherits(Withdraw, _Content);
+
+  function Withdraw() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Withdraw);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Withdraw.__proto__ || Object.getPrototypeOf(Withdraw)).call.apply(_ref, [this].concat(args))), _this), _this.handleWithdraw = function (contractAddress) {
+      var onWithdraw = _this.props.onWithdraw;
+
+      onWithdraw(contractAddress);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Withdraw, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var balances = this.props.balances;
+
+      if (!balances) {
+        return null;
+      }
+
+      var className = this.state.className;
+      var _props = this.props,
+          isShown = _props.isShown,
+          onWithdrawSkipped = _props.onWithdrawSkipped,
+          isLoading = _props.isLoading;
+
+      var maxBalance = getMaxBalance(balances);
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-content withdraw ' + className },
+        _react2.default.createElement(_indicator2.default, { type: isShown ? 'success' : null }),
+        _react2.default.createElement(
+          'div',
+          { className: 'seedom-overlay layout' },
+          _react2.default.createElement(
+            'div',
+            { className: 'division text top medium-pad' },
+            _react2.default.createElement(
+              'div',
+              null,
+              'you have'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'balance' },
+              (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(maxBalance.balance)),
+              _react2.default.createElement(
+                'span',
+                { className: 'ether is-dark' },
+                _react2.default.createElement('i', { className: 'fas fa-bars' })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              'to withdraw!'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'division bottom large-pad' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-dark', disabled: isLoading, onClick: function onClick() {
+                      return _this2.handleWithdraw(maxBalance.contractAddress);
+                    } },
+                  'withdraw ether'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-white is-outlined', disabled: isLoading, onClick: onWithdrawSkipped },
+                  'skip for now'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Withdraw;
+}(_content2.default);
+
+Withdraw.propTypes = {
+  balances: _propTypes2.default.shape(),
+  isShown: _propTypes2.default.bool.isRequired,
+  isLoading: _propTypes2.default.bool,
+  onWithdrawSkipped: _propTypes2.default.func.isRequired,
+  onWithdraw: _propTypes2.default.func.isRequired
+};
+Withdraw.defaultProps = {
+  balances: null,
+  isLoading: false
+};
+exports.default = Withdraw;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/components/withdraw/index.scss":
+/*!***********************************************************************************!*\
+  !*** ./app/components/participate/components/puck/components/withdraw/index.scss ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/index.js":
+/*!*************************************************************!*\
+  !*** ./app/components/participate/components/puck/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _bytes = __webpack_require__(/*! ../../../../utils/bytes */ "./app/utils/bytes.js");
+
+var bytes = _interopRequireWildcard(_bytes);
+
+var _circles = __webpack_require__(/*! ./components/circles */ "./app/components/participate/components/puck/components/circles/index.js");
+
+var _circles2 = _interopRequireDefault(_circles);
+
+var _begin = __webpack_require__(/*! ./components/begin */ "./app/components/participate/components/puck/components/begin/index.js");
+
+var _begin2 = _interopRequireDefault(_begin);
+
+var _beginningFailed = __webpack_require__(/*! ./components/beginningFailed */ "./app/components/participate/components/puck/components/beginningFailed/index.js");
+
+var _beginningFailed2 = _interopRequireDefault(_beginningFailed);
+
+var _welcome = __webpack_require__(/*! ./components/welcome */ "./app/components/participate/components/puck/components/welcome/index.js");
+
+var _welcome2 = _interopRequireDefault(_welcome);
+
+var _participate = __webpack_require__(/*! ./components/participate */ "./app/components/participate/components/puck/components/participate/index.js");
+
+var _participate2 = _interopRequireDefault(_participate);
+
+var _participation = __webpack_require__(/*! ./components/participation */ "./app/components/participate/components/puck/components/participation/index.js");
+
+var _participation2 = _interopRequireDefault(_participation);
+
+var _raise = __webpack_require__(/*! ./components/raise */ "./app/components/participate/components/puck/components/raise/index.js");
+
+var _raise2 = _interopRequireDefault(_raise);
+
+var _reveal = __webpack_require__(/*! ./components/reveal */ "./app/components/participate/components/puck/components/reveal/index.js");
+
+var _reveal2 = _interopRequireDefault(_reveal);
+
+var _end = __webpack_require__(/*! ./components/end */ "./app/components/participate/components/puck/components/end/index.js");
+
+var _end2 = _interopRequireDefault(_end);
+
+var _selection = __webpack_require__(/*! ./components/selection */ "./app/components/participate/components/puck/components/selection/index.js");
+
+var _selection2 = _interopRequireDefault(_selection);
+
+var _withdraw = __webpack_require__(/*! ./components/withdraw */ "./app/components/participate/components/puck/components/withdraw/index.js");
+
+var _withdraw2 = _interopRequireDefault(_withdraw);
+
+var _cancel = __webpack_require__(/*! ./components/cancel */ "./app/components/participate/components/puck/components/cancel/index.js");
+
+var _cancel2 = _interopRequireDefault(_cancel);
+
+var _cancelled = __webpack_require__(/*! ./components/cancelled */ "./app/components/participate/components/puck/components/cancelled/index.js");
+
+var _cancelled2 = _interopRequireDefault(_cancelled);
+
+var _ethereum = __webpack_require__(/*! ./components/ethereum */ "./app/components/participate/components/puck/components/ethereum/index.js");
+
+var _ethereum2 = _interopRequireDefault(_ethereum);
+
+var _network = __webpack_require__(/*! ./components/network */ "./app/components/participate/components/puck/components/network/index.js");
+
+var _network2 = _interopRequireDefault(_network);
+
+var _account = __webpack_require__(/*! ./components/account */ "./app/components/participate/components/puck/components/account/index.js");
+
+var _account2 = _interopRequireDefault(_account);
+
+var _participationFailed = __webpack_require__(/*! ./components/participationFailed */ "./app/components/participate/components/puck/components/participationFailed/index.js");
+
+var _participationFailed2 = _interopRequireDefault(_participationFailed);
+
+var _badge = __webpack_require__(/*! ./components/badge */ "./app/components/participate/components/puck/components/badge/index.js");
+
+var _badge2 = _interopRequireDefault(_badge);
+
+var _seedomOWhiteTransparent = __webpack_require__(/*! ../../../../../../seedom-assets/logo/o/seedom-o-white-transparent.svg */ "../seedom-assets/logo/o/seedom-o-white-transparent.svg");
+
+var _seedomOWhiteTransparent2 = _interopRequireDefault(_seedomOWhiteTransparent);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/puck/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PHASE_REFRESH = 1000;
+
+var getPhase = function getPhase(deployment) {
+  if (!deployment) {
+    return null;
+  }
+
+  var now = Date.now();
+  // participation phase
+  if (now < deployment.endTime) {
+    return 'participation';
+  }
+
+  // end phase
+  if (now >= deployment.endTime && now < deployment.expireTime) {
+    return 'end';
+  }
+
+  // expiration phase
+  if (now >= deployment.expireTime && now < deployment.destructTime) {
+    return 'expiration';
+  }
+
+  // destruction phase
+  return 'destruction';
+};
+
+var getComponent = function getComponent(_ref) {
+  var network = _ref.network,
+      account = _ref.account,
+      phase = _ref.phase,
+      state = _ref.state,
+      participant = _ref.participant,
+      balances = _ref.balances,
+      isLoading = _ref.isLoading,
+      isParticipating = _ref.isParticipating,
+      isBadging = _ref.isBadging,
+      isRaising = _ref.isRaising,
+      isWithdrawing = _ref.isWithdrawing;
+
+  // ethereum check
+  if (!network) {
+    return 'ethereum';
+  }
+
+  // network check
+  if (!network.supported || !network.deployed) {
+    return 'network';
+  }
+
+  // account check
+  if (!account) {
+    return 'account';
+  }
+
+  // balances?
+  if (balances && Object.keys(balances).length > 0 && isWithdrawing) {
+    return 'withdraw';
+  }
+
+  // wait for state
+  if (!state) {
+    return null;
+  }
+
+  // selection?
+  if (!bytes.isZero20(state.participant)) {
+    return 'selection';
+  }
+
+  // cancelled?
+  if (state.cancelled) {
+    return 'cancelled';
+  }
+
+  // wait for a participant
+  if (!participant) {
+    return null;
+  }
+
+  // switch on phase
+  switch (phase) {
+    case 'participation':
+      if (bytes.isZero32(state.causeSecret)) {
+        return 'begin';
+      }
+
+      if (participant.message === '') {
+        if (!isParticipating) {
+          return 'welcome';
+        }
+        return 'participate';
+      }
+
+      if (isBadging) {
+        return 'badge';
+      }
+
+      if (!isRaising && !isLoading) {
+        return 'participation';
+      }
+
+      return 'raise';
+
+    case 'end':
+      if (bytes.isZero32(state.causeSecret)) {
+        return 'beginningFailed';
+      }
+
+      if (participant.message === '') {
+        return 'participationFailed';
+      }
+
+      if (state.causeMessage === '') {
+        return 'reveal';
+      }
+
+      return 'end';
+
+    case 'expiration':
+      return 'cancel';
+
+    default:
+      return null;
+  }
+};
+
+var Puck = function (_Component) {
+  _inherits(Puck, _Component);
+
+  function Puck(props) {
+    _classCallCheck(this, Puck);
+
+    var _this = _possibleConstructorReturn(this, (Puck.__proto__ || Object.getPrototypeOf(Puck)).call(this, props));
+
+    _this.handleCountMeIn = function () {
+      _this.setState({ isParticipating: true });
+    };
+
+    _this.handleParticipate = function (_ref2) {
+      var message = _ref2.message,
+          entries = _ref2.entries,
+          email = _ref2.email;
+
+      _this.setState({ isBadging: true }, function () {
+        _this.props.onParticipate({ message: message, entries: entries, email: email });
+      });
+    };
+
+    _this.handleBadging = function () {
+      _this.setState({ isBadging: true });
+    };
+
+    _this.handleBadgingOver = function () {
+      _this.setState({ isBadging: false });
+    };
+
+    _this.handleRaising = function () {
+      _this.setState({ isRaising: true });
+    };
+
+    _this.handleRaisingCancelled = function () {
+      _this.setState({ isRaising: false });
+    };
+
+    _this.handleRaise = function (entries) {
+      _this.setState({ isRaising: false }, function () {
+        _this.props.onRaise(entries);
+      });
+    };
+
+    _this.handleWithdraw = function (contractAddress) {
+      _this.props.onWithdraw(contractAddress);
+    };
+
+    _this.handleWithdrawSkipped = function () {
+      _this.setState({ isWithdrawing: false });
+    };
+
+    _this.handleCancel = function () {
+      _this.props.onCancel();
+    };
+
+    _this.state = {
+      phase: null,
+      isParticipating: false,
+      isBadging: false,
+      isRaising: false,
+      isWithdrawing: true
+    };
+    return _this;
+  }
+
+  _createClass(Puck, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.interval = setInterval(function () {
+        var newPhase = getPhase(_this2.props.deployment);
+        // if the phase changed, update state
+        if (newPhase !== _this2.state.phase) {
+          _this2.setState({ phase: newPhase });
+        }
+      }, PHASE_REFRESH);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearInterval(this.interval);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _state = this.state,
+          phase = _state.phase,
+          isParticipating = _state.isParticipating,
+          isBadging = _state.isBadging,
+          isRaising = _state.isRaising,
+          isWithdrawing = _state.isWithdrawing;
+      var _props = this.props,
+          network = _props.network,
+          account = _props.account,
+          deployment = _props.deployment,
+          cause = _props.cause,
+          state = _props.state,
+          participant = _props.participant,
+          balances = _props.balances,
+          isLoading = _props.isLoading,
+          primaryContractAddresses = _props.primaryContractAddresses;
+
+
+      var component = getComponent({
+        network: network,
+        account: account,
+        phase: phase,
+        deployment: deployment,
+        state: state,
+        participant: participant,
+        balances: balances,
+        isLoading: isLoading,
+        isParticipating: isParticipating,
+        isBadging: isBadging,
+        isRaising: isRaising,
+        isWithdrawing: isWithdrawing
+      });
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-puck' },
+        _react2.default.createElement(
+          'div',
+          { className: 'intro' },
+          _react2.default.createElement('img', { alt: 'seedom', src: _seedomOWhiteTransparent2.default })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'interface' },
+          _react2.default.createElement(_circles2.default, { isLoading: isLoading, deployment: deployment }),
+          _react2.default.createElement(_ethereum2.default, { isShown: component === 'ethereum' }),
+          _react2.default.createElement(_network2.default, { isShown: component === 'network' }),
+          _react2.default.createElement(_account2.default, { isShown: component === 'account' }),
+          _react2.default.createElement(_welcome2.default, { isShown: component === 'welcome', deployment: deployment, cause: cause, onCountMeIn: this.handleCountMeIn }),
+          _react2.default.createElement(_begin2.default, { isShown: component === 'begin', cause: cause }),
+          _react2.default.createElement(_beginningFailed2.default, { isShown: component === 'beginningFailed', cause: cause }),
+          _react2.default.createElement(_participate2.default, { isShown: component === 'participate', deployment: deployment, cause: cause, isLoading: isLoading, onParticipate: this.handleParticipate }),
+          _react2.default.createElement(_badge2.default, { isShown: component === 'badge', primaryContractAddresses: primaryContractAddresses, network: network, account: account, participant: participant, onBadgingOver: this.handleBadgingOver }),
+          _react2.default.createElement(_participation2.default, { isShown: component === 'participation', participant: participant, cause: cause, onRaising: this.handleRaising, onBadging: this.handleBadging }),
+          _react2.default.createElement(_participationFailed2.default, { isShown: component === 'participationFailed', cause: cause }),
+          _react2.default.createElement(_raise2.default, { isShown: component === 'raise', deployment: deployment, cause: cause, isLoading: isLoading, onRaise: this.handleRaise, onRaisingCancelled: this.handleRaisingCancelled }),
+          _react2.default.createElement(_reveal2.default, { isShown: component === 'reveal', cause: cause }),
+          _react2.default.createElement(_end2.default, { isShown: component === 'end' }),
+          _react2.default.createElement(_selection2.default, { isShown: component === 'selection', state: state, network: network, cause: cause }),
+          _react2.default.createElement(_withdraw2.default, { isShown: component === 'withdraw', balances: balances, isLoading: isLoading, onWithdraw: this.handleWithdraw, onWithdrawSkipped: this.handleWithdrawSkipped }),
+          _react2.default.createElement(_cancel2.default, { isShown: component === 'cancel', isLoading: isLoading, cause: cause, onCancel: this.handleCancel }),
+          _react2.default.createElement(_cancelled2.default, { isShown: component === 'cancelled', cause: cause })
+        )
+      );
+    }
+  }]);
+
+  return Puck;
+}(_react.Component);
+
+Puck.propTypes = {
+  network: _propTypes2.default.shape(),
+  account: _propTypes2.default.string,
+  deployment: _propTypes2.default.shape(),
+  cause: _propTypes2.default.shape(),
+  state: _propTypes2.default.shape(),
+  participant: _propTypes2.default.shape(),
+  balances: _propTypes2.default.shape(),
+  isLoading: _propTypes2.default.bool,
+  primaryContractAddresses: _propTypes2.default.shape(),
+  onParticipate: _propTypes2.default.func.isRequired,
+  onRaise: _propTypes2.default.func.isRequired,
+  onWithdraw: _propTypes2.default.func.isRequired,
+  onCancel: _propTypes2.default.func.isRequired
+};
+Puck.defaultProps = {
+  network: null,
+  account: null,
+  deployment: null,
+  cause: null,
+  state: null,
+  participant: null,
+  balances: null,
+  isLoading: false,
+  primaryContractAddresses: null
+};
+exports.default = Puck;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/puck/index.scss":
+/*!***************************************************************!*\
+  !*** ./app/components/participate/components/puck/index.scss ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/components/stats/index.js":
+/*!**************************************************************!*\
+  !*** ./app/components/participate/components/stats/index.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _numbers = __webpack_require__(/*! ../../../../utils/numbers */ "./app/utils/numbers.js");
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/components/stats/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Stat = function (_Component) {
+  _inherits(Stat, _Component);
+
+  function Stat() {
+    _classCallCheck(this, Stat);
+
+    return _possibleConstructorReturn(this, (Stat.__proto__ || Object.getPrototypeOf(Stat)).apply(this, arguments));
+  }
+
+  _createClass(Stat, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          title = _props.title,
+          value = _props.value,
+          ether = _props.ether;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'stat' },
+        _react2.default.createElement(
+          'div',
+          { className: 'stat-title' },
+          title
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'stat-value' },
+          value,
+          ether && _react2.default.createElement(
+            'span',
+            { className: 'ether' },
+            _react2.default.createElement('i', { className: 'fas fa-bars' })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Stat;
+}(_react.Component);
+
+Stat.propTypes = {
+  title: _propTypes2.default.string.isRequired,
+  value: _propTypes2.default.string,
+  ether: _propTypes2.default.bool
+};
+Stat.defaultProps = {
+  value: null,
+  ether: false
+};
+
+var Stats = function (_Component2) {
+  _inherits(Stats, _Component2);
+
+  function Stats() {
+    _classCallCheck(this, Stats);
+
+    return _possibleConstructorReturn(this, (Stats.__proto__ || Object.getPrototypeOf(Stats)).apply(this, arguments));
+  }
+
+  _createClass(Stats, [{
+    key: 'render',
+    value: function render() {
+      var _props2 = this.props,
+          side = _props2.side,
+          deployment = _props2.deployment,
+          state = _props2.state;
+
+
+      var causeReward = void 0;
+      var participantReward = void 0;
+      var participants = void 0;
+      var entries = void 0;
+      if (deployment && state) {
+        var received = state.entries.times(deployment.valuePerEntry);
+        causeReward = (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(received.times(deployment.causeSplit).dividedBy(1000)));
+        participantReward = (0, _numbers.localeDecimal)((0, _numbers.getEtherFromWei)(received.times(deployment.participantSplit).dividedBy(1000)));
+        participants = (0, _numbers.localeNumber)(state.participants);
+        entries = (0, _numbers.localeNumber)(state.entries);
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-stats ' + side },
+        (side === 'top' || side === 'left') && _react2.default.createElement(
+          'div',
+          { className: 'panel' },
+          _react2.default.createElement('div', { className: 'background' }),
+          _react2.default.createElement(Stat, { title: 'cause reward', value: causeReward, ether: true }),
+          _react2.default.createElement(Stat, { title: 'winner reward', value: participantReward, ether: true })
+        ),
+        (side === 'top' || side === 'right') && _react2.default.createElement(
+          'div',
+          { className: 'panel' },
+          _react2.default.createElement('div', { className: 'background' }),
+          _react2.default.createElement(Stat, { title: 'participants', value: participants }),
+          _react2.default.createElement(Stat, { title: 'entries', value: entries })
+        )
+      );
+    }
+  }]);
+
+  return Stats;
+}(_react.Component);
+
+Stats.propTypes = {
+  side: _propTypes2.default.string.isRequired,
+  deployment: _propTypes2.default.shape(),
+  state: _propTypes2.default.shape()
+};
+Stats.defaultProps = {
+  deployment: null,
+  state: null
+};
+exports.default = Stats;
+
+/***/ }),
+
+/***/ "./app/components/participate/components/stats/index.scss":
+/*!****************************************************************!*\
+  !*** ./app/components/participate/components/stats/index.scss ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/participate/index.js":
+/*!*********************************************!*\
+  !*** ./app/components/participate/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _axios = __webpack_require__(/*! axios */ "axios");
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _messages = __webpack_require__(/*! @seedom-io/seedom-crypter/messages */ "@seedom-io/seedom-crypter/messages");
+
+var messages = _interopRequireWildcard(_messages);
+
+var _ethereum = __webpack_require__(/*! ../../actions/ethereum */ "./app/actions/ethereum.js");
+
+var ethereumActions = _interopRequireWildcard(_ethereum);
+
+var _header = __webpack_require__(/*! ./components/header */ "./app/components/participate/components/header/index.js");
+
+var _header2 = _interopRequireDefault(_header);
+
+var _puck = __webpack_require__(/*! ./components/puck */ "./app/components/participate/components/puck/index.js");
+
+var _puck2 = _interopRequireDefault(_puck);
+
+var _stats = __webpack_require__(/*! ./components/stats */ "./app/components/participate/components/stats/index.js");
+
+var _stats2 = _interopRequireDefault(_stats);
+
+var _feed = __webpack_require__(/*! ./components/feed */ "./app/components/participate/components/feed/index.js");
+
+var _feed2 = _interopRequireDefault(_feed);
+
+var _about = __webpack_require__(/*! ./components/about */ "./app/components/participate/components/about/index.js");
+
+var _about2 = _interopRequireDefault(_about);
+
+var _footer = __webpack_require__(/*! ./components/footer */ "./app/components/participate/components/footer/index.js");
+
+var _footer2 = _interopRequireDefault(_footer);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/participate/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Participate = function (_Component) {
+  _inherits(Participate, _Component);
+
+  function Participate() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Participate);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Participate.__proto__ || Object.getPrototypeOf(Participate)).call.apply(_ref, [this].concat(args))), _this), _this.handleParticipate = function (_ref2) {
+      var message = _ref2.message,
+          entries = _ref2.entries,
+          email = _ref2.email;
+      var _this$props$ethereum = _this.props.ethereum,
+          deployment = _this$props$ethereum.deployment,
+          account = _this$props$ethereum.account,
+          cause = _this$props$ethereum.cause;
+
+      var messageHex = messages.hex(message);
+      var value = entries.times(deployment.valuePerEntry);
+      // dispatch to ethereum
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'fundraiser', method: 'participate', args: [messageHex], value: value
+      }));
+      // send to mailerlite
+      if (email !== '') {
+        _axios2.default.post('/mailerlite/addParticipant', {
+          email: email,
+          participant: account,
+          cause: cause.name,
+          message: message
+        });
+      }
+      // play the video!
+      _this.about.play();
+    }, _this.handleRaise = function (entries) {
+      var deployment = _this.props.ethereum.deployment;
+
+      var value = entries.times(deployment.valuePerEntry);
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'fundraiser', value: value
+      }));
+    }, _this.handleWithdraw = function (contractAddress) {
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'fundraiser', contractAddress: contractAddress, method: 'withdraw'
+      }));
+    }, _this.handleCancel = function () {
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'fundraiser', method: 'cancel'
+      }));
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Participate, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props$ethereum = this.props.ethereum,
+          network = _props$ethereum.network,
+          account = _props$ethereum.account,
+          deployment = _props$ethereum.deployment,
+          state = _props$ethereum.state,
+          participant = _props$ethereum.participant,
+          balances = _props$ethereum.balances,
+          feed = _props$ethereum.feed,
+          isLoading = _props$ethereum.isLoading,
+          primaryContractAddresses = _props$ethereum.primaryContractAddresses,
+          cause = _props$ethereum.cause;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-seed' },
+        _react2.default.createElement(
+          'div',
+          { className: 'background' },
+          _react2.default.createElement(_header2.default, { deployment: deployment, network: network }),
+          _react2.default.createElement(
+            'div',
+            { className: 'central' },
+            _react2.default.createElement(_stats2.default, {
+              side: 'left',
+              deployment: deployment,
+              state: state
+            }),
+            _react2.default.createElement(_puck2.default, {
+              network: network,
+              account: account,
+              deployment: deployment,
+              cause: cause,
+              state: state,
+              participant: participant,
+              balances: balances,
+              isLoading: isLoading,
+              primaryContractAddresses: primaryContractAddresses,
+              onParticipate: this.handleParticipate,
+              onRaise: this.handleRaise,
+              onWithdraw: this.handleWithdraw,
+              onCancel: this.handleCancel
+            }),
+            _react2.default.createElement(_stats2.default, {
+              side: 'right',
+              deployment: deployment,
+              state: state
+            })
+          )
+        ),
+        _react2.default.createElement(_about2.default, {
+          cause: cause,
+          ref: function ref(component) {
+            _this2.about = component;
+          }
+        }),
+        _react2.default.createElement(_feed2.default, { feed: feed, network: network }),
+        _react2.default.createElement(_footer2.default, { network: network, primaryContractAddresses: primaryContractAddresses })
+      );
+    }
+  }]);
+
+  return Participate;
+}(_react.Component);
+
+Participate.propTypes = {
+  ethereum: _propTypes2.default.shape().isRequired,
+  dispatch: _propTypes2.default.func.isRequired
+};
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { ethereum: state.ethereum };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return { dispatch: dispatch };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Participate);
+
+/***/ }),
+
+/***/ "./app/components/participate/index.scss":
+/*!***********************************************!*\
+  !*** ./app/components/participate/index.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/press-release/index.js":
+/*!***********************************************!*\
+  !*** ./app/components/press-release/index.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _sections = __webpack_require__(/*! ../sections */ "./app/components/sections/index.js");
+
+var _sections2 = _interopRequireDefault(_sections);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/press-release/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PressRelease = function (_Sections) {
+  _inherits(PressRelease, _Sections);
+
+  function PressRelease() {
+    _classCallCheck(this, PressRelease);
+
+    return _possibleConstructorReturn(this, (PressRelease.__proto__ || Object.getPrototypeOf(PressRelease)).apply(this, arguments));
+  }
+
+  _createClass(PressRelease, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'container press-release has-text-white' },
+        _react2.default.createElement(
+          'p',
+          { className: 'has-text-right' },
+          'FOR IMMEDIATE RELEASE: (April 30th, 2018)'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Kyle Graden, Seedom, team@seedom.io'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Kris Decoodt, Giveth, kris@giveth.io'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          { className: 'has-text-centered' },
+          'Seedom Announces Giveth as Beta Launch Partner For Fundraise DApp'
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'has-text-centered' },
+          _react2.default.createElement(
+            'i',
+            null,
+            'Raising Awareness & Ether for Decentralized Altruistic Communities Together'
+          )
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            'Earth:'
+          ),
+          ' Seedom is launching a fundraising Ethereum decentralized application (DAPP) that raises awareness and ether for altruistic causes while rewarding a single participant for their contribution and support. ',
+          _react2.default.createElement(
+            'a',
+            { target: '_blank', rel: 'noopener noreferrer', href: 'https://giveth.io/' },
+            'Giveth'
+          ),
+          ' has been selected to be the first cause to benefit from the Seedom DAPP!'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Giveth was chosen because its platform is a r\u039Evolution in the world of charitable donations, building and empowering communities and enabling new ways for people to make a difference. Giveth meets all Seedom requirements, including:'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'ul',
+          null,
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              'strong',
+              null,
+              'Decentralizing'
+            ),
+            ' - believes in the decentralization of power in all forms'
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              'strong',
+              null,
+              'Legitimate'
+            ),
+            ' - has a capable team with a clear and effective plan of action'
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              'strong',
+              null,
+              'Active'
+            ),
+            ' - is actively working on solving an urgent need'
+          )
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Their fundraising round will run from May 1st to May 10th of this year. During this period, anyone can visit ',
+          _react2.default.createElement(
+            'a',
+            { href: 'http://seedom.io' },
+            'www.seedom.io'
+          ),
+          ' and contribute ether to be entered to win 30% of the total amount raised for Giveth! Seedom fundraisers now run on the 1st and 15th of every month for various altruistic causes.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'i',
+            null,
+            '"We are honored to be picked by Seedom for their first test run of their awesome DAPP. We are always looking to support projects focused on using #blockchain4good, it\u2019s sooooo cool to have a project support us!!! Seedom is experimenting with a very cool method to raise funds for charity, aligning incentives between all the participants in a fun way! Our social coding team dove into some of the code and it looks really nice. It has been a pleasure to work with the Seedom team!"'
+          ),
+          ' - Griff Green, co-founder Giveth'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'This marks the start of a new era of incentivized routine giving on the blockchain and the Ethereum network.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            'About Giveth:'
+          ),
+          ' Giveth is re-engineering charitable giving, by creating an entirely free, open-source platform, built on the Ethereum Blockchain. Our system cuts out bureaucracy and enables nonprofits to create a high level of transparency and accountability towards Givers. Through the Giveth DApp (Donation Application) you will be able to see how the project is laid out and how much money is required for each part. By reducing the costs and decentralizing the giving process we are putting the power back into the hands of the people.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            'About Seedom:'
+          ),
+          ' Seedom takes the efficiency, security, and transparency of the traditional single-room raffle and re-invents it with trustlessness and crowd-sourced random selection into an entirely new type of fundraiser that scales to the entire world.'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Visit ',
+          _react2.default.createElement(
+            'a',
+            { href: 'http://seedom.io/' },
+            'www.seedom.io'
+          ),
+          ' to participate and sign up for email reminders.'
+        )
+      );
+    }
+  }]);
+
+  return PressRelease;
+}(_sections2.default);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { router: state.router };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(PressRelease);
+
+/***/ }),
+
+/***/ "./app/components/press-release/index.scss":
+/*!*************************************************!*\
+  !*** ./app/components/press-release/index.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/sections/index.js":
+/*!******************************************!*\
+  !*** ./app/components/sections/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Sections = function (_Component) {
+  _inherits(Sections, _Component);
+
+  function Sections(props) {
+    var opened = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+    _classCallCheck(this, Sections);
+
+    var _this = _possibleConstructorReturn(this, (Sections.__proto__ || Object.getPrototypeOf(Sections)).call(this, props));
+
+    _initialiseProps.call(_this);
+
+    _this.state = {
+      open: [].concat(_toConsumableArray(opened))
+    };
+    // handle #toggles
+    _this.handleHash(props);
+    return _this;
+  }
+
+  _createClass(Sections, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(newProps) {
+      this.handleHash(newProps);
+    }
+  }]);
+
+  return Sections;
+}(_react.Component);
+
+var _initialiseProps = function _initialiseProps() {
+  var _this2 = this;
+
+  this.handleHash = function (props) {
+    var hash = props.router.location.hash;
+
+    if (hash !== '') {
+      _this2.state.open = [hash.substring(1)];
+    }
+  };
+};
+
+exports.default = Sections;
+
+/***/ }),
+
+/***/ "./app/components/toggle/index.js":
+/*!****************************************!*\
+  !*** ./app/components/toggle/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(/*! classnames */ "classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/toggle/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Toggle = function (_Component) {
+  _inherits(Toggle, _Component);
+
+  function Toggle(props) {
+    _classCallCheck(this, Toggle);
+
+    var _this = _possibleConstructorReturn(this, (Toggle.__proto__ || Object.getPrototypeOf(Toggle)).call(this, props));
+
+    _this.toggle = function () {
+      _this.setState(function (prevState) {
+        return {
+          collapsed: !prevState.collapsed
+        };
+      });
+    };
+
+    _this.state = {
+      collapsed: props.collapsed
+    };
+    return _this;
+  }
+
+  _createClass(Toggle, [{
+    key: 'render',
+    value: function render() {
+      var title = this.props.title;
+      var collapsed = this.state.collapsed;
+
+      return _react2.default.createElement(
+        'div',
+        {
+          className: (0, _classnames2.default)('seedom-toggle', { collapsed: collapsed }),
+          onClick: this.toggle
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'header' },
+          _react2.default.createElement(
+            'span',
+            { className: 'toggle left' },
+            _react2.default.createElement('i', { className: 'fas fa-plus' })
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'text' },
+            title
+          )
+        ),
+        !collapsed && _react2.default.createElement(
+          'div',
+          { className: 'content has-text-white' },
+          this.props.children
+        )
+      );
+    }
+  }]);
+
+  return Toggle;
+}(_react.Component);
+
+Toggle.propTypes = {
+  title: _propTypes2.default.string.isRequired,
+  collapsed: _propTypes2.default.bool,
+  children: _propTypes2.default.element
+};
+Toggle.defaultProps = {
+  collapsed: true,
+  children: null
+};
+exports.default = Toggle;
+
+/***/ }),
+
+/***/ "./app/components/toggle/index.scss":
+/*!******************************************!*\
+  !*** ./app/components/toggle/index.scss ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/vote/components/caster/index.js":
+/*!********************************************************!*\
+  !*** ./app/components/vote/components/caster/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _spinner = __webpack_require__(/*! ../../../../img/spinner.svg */ "./app/img/spinner.svg");
+
+var _spinner2 = _interopRequireDefault(_spinner);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var getStatus = function getStatus(_ref) {
+  var voteCount = _ref.voteCount,
+      maxVoteCount = _ref.maxVoteCount,
+      ended = _ref.ended;
+
+  if (ended) {
+    return 'ended';
+  } else if (maxVoteCount.isEqualTo(0)) {
+    return 'participate';
+  } else if (voteCount.isLessThan(maxVoteCount)) {
+    return 'decide';
+  }
+  return 'thanks';
+};
+
+var Caster = function (_Component) {
+  _inherits(Caster, _Component);
+
+  function Caster() {
+    _classCallCheck(this, Caster);
+
+    return _possibleConstructorReturn(this, (Caster.__proto__ || Object.getPrototypeOf(Caster)).apply(this, arguments));
+  }
+
+  _createClass(Caster, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          voteCount = _props.voteCount,
+          maxVoteCount = _props.maxVoteCount,
+          ended = _props.ended,
+          isLoading = _props.isLoading;
+
+      var status = getStatus({ voteCount: voteCount, maxVoteCount: maxVoteCount, ended: ended });
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'row caster' },
+        {
+          ended: _react2.default.createElement(
+            'div',
+            { className: 'bit begin stretch' },
+            'fundraiser ended'
+          ),
+          participate: _react2.default.createElement(
+            'div',
+            { className: 'bit begin stretch' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'button is-white is-outlined', to: '/' },
+                  _react2.default.createElement('i', { className: 'fas fa-arrow-alt-circle-left left' }),
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    'participate first'
+                  )
+                )
+              )
+            )
+          ),
+          decide: _react2.default.createElement(
+            'div',
+            { className: 'bit begin stretch' },
+            'help us decide our future!'
+          ),
+          thanks: _react2.default.createElement(
+            'div',
+            { className: 'bit begin stretch' },
+            'thank you for voting!'
+          )
+        }[status],
+        isLoading && _react2.default.createElement(
+          'div',
+          { className: 'bit' },
+          _react2.default.createElement(
+            'object',
+            { data: _spinner2.default, type: 'image/svg+xml' },
+            _react2.default.createElement('img', { src: _spinner2.default, alt: 'loading' })
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'bit header' },
+          _react2.default.createElement(
+            'span',
+            { className: 'header' },
+            'votes cast'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'bit' },
+          voteCount.toString(),
+          ' / ',
+          maxVoteCount.toString()
+        )
+      );
+    }
+  }]);
+
+  return Caster;
+}(_react.Component);
+
+Caster.propTypes = {
+  isLoading: _propTypes2.default.bool,
+  voteCount: _propTypes2.default.shape().isRequired,
+  maxVoteCount: _propTypes2.default.shape().isRequired,
+  ended: _propTypes2.default.bool.isRequired
+};
+Caster.defaultProps = {
+  isLoading: false
+};
+exports.default = Caster;
+
+/***/ }),
+
+/***/ "./app/components/vote/components/count/index.js":
+/*!*******************************************************!*\
+  !*** ./app/components/vote/components/count/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _field = __webpack_require__(/*! ../../../field */ "./app/components/field/index.js");
+
+var _field2 = _interopRequireDefault(_field);
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var _numbers = __webpack_require__(/*! ../../../../utils/numbers */ "./app/utils/numbers.js");
+
+__webpack_require__(/*! ./index.scss */ "./app/components/vote/components/count/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Count = function (_Component) {
+  _inherits(Count, _Component);
+
+  function Count(props) {
+    _classCallCheck(this, Count);
+
+    var _this = _possibleConstructorReturn(this, (Count.__proto__ || Object.getPrototypeOf(Count)).call(this, props));
+
+    _this.focus = function () {
+      _this.count.focus();
+    };
+
+    _this.validate = function () {
+      var value = _this.state.value;
+
+      var isValid = value.isGreaterThanOrEqualTo(1) && value.isLessThanOrEqualTo(_this.props.remainingVoteCount);
+      _this.setState({ isValid: isValid });
+      return isValid;
+    };
+
+    _this.value = function () {
+      return _this.state.value;
+    };
+
+    _this.handleChange = function (value) {
+      var parsedValue = void 0;
+
+      try {
+        parsedValue = new _bignumber.BigNumber(value);
+      } catch (error) {
+        parsedValue = (0, _numbers.zero)();
+      }
+
+      _this.setState({ value: parsedValue });
+    };
+
+    _this.state = {
+      value: props.value ? props.value : props.remainingVoteCount,
+      isValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Count, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.value && this.props.value && !this.props.value.isEqualTo(nextProps.value)) {
+        this.setState({ value: nextProps.value });
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          disabled = _props.disabled,
+          remainingVoteCount = _props.remainingVoteCount;
+      var _state = this.state,
+          value = _state.value,
+          isValid = _state.isValid;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-count' },
+        _react2.default.createElement(_field2.default, {
+          format: 'textbox',
+          type: 'number',
+          min: new _bignumber.BigNumber(1),
+          max: remainingVoteCount,
+          value: value.toString(),
+          maxLength: remainingVoteCount.toString().length,
+          placeholder: '',
+          disabled: disabled,
+          isValid: isValid,
+          onChange: this.handleChange,
+          ref: function ref(component) {
+            _this2.count = component;
+          }
+        }),
+        _react2.default.createElement(
+          'div',
+          { className: 'divider' },
+          '/'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'remainingVoteCount' },
+          remainingVoteCount.toString()
+        )
+      );
+    }
+  }]);
+
+  return Count;
+}(_react.Component);
+
+Count.propTypes = {
+  value: _propTypes2.default.shape(),
+  disabled: _propTypes2.default.bool.isRequired,
+  remainingVoteCount: _propTypes2.default.shape().isRequired
+};
+Count.defaultProps = {
+  value: null
+};
+exports.default = Count;
+
+/***/ }),
+
+/***/ "./app/components/vote/components/count/index.scss":
+/*!*********************************************************!*\
+  !*** ./app/components/vote/components/count/index.scss ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/components/vote/components/index/index.js":
+/*!*******************************************************!*\
+  !*** ./app/components/vote/components/index/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+var _count = __webpack_require__(/*! ../count */ "./app/components/vote/components/count/index.js");
+
+var _count2 = _interopRequireDefault(_count);
+
+var _heatmap = __webpack_require__(/*! ../../../../utils/heatmap */ "./app/utils/heatmap.js");
+
+var heatmap = _interopRequireWildcard(_heatmap);
+
+var _numbers = __webpack_require__(/*! ../../../../utils/numbers */ "./app/utils/numbers.js");
+
+var _classnames = __webpack_require__(/*! classnames */ "classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var rowClass = function rowClass(available) {
+  return (0, _classnames2.default)({
+    row: true,
+    index: true,
+    static: !available
+  });
+};
+
+var Index = function (_Component) {
+  _inherits(Index, _Component);
+
+  function Index(props) {
+    _classCallCheck(this, Index);
+
+    var _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
+
+    _this.validateForm = function (done) {
+      var isFormValid = _this.count.validate();
+      _this.setState({ isFormValid: isFormValid }, done);
+    };
+
+    _this.handleEdit = function () {
+      _this.setState({ editing: true });
+    };
+
+    _this.handleCancel = function () {
+      _this.setState({ editing: false });
+    };
+
+    _this.handleSubmit = function () {
+      _this.validateForm(function () {
+        if (_this.state.isFormValid) {
+          var _this$props = _this.props,
+              cause = _this$props.cause,
+              onVoteIndex = _this$props.onVoteIndex;
+
+          var count = _this.count.value();
+          onVoteIndex({ index: cause.index, count: count });
+        } else {
+          _reactReduxToastr.toastr.warning('VOTE', 'score update form invalid');
+        }
+      });
+    };
+
+    _this.getHeatmapColor = function (causeVoteCount, causesVoteCount) {
+      return heatmap.color(causeVoteCount.div(causesVoteCount));
+    };
+
+    _this.state = {
+      editing: false,
+      isFormValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Index, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          voteCount = _props.voteCount,
+          maxVoteCount = _props.maxVoteCount,
+          causesVoteCount = _props.causesVoteCount,
+          ended = _props.ended,
+          cause = _props.cause,
+          vote = _props.vote,
+          isLoading = _props.isLoading;
+      var editing = this.state.editing;
+
+
+      var available = !ended && voteCount.isLessThan(maxVoteCount);
+
+      var heatmapColor = this.getHeatmapColor(cause.voteCount, causesVoteCount);
+
+      return _react2.default.createElement(
+        'div',
+        { className: rowClass(available), style: { backgroundColor: heatmapColor } },
+        _react2.default.createElement(
+          'div',
+          { className: 'bit begin header-normal stretch shadow' },
+          cause.name
+        ),
+        vote && _react2.default.createElement(
+          'div',
+          { className: 'bit header shadow' },
+          'voted!'
+        ),
+        (!available || !editing) && _react2.default.createElement(
+          'div',
+          { className: 'bit shadow' },
+          _react2.default.createElement(
+            'div',
+            { className: 'bit header' },
+            'votes'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'bit' },
+            cause.voteCount.toString()
+          )
+        ),
+        available && _react2.default.createElement(
+          'div',
+          { className: 'bit' },
+          editing && _react2.default.createElement(
+            'div',
+            { className: 'bit shadow' },
+            _react2.default.createElement(
+              'div',
+              { className: 'bit' },
+              _react2.default.createElement(_count2.default, {
+                remainingVoteCount: maxVoteCount.minus(voteCount),
+                disabled: isLoading,
+                ref: function ref(component) {
+                  _this2.count = component;
+                }
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'bit' },
+              _react2.default.createElement(
+                'div',
+                { className: 'field' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'control' },
+                  _react2.default.createElement(
+                    'a',
+                    { className: 'button is-white', disabled: isLoading, onClick: this.handleSubmit },
+                    'cast'
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'bit' },
+              _react2.default.createElement(
+                'div',
+                { className: 'field' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'control' },
+                  _react2.default.createElement(
+                    'a',
+                    { className: 'button is-white', disabled: isLoading, onClick: this.handleCancel },
+                    'cancel'
+                  )
+                )
+              )
+            )
+          ),
+          !editing && _react2.default.createElement(
+            'div',
+            { className: 'bit shadow' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-white', disabled: isLoading, onClick: this.handleEdit },
+                  'vote'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Index;
+}(_react.Component);
+
+Index.propTypes = {
+  voteCount: _propTypes2.default.shape().isRequired,
+  maxVoteCount: _propTypes2.default.shape().isRequired,
+  causesVoteCount: _propTypes2.default.shape().isRequired,
+  ended: _propTypes2.default.bool.isRequired,
+  cause: _propTypes2.default.shape().isRequired,
+  vote: _propTypes2.default.shape(),
+  isLoading: _propTypes2.default.bool,
+  onVoteIndex: _propTypes2.default.func.isRequired
+};
+Index.defaultProps = {
+  isLoading: false,
+  vote: null
+};
+exports.default = Index;
+
+/***/ }),
+
+/***/ "./app/components/vote/components/name/index.js":
+/*!******************************************************!*\
+  !*** ./app/components/vote/components/name/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+var _count = __webpack_require__(/*! ../count */ "./app/components/vote/components/count/index.js");
+
+var _count2 = _interopRequireDefault(_count);
+
+var _field = __webpack_require__(/*! ../../../field */ "./app/components/field/index.js");
+
+var _field2 = _interopRequireDefault(_field);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MAX_NAME_LENGTH = 32;
+
+var Name = function (_Component) {
+  _inherits(Name, _Component);
+
+  function Name(props) {
+    _classCallCheck(this, Name);
+
+    var _this = _possibleConstructorReturn(this, (Name.__proto__ || Object.getPrototypeOf(Name)).call(this, props));
+
+    _this.validateForm = function (done) {
+      var name = _this.state.name;
+
+      var isNameValid = name.length > 1 && name.length <= MAX_NAME_LENGTH;
+      var isCountValid = _this.count.validate();
+      _this.setState({
+        isNameValid: isNameValid,
+        isFormValid: isNameValid && isCountValid
+      }, done);
+    };
+
+    _this.handleNameChange = function (name) {
+      _this.setState({ name: name });
+    };
+
+    _this.handleSubmit = function () {
+      _this.validateForm(function () {
+        var _this$state = _this.state,
+            isFormValid = _this$state.isFormValid,
+            name = _this$state.name;
+
+        if (isFormValid) {
+          var count = _this.count.value();
+          _this.props.onVoteName({ name: name, count: count });
+        } else {
+          _reactReduxToastr.toastr.warning('VOTE', 'new cause form invalid');
+        }
+      });
+    };
+
+    _this.state = {
+      name: '',
+      isNameValid: true,
+      isFormValid: true
+    };
+    return _this;
+  }
+
+  _createClass(Name, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          voteCount = _props.voteCount,
+          maxVoteCount = _props.maxVoteCount,
+          ended = _props.ended,
+          isLoading = _props.isLoading;
+      var _state = this.state,
+          name = _state.name,
+          isNameValid = _state.isNameValid;
+
+
+      if (ended || voteCount.isEqualTo(maxVoteCount)) {
+        return null;
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'row name' },
+        _react2.default.createElement(
+          'div',
+          { className: 'bit begin stretch' },
+          _react2.default.createElement(_field2.default, {
+            format: 'textbox',
+            type: 'text',
+            placeholder: 'enter new cause or vote below',
+            value: name.toString(),
+            maxLength: 10,
+            disabled: isLoading,
+            isValid: isNameValid,
+            onChange: this.handleNameChange,
+            ref: function ref(component) {
+              _this2.name = component;
+            }
+          })
+        ),
+        name.length > 0 && _react2.default.createElement(
+          'div',
+          { className: 'bit' },
+          _react2.default.createElement(
+            'div',
+            { className: 'bit header' },
+            'votes'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'bit' },
+            _react2.default.createElement(_count2.default, {
+              remainingVoteCount: maxVoteCount.minus(voteCount),
+              disabled: isLoading,
+              ref: function ref(component) {
+                _this2.count = component;
+              }
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'bit' },
+            _react2.default.createElement(
+              'div',
+              { className: 'field' },
+              _react2.default.createElement(
+                'div',
+                { className: 'control' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'button is-white', disabled: isLoading, onClick: this.handleSubmit },
+                  _react2.default.createElement('i', { className: 'fas fa-plus-circle' })
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Name;
+}(_react.Component);
+
+Name.propTypes = {
+  voteCount: _propTypes2.default.shape().isRequired,
+  maxVoteCount: _propTypes2.default.shape().isRequired,
+  ended: _propTypes2.default.bool.isRequired,
+  isLoading: _propTypes2.default.bool,
+  onVoteName: _propTypes2.default.func.isRequired
+};
+Name.defaultProps = {
+  isLoading: false
+};
+exports.default = Name;
+
+/***/ }),
+
+/***/ "./app/components/vote/index.js":
+/*!**************************************!*\
+  !*** ./app/components/vote/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _bytes = __webpack_require__(/*! ../../utils/bytes */ "./app/utils/bytes.js");
+
+var bytes = _interopRequireWildcard(_bytes);
+
+var _messages = __webpack_require__(/*! @seedom-io/seedom-crypter/messages */ "@seedom-io/seedom-crypter/messages");
+
+var messages = _interopRequireWildcard(_messages);
+
+var _ethereum = __webpack_require__(/*! ../../actions/ethereum */ "./app/actions/ethereum.js");
+
+var ethereumActions = _interopRequireWildcard(_ethereum);
+
+var _caster = __webpack_require__(/*! ./components/caster */ "./app/components/vote/components/caster/index.js");
+
+var _caster2 = _interopRequireDefault(_caster);
+
+var _name = __webpack_require__(/*! ./components/name */ "./app/components/vote/components/name/index.js");
+
+var _name2 = _interopRequireDefault(_name);
+
+var _index = __webpack_require__(/*! ./components/index */ "./app/components/vote/components/index/index.js");
+
+var _index2 = _interopRequireDefault(_index);
+
+__webpack_require__(/*! ./index.scss */ "./app/components/vote/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Vote = function (_Component) {
+  _inherits(Vote, _Component);
+
+  function Vote() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Vote);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Vote.__proto__ || Object.getPrototypeOf(Vote)).call.apply(_ref, [this].concat(args))), _this), _this.handleVoteName = function (_ref2) {
+      var name = _ref2.name,
+          count = _ref2.count;
+
+      var nameHex = messages.hex(name);
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'polling', method: 'voteName', args: [nameHex, count]
+      }));
+    }, _this.handleVoteIndex = function (_ref3) {
+      var index = _ref3.index,
+          count = _ref3.count;
+
+      _this.props.dispatch(ethereumActions.send({
+        contractName: 'polling', method: 'voteIndex', args: [index, count]
+      }));
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Vote, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props$ethereum = this.props.ethereum,
+          maxVoteCount = _props$ethereum.maxVoteCount,
+          causes = _props$ethereum.causes,
+          causesVoteCount = _props$ethereum.causesVoteCount,
+          votes = _props$ethereum.votes,
+          voteCount = _props$ethereum.voteCount,
+          deployment = _props$ethereum.deployment,
+          account = _props$ethereum.account,
+          isLoading = _props$ethereum.isLoading;
+
+
+      if (!maxVoteCount || !causes || !votes || !deployment) {
+        return null;
+      }
+
+      // sort causes by vote count
+      var sortedCauses = [].concat(_toConsumableArray(causes)).sort(function (a, b) {
+        return b.voteCount.comparedTo(a.voteCount);
+      });
+
+      var ended = new Date() >= deployment.endTime;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'seedom-vote' },
+        _react2.default.createElement(
+          'div',
+          { className: 'list' },
+          _react2.default.createElement(_caster2.default, {
+            isLoading: isLoading,
+            voteCount: voteCount,
+            maxVoteCount: maxVoteCount,
+            ended: ended
+          }),
+          _react2.default.createElement(_name2.default, {
+            voteCount: voteCount,
+            maxVoteCount: maxVoteCount,
+            ended: ended,
+            isLoading: isLoading,
+            onVoteName: this.handleVoteName
+          }),
+          sortedCauses.map(function (cause) {
+            return _react2.default.createElement(_index2.default, {
+              key: cause.index,
+              isLoading: isLoading,
+              voteCount: voteCount,
+              maxVoteCount: maxVoteCount,
+              causesVoteCount: causesVoteCount,
+              ended: ended,
+              cause: cause,
+              vote: votes[cause.index],
+              account: account,
+              onVoteIndex: _this2.handleVoteIndex
+            });
+          })
+        )
+      );
+    }
+  }]);
+
+  return Vote;
+}(_react.Component);
+
+Vote.propTypes = {
+  ethereum: _propTypes2.default.shape().isRequired
+};
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { ethereum: state.ethereum };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return { dispatch: dispatch };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Vote);
+
+/***/ }),
+
+/***/ "./app/components/vote/index.scss":
+/*!****************************************!*\
+  !*** ./app/components/vote/index.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/img/spinner.svg":
+/*!*****************************!*\
+  !*** ./app/img/spinner.svg ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "a98583bd825d0cb2dddabef564c356e3.svg";
+
+/***/ }),
+
+/***/ "./app/img/team/alex.jpg":
+/*!*******************************!*\
+  !*** ./app/img/team/alex.jpg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "631a7666725d76807b3a6908fa9743d9.jpg";
+
+/***/ }),
+
+/***/ "./app/img/team/eric.jpg":
+/*!*******************************!*\
+  !*** ./app/img/team/eric.jpg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "292b41bf9fd89ac678a4990a66c3b309.jpg";
+
+/***/ }),
+
+/***/ "./app/img/team/jesse.jpg":
+/*!********************************!*\
+  !*** ./app/img/team/jesse.jpg ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "7f2a06a3beccb63574d398b29a4b38a7.jpg";
+
+/***/ }),
+
+/***/ "./app/img/team/kyle.jpg":
+/*!*******************************!*\
+  !*** ./app/img/team/kyle.jpg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "e1d5702e1235a0c4e9d31cc1e8bffb39.jpg";
+
+/***/ }),
+
+/***/ "./app/middleware/cause.js":
+/*!*********************************!*\
+  !*** ./app/middleware/cause.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _causes = __webpack_require__(/*! @seedom-io/seedom-resolver/causes */ "@seedom-io/seedom-resolver/causes");
+
+var causesResolver = _interopRequireWildcard(_causes);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var sampleCause = {
+  name: 'Seedom',
+  image: 'seedom',
+  url: 'seedom.io',
+  video: 'nj2QNP9gEKA',
+  tagline: 'seeding the future of philanthropy'
+};
+
+var causeMiddleware = function causeMiddleware(store) {
+  var handleFundraiserDeployment = function handleFundraiserDeployment(next, action) {
+    if (false) {} else {
+      store.dispatch({ type: 'CAUSE_CAUSE', cause: sampleCause });
+    }
+    return next(action);
+  };
+
+  return function (next) {
+    return function (action) {
+      var type = action.type;
+
+      switch (type) {
+        case 'FUNDRAISER_DEPLOYMENT':
+          return handleFundraiserDeployment(next, action);
+        default:
+          return next(action);
+      }
+    };
+  };
+};
+
+exports.default = causeMiddleware;
+
+/***/ }),
+
+/***/ "./app/middleware/ethereum.js":
+/*!************************************!*\
+  !*** ./app/middleware/ethereum.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _web = __webpack_require__(/*! web3 */ "web3");
+
+var _web2 = _interopRequireDefault(_web);
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PAST_BLOCKS_BACK = 10000;
+var MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
+var GAS = 200000;
+var GAS_PRICE = 4000000000;
+
+var getNetworkName = function getNetworkName(id) {
+  switch (id) {
+    case 1:
+      return 'mainnet';
+    case 2:
+      return 'morden';
+    case 3:
+      return 'ropsten';
+    case 4:
+      return 'rinkeby';
+    case 42:
+      return 'kovan';
+    default:
+      return 'localhost';
+  }
+};
+
+var getRpcWeb3 = function getRpcWeb3() {
+  // setup rpc web3
+  if (typeof window !== 'undefined') {
+    // set MetaMask web3 at v1.0
+    if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
+      return new _web2.default(window.web3.currentProvider);
+    }
+  }
+  return null;
+};
+
+var ethereumMiddleware = function ethereumMiddleware(store) {
+  // client web3 is source of truth
+  var clientWeb3 = getRpcWeb3();
+  // middleware state
+  var serverWeb3 = void 0;
+  var account = void 0;
+  var network = void 0;
+  var contracts = {};
+  var primaryContractAddresses = {};
+
+  var getContract = function getContract(name) {
+    return contracts[name];
+  };
+
+  var getClientMethod = function getClientMethod(release, method, args) {
+    return release.client.methods[method].apply(null, args);
+  };
+
+  var getServerMethod = function getServerMethod(release, method, args) {
+    return release.server.methods[method].apply(null, args);
+  };
+
+  var handleCallError = function handleCallError(error, action) {
+    console.error(error.message);
+    store.dispatch(_extends({}, action, { type: 'ETHEREUM_CALL_ERROR', error: error }));
+  };
+
+  var handleCall = function handleCall(next, action) {
+    var contractName = action.contractName,
+        contractAddress = action.contractAddress,
+        method = action.method,
+        args = action.args;
+
+    var contract = getContract(contractName);
+    if (contract) {
+      var release = contract[contractAddress || primaryContractAddresses[contractName]];
+      if (release) {
+        var serverMethod = getServerMethod(release, method, args);
+        serverMethod.call({ from: account }).then(function (data) {
+          store.dispatch(_extends({}, action, { type: 'ETHEREUM_CALL_DATA', data: data }));
+        }, function (error) {
+          handleCallError(error, action);
+        });
+      }
+    }
+
+    return next(action);
+  };
+
+  var handleAllCall = function handleAllCall(next, action) {
+    var contractName = action.contractName,
+        method = action.method,
+        args = action.args;
+
+    var promises = [];
+    var contract = getContract(contractName);
+    if (contract) {
+      // get contract addresses (an order)
+      var contractAddresses = Object.keys(contracts[contractName]);
+      // loop over last 6 contracts to execute call
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = contractAddresses[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var contractAddress = _step.value;
+
+          var release = contract[contractAddress || primaryContractAddresses[contractName]];
+          if (release) {
+            var serverMethod = getServerMethod(release, method, args);
+            promises.push(serverMethod.call({ from: account }));
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      Promise.all(promises).then(function (datas) {
+        var data = {};
+        for (var i = 0; i < datas.length; i += 1) {
+          data[contractAddresses[i]] = datas[i];
+        }
+        store.dispatch(_extends({}, action, { type: 'ETHEREUM_ALLCALL_DATA', data: data }));
+      });
+    }
+
+    return next(action);
+  };
+
+  var handleSendError = function handleSendError(error, action) {
+    var finalMessage = void 0;
+    var message = error.message;
+
+    if (message.includes('User denied')) {
+      finalMessage = 'USER CANCELLED TRANSACTION';
+    } else if (message.includes('Insufficient funds')) {
+      finalMessage = 'INSUFFICIENT FUNDS';
+    } else {
+      finalMessage = 'UNKNOWN ERROR';
+    }
+
+    // send out send error & toastr notification
+    store.dispatch(_extends({}, action, { type: 'ETHEREUM_SEND_ERROR', error: finalMessage }));
+    _reactReduxToastr.toastr.error('ETHEREUM ERROR', finalMessage);
+  };
+
+  var handleSendSuccess = function handleSendSuccess(action) {
+    store.dispatch(_extends({}, action, { type: 'ETHEREUM_SEND_SUCCESS' }));
+  };
+
+  var handleSendCall = function handleSendCall(options, release, next, action) {
+    return function (callError) {
+      if (callError) {
+        handleSendError(callError, action);
+        return;
+      }
+
+      var transaction = void 0;
+      var method = action.method;
+
+      if (!method) {
+        transaction = clientWeb3.eth.sendTransaction(options);
+      } else {
+        var args = action.args;
+
+        var clientMethod = getClientMethod(release, method, args);
+        transaction = clientMethod.send(options);
+      }
+
+      transaction.on('error', function (sendError) {
+        handleSendError(sendError, action);
+      }).on('confirmation', function (confirmationNumber) {
+        if (confirmationNumber === 0) {
+          handleSendSuccess(action);
+        }
+      });
+    };
+  };
+
+  var handleSend = function handleSend(next, action) {
+    var contractName = action.contractName,
+        contractAddress = action.contractAddress,
+        method = action.method,
+        args = action.args,
+        value = action.value;
+
+    var options = {
+      value: value,
+      from: account,
+      gas: GAS,
+      gasPrice: GAS_PRICE
+    };
+
+    var contract = getContract(contractName);
+    if (contract) {
+      var release = contract[contractAddress || primaryContractAddresses[contractName]];
+      if (release) {
+        options.to = release.address;
+        var handler = handleSendCall(options, release, next, action);
+        if (!method) {
+          clientWeb3.eth.call(options, handler);
+        } else {
+          var serverMethod = getServerMethod(release, method, args);
+          serverMethod.call(options, handler);
+        }
+      }
+    }
+
+    return next(action);
+  };
+
+  var destroyCurrentNetwork = function destroyCurrentNetwork() {
+    for (var contractName in contracts) {
+      var releases = contracts[contractName];
+      for (var contractAddress in releases) {
+        var release = releases[contractAddress];
+        release.server.currentProvider.connection.close();
+      }
+      delete contracts[contractName];
+      delete primaryContractAddresses[contractName];
+    }
+  };
+
+  var setupServerWeb3 = function setupServerWeb3(networkName) {
+    var ethNetwork = {"localhost":{"url":"ws://localhost:8546"},"mainnet":{"url":"wss://manager1.seedom.io:8550"},"ropsten":{"url":"wss://manager1.seedom.io:8548"}}[networkName];
+    if (ethNetwork) {
+      // use websocket url
+      serverWeb3 = new _web2.default(ethNetwork.wsUrl);
+      return true;
+    }
+
+    serverWeb3 = null;
+    return false;
+  };
+
+  var setupContracts = function setupContracts(networkName) {
+    var ethDeployments = {"localhost":{"seedom":[{"address":"0xCa0AE930C519d8939Ba26aeA29227C62184a5aB4","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_entries","type":"uint256"},{"name":"_message","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participantAddresses","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"select","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_selectedSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charitySecret","type":"bytes32"},{"name":"_charityMessage","type":"bytes32"},{"name":"_charityWithdrawn","type":"bool"},{"name":"_selected","type":"address"},{"name":"_selectedMessage","type":"bytes32"},{"name":"_selectedWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_selectedSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charitySecret","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_selected","type":"address"},{"indexed":false,"name":"_selectedMessage","type":"bytes32"},{"indexed":false,"name":"_charityMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]}],"suggest":[{"address":"0x87c13ebad5042206391772bD9Cc4227DbAc95E90","abi":[{"constant":false,"inputs":[{"name":"_charityIndex","type":"uint256"},{"name":"_score","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"status","outputs":[{"name":"_maxScore","type":"uint256"},{"name":"_hasRight","type":"bool"},{"name":"_hasVoted","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_charityName","type":"bytes32"},{"name":"_score","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"charities","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_totalScores","type":"uint256[]"},{"name":"_totalVotes","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_charityIndexes","type":"uint256[]"},{"name":"_scores","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"hasRight","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_maxScore","type":"uint256"},{"name":"_seedomAddress","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_charityIndex","type":"uint256"},{"indexed":false,"name":"_charityName","type":"bytes32"},{"indexed":false,"name":"_score","type":"uint256"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":true,"name":"_charityIndex","type":"uint256"},{"indexed":false,"name":"_score","type":"uint256"}],"name":"CastIndex","type":"event"}]}]},"mainnet":{"seedom":[{"address":"0xa7bc8Cd45eEDe68e8AD6d282E522f2B9e7d57942","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_charityRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_winner","type":"address"},{"indexed":false,"name":"_winnerRandom","type":"bytes32"},{"indexed":false,"name":"_charityRandom","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0x2F8c8FCB351520A3B28971a017E1231Baa6bAf01","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_charityRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_winner","type":"address"},{"indexed":false,"name":"_winnerRandom","type":"bytes32"},{"indexed":false,"name":"_charityRandom","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]}]},"ropsten":{"seedom":[{"address":"0x4C70C9c44213c54C8b590Fa3A63a56DF40348ca6","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_entries","type":"uint256"},{"name":"_message","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participantAddresses","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"select","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_selectedSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charitySecret","type":"bytes32"},{"name":"_charityMessage","type":"bytes32"},{"name":"_charityWithdrawn","type":"bool"},{"name":"_selected","type":"address"},{"name":"_selectedMessage","type":"bytes32"},{"name":"_selectedWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_selectedSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charitySecret","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_selected","type":"address"},{"indexed":false,"name":"_selectedMessage","type":"bytes32"},{"indexed":false,"name":"_charityMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0x0D74c068a1141e8aC60a30e6b6e5dF5A518c4210","abi":[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participants","outputs":[{"name":"_entries","type":"uint256"},{"name":"_message","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participantAddresses","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_secret","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_message","type":"bytes32"}],"name":"select","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_selectedSplit","type":"uint256"},{"name":"_owner","type":"address"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charitySecret","type":"bytes32"},{"name":"_charityMessage","type":"bytes32"},{"name":"_charityWithdrawn","type":"bool"},{"name":"_selected","type":"address"},{"name":"_selectedMessage","type":"bytes32"},{"name":"_selectedWithdrawn","type":"bool"},{"name":"_ownerMessage","type":"bytes32"},{"name":"_ownerWithdrawn","type":"bool"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_selectedSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_ownerSecret","type":"bytes32"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charitySecret","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_message","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityMessage","type":"bytes32"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_selected","type":"address"},{"indexed":false,"name":"_selectedMessage","type":"bytes32"},{"indexed":false,"name":"_charityMessage","type":"bytes32"},{"indexed":false,"name":"_ownerMessage","type":"bytes32"}],"name":"Selection","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0xBD18f290D6cC51dBEE083A2a4b493e7278AC2B38","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_charityRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_winner","type":"address"},{"indexed":false,"name":"_winnerRandom","type":"bytes32"},{"indexed":false,"name":"_charityRandom","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0xae6504caFc09bFbDbF751C4292371D114d2b459e","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_charityRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_winner","type":"address"},{"indexed":false,"name":"_winnerRandom","type":"bytes32"},{"indexed":false,"name":"_charityRandom","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0x7542eA016832c2B30395a93E7e2c4EbA4284d734","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_charityRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_winner","type":"address"},{"indexed":false,"name":"_winnerRandom","type":"bytes32"},{"indexed":false,"name":"_charityRandom","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]},{"address":"0xBC8AE73A0D0b7158dd0C3B2dFCd6ae908271929b","abi":[{"constant":false,"inputs":[{"name":"_hashedRandom","type":"bytes32"}],"name":"participate","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"participants","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityHashedRandom","type":"bytes32"}],"name":"seed","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityRandom","type":"bytes32"}],"name":"end","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_random","type":"bytes32"}],"name":"reveal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"revealers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"balance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"raiser","outputs":[{"name":"_owner","type":"address"},{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_deployTime","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"state","outputs":[{"name":"_charityHashedRandom","type":"bytes32"},{"name":"_winner","type":"address"},{"name":"_winnerRandom","type":"bytes32"},{"name":"_cancelled","type":"bool"},{"name":"_totalParticipants","type":"uint256"},{"name":"_totalEntries","type":"uint256"},{"name":"_totalRevealers","type":"uint256"},{"name":"_totalRevealed","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cancel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"participantsMapping","outputs":[{"name":"_entries","type":"uint256"},{"name":"_hashedRandom","type":"bytes32"},{"name":"_random","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_charity","type":"address"},{"name":"_charitySplit","type":"uint256"},{"name":"_winnerSplit","type":"uint256"},{"name":"_ownerSplit","type":"uint256"},{"name":"_valuePerEntry","type":"uint256"},{"name":"_revealTime","type":"uint256"},{"name":"_endTime","type":"uint256"},{"name":"_expireTime","type":"uint256"},{"name":"_destructTime","type":"uint256"},{"name":"_maxParticipants","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_charityHashedRandom","type":"bytes32"}],"name":"Seed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_hashedRandom","type":"bytes32"}],"name":"Participation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_entries","type":"uint256"},{"indexed":false,"name":"_refund","type":"uint256"}],"name":"Raise","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"},{"indexed":false,"name":"_entries","type":"uint256"}],"name":"Revelation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_participant","type":"address"},{"indexed":false,"name":"_random","type":"bytes32"}],"name":"Win","type":"event"},{"anonymous":false,"inputs":[],"name":"Cancellation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"Withdrawal","type":"event"}]}],"suggest":[{"address":"0x8B54B2118CB2D695977B007Aa76337a06038c0e9","abi":[{"constant":true,"inputs":[],"name":"getVotes","outputs":[{"name":"","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"destructTime","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"endTime","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getCharities","outputs":[{"name":"","type":"bytes32[]"},{"name":"","type":"uint256[]"},{"name":"","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_forCharityIndex","type":"uint256"},{"name":"_forCharityName","type":"bytes32"}],"name":"hasRight","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_charityIndex","type":"uint256"},{"name":"_score","type":"uint256"}],"name":"vote","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityName","type":"bytes32"},{"name":"_score","type":"uint256"}],"name":"addCharity","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_seedomAddress","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_address","type":"address"},{"indexed":true,"name":"_charityIndex","type":"uint256"},{"indexed":false,"name":"_score","type":"uint256"}],"name":"Vote","type":"event"}]}],"polling":[{"address":"0xc73be3eE43EcD67971f8C0b9190E1240b3A104C6","abi":[{"constant":false,"inputs":[{"name":"_charityIndex","type":"uint256"},{"name":"_score","type":"uint256"}],"name":"voteIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_charityName","type":"bytes32"},{"name":"_score","type":"uint256"}],"name":"voteName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"maxVotes","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"destroy","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"charities","outputs":[{"name":"_names","type":"bytes32[]"},{"name":"_casters","type":"address[]"},{"name":"_totalScores","type":"uint256[]"},{"name":"_totalVotes","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"caster","outputs":[{"name":"_maxScore","type":"uint256"},{"name":"_maxVotes","type":"uint256"},{"name":"_totalVotes","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"votes","outputs":[{"name":"_charityIndexes","type":"uint256[]"},{"name":"_scores","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_maxScore","type":"uint256"},{"name":"_seedomAddress","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":false,"name":"_score","type":"uint256"},{"indexed":true,"name":"_charityIndex","type":"uint256"},{"indexed":false,"name":"_charityName","type":"bytes32"}],"name":"CastName","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_caster","type":"address"},{"indexed":false,"name":"_score","type":"uint256"},{"indexed":false,"name":"_totalVotes","type":"uint256"},{"indexed":true,"name":"_charityIndex","type":"uint256"},{"indexed":false,"name":"_charityTotalScores","type":"uint256"},{"indexed":false,"name":"_charityTotalVotes","type":"uint256"}],"name":"CastIndex","type":"event"}]}]}}[networkName];
+    if (!ethDeployments) {
+      return false;
+    }
+
+    // set all contracts (last six)
+    for (var contractName in ethDeployments) {
+      var releases = ethDeployments[contractName];
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = releases[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var release = _step2.value;
+
+          // save first address (primary contract)
+          if (!(contractName in primaryContractAddresses)) {
+            primaryContractAddresses[contractName] = release.address;
+          }
+
+          if (!(contractName in contracts)) {
+            contracts[contractName] = {};
+          }
+
+          // add to map of contracts
+          contracts[contractName][release.address] = {
+            name: contractName,
+            address: release.address,
+            server: new serverWeb3.eth.Contract(release.abi, release.address),
+            client: new clientWeb3.eth.Contract(release.abi, release.address)
+          };
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+    }
+
+    // dispatch primary contract addresses
+    store.dispatch({
+      type: 'ETHEREUM_PRIMARY_CONTRACT_ADDRESSES',
+      primaryContractAddresses: primaryContractAddresses
+    });
+
+    return true;
+  };
+
+  var setupContractEventHandler = function setupContractEventHandler(contractName, release, fromBlockNumber, startingBlockNumber) {
+    release.server.events.allEvents({
+      fromBlock: fromBlockNumber
+    }, function (error, result) {
+      store.dispatch({
+        type: 'ETHEREUM_EVENT',
+        eventName: result.event.toUpperCase(),
+        contractName: contractName,
+        values: result.returnValues,
+        contractAddress: result.address,
+        blockNumber: result.blockNumber,
+        transactionHash: result.transactionHash,
+        transactionIndex: result.transactionIndex,
+        old: result.blockNumber <= startingBlockNumber
+      });
+    });
+  };
+
+  var setupContractEventHandlers = function setupContractEventHandlers() {
+    // get starting block and setup event handlers
+    serverWeb3.eth.getBlockNumber(function (error, startingBlockNumber) {
+      // get the feed block number (what block to start at for feed)
+      var pastBlockNumber = startingBlockNumber - PAST_BLOCKS_BACK;
+      if (pastBlockNumber < 0) {
+        pastBlockNumber = 0;
+      }
+
+      // set up event handlers for each contract
+      for (var contractName in contracts) {
+        var releases = contracts[contractName];
+        var primaryContractAddress = primaryContractAddresses[contractName];
+        for (var contractAddress in releases) {
+          var release = releases[contractAddress];
+          var fromBlockNumber = release.address === primaryContractAddress ? pastBlockNumber : startingBlockNumber;
+          setupContractEventHandler(contractName, release, fromBlockNumber, startingBlockNumber);
+        }
+      }
+    });
+  };
+
+  var setupNetwork = function setupNetwork(id) {
+    // destroy old network
+    destroyCurrentNetwork();
+    // setup server web3
+    var name = getNetworkName(id);
+    var supported = setupServerWeb3(name);
+
+    var deployed = false;
+    // continue if supported
+    if (supported) {
+      // setup contracts
+      deployed = setupContracts(name);
+      // setup event handlers
+      setupContractEventHandlers();
+    }
+
+    // save network object
+    network = {
+      id: id,
+      name: name,
+      supported: supported,
+      deployed: deployed
+    };
+
+    // dispatch new network
+    store.dispatch({
+      type: 'ETHEREUM_NETWORK',
+      network: network
+    });
+  };
+
+  var ready = function ready() {
+    return network && network.supported && network.deployed && account;
+  };
+
+  var checkUser = function checkUser() {
+    if (!ready()) {
+      return;
+    }
+
+    store.dispatch({
+      type: 'ETHEREUM_USER',
+      network: network,
+      account: account
+    });
+  };
+
+  var checkNetwork = function checkNetwork() {
+    clientWeb3.eth.net.getId(function (error, id) {
+      if (!network || id !== network.id) {
+        setupNetwork(id);
+        // see if user established
+        checkUser();
+      }
+    });
+  };
+
+  var checkAccount = function checkAccount() {
+    clientWeb3.eth.getAccounts(function (error, newAccounts) {
+      var _newAccounts = _slicedToArray(newAccounts, 1),
+          newAccount = _newAccounts[0];
+
+      if (newAccount !== account) {
+        account = newAccount;
+        store.dispatch({
+          type: 'ETHEREUM_ACCOUNT',
+          account: account
+        });
+        // see if user established
+        checkUser();
+      }
+    });
+  };
+
+  var checkRefresh = function checkRefresh() {
+    if (!ready()) {
+      return;
+    }
+
+    var now = new Date().getTime();
+    var contractAddresses = [];
+
+    for (var contractName in contracts) {
+      var releases = contracts[contractName];
+      for (var contractAddress in releases) {
+        var release = releases[contractAddress];
+        if (!release.lastBlockTime || now - release.lastBlockTime.getTime() > MAX_LAST_BLOCK_AGE) {
+          // last block time to now
+          release.lastBlockTime = new Date();
+          contractAddresses.push(release.address);
+        }
+      }
+    }
+
+    if (contractAddresses.length > 0) {
+      store.dispatch({ type: 'ETHEREUM_REFRESH', contractAddresses: contractAddresses });
+    }
+  };
+
+  // set up client web3 change detection polling
+  if (clientWeb3) {
+    setInterval(function () {
+      checkNetwork();
+      checkAccount();
+      checkRefresh();
+    }, 1000);
+  }
+
+  return function (next) {
+    return function (action) {
+      var type = action.type;
+
+      switch (type) {
+        case 'ETHEREUM_CALL':
+          return handleCall(next, action);
+        case 'ETHEREUM_SEND':
+          return handleSend(next, action);
+        case 'ETHEREUM_ALLCALL':
+          return handleAllCall(next, action);
+        default:
+          return next(action);
+      }
+    };
+  };
+};
+
+exports.default = ethereumMiddleware;
+
+/***/ }),
+
+/***/ "./app/middleware/fundraiser.js":
+/*!**************************************!*\
+  !*** ./app/middleware/fundraiser.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _ethereum = __webpack_require__(/*! ../actions/ethereum */ "./app/actions/ethereum.js");
+
+var ethereumActions = _interopRequireWildcard(_ethereum);
+
+var _fundraiser = __webpack_require__(/*! ../parsers/fundraiser */ "./app/parsers/fundraiser.js");
+
+var fundraiserParser = _interopRequireWildcard(_fundraiser);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var fundraiserMiddleware = function fundraiserMiddleware(store) {
+  var handleDeployment = function handleDeployment(next, action) {
+    return next({
+      type: 'FUNDRAISER_DEPLOYMENT',
+      deployment: fundraiserParser.parseDeployment(action.data)
+    });
+  };
+
+  var handleState = function handleState(next, action) {
+    return next({
+      type: 'FUNDRAISER_STATE',
+      state: fundraiserParser.parseState(action.data)
+    });
+  };
+
+  var handleParticipant = function handleParticipant(next, action) {
+    return next({
+      type: 'FUNDRAISER_PARTICIPANT',
+      participant: fundraiserParser.parseParticipant(action.data)
+    });
+  };
+
+  var handleEthereumCallData = function handleEthereumCallData(next, action) {
+    var contractName = action.contractName;
+    // only check for fundraiser data
+
+    if (contractName !== 'fundraiser') {
+      return next(action);
+    }
+
+    var method = action.method;
+
+    switch (method) {
+      case 'deployment':
+        return handleDeployment(next, action);
+      case 'state':
+        return handleState(next, action);
+      case 'participants':
+        return handleParticipant(next, action);
+      default:
+        return next(action);
+    }
+  };
+
+  var handleBalances = function handleBalances(next, action) {
+    return next({
+      type: 'FUNDRAISER_BALANCES',
+      balances: fundraiserParser.parseBalances(action.data)
+    });
+  };
+
+  var handleEthereumAllCallData = function handleEthereumAllCallData(next, action) {
+    var contractName = action.contractName;
+    // only check for fundraiser data
+
+    if (contractName !== 'fundraiser') {
+      return next(action);
+    }
+
+    var method = action.method;
+
+    switch (method) {
+      case 'balance':
+        return handleBalances(next, action);
+      default:
+        return next(action);
+    }
+  };
+
+  var handleEthereumUser = function handleEthereumUser(next, action) {
+    var account = action.account;
+
+    store.dispatch(ethereumActions.call({ contractName: 'fundraiser', method: 'participants', args: [account] }));
+    store.dispatch(ethereumActions.allCall({ contractName: 'fundraiser', method: 'balance' }));
+    return next(action);
+  };
+
+  var handleEthereumRefresh = function handleEthereumRefresh(next, action) {
+    var state = store.getState();
+    var primaryContractAddresses = state.ethereum.primaryContractAddresses;
+    var contractAddresses = action.contractAddresses;
+
+    if (contractAddresses.indexOf(primaryContractAddresses.fundraiser) > -1) {
+      store.dispatch(ethereumActions.call({ contractName: 'fundraiser', method: 'deployment' }));
+      store.dispatch(ethereumActions.call({ contractName: 'fundraiser', method: 'state' }));
+    }
+    return next(action);
+  };
+
+  var handleEthereumEvent = function handleEthereumEvent(next, action) {
+    var contractName = action.contractName;
+    // only check for fundraiser data
+
+    if (contractName !== 'fundraiser') {
+      return next(action);
+    }
+
+    var eventName = action.eventName;
+
+    var type = 'FUNDRAISER_' + eventName;
+    switch (eventName) {
+      case 'BEGINNING':
+        return next(_extends({}, action, { type: type, beginning: fundraiserParser.parseBeginning(action.values) }));
+      case 'PARTICIPATION':
+        return next(_extends({}, action, { type: type, participation: fundraiserParser.parseParticipation(action.values) }));
+      case 'RAISE':
+        return next(_extends({}, action, { type: type, raise: fundraiserParser.parseRaise(action.values) }));
+      case 'REVELATION':
+        return next(_extends({}, action, { type: type, revelation: fundraiserParser.parseRevelation(action.values) }));
+      case 'SELECTION':
+        return next(_extends({}, action, { type: type, selection: fundraiserParser.parseSelection(action.values) }));
+      case 'WITHDRAWAL':
+        return next(_extends({}, action, { type: type, withdrawal: fundraiserParser.parseWithdrawal(action.values) }));
+      case 'CANCELLATION':
+        return next(_extends({}, action, { type: type }));
+      default:
+        return next(action);
+    }
+  };
+
+  return function (next) {
+    return function (action) {
+      var type = action.type;
+
+      switch (type) {
+        case 'ETHEREUM_EVENT':
+          return handleEthereumEvent(next, action);
+        case 'ETHEREUM_CALL_DATA':
+          return handleEthereumCallData(next, action);
+        case 'ETHEREUM_ALLCALL_DATA':
+          return handleEthereumAllCallData(next, action);
+        case 'ETHEREUM_USER':
+          return handleEthereumUser(next, action);
+        case 'ETHEREUM_REFRESH':
+          return handleEthereumRefresh(next, action);
+        default:
+          return next(action);
+      }
+    };
+  };
+};
+
+exports.default = fundraiserMiddleware;
+
+/***/ }),
+
+/***/ "./app/middleware/polling.js":
+/*!***********************************!*\
+  !*** ./app/middleware/polling.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _ethereum = __webpack_require__(/*! ../actions/ethereum */ "./app/actions/ethereum.js");
+
+var ethereumActions = _interopRequireWildcard(_ethereum);
+
+var _polling = __webpack_require__(/*! ../parsers/polling */ "./app/parsers/polling.js");
+
+var pollingParser = _interopRequireWildcard(_polling);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var pollingMiddleware = function pollingMiddleware(store) {
+  var handleMaxVoteCount = function handleMaxVoteCount(next, action) {
+    return next({
+      type: 'POLLING_MAX_VOTE_COUNT',
+      maxVoteCount: pollingParser.parseMaxVoteCount(action.data)
+    });
+  };
+
+  var handleCauses = function handleCauses(next, action) {
+    var _pollingParser$parseC = pollingParser.parseCauses(action.data),
+        causes = _pollingParser$parseC.causes,
+        causesVoteCount = _pollingParser$parseC.causesVoteCount;
+
+    return next({
+      type: 'POLLING_CAUSES',
+      causes: causes,
+      causesVoteCount: causesVoteCount
+    });
+  };
+
+  var handleVotes = function handleVotes(next, action) {
+    var _pollingParser$parseV = pollingParser.parseVotes(action.data),
+        votes = _pollingParser$parseV.votes,
+        voteCount = _pollingParser$parseV.voteCount;
+
+    return next({
+      type: 'POLLING_VOTES',
+      votes: votes,
+      voteCount: voteCount
+    });
+  };
+
+  var handleEthereumCallData = function handleEthereumCallData(next, action) {
+    var contractName = action.contractName;
+    // only check for polling data
+
+    if (contractName !== 'polling') {
+      return next(action);
+    }
+
+    var method = action.method;
+
+    switch (method) {
+      case 'maxVoteCount':
+        return handleMaxVoteCount(next, action);
+      case 'causes':
+        return handleCauses(next, action);
+      case 'votes':
+        return handleVotes(next, action);
+      default:
+        return next(action);
+    }
+  };
+
+  var handleEthereumUser = function handleEthereumUser(next, action) {
+    store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'maxVoteCount' }));
+    store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'votes' }));
+    return next(action);
+  };
+
+  var handleEthereumRefresh = function handleEthereumRefresh(next, action) {
+    var state = store.getState();
+    var primaryContractAddresses = state.ethereum.primaryContractAddresses;
+    var contractAddresses = action.contractAddresses;
+
+    if (contractAddresses.indexOf(primaryContractAddresses.polling) > -1) {
+      store.dispatch(ethereumActions.call({ contractName: 'polling', method: 'causes' }));
+    }
+    return next(action);
+  };
+
+  var handleEthereumEvent = function handleEthereumEvent(next, action) {
+    var contractName = action.contractName;
+    // only check for polling data
+
+    if (contractName !== 'polling') {
+      return next(action);
+    }
+
+    var eventName = action.eventName;
+
+    var type = 'POLLING_' + eventName;
+    switch (eventName) {
+      case 'CASTINDEX':
+        return next(_extends({}, action, { type: type, castIndex: pollingParser.parseCastIndex(action.values) }));
+      case 'CASTNAME':
+        return next(_extends({}, action, { type: type, castName: pollingParser.parseCastName(action.values) }));
+      default:
+        return next(action);
+    }
+  };
+
+  return function (next) {
+    return function (action) {
+      var type = action.type;
+
+      switch (type) {
+        case 'ETHEREUM_EVENT':
+          return handleEthereumEvent(next, action);
+        case 'ETHEREUM_CALL_DATA':
+          return handleEthereumCallData(next, action);
+        case 'ETHEREUM_REFRESH':
+          return handleEthereumRefresh(next, action);
+        case 'ETHEREUM_USER':
+          return handleEthereumUser(next, action);
+        default:
+          return next(action);
+      }
+    };
+  };
+};
+
+exports.default = pollingMiddleware;
+
+/***/ }),
+
+/***/ "./app/parsers/fundraiser.js":
+/*!***********************************!*\
+  !*** ./app/parsers/fundraiser.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseBalances = exports.parseWithdrawal = exports.parseSelection = exports.parseRevelation = exports.parseRaise = exports.parseParticipation = exports.parseParticipant = exports.parseBeginning = exports.parseState = exports.parseDeployment = undefined;
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var _bytes = __webpack_require__(/*! ../utils/bytes */ "./app/utils/bytes.js");
+
+var bytes = _interopRequireWildcard(_bytes);
+
+var _messages = __webpack_require__(/*! @seedom-io/seedom-crypter/messages */ "@seedom-io/seedom-crypter/messages");
+
+var messages = _interopRequireWildcard(_messages);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var epochToDate = function epochToDate(seconds) {
+  return new Date(seconds * 1000);
+};
+
+var parseDeployment = function parseDeployment(deployment) {
+  return {
+    cause: String(deployment._cause),
+    causeWallet: String(deployment._causeWallet),
+    causeSplit: new _bignumber.BigNumber(deployment._causeSplit),
+    participantSplit: new _bignumber.BigNumber(deployment._participantSplit),
+    owner: String(deployment._owner),
+    ownerWallet: String(deployment._ownerWallet),
+    ownerSplit: new _bignumber.BigNumber(deployment._ownerSplit),
+    ownerSecret: String(deployment._ownerSecret),
+    valuePerEntry: new _bignumber.BigNumber(deployment._valuePerEntry),
+    deployTime: epochToDate(deployment._deployTime),
+    endTime: epochToDate(deployment._endTime),
+    expireTime: epochToDate(deployment._expireTime),
+    destructTime: epochToDate(deployment._destructTime)
+  };
+};
+
+var parseState = function parseState(state) {
+  return {
+    causeSecret: String(state._causeSecret),
+    causeMessage: String(messages.message(state._causeMessage)),
+    causeWithdrawn: Boolean(state._causeWithdrawn),
+    participant: String(state._participant),
+    participantMessage: String(messages.message(state._participantMessage)),
+    participantWithdrawn: Boolean(state._participantWithdrawn),
+    ownerMessage: String(messages.message(state._ownerMessage)),
+    ownerWithdrawn: Boolean(state._participantWithdrawn),
+    cancelled: Boolean(state._cancelled),
+    participants: new _bignumber.BigNumber(state._participants),
+    entries: new _bignumber.BigNumber(state._entries)
+  };
+};
+
+var parseBeginning = function parseBeginning(beginning) {
+  return {
+    causeSecret: String(beginning._causeSecret)
+  };
+};
+
+var parseParticipant = function parseParticipant(participant) {
+  return {
+    entries: new _bignumber.BigNumber(participant._entries),
+    message: String(messages.message(participant._message))
+  };
+};
+
+var parseParticipation = function parseParticipation(participation) {
+  return {
+    participant: String(participation._participant),
+    message: String(messages.message(participation._message)),
+    entries: new _bignumber.BigNumber(participation._entries),
+    refund: new _bignumber.BigNumber(participation._refund)
+  };
+};
+
+var parseRaise = function parseRaise(raise) {
+  return {
+    participant: String(raise._participant),
+    entries: new _bignumber.BigNumber(raise._entries),
+    refund: new _bignumber.BigNumber(raise._refund)
+  };
+};
+
+var parseRevelation = function parseRevelation(revelation) {
+  return {
+    causeMessage: String(messages.message(revelation._causeMessage))
+  };
+};
+
+var parseSelection = function parseSelection(selection) {
+  return {
+    participant: String(selection._participant),
+    participantMessage: String(messages.message(selection._participantMessage)),
+    causeMessage: String(messages.message(selection._causeMessage)),
+    ownerMessage: String(messages.message(selection._ownerMessage))
+  };
+};
+
+var parseWithdrawal = function parseWithdrawal(withdrawal) {
+  return {
+    address: String(withdrawal._address)
+  };
+};
+
+var parseBalances = function parseBalances(balances) {
+  var finalBalances = {};
+  for (var contractAddress in balances) {
+    var balance = balances[contractAddress];
+    // add balance entries of non-zero
+    if (balance !== '0') {
+      finalBalances[contractAddress] = new _bignumber.BigNumber(balance);
+    }
+  }
+  return finalBalances;
+};
+
+exports.parseDeployment = parseDeployment;
+exports.parseState = parseState;
+exports.parseBeginning = parseBeginning;
+exports.parseParticipant = parseParticipant;
+exports.parseParticipation = parseParticipation;
+exports.parseRaise = parseRaise;
+exports.parseRevelation = parseRevelation;
+exports.parseSelection = parseSelection;
+exports.parseWithdrawal = parseWithdrawal;
+exports.parseBalances = parseBalances;
+
+/***/ }),
+
+/***/ "./app/parsers/polling.js":
+/*!********************************!*\
+  !*** ./app/parsers/polling.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseCastIndex = exports.parseCastName = exports.parseVotes = exports.parseCauses = exports.parseMaxVoteCount = undefined;
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var _bytes = __webpack_require__(/*! ../utils/bytes */ "./app/utils/bytes.js");
+
+var bytes = _interopRequireWildcard(_bytes);
+
+var _numbers = __webpack_require__(/*! ../utils/numbers */ "./app/utils/numbers.js");
+
+var _messages = __webpack_require__(/*! @seedom-io/seedom-crypter/messages */ "@seedom-io/seedom-crypter/messages");
+
+var messages = _interopRequireWildcard(_messages);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var parseMaxVoteCount = function parseMaxVoteCount(maxVoteCount) {
+  return new _bignumber.BigNumber(maxVoteCount);
+};
+
+var parseCauses = function parseCauses(causes) {
+  var causesVoteCount = (0, _numbers.zero)();
+  var parsedCauses = [];
+  for (var causeIndex = 0; causeIndex < causes._names.length; causeIndex += 1) {
+    var voteCount = new _bignumber.BigNumber(causes._voteCounts[causeIndex]);
+    var parsedCause = {
+      index: causeIndex,
+      name: String(messages.message(causes._names[causeIndex])),
+      caster: String(causes._casters[causeIndex]),
+      voteCount: voteCount
+    };
+    causesVoteCount = causesVoteCount.plus(voteCount);
+    parsedCauses[causeIndex] = parsedCause;
+  }
+  return {
+    causes: parsedCauses,
+    causesVoteCount: causesVoteCount
+  };
+};
+
+var parseVotes = function parseVotes(votes) {
+  var voteCount = (0, _numbers.zero)();
+  var parsedVotes = {};
+  for (var voteIndex = 0; voteIndex < votes._causeIndexes.length; voteIndex += 1) {
+    var causeIndex = votes._causeIndexes[voteIndex];
+    var count = votes._counts[voteIndex];
+    voteCount = voteCount.plus(count);
+    if (causeIndex in parsedVotes) {
+      parsedVotes[causeIndex] = parsedVotes[causeIndex].plus(count);
+    } else {
+      parsedVotes[causeIndex] = new _bignumber.BigNumber(count);
+    }
+  }
+  return {
+    votes: parsedVotes,
+    voteCount: voteCount
+  };
+};
+
+var parseCastName = function parseCastName(castName) {
+  return {
+    caster: String(castName._caster),
+    causeIndex: new _bignumber.BigNumber(castName._causeIndex),
+    causeName: String(messages.message(castName._causeName)),
+    voteCount: new _bignumber.BigNumber(castName._voteCount)
+  };
+};
+
+var parseCastIndex = function parseCastIndex(castIndex) {
+  return {
+    caster: String(castIndex._caster),
+    causeIndex: new _bignumber.BigNumber(castIndex._causeIndex),
+    voteCount: new _bignumber.BigNumber(castIndex._voteCount)
+  };
+};
+
+exports.parseMaxVoteCount = parseMaxVoteCount;
+exports.parseCauses = parseCauses;
+exports.parseVotes = parseVotes;
+exports.parseCastName = parseCastName;
+exports.parseCastIndex = parseCastIndex;
+
+/***/ }),
+
+/***/ "./app/reducers/cause.js":
+/*!*******************************!*\
+  !*** ./app/reducers/cause.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getNewState = function getNewState(prevState) {
+  return _extends({}, prevState);
+};
+
+var handleCause = function handleCause(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.cause = action.cause;
+  return newState;
+};
+
+var causeReducer = function causeReducer() {
+  var prevState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'CAUSE_CAUSE':
+      return handleCause(prevState, action);
+    default:
+      return prevState;
+  }
+};
+
+exports.default = causeReducer;
+
+/***/ }),
+
+/***/ "./app/reducers/ethereum.js":
+/*!**********************************!*\
+  !*** ./app/reducers/ethereum.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getNewState = function getNewState(prevState) {
+  return _extends({}, prevState);
+};
+
+var handleEthereumSend = function handleEthereumSend(prevState) {
+  var newState = getNewState(prevState);
+  newState.isLoading = true;
+  return newState;
+};
+
+var handleEthereumSendError = function handleEthereumSendError(prevState) {
+  var newState = getNewState(prevState);
+  newState.isLoading = false;
+  return newState;
+};
+
+var ethereumReducer = function ethereumReducer() {
+  var prevState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'ETHEREUM_NETWORK':
+      return _extends({}, prevState, { network: action.network });
+    case 'ETHEREUM_ACCOUNT':
+      return _extends({}, prevState, { account: action.account });
+    case 'ETHEREUM_PRIMARY_CONTRACT_ADDRESSES':
+      return _extends({}, prevState, { primaryContractAddresses: action.primaryContractAddresses });
+    case 'ETHEREUM_SEND':
+      return handleEthereumSend(prevState, action);
+    case 'ETHEREUM_SEND_ERROR':
+      return handleEthereumSendError(prevState);
+    default:
+      return prevState;
+  }
+};
+
+exports.default = ethereumReducer;
+
+/***/ }),
+
+/***/ "./app/reducers/fundraiser.js":
+/*!************************************!*\
+  !*** ./app/reducers/fundraiser.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var MAX_FEED_ITEMS = 20;
+
+var getNewState = function getNewState(prevState) {
+  return _extends({}, prevState);
+};
+
+var updateFeed = function updateFeed(feed, action) {
+  var newFeed = feed ? feed.slice(0, MAX_FEED_ITEMS) : [];
+  newFeed.unshift(action);
+  return newFeed;
+};
+
+var handleDeployment = function handleDeployment(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.deployment = action.deployment;
+  return newState;
+};
+
+var handleState = function handleState(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.state = action.state;
+  return newState;
+};
+
+var handleParticipant = function handleParticipant(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.participant = action.participant;
+  return newState;
+};
+
+var handleBalances = function handleBalances(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.balances = action.balances;
+  return newState;
+};
+
+var handleBeginning = function handleBeginning(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  newState.state.causeSecret = action.beginning.causeSecret;
+  return newState;
+};
+
+var handleParticipation = function handleParticipation(prevState, action) {
+  var newState = getNewState(prevState);
+  if (action.old) {
+    newState.feed = updateFeed(newState.feed, action);
+  } else {
+    newState.state.participants = newState.state.participants.plus(1);
+    newState.state.entries = newState.state.entries.plus(action.participation.entries);
+    newState.feed = updateFeed(newState.feed, action);
+
+    if (action.participation.participant === newState.account) {
+      newState.isLoading = false;
+      newState.participant.entries = action.participation.entries;
+      newState.participant.message = action.participation.message;
+    }
+  }
+
+  return newState;
+};
+
+var handleRaise = function handleRaise(prevState, action) {
+  var newState = getNewState(prevState);
+  if (action.old) {
+    newState.feed = updateFeed(newState.feed, action);
+  } else {
+    newState.state.entries = newState.state.entries.plus(action.raise.entries);
+    newState.feed = updateFeed(newState.feed, action);
+
+    if (action.raise.participant === newState.account) {
+      newState.isLoading = false;
+      newState.participant.entries = newState.participant.entries.plus(action.raise.entries);
+    }
+  }
+
+  return newState;
+};
+
+var handleRevelation = function handleRevelation(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  newState.state.causeMessage = action.revelation.causeMessage;
+  return newState;
+};
+
+var handleSelection = function handleSelection(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  newState.state.participant = action.selection.participant;
+  newState.state.participantMessage = action.selection.participantMessage;
+  newState.state.causeMessage = action.selection.causeMessage;
+  newState.state.ownerMessage = action.selection.ownerMessage;
+
+  // update participant balance
+  if (action.selection.participant === newState.account) {
+    var deployment = newState.deployment,
+        state = newState.state,
+        primaryContractAddresses = newState.primaryContractAddresses;
+
+    newState.balances[primaryContractAddresses.fundraiser] = state.entries.times(deployment.participantSplit).dividedBy(1000).times(deployment.valuePerEntry);
+  }
+
+  return newState;
+};
+
+var handleCancellation = function handleCancellation(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  newState.isLoading = false;
+  newState.state.cancelled = true;
+
+  // update our cancellation balance
+  var deployment = newState.deployment,
+      participant = newState.participant,
+      primaryContractAddresses = newState.primaryContractAddresses;
+
+  newState.balances[primaryContractAddresses.fundraiser] = participant.entries.times(deployment.valuePerEntry);
+
+  return newState;
+};
+
+var handleWithdrawal = function handleWithdrawal(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  // set our balance to zero if we withdrew
+  if (action.withdrawal.address === newState.account) {
+    newState.isLoading = false;
+    delete newState.balances[action.contractAddress];
+  }
+  return newState;
+};
+
+var fundraiserReducer = function fundraiserReducer() {
+  var prevState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'FUNDRAISER_DEPLOYMENT':
+      return handleDeployment(prevState, action);
+    case 'FUNDRAISER_STATE':
+      return handleState(prevState, action);
+    case 'FUNDRAISER_PARTICIPANT':
+      return handleParticipant(prevState, action);
+    case 'FUNDRAISER_BALANCES':
+      return handleBalances(prevState, action);
+    case 'FUNDRAISER_BEGINNING':
+      return handleBeginning(prevState, action);
+    case 'FUNDRAISER_PARTICIPATION':
+      return handleParticipation(prevState, action);
+    case 'FUNDRAISER_RAISE':
+      return handleRaise(prevState, action);
+    case 'FUNDRAISER_REVELATION':
+      return handleRevelation(prevState, action);
+    case 'FUNDRAISER_SELECTION':
+      return handleSelection(prevState, action);
+    case 'FUNDRAISER_CANCELLATION':
+      return handleCancellation(prevState);
+    case 'FUNDRAISER_WITHDRAWAL':
+      return handleWithdrawal(prevState, action);
+    default:
+      return prevState;
+  }
+};
+
+exports.default = fundraiserReducer;
+
+/***/ }),
+
+/***/ "./app/reducers/polling.js":
+/*!*********************************!*\
+  !*** ./app/reducers/polling.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var getNewState = function getNewState(prevState) {
+  return _extends({}, prevState);
+};
+
+var handleMaxVoteCount = function handleMaxVoteCount(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.maxVoteCount = action.maxVoteCount;
+  return newState;
+};
+
+var handleCauses = function handleCauses(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.causes = action.causes;
+  newState.causesVoteCount = action.causesVoteCount;
+  return newState;
+};
+
+var handleVotes = function handleVotes(prevState, action) {
+  var newState = getNewState(prevState);
+  newState.votes = action.votes;
+  newState.voteCount = action.voteCount;
+  return newState;
+};
+
+var handleCastName = function handleCastName(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var _action$castName = action.castName,
+      caster = _action$castName.caster,
+      causeIndex = _action$castName.causeIndex,
+      causeName = _action$castName.causeName,
+      voteCount = _action$castName.voteCount;
+
+
+  var newState = getNewState(prevState);
+  // update is loading
+  newState.isLoading = false;
+  // update total votes across all causes
+  newState.causesVoteCount = newState.causesVoteCount.plus(voteCount);
+  // add new cause
+  newState.causes[causeIndex] = {
+    index: causeIndex,
+    name: causeName,
+    caster: caster,
+    voteCount: voteCount
+  };
+
+  // add our votes to our votes
+  if (caster === newState.account) {
+    newState.voteCount = newState.voteCount.plus(voteCount);
+    newState.votes[causeIndex] = voteCount;
+  }
+
+  return newState;
+};
+
+var handleCastIndex = function handleCastIndex(prevState, action) {
+  if (action.old) {
+    return prevState;
+  }
+
+  var _action$castIndex = action.castIndex,
+      caster = _action$castIndex.caster,
+      causeIndex = _action$castIndex.causeIndex,
+      voteCount = _action$castIndex.voteCount;
+
+
+  var newState = getNewState(prevState);
+  // update is loading
+  newState.isLoading = false;
+  // update total votes across all causes
+  newState.causesVoteCount = newState.causesVoteCount.plus(voteCount);
+  // update cause
+  var cause = newState.causes[causeIndex];
+  cause.voteCount = cause.voteCount.plus(voteCount);
+  // update our vote
+  if (caster === newState.account) {
+    newState.voteCount = newState.voteCount.plus(voteCount);
+    if (causeIndex in newState.votes) {
+      newState.votes[causeIndex] = newState.votes[causeIndex].plus(voteCount);
+    } else {
+      newState.votes[causeIndex] = voteCount;
+    }
+  }
+
+  return newState;
+};
+
+var handleFundraiserParticipation = function handleFundraiserParticipation(prevState, action) {
+  if (action.old || action.participation.participant !== prevState.account) {
+    return prevState;
+  }
+
+  var newState = getNewState(prevState);
+  newState.maxVoteCount = new _bignumber.BigNumber(1);
+  return newState;
+};
+
+var pollingReducer = function pollingReducer() {
+  var prevState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'POLLING_MAX_VOTE_COUNT':
+      return handleMaxVoteCount(prevState, action);
+    case 'POLLING_CAUSES':
+      return handleCauses(prevState, action);
+    case 'POLLING_VOTES':
+      return handleVotes(prevState, action);
+    case 'POLLING_CASTINDEX':
+      return handleCastIndex(prevState, action);
+    case 'POLLING_CASTNAME':
+      return handleCastName(prevState, action);
+    case 'FUNDRAISER_PARTICIPATION':
+      return handleFundraiserParticipation(prevState, action);
+    default:
+      return prevState;
+  }
+};
+
+exports.default = pollingReducer;
+
+/***/ }),
+
+/***/ "./app/render.js":
+/*!***********************!*\
+  !*** ./app/render.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "react-redux");
+
+var _reactRouterRedux = __webpack_require__(/*! react-router-redux */ "react-router-redux");
+
+var _reduxDevtoolsExtension = __webpack_require__(/*! redux-devtools-extension */ "redux-devtools-extension");
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+
+var _redux = __webpack_require__(/*! redux */ "redux");
+
+var _reactReduxToastr = __webpack_require__(/*! react-redux-toastr */ "react-redux-toastr");
+
+var _reactReduxToastr2 = _interopRequireDefault(_reactReduxToastr);
+
+var _createBrowserHistory = __webpack_require__(/*! history/createBrowserHistory */ "history/createBrowserHistory");
+
+var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
+
+var _createMemoryHistory = __webpack_require__(/*! history/createMemoryHistory */ "history/createMemoryHistory");
+
+var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
+
+var _reduceReducers = __webpack_require__(/*! ./utils/reduceReducers */ "./app/utils/reduceReducers.js");
+
+var _reduceReducers2 = _interopRequireDefault(_reduceReducers);
+
+var _polling = __webpack_require__(/*! ./reducers/polling */ "./app/reducers/polling.js");
+
+var _polling2 = _interopRequireDefault(_polling);
+
+var _fundraiser = __webpack_require__(/*! ./reducers/fundraiser */ "./app/reducers/fundraiser.js");
+
+var _fundraiser2 = _interopRequireDefault(_fundraiser);
+
+var _ethereum = __webpack_require__(/*! ./reducers/ethereum */ "./app/reducers/ethereum.js");
+
+var _ethereum2 = _interopRequireDefault(_ethereum);
+
+var _cause = __webpack_require__(/*! ./reducers/cause */ "./app/reducers/cause.js");
+
+var _cause2 = _interopRequireDefault(_cause);
+
+var _polling3 = __webpack_require__(/*! ./middleware/polling */ "./app/middleware/polling.js");
+
+var _polling4 = _interopRequireDefault(_polling3);
+
+var _fundraiser3 = __webpack_require__(/*! ./middleware/fundraiser */ "./app/middleware/fundraiser.js");
+
+var _fundraiser4 = _interopRequireDefault(_fundraiser3);
+
+var _ethereum3 = __webpack_require__(/*! ./middleware/ethereum */ "./app/middleware/ethereum.js");
+
+var _ethereum4 = _interopRequireDefault(_ethereum3);
+
+var _cause3 = __webpack_require__(/*! ./middleware/cause */ "./app/middleware/cause.js");
+
+var _cause4 = _interopRequireDefault(_cause3);
+
+__webpack_require__(/*! ./sass/bulma.scss */ "./app/sass/bulma.scss");
+
+var _head = __webpack_require__(/*! ./components/head */ "./app/components/head/index.js");
+
+var _head2 = _interopRequireDefault(_head);
+
+var _navbar = __webpack_require__(/*! ./components/navbar */ "./app/components/navbar/index.js");
+
+var _navbar2 = _interopRequireDefault(_navbar);
+
+var _footer = __webpack_require__(/*! ./components/footer */ "./app/components/footer/index.js");
+
+var _footer2 = _interopRequireDefault(_footer);
+
+var _hype = __webpack_require__(/*! ./components/hype */ "./app/components/hype/index.js");
+
+var _hype2 = _interopRequireDefault(_hype);
+
+var _participate = __webpack_require__(/*! ./components/participate */ "./app/components/participate/index.js");
+
+var _participate2 = _interopRequireDefault(_participate);
+
+var _vote = __webpack_require__(/*! ./components/vote */ "./app/components/vote/index.js");
+
+var _vote2 = _interopRequireDefault(_vote);
+
+var _history = __webpack_require__(/*! ./components/history */ "./app/components/history/index.js");
+
+var _history2 = _interopRequireDefault(_history);
+
+var _help = __webpack_require__(/*! ./components/help */ "./app/components/help/index.js");
+
+var _help2 = _interopRequireDefault(_help);
+
+var _about = __webpack_require__(/*! ./components/about */ "./app/components/about/index.js");
+
+var _about2 = _interopRequireDefault(_about);
+
+var _contact = __webpack_require__(/*! ./components/contact */ "./app/components/contact/index.js");
+
+var _contact2 = _interopRequireDefault(_contact);
+
+var _pressRelease = __webpack_require__(/*! ./components/press-release */ "./app/components/press-release/index.js");
+
+var _pressRelease2 = _interopRequireDefault(_pressRelease);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var reducers = function reducers() {
+  return (0, _redux.combineReducers)({
+    ethereum: (0, _reduceReducers2.default)(_ethereum2.default, _fundraiser2.default, _polling2.default, _cause2.default),
+    toastr: _reactReduxToastr.reducer,
+    router: _reactRouterRedux.routerReducer
+  });
+};
+
+var middlewares = function middlewares(history) {
+  var values = [_ethereum4.default, _fundraiser4.default, _polling4.default, _cause4.default];
+
+  if (history) {
+    values.push((0, _reactRouterRedux.routerMiddleware)(history));
+  }
+
+  return (0, _reduxDevtoolsExtension.composeWithDevTools)(_redux.applyMiddleware.apply(undefined, values));
+};
+
+var Routes = function Routes() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _participate2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/vote', component: _vote2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/history', component: _history2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/help', component: _help2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/about', component: _about2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/contact', component: _contact2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/announce-beta-giveth', component: _pressRelease2.default })
+  );
+};
+
+var Body = function Body() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_reactReduxToastr2.default, {
+      timeOut: 4000,
+      newestOnTop: false,
+      preventDuplicates: true,
+      position: 'top-center',
+      transitionIn: 'fadeIn',
+      transitionOut: 'fadeOut',
+      progressBar: true
+    }),
+    _react2.default.createElement(_navbar2.default, null),
+    _react2.default.createElement(Routes, null),
+    _react2.default.createElement(_footer2.default, null)
+  );
+};
+
+var Client = function Client(store, history) {
+  return _react2.default.createElement(
+    _reactRedux.Provider,
+    { store: store, suppressHydrationWarning: true },
+    _react2.default.createElement(
+      _reactRouterRedux.ConnectedRouter,
+      { history: history },
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_head2.default, null),
+        _react2.default.createElement(Body, null)
+      )
+    )
+  );
+};
+
+var Server = function Server(store, history) {
+  return _react2.default.createElement(
+    _reactRedux.Provider,
+    { store: store },
+    _react2.default.createElement(
+      _reactRouterRedux.ConnectedRouter,
+      { history: history },
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_head2.default, null),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _hype2.default })
+      )
+    )
+  );
+};
+
+var render = function render(request, state) {
+  var history = request ? (0, _createMemoryHistory2.default)({ initialEntries: [request.url] }) : (0, _createBrowserHistory2.default)();
+
+  var store = state ? (0, _redux.createStore)(reducers(), state, middlewares(history)) : (0, _redux.createStore)(reducers(), middlewares());
+
+  var component = state ? Client(store, history) : Server(store, history);
+
+  return {
+    component: component,
+    store: store
+  };
+};
+
+exports.default = render;
+
+/***/ }),
+
+/***/ "./app/sass/bulma.scss":
+/*!*****************************!*\
+  !*** ./app/sass/bulma.scss ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./app/server.js":
+/*!***********************!*\
+  !*** ./app/server.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _express = __webpack_require__(/*! express */ "express");
+
+var _express2 = _interopRequireDefault(_express);
+
+var _reactHelmet = __webpack_require__(/*! react-helmet */ "react-helmet");
+
+var _server = __webpack_require__(/*! react-dom/server */ "react-dom/server");
+
+var _expressCacheController = __webpack_require__(/*! express-cache-controller */ "express-cache-controller");
+
+var _expressCacheController2 = _interopRequireDefault(_expressCacheController);
+
+var _client = __webpack_require__(/*! ../webpack/client */ "./webpack/client.js");
+
+var _client2 = _interopRequireDefault(_client);
+
+var _mailerlite = __webpack_require__(/*! ./utils/mailerlite */ "./app/utils/mailerlite.js");
+
+var mailerlite = _interopRequireWildcard(_mailerlite);
+
+var _render = __webpack_require__(/*! ./render */ "./app/render.js");
+
+var _render2 = _interopRequireDefault(_render);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _clientConfig$output = _client2.default.output,
+    publicPath = _clientConfig$output.publicPath,
+    path = _clientConfig$output.path;
+
+
+var renderFullPage = function renderFullPage(helmet, state) {
+  return '\n    <!doctype html>\n    <html ' + helmet.htmlAttributes.toString() + '>\n      <head>\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n        ' + helmet.link.toString() + '\n      </head>\n      <body ' + helmet.bodyAttributes.toString() + '>\n        <div id="root"></div>\n        <script>\n          // http://redux.js.org/recipes/ServerRendering.html#security-considerations\n          window.__STATE__ = ' + JSON.stringify(state).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="' + publicPath + 'index.js"></script>\n      </body>\n    </html>\n  ';
+};
+
+var handleRender = function handleRender(request, response) {
+  var rendered = (0, _render2.default)(request, null);
+  (0, _server.renderToString)(rendered.component);
+  var helmet = _reactHelmet.Helmet.renderStatic();
+  var state = rendered.store.getState();
+  response.send(renderFullPage(helmet, state));
+};
+
+var handleMailerlite = function handleMailerlite(request, response) {
+  var method = request.params.method;
+
+  if (!(method in mailerlite)) {
+    response.status(404).send('mailerlite method not found');
+    return;
+  }
+
+  // forward body to mailerlite
+  mailerlite[method](request.body).then(function (result) {
+    if (result.response.statusCode !== 200) {
+      response.status(500).send('mailerlite method failed');
+      return;
+    }
+
+    // success
+    response.status(200).send();
+  });
+};
+
+var app = (0, _express2.default)();
+
+// setup cache control for everything
+app.use((0, _expressCacheController2.default)({
+  public: true,
+  maxAge: 3600 // 1h
+}));
+
+// serve static assets
+app.use(publicPath, _express2.default.static(path));
+
+// serve mailer lite api
+if (mailerlite.initialize()) {
+  app.use(_express2.default.json());
+  app.post('/mailerlite/:method', handleMailerlite);
+}
+
+// serve server side rendering
+app.use(handleRender);
+
+// listen
+app.listen(3000);
+
+/***/ }),
+
+/***/ "./app/utils/badges.js":
+/*!*****************************!*\
+  !*** ./app/utils/badges.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var getImageUrl = function getImageUrl(_ref) {
+  var network = _ref.network,
+      contract = _ref.contract,
+      participant = _ref.participant;
+  return "http://localhost:3001" + "/badges/" + network + "/" + contract + "/" + participant + ".png";
+};
+
+exports.getImageUrl = getImageUrl;
+
+/***/ }),
+
+/***/ "./app/utils/bytes.js":
+/*!****************************!*\
+  !*** ./app/utils/bytes.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var zero32 = '0x0000000000000000000000000000000000000000000000000000000000000000';
+var zero20 = '0x0000000000000000000000000000000000000000';
+
+var isZero32 = function isZero32(bytes) {
+  return bytes === zero32;
+};
+var isZero20 = function isZero20(bytes) {
+  return bytes === zero20;
+};
+
+var shorten = function shorten(bytes) {
+  return bytes.substring(0, 10) + '...' + bytes.substring(bytes.length - 4);
+};
+
+exports.zero32 = zero32;
+exports.zero20 = zero20;
+exports.isZero32 = isZero32;
+exports.isZero20 = isZero20;
+exports.shorten = shorten;
+
+/***/ }),
+
+/***/ "./app/utils/dates.js":
+/*!****************************!*\
+  !*** ./app/utils/dates.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var localeDate = function localeDate(date) {
+  return date.toLocaleString(undefined, { timeZoneName: 'short', month: 'numeric', day: 'numeric', hour: 'numeric' });
+};
+
+var localeDateTime = function localeDateTime(date) {
+  return date.toLocaleString(undefined, { timeZoneName: 'short', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' });
+};
+
+exports.localeDate = localeDate;
+exports.localeDateTime = localeDateTime;
+
+/***/ }),
+
+/***/ "./app/utils/etherscan.js":
+/*!********************************!*\
+  !*** ./app/utils/etherscan.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var getSubdomain = function getSubdomain(network) {
+  return network === 'mainnet' ? 'www' : network;
+};
+
+var getAddressUrl = function getAddressUrl(network, address) {
+  if (network === 'localhost') {
+    return '';
+  }
+  return 'https://' + getSubdomain(network) + '.etherscan.io/address/' + address;
+};
+
+var getTransactionUrl = function getTransactionUrl(network, transactionHash) {
+  if (network === 'localhost') {
+    return '';
+  }
+  return 'https://' + getSubdomain(network) + '.etherscan.io/tx/' + transactionHash;
+};
+
+exports.getAddressUrl = getAddressUrl;
+exports.getTransactionUrl = getTransactionUrl;
+
+/***/ }),
+
+/***/ "./app/utils/heatmap.js":
+/*!******************************!*\
+  !*** ./app/utils/heatmap.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.color = undefined;
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var color = function color(value) {
+  var h = new _bignumber.BigNumber(1.0).minus(value).times(240);
+  return 'hsl(' + h.toFixed(5) + ', 100%, 50%)';
+};
+
+exports.color = color;
+
+/***/ }),
+
+/***/ "./app/utils/mailerlite.js":
+/*!*********************************!*\
+  !*** ./app/utils/mailerlite.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addParticipant = exports.initialize = undefined;
+
+var _fs = __webpack_require__(/*! fs */ "fs");
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _request = __webpack_require__(/*! request */ "request");
+
+var _request2 = _interopRequireDefault(_request);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var url = 'http://api.mailerlite.com/api/v2';
+var keyFile = '/run/secrets/mailerlite.key';
+var participantGroupId = '9643116';
+var key = null;
+
+var initialize = function initialize() {
+  // check for a key in env
+  if (process.env.MAILERLITE_KEY) {
+    key = process.env.MAILERLITE_KEY;
+    return true;
+  }
+
+  try {
+    _fs2.default.accessSync(keyFile);
+  } catch (error) {
+    return false;
+  }
+
+  key = _fs2.default.readFileSync(keyFile, 'utf8');
+  return true;
+};
+
+var makePostOptions = function makePostOptions(path, form) {
+  return {
+    method: 'POST',
+    url: '' + url + path,
+    headers: {
+      'Content-Type': 'application/json',
+      'X-MailerLite-ApiKey': key
+    },
+    form: form
+  };
+};
+
+/*
+const makeGetOptions = (path, qs) => {
+  return {
+    method: 'GET',
+    url: `${url}${path}`,
+    headers: {
+      'X-MailerLite-ApiKey': key
+    },
+    qs
+  };
+};
+
+const makeDelOptions = (path) => {
+  return {
+    method: 'DEL',
+    url: `${url}${path}`,
+    headers: {
+      'X-MailerLite-ApiKey': key
+    }
+  };
+};
+*/
+
+var makeRequest = function makeRequest(options) {
+  var promise = new Promise(function (accept, reject) {
+    var done = function done(error, response, body) {
+      if (error) {
+        reject(error);
+      } else {
+        var data = JSON.parse(body);
+        if (data && data.error) {
+          reject(data.error);
+        } else {
+          accept({
+            response: response,
+            body: body
+          });
+        }
+      }
+    };
+
+    /* Send callback to request. */
+    (0, _request2.default)(options, done);
+  });
+
+  /* Returns a promise. */
+  return promise;
+};
+
+var post = function post(path, form) {
+  var options = makePostOptions(path, form);
+  return makeRequest(options);
+};
+
+/*
+const get = (path, qs) => {
+  const options = makeGetOptions(path, qs);
+  return makeRequest(options);
+};
+
+const del = (path) => {
+  const options = makeDelOptions(path);
+  return makeRequest(options);
+};
+*/
+
+var addParticipant = function addParticipant(body) {
+  return post('/groups/' + participantGroupId + '/subscribers', {
+    email: body.email,
+    fields: {
+      participant: body.participant,
+      cause: body.cause,
+      message: body.message
+    },
+    resubscribe: 1
+  });
+};
+
+exports.initialize = initialize;
+exports.addParticipant = addParticipant;
+
+/***/ }),
+
+/***/ "./app/utils/numbers.js":
+/*!******************************!*\
+  !*** ./app/utils/numbers.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.zero = exports.localeDecimal = exports.localeNumber = exports.getEtherFromWei = undefined;
+
+var _bignumber = __webpack_require__(/*! bignumber.js */ "bignumber.js");
+
+var weiInEther = new _bignumber.BigNumber(1000000000000000000);
+
+var getEtherFromWei = function getEtherFromWei(bigNumber) {
+  return bigNumber.dividedBy(weiInEther);
+};
+
+var localeDecimal = function localeDecimal(bigNumber) {
+  return bigNumber.toFormat(3);
+};
+
+var localeNumber = function localeNumber(bigNumber) {
+  return bigNumber.toFormat(0);
+};
+
+var zero = function zero() {
+  return new _bignumber.BigNumber(0);
+};
+
+exports.getEtherFromWei = getEtherFromWei;
+exports.localeNumber = localeNumber;
+exports.localeDecimal = localeDecimal;
+exports.zero = zero;
+
+/***/ }),
+
+/***/ "./app/utils/reduceReducers.js":
+/*!*************************************!*\
+  !*** ./app/utils/reduceReducers.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = reduceReducers;
+function reduceReducers() {
+  for (var _len = arguments.length, reducers = Array(_len), _key = 0; _key < _len; _key++) {
+    reducers[_key] = arguments[_key];
+  }
+
+  return function (previous, current) {
+    return reducers.reduce(function (p, r) {
+      return r(p, current);
+    }, previous);
+  };
+}
+
+/***/ }),
+
+/***/ "./webpack/base.js":
+/*!*************************!*\
+  !*** ./webpack/base.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss', '.png', '.jpg', '.gif', '.svg', '.woff', '.woff2', '.eot', '.ttf', '.otf']
+  }
+};
+
+/***/ }),
+
+/***/ "./webpack/client.js":
+/*!***************************!*\
+  !*** ./webpack/client.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var path = __webpack_require__(/*! path */ "path");
+var merge = __webpack_require__(/*! webpack-merge */ "webpack-merge");
+var base = __webpack_require__(/*! ./base.js */ "./webpack/base.js");
+
+var cwd = process.cwd();
+var nodeModules = path.resolve(cwd, 'node_modules');
+
+module.exports = merge(base, {
+  name: 'client',
+  target: 'web',
+  entry: path.resolve(cwd, 'app/client.js'),
+  output: {
+    filename: 'index.js',
+    path: path.resolve(cwd, 'dist/client'),
+    publicPath: '/static/'
+  },
+  module: {
+    rules: [{
+      test: /\.(js|jsx)$/,
+      exclude: nodeModules,
+      use: ['babel-loader']
+    }, {
+      test: /\.scss$/,
+      exclude: nodeModules,
+      use: ['style-loader', 'css-loader', 'sass-loader']
+    }, {
+      test: /\.(png|jpg|gif|svg)$/,
+      exclude: nodeModules,
+      use: ['file-loader']
+    }, {
+      test: /\.(woff|woff2|eot|ttf|otf)$/,
+      exclude: nodeModules,
+      loader: ['file-loader']
+    }]
+  }
+});
+
+/***/ }),
+
+/***/ "@seedom-io/seedom-crypter/messages":
+/*!*****************************************************!*\
+  !*** external "@seedom-io/seedom-crypter/messages" ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@seedom-io/seedom-crypter/messages");
+
+/***/ }),
+
+/***/ "@seedom-io/seedom-resolver/causes":
+/*!****************************************************!*\
+  !*** external "@seedom-io/seedom-resolver/causes" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@seedom-io/seedom-resolver/causes");
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
+
+/***/ }),
+
+/***/ "bignumber.js":
+/*!*******************************!*\
+  !*** external "bignumber.js" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("bignumber.js");
+
+/***/ }),
+
+/***/ "classnames":
+/*!*****************************!*\
+  !*** external "classnames" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("classnames");
+
+/***/ }),
+
+/***/ "express":
+/*!**************************!*\
+  !*** external "express" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+
+/***/ "express-cache-controller":
+/*!*******************************************!*\
+  !*** external "express-cache-controller" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("express-cache-controller");
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ "history/createBrowserHistory":
+/*!***********************************************!*\
+  !*** external "history/createBrowserHistory" ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("history/createBrowserHistory");
+
+/***/ }),
+
+/***/ "history/createMemoryHistory":
+/*!**********************************************!*\
+  !*** external "history/createMemoryHistory" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("history/createMemoryHistory");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+
+/***/ "prop-types":
+/*!*****************************!*\
+  !*** external "prop-types" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types");
+
+/***/ }),
+
+/***/ "query-string":
+/*!*******************************!*\
+  !*** external "query-string" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("query-string");
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-dom/server":
+/*!***********************************!*\
+  !*** external "react-dom/server" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-dom/server");
+
+/***/ }),
+
+/***/ "react-helmet":
+/*!*******************************!*\
+  !*** external "react-helmet" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-helmet");
+
+/***/ }),
+
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+
+/***/ "react-redux-toastr":
+/*!*************************************!*\
+  !*** external "react-redux-toastr" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux-toastr");
+
+/***/ }),
+
+/***/ "react-router-dom":
+/*!***********************************!*\
+  !*** external "react-router-dom" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+
+/***/ "react-router-redux":
+/*!*************************************!*\
+  !*** external "react-router-redux" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-redux");
+
+/***/ }),
+
+/***/ "redux":
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux");
+
+/***/ }),
+
+/***/ "redux-devtools-extension":
+/*!*******************************************!*\
+  !*** external "redux-devtools-extension" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-devtools-extension");
+
+/***/ }),
+
+/***/ "request":
+/*!**************************!*\
+  !*** external "request" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("request");
+
+/***/ }),
+
+/***/ "scroll-to-element":
+/*!************************************!*\
+  !*** external "scroll-to-element" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("scroll-to-element");
+
+/***/ }),
+
+/***/ "web3":
+/*!***********************!*\
+  !*** external "web3" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("web3");
+
+/***/ }),
+
+/***/ "webpack-merge":
+/*!********************************!*\
+  !*** external "webpack-merge" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("webpack-merge");
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=index.js.map
