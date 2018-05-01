@@ -7,41 +7,21 @@ class Collapse extends Component {
   static propTypes = {
     id: PropTypes.string,
     title: PropTypes.string.isRequired,
-    collapsed: PropTypes.bool,
+    collapsed: PropTypes.bool.isRequired,
+    onToggle: PropTypes.func.isRequired,
     children: PropTypes.element
   };
 
   static defaultProps = {
     id: null,
-    collapsed: true,
     children: null
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      collapsed: props.collapsed
-    };
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (this.state.collapsed !== newProps.collapsed) {
-      this.setState({ collapsed: newProps.collapsed });
-    }
-  }
-
-  toggle = () => {
-    this.setState((prevState) => ({
-      collapsed: !prevState.collapsed
-    }));
-  };
-
   render() {
-    const { id, title } = this.props;
-    const { collapsed } = this.state;
+    const { id, title, collapsed, onToggle } = this.props;
     return (
       <div id={id} className={classnames('seedom-collapse', { collapsed })}>
-        <div className="header" onClick={this.toggle}>
+        <div className="header" onClick={onToggle}>
           <span className="toggle left">
             <i className="fas fa-plus" />
           </span>
