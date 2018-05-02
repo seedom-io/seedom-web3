@@ -59,13 +59,14 @@ class About extends Sections {
         </p>
         <br />
         <br />
-
         <div className="columns is-mobile is-centered">
-          <a className="button is-primary" href="https://seedom-io.github.io/seedom-whitepaper/seedom-whitepaper.pdf" target="_blank">READ THE WHITEPAPER</a>
+          <a className="button is-primary" target="_blank" rel="noopener noreferrer" href="https://seedom-io.github.io/seedom-whitepaper/seedom-whitepaper.pdf">
+            <span>READ THE WHITEPAPER</span>
+            <i className="far fa-file-alt right" />
+          </a>
         </div>
         <br />
         <br />
-
         <div className="columns">
           {memberItems}
         </div>

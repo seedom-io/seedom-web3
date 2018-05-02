@@ -3,7 +3,7 @@ const loader = require('../../seedom-solidity/chronicle/loader');
 
 module.exports = {
   mode: 'development',
-  devtool: 'source-map',
+  devtool: 'eval',
   plugins: [
     new webpack.DefinePlugin({
       ETH_NETWORKS: JSON.stringify(loader.getNetworks()),

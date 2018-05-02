@@ -1,6 +1,8 @@
 .button {
+  text-transform: uppercase;
+
   i {
-    margin-top: -4px;
+    margin-top: -3px;
 
     &.left {
       padding-right: 4px;
@@ -10,4 +12,9 @@
       padding-left: 4px;
     }
   }
+
+  &:not(.is-outlined) {
+    font-family: 'CamphorPro Heavy';
+  }
+
 }

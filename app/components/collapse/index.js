@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import './index.scss';
+
+const collapseClass = (heavy, collapsed) => {
+  return classNames({
+    'seedom-collapse': true,
+    open: !collapsed,
+    heavy
+  });
+};
 
 class Collapse extends Component {
   static propTypes = {
     id: PropTypes.string,
     title: PropTypes.string.isRequired,
+    heavy: PropTypes.bool,
     collapsed: PropTypes.bool.isRequired,
     onToggle: PropTypes.func.isRequired,
     children: PropTypes.element
@@ -14,13 +23,21 @@ class Collapse extends Component {
 
   static defaultProps = {
     id: null,
+    heavy: false,
     children: null
   };
 
   render() {
-    const { id, title, collapsed, onToggle } = this.props;
+    const {
+      id,
+      title,
+      heavy,
+      collapsed,
+      onToggle
+    } = this.props;
+
     return (
-      <div id={id} className={classnames('seedom-collapse', { collapsed })}>
+      <div id={id} className={collapseClass(heavy, collapsed)}>
         <div className="header" onClick={onToggle}>
           <span className="toggle left">
             <i className="fas fa-plus" />

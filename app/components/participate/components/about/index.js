@@ -47,7 +47,7 @@ class About extends Component {
 
     const { collapsed } = this.state;
     return (
-      <Collapse id="seedom-participate-about" collapsed={collapsed} title={`about ${cause.name}`} onToggle={this.handleToggle}>
+      <Collapse id="seedom-participate-about" collapsed={collapsed} title={`about ${cause.name}`} onToggle={this.handleToggle} heavy>
         <div className="seedom-participate-about">
           <div className="video">
             <iframe

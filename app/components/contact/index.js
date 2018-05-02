@@ -9,7 +9,7 @@ class Contact extends Sections {
       <div className="container seedom-contact">
         <div className="columns">
           <div className="column is-offset-2 has-text-white">
-            <h3 className="title has-text-white">Are you leading a cause that needs funding?</h3>
+            <h3 className="title has-text-white">Are you an altruistic cause that needs funding?</h3>
 
             <p>Want to learn more about accepting donations in cryptocurrencies?</p>
 
@@ -21,6 +21,7 @@ class Contact extends Sections {
           </div>
           <div className="column">
             <iframe
+              title="Contact Form"
               src="https://landing.mailerlite.com/webforms/landing/t6i1i0"
               style={{ border: 'none', width: '350px', height: '472px' }}
             />
