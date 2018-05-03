@@ -3,20 +3,27 @@ import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
 import CauseLogo from '../../../../../causeLogo';
+import './index.scss';
 
 class Begin extends Content {
   static propTypes = {
     isShown: PropTypes.bool.isRequired,
-    cause: PropTypes.shape()
+    cause: PropTypes.shape(),
+    onPlay: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     cause: null
   };
 
+  handlePlay = () => {
+    // always play, but mark played
+    this.props.onPlay(true);
+  }
+
   render() {
     const { className } = this.state;
-    const { isShown, cause } = this.props;
+    const { isShown, cause, onPlay } = this.props;
     return (
       <div className={`seedom-content begin ${className}`}>
         <Indicator type={isShown ? 'waiting' : null} />
@@ -24,7 +31,7 @@ class Begin extends Content {
           <div className="division text top small-pad narrow">
             <span>please wait for</span>
           </div>
-          <div className="division text center">
+          <div className="division text center" onClick={this.handlePlay}>
             <CauseLogo cause={cause} />
           </div>
           <div className="division text bottom small-pad narrow">

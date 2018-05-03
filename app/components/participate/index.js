@@ -18,6 +18,24 @@ class Participate extends Component {
     dispatch: PropTypes.func.isRequired
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasPlayed: false
+    };
+  }
+
+  handlePlay = (override) => {
+    let play = override;
+    if (!this.state.hasPlayed) {
+      this.setState({ hasPlayed: true });
+      play = true;
+    }
+    if (play) {
+      this.about.play();
+    }
+  }
+
   handleParticipate = ({ message, entries, email }) => {
     const { deployment, account, cause } = this.props.ethereum;
     const messageHex = messages.hex(message);
@@ -36,7 +54,7 @@ class Participate extends Component {
       });
     }
     // play the video!
-    this.about.play();
+    this.handlePlay();
   };
 
   handleRaise = (entries) => {
@@ -98,6 +116,7 @@ class Participate extends Component {
               onRaise={this.handleRaise}
               onWithdraw={this.handleWithdraw}
               onCancel={this.handleCancel}
+              onPlay={this.handlePlay}
             />
             <Stats
               side="right"

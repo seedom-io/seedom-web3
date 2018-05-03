@@ -168,7 +168,8 @@ class Puck extends Component {
     onParticipate: PropTypes.func.isRequired,
     onRaise: PropTypes.func.isRequired,
     onWithdraw: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired
+    onCancel: PropTypes.func.isRequired,
+    onPlay: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -270,7 +271,8 @@ class Puck extends Component {
       participant,
       balances,
       isLoading,
-      primaryContractAddresses
+      primaryContractAddresses,
+      onPlay
     } = this.props;
 
     const component = getComponent({
@@ -298,8 +300,8 @@ class Puck extends Component {
           <Ethereum isShown={component === 'ethereum'} />
           <Network isShown={component === 'network'} />
           <Account isShown={component === 'account'} />
-          <Welcome isShown={component === 'welcome'} deployment={deployment} cause={cause} onCountMeIn={this.handleCountMeIn} />
-          <Begin isShown={component === 'begin'} cause={cause} />
+          <Begin isShown={component === 'begin'} cause={cause} onPlay={onPlay} />
+          <Welcome isShown={component === 'welcome'} deployment={deployment} cause={cause} onPlay={onPlay} onCountMeIn={this.handleCountMeIn} />
           <BeginningFailed isShown={component === 'beginningFailed'} cause={cause} />
           <Participate isShown={component === 'participate'} deployment={deployment} cause={cause} isLoading={isLoading} onParticipate={this.handleParticipate} />
           <Badge isShown={component === 'badge'} primaryContractAddresses={primaryContractAddresses} network={network} account={account} participant={participant} onBadgingOver={this.handleBadgingOver} />

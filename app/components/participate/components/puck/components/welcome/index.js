@@ -10,6 +10,7 @@ class Welcome extends Content {
   static propTypes = {
     deployment: PropTypes.shape(),
     cause: PropTypes.shape(),
+    onPlay: PropTypes.func.isRequired,
     onCountMeIn: PropTypes.func.isRequired
   };
 
@@ -18,9 +19,14 @@ class Welcome extends Content {
     cause: null
   };
 
+  handlePlay = () => {
+    // always play, but mark played
+    this.props.onPlay(true);
+  }
+
   render() {
     const { className } = this.state;
-    const { deployment, cause, onCountMeIn } = this.props;
+    const { deployment, cause, onPlay, onCountMeIn } = this.props;
 
     let etherPerEntry;
     if (deployment) {
@@ -41,7 +47,7 @@ class Welcome extends Content {
               now benefitting
             </div>
           </div>
-          <div className="division center">
+          <div className="division center" onClick={this.handlePlay}>
             <CauseLogo cause={cause} />
           </div>
           <div className="division bottom">
