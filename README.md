@@ -13,5 +13,5 @@
 # Prepare Production
 - `npm run prod`
 
-# Test Out Docker
+# Test Docker
 - `npm run docker`
