@@ -53,7 +53,7 @@ class Head extends Component {
         {/* favicon */}
         <link rel="icon" type="image/png" href={favicon} />
         {/* viewport */}
-        <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7" />
+        <meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=0.75" />
         {/* twitter */}
         <meta name="twitter:card" property="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" property="twitter:site" content="@seedom_io" />

@@ -38,14 +38,14 @@ class Help extends Sections {
               collapsed={!open.includes('obtaining-ether')}
               onToggle={this.handleToggle('obtaining-ether')}
             >
-              The first step is obtaining Ether, the currency of the Ethereum platform. The easiest way to do this is through <a target="_blank" rel="noopener noreferrer" href="https://www.coinbase.com/">Coinbase</a> on the desktop or through their <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.coinbase.android&hl=en_US">Android</a> or <a target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/us/app/coinbase-buy-bitcoin-more/id886427730?mt=8">iOS</a> apps.
+              The first step is obtaining Ether, the currency of the Ethereum platform. The easiest way to do this is through <a target="_blank" rel="noopener noreferrer" href="https://www.coinbase.com/">Coinbase</a> on the desktop or through their <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.coinbase.android&hl=en_US">Google Android</a> or <a target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/us/app/coinbase-buy-bitcoin-more/id886427730?mt=8">Apple iOS</a> apps.
             </Collapse>
             <Collapse
               title="Accessing on mobile"
               collapsed={!open.includes('accessing-mobile')}
               onToggle={this.handleToggle('accessing-mobile')}
             >
-              To use Seedom on mobile, we recommend the <a target="_blank" rel="noopener noreferrer" href="https://www.cipherbrowser.com/">Cipher mobile browser</a> for <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.hideitpro.chat&hl=en_US">Android</a> or <a target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/us/app/cipher-sender/id548958077?mt=8">iOS</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your Cipher wallet in order to participate.
+              To use Seedom on mobile, we recommend the <a target="_blank" rel="noopener noreferrer" href="https://www.cipherbrowser.com/">Cipher mobile browser</a> for <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.cipherbrowser.cipher">Google Android</a> or <a target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/app/cipher-browser-for-ethereum/id1294572970?ls=1&mt=8">Apple iOS</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your Cipher wallet in order to participate.
             </Collapse>
             <Collapse
               title="Accessing on desktop"
