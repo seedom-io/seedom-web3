@@ -26,7 +26,9 @@ class Sections extends Component {
     const name = hash.substring(1);
     const index = this.state.open.indexOf(name);
     if (index < 0) {
-      this.openAndScroll(name);
+      this.open(name, true);
+    } else {
+      this.scroll(name);
     }
   }
 
@@ -34,18 +36,28 @@ class Sections extends Component {
     return () => {
       const index = this.state.open.indexOf(name);
       if (index < 0) {
-        this.openAndScroll(name);
+        this.open(name);
       } else {
         this.close(index);
       }
     };
   }
 
-  openAndScroll = (name) => {
+  open = (name, scroll) => {
     const open = [...this.state.open];
     open.push(name);
     this.setState({ open }, () => {
-      this.scrollToElement(`#${name}`);
+      if (scroll) {
+        this.scroll(name);
+      }
+    });
+  }
+
+  scroll = (name) => {
+    this.scrollToElement(`#${name}`, {
+      offset: 0,
+      ease: 'outCirc',
+      duration: 1000
     });
   }
 

@@ -7,7 +7,6 @@ import './index.scss';
 class Help extends Sections {
   render() {
     const { open } = this.state;
-
     return (
       <div className="seedom-help">
         <div className="container">
@@ -19,6 +18,8 @@ class Help extends Sections {
               collapsed={!open.includes('what-is-seedom')}
               onToggle={this.handleToggle('what-is-seedom')}
             >
+              <div className="seedom-logo fixed" />
+              <br />
               Seedom is a innovative way of funding altruistic causes in the form of a game. Similar to a raffle, there is <strong>always</strong> a randomly selected winner, which could be anyone that participates. The cause will receive 60% of the funds raised, and the winner will receive 30%. Seedom restarts on the 1st and 15th of every month for a new altruistic cause. After you participate, you can also have <a href="#point-of-voting">a say</a> in which causes we support in the future!
             </Collapse>
             <Collapse
@@ -26,7 +27,20 @@ class Help extends Sections {
               collapsed={!open.includes('why-is-seedom-different')}
               onToggle={this.handleToggle('why-is-seedom-different')}
             >
-              Unlike standard raffles (and lotteries, etc.), Seedom is a decentralized open source application built on the Ethereum blockchain. It takes the efficiency, security, and transparency of the traditional single-room raffle and re-invents it with trustlessness and crowd-sourced selection into an entirely new type of completely secure fundraiser that scales to the entire world.
+              Unlike standard raffles (and lotteries, etc.), Seedom is a decentralized open source application built on the <a href="#what-is-ethereum">Ethereum blockchain</a>. It takes the efficiency, security, and transparency of the traditional single-room raffle and re-invents it with trustlessness and crowd-sourced selection into an entirely new type of completely secure fundraiser that scales to the entire world.
+            </Collapse>
+            <Collapse
+              id="what-is-ethereum"
+              title="What is Ethereum?"
+              collapsed={!open.includes('what-is-ethereum')}
+              onToggle={this.handleToggle('what-is-ethereum')}
+            >
+              <div className="ethereum-logo fixed" />
+              <br />
+              <a target="_blank" rel="noopener noreferrer" href="https://ethereum.org">Ethereum</a> is a decentralized platform that runs smart contracts: applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference.
+              <br />
+              <br />
+              These apps run on a custom built blockchain, an enormously powerful shared global infrastructure that can move value around and represent the ownership of property.
             </Collapse>
           </div>
 
@@ -38,22 +52,35 @@ class Help extends Sections {
               collapsed={!open.includes('obtaining-ether')}
               onToggle={this.handleToggle('obtaining-ether')}
             >
-              The first step is obtaining Ether, the currency of the Ethereum platform. The easiest way to do this is through <a target="_blank" rel="noopener noreferrer" href="https://www.coinbase.com/">Coinbase</a> on the desktop or through their <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.coinbase.android&hl=en_US">Google Android</a> or <a target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/us/app/coinbase-buy-bitcoin-more/id886427730?mt=8">Apple iOS</a> apps.
+              The first step is obtaining Ether, the currency of the Ethereum platform. The easiest way to do this is through <a target="_blank" rel="noopener noreferrer" href="https://coinbase.com">Coinbase</a> on the desktop or through their <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.coinbase.android&hl=en_US">Google Android</a> or <a target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/us/app/coinbase-buy-bitcoin-more/id886427730?mt=8">Apple iOS</a> apps.
+              <br />
+              <div className="coinbase-logo" />
+              <br />
+              <a className="app-store" target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/us/app/coinbase-buy-bitcoin-more/id886427730?mt=8" />
+              <br />
+              <a className="google-play" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.coinbase.android&hl=en_US" />
             </Collapse>
             <Collapse
               title="Accessing on mobile"
               collapsed={!open.includes('accessing-mobile')}
               onToggle={this.handleToggle('accessing-mobile')}
             >
-              To use Seedom on mobile, we recommend the <a target="_blank" rel="noopener noreferrer" href="https://www.cipherbrowser.com/">Cipher mobile browser</a> for <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.cipherbrowser.cipher">Google Android</a> or <a target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/app/cipher-browser-for-ethereum/id1294572970?ls=1&mt=8">Apple iOS</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your Cipher wallet in order to participate.
+              To use Seedom on mobile, we recommend the <a target="_blank" rel="noopener noreferrer" href="https://cipherbrowser.com">Cipher mobile browser</a> for <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.cipherbrowser.cipher">Google Android</a> or <a target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/app/cipher-browser-for-ethereum/id1294572970?ls=1&mt=8">Apple iOS</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your Cipher wallet in order to participate.
+              <br />
+              <div className="cipher-logo" />
+              <br />
+              <a className="app-store" target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/app/cipher-browser-for-ethereum/id1294572970?ls=1&mt=8" />
+              <br />
+              <a className="google-play" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.cipherbrowser.cipher" />
             </Collapse>
             <Collapse
               title="Accessing on desktop"
               collapsed={!open.includes('accessing-desktop')}
               onToggle={this.handleToggle('accessing-desktop')}
             >
-              To use Seedom on the desktop, you will need to install <a target="_blank" rel="noopener noreferrer" href="https://metamask.io/">MetaMask</a> or use the <a target="_blank" rel="noopener noreferrer" href="https://brave.com/">Brave browser</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your MetaMask wallet in order to participate.
+              To use Seedom on the desktop, you will need to install <a target="_blank" rel="noopener noreferrer" href="https://metamask.io">MetaMask</a> or use the <a target="_blank" rel="noopener noreferrer" href="https://brave.com">Brave browser</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your MetaMask wallet in order to participate.
               <br />
+              <a className="download-metamask" target="_blank" rel="noopener noreferrer" href="https://metamask.io" />
               <br />
               <iframe title="Installing Metamask" width="100%" height="315" src="https://www.youtube.com/embed/tfETpi-9ORs?rel=0&amp;showinfo=0" frameBorder="0" allowFullScreen="" />
             </Collapse>
@@ -66,7 +93,7 @@ class Help extends Sections {
               collapsed={!open.includes('how-do-i-play')}
               onToggle={this.handleToggle('how-do-i-play')}
             >
-              To play Seedom, click the participate tab at the top of this page or go to <a target="_blank" rel="noopener noreferrer" href="https://seedom.io">Seedom.io</a>. Click "COUNT ME IN!" and enter the number of entries you would like to buy, a message to the world that can be up to 32 characters, and an optional email address.
+              To play Seedom, click the "PARTICIPATE" tab at the top of this page. Click "PLAY TO WIN!" and enter the number of entries you would like to buy, a message to the world that can be up to 32 characters, and an optional email address.
               <br />
               <br />
               Each entry is intended to cost $2 USD in Ether at the beginning of each ten day fundraiser. Enter quickly as we expect this price to fluctuate due to the volatility of Ether. The number of entries you choose increases your likelihood of being chosen the random winner.

@@ -9,35 +9,6 @@
   flex-direction: column;
   text-align: center;
 
-  .seedom-logo {
-    background-image: url('../../../../../../../../seedom-assets/logo/full/seedom-full-white-transparent@4x.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    filter:
-      drop-shadow(2px 1px 0 black)
-      drop-shadow(-1px -1px 0 black);
-    height: 70%;
-    width: 100%;
-
-    &.small {
-      height: 35%;
-    }
-
-  }
-
-  .ethereum-logo {
-    background-image: url('../../../../../../img/logos/ethereum-logo.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    height: 22%;
-    width: 100%;
-    filter:
-      drop-shadow(2px 1px 0 black)
-      drop-shadow(-1px -1px 0 black);
-  }
-
   .seedom-field {
     width: 50%;
   }

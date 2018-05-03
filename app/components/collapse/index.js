@@ -17,14 +17,12 @@ class Collapse extends Component {
     title: PropTypes.string.isRequired,
     heavy: PropTypes.bool,
     collapsed: PropTypes.bool.isRequired,
-    onToggle: PropTypes.func.isRequired,
-    children: PropTypes.element
+    onToggle: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     id: null,
-    heavy: false,
-    children: null
+    heavy: false
   };
 
   render() {

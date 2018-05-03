@@ -10,4 +10,52 @@
   strong {
     color: white;
   }
+
+  .coinbase-logo {
+    background-image: url('../../img/logos/coinbase-logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 70px;
+    width: 100%;
+  }
+
+  .cipher-logo {
+    background-image: url('../../img/logos/cipher-logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 70px;
+    width: 100%;
+  }
+
+  .app-store {
+    display: block;
+    background-image: url('../../img/buttons/app-store.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 60px;
+    width: 100%;
+  }
+
+  .google-play {
+    display: block;
+    background-image: url('../../img/buttons/google-play.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 60px;
+    width: 100%;
+  }
+
+  .download-metamask {
+    display: block;
+    background-image: url('../../img/buttons/download-metamask.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 100px;
+    width: 100%;
+  }
 }
