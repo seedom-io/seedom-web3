@@ -62,8 +62,13 @@ const getComponent = ({
   isRaising,
   isWithdrawing
 }) => {
-  // ethereum check
+  // wait for a network
   if (!network) {
+    return null;
+  }
+
+  // ethereum check
+  if (network && !account) {
     return 'ethereum';
   }
 

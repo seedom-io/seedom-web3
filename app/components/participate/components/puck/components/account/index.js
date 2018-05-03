@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Content from '../content';
 import Indicator from '../indicator';
+import './index.scss';
 
 class Account extends Content {
   static propTypes = {
@@ -28,12 +29,12 @@ class Account extends Content {
             <div className="ethereum-logo" />
           </div>
           <div className="division text center squish narrow">
-            <span>account not available, please confirm</span>
+            <span>oops!<br />we can't see your account<br />check your browser</span>
           </div>
           <div className="division bottom large-pad">
             <div className="field">
               <div className="control">
-                <Link className="button is-white is-outlined" to="/help">how to access seedom</Link>
+                <Link className="button is-white is-outlined how-to-access" to="/help">how to participate</Link>
               </div>
             </div>
           </div>

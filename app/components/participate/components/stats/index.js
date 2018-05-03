@@ -39,19 +39,22 @@ class Stats extends Component {
   static propTypes = {
     side: PropTypes.string.isRequired,
     deployment: PropTypes.shape(),
-    state: PropTypes.shape()
+    state: PropTypes.shape(),
+    cause: PropTypes.shape()
   };
 
   static defaultProps = {
     deployment: null,
-    state: null
+    state: null,
+    cause: null
   };
 
   render() {
     const {
       side,
       deployment,
-      state
+      state,
+      cause
     } = this.props;
 
     let causeReward;
@@ -68,13 +71,18 @@ class Stats extends Component {
       entries = localeNumber(state.entries);
     }
 
+    let causeName = 'cause';
+    if (cause) {
+      causeName = cause.name;
+    }
+
     return (
       <div className={`seedom-stats ${side}`}>
         {((side === 'top') || (side === 'left')) &&
           <div className="panel">
             <div className="background" />
-            <Stat title="cause reward" value={causeReward} ether />
-            <Stat title="winner reward" value={participantReward} ether />
+            <Stat title="winner will get" value={participantReward} ether />
+            <Stat title={`${causeName} will get`} value={causeReward} ether />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&

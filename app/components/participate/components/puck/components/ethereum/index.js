@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Content from '../content';
 import Indicator from '../indicator';
+import './index.scss';
 
 class Ethereum extends Content {
   static propTypes = {
@@ -21,15 +22,15 @@ class Ethereum extends Content {
         <Indicator type={isShown ? 'error' : null} />
         <div className="seedom-overlay layout">
           <div className="division top medium-pad">
-            <div className="ethereum-logo" />
+            <div className="seedom-logo small" />
           </div>
           <div className="division text center squish narrow">
-            <span>plugin or browser not detected</span>
+            <span>welcome to seedom!<br />let's get started</span>
           </div>
           <div className="division bottom large-pad">
             <div className="field">
               <div className="control">
-                <Link className="button is-white is-outlined" to="/help">how to access seedom</Link>
+                <Link className="button is-white is-outlined how-to-access" to="/help">how to participate</Link>
               </div>
             </div>
           </div>

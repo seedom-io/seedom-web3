@@ -23,8 +23,8 @@ const getNetworkName = (id) => {
   }
 };
 
-const getRpcWeb3 = () => {
-  // setup rpc web3
+const getClientWeb3 = () => {
+  // setup client web3
   if (typeof window !== 'undefined') {
     // set MetaMask web3 at v1.0
     if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
@@ -36,7 +36,7 @@ const getRpcWeb3 = () => {
 
 const ethereumMiddleware = (store) => {
   // client web3 is source of truth
-  const clientWeb3 = getRpcWeb3();
+  const clientWeb3 = getClientWeb3();
   // middleware state
   let serverWeb3;
   let account;
@@ -235,7 +235,7 @@ const ethereumMiddleware = (store) => {
           name: contractName,
           address: release.address,
           server: new serverWeb3.eth.Contract(release.abi, release.address),
-          client: new clientWeb3.eth.Contract(release.abi, release.address)
+          client: clientWeb3 ? new clientWeb3.eth.Contract(release.abi, release.address) : null
         };
       }
     }
@@ -296,6 +296,11 @@ const ethereumMiddleware = (store) => {
   };
 
   const setupNetwork = (id) => {
+    // see if we are already on this network
+    if (network && (id === network.id)) {
+      return;
+    }
+
     // destroy old network
     destroyCurrentNetwork();
     // setup server web3
@@ -325,13 +330,8 @@ const ethereumMiddleware = (store) => {
       network
     });
   };
-
-  const ready = () => {
-    return network && network.supported && network.deployed && account;
-  };
-
   const checkUser = () => {
-    if (!ready()) {
+    if (!network || !network.supported || !network.deployed || !account) {
       return;
     }
 
@@ -343,16 +343,25 @@ const ethereumMiddleware = (store) => {
   };
 
   const checkNetwork = () => {
+    if (!clientWeb3) {
+      // default to mainnet
+      setupNetwork(1);
+      return;
+    }
+
+    // use plugin network
     clientWeb3.eth.net.getId((error, id) => {
-      if (!network || (id !== network.id)) {
-        setupNetwork(id);
-        // see if user established
-        checkUser();
-      }
+      setupNetwork(id);
+      // see if user established
+      checkUser();
     });
   };
 
   const checkAccount = () => {
+    if (!clientWeb3) {
+      return;
+    }
+
     clientWeb3.eth.getAccounts((error, newAccounts) => {
       const [newAccount] = newAccounts;
       if (newAccount !== account) {
@@ -368,7 +377,7 @@ const ethereumMiddleware = (store) => {
   };
 
   const checkRefresh = () => {
-    if (!ready()) {
+    if (!network || !network.supported || !network.deployed) {
       return;
     }
 
@@ -393,13 +402,11 @@ const ethereumMiddleware = (store) => {
   };
 
   // set up client web3 change detection polling
-  if (clientWeb3) {
-    setInterval(() => {
-      checkNetwork();
-      checkAccount();
-      checkRefresh();
-    }, 1000);
-  }
+  setInterval(() => {
+    checkNetwork();
+    checkAccount();
+    checkRefresh();
+  }, 1000);
 
   return next => action => {
     const { type } = action;

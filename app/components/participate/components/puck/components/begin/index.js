@@ -18,7 +18,7 @@ class Begin extends Content {
     const { className } = this.state;
     const { isShown, cause } = this.props;
     return (
-      <div className={`seedom-content seed ${className}`}>
+      <div className={`seedom-content begin ${className}`}>
         <Indicator type={isShown ? 'waiting' : null} />
         <div className="seedom-overlay layout">
           <div className="division text top small-pad narrow">

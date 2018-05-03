@@ -82,6 +82,7 @@ class Participate extends Component {
               side="left"
               deployment={deployment}
               state={state}
+              cause={cause}
             />
             <Puck
               network={network}

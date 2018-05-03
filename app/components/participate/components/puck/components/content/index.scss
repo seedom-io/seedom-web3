@@ -19,6 +19,11 @@
       drop-shadow(-1px -1px 0 black);
     height: 70%;
     width: 100%;
+
+    &.small {
+      height: 35%;
+    }
+
   }
 
   .ethereum-logo {

@@ -1,6 +1,6 @@
 @import '../../../../../../sass/theme.scss';
 
-.seedom-content.participated {
+.seedom-content.participation {
 
   .cause-logo {
     margin-bottom: $small-padding;
@@ -10,6 +10,11 @@
     font-size: 40px;
     font-family: "CamphorPro Heavy";
     margin-bottom: -10px;
+  }
+
+  .get-more-entries {
+    transform-origin: center center;
+    animation: 1s ease-in-out 4s 5 pulse-out;
   }
 
 }

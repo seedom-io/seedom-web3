@@ -28,7 +28,7 @@ class Participation extends Content {
     const localeEntries = localeNumber(entries);
 
     return (
-      <div className={`seedom-content participated ${className}`}>
+      <div className={`seedom-content participation ${className}`}>
         <Indicator type={isShown ? 'success' : null} />
         <div className="seedom-overlay">
           <div className="text entries">{localeEntries}</div>
@@ -36,7 +36,7 @@ class Participation extends Content {
           <CauseLogo cause={cause} size="small" />
           <div className="field">
             <div className="control">
-              <a className="button is-dark" onClick={onRaising}>get more entries</a>
+              <a className="button is-dark get-more-entries" onClick={onRaising}>get more entries</a>
             </div>
           </div>
           <div className="field">

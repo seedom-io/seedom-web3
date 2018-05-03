@@ -37,7 +37,9 @@ class Welcome extends Content {
                 <i className="fas fa-bars" />
               </span>
             </div>
-            <div className="supporting">now seeding</div>
+            <div className="now-benefitting">
+              now benefitting
+            </div>
           </div>
           <div className="division center">
             <CauseLogo cause={cause} />
@@ -50,7 +52,7 @@ class Welcome extends Content {
             </div>
             <div className="field">
               <div className="control">
-                <a className="button is-dark" onClick={onCountMeIn}>count me in!</a>
+                <a className="button is-dark play-to-win" onClick={onCountMeIn}>play to win!</a>
               </div>
             </div>
           </div>
