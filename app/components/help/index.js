@@ -5,6 +5,12 @@ import Collapse from '../collapse';
 import './index.scss';
 
 class Help extends Sections {
+  constructor(props) {
+    super(props, [
+      'what-is-seedom'
+    ]);
+  }
+
   render() {
     const { open } = this.state;
     return (

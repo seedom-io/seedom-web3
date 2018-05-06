@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as causesResolver from '@seedom-io/seedom-resolver/causes';
 
 const sampleCause = {
@@ -11,13 +12,12 @@ const sampleCause = {
 const causeMiddleware = store => {
   const handleFundraiserDeployment = (next, action) => {
     if (process.env.NODE_ENV === 'production') {
-      fetch(causesResolver.getJsonUrl(action.deployment.cause))
-        .then(results => results.json())
+      axios.get(causesResolver.getJsonUrl(action.deployment.cause))
         .then((cause) => {
-          store.dispatch({ type: 'CAUSE_CAUSE', cause });
+          store.dispatch({ type: 'CAUSE', cause: cause.data });
         });
     } else {
-      store.dispatch({ type: 'CAUSE_CAUSE', cause: sampleCause });
+      store.dispatch({ type: 'CAUSE', cause: sampleCause });
     }
     return next(action);
   };

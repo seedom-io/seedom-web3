@@ -6,17 +6,22 @@ import { Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { reducer as toastrReducer } from 'react-redux-toastr';
 import ReduxToastr from 'react-redux-toastr'
+
 import createBrowserHistory from 'history/createBrowserHistory';
 import createMemoryHistory from 'history/createMemoryHistory';
+
 import reduceReducers from './utils/reduceReducers';
 import pollingReducer from './reducers/polling';
 import fundraiserReducer from './reducers/fundraiser';
 import ethereumReducer from './reducers/ethereum';
 import causeReducer from './reducers/cause';
+import tickerReducer from './reducers/ticker';
+
 import pollingMiddleware from './middleware/polling';
 import fundraiserMiddleware from './middleware/fundraiser';
 import ethereumMiddleware from './middleware/ethereum';
 import causeMiddleware from './middleware/cause';
+import tickerMiddleware from './middleware/ticker';
 
 import './sass/bulma.scss';
 
@@ -38,9 +43,10 @@ const reducers = () => {
     ethereum: reduceReducers(
       ethereumReducer,
       fundraiserReducer,
-      pollingReducer,
-      causeReducer
+      pollingReducer
     ),
+    cause: causeReducer,
+    ticker: tickerReducer,
     toastr: toastrReducer,
     router: routerReducer
   });
@@ -51,7 +57,8 @@ const middlewares = (history) => {
     ethereumMiddleware,
     fundraiserMiddleware,
     pollingMiddleware,
-    causeMiddleware
+    causeMiddleware,
+    tickerMiddleware
   ];
 
   if (history) {

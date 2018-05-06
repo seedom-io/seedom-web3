@@ -15,6 +15,8 @@ import './index.scss';
 class Participate extends Component {
   static propTypes = {
     ethereum: PropTypes.shape().isRequired,
+    cause: PropTypes.shape().isRequired,
+    ticker: PropTypes.shape().isRequired,
     dispatch: PropTypes.func.isRequired
   };
 
@@ -37,7 +39,8 @@ class Participate extends Component {
   }
 
   handleParticipate = ({ message, entries, email }) => {
-    const { deployment, account, cause } = this.props.ethereum;
+    const { deployment, account } = this.props.ethereum;
+    const { cause } = this.props;
     const messageHex = messages.hex(message);
     const value = entries.times(deployment.valuePerEntry);
     // dispatch to ethereum
@@ -87,9 +90,10 @@ class Participate extends Component {
       balances,
       feed,
       isLoading,
-      primaryContractAddresses,
-      cause
+      primaryContractAddresses
     } = this.props.ethereum;
+
+    const { cause, ticker } = this.props;
 
     return (
       <div className="seedom-seed">
@@ -122,6 +126,7 @@ class Participate extends Component {
               side="right"
               deployment={deployment}
               state={state}
+              ticker={ticker}
             />
           </div>
         </div>
@@ -137,7 +142,11 @@ class Participate extends Component {
 }
 
 const mapStateToProps = state => {
-  return { ethereum: state.ethereum };
+  return {
+    ethereum: state.ethereum,
+    cause: state.cause,
+    ticker: state.ticker
+  };
 };
 
 const mapDispatchToProps = dispatch => {
