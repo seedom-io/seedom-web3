@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toastr } from 'react-redux-toastr';
+import { zero } from '../../../../utils/numbers';
 import Count from '../count';
 import Field from '../../../field';
 
@@ -8,15 +9,17 @@ const MAX_NAME_LENGTH = 32;
 
 class Name extends Component {
   static propTypes = {
-    voteCount: PropTypes.shape().isRequired,
-    maxVoteCount: PropTypes.shape().isRequired,
+    voteCount: PropTypes.shape(),
+    maxVoteCount: PropTypes.shape(),
     ended: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool,
     onVoteName: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    isLoading: false
+    isLoading: false,
+    voteCount: zero(),
+    maxVoteCount: zero()
   };
 
   constructor(props) {

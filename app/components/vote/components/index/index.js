@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toastr } from 'react-redux-toastr';
+import classNames from 'classnames';
 import Count from '../count';
 import * as heatmap from '../../../../utils/heatmap';
-import { localeDecimal } from '../../../../utils/numbers';
-import classNames from 'classnames';
+import { zero } from '../../../../utils/numbers';
 
 const rowClass = (available) => {
   return classNames({
@@ -16,8 +16,8 @@ const rowClass = (available) => {
 
 class Index extends Component {
   static propTypes = {
-    voteCount: PropTypes.shape().isRequired,
-    maxVoteCount: PropTypes.shape().isRequired,
+    voteCount: PropTypes.shape(),
+    maxVoteCount: PropTypes.shape(),
     causesVoteCount: PropTypes.shape().isRequired,
     ended: PropTypes.bool.isRequired,
     cause: PropTypes.shape().isRequired,
@@ -28,7 +28,9 @@ class Index extends Component {
 
   static defaultProps = {
     isLoading: false,
-    vote: null
+    vote: null,
+    voteCount: zero(),
+    maxVoteCount: zero()
   };
 
   constructor(props) {

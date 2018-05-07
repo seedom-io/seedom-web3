@@ -39,7 +39,7 @@ class Vote extends Component {
       isLoading
     } = this.props.ethereum;
 
-    if (!maxVoteCount || !causes || !votes || !deployment) {
+    if (!causes || !deployment) {
       return null;
     }
 
@@ -78,7 +78,7 @@ class Vote extends Component {
               causesVoteCount={causesVoteCount}
               ended={ended}
               cause={cause}
-              vote={votes[cause.index]}
+              vote={votes ? votes[cause.index] : null}
               account={account}
               onVoteIndex={this.handleVoteIndex}
             />

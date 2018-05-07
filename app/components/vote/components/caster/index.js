@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { zero } from '../../../../utils/numbers';
 import spinner from '../../../../img/spinner.svg';
 
 const getStatus = ({ voteCount, maxVoteCount, ended }) => {
@@ -17,13 +18,15 @@ const getStatus = ({ voteCount, maxVoteCount, ended }) => {
 class Caster extends Component {
   static propTypes = {
     isLoading: PropTypes.bool,
-    voteCount: PropTypes.shape().isRequired,
-    maxVoteCount: PropTypes.shape().isRequired,
+    voteCount: PropTypes.shape(),
+    maxVoteCount: PropTypes.shape(),
     ended: PropTypes.bool.isRequired
   };
 
   static defaultProps = {
-    isLoading: false
+    isLoading: false,
+    voteCount: zero(),
+    maxVoteCount: zero()
   };
 
   render() {
