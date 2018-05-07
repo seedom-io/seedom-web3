@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import { localeNumber, localeDecimal, getEtherFromWei } from '../../../../utils/numbers';
 import './index.scss';
 
-class Stat extends Component {
+const ETHER_USD_ROTATION_DELAY = 10000;
+
+class TextStat extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    value: PropTypes.string,
-    ether: PropTypes.bool
+    value: PropTypes.string
   };
 
   static defaultProps = {
-    value: null,
-    ether: false
+    value: null
   };
 
   render() {
-    const { title, value, ether } = this.props;
+    const { title, value } = this.props;
     return (
       <div className="stat">
         <div className="stat-title">
@@ -24,10 +24,47 @@ class Stat extends Component {
         </div>
         <div className="stat-value">
           {value}
-          {ether && (
-            <span className="ether">
-              <i className="fas fa-bars" />
-            </span>
+        </div>
+      </div>
+    );
+  }
+}
+
+class CurrencyStat extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    ether: PropTypes.string,
+    USD: PropTypes.string,
+    isEther: PropTypes.bool.isRequired
+  };
+
+  static defaultProps = {
+    ether: null,
+    USD: null
+  };
+
+  render() {
+    const { title, ether, USD, isEther } = this.props;
+    return (
+      <div className="stat">
+        <div className="stat-title">
+          {title}
+        </div>
+        <div className="stat-value">
+          {isEther ? (
+            <div>
+              {ether}
+              <span className="currency">
+                <i className="fas fa-bars" />
+              </span>
+            </div>
+          ) : (
+            <div>
+              {USD}
+              <span className="currency">
+                <i className="fas fa-dollar-sign" />
+              </span>
+            </div>
           )}
         </div>
       </div>
@@ -40,35 +77,67 @@ class Stats extends Component {
     side: PropTypes.string.isRequired,
     deployment: PropTypes.shape(),
     state: PropTypes.shape(),
-    cause: PropTypes.shape()
+    cause: PropTypes.shape(),
+    ticker: PropTypes.shape()
   };
 
   static defaultProps = {
     deployment: null,
     state: null,
-    cause: null
+    cause: null,
+    ticker: null
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isEther: false
+    };
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      this.setState((prevState) => ({ isEther: !prevState.isEther }));
+    }, ETHER_USD_ROTATION_DELAY);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   render() {
     const {
       side,
       deployment,
       state,
-      cause
+      cause,
+      ticker
     } = this.props;
 
-    let causeReward;
-    let participantReward;
+    const { isEther } = this.state;
+
+    let causeRewardEther;
+    let causeRewardUSD;
+    let participantRewardEther;
+    let participantRewardUSD;
     let participants;
     let entries;
-    if (deployment && state) {
+    if (deployment && state && ticker) {
       const received = state.entries.times(deployment.valuePerEntry);
-      causeReward
-        = localeDecimal(getEtherFromWei(received.times(deployment.causeSplit).dividedBy(1000)));
-      participantReward
-        = localeDecimal(getEtherFromWei(received.times(deployment.participantSplit).dividedBy(1000)));
+      const causeReward
+        = getEtherFromWei(received.times(deployment.causeSplit).dividedBy(1000));
+      causeRewardEther = localeDecimal(causeReward, 3);
+      const participantReward
+        = getEtherFromWei(received.times(deployment.participantSplit).dividedBy(1000));
+      participantRewardEther = localeDecimal(participantReward, 3);
       participants = localeNumber(state.participants);
       entries = localeNumber(state.entries);
+
+      if (ticker) {
+        const { price } = ticker.quotes.USD;
+        causeRewardUSD = localeDecimal(causeReward.multipliedBy(price), 2);
+        participantRewardUSD = localeDecimal(participantReward.multipliedBy(price), 2);
+      }
     }
 
     let causeName = 'cause';
@@ -81,15 +150,15 @@ class Stats extends Component {
         {((side === 'top') || (side === 'left')) &&
           <div className="panel">
             <div className="background" />
-            <Stat title="winner will get" value={participantReward} ether />
-            <Stat title={`${causeName} will get`} value={causeReward} ether />
+            <CurrencyStat title="winner will get" ether={participantRewardEther} USD={participantRewardUSD} isEther={isEther} />
+            <CurrencyStat title={`${causeName} will get`} ether={causeRewardEther} USD={causeRewardUSD} isEther={isEther} />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&
           <div className="panel">
             <div className="background" />
-            <Stat title="participants" value={participants} />
-            <Stat title="entries" value={entries} />
+            <TextStat title="participants" value={participants} />
+            <TextStat title="entries" value={entries} />
           </div>
         }
       </div>

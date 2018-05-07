@@ -6,8 +6,8 @@ const getEtherFromWei = (bigNumber) => {
   return bigNumber.dividedBy(weiInEther);
 };
 
-const localeDecimal = (bigNumber) => {
-  return bigNumber.toFormat(3);
+const localeDecimal = (bigNumber, places) => {
+  return bigNumber.toFormat(places);
 };
 
 const localeNumber = (bigNumber) => {

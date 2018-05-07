@@ -115,6 +115,10 @@ class Circles extends React.Component {
     }, 1000);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
     const { starter, deployment, isLoading } = this.props;
     const { now } = this.state;

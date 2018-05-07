@@ -14,10 +14,15 @@ import './index.scss';
 
 class Participate extends Component {
   static propTypes = {
+    dispatch: PropTypes.func.isRequired,
     ethereum: PropTypes.shape().isRequired,
-    cause: PropTypes.shape().isRequired,
-    ticker: PropTypes.shape().isRequired,
-    dispatch: PropTypes.func.isRequired
+    cause: PropTypes.shape(),
+    ticker: PropTypes.shape()
+  };
+
+  static defaultProps = {
+    cause: null,
+    ticker: null
   };
 
   constructor(props) {
@@ -105,6 +110,7 @@ class Participate extends Component {
               deployment={deployment}
               state={state}
               cause={cause}
+              ticker={ticker}
             />
             <Puck
               network={network}
@@ -126,6 +132,7 @@ class Participate extends Component {
               side="right"
               deployment={deployment}
               state={state}
+              cause={cause}
               ticker={ticker}
             />
           </div>
