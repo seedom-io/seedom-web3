@@ -13,13 +13,19 @@ class Participation extends Content {
     participant: PropTypes.shape(),
     onRaising: PropTypes.func.isRequired,
     onBadging: PropTypes.func.isRequired,
-    cause: PropTypes.shape()
+    cause: PropTypes.shape(),
+    onPlay: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     participant: null,
     cause: null
   };
+
+  handlePlay = () => {
+    // always play, but mark played
+    this.props.onPlay(true);
+  }
 
   render() {
     const { className } = this.state;
@@ -33,7 +39,7 @@ class Participation extends Content {
         <div className="seedom-overlay">
           <div className="text entries">{localeEntries}</div>
           <div className="text obtained">{Number(localeEntries) === 1 ? 'entry' : 'entries'} obtained</div>
-          <CauseLogo cause={cause} size="small" />
+          <CauseLogo cause={cause} size="small" onClick={this.handlePlay} />
           <div className="field">
             <div className="control">
               <a className="button is-dark get-more-entries" onClick={onRaising}>get more entries</a>

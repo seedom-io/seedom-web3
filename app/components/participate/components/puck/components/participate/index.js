@@ -56,6 +56,11 @@ class Participate extends Content {
     });
   }
 
+  handlePlay = () => {
+    // always play, but mark played
+    this.props.onPlay(true);
+  }
+
   render() {
     const { deployment, cause, isLoading } = this.props;
     const { className } = this.state;
@@ -64,7 +69,7 @@ class Participate extends Content {
         <Indicator type={isLoading ? 'waiting' : null} />
         <div className="seedom-overlay">
 
-          <CauseLogo cause={cause} size="small" />
+          <CauseLogo cause={cause} size="small" onClick={this.handlePlay} />
 
           <Entries
             deployment={deployment}

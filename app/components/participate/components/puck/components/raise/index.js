@@ -50,13 +50,18 @@ class Raise extends Content {
     });
   };
 
+  handlePlay = () => {
+    // always play, but mark played
+    this.props.onPlay(true);
+  };
+
   render() {
     const { className } = this.state;
     const { deployment, cause, isLoading, onRaisingCancelled } = this.props;
 
     let etherPerEntry;
     if (deployment) {
-      etherPerEntry = localeDecimal(getEtherFromWei(deployment.valuePerEntry));
+      etherPerEntry = localeDecimal(getEtherFromWei(deployment.valuePerEntry), 3);
     }
 
     return (
@@ -64,7 +69,7 @@ class Raise extends Content {
         <Indicator type={isLoading ? 'waiting' : null} />
         <div className="seedom-overlay">
 
-          <CauseLogo cause={cause} size="small" />
+          <CauseLogo cause={cause} size="small" onClick={this.handlePlay} />
 
           <div className="text">
             1 entry = {etherPerEntry}

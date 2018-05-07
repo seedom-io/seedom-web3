@@ -6,16 +6,18 @@ import './index.scss';
 class CauseLogo extends Component {
   static propTypes = {
     cause: PropTypes.shape(),
-    size: PropTypes.string
+    size: PropTypes.string,
+    onClick: PropTypes.func
   };
 
   static defaultProps = {
     cause: null,
-    size: null
+    size: null,
+    onClick: null
   };
 
   render() {
-    const { cause, size } = this.props;
+    const { cause, size, onClick } = this.props;
     // make sure we have a cause
     if (!cause) {
       return null;
@@ -23,7 +25,11 @@ class CauseLogo extends Component {
 
     const logoUrl = causesResolver.getLogoUrl(cause.image);
     return (
-      <div className={`cause-logo ${size}`} style={{ backgroundImage: `url(${logoUrl})` }} />
+      <div
+        className={`cause-logo ${size}`}
+        style={{ backgroundImage: `url(${logoUrl})` }}
+        onClick={onClick}
+      />
     );
   }
 }

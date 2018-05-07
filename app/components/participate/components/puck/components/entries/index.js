@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { BigNumber } from 'bignumber.js';
 import Field from '../../../../../field';
 import { zero, localeDecimal, getEtherFromWei } from '../../../../../../utils/numbers';
-import { BigNumber } from 'bignumber.js';
 
 class Entries extends Component {
   static propTypes = {
@@ -57,7 +57,7 @@ class Entries extends Component {
     let etherForEntries;
     if (deployment) {
       const weiForEntries = value.times(deployment.valuePerEntry);
-      etherForEntries = localeDecimal(getEtherFromWei(weiForEntries));
+      etherForEntries = localeDecimal(getEtherFromWei(weiForEntries), 3);
     }
 
     return (

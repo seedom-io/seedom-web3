@@ -58,7 +58,7 @@ class Withdraw extends Content {
           <div className="division text top medium-pad">
             <div>you have</div>
             <div className="balance">
-              {localeDecimal(getEtherFromWei(maxBalance.balance))}
+              {localeDecimal(getEtherFromWei(maxBalance.balance), 3)}
               <span className="ether is-dark">
                 <i className="fas fa-bars" />
               </span>

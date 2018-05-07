@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Content from '../content';
 import { localeDecimal, getEtherFromWei } from '../../../../../../utils/numbers';
-import { Link } from 'react-router-dom';
 import CauseLogo from '../../../../../causeLogo';
 import './index.scss';
 
@@ -26,11 +26,11 @@ class Welcome extends Content {
 
   render() {
     const { className } = this.state;
-    const { deployment, cause, onPlay, onCountMeIn } = this.props;
+    const { deployment, cause, onCountMeIn } = this.props;
 
     let etherPerEntry;
     if (deployment) {
-      etherPerEntry = localeDecimal(getEtherFromWei(deployment.valuePerEntry));
+      etherPerEntry = localeDecimal(getEtherFromWei(deployment.valuePerEntry), 3);
     }
 
     return (
@@ -47,8 +47,8 @@ class Welcome extends Content {
               now benefitting
             </div>
           </div>
-          <div className="division center" onClick={this.handlePlay}>
-            <CauseLogo cause={cause} />
+          <div className="division center">
+            <CauseLogo cause={cause} onClick={this.handlePlay} />
           </div>
           <div className="division bottom">
             <div className="field">

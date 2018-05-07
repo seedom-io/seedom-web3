@@ -303,11 +303,11 @@ class Puck extends Component {
           <Begin isShown={component === 'begin'} cause={cause} onPlay={onPlay} />
           <Welcome isShown={component === 'welcome'} deployment={deployment} cause={cause} onPlay={onPlay} onCountMeIn={this.handleCountMeIn} />
           <BeginningFailed isShown={component === 'beginningFailed'} cause={cause} />
-          <Participate isShown={component === 'participate'} deployment={deployment} cause={cause} isLoading={isLoading} onParticipate={this.handleParticipate} />
+          <Participate isShown={component === 'participate'} deployment={deployment} cause={cause} isLoading={isLoading} onParticipate={this.handleParticipate} onPlay={onPlay} />
           <Badge isShown={component === 'badge'} primaryContractAddresses={primaryContractAddresses} network={network} account={account} participant={participant} onBadgingOver={this.handleBadgingOver} />
-          <Participation isShown={component === 'participation'} participant={participant} cause={cause} onRaising={this.handleRaising} onBadging={this.handleBadging} />
+          <Participation isShown={component === 'participation'} participant={participant} cause={cause} onRaising={this.handleRaising} onBadging={this.handleBadging} onPlay={onPlay} />
           <ParticipationFailed isShown={component === 'participationFailed'} cause={cause} />
-          <Raise isShown={component === 'raise'} deployment={deployment} cause={cause} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} />
+          <Raise isShown={component === 'raise'} deployment={deployment} cause={cause} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} onPlay={onPlay} />
           <Reveal isShown={component === 'reveal'} cause={cause} />
           <End isShown={component === 'end'} />
           <Selection isShown={component === 'selection'} state={state} network={network} cause={cause} />
