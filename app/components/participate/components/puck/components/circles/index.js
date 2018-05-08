@@ -53,7 +53,7 @@ const getLoadersRadius = () => {
 };
 
 const getPathFlipped = (percentage) => {
-  return percentage > 30 && percentage < 70;
+  return percentage > 20 && percentage < 80;
 };
 
 const getPathStyle = (radius, percentage) => {
