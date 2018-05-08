@@ -71,11 +71,19 @@ class Help extends Sections {
               collapsed={!open.includes('accessing-mobile')}
               onToggle={this.handleToggle('accessing-mobile')}
             >
-              To use Seedom on mobile, we recommend the <a target="_blank" rel="noopener noreferrer" href="https://cipherbrowser.com">Cipher mobile browser</a> for <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.cipherbrowser.cipher">Google Android</a> or <a target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/app/cipher-browser-for-ethereum/id1294572970?ls=1&mt=8">Apple iOS</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your Cipher wallet in order to participate.
+              To use Seedom on mobile, you will need a mobile Ethereum web browser. We recommend either <a target="_blank" rel="noopener noreferrer" href="https://trustwalletapp.com">Trust Wallet</a> or <a target="_blank" rel="noopener noreferrer" href="https://cipherbrowser.com">Cipher browser</a>. After you install, you will need to <a href="#obtaining-ether">put Ether</a> into your browser's wallet in order to participate.
+              <br />
+              <br />
+              <div className="trust-wallet-logo" />
+              <br />
+              <a className="app-store" target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/us/app/trust-ethereum-wallet/id1288339409" />
+              <br />
+              <a className="google-play" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp" />
+              <br />
               <br />
               <div className="cipher-logo" />
               <br />
-              <a className="app-store" target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/app/cipher-browser-for-ethereum/id1294572970?ls=1&mt=8" />
+              <a className="app-store" target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/app/cipher-browser-for-ethereum/id1294572970" />
               <br />
               <a className="google-play" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.cipherbrowser.cipher" />
             </Collapse>
@@ -85,6 +93,7 @@ class Help extends Sections {
               onToggle={this.handleToggle('accessing-desktop')}
             >
               To use Seedom on the desktop, you will need to install <a target="_blank" rel="noopener noreferrer" href="https://metamask.io">MetaMask</a> or use the <a target="_blank" rel="noopener noreferrer" href="https://brave.com">Brave browser</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your MetaMask wallet in order to participate.
+              <br />
               <br />
               <a className="download-metamask" target="_blank" rel="noopener noreferrer" href="https://metamask.io" />
               <br />
