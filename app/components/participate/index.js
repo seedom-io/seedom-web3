@@ -95,7 +95,8 @@ class Participate extends Component {
       balances,
       feed,
       isLoading,
-      primaryContractAddresses
+      primaryContractAddresses,
+      causesVoteCount
     } = this.props.ethereum;
 
     const { cause, ticker } = this.props;
@@ -134,6 +135,7 @@ class Participate extends Component {
               state={state}
               cause={cause}
               ticker={ticker}
+              causesVoteCount={causesVoteCount}
             />
           </div>
         </div>

@@ -111,11 +111,14 @@ class Stats extends Component {
       deployment,
       state,
       cause,
-      ticker
+      ticker,
+      causesVoteCount
     } = this.props;
 
     const { isEther } = this.state;
 
+    let totalRaisedEther;
+    let totalRaisedUSD;
     let causeRewardEther;
     let causeRewardUSD;
     let participantRewardEther;
@@ -123,18 +126,22 @@ class Stats extends Component {
     let participants;
     let entries;
     if (deployment && state && ticker) {
-      const received = state.entries.times(deployment.valuePerEntry);
+      const totalRaised = getEtherFromWei(state.entries.times(deployment.valuePerEntry));
+      totalRaisedEther = localeDecimal(totalRaised, 3);
+
       const causeReward
-        = getEtherFromWei(received.times(deployment.causeSplit).dividedBy(1000));
+        = totalRaised.times(deployment.causeSplit).dividedBy(1000);
       causeRewardEther = localeDecimal(causeReward, 3);
       const participantReward
-        = getEtherFromWei(received.times(deployment.participantSplit).dividedBy(1000));
+        = totalRaised.times(deployment.participantSplit).dividedBy(1000);
       participantRewardEther = localeDecimal(participantReward, 3);
+
       participants = localeNumber(state.participants);
       entries = localeNumber(state.entries);
 
       if (ticker) {
         const { price } = ticker.quotes.USD;
+        totalRaisedUSD = localeDecimal(totalRaised.multipliedBy(price), 2);
         causeRewardUSD = localeDecimal(causeReward.multipliedBy(price), 2);
         participantRewardUSD = localeDecimal(participantReward.multipliedBy(price), 2);
       }
@@ -145,13 +152,19 @@ class Stats extends Component {
       causeName = cause.name;
     }
 
+    let nextCauseVotes;
+    if (causesVoteCount) {
+      nextCauseVotes = localeNumber(causesVoteCount);
+    }
+
     return (
       <div className={`seedom-stats ${side}`}>
         {((side === 'top') || (side === 'left')) &&
           <div className="panel">
             <div className="background" />
-            <CurrencyStat title="winner will get" ether={participantRewardEther} USD={participantRewardUSD} isEther={isEther} />
-            <CurrencyStat title={`${causeName} will get`} ether={causeRewardEther} USD={causeRewardUSD} isEther={isEther} />
+            <CurrencyStat title="raised" ether={totalRaisedEther} USD={totalRaisedUSD} isEther={isEther} />
+            <CurrencyStat title="winner gets" ether={participantRewardEther} USD={participantRewardUSD} isEther={isEther} />
+            <CurrencyStat title={`${causeName} gets`} ether={causeRewardEther} USD={causeRewardUSD} isEther={isEther} />
           </div>
         }
         {((side === 'top') || (side === 'right')) &&
@@ -159,6 +172,7 @@ class Stats extends Component {
             <div className="background" />
             <TextStat title="participants" value={participants} />
             <TextStat title="entries" value={entries} />
+            <TextStat title="next cause votes" value={nextCauseVotes} />
           </div>
         }
       </div>

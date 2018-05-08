@@ -38,7 +38,7 @@ class Participation extends Content {
         <Indicator type={isShown ? 'success' : null} />
         <div className="seedom-overlay">
           <div className="text entries">{localeEntries}</div>
-          <div className="text obtained">{Number(localeEntries) === 1 ? 'entry' : 'entries'} obtained</div>
+          <div className="text obtained">{entries.isEqualTo(1) ? 'entry' : 'entries'} obtained</div>
           <CauseLogo cause={cause} size="small" onClick={this.handlePlay} />
           <div className="field">
             <div className="control">

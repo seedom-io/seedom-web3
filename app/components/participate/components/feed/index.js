@@ -28,12 +28,92 @@ const getEntries = (item) => {
   }
 };
 
+const getEntriesText = (item) => {
+  const entries = getEntries(item);
+  const localeEntries = numbers.localeNumber(entries);
+
+  let text = `${localeEntries} `;
+  // add new for participation
+  if (item.type === 'FUNDRAISER_PARTICIPATION') {
+    text += 'NEW ';
+  }
+
+  // fix plural
+  text += entries.isEqualTo(1) ? 'entry' : 'entries';
+
+  // add raised for raise
+  if (item.type === 'FUNDRAISER_RAISE') {
+    text += ' RAISED';
+  }
+
+  return text;
+};
+
 const getMessage = (item) => {
   if (item.type === 'FUNDRAISER_PARTICIPATION') {
     return item.participation.message;
   }
   return null;
 };
+
+class FeedItem extends Component {
+  static propTypes = {
+    item: PropTypes.shape().isRequired,
+    network: PropTypes.shape().isRequired
+  };
+
+  openTransaction = (transactionHash) => {
+    const { network } = this.props;
+    const etherscanUrl = etherscan.getTransactionUrl(network.name, transactionHash);
+    if (etherscanUrl) {
+      window && window.open(etherscanUrl, '_blank');
+    }
+  }
+
+  render() {
+    const { item } = this.props;
+    const address = getAddress(item);
+    const entriesText = getEntriesText(item);
+    const message = getMessage(item);
+    return (
+      <div
+        className="row"
+        key={`${item.transactionHash}-${item.transactionIndex}`}
+        onClick={() => { this.openTransaction(item.transactionHash); }}
+      >
+        <div className="icon">
+          {{
+            FUNDRAISER_PARTICIPATION: (
+              <i className="fas fa-arrow-alt-circle-right"></i>
+            ),
+            FUNDRAISER_RAISE: (
+              <i className="far fa-arrow-alt-circle-up"></i>
+            ),
+          }[item.type]}
+        </div>
+        <div className="contents">
+          <div className="side left">
+            <div className="blocknum">
+              <i className="fas fa-cube"></i> {item.blockNumber}
+            </div>
+            <div className="address">
+              {bytes.shorten(address)}
+            </div>
+          </div>
+          <div className="side right">
+            <div className="entries">
+              {entriesText}
+            </div>
+            <div className="messages">
+              {message}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+}
 
 class Feed extends Component {
   static propTypes = {
@@ -53,14 +133,6 @@ class Feed extends Component {
     };
   }
 
-  openTransaction = (transactionHash) => {
-    const { network } = this.props;
-    const etherscanUrl = etherscan.getTransactionUrl(network.name, transactionHash);
-    if (etherscanUrl) {
-      window && window.open(etherscanUrl, '_blank');
-    }
-  }
-
   handleToggle = () => {
     this.setState((prevState) => {
       return { collapsed: !prevState.collapsed };
@@ -68,47 +140,14 @@ class Feed extends Component {
   }
 
   render() {
-    const { feed } = this.props;
+    const { feed, network } = this.props;
     const { collapsed } = this.state;
     return (
       <Collapse title="live activity feed" collapsed={collapsed} onToggle={this.handleToggle} heavy>
         <div className="seedom-feed">
           <div className="list">
             {feed.map((item) => (
-              <div
-                className="row"
-                key={`${item.transactionHash}-${item.transactionIndex}`}
-                onClick={() => { this.openTransaction(item.transactionHash); }}
-              >
-                <div className="icon">
-                  {{
-                    FUNDRAISER_PARTICIPATION: (
-                      <i className="fas fa-arrow-alt-circle-right"></i>
-                    ),
-                    FUNDRAISER_RAISE: (
-                      <i className="far fa-arrow-alt-circle-up"></i>
-                    ),
-                  }[item.type]}
-                </div>
-                <div className="contents">
-                  <div className="side left">
-                    <div className="blocknum">
-                      <i className="fas fa-cube"></i> {item.blockNumber}
-                    </div>
-                    <div className="address">
-                      {bytes.shorten(getAddress(item))}
-                    </div>
-                  </div>
-                  <div className="side right">
-                    <div className="entries">
-                      {numbers.localeNumber(getEntries(item))} entries
-                    </div>
-                    <div className="messages">
-                      {getMessage(item)}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <FeedItem item={item} network={network} />
             ))}
           </div>
         </div>

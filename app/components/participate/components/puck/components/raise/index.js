@@ -91,7 +91,7 @@ class Raise extends Content {
           </div>
           <div className="field">
             <div className="control">
-              <a className="button is-white is-outlined" onClick={onRaisingCancelled}>cancel</a>
+              <a className="button is-white is-outlined" disabled={isLoading} onClick={onRaisingCancelled}>cancel</a>
             </div>
           </div>
 
