@@ -43,8 +43,8 @@ class Welcome extends Content {
                 <i className="fas fa-bars" />
               </span>
             </div>
-            <div className="now-benefitting">
-              now benefitting
+            <div className="now-benefiting">
+              now benefiting
             </div>
           </div>
           <div className="division center">
