@@ -52,38 +52,40 @@ class Vote extends Component {
 
     return (
       <div className="seedom-vote">
-        <div className="list">
+        <div className="container">
+          <div className="list">
 
-          <Caster
-            isLoading={isLoading}
-            voteCount={voteCount}
-            maxVoteCount={maxVoteCount}
-            ended={ended}
-          />
-
-          <Name
-            voteCount={voteCount}
-            maxVoteCount={maxVoteCount}
-            ended={ended}
-            isLoading={isLoading}
-            onVoteName={this.handleVoteName}
-          />
-
-          {sortedCauses.map((cause) => (
-            <Index
-              key={cause.index}
+            <Caster
               isLoading={isLoading}
               voteCount={voteCount}
               maxVoteCount={maxVoteCount}
-              causesVoteCount={causesVoteCount}
               ended={ended}
-              cause={cause}
-              vote={votes ? votes[cause.index] : null}
-              account={account}
-              onVoteIndex={this.handleVoteIndex}
             />
-          ))}
 
+            <Name
+              voteCount={voteCount}
+              maxVoteCount={maxVoteCount}
+              ended={ended}
+              isLoading={isLoading}
+              onVoteName={this.handleVoteName}
+            />
+
+            {sortedCauses.map((cause) => (
+              <Index
+                key={cause.index}
+                isLoading={isLoading}
+                voteCount={voteCount}
+                maxVoteCount={maxVoteCount}
+                causesVoteCount={causesVoteCount}
+                ended={ended}
+                cause={cause}
+                vote={votes ? votes[cause.index] : null}
+                account={account}
+                onVoteIndex={this.handleVoteIndex}
+              />
+            ))}
+
+          </div>
         </div>
       </div>
     );
