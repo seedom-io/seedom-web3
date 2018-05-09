@@ -295,6 +295,18 @@ const ethereumMiddleware = (store) => {
     });
   };
 
+  const checkUser = () => {
+    if (!network || !network.supported || !network.deployed || !account) {
+      return;
+    }
+
+    store.dispatch({
+      type: 'ETHEREUM_USER',
+      network,
+      account
+    });
+  };
+
   const setupNetwork = (id) => {
     // see if we are already on this network
     if (network && (id === network.id)) {
@@ -329,17 +341,9 @@ const ethereumMiddleware = (store) => {
       type: 'ETHEREUM_NETWORK',
       network
     });
-  };
-  const checkUser = () => {
-    if (!network || !network.supported || !network.deployed || !account) {
-      return;
-    }
 
-    store.dispatch({
-      type: 'ETHEREUM_USER',
-      network,
-      account
-    });
+    // see if user established
+    checkUser();
   };
 
   const checkNetwork = () => {
@@ -352,9 +356,22 @@ const ethereumMiddleware = (store) => {
     // use plugin network
     clientWeb3.eth.net.getId((error, id) => {
       setupNetwork(id);
-      // see if user established
-      checkUser();
     });
+  };
+
+  const setupAccount = (newAccount) => {
+    if (newAccount === account) {
+      return;
+    }
+
+    account = newAccount;
+    store.dispatch({
+      type: 'ETHEREUM_ACCOUNT',
+      account
+    });
+
+    // see if user established
+    checkUser();
   };
 
   const checkAccount = () => {
@@ -364,15 +381,7 @@ const ethereumMiddleware = (store) => {
 
     clientWeb3.eth.getAccounts((error, newAccounts) => {
       const [newAccount] = newAccounts;
-      if (newAccount !== account) {
-        account = newAccount;
-        store.dispatch({
-          type: 'ETHEREUM_ACCOUNT',
-          account
-        });
-        // see if user established
-        checkUser();
-      }
+      setupAccount(newAccount);
     });
   };
 

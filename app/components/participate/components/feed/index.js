@@ -78,7 +78,6 @@ class FeedItem extends Component {
     return (
       <div
         className="row"
-        key={`${item.transactionHash}-${item.transactionIndex}`}
         onClick={() => { this.openTransaction(item.transactionHash); }}
       >
         <div className="icon">
@@ -112,7 +111,6 @@ class FeedItem extends Component {
       </div>
     );
   }
-
 }
 
 class Feed extends Component {
@@ -147,7 +145,11 @@ class Feed extends Component {
         <div className="seedom-feed">
           <div className="list">
             {feed.map((item) => (
-              <FeedItem item={item} network={network} />
+              <FeedItem
+                key={`${item.transactionHash}-${item.transactionIndex}`}
+                item={item}
+                network={network}
+              />
             ))}
           </div>
         </div>
