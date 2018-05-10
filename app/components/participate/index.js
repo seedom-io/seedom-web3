@@ -9,7 +9,6 @@ import Puck from './components/puck';
 import Stats from './components/stats';
 import Feed from './components/feed';
 import About from './components/about';
-import Footer from './components/footer';
 import './index.scss';
 
 class Participate extends Component {
@@ -144,7 +143,6 @@ class Participate extends Component {
           ref={(component) => { this.about = component; }}
         />
         <Feed feed={feed} network={network} />
-        <Footer network={network} primaryContractAddresses={primaryContractAddresses} />
       </div>
     );
   }

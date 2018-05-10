@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as etherscan from '../../../../utils/etherscan';
+import * as etherscan from '../../../../../../utils/etherscan';
 import './index.scss';
 
 class Footer extends Component {
@@ -21,14 +21,8 @@ class Footer extends Component {
     }
 
     return (
-      <div className="seedom-participate-footer">
-        <div className="container">
-          <div className="content has-text-centered">
-            <p>
-              View live <strong>Seedom</strong> data on <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network.name, primaryContractAddresses.fundraiser)}>Etherscan</a>.
-            </p>
-          </div>
-        </div>
+      <div className="seedom-participate-puck-footer">
+        View live contract data on <a className="is-green" target="_blank" href={etherscan.getAddressUrl(network.name, primaryContractAddresses.fundraiser)}>Etherscan</a>
       </div>
     );
   }

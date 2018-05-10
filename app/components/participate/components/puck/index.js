@@ -19,6 +19,7 @@ import Network from './components/network';
 import Account from './components/account';
 import ParticipationFailed from './components/participationFailed';
 import Badge from './components/badge';
+import Footer from './components/footer';
 import seedomLogo from '../../../../../../seedom-assets/logo/o/seedom-o-white-transparent.svg';
 import './index.scss';
 
@@ -315,6 +316,7 @@ class Puck extends Component {
           <Cancel isShown={component === 'cancel'} isLoading={isLoading} cause={cause} onCancel={this.handleCancel} />
           <Cancelled isShown={component === 'cancelled'} cause={cause} />
         </div>
+        <Footer network={network} primaryContractAddresses={primaryContractAddresses} />
       </div>
     );
   }

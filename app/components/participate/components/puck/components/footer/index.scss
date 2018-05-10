@@ -1,0 +1,17 @@
+@import '../../../../../../sass/theme.scss';
+
+.seedom-participate-puck-footer {
+  position: relative;
+  width: 100%;
+  padding-top: $medium-padding;
+  padding-left: $medium-padding;
+  padding-right: $medium-padding;
+  text-shadow: black 0px 0 20px;
+  text-align: center;
+  color: white;
+
+  @include tablet {
+    padding-top: $large-padding;
+  }
+
+}
