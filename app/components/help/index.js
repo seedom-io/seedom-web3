@@ -114,7 +114,7 @@ class Help extends Sections {
               Each entry is intended to cost $2 USD in Ether at the beginning of each ten day fundraiser. Enter quickly as we expect this price to fluctuate due to the volatility of Ether. The number of entries you choose increases your likelihood of being chosen the random winner.
               <br />
               <br />
-              Your public message to the world be anything you want! It could be your name. It could be your favorite catchphrase or even the name of your Cryptokitty. Anything at all. The beauty about Seedom is that there is no censorship and since Seedom runs on the blockchain, your message is publicly visible and permanent. Even better is that your message will actually affect how the random winner selection process works.
+              Your public message to the world can be anything you want! It could be your name. It could be your favorite catchphrase or even the name of your Cryptokitty. Anything at all. The beauty about Seedom is that there is no censorship and since Seedom runs on the blockchain, your message is publicly visible and permanent. Even better is that your message will actually affect how the random winner selection process works.
             </Collapse>
             <Collapse
               title="Finding out if you won"
