@@ -22,6 +22,8 @@ class PressReleaseGraceRefugeeAid extends Sections {
           <br />
 
           <img alt="GRACEAid" src={graceAidLogo} />
+          <br />
+          <i>Photo Credit: Aris Messinis</i>
         </p>
 
         <br />
