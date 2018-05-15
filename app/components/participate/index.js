@@ -9,6 +9,7 @@ import Puck from './components/puck';
 import Stats from './components/stats';
 import Feed from './components/feed';
 import About from './components/about';
+import Background from './components/background';
 import './index.scss';
 
 class Participate extends Component {
@@ -102,41 +103,40 @@ class Participate extends Component {
 
     return (
       <div className="seedom-seed">
-        <div className="background">
-          <Header deployment={deployment} network={network} />
-          <div className="central">
-            <Stats
-              side="left"
-              deployment={deployment}
-              state={state}
-              cause={cause}
-              ticker={ticker}
-            />
-            <Puck
-              network={network}
-              account={account}
-              deployment={deployment}
-              cause={cause}
-              state={state}
-              participant={participant}
-              balances={balances}
-              isLoading={isLoading}
-              primaryContractAddresses={primaryContractAddresses}
-              onParticipate={this.handleParticipate}
-              onRaise={this.handleRaise}
-              onWithdraw={this.handleWithdraw}
-              onCancel={this.handleCancel}
-              onPlay={this.handlePlay}
-            />
-            <Stats
-              side="right"
-              deployment={deployment}
-              state={state}
-              cause={cause}
-              ticker={ticker}
-              causesVoteCount={causesVoteCount}
-            />
-          </div>
+        <Header deployment={deployment} network={network} />
+        <div className="central">
+          <Background cause={cause} />
+          <Stats
+            side="left"
+            deployment={deployment}
+            state={state}
+            cause={cause}
+            ticker={ticker}
+          />
+          <Puck
+            network={network}
+            account={account}
+            deployment={deployment}
+            cause={cause}
+            state={state}
+            participant={participant}
+            balances={balances}
+            isLoading={isLoading}
+            primaryContractAddresses={primaryContractAddresses}
+            onParticipate={this.handleParticipate}
+            onRaise={this.handleRaise}
+            onWithdraw={this.handleWithdraw}
+            onCancel={this.handleCancel}
+            onPlay={this.handlePlay}
+          />
+          <Stats
+            side="right"
+            deployment={deployment}
+            state={state}
+            cause={cause}
+            ticker={ticker}
+            causesVoteCount={causesVoteCount}
+          />
         </div>
         <About
           cause={cause}

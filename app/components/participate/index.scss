@@ -4,62 +4,54 @@
   display: flex;
   flex-direction: column;
 
-  > .background {
+  .central {
     display: flex;
     flex-direction: column;
-    background-image: url('../../img/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    align-items: center;
+    position: relative;
 
-    .central {
-      display: flex;
+    .seedom-stats {
+      flex: none;
+    }
+
+    .seedom-puck {
+      width: 100%;
+      margin-top: $medium-padding;
+      margin-bottom: $medium-padding;
+    }
+
+    @include tablet {
       flex-direction: column;
-      align-items: center;
+
+      .seedom-puck {
+        width: 70%;
+        margin-top: $large-padding;
+        margin-bottom: $large-padding;
+      }
+
+    }
+
+    @include desktop {
+      flex-direction: row;
 
       .seedom-stats {
-        flex: none;
+        flex: 0.2;
       }
 
       .seedom-puck {
-        width: 100%;
-        margin-top: $medium-padding;
-        margin-bottom: $medium-padding;
+        flex: 0.6;
+      }
+    }
+
+    @include fullhd {
+      flex-direction: row;
+
+      .seedom-stats {
+        flex: 0.3;
       }
 
-      @include tablet {
-        flex-direction: column;
-
-        .seedom-puck {
-          width: 70%;
-          margin-top: $large-padding;
-          margin-bottom: $large-padding;
-        }
-
-      }
-
-      @include desktop {
-        flex-direction: row;
-
-        .seedom-stats {
-          flex: 0.2;
-        }
-
-        .seedom-puck {
-          flex: 0.6;
-        }
-      }
-
-      @include fullhd {
-        flex-direction: row;
-
-        .seedom-stats {
-          flex: 0.3;
-        }
-
-        .seedom-puck {
-          flex: 0.4;
-        }
+      .seedom-puck {
+        flex: 0.4;
       }
     }
   }

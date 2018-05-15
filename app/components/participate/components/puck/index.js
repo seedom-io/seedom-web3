@@ -78,16 +78,6 @@ const getComponent = ({
     return 'network';
   }
 
-  // account check
-  if (!account) {
-    return 'account';
-  }
-
-  // balances?
-  if (balances && (Object.keys(balances).length > 0) && isWithdrawing) {
-    return 'withdraw';
-  }
-
   // wait for state
   if (!state) {
     return null;
@@ -96,6 +86,16 @@ const getComponent = ({
   // selection?
   if (!bytes.isZero20(state.participant)) {
     return 'selection';
+  }
+
+  // account check
+  if (!account) {
+    return 'account';
+  }
+
+  // balances?
+  if (balances && (Object.keys(balances).length > 0) && isWithdrawing) {
+    return 'withdraw';
   }
 
   // cancelled?
@@ -309,8 +309,8 @@ class Puck extends Component {
           <Participation isShown={component === 'participation'} participant={participant} cause={cause} onRaising={this.handleRaising} onBadging={this.handleBadging} onPlay={onPlay} />
           <ParticipationFailed isShown={component === 'participationFailed'} cause={cause} />
           <Raise isShown={component === 'raise'} deployment={deployment} cause={cause} isLoading={isLoading} onRaise={this.handleRaise} onRaisingCancelled={this.handleRaisingCancelled} onPlay={onPlay} />
-          <Reveal isShown={component === 'reveal'} cause={cause} />
-          <End isShown={component === 'end'} />
+          <Reveal isShown={component === 'reveal'} />
+          <End isShown={component === 'end'} cause={cause} />
           <Selection isShown={component === 'selection'} state={state} network={network} cause={cause} />
           <Withdraw isShown={component === 'withdraw'} balances={balances} isLoading={isLoading} onWithdraw={this.handleWithdraw} onWithdrawSkipped={this.handleWithdrawSkipped} />
           <Cancel isShown={component === 'cancel'} isLoading={isLoading} cause={cause} onCancel={this.handleCancel} />

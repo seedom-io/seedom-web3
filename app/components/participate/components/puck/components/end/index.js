@@ -2,15 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Content from '../content';
 import Indicator from '../indicator';
+import CauseLogo from '../../../../../causeLogo';
 
 class End extends Content {
   static propTypes = {
-    isShown: PropTypes.bool.isRequired
+    isShown: PropTypes.bool.isRequired,
+    cause: PropTypes.shape()
+  };
+
+  static defaultProps = {
+    cause: null
   };
 
   render() {
     const { className } = this.state;
-    const { isShown } = this.props;
+    const { isShown, cause } = this.props;
 
     return (
       <div className={`seedom-content end ${className}`}>
@@ -20,10 +26,10 @@ class End extends Content {
             <span>please wait for</span>
           </div>
           <div className="division text center">
-            <div className="seedom-logo" />
+            <CauseLogo cause={cause} onClick={this.handlePlay} />
           </div>
           <div className="division text bottom small-pad narrow">
-            <span>to end the fundraiser</span>
+            <span>to end their fundraiser</span>
           </div>
         </div>
       </div>
