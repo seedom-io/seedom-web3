@@ -37,6 +37,7 @@ import Help from './components/help';
 import About from './components/about';
 import Contact from './components/contact';
 import PressRelease from './components/press-release';
+import PressReleaseGraceRefugeeAid from './components/press-release/grace-refugee-aid';
 
 const reducers = () => {
   return combineReducers({
@@ -77,6 +78,8 @@ const Routes = () => (
     <Route path="/about" component={About} />
     <Route path="/contact" component={Contact} />
     <Route path="/announce-beta-giveth" component={PressRelease} />
+    <Route path="/announce-grace-refugee-aid" component={PressReleaseGraceRefugeeAid} />
+
   </div>
 );
 
