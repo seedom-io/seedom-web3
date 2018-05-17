@@ -4,7 +4,7 @@ import { toastr } from 'react-redux-toastr';
 const PAST_BLOCKS_BACK = 10000;
 const MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
 const GAS = 200000;
-const GAS_PRICE = 10000000000;
+const GAS_PRICE = 12000000000;
 
 const getNetworkName = (id) => {
   switch (id) {
@@ -43,6 +43,7 @@ const ethereumMiddleware = (store) => {
   let network;
   const contracts = {};
   const primaryContractAddresses = {};
+  let lastEvent;
 
   const getContract = (name) => {
     return contracts[name];
@@ -127,6 +128,10 @@ const ethereumMiddleware = (store) => {
     toastr.error('ETHEREUM ERROR', finalMessage);
   };
 
+  const handleTransactionHash = (transactionHash, action) => {
+    store.dispatch({ ...action, type: 'ETHEREUM_SEND_TRANSACTION_HASH', transactionHash });
+  };
+
   const handleSendSuccess = (action) => {
     store.dispatch({ ...action, type: 'ETHEREUM_SEND_SUCCESS' });
   };
@@ -151,6 +156,9 @@ const ethereumMiddleware = (store) => {
       transaction
         .on('error', (sendError) => {
           handleSendError(sendError, action);
+        })
+        .on('transactionHash', (transactionHash) => {
+          handleTransactionHash(transactionHash, action);
         })
         .on('confirmation', (confirmationNumber) => {
           if (confirmationNumber === 0) {
@@ -249,6 +257,21 @@ const ethereumMiddleware = (store) => {
     return true;
   };
 
+  const haveEvent = (event) => {
+    if (!lastEvent) {
+      return false;
+    }
+
+    if (
+      (lastEvent.transactionHash === event.transactionHash)
+      && (lastEvent.transactionIndex === event.transactionIndex)
+    ) {
+      return true;
+    }
+
+    return false;
+  };
+
   const setupContractEventHandler = (
     contractName,
     release,
@@ -258,6 +281,19 @@ const ethereumMiddleware = (store) => {
     release.server.events.allEvents({
       fromBlock: fromBlockNumber
     }, (error, result) => {
+      // ignore errors
+      if (error) {
+        return;
+      }
+
+      // see if we already processed this event
+      if (haveEvent(result)) {
+        return;
+      }
+
+      // save last event
+      lastEvent = result;
+      // dispatch new event
       store.dispatch({
         type: 'ETHEREUM_EVENT',
         eventName: result.event.toUpperCase(),
