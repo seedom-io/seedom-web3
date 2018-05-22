@@ -294,6 +294,14 @@ class Puck extends Component {
     return (
       <div className="seedom-puck">
         <div className="intro">
+          <div className="tagline">
+            <div>
+              <span className="bold">fun</span>draising
+            </div>
+            <div>
+              evolved
+            </div>
+          </div>
           <img alt="seedom" src={seedomLogo} />
         </div>
         <div className="interface">

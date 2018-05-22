@@ -10,14 +10,50 @@
   .intro {
     position: absolute;
     left: 0; top: 0; right: 0; bottom: 0;
-    animation: $intro-duration ease-in-out 0s 1 zoom-in-out, $intro-duration ease-in-out 0s 1 wow;
-    animation-fill-mode: forwards;
+
+    .tagline {
+      position: absolute;
+      left: 0; top: 0; right: 0; bottom: 0;
+      color: white;
+      font-size: 50px;
+      transform: scale(0);
+      animation:
+        $intro-tagline-duration ease-in $intro-tagline-delay 1 zoom-in,
+        $intro-tagline-duration ease-in-out $intro-tagline-delay 1 wow;
+      animation-fill-mode: forwards;
+      transform-origin: center center;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      line-height: 1.5em;
+      text-transform: uppercase;
+
+      .bold {
+        font-family: 'CamphorPro Heavy';
+        font-weight: bold;
+      }
+
+    }
+
+    img {
+      position: absolute;
+      left: 0; top: 0; right: 0; bottom: 0;
+      transform: scale(0);
+      animation:
+        $intro-img-duration ease-in-out $intro-img-delay 1 zoom-in-out,
+        $intro-img-duration ease-in-out $intro-img-delay 1 fade-in;
+      animation-fill-mode: forwards;
+      transform-origin: center center;
+    }
+
   }
 
   .interface {
     width: 100%;
     transform: scale(0);
-    animation: $puck-duration ease-out $intro-duration 1 zoom-in;
+    animation: $puck-duration ease-out $puck-delay 1 zoom-in;
     animation-fill-mode: forwards;
     font-family: 'CamphorPro Regular';
     position: relative;

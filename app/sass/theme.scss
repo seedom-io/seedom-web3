@@ -33,9 +33,13 @@ $revelation-phase: lighten($participation-phase, 10%);
 $puck-input-background: lighten($revelation-phase, 10%);
 
 $stagger-duration: 0.7s;
-$intro-duration: 1.5s;
+$intro-tagline-duration: 3s;
+$intro-tagline-delay: 0s;
+$intro-img-duration: 2s;
+$intro-img-delay: $intro-tagline-duration - $stagger-duration;
 $puck-duration: 1s;
-$participation-phase-delay: $intro-duration + $puck-duration - $stagger-duration;
+$puck-delay: $intro-tagline-duration + $intro-img-duration - $stagger-duration;
+$participation-phase-delay: $puck-delay + $puck-duration - $stagger-duration;
 $participation-phase-duration: 1s;
 $revelation-phase-delay: $participation-phase-delay + $participation-phase-duration - $stagger-duration;
 $revelation-phase-duration: 1s;
