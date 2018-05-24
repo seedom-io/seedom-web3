@@ -2,13 +2,6 @@ import * as ethereumActions from '../actions/ethereum';
 import * as fundraiserParser from '../parsers/fundraiser';
 
 const fundraiserMiddleware = store => {
-  const handleDeployment = (next, action) => {
-    return next({
-      type: 'FUNDRAISER_DEPLOYMENT',
-      deployment: fundraiserParser.parseDeployment(action.data)
-    });
-  };
-
   const handleState = (next, action) => {
     return next({
       type: 'FUNDRAISER_STATE',
@@ -32,8 +25,6 @@ const fundraiserMiddleware = store => {
 
     const { method } = action;
     switch (method) {
-      case 'deployment':
-        return handleDeployment(next, action);
       case 'state':
         return handleState(next, action);
       case 'participants':
@@ -50,6 +41,13 @@ const fundraiserMiddleware = store => {
     });
   };
 
+  const handleDeployments = (next, action) => {
+    return next({
+      type: 'FUNDRAISER_DEPLOYMENTS',
+      deployments: fundraiserParser.parseDeployments(action.data)
+    });
+  };
+
   const handleEthereumAllCallData = (next, action) => {
     const { contractName } = action;
     // only check for fundraiser data
@@ -61,6 +59,8 @@ const fundraiserMiddleware = store => {
     switch (method) {
       case 'balance':
         return handleBalances(next, action);
+      case 'deployment':
+        return handleDeployments(next, action);
       default:
         return next(action);
     }
@@ -78,8 +78,8 @@ const fundraiserMiddleware = store => {
     const { primaryContractAddresses } = state.ethereum;
     const { contractAddresses } = action;
     if (contractAddresses.indexOf(primaryContractAddresses.fundraiser) > -1) {
-      store.dispatch(ethereumActions.call({ contractName: 'fundraiser', method: 'deployment' }));
       store.dispatch(ethereumActions.call({ contractName: 'fundraiser', method: 'state' }));
+      store.dispatch(ethereumActions.allCall({ contractName: 'fundraiser', method: 'deployment' }));
     }
     return next(action);
   };

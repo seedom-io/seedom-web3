@@ -15,13 +15,14 @@ import './index.scss';
 class Participate extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    ethereum: PropTypes.shape().isRequired,
-    cause: PropTypes.shape(),
+    ethereum: PropTypes.shape(),
+    causes: PropTypes.shape(),
     ticker: PropTypes.shape()
   };
 
   static defaultProps = {
-    cause: null,
+    ethereum: null,
+    causes: null,
     ticker: null
   };
 
@@ -44,14 +45,18 @@ class Participate extends Component {
   }
 
   handleParticipate = ({ message, entries, email }) => {
-    const { deployment, account } = this.props.ethereum;
-    const { cause } = this.props;
+    const { deployments, primaryContractAddresses, account } = this.props.ethereum;
+    const deployment = deployments[primaryContractAddresses.fundraiser];
+    const { causes } = this.props;
+    const cause = causes[primaryContractAddresses.fundraiser];
     const messageHex = messages.hex(message);
     const value = entries.times(deployment.valuePerEntry);
+
     // dispatch to ethereum
     this.props.dispatch(ethereumActions.send({
       contractName: 'fundraiser', method: 'participate', args: [messageHex], value
     }));
+
     // send to mailerlite
     if (email !== '') {
       axios.post('/mailerlite/addParticipant', {
@@ -61,12 +66,14 @@ class Participate extends Component {
         message
       });
     }
+
     // play the video!
     this.handlePlay();
   };
 
   handleRaise = (entries) => {
-    const { deployment } = this.props.ethereum;
+    const { deployments, primaryContractAddresses } = this.props.ethereum;
+    const deployment = deployments[primaryContractAddresses.fundraiser];
     const value = entries.times(deployment.valuePerEntry);
     this.props.dispatch(ethereumActions.send({
       contractName: 'fundraiser', value
@@ -86,10 +93,15 @@ class Participate extends Component {
   };
 
   render() {
+    const { ethereum } = this.props;
+    if (!ethereum) {
+      return null;
+    }
+
     const {
       network,
       account,
-      deployment,
+      deployments,
       state,
       participant,
       balances,
@@ -97,9 +109,16 @@ class Participate extends Component {
       isLoading,
       primaryContractAddresses,
       causesVoteCount
-    } = this.props.ethereum;
+    } = ethereum;
 
-    const { cause, ticker } = this.props;
+    const { causes, ticker } = this.props;
+    if (!deployments || !causes) {
+      return null;
+    }
+
+    // get primary deployment & cause
+    const deployment = deployments[primaryContractAddresses.fundraiser];
+    const cause = causes[primaryContractAddresses.fundraiser];
 
     return (
       <div className="seedom-seed">
@@ -151,7 +170,7 @@ class Participate extends Component {
 const mapStateToProps = state => {
   return {
     ethereum: state.ethereum,
-    cause: state.cause,
+    causes: state.causes,
     ticker: state.ticker
   };
 };

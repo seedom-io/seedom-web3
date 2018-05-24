@@ -5,6 +5,7 @@ const PAST_BLOCKS_BACK = 10000;
 const MAX_LAST_BLOCK_AGE = 60 * 1000; // 60 seconds
 const GAS = 200000;
 const GAS_PRICE = 12000000000;
+const POLL_DELAY = 1000; // 1 second
 
 const getNetworkName = (id) => {
   switch (id) {
@@ -225,6 +226,7 @@ const ethereumMiddleware = (store) => {
       return false;
     }
 
+    const contractAddresses = {};
     // set all contracts (last six)
     for (const contractName in ethDeployments) {
       const releases = ethDeployments[contractName];
@@ -233,6 +235,13 @@ const ethereumMiddleware = (store) => {
         if (!(contractName in primaryContractAddresses)) {
           primaryContractAddresses[contractName] = release.address;
         }
+
+        // create array for ordered contract addresses
+        if (!(contractName in contractAddresses)) {
+          contractAddresses[contractName] = [];
+        }
+        // save contract addresses in order
+        contractAddresses[contractName].push(release.address);
 
         if (!(contractName in contracts)) {
           contracts[contractName] = {};
@@ -250,8 +259,9 @@ const ethereumMiddleware = (store) => {
 
     // dispatch primary contract addresses
     store.dispatch({
-      type: 'ETHEREUM_PRIMARY_CONTRACT_ADDRESSES',
-      primaryContractAddresses
+      type: 'ETHEREUM_CONTRACT_ADDRESSES',
+      primaryContractAddresses,
+      contractAddresses
     });
 
     return true;
@@ -446,12 +456,16 @@ const ethereumMiddleware = (store) => {
     }
   };
 
-  // set up client web3 change detection polling
-  setInterval(() => {
+  const check = () => {
     checkNetwork();
     checkAccount();
     checkRefresh();
-  }, 1000);
+  };
+
+  check();
+  setInterval(() => {
+    check();
+  }, POLL_DELAY);
 
   return next => action => {
     const { type } = action;

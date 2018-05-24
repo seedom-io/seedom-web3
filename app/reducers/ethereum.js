@@ -14,14 +14,18 @@ const handleEthereumSendError = (prevState) => {
   return newState;
 };
 
-const ethereumReducer = (prevState = {}, action) => {
+const ethereumReducer = (prevState = null, action) => {
   switch (action.type) {
     case 'ETHEREUM_NETWORK':
       return { ...prevState, network: action.network };
     case 'ETHEREUM_ACCOUNT':
       return { ...prevState, account: action.account };
-    case 'ETHEREUM_PRIMARY_CONTRACT_ADDRESSES':
-      return { ...prevState, primaryContractAddresses: action.primaryContractAddresses };
+    case 'ETHEREUM_CONTRACT_ADDRESSES':
+      return {
+        ...prevState,
+        primaryContractAddresses: action.primaryContractAddresses,
+        contractAddresses: action.contractAddresses
+      };
     case 'ETHEREUM_SEND':
       return handleEthereumSend(prevState, action);
     case 'ETHEREUM_SEND_ERROR':

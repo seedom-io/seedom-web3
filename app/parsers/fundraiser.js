@@ -6,22 +6,27 @@ const epochToDate = seconds => {
   return new Date(seconds * 1000);
 };
 
-const parseDeployment = deployment => {
-  return {
-    cause: String(deployment._cause),
-    causeWallet: String(deployment._causeWallet),
-    causeSplit: new BigNumber(deployment._causeSplit),
-    participantSplit: new BigNumber(deployment._participantSplit),
-    owner: String(deployment._owner),
-    ownerWallet: String(deployment._ownerWallet),
-    ownerSplit: new BigNumber(deployment._ownerSplit),
-    ownerSecret: String(deployment._ownerSecret),
-    valuePerEntry: new BigNumber(deployment._valuePerEntry),
-    deployTime: epochToDate(deployment._deployTime),
-    endTime: epochToDate(deployment._endTime),
-    expireTime: epochToDate(deployment._expireTime),
-    destructTime: epochToDate(deployment._destructTime)
-  };
+const parseDeployments = deployments => {
+  const finalDeployments = {};
+  for (const contractAddress in deployments) {
+    const deployment = deployments[contractAddress];
+    finalDeployments[contractAddress] = {
+      cause: String(deployment._cause),
+      causeWallet: String(deployment._causeWallet),
+      causeSplit: new BigNumber(deployment._causeSplit),
+      participantSplit: new BigNumber(deployment._participantSplit),
+      owner: String(deployment._owner),
+      ownerWallet: String(deployment._ownerWallet),
+      ownerSplit: new BigNumber(deployment._ownerSplit),
+      ownerSecret: String(deployment._ownerSecret),
+      valuePerEntry: new BigNumber(deployment._valuePerEntry),
+      deployTime: epochToDate(deployment._deployTime),
+      endTime: epochToDate(deployment._endTime),
+      expireTime: epochToDate(deployment._expireTime),
+      destructTime: epochToDate(deployment._destructTime)
+    };
+  }
+  return finalDeployments;
 };
 
 const parseState = state => {
@@ -104,7 +109,7 @@ const parseBalances = balances => {
 };
 
 export {
-  parseDeployment,
+  parseDeployments,
   parseState,
   parseBeginning,
   parseParticipant,

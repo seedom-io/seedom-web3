@@ -14,13 +14,13 @@ import reduceReducers from './utils/reduceReducers';
 import pollingReducer from './reducers/polling';
 import fundraiserReducer from './reducers/fundraiser';
 import ethereumReducer from './reducers/ethereum';
-import causeReducer from './reducers/cause';
+import causesReducer from './reducers/causes';
 import tickerReducer from './reducers/ticker';
 
 import pollingMiddleware from './middleware/polling';
 import fundraiserMiddleware from './middleware/fundraiser';
 import ethereumMiddleware from './middleware/ethereum';
-import causeMiddleware from './middleware/cause';
+import causesMiddleware from './middleware/causes';
 import tickerMiddleware from './middleware/ticker';
 
 import './sass/bulma.scss';
@@ -46,7 +46,7 @@ const reducers = () => {
       fundraiserReducer,
       pollingReducer
     ),
-    cause: causeReducer,
+    causes: causesReducer,
     ticker: tickerReducer,
     toastr: toastrReducer,
     router: routerReducer
@@ -58,7 +58,7 @@ const middlewares = (history) => {
     ethereumMiddleware,
     fundraiserMiddleware,
     pollingMiddleware,
-    causeMiddleware,
+    causesMiddleware,
     tickerMiddleware
   ];
 

@@ -11,7 +11,11 @@ import './index.scss';
 
 class Vote extends Component {
   static propTypes = {
-    ethereum: PropTypes.shape().isRequired
+    ethereum: PropTypes.shape()
+  };
+
+  static defaultProps = {
+    ethereum: null
   };
 
   handleVoteName = ({ name, count }) => {
@@ -28,18 +32,23 @@ class Vote extends Component {
   };
 
   render() {
+    const { ethereum } = this.props;
+    if (!ethereum) {
+      return null;
+    }
+
     const {
       maxVoteCount,
       causes,
       causesVoteCount,
       votes,
       voteCount,
-      deployment,
+      deployments,
       account,
-      isLoading
-    } = this.props.ethereum;
-
-    if (!causes || !deployment) {
+      isLoading,
+      primaryContractAddresses
+    } = ethereum;
+    if (!causes || !deployments) {
       return null;
     }
 
@@ -47,6 +56,9 @@ class Vote extends Component {
     const sortedCauses = [...causes].sort((a, b) => {
       return b.voteCount.comparedTo(a.voteCount);
     });
+
+    // get primary deployment
+    const deployment = deployments[primaryContractAddresses.fundraiser];
 
     const ended = (new Date()) >= deployment.endTime;
 

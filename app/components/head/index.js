@@ -7,7 +7,7 @@ import favicon from '../../../../seedom-assets/logo/o/seedom-o-black-transparent
 
 const name = 'Seedom';
 const author = 'Team Palm Tree';
-const title = 'Seedom | FUNdraising evolved';
+const title = 'Seedom | FUNdraising Evolved';
 const description = 'Raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support, similar to a raffle!';
 const image = 'https://raw.githubusercontent.com/seedom-io/seedom-assets/master/share/seedom-share.png';
 const imageWidth = 1200;

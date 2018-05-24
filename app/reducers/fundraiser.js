@@ -10,9 +10,9 @@ const updateFeed = (feed, action) => {
   return newFeed;
 };
 
-const handleDeployment = (prevState, action) => {
+const handleDeployments = (prevState, action) => {
   const newState = getNewState(prevState);
-  newState.deployment = action.deployment;
+  newState.deployments = action.deployments;
   return newState;
 };
 
@@ -142,10 +142,10 @@ const handleWithdrawal = (prevState, action) => {
   return newState;
 };
 
-const fundraiserReducer = (prevState = {}, action) => {
+const fundraiserReducer = (prevState = null, action) => {
   switch (action.type) {
-    case 'FUNDRAISER_DEPLOYMENT':
-      return handleDeployment(prevState, action);
+    case 'FUNDRAISER_DEPLOYMENTS':
+      return handleDeployments(prevState, action);
     case 'FUNDRAISER_STATE':
       return handleState(prevState, action);
     case 'FUNDRAISER_PARTICIPANT':

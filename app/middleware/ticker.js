@@ -1,25 +1,22 @@
 import axios from 'axios';
 
-const coinMarketCapTickerUrl = 'https://api.coinmarketcap.com/v2/ticker/1027/';
+const TICKER_URL = 'https://api.coinmarketcap.com/v2/ticker/1027/';
+const POLL_DELAY = 3600000; // 1 hour
 
 const tickerMiddleware = store => {
-  const handleFundraiserDeployment = (next, action) => {
-    axios.get(coinMarketCapTickerUrl)
+  const updateTicker = () => {
+    axios.get(TICKER_URL)
       .then((ticker) => {
         store.dispatch({ type: 'TICKER', ticker: ticker.data.data });
       });
-    return next(action);
   };
 
-  return next => action => {
-    const { type } = action;
-    switch (type) {
-      case 'FUNDRAISER_DEPLOYMENT':
-        return handleFundraiserDeployment(next, action);
-      default:
-        return next(action);
-    }
-  };
+  updateTicker();
+  setInterval(() => {
+    updateTicker();
+  }, POLL_DELAY);
+
+  return next => action => next(action);
 };
 
 export default tickerMiddleware;

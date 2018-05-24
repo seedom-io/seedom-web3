@@ -101,7 +101,7 @@ const handleFundraiserParticipation = (prevState, action) => {
   return newState;
 };
 
-const pollingReducer = (prevState = {}, action) => {
+const pollingReducer = (prevState = null, action) => {
   switch (action.type) {
     case 'POLLING_MAX_VOTE_COUNT':
       return handleMaxVoteCount(prevState, action);
