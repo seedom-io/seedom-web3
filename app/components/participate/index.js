@@ -102,7 +102,7 @@ class Participate extends Component {
       network,
       account,
       deployments,
-      state,
+      states,
       participant,
       balances,
       feed,
@@ -110,15 +110,15 @@ class Participate extends Component {
       primaryContractAddresses,
       causesVoteCount
     } = ethereum;
-
-    const { causes, ticker } = this.props;
-    if (!deployments || !causes) {
+    if (!primaryContractAddresses) {
       return null;
     }
 
-    // get primary deployment & cause
-    const deployment = deployments[primaryContractAddresses.fundraiser];
-    const cause = causes[primaryContractAddresses.fundraiser];
+    const { causes, ticker } = this.props;
+    // get primary deployment, state, and cause
+    const deployment = deployments && deployments[primaryContractAddresses.fundraiser];
+    const state = states && states[primaryContractAddresses.fundraiser];
+    const cause = causes && causes[primaryContractAddresses.fundraiser];
 
     return (
       <div className="seedom-seed">

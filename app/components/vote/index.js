@@ -48,7 +48,7 @@ class Vote extends Component {
       isLoading,
       primaryContractAddresses
     } = ethereum;
-    if (!causes || !deployments) {
+    if (!primaryContractAddresses || !causes) {
       return null;
     }
 
@@ -58,7 +58,7 @@ class Vote extends Component {
     });
 
     // get primary deployment
-    const deployment = deployments[primaryContractAddresses.fundraiser];
+    const deployment = deployments && deployments[primaryContractAddresses.fundraiser];
 
     const ended = (new Date()) >= deployment.endTime;
 

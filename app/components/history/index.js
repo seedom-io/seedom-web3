@@ -1,19 +1,54 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { localeNumber, localeDecimal, getEtherFromWei } from '../../utils/numbers';
+import CauseLogo from '../causeLogo';
 import './index.scss';
 
 class Fundraiser extends Component {
   static propTypes = {
     cause: PropTypes.shape().isRequired,
-    deployment: PropTypes.shape().isRequired
+    deployment: PropTypes.shape().isRequired,
+    state: PropTypes.shape().isRequired
   };
 
   render() {
-    const { cause } = this.props;
+    const { cause, deployment, state } = this.props;
+    const totalRaised = getEtherFromWei(state.entries.times(deployment.valuePerEntry));
+    const causeReward = totalRaised.times(deployment.causeSplit).dividedBy(1000);
+    const causeRewardEther = localeDecimal(causeReward, 3);
     return (
       <div className="row">
-        {cause.name}
+
+        <div className="bit begin">
+          <CauseLogo cause={cause} size="badge" />
+        </div>
+
+        <div className="bit header-normal stretch">
+          {cause.name}
+        </div>
+
+        <div className="bit">
+          <div className="bit header">
+            participants
+          </div>
+          <div className="bit">
+            {state.participants.toString()}
+          </div>
+        </div>
+
+        <div className="bit">
+          <div className="bit header">
+            raised
+          </div>
+          <div className="bit">
+            {causeRewardEther}
+            <span className="currency">
+              <i className="fas fa-bars" />
+            </span>
+          </div>
+        </div>
+
       </div>
     );
   }
@@ -36,8 +71,8 @@ class History extends Component {
       return null;
     }
 
-    const { deployments, contractAddresses } = ethereum;
-    if (!deployments || !contractAddresses) {
+    const { deployments, states, contractAddresses } = ethereum;
+    if (!deployments || !states || !contractAddresses) {
       return null;
     }
 
@@ -48,7 +83,8 @@ class History extends Component {
             {contractAddresses.fundraiser.map((contractAddress) => {
               const cause = causes[contractAddress];
               const deployment = deployments[contractAddress];
-              if (!cause || !deployment) {
+              const state = states[contractAddress];
+              if (!cause || !deployment || !state) {
                 return null;
               }
 
@@ -56,6 +92,7 @@ class History extends Component {
                 <Fundraiser
                   cause={cause}
                   deployment={deployment}
+                  state={state}
                 />
               );
             })}

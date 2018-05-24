@@ -29,20 +29,25 @@ const parseDeployments = deployments => {
   return finalDeployments;
 };
 
-const parseState = state => {
-  return {
-    causeSecret: String(state._causeSecret),
-    causeMessage: String(messages.message(state._causeMessage)),
-    causeWithdrawn: Boolean(state._causeWithdrawn),
-    participant: String(state._participant),
-    participantMessage: String(messages.message(state._participantMessage)),
-    participantWithdrawn: Boolean(state._participantWithdrawn),
-    ownerMessage: String(messages.message(state._ownerMessage)),
-    ownerWithdrawn: Boolean(state._participantWithdrawn),
-    cancelled: Boolean(state._cancelled),
-    participants: new BigNumber(state._participants),
-    entries: new BigNumber(state._entries)
-  };
+const parseStates = states => {
+  const finalStates = {};
+  for (const contractAddress in states) {
+    const state = states[contractAddress];
+    finalStates[contractAddress] = {
+      causeSecret: String(state._causeSecret),
+      causeMessage: String(messages.message(state._causeMessage)),
+      causeWithdrawn: Boolean(state._causeWithdrawn),
+      participant: String(state._participant),
+      participantMessage: String(messages.message(state._participantMessage)),
+      participantWithdrawn: Boolean(state._participantWithdrawn),
+      ownerMessage: String(messages.message(state._ownerMessage)),
+      ownerWithdrawn: Boolean(state._participantWithdrawn),
+      cancelled: Boolean(state._cancelled),
+      participants: new BigNumber(state._participants),
+      entries: new BigNumber(state._entries)
+    };
+  }
+  return finalStates;
 };
 
 const parseBeginning = beginning => {
@@ -110,7 +115,7 @@ const parseBalances = balances => {
 
 export {
   parseDeployments,
-  parseState,
+  parseStates,
   parseBeginning,
   parseParticipant,
   parseParticipation,

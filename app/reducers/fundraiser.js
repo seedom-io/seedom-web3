@@ -16,9 +16,9 @@ const handleDeployments = (prevState, action) => {
   return newState;
 };
 
-const handleState = (prevState, action) => {
+const handleStates = (prevState, action) => {
   const newState = getNewState(prevState);
-  newState.state = action.state;
+  newState.states = action.states;
   return newState;
 };
 
@@ -146,8 +146,8 @@ const fundraiserReducer = (prevState = null, action) => {
   switch (action.type) {
     case 'FUNDRAISER_DEPLOYMENTS':
       return handleDeployments(prevState, action);
-    case 'FUNDRAISER_STATE':
-      return handleState(prevState, action);
+    case 'FUNDRAISER_STATES':
+      return handleStates(prevState, action);
     case 'FUNDRAISER_PARTICIPANT':
       return handleParticipant(prevState, action);
     case 'FUNDRAISER_BALANCES':

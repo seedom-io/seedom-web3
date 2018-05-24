@@ -53,7 +53,10 @@
   .interface {
     width: 100%;
     transform: scale(0);
-    animation: $puck-duration ease-out $puck-delay 1 zoom-in;
+    opacity: 0;
+    animation:
+      $puck-duration ease-out $puck-delay 1 zoom-in,
+      $puck-duration ease-out $puck-delay 1 fade-in;
     animation-fill-mode: forwards;
     font-family: 'CamphorPro Regular';
     position: relative;

@@ -2,50 +2,9 @@
 
 .seedom-history {
 
-  .list {
-
-    .row {
-      background-color: $puck-background;
-      color: white;
-      display: flex;
-      flex-direction: row;
-      padding: $small-padding;
-      height: $navbar-height;
-      align-items: center;
-      font-size: 20px;
-
-      .bit {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding-left: $small-padding;
-
-        &.begin {
-          padding-left: 0;
-        }
-
-        &.header {
-          font-weight: bold;
-          text-transform: uppercase;
-        }
-
-        &.header-normal {
-          font-weight: bold;
-        }
-
-        &.stretch {
-          flex: 1;
-        }
-
-        &.shadow {
-          filter: drop-shadow(0px 0px 5px #000000);
-        }
-      }
-    }
-
-    @include desktop {
-      margin-top: $medium-padding;
-      border: 1px solid white;
-    }
+  .row {
+    background-color: $primary;
+    color: black;
   }
+
 }
