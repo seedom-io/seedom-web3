@@ -141,7 +141,7 @@ const getComponent = ({
         return 'participationFailed';
       }
 
-      if (state.causeMessage === '') {
+      if (state.ownerMessage === '') {
         return 'reveal';
       }
 

@@ -83,17 +83,17 @@ class FeedItem extends Component {
         <div className="icon">
           {{
             FUNDRAISER_PARTICIPATION: (
-              <i className="fas fa-arrow-alt-circle-right"></i>
+              <i className="fas fa-arrow-alt-circle-right" />
             ),
             FUNDRAISER_RAISE: (
-              <i className="far fa-arrow-alt-circle-up"></i>
+              <i className="far fa-arrow-alt-circle-up" />
             ),
           }[item.type]}
         </div>
         <div className="contents">
           <div className="side left">
             <div className="blocknum">
-              <i className="fas fa-cube"></i> {item.blockNumber}
+              <i className="fas fa-cube" /> {item.blockNumber}
             </div>
             <div className="address">
               {bytes.shorten(address)}

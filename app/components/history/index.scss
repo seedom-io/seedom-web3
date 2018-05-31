@@ -5,6 +5,15 @@
   .row {
     background-color: $primary;
     color: black;
+
+    .cause {
+      cursor: pointer;
+    }
+
+    .contract {
+      cursor: pointer;
+    }
+
   }
 
 }

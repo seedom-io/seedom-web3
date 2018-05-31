@@ -12,17 +12,6 @@
         "env": {
           "MAILERLITE_KEY": "ab6b0413f13495711540c9f2bcf84e89"
         }
-      },
-      {
-          "type": "node",
-          "request": "launch",
-          "name": "Stage Seed",
-          "cwd": "${workspaceFolder}",
-          "program": "${workspaceFolder}/node_modules/.bin/webpack-dev-server",
-          "args": [
-              "--config",
-              "private/webpack/dev.js"
-          ]
       }
   ]
 }
