@@ -23,7 +23,7 @@ const parseDeployments = deployments => {
       endTime: epochToDate(deployment._endTime),
       expireTime: epochToDate(deployment._expireTime),
       destructTime: epochToDate(deployment._destructTime),
-      goal: new BigNumber(deployment._goal)
+      goal: new BigNumber(deployment._goal ? deployment._goal : 0)
     };
   }
   return finalDeployments;
