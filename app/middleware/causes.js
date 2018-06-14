@@ -11,12 +11,28 @@ const sampleCause = {
 
 const causesMiddleware = store => {
   const handleFundraiserDeployments = (next, action) => {
+    if (process.env.NODE_ENV === 'production') {
+      return handleActualFundraiserDeployments(next, action);
+    } else {
+      return handleSampleFundraiserDeployments(next, action);
+    }
+  };
+
+  const handleActualFundraiserDeployments = (next, action) => {
     // grab the cause json for each deployment
     for (const contractAddress in action.deployments) {
       const deployment = action.deployments[contractAddress];
       axios.get(causesResolver.getJsonUrl(deployment.cause)).then((cause) => {
         store.dispatch({ type: 'CAUSE', contractAddress, cause: cause.data });
       });
+    }
+    return next(action);
+  };
+
+  const handleSampleFundraiserDeployments = (next, action) => {
+    // grab the cause json for each deployment
+    for (const contractAddress in action.deployments) {
+      store.dispatch({ type: 'CAUSE', contractAddress, cause: sampleCause });
     }
     return next(action);
   };

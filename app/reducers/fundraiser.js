@@ -40,7 +40,9 @@ const handleBeginning = (prevState, action) => {
   }
 
   const newState = getNewState(prevState);
-  newState.state.causeSecret = action.beginning.causeSecret;
+  const { primaryContractAddresses } = newState;
+  const newStateState = newState.states[primaryContractAddresses.fundraiser];
+  newStateState.causeSecret = action.beginning.causeSecret;
   return newState;
 };
 
@@ -49,8 +51,10 @@ const handleParticipation = (prevState, action) => {
   if (action.old) {
     newState.feed = updateFeed(newState.feed, action);
   } else {
-    newState.state.participants = newState.state.participants.plus(1);
-    newState.state.entries = newState.state.entries.plus(action.participation.entries);
+    const { primaryContractAddresses } = newState;
+    const newStateState = newState.states[primaryContractAddresses.fundraiser];
+    newStateState.participants = newStateState.participants.plus(1);
+    newStateState.entries = newStateState.entries.plus(action.participation.entries);
     newState.feed = updateFeed(newState.feed, action);
 
     if (action.participation.participant === newState.account) {
@@ -68,7 +72,9 @@ const handleRaise = (prevState, action) => {
   if (action.old) {
     newState.feed = updateFeed(newState.feed, action);
   } else {
-    newState.state.entries = newState.state.entries.plus(action.raise.entries);
+    const { primaryContractAddresses } = newState;
+    const newStateState = newState.states[primaryContractAddresses.fundraiser];
+    newStateState.entries = newStateState.entries.plus(action.raise.entries);
     newState.feed = updateFeed(newState.feed, action);
 
     if (action.raise.participant === newState.account) {
@@ -86,7 +92,9 @@ const handleRevelation = (prevState, action) => {
   }
 
   const newState = getNewState(prevState);
-  newState.state.causeMessage = action.revelation.causeMessage;
+  const { primaryContractAddresses } = newState;
+  const newStateState = newState.states[primaryContractAddresses.fundraiser];
+  newStateState.causeMessage = action.revelation.causeMessage;
   return newState;
 };
 
@@ -96,14 +104,16 @@ const handleSelection = (prevState, action) => {
   }
 
   const newState = getNewState(prevState);
-  newState.state.participant = action.selection.participant;
-  newState.state.participantMessage = action.selection.participantMessage;
-  newState.state.causeMessage = action.selection.causeMessage;
-  newState.state.ownerMessage = action.selection.ownerMessage;
+  const { primaryContractAddresses } = newState;
+  const newStateState = newState.states[primaryContractAddresses.fundraiser];
+  newStateState.participant = action.selection.participant;
+  newStateState.participantMessage = action.selection.participantMessage;
+  newStateState.causeMessage = action.selection.causeMessage;
+  newStateState.ownerMessage = action.selection.ownerMessage;
 
   // update participant balance
   if (action.selection.participant === newState.account) {
-    const { deployment, state, primaryContractAddresses } = newState;
+    const { deployment, state } = newState;
     newState.balances[primaryContractAddresses.fundraiser] =
       state.entries.times(deployment.participantSplit).dividedBy(1000).times(deployment.valuePerEntry);
   }
@@ -117,11 +127,13 @@ const handleCancellation = (prevState, action) => {
   }
 
   const newState = getNewState(prevState);
+  const { primaryContractAddresses } = newState;
+  const newStateState = newState.states[primaryContractAddresses.fundraiser];
   newState.isLoading = false;
-  newState.state.cancelled = true;
+  newStateState.cancelled = true;
 
   // update our cancellation balance
-  const { deployment, participant, primaryContractAddresses } = newState;
+  const { deployment, participant } = newState;
   newState.balances[primaryContractAddresses.fundraiser] =
     participant.entries.times(deployment.valuePerEntry);
 

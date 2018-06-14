@@ -4,99 +4,47 @@
   position: relative;
   transform: rotate(-90deg);
 
-  text {
-    -moz-transform: rotate(90deg);
-    -moz-transform-origin: 50% 50%;
-  }
-
   .background {
     fill: $puck-background;
   }
 
-  .loaders-path {
-    transform-origin: 50% 50%;
-    transform: rotate(90deg);
-  }
-
-  .loaders-text {
-    fill: $background;
-    font-size: 30px;
-    font-weight: bold;
-    dominant-baseline: central;
-    text-anchor: middle;
-  }
-
-  .loaders-container {
-    opacity: 0;
-    transform-origin: 50% 50%;
-
-    &.show {
-      animation: spin $loading-spin-duration ease-in-out 0s infinite, fade-in $loading-fade-duration ease-in-out 0s 1;
-      animation-fill-mode: forwards;
-    }
-
-    .loaders-arc {
-      stroke: $primary;
-      transform-origin: 50% 50%;
-
-      &.bottom {
-        transform: rotate(180deg);
-      }
-
-    }
-
-  }
-
   .phase-container {
-
-    .phase-path {
-      transform-origin: 50% 50%;
-      transform: rotate(90deg);
-    }
-
-    .phase-text {
-      fill: white;
-      font-size: 30px;
-      font-weight: bold;
-      dominant-baseline: central;
-      text-anchor: end;
-
-      &.flipped {
-        text-anchor: start;
-      }
-
-    }
 
     .phase {
       transform: scale(0);
       transform-origin: 50% 50%;
 
-      &.participation {
-        animation: ring-in $participation-phase-duration ease-out $participation-phase-delay;
-        animation-fill-mode: forwards;
-
-        circle {
-          stroke: $participation-phase;
-          transform-origin: 50% 50%;
-        }
-      }
-
-      &.progress {
-        animation: ring-in $progress-phase-duration ease-out $progress-phase-delay;
-        animation-fill-mode: forwards;
-
-        circle {
-          stroke: $primary;
-          transform-origin: 50% 50%;
-        }
+      text {
+        transform: rotate(90deg);
+        transform-origin: 50% 50%;
 
         .phase-text {
+          fill: white;
+          font-size: 35px;
+          font-weight: bold;
+          dominant-baseline: central;
+          text-anchor: end;
           opacity: 0;
-          fill: $background;
           animation: fade-in 0.5s ease-out 2.5s;
           animation-fill-mode: forwards;
+
+          &.flipped {
+            text-anchor: start;
+          }
         }
 
+      }
+
+      &.elapsed {
+        animation: ring-in $elapsed-phase-duration ease-out $elapsed-phase-delay;
+        animation-fill-mode: forwards;
+        circle { stroke: $elapsed-phase-color; }
+      }
+
+      &.raised {
+        animation: ring-in $raised-phase-duration ease-out $raised-phase-delay;
+        animation-fill-mode: forwards;
+        circle { stroke: $raised-phase-color; }
       }
 
     }

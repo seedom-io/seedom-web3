@@ -1,5 +1,4 @@
 import { BigNumber } from 'bignumber.js';
-import * as bytes from '../utils/bytes';
 import * as messages from '@seedom-io/seedom-crypter/messages';
 
 const epochToDate = seconds => {
@@ -23,7 +22,8 @@ const parseDeployments = deployments => {
       deployTime: epochToDate(deployment._deployTime),
       endTime: epochToDate(deployment._endTime),
       expireTime: epochToDate(deployment._expireTime),
-      destructTime: epochToDate(deployment._destructTime)
+      destructTime: epochToDate(deployment._destructTime),
+      goal: new BigNumber(deployment._goal)
     };
   }
   return finalDeployments;

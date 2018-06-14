@@ -6,6 +6,7 @@ module.exports = {
   devtool: 'eval',
   plugins: [
     new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
       ETH_NETWORKS: JSON.stringify(loader.getNetworks()),
       ETH_DEPLOYMENTS: JSON.stringify(loader.getDeployments()),
       SEEDOM_URL: JSON.stringify('http://localhost:8080'),

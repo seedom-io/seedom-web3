@@ -39,12 +39,12 @@ $intro-img-duration: 2s;
 $intro-img-delay: $intro-tagline-duration - $stagger-duration;
 $puck-duration: 1s;
 $puck-delay: $intro-tagline-duration + $intro-img-duration - $stagger-duration;
-$participation-phase-delay: $puck-delay + $puck-duration - $stagger-duration;
-$participation-phase-duration: 1s;
-$revelation-phase-delay: $participation-phase-delay + $participation-phase-duration - $stagger-duration;
-$revelation-phase-duration: 1s;
-$progress-phase-delay: $revelation-phase-delay + $revelation-phase-duration - $stagger-duration;
-$progress-phase-duration: 1s;
+$elapsed-phase-delay: $puck-delay + $puck-duration - $stagger-duration;
+$elapsed-phase-duration: 1s;
+$elapsed-phase-color: $error;
+$raised-phase-delay: $elapsed-phase-delay + $elapsed-phase-duration - $stagger-duration;
+$raised-phase-duration: 1s;
+$raised-phase-color: $primary;
 
 $loading-duration: 2s;
 $loading-spin-duration: $loading-duration * 4;

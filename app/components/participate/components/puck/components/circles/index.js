@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { localeDecimal, getEtherFromWei } from '../../../../../../utils/numbers';
 import './index.scss';
 
 const MAX_X = 1000;
@@ -7,20 +8,24 @@ const MAX_Y = 1000;
 const FULL_RADIUS = 500;
 const CENTER_X = 500;
 const CENTER_Y = 500;
-const LOADERS_STROKE_WIDTH = 30;
-const PROGRESS_STROKE_WIDTH = 30;
-const PHASE_STROKE_WIDTH = 50;
-const BACKGROUND_PADDING = 50;
-const LOADERS_PERCENTAGE = 20;
+const ELAPSED_STROKE_WIDTH = 40;
+const RAISED_STROKE_WIDTH = 40;
 
-const getProgressPercentage = (deployment, now) => {
+const getElapsedPercentage = (deployment, now) => {
   const { deployTime, endTime } = deployment;
   const deploymentTime = endTime - deployTime;
-  const progressTime = now - deployTime;
-  return progressTime > deploymentTime ? 100 : 100 * (progressTime / deploymentTime);
+  const elapsedTime = now - deployTime;
+  return elapsedTime > deploymentTime ? 100 : 100 * (elapsedTime / deploymentTime);
 };
 
-const getProgressText = (starter, deployment, now) => {
+const getRaisedPercentage = (deployment, state) => {
+  const { valuePerEntry, goal } = deployment;
+  const { entries } = state;
+  const raisedPercentage = valuePerEntry.times(entries).div(goal);
+  return raisedPercentage.isGreaterThan(1) ? 100 : raisedPercentage.times(100).toNumber();
+};
+
+const getElapsedText = (deployment, now) => {
   const { endTime } = deployment;
   let timeUntilEnd = endTime - now;
 
@@ -41,15 +46,29 @@ const getProgressText = (starter, deployment, now) => {
   // what's left is seconds
   const seconds = Math.floor(timeUntilEnd % 60);
 
-  return `${starter.toUpperCase()} IN - ${days}D ${hours}H ${minutes}M ${seconds}S`;
+  return `ENDS IN - ${days}D ${hours}H ${minutes}M ${seconds}S`;
 };
 
-const getProgressRadius = () => {
-  return FULL_RADIUS - (PROGRESS_STROKE_WIDTH / 2) - BACKGROUND_PADDING;
+const getRaisedText = (deployment, state) => {
+  const { valuePerEntry, goal } = deployment;
+  const { entries } = state;
+  const weiUntilGoal = goal.minus(valuePerEntry.times(entries));
+
+  if (weiUntilGoal.isLessThanOrEqualTo(0)) {
+    return `GOAL REACHED`;
+  }
+
+  const etherUntilGoal = getEtherFromWei(weiUntilGoal);
+  const etherUntilGoalText = localeDecimal(etherUntilGoal, 3);
+  return `GOAL IN - ${etherUntilGoalText}Ξ`;
 };
 
-const getLoadersRadius = () => {
-  return FULL_RADIUS - (LOADERS_STROKE_WIDTH / 2);
+const getElapsedRadius = () => {
+  return FULL_RADIUS - (ELAPSED_STROKE_WIDTH / 2);
+};
+
+const getRaisedRadius = () => {
+  return FULL_RADIUS - (RAISED_STROKE_WIDTH / 2) - ELAPSED_STROKE_WIDTH;
 };
 
 const getPathFlipped = (percentage) => {
@@ -83,21 +102,19 @@ const getPathDescription = (radius, flipped) => {
   `;
 };
 
-const getProgressTextShown = (percentage) => {
+const getTextShown = (percentage) => {
   return percentage >= 15;
 };
 
 class Circles extends React.Component {
   static propTypes = {
-    starter: PropTypes.string,
     deployment: PropTypes.shape(),
-    isLoading: PropTypes.bool
+    state: PropTypes.shape()
   };
 
   static defaultProps = {
-    starter: 'ends',
     deployment: null,
-    isLoading: false
+    state: null
   };
 
   constructor(props) {
@@ -120,32 +137,42 @@ class Circles extends React.Component {
   }
 
   render() {
-    const { starter, deployment, isLoading } = this.props;
+    const { deployment, state } = this.props;
     const { now } = this.state;
 
-    let progressPercentage;
-    let progressText;
+    let elapsedPercentage;
+    let elapsedText;
+    let raisedPercentage;
+    let raisedText;
     if (deployment) {
-      progressPercentage = getProgressPercentage(deployment, now);
-      progressText = getProgressText(starter, deployment, now);
+      elapsedPercentage = getElapsedPercentage(deployment, now);
+      elapsedText = getElapsedText(deployment, now);
+
+      if (state) {
+        raisedPercentage = getRaisedPercentage(deployment, state);
+        raisedText = getRaisedText(deployment, state);
+      }
     }
 
-    const progressRadius = getProgressRadius();
-    const loadersRadius = getLoadersRadius();
+    const elapsedRadius = getElapsedRadius();
+    const raisedRadius = getRaisedRadius();
 
-    const progressPathStyle = getPathStyle(progressRadius, progressPercentage);
-    const participationPathStyle = getPathStyle(progressRadius, 100);
-    const loadersPathStyle = getPathStyle(loadersRadius, LOADERS_PERCENTAGE);
+    const elapsedPathStyle = getPathStyle(elapsedRadius, elapsedPercentage);
+    const raisedPathStyle = getPathStyle(raisedRadius, raisedPercentage);
 
-    const progressPathFlipped = getPathFlipped(progressPercentage);
+    const elapsedPathFlipped = getPathFlipped(elapsedPercentage);
+    const raisedPathFlipped = getPathFlipped(raisedPercentage);
 
-    const progressPathDescription = getPathDescription(progressRadius);
-    const flippedProgressPathDescription = getPathDescription(progressRadius, true);
-    const loadersPathDescription = getPathDescription(loadersRadius);
+    const elapsedPathDescription = getPathDescription(elapsedRadius);
+    const flippedElapsedPathDescription = getPathDescription(elapsedRadius, true);
+    const raisedPathDescription = getPathDescription(raisedRadius);
+    const flippedRaisedPathDescription = getPathDescription(raisedRadius, true);
 
-    const progressTextShown = getProgressTextShown(progressPercentage);
+    const elapsedTextShown = getTextShown(elapsedPercentage);
+    const raisedTextShown = getTextShown(raisedPercentage);
 
-    const progressTextOffset = getTextOffset(progressPathFlipped, progressPercentage);
+    const elapsedTextOffset = getTextOffset(elapsedPathFlipped, elapsedPercentage);
+    const raisedTextOffset = getTextOffset(raisedPathFlipped, raisedPercentage);
 
     return (
       <svg
@@ -161,81 +188,74 @@ class Circles extends React.Component {
           opacity={0.9}
         />
 
-        <g className={`loaders-container ${isLoading ? 'show' : 'hide'}`}>
-
-          <circle
-            className="loaders-arc"
-            cx={CENTER_X}
-            cy={CENTER_Y}
-            r={loadersRadius}
-            strokeWidth={LOADERS_STROKE_WIDTH}
-            fillOpacity={0}
-            style={loadersPathStyle}
-          />
-
-          <circle
-            className="loaders-arc bottom"
-            cx={CENTER_X}
-            cy={CENTER_Y}
-            r={loadersRadius}
-            strokeWidth={LOADERS_STROKE_WIDTH}
-            fillOpacity={0}
-            style={loadersPathStyle}
-          />
-
-          <path
-            id="seedom-circles-loaders-path"
-            className="loaders-path"
-            d={loadersPathDescription}
-            strokeWidth={0}
-            fillOpacity={0}
-          />
-
-        </g>
-
         <g className="phase-container">
 
           <path
-            id="seedom-circles-progress-path"
+            id="seedom-circles-elapsed-path"
             className="phase-path"
-            d={progressPathDescription}
+            d={elapsedPathDescription}
             strokeWidth={0}
             fillOpacity={0}
           />
 
           <path
-            id="seedom-circles-progress-path-flipped"
+            id="seedom-circles-raised-path"
             className="phase-path"
-            d={flippedProgressPathDescription}
+            d={raisedPathDescription}
             strokeWidth={0}
             fillOpacity={0}
           />
 
-          <g className="phase participation">
+          <path
+            id="seedom-circles-elapsed-path-flipped"
+            className="phase-path"
+            d={flippedElapsedPathDescription}
+            strokeWidth={0}
+            fillOpacity={0}
+          />
+
+          <path
+            id="seedom-circles-raised-path-flipped"
+            className="phase-path"
+            d={flippedRaisedPathDescription}
+            strokeWidth={0}
+            fillOpacity={0}
+          />
+
+          <g className="phase elapsed">
             <circle
               cx={CENTER_X}
               cy={CENTER_Y}
-              r={progressRadius}
-              strokeWidth={PHASE_STROKE_WIDTH}
+              r={elapsedRadius}
+              strokeWidth={ELAPSED_STROKE_WIDTH}
               fillOpacity={0}
-              style={participationPathStyle}
+              style={elapsedPathStyle}
             />
+
+            {elapsedTextShown &&
+              <text>
+                <textPath className={`phase-text ${elapsedPathFlipped ? "flipped" : null}`} xlinkHref={`${elapsedPathFlipped ? "#seedom-circles-elapsed-path-flipped" : "#seedom-circles-elapsed-path"}`} startOffset={`${elapsedTextOffset}%`}>
+                  {elapsedText}
+                </textPath>
+              </text>
+            }
+
           </g>
 
-          <g className="phase progress">
+          <g className="phase raised">
             <circle
               cx={CENTER_X}
               cy={CENTER_Y}
-              r={progressRadius}
-              strokeWidth={PROGRESS_STROKE_WIDTH}
+              r={raisedRadius}
+              strokeWidth={RAISED_STROKE_WIDTH}
               fillOpacity={0}
-              style={progressPathStyle}
+              style={raisedPathStyle}
             />
 
-            {progressTextShown &&
+            {raisedTextShown &&
               <text>
-                <textPath className={`phase-text ${progressPathFlipped ? "flipped" : null}`} xlinkHref={`${progressPathFlipped ? "#seedom-circles-progress-path-flipped" : "#seedom-circles-progress-path"}`} startOffset={`${progressTextOffset}%`}>
-                  {progressText}
+                <textPath className={`phase-text ${raisedPathFlipped ? "flipped" : null}`} xlinkHref={`${raisedPathFlipped ? "#seedom-circles-raised-path-flipped" : "#seedom-circles-raised-path"}`} startOffset={`${raisedTextOffset}%`}>
+                  {raisedText}
                 </textPath>
               </text>
             }

@@ -305,7 +305,7 @@ class Puck extends Component {
           <img alt="seedom" src={seedomLogo} />
         </div>
         <div className="interface">
-          <Circles isLoading={isLoading} deployment={deployment} />
+          <Circles deployment={deployment} state={state} />
           <Ethereum isShown={component === 'ethereum'} />
           <Network isShown={component === 'network'} />
           <Account isShown={component === 'account'} />
