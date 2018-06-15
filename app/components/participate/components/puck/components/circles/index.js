@@ -185,7 +185,7 @@ class Circles extends React.Component {
           cx={CENTER_X}
           cy={CENTER_Y}
           r={FULL_RADIUS}
-          opacity={0.9}
+          opacity={0.8}
         />
 
         <g className="phase-container">
