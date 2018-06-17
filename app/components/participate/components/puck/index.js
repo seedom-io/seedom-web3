@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as bytes from '../../../../utils/bytes';
+import Spinner from './components/spinner';
 import Circles from './components/circles';
 import Begin from './components/begin';
 import BeginningFailed from './components/beginningFailed';
@@ -65,7 +66,7 @@ const getComponent = ({
 }) => {
   // wait for a network
   if (!network) {
-    return null;
+    return 'spinner';
   }
 
   // ethereum check
@@ -80,7 +81,7 @@ const getComponent = ({
 
   // wait for state
   if (!state) {
-    return null;
+    return 'spinner';
   }
 
   // selection?
@@ -105,7 +106,7 @@ const getComponent = ({
 
   // wait for a participant
   if (!participant) {
-    return null;
+    return 'spinner';
   }
 
   // switch on phase
@@ -151,7 +152,7 @@ const getComponent = ({
       return 'cancel';
 
     default:
-      return null;
+      return 'spinner';
   }
 };
 
@@ -305,6 +306,7 @@ class Puck extends Component {
           <img alt="seedom" src={seedomLogo} />
         </div>
         <div className="interface">
+          <Spinner isShown={component === 'spinner'} />
           <Circles deployment={deployment} state={state} />
           <Ethereum isShown={component === 'ethereum'} />
           <Network isShown={component === 'network'} />
