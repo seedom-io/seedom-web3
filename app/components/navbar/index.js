@@ -7,8 +7,14 @@ import seedomLogo from '../../../../seedom-assets/logo/full/seedom-full-white-tr
 
 class NavBar extends React.Component {
   static propTypes = {
-    ethereum: PropTypes.shape().isRequired,
+    ethereum: PropTypes.shape(),
     router: PropTypes.shape().isRequired
+  };
+
+  static defaultProps = {
+    ethereum: null,
+    causes: null,
+    ticker: null
   };
 
   constructor(props) {
@@ -32,8 +38,13 @@ class NavBar extends React.Component {
 
   // <NavLink className="navbar-item" activeClassName="is-active" to="/history" onClick={this.handleNavLink} exact>HISTORY</NavLink>
   render() {
+    const { ethereum } = this.props;
+    if (!ethereum) {
+      return null;
+    }
+
+    const { isLoading } = ethereum;
     const { isBurgerActive } = this.state;
-    const { isLoading } = this.props.ethereum;
 
     return (
       <nav className="navbar">

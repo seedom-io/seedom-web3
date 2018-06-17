@@ -462,7 +462,6 @@ const ethereumMiddleware = (store) => {
     checkRefresh();
   };
 
-  check();
   setInterval(() => {
     check();
   }, POLL_DELAY);
