@@ -48,7 +48,7 @@ class Vote extends Component {
       isLoading,
       primaryContractAddresses
     } = ethereum;
-    if (!primaryContractAddresses || !causes) {
+    if (!primaryContractAddresses || !causes || !deployments) {
       return null;
     }
 
