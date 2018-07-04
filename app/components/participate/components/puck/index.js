@@ -84,6 +84,11 @@ const getComponent = ({
     return 'spinner';
   }
 
+  // balances?
+  if (balances && (Object.keys(balances).length > 0) && isWithdrawing) {
+    return 'withdraw';
+  }
+
   // selection?
   if (!bytes.isZero20(state.participant)) {
     return 'selection';
@@ -92,11 +97,6 @@ const getComponent = ({
   // account check
   if (!account) {
     return 'account';
-  }
-
-  // balances?
-  if (balances && (Object.keys(balances).length > 0) && isWithdrawing) {
-    return 'withdraw';
   }
 
   // cancelled?
