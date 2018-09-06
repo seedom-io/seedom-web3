@@ -61,6 +61,8 @@ class Head extends Component {
         <meta name="twitter:description" property="twitter:description" content={description} />
         <meta name="twitter:image" property="twitter:image" content={finalImage} />
         <meta name="twitter:url" property="twitter:url" content={finalUrl} />
+        {/* facebook */}
+        <meta name="fb:app_id" property="fb:app_id" content="1521560227943499" />
         {/* open graph */}
         <meta name="og:type" property="og:type" content="website" />
         <meta name="og:site_name" property="og:site_name" content={name} />
