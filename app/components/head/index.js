@@ -62,16 +62,15 @@ class Head extends Component {
         <meta name="twitter:image" property="twitter:image" content={finalImage} />
         <meta name="twitter:url" property="twitter:url" content={finalUrl} />
         {/* facebook */}
-        <meta name="fb:app_id" property="fb:app_id" content="1521560227943499" />
-        {/* open graph */}
-        <meta name="og:type" property="og:type" content="website" />
-        <meta name="og:site_name" property="og:site_name" content={name} />
-        <meta name="og:title" property="og:title" content={title} />
-        <meta name="og:description" property="og:description" content={description} />
-        <meta name="og:image" property="og:image" content={finalImage} />
-        <meta name="og:image:width" property="og:image:width" content={imageWidth} />
-        <meta name="og:image:height" property="og:image:height" content={imageHeight} />
-        <meta name="og:url" property="og:url" content={finalUrl} />
+        <meta property="fb:app_id" content="1521560227943499" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={name} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={finalImage} />
+        <meta property="og:image:width" content={imageWidth} />
+        <meta property="og:image:height" content={imageHeight} />
+        <meta property="og:url" content={finalUrl} />
         {/* font awesome */}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossOrigin="anonymous" />
         {/* google */}
