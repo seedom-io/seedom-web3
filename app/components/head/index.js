@@ -11,7 +11,7 @@ const title = 'Seedom | FUNdraising Evolved';
 const description = 'Raising awareness and Ether for altruistic causes while rewarding a single participant for their contribution and support, similar to a raffle!';
 const image = 'https://raw.githubusercontent.com/seedom-io/seedom-assets/master/share/seedom-share.png';
 const imageWidth = 1200;
-const imageHeight = 628;
+const imageHeight = 630;
 
 class Head extends Component {
   componentDidMount() {
@@ -68,6 +68,7 @@ class Head extends Component {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={finalImage} />
+        <meta property="og:image:secure_url" content={finalImage} />
         <meta property="og:image:width" content={imageWidth} />
         <meta property="og:image:height" content={imageHeight} />
         <meta property="og:url" content={finalUrl} />
