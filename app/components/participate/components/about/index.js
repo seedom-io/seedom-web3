@@ -53,7 +53,7 @@ class About extends Component {
             <iframe
               id="video"
               title="video"
-              src={`//www.youtube.com/embed/${cause.video}?rel=0${!collapsed ? '&autoplay=1' : ''}`}
+              src={`//www.youtube.com/embed/${cause.video}?rel=0&t=${cause.start}${!collapsed ? '&autoplay=1' : ''}`}
               frameBorder="0"
               allowFullScreen
             />

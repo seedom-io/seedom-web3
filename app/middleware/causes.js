@@ -6,6 +6,7 @@ const sampleCause = {
   image: 'seedom',
   url: 'seedom.io',
   video: 'nj2QNP9gEKA',
+  start: '0',
   tagline: 'seeding the future of philanthropy'
 };
 
