@@ -7,7 +7,7 @@
 - seedom-solidity
 
 # Start Dev Server
-- start seedom-badger
+- start seedom-badger (optional)
 - `npm run dev`
 
 # Prepare Production
