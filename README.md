@@ -1,5 +1,5 @@
 ## General Dependencies
-- NodeJS v8.6.0+
+- NodeJS v10.15.1
 
 ## Seedom Dependencies
 - seedom-assets
