@@ -26,7 +26,7 @@ class Help extends Sections {
             >
               <div className="seedom-logo fixed" />
               <br />
-              Seedom is a innovative way of funding altruistic causes in the form of a game. Similar to a raffle, there is <strong>always</strong> a randomly selected winner, which could be anyone that participates. The cause will receive 60% of the funds raised, and the winner will receive 30%. Seedom restarts on the 1st and 15th of every month for a new altruistic cause. After you participate, you can also have <a href="#point-of-voting">a say</a> in which causes we support in the future!
+              Seedom is a innovative way of funding altruistic causes in the form of a game. Players purchase entries and enter an encouraging message, and then one planyer is <strong>always</strong> randomly selected as the winner, which could be anyone that participates. The cause will receive 60% of the funds raised, and the winner will receive 40%. Seedom routinely runs FUNdraiser for a new altruistic causes. After you participate, you can also have <a href="#point-of-voting">a say</a> in which causes we support in the future!
             </Collapse>
             <Collapse
               title="Why is Seedom different?"
@@ -51,14 +51,14 @@ class Help extends Sections {
           </div>
 
           <div className="column is-three-fifths is-offset-one-fifth">
-            <h3 className="title has-text-white">Getting Started</h3>
+            <h3 className="title has-text-white">Getting Started 2</h3>
             <Collapse
               id="obtaining-ether"
               title="Obtaining Ether to play"
               collapsed={!open.includes('obtaining-ether')}
               onToggle={this.handleToggle('obtaining-ether')}
             >
-              The first step is obtaining Ether, the currency of the Ethereum platform. The easiest way to do this is through <a target="_blank" rel="noopener noreferrer" href="https://coinbase.com">Coinbase</a> on the desktop or through their <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.coinbase.android&hl=en_US">Google Android</a> or <a target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/us/app/coinbase-buy-bitcoin-more/id886427730?mt=8">Apple iOS</a> apps.
+              The first step is obtaining Ether, the currency of the Ethereum platform. The easiest way to do this is through <a target="_blank" rel="noopener noreferrer" href="https://coinbase.com">Coinbase</a> on the desktop or through their <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.coinbase.android&hl=en_US">Google Android</a> or <a target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/us/app/coinbase-buy-bitcoin-more/id886427730?mt=8">Apple iOS</a> apps. Learn how to buy cryptocurrency from Coinbase with this <a target="_blank" href="http://blockteq.com/how-to-series/how-to-buy-cryptocurrency/">guide from Blockteq</a>.
               <br />
               <div className="coinbase-logo" />
               <br />
@@ -92,7 +92,7 @@ class Help extends Sections {
               collapsed={!open.includes('accessing-desktop')}
               onToggle={this.handleToggle('accessing-desktop')}
             >
-              To use Seedom on the desktop, you will need to install <a target="_blank" rel="noopener noreferrer" href="https://metamask.io">MetaMask</a> or use the <a target="_blank" rel="noopener noreferrer" href="https://brave.com">Brave browser</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your MetaMask wallet in order to participate.
+              To use Seedom on the desktop, you will need to install <a target="_blank" rel="noopener noreferrer" href="https://metamask.io">MetaMask</a> or use the <a target="_blank" rel="noopener noreferrer" href="https://brave.com">Brave browser</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your MetaMask wallet in order to participate. Learn how to setup MetaMask and store Ether with this<a target="_blank" href="http://blockteq.com/how-to-series/how-to-store-ethereum-and-erc-20s-using-your-computer/">guide from Blockteq</a>. 
               <br />
               <br />
               <a className="download-metamask" target="_blank" rel="noopener noreferrer" href="https://metamask.io" />
