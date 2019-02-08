@@ -51,7 +51,7 @@ class Help extends Sections {
           </div>
 
           <div className="column is-three-fifths is-offset-one-fifth">
-            <h3 className="title has-text-white">Getting Started 2</h3>
+            <h3 className="title has-text-white">Getting Started</h3>
             <Collapse
               id="obtaining-ether"
               title="Obtaining Ether to play"
@@ -92,7 +92,7 @@ class Help extends Sections {
               collapsed={!open.includes('accessing-desktop')}
               onToggle={this.handleToggle('accessing-desktop')}
             >
-              To use Seedom on the desktop, you will need to install <a target="_blank" rel="noopener noreferrer" href="https://metamask.io">MetaMask</a> or use the <a target="_blank" rel="noopener noreferrer" href="https://brave.com">Brave browser</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your MetaMask wallet in order to participate. Learn how to setup MetaMask and store Ether with this<a target="_blank" href="http://blockteq.com/how-to-series/how-to-store-ethereum-and-erc-20s-using-your-computer/">guide from Blockteq</a>. 
+              To use Seedom on the desktop, you will need to install <a target="_blank" rel="noopener noreferrer" href="https://metamask.io">MetaMask</a> or use the <a target="_blank" rel="noopener noreferrer" href="https://brave.com">Brave browser</a>. You will need to <a href="#obtaining-ether">put Ether</a> into your MetaMask wallet in order to participate. Learn how to setup MetaMask and store Ether with this <a target="_blank" href="http://blockteq.com/how-to-series/how-to-store-ethereum-and-erc-20s-using-your-computer/">guide from Blockteq</a>. 
               <br />
               <br />
               <a className="download-metamask" target="_blank" rel="noopener noreferrer" href="https://metamask.io" />
